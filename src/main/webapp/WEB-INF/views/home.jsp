@@ -48,6 +48,5 @@
 		<div id="divTeamInfo">
 			<h1 style="margin-left: 50px">team core</h1>
 		</div>
-		
 	</body>
 </html>
