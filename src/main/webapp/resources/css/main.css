@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+#loginLogo {
+	margin-top: 20px;
+	width: 30%;
+}
+
+.IndexPageTab {
+	width:10%;
+	height:30%;
+	border-radius: 10px;
+	font-size: 20px;
+	margin: 50px;
+	margin-left:100px;
+}
+
+#divHiUser {
+	height: 100px;
+	background-color: orange;
+	display: flex;
+	align-items: center;
+	
+}
+
+#mainMinimi {
+	border: 2px solid black;
+	padding: 20px;
+	width:60%;
+	height:75%;
+}
+
+#divMainMinimi {
+	padding-top: 200px;
+	padding-left:150px;
+	width: 40%;
+	height: 60%;
+	border-color: navy;
+	
+}
+
+#divMainSlide {
+	
+	width: 40%;
+	height: 50%;
+}
+
+#mainSlideImg {
+	padding-top: 100px;
+	width: 130%;
+}
+ .mainBtn {
+ 	width:10%;
+ 	height:50px;
+ 	margin-left: 100px;
+ }
+
+
+
+
+
+
+
