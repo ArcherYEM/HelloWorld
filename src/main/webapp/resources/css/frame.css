@@ -87,9 +87,34 @@ body a{
   height: 40px;
 }
 
-.manu-content{
+.menu-content {
   text-align: center;
+  width: 60px;
+  height: 35px;
+  font-size: 12px;
+  border: solid 1px black;
+  background-color: rgb(42, 140, 168);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: white;
+  margin-bottom: 2px;
+  line-height: 35px;
 }
+
+.menu-content-clicked {
+  text-align: center;
+  width: 60px;
+  height: 35px;
+  font-size: 12px;
+  border: solid 1px black;
+  border-left: none;  /* 왼쪽 테두리 제거 */
+  background-color: white;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: black;
+  margin-bottom: 2px;
+}
+
 
 .header {
   flex: 0.1;
@@ -187,10 +212,10 @@ body a{
 
 .side-right{
   float: right;
-  width: 13%;
-  margin-top: 6.5%;
+  width: 12.5%;
+  margin-top: 7%;
 }
 
 .side-right audio{
-  width:160px;
+  width:150px;
 }
