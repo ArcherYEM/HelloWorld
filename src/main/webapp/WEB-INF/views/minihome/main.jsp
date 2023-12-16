@@ -17,11 +17,12 @@
 		<div class="bookdot">
 			<div class="page">
 				<div class="profile-container">
-					<div class="header profile-title font-neo">TODAY 404 | TOTAL 500</div>
+					<div class="header profile-title font-neo">TODAY 404 | TOTAL
+						500</div>
 					<div class="box profile-box">
 						<div class="profile-image">
-							<img class="profile-image-img" src="../../../../resources/images/profile.jpg"
-								alt="프로필 이미지" />
+							<img class="profile-image-img"
+								src="../../../../resources/images/profile.jpg" alt="프로필 이미지" />
 						</div>
 						<div class="profile-dot">---------------------------------</div>
 						<div class="profile-text font-kyobohand">
@@ -48,7 +49,7 @@
 					<div class="header content-title">
 						<div class="content-title-name">지구 최강 미모 이주빈 입니다</div>
 						<div>
-							<button class="btn-edit">Edit</button>
+							<button class="btn-edit">수정</button>
 						</div>
 						<div class="content-title-url">
 							https://www.helloworld.com/minihome/leejubin</div>
@@ -90,15 +91,21 @@
 										<a href="#">다이어리<span class="menu-num">0/51</span></a>
 									</div>
 									<div class="menu-item">
-										<a href="#">사진첩<span class="menu-num">1/88</span></a>
+										<a href="#">사진첩<span class="menu-num">1/88</span></a> <img
+											src="../../../../resources/images/icon/minihome/newIcon.png"
+											alt="new Icon" class="minihome-nIcon">
 									</div>
 								</div>
 								<div class="menu-row">
 									<div class="menu-item">
-										<a href="#">게시판<span class="menu-num">3/17</span></a>
+										<a href="#">게시판<span class="menu-num">3/17</span></a> <img
+											src="../../../../resources/images/icon/minihome/newIcon.png"
+											alt="new Icon" class="minihome-nIcon">
 									</div>
 									<div class="menu-item">
-										<a href="#">방명록<span class="menu-num">25/500</span></a>
+										<a href="#">방명록<span class="menu-num">25/500</span></a> <img
+											src="../../../../resources/images/icon/minihome/newIcon.png"
+											alt="new Icon" class="minihome-nIcon">
 									</div>
 								</div>
 							</div>
@@ -106,7 +113,7 @@
 						<div class="miniroom">
 							<div>
 								<span class="box-title miniroom-title">Miniroom</span>
-								<button class="btn-edit miniroom-edit">Edit</button>
+								<button class="btn-edit miniroom-edit">미니룸 설정</button>
 							</div>
 							<div class="miniroom-gif-box">
 								<img src="../../../../resources/images/aquariumBg.png" />
@@ -140,22 +147,39 @@
 						</div>
 					</div>
 				</div>
-				<div class="menu-frame manu-content">
-					<div class="menu-container">홈</div>
-					<div class="menu-container">다이어리</div>
-					<div class="menu-container">사진첩</div>
-					<div class="menu-container">게시판</div>
-					<div class="menu-container">방명록</div>
-					<div class="menu-container">관리</div>
+				<div class="menu-frame">
+					<div class="menu-content" onclick="changeClass(this)">홈</div>
+					<div class="menu-content" onclick="changeClass(this)">사진첩</div>
+					<div class="menu-content" onclick="changeClass(this)">게시판</div>
+					<div class="menu-content" onclick="changeClass(this)">다이어리</div>
+					<div class="menu-content" onclick="changeClass(this)">방명록</div>
+					<div class="menu-content" onclick="changeClass(this)">관리</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="side-right">
 		<audio controls autoplay>
-			<source src="../../../../resources/sounds/버즈-가시.mp3" type="audio/mp3">
-			(audio error!)
+			<source src="../../../../resources/sounds/버즈-가시.mp3"
+				type="audio/mp3">
 		</audio>
 	</div>
+
+	<!-- js 파일 생성해서 추가해줘야함 -->
+	<script>
+		// 현재 선택된 메뉴 아이템을 저장하는 변수
+		var currentSelectedMenu = null;
+
+		function changeClass(element) {
+			// 현재 선택된 메뉴의 클래스 초기화
+			if (currentSelectedMenu) {
+				currentSelectedMenu.classList.remove("menu-content-clicked");
+			}
+
+			// 현재 선택된 메뉴를 업데이트하고 클래스를 토글
+			currentSelectedMenu = element;
+			element.classList.toggle("menu-content-clicked");
+		}
+	</script>
 </body>
 </html>
