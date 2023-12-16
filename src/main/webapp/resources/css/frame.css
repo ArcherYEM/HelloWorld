@@ -31,7 +31,7 @@ body a{
   height: 510px;
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 47%;
   transform: translate(-50%, -50%);
 }
 
@@ -56,9 +56,6 @@ body a{
   bottom: 10px;
   display: flex;
   padding: 15px;
-
-  overflow-y: auto;
-  max-height: calc(100vh - 20px);
 }
 
 .profile-container {
@@ -76,7 +73,7 @@ body a{
   flex-direction: column;
 }
 
-.menu-top{
+.menu-frame{
   margin-top: 50px;
 }
 
@@ -85,8 +82,13 @@ body a{
   border: 1px solid grey;
   background-color: white;
   border-radius: 5px;
+  align-items: center;
   width: 5rem;
   height: 40px;
+}
+
+.manu-content{
+  text-align: center;
 }
 
 .header {
@@ -130,6 +132,7 @@ body a{
   display: flex;
   flex-direction: column;
   padding: 1rem;
+  max-height: 370px;
 }
 
 .profile-image {
@@ -147,11 +150,11 @@ body a{
   font-size: 0.75rem;
   line-height: 1.7;
   flex: 1;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .profile-history{
-  font-size: 14px;
+  font-size: 10px;
   margin-left: 10px;
 }
 
@@ -178,4 +181,16 @@ body a{
   display: flex;
   flex-direction: column;
   padding: 1rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 20px);
+}
+
+.side-right{
+  float: right;
+  width: 13%;
+  margin-top: 6.5%;
+}
+
+.side-right audio{
+  width:160px;
 }

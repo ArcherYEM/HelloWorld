@@ -111,13 +111,15 @@
 }
 
 .main-cmt-write{
-  background: darkgray;
+  background: rgb(211, 211, 211);
   border: 2px solid color=navy;
   padding-left: 10px;
+  font-size: 12px;
 }
 
 .main-cmt-write input {
   min-width: 360px;
-  margin-right: 10px;
+  margin-right: 20px;
   margin-bottom: 5px;
+  margin-top: 5px;
 }
