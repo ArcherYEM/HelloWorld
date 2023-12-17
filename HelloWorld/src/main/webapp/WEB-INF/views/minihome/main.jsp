@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="../../../../resources/css/fonts.css" />
 <link rel="stylesheet" href="../../../../resources/css/frame.css" />
 <link rel="stylesheet" href="../../../../resources/css/home.css" />
+<link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
+<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
 </head>
 <body>
 	<div class="bookcover">

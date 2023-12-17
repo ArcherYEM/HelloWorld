@@ -162,7 +162,7 @@
 	</div>
 	<div class="side-right">
 		<audio controls autoplay>
-			<source src="../../../../resources/sounds/버즈-가시.mp3"
+			<source src="../../../../resources/sounds/OneDrink.mp3"
 				type="audio/mp3">
 		</audio>
 	</div>
