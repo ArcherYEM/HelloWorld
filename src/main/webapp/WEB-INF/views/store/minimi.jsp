@@ -32,21 +32,100 @@
 			<a class='storeAtag' href="">bgm</a>
 		</div>
 		
-		<div style="text-align:center; flex-direction: row;" >
-			<div>
-				<img class="storeMinimi" src="<c:url value="/resources/images/icon/minimi/slimeIcon.gif" />">
-				<img class="storeMinimi" src="<c:url value="/resources/images/icon/minimi/orangeMushroomIcon.gif" />">
-				<img class="storeMinimi" src="<c:url value="/resources/images/icon/minimi/balokIcon.gif" />">
-				<img class="storeMinimi" src="<c:url value="/resources/images/icon/minimi/grupinIcon.gif" />">
-				<img class="storeMinimi" src="<c:url value="/resources/images/icon/minimi/duckyFamilyIcon.gif" />">
-			</div>
-			
-			<div>
-				<img class="storeMinimi" src="<c:url value="/resources/images/icon/minimi/horangIcon.gif" />">
-				<img class="storeMinimi" src="<c:url value="/resources/images/icon/minimi/starPixieIcon.gif" />">
-				<img class="storeMinimi" src="<c:url value="/resources/images/icon/minimi/greiIcon.gif" />">
-				<img class="storeMinimi" src="<c:url value="/resources/images/icon/minimi/stonGolemIcon.gif" />">
-				<img class="storeMinimi" src="<c:url value="/resources/images/icon/minimi/scubaPepeIcon.gif" />">
+		<div class="products">
+			<h3>미니미 상품 목록입니다.</h3>
+			<div class="product_list">
+				<a href="#" class="product">
+	                <img src="<c:url value="/resources/images/icon/minimi/slimeIcon.gif" />" width="225">
+	                <div class="product-name">
+	                   	슬라임
+	                </div>
+	                <div class="product-price">
+	                  	도토리10개
+	                </div>
+	            </a>
+				<a href="#" class="product">
+	                <img src="<c:url value="/resources/images/icon/minimi/orangeMushroomIcon.gif" />" width="225">
+	                <div class="product-name">
+	                   	슬라임
+	                </div>
+	                <div class="product-price">
+	                  	도토리10개
+	                </div>
+	            </a>
+				<a href="#" class="product">
+	                <img src="<c:url value="/resources/images/icon/minimi/balokIcon.gif" />" width="225">
+	                <div class="product-name">
+	                   	슬라임
+	                </div>
+	                <div class="product-price">
+	                  	도토리10개
+	                </div>
+	            </a>
+				<a href="#" class="product">
+	                <img src="<c:url value="/resources/images/icon/minimi/grupinIcon.gif" />" width="225">
+	                <div class="product-name">
+	                   	슬라임
+	                </div>
+	                <div class="product-price">
+	                  	도토리10개
+	                </div>
+	            </a>
+				<a href="#" class="product">
+	                <img src="<c:url value="/resources/images/icon/minimi/duckyFamilyIcon.gif" />" width="225">
+	                <div class="product-name">
+	                   	슬라임
+	                </div>
+	                <div class="product-price">
+	                  	도토리10개
+	                </div>
+	            </a>
+				<a href="#" class="product">
+	                <img src="<c:url value="/resources/images/icon/minimi/horangIcon.gif" />" width="225">
+	                <div class="product-name">
+	                   	슬라임
+	                </div>
+	                <div class="product-price">
+	                  	도토리10개
+	                </div>
+	            </a>
+				<a href="#" class="product">
+	                <img src="<c:url value="/resources/images/icon/minimi/starPixieIcon.gif" />" width="225">
+	                <div class="product-name">
+	                   	슬라임
+	                </div>
+	                <div class="product-price">
+	                  	도토리10개
+	                </div>
+	            </a>
+				<a href="#" class="product">
+	                <img src="<c:url value="/resources/images/icon/minimi/greiIcon.gif" />" width="225">
+	                <div class="product-name">
+	                   	슬라임
+	                </div>
+	                <div class="product-price">
+	                  	도토리10개
+	                </div>
+	            </a>
+				<a href="#" class="product">
+	                <img src="<c:url value="/resources/images/icon/minimi/stonGolemIcon.gif" />" width="225">
+	                <div class="product-name">
+	                   	슬라임
+	                </div>
+	                <div class="product-price">
+	                  	도토리10개
+	                </div>
+	            </a>
+				<a href="#" class="product">
+	                <img src="<c:url value="/resources/images/icon/minimi/scubaPepeIcon.gif" />" width="225">
+	                <div class="product-name">
+	                   	슬라임
+	                </div>
+	                <div class="product-price">
+	                  	도토리10개
+	                </div>
+	            </a>
+		
 			</div>
 		</div>
 	</body>
