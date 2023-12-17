@@ -39,8 +39,8 @@
 					<br>
 					<input type="button" style="width: 200px" id="btnNotice" value="공지사항"><br>
 					<br>
-					<a href="">회원가입</a>
-					<a href="">아이디/비밀번호 찾기</a>
+					<a style="margin: 30px;" href="/member/signUp">회원가입</a>
+					<a href="/member/findId">아이디/비밀번호 찾기</a>
 				</form>
 			</div>
 			<div id="divMainSlide">
