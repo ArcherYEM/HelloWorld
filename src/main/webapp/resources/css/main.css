@@ -2,7 +2,7 @@
 
 #loginLogo {
 	margin-top: 20px;
-	width: 30%;
+	width: 20%;
 }
 
 .IndexPageTab {
@@ -15,7 +15,7 @@
 }
 
 #divHiUser {
-	height: 100px;
+	height: 60px;
 	background-color: orange;
 	display: flex;
 	align-items: center;
@@ -30,8 +30,16 @@
 }
 
 #divMainMinimi {
-	padding-top: 200px;
-	padding-left:150px;
+	padding-top: 150px;
+	padding-left:120px;
+	width: 40%;
+	height: 60%;
+	border-color: navy;
+	
+}
+#divLogin {
+	padding-top: 150px;
+	padding-left:30px;
 	width: 40%;
 	height: 60%;
 	border-color: navy;
@@ -45,8 +53,9 @@
 }
 
 #mainSlideImg {
-	padding-top: 100px;
-	width: 130%;
+	padding-left:50px;
+	padding-top: 50px;
+	width: 110%;
 }
  .mainBtn {
  	width:10%;
