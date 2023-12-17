@@ -13,7 +13,7 @@
 	</head>
 	
 	<body>
-		
+		<button onclick="window.open('/helloworld/minihome/main', 'window_name', 'width=1200px, height=720px, location=no, status=no, scrollbars=yes');">미니홈피</button>
 		<div style="display:flex; flex-direction: row;">
 			<span>
 				<img id="loginLogo" src="<c:url value="/resources/images/helloworldIconFull.png"/>">
