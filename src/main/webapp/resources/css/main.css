@@ -63,8 +63,18 @@
  	margin-left: 100px;
  }
 
+.storeAtag {
+	text-decoration: none;
+	margin-left: 120px;
+	margin-right: 120px;
+}
 
-
+.storeMinimi {
+	width: 10%;
+	height: 10%;
+	margin: 30px;
+	
+}
 
 
 

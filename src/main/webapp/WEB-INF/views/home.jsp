@@ -40,7 +40,8 @@
 					<input type="button" style="width: 200px" id="btnNotice" value="공지사항"><br>
 					<br>
 					<a style="margin: 30px;" href="/member/signUp">회원가입</a>
-					<a href="/member/findId">아이디/비밀번호 찾기</a>
+					<a href="/member/findId">아이디</a> / 
+					<a href="/member/findPw">비밀번호 찾기</a>
 				</form>
 			</div>
 			<div id="divMainSlide">
@@ -55,5 +56,11 @@
 		<div id="divTeamInfo">
 			<h1 style="margin-left: 50px">team core</h1>
 		</div>
+		
+		<script>
+			document.getElementById('btnStore').addEventListener('click', function() {
+				location.href = '/store/minimiView';
+			});
+	</script>
 	</body>
 </html>
