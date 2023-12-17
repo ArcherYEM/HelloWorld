@@ -47,7 +47,7 @@
 				<a href="#" class="product">
 	                <img src="<c:url value="/resources/images/icon/minimi/orangeMushroomIcon.gif" />" width="225">
 	                <div class="product-name">
-	                   	슬라임
+	                   	주황버섯
 	                </div>
 	                <div class="product-price">
 	                  	도토리10개
@@ -56,7 +56,7 @@
 				<a href="#" class="product">
 	                <img src="<c:url value="/resources/images/icon/minimi/balokIcon.gif" />" width="225">
 	                <div class="product-name">
-	                   	슬라임
+	                   	발록
 	                </div>
 	                <div class="product-price">
 	                  	도토리10개
@@ -65,7 +65,7 @@
 				<a href="#" class="product">
 	                <img src="<c:url value="/resources/images/icon/minimi/grupinIcon.gif" />" width="225">
 	                <div class="product-name">
-	                   	슬라임
+	                   	그류핀
 	                </div>
 	                <div class="product-price">
 	                  	도토리10개
@@ -74,7 +74,7 @@
 				<a href="#" class="product">
 	                <img src="<c:url value="/resources/images/icon/minimi/duckyFamilyIcon.gif" />" width="225">
 	                <div class="product-name">
-	                   	슬라임
+	                   	덕패밀리
 	                </div>
 	                <div class="product-price">
 	                  	도토리10개
@@ -83,7 +83,7 @@
 				<a href="#" class="product">
 	                <img src="<c:url value="/resources/images/icon/minimi/horangIcon.gif" />" width="225">
 	                <div class="product-name">
-	                   	슬라임
+	                   	호랑이
 	                </div>
 	                <div class="product-price">
 	                  	도토리10개
@@ -92,7 +92,7 @@
 				<a href="#" class="product">
 	                <img src="<c:url value="/resources/images/icon/minimi/starPixieIcon.gif" />" width="225">
 	                <div class="product-name">
-	                   	슬라임
+	                   	스타픽시
 	                </div>
 	                <div class="product-price">
 	                  	도토리10개
@@ -101,7 +101,7 @@
 				<a href="#" class="product">
 	                <img src="<c:url value="/resources/images/icon/minimi/greiIcon.gif" />" width="225">
 	                <div class="product-name">
-	                   	슬라임
+	                   	그레이
 	                </div>
 	                <div class="product-price">
 	                  	도토리10개
@@ -110,7 +110,7 @@
 				<a href="#" class="product">
 	                <img src="<c:url value="/resources/images/icon/minimi/stonGolemIcon.gif" />" width="225">
 	                <div class="product-name">
-	                   	슬라임
+	                   	스톤골렘
 	                </div>
 	                <div class="product-price">
 	                  	도토리10개
@@ -119,7 +119,7 @@
 				<a href="#" class="product">
 	                <img src="<c:url value="/resources/images/icon/minimi/scubaPepeIcon.gif" />" width="225">
 	                <div class="product-name">
-	                   	슬라임
+	                   	스쿠버페페
 	                </div>
 	                <div class="product-price">
 	                  	도토리10개
