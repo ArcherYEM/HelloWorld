@@ -10,6 +10,7 @@
 		<meta charset="UTF-8">
 		<title>HelloWorld</title>
 		<link  href="/resources/css/main.css" rel="stylesheet">
+		<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
 	</head>
 	<body>
 		<button onclick="window.open('/helloworld/minihome/main', 'window_name', 'width=1200px, height=720px, location=no, status=no, scrollbars=yes');">미니홈피</button>
