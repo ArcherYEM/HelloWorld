@@ -25,15 +25,15 @@
 				<label for="userPhoneNum">핸드폰번호</label><br>
 				<input type="text" id="userPhoneNum" placeholder="핸드폰번호"><br>
 				<input style="witdh: 300px; height: 30px; margin-top: 10px" 
-						type="button" id="btnSignUp" value="찾기">
+						type="button" id="btnFindUp" value="찾기">
 			</form>
 			
 		</div>
 		
 		<script>
-			document.getElementById('btnSignUp').addEventListener('click', function() {
+			document.getElementById('btnFindUp').addEventListener('click', function() {
 				document.getElementById('frmFindId').submit();
-			})
+			});
 		</script>
 		
 	</body>
