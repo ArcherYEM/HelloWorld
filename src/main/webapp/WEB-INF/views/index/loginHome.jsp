@@ -11,9 +11,10 @@
 		<title>HelloWorld</title>
 		<link  href="/resources/css/main.css" rel="stylesheet">
 	</head>
+	
 	<body>
-		<button onclick="window.open('/helloworld/minihome/main', 'window_name', 'width=1200px, height=720px, location=no, status=no, scrollbars=yes');">미니홈피</button>
-
+		<button onclick="window.open('/helloworld/minihome/main', 'window_name', 'width=1200, height=750, location=no, status=no, scrollbars=yes');">미니홈피</button>
+		
 		<div style="display:flex; flex-direction: row;">
 			<span>
 				<img id="loginLogo" src="<c:url value="/resources/images/helloworldIconFull.png"/>">
@@ -23,25 +24,14 @@
 		</div>
 		
 		<div id="divHiUser">
-			<h3 style="color: white; margin: 10px; font-size: 20px;"> 안녕하세요. 이주빈님!!</h3>
+			<h3 style="color: white; margin: 10px; font-size: 35px;"> 안녕하세요. 이주빈님!!</h3>
 		</div>
 		
 		<div style="display:flex; flex-direction: row;">
-			<div id="divLogin">
-				<form style="text-align: center;" id="frmLogin" method="POST" action="">
-					<label for="userEmail">아이디: </label>
-					<input type="text" id="userEmail" name="userEmail" placeholder="아이디"><br>
-					<br>
-					<label for="userPw">비밀번호: </label>
-					<input type="text" id="userPw" name="userPw" placeholder="비밀번호"><br>
-					<br>
-					<input type="button" style="width: 200px" id="btnLogin" value="로그인"><br>
-					<br>
-					<input type="button" style="width: 200px" id="btnNotice" value="공지사항"><br>
-					<br>
-					<a href="">회원가입</a>
-					<a href="">아이디/비밀번호 찾기</a>
-				</form>
+			<div id="divMainMinimi">
+				<span>
+					<img id="mainMinimi" src="<c:url value="/resources/images/PepeIcon.gif"/>">
+				</span>
 			</div>
 			<div id="divMainSlide">
 				<span>
@@ -50,8 +40,11 @@
 			</div>
 			
 		</div>
-		
-		<hr style="border: 2px solid black; margin-top: 50px;">
+		<div>
+			<input type="button" class="mainBtn" id="btnGoMinihome" value="내 미니홈피">
+			<input type="button" class="mainBtn" id="btnLogout" value="로그아웃">
+		</div>
+		<hr style="border: 2px solid black; margin-top: 200px;">
 		<div id="divTeamInfo">
 			<h1 style="margin-left: 50px">team core</h1>
 		</div>
