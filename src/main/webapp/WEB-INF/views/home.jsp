@@ -13,7 +13,7 @@
 		<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
 	</head>
 	<body>
-		<button onclick="window.open('/helloworld/minihome/main', 'window_name', 'width=1200px, height=720px, location=no, status=no, scrollbars=yes');">미니홈피</button>
+		<button id="targetElement" onclick="window.open('/helloworld/minihome/main', 'window_name', 'width=1200px, height=720px, location=no, status=no, scrollbars=yes');">미니홈피</button>
 
 		<div style="display:flex; flex-direction: row;">
 			<span>
@@ -41,7 +41,8 @@
 					<input type="button" style="width: 200px" id="btnNotice" value="공지사항"><br>
 					<br>
 					<a style="margin: 30px;" href="/member/signUp">회원가입</a>
-					<a href="/member/findId">아이디/비밀번호 찾기</a>
+					<a href="/member/findId">아이디</a> / 
+					<a href="/member/findPw">비밀번호 찾기</a>
 				</form>
 			</div>
 			<div id="divMainSlide">
@@ -56,5 +57,12 @@
 		<div id="divTeamInfo">
 			<h1 style="margin-left: 50px">team core</h1>
 		</div>
+		
+		<script>
+			document.getElementById('btnStore').addEventListener('click', function() {
+				location.href = '/store/minimiView';
+			});
+
+	</script>
 	</body>
 </html>

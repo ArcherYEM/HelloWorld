@@ -63,9 +63,42 @@
  	margin-left: 100px;
  }
 
+.storeAtag {
+	text-decoration: none;
+	margin-left: 120px;
+	margin-right: 120px;
+}
 
+.product-list{
+    width: 735px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.products{
+	text-align: center;
+	padding-left: 50px;
+}
+.product{
+    display: block;
+    width: 225px;
+    text-align: center;
+    text-decoration:none;
+    color: black;
+    float:left;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+}
 
+.product-name{
+    margin-top: 20px;
+    margin-bottom: 4px;
+}
 
-
-
-
+.products h3{
+    font-size: 24px;
+    color: #545454;
+    margin-top:60px;
+    margin-bottom: 60px;
+    text-align: center;
+}
