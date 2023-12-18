@@ -19,7 +19,7 @@
 			<span>
 				<img id="loginLogo" src="<c:url value="/resources/images/helloworldIconFull.png"/>">
 				<input type="button" class="IndexPageTab" id="btnStore" value="상점">
-				<input type="button" class="IndexPageTab" id="btnAnnouncement" value="공지사항">
+				<input type="button" class="IndexPageTab" id="btnNotice" value="공지사항">
 			</span>
 		</div>
 		
