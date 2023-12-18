@@ -188,7 +188,7 @@
 		  clearTimeout(resizeTimeout);
 		  resizeTimeout = setTimeout(function() {
 		    window.resizeTo(1200, 720);
-		  }, 1000); // 500ms 후에 창 크기 조정
+		  }, 1000);
 		};
 		
 	</script>
