@@ -49,4 +49,10 @@
 			<h1 style="margin-left: 50px">team core</h1>
 		</div>
 	</body>
+	
+	<script>
+	document.getElementById('btnStore').addEventListener('click', function() {
+		location.href = '/store/minimiView';
+	});
+	</script>
 </html>

@@ -17,7 +17,7 @@
 		</div>
 		<div style="text-align: center;" id="divUserInfo">
 			<h2>아이디 찾기</h2>
-			<form id="frmFindId" method="POST" action="/member/afterFineId">
+			<form id="frmFindPw" method="POST" action="/member/afterFindPw">
 				<label for="userEmail">아이디</label><br>
 				<input type="text" id="userEmail" placeholder="아이디"> @ 
 				<select id="mail" name="mail">
@@ -25,15 +25,22 @@
 					<option value="naver">naver.com</option>
 					<option value="nate">nate.com</option>
 				</select>
+				<br>
 				<label for="userName">이름</label><br>
 				<input type="text" id="userName" placeholder="userName"><br>
 				<label for="userPhoneNum">핸드폰번호</label><br>
 				<input type="text" id="userPhoneNum" placeholder="핸드폰번호"><br>
-				<input style="witdh: 300px; height: 30px; margin-top: 10px" type="button" id="btnSignUp" value="찾기">
+				<input style="witdh: 300px; height: 30px; margin-top: 10px" 
+						type="button" id="btnFindPw" value="확인">
 			</form>
 			
 		</div>
 		
+		<script>
+			document.getElementById('btnFindPw').addEventListener('click', function() {
+				document.getElementById('frmFindPw').submit();
+			});
+		</script>
 		
 	</body>
 </html>
