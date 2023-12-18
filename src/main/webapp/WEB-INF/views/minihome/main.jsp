@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<html lang="ko">
+<html lang="ko" style="resizeable:no">
 <head>
 <meta charset="UTF-8">
 <title>미니홈피</title>
@@ -154,7 +154,7 @@
 	</div>
 	<div class="side-right">
 		<audio controls autoplay>
-			<source src="../../../../resources/sounds/버즈-가시.mp3"
+			<source src="../../../../resources/sounds/OneDrink.mp3"
 				type="audio/mp3">
 		</audio>
 	</div>
@@ -174,6 +174,15 @@
 			currentSelectedMenu = element;
 			element.classList.toggle("menu-content-clicked");
 		}
+		
+		var resizeTimeout;
+		window.onresize = function() {
+		  clearTimeout(resizeTimeout);
+		  resizeTimeout = setTimeout(function() {
+		    window.resizeTo(1200, 720);
+		  }, 1000);
+		};
+		
 	</script>
 </body>
 </html>
