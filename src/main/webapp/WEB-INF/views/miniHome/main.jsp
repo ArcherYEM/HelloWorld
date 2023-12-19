@@ -1,4 +1,4 @@
-<!-- minihome/main -->
+<!-- views/miniHome/main -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -149,12 +149,24 @@
 					</div>
 				</div>
 				<div class="menu-frame">
-					<div class="menu-content" onclick="changeClass(this)">홈</div>
-					<div class="menu-content" onclick="changeClass(this)">사진첩</div>
-					<div class="menu-content" onclick="changeClass(this)">게시판</div>
-					<div class="menu-content" onclick="changeClass(this)">다이어리</div>
-					<div class="menu-content" onclick="changeClass(this)">방명록</div>
-					<div class="menu-content" onclick="changeClass(this)">관리</div>
+					<div class="menu-content" onclick="changeClass(this)">
+						<a href="/miniHome/main">홈</a>
+					</div>
+					<div class="menu-content" onclick="changeClass(this)">
+						<a href="/miniHome/diary">다이어리</a>
+					</div>
+					<div class="menu-content" onclick="changeClass(this)">
+						<a href="/miniHome/album">사진첩</a>
+					</div>
+					<div class="menu-content" onclick="changeClass(this)">
+						<a href="/miniHome/board">게시판</a>
+					</div>
+					<div class="menu-content" onclick="changeClass(this)">
+						<a href="/miniHome/visit">방명록</a>
+					</div>
+					<div class="menu-content" onclick="changeClass(this)">
+						<a href="/miniHome/setting">관리</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -166,7 +178,6 @@
 		</audio>
 	</div>
 
-	<!-- js 파일 생성해서 추가해줘야함 -->
 	<script>
 		// 현재 선택된 메뉴 아이템을 저장하는 변수
 		var currentSelectedMenu = null;
@@ -182,6 +193,7 @@
 			element.classList.toggle("menu-content-clicked");
 		}
 		
+		// 화면 사이즈 조절 방지
 		var resizeTimeout;
 		window.onresize = function() {
 		  clearTimeout(resizeTimeout);

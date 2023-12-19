@@ -23,8 +23,8 @@
 				<label for="userName">생년월일</label><br>
 				<input style="margin-left: 53px;" type="text" id="userName" placeholder="생년월일">
 				<select id="gender" name="gender">
-					<option value="M">남자</option>>
-					<option value="F">여자</option>>
+					<option value="M">남자</option>
+					<option value="F">여자</option>
 				</select><br>
 				<label for="userEmail">이메일주소</label><br>
 				<input type="text" id="userEmail" placeholder="이메일주소"><br>

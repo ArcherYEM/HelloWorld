@@ -54,7 +54,13 @@
 		<hr style="border: 2px solid black; margin-top: 50px;">
 		<div id="divTeamInfo">
 			<h1 style="margin-left: 50px">team core</h1>
-			<button onclick="window.open('/helloworld/minihome/main', 'window_name', 'width=1200px, height=720px, location=no, status=no, scrollbars=yes');">미니홈피</button>
+			<a href="/miniHome/main" target="_blank" style="width:1200px; height:720px;">미니홈피</a>
+			<!-- 
+			★★★추후 새창으로 변환 예정★★★
+			<button id="targetElement" 
+				onclick="window.open('/helloworld/minihome/main'
+						, 'window_name', 'width=1200px, height=720px, location=no, status=no, scrollbars=yes');">미니홈피</button>
+			 -->
 		</div>
 		<script>
 			document.getElementById('btnStore').addEventListener('click', function() {
