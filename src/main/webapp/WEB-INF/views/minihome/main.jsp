@@ -10,6 +10,7 @@
 <title>미니홈피</title>
 <link rel="stylesheet" href="../../../../resources/css/fonts.css" />
 <link rel="stylesheet" href="../../../../resources/css/frame.css" />
+<link rel="stylesheet" href="../../../../resources/css/home.css" />
 <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
 <link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
 </head>
@@ -57,33 +58,25 @@
 					</div>
 					<div class="box content-box">
 						<div class="box-title">
-							Updated news <span class="box-title2">TODAY STORY</span>
+							Updated news <span class="box-title-sub">TODAY STORY</span>
 						</div>
 						<div class="news-flex-box">
 							<div class="news-box">
 								<div class="news-row">
 									<div class="news-category category-post">게시판</div>
-									<div class="news-title">
 										<a href="#">HTML, CSS, JAVASCRIPT</a>
-									</div>
 								</div>
 								<div class="news-row">
 									<div class="news-category category-pic">사진첩</div>
-									<div class="news-title">
 										<a href="#">2023을 보내며...</a>
-									</div>
 								</div>
 								<div class="news-row">
 									<div class="news-category category-post">게시판</div>
-									<div class="news-title">
 										<a href="#">스프링이란 무엇인가</a>
-									</div>
 								</div>
 								<div class="news-row">
-									<div class="news-category category-post">사진첩</div>
-									<div class="news-title">
+									<div class="news-category category-post">게시판</div>
 										<a href="#">Maven 과 Gradle 의 차이</a>
-									</div>
 								</div>
 							</div>
 							<div class="update-box">
@@ -99,8 +92,8 @@
 								</div>
 								<div class="menu-row">
 									<div class="menu-item">
-										<a href="#">게시판<span class="menu-num">3/17</span></a> <img
-											src="../../../../resources/images/icon/minihome/newIcon.png"
+										<a href="#">게시판<span class="menu-num">3/17</span></a>
+										<img src="../../../../resources/images/icon/minihome/newIcon.png"
 											alt="new Icon" class="minihome-nIcon">
 									</div>
 									<div class="menu-item">
@@ -112,7 +105,7 @@
 							</div>
 						</div>
 						<div class="miniroom">
-							<div>
+							<div class="miniroom-header">
 								<span class="box-title miniroom-title">Miniroom</span>
 								<button class="btn-edit miniroom-edit">미니룸 설정</button>
 							</div>
@@ -131,24 +124,24 @@
 									<li>GIF Anti-Aliasing 은 안하는게 더 고전적인 느낌을 주는거같아요 <span
 										class="main-cmt-info"><a href="#">(이정은)</a> 2023.12.05</span>
 									</li>
-									<li>JSP 파일만 30개가 넘는다면서요?ㅋㅋ <span class="main-cmt-info"><a
-											href="#">(채승원)</a> 2023.12.05</span>
+									<li>JSP 파일만 30개가 넘는다면서요?ㅋㅋ 
+										<span class="main-cmt-info"><a href="#">(채승원)</a> 2023.12.05</span>
 									</li>
-									<li>Git 으로 형상관리 하고계시죠? <span class="main-cmt-info"><a
-											href="#">(이진우)</a> 2023.12.05</span>
+									<li>Git 으로 형상관리 하고계시죠? 
+										<span class="main-cmt-info"><a href="#">(이진우)</a> 2023.12.05</span>
 									</li>
-									<li>AWS 로 DB Server 풀 가동 하시는거죠? <span
-										class="main-cmt-info"><a href="#">(양은모)</a> 2023.12.05</span>
+									<li>AWS 로 DB Server 풀 가동 하시는거죠?
+										<span class="main-cmt-info"><a href="#">(양은모)</a> 2023.12.05</span>
 									</li>
-									<li>뭐라고요? 이주빈은 @Bean 을 2주동안 만들어서 이주빈이라고요? <span
-										class="main-cmt-info"><a href="#">(금민재)</a> 2023.12.05</span>
+									<li>뭐라고요? 이주빈은 @Bean 을 2주동안 만들어서 이주빈이라고요?
+										<span class="main-cmt-info"><a href="#">(금민재)</a> 2023.12.05</span>
 									</li>
 								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="menu-frame">
+				<div class="menu-container">
 					<div class="menu-content" onclick="changeClass(this)">홈</div>
 					<div class="menu-content" onclick="changeClass(this)">사진첩</div>
 					<div class="menu-content" onclick="changeClass(this)">게시판</div>
@@ -188,7 +181,7 @@
 		  clearTimeout(resizeTimeout);
 		  resizeTimeout = setTimeout(function() {
 		    window.resizeTo(1200, 720);
-		  }, 100);
+		  }, 1000);
 		};
 		
 	</script>
