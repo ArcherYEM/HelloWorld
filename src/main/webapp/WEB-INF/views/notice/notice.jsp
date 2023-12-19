@@ -27,6 +27,7 @@
 				<span class="noticeCDate">등록일</span><br>
 			</div>
 			<div class="divNoticeList">
+			
 				<p>1. 첫번째 테스트 공지사항입니다.(일단 보이기로 p태그사용함)      23.12.18</p>
 					<br>
 				<p>2. 두번째 테스트 공지사항입니다.(일단 보이기로 p태그사용함)      23.12.18</p>

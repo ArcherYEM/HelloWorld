@@ -7,7 +7,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>회원가입</title>
+		<title>Hello World</title>
 		<link  href="/resources/css/main.css" rel="stylesheet">
 	</head>
 		
@@ -16,8 +16,8 @@
 			<img id="loginLogo" src="<c:url value="/resources/images/helloworldIconFull.png"/>">
 		</div>
 		<div style="text-align: center;" id="divUserInfo">
-			<h2>아이디 찾기</h2>
-			<form id="frmFindPw" method="POST" action="/member/afterFindPw">
+			<h2>비밀번호 찾기</h2>
+			<form id="frmFindPw" method="GET" action="/member/afterFindPw">
 				<label for="userEmail">아이디</label><br>
 				<input type="text" id="userEmail" placeholder="아이디"> @ 
 				<select id="mail" name="mail">
