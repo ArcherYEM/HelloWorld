@@ -187,7 +187,7 @@
 		  clearTimeout(resizeTimeout);
 		  resizeTimeout = setTimeout(function() {
 		    window.resizeTo(1200, 720);
-		  }, 1000);
+		  }, 100);
 		};
 		
 	</script>
