@@ -13,13 +13,13 @@
 		<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
 	</head>
 	<body>
-		<button onclick="window.open('/helloworld/minihome/main', 'window_name', 'width=1200px, height=720px, location=no, status=no, scrollbars=yes');">미니홈피</button>
+		<button id="targetElement" onclick="window.open('/helloworld/minihome/main', 'window_name', 'width=1200px, height=720px, location=no, status=no, scrollbars=yes');">미니홈피</button>
 
 		<div style="display:flex; flex-direction: row;">
 			<span>
 				<img id="loginLogo" src="<c:url value="/resources/images/helloworldIconFull.png"/>">
 				<input type="button" class="IndexPageTab" id="btnStore" value="상점">
-				<input type="button" class="IndexPageTab" id="btnAnnouncement" value="공지사항">
+				<input type="button" class="IndexPageTab" id="btnNotice" value="공지사항">
 			</span>
 		</div>
 		
@@ -62,6 +62,7 @@
 			document.getElementById('btnStore').addEventListener('click', function() {
 				location.href = '/store/minimiView';
 			});
+
 	</script>
 	</body>
 </html>
