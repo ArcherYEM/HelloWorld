@@ -40,9 +40,9 @@
 					<br>
 					<input type="button" style="width: 200px" id="btnNotice" value="공지사항"><br>
 					<br>
-					<a style="margin: 30px;" href="/member/signUp">회원가입</a>
-					<a href="/member/findId">아이디</a> / 
-					<a href="/member/findPw">비밀번호 찾기</a>
+					<a style="margin: 30px;" href="/main/member/signUp">회원가입</a>
+					<a href="/main/member/findId">아이디</a> / 
+					<a href="/main/member/findPw">비밀번호 찾기</a>
 				</form>
 			</div>
 			<div id="divMainSlide">

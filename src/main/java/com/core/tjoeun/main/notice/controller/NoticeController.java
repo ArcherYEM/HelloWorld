@@ -1,4 +1,4 @@
-package com.core.tjoeun.notice.controller;
+package com.core.tjoeun.main.notice.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
