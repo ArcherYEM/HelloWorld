@@ -7,7 +7,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>회원가입</title>
+		<title>Hello World</title>
 		<link  href="/resources/css/main.css" rel="stylesheet">
 	</head>
 		

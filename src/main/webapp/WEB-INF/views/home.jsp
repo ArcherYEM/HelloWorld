@@ -65,6 +65,9 @@
 			document.getElementById('btnStore').addEventListener('click', function() {
 				location.href = '/store/minimiView';
 			});
+			document.getElementById('btnNotice').addEventListener('click', function() {
+				location.href = '/notice/noticeView';
+			});
 
 	</script>
 	</body>
