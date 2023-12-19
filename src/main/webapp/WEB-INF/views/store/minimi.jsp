@@ -8,7 +8,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Hello World</title>
+		<title>상점</title>
 		<link  href="/resources/css/main.css" rel="stylesheet">
 	</head>
 	
@@ -25,11 +25,11 @@
 		</div>
 		
 		<div id="divHiUser">
-			<a class='storeAtag' href="/store/minimiView">미니미</a>
-			<a class='storeAtag' href="/store/skinView">스킨</a>
-			<a class='storeAtag' href="/store/menuView">메뉴</a>
-			<a class='storeAtag' href="/store/dotoriView">도토리</a>
-			<a class='storeAtag' href="/store/bgmView">bgm</a>
+			<a class='storeAtag' href="">미니미</a>
+			<a class='storeAtag' href="">스킨</a>
+			<a class='storeAtag' href="">메뉴</a>
+			<a class='storeAtag' href="">도토리</a>
+			<a class='storeAtag' href="">bgm</a>
 		</div>
 		
 		<div class="products">
