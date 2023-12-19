@@ -175,12 +175,13 @@
 			element.classList.toggle("menu-content-clicked");
 		}
 		
+		// 리사이즈 방지 (1/1000초)
 		var resizeTimeout;
 		window.onresize = function() {
 		  clearTimeout(resizeTimeout);
 		  resizeTimeout = setTimeout(function() {
 		    window.resizeTo(1200, 720);
-		  }, 1000);
+		  }, 100);
 		};
 		
 	</script>
