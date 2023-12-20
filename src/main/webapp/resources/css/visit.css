@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+body {
+	overflow-y: auto;
+	font-family: "Noto Sans KR", sans-serif;
+}
+
+body a:hover {
+	font-weight: bold;
+}
+
+body a {
+	text-decoration: none;
+}
+
+/* 센터라인 */
+.visit-frame {
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
+	margin-top: 15px;
+	margin-bottom: 25px;
+}
+
+.visit-frame-write {
+	margin-top: 10px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.visit-frame-write input[type="text"] {
+	width: 320px;
+	height: 130px;
+}
+
+.visit-frame-btn {
+	margin-top: 2px;
+	margin-bottom: 10px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.visit-minimi {
+	height: 130px;
+	width: auto;
+}
+
+.visit-line {
+	background-color: lightgray;
+}
+
+.visit-line table {
+	width: 100%;
+	font-size: 10px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.visit-line-tbImg {
+	width: 12px;
+	height: auto;
+	margin-top: 1px;
+}
+
+/* 임시효과 */
+.visit-line-tbImg:hover {
+	cursor: pointer;
+}
+
+.visit-view {
+	width: 320px;
+	height: 130px;
+	font-size: 12px;
+}

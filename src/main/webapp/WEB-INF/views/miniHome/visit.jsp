@@ -10,6 +10,7 @@
 <title>미니홈피</title>
 <link rel="stylesheet" href="../../../../resources/css/fonts.css" />
 <link rel="stylesheet" href="../../../../resources/css/frame.css" />
+<link rel="stylesheet" href="../../../../resources/css/visit.css" />
 <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
 <link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
 </head>
@@ -53,11 +54,46 @@
 							<button class="btn-edit">수정</button>
 						</div>
 						<div class="content-title-url">
-							https://www.helloworld.com/minihome/leejubin</div>
+							https://www.helloworld.com/minihome/leejubin
+						</div>
+					</div>
+					<div class="box content-box">
+					
+					<div class="visit-frame">
+						<div class="visit-frame-write">
+							<img class ="visit-minimi"
+								src="../../../../resources/images/icon/minimi/zombiIcon.gif" />
+							<input type="text" />
+						</div>
+						<div class="visit-frame-btn">
+							<input type="button" value="등록" />
+						</div>
+					</div>
+					<div class="visit-line">
+						<table>
+							<tr>
+								<td>No. 404</td>
+								<td>양은모
+									<img src="../../../../resources/images/icon/minihome/homeIcon.png" class="visit-line-tbImg">
+								</td>
+								<td>2023-12-20 21:17</td>
+								<td>비밀로하기</td>
+								<td>수정</td>
+								<td>삭제</td>
+							</tr>
+						</table>
+					</div>
+					<div class="visit-frame-write">
+						<img class ="visit-minimi"
+								src="../../../../resources/images/icon/minimi/Nova_2Icon.gif" />
+						<div class="visit-view">
+							이건 버그가아니에요.
+							이건 그저 '특징' 이라구요..!
+						</div>						
+					</div>
+					
 					</div>
 				</div>
-
-
 				<div class="menu-frame">
 					<div class="menu-content" onclick="changeClass(this)">
 						<a href="/mnHome/mainView">홈</a>
