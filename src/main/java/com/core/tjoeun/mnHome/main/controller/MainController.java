@@ -13,7 +13,7 @@ public class MainController {
 	@Autowired
 	MainService mainService;
 	
-	@RequestMapping("/mnHome/main")
+	@RequestMapping("/mnHome/mainView")
 	public String minihome() {
 		
 		return "miniHome/main";
@@ -37,5 +37,10 @@ public class MainController {
 	public String board() {
 		
 		return "miniHome/board";
+	}
+	@RequestMapping("/mnHome/diaryView")
+	public String diaryView() {
+		
+		return "miniHome/diary";
 	}
 }

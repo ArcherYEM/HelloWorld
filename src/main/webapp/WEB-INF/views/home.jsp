@@ -79,7 +79,7 @@
 		<hr style="border: 2px solid black; margin-top: 50px;">
 		<div id="divTeamInfo">
 			<h1 style="margin-left: 50px">team core</h1>
-			<a href="/mnHome/main" target="_blank" style="width:1200px; height:720px;">미니홈피 가기</a>
+			<a href="/mnHome/mainView" target="_blank" style="width:1200px; height:720px;">미니홈피 가기</a>
 			<!-- 
 			★★★추후 새창으로 변환 예정★★★
 			<button id="targetElement" 
