@@ -18,7 +18,8 @@
 	background-color: #ff8c1a;
 	display: flex;
 	align-items: center;
-	color : white;
+	color : black;
+	word-break : keep-all;
 	/*font-size: 20px;*/
 }
 
@@ -43,7 +44,7 @@
 }
 
 #divLogin {
-	padding-top: 150px;
+	padding-top: 80px;
 	padding-left:30px;
 	width: 40%;
 	height: 60%;
@@ -64,7 +65,7 @@
 
 #divMainSlide {
 	padding-top: 80px;
-	padding-left : 30px;
+	padding-left : 50px;
 	width: 40%;
 	height: 50%;
 }
@@ -82,19 +83,25 @@
 
 .storeAtag {
 	text-decoration: none;
+	color : black;
 	margin-left: 120px;
 	margin-right: 120px;
 }
 
-.product-list{
-    width: 735px;
-    margin-left: auto;
-    margin-right: auto;
-}
+
 .products{
 	text-align: center;
-	padding-left: 50px;
+	
 }
+
+.productList{
+    width: 100%;
+    height :100%;
+    margin-left: auto;
+    margin-right: auto;
+   	display : inline-block;
+}
+
 .product{
     display: block;
     width: 225px;
@@ -149,6 +156,10 @@
   background-color: #717171;
 }
 
+.present{
+	color : white;
+}
+
 /* Fading animation */
 .fade {
   animation-name: fade;
@@ -187,4 +198,8 @@ li a {
 li a:hover {
 	background-color :#ff8c1a;
 	color : white;
+}
+
+.right{
+	margin-left:auto;
 }
