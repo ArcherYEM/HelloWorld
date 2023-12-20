@@ -16,7 +16,7 @@
 	<body>
 		<div class="divNotice">
 			<div>
-				<img id="loginLogo" src="<c:url value="/resources/images/helloworldIconFull.png"/>">
+				<img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
 			</div>
 			<div>
 				<h2 style="font-weight: bold;">공지사항</h2>

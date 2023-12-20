@@ -13,7 +13,7 @@ public class MainController {
 	@Autowired
 	MainService mainService;
 	
-	@RequestMapping("/mnHome/main")
+	@RequestMapping("/mnHome/mainView")
 	public String minihome() {
 		
 		return "miniHome/main";
@@ -38,10 +38,9 @@ public class MainController {
 		
 		return "miniHome/board";
 	}
-	
-	/* favicon 에러 처리 */
-	@RequestMapping("/favicon.ico")
-    public void favicon() {
-    }
-
+	@RequestMapping("/mnHome/diaryView")
+	public String diaryView() {
+		
+		return "miniHome/diary";
+	}
 }
