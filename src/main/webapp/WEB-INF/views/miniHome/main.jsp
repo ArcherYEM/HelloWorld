@@ -353,7 +353,7 @@
 		    });
 		    
 		    function loadTrack(trackNumber) {
-		    	if (trackNumber < 0) {
+		    	if (trackNumber < 0) { 
 		            trackNumber = playlist.length - 1;
 		        } else if (trackNumber >= playlist.length) {
 		            trackNumber = 0;
