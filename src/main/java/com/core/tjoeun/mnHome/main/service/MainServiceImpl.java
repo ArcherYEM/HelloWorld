@@ -3,12 +3,12 @@ package com.core.tjoeun.mnHome.main.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.core.tjoeun.mnHome.main.dao.WorldDao;
+import com.core.tjoeun.mnHome.main.dao.MainDao;
 
 
 @Service
-public class WorldServiceImpl implements WorldService{
+public class MainServiceImpl implements MainService{
 
 	@Autowired
-	WorldDao WorldDao;
+	MainDao mainDao;
 }

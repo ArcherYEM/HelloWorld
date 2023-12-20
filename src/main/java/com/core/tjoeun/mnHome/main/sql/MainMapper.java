@@ -1,5 +1,5 @@
 package com.core.tjoeun.mnHome.main.sql;
 
-public class WorldMapper {
+public class MainMapper {
 
 }
