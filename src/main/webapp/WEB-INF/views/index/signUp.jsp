@@ -19,12 +19,21 @@
 			<h2>회원가입</h2>
 			<form id="frmSignUp" method="POST" action="/main/member/signUpConfirm">
 				<label for="userName">이름</label><br>
+<<<<<<< HEAD
+				<input type="text" id="userName" placeholder="이름"><br>
+				<label for="userName">생년월일</label><br>
+				<input style="margin-left: 53px;" type="text" id="userName" placeholder="생년월일">
+				<select id="gender" name="gender">
+					<option value="M">남자</option>
+					<option value="F">여자</option>
+=======
 				<input type="text" id="userName" name="userName" placeholder="이름"><br>
 				<label for="userBirth">생년월일</label><br>
 				<input style="margin-left: 53px;" type="text" id="userBirth" name="userBirth" placeholder="생년월일">
 				<select id="userGender" name="userGender">
 					<option name="M" value="M" selected="selected">남자</option>
 					<option name="F" value="F">여자</option>
+>>>>>>> 59702c299fb228360b3d862c2bd189d4a5abe325
 				</select><br>
 				<label for="userEmail">이메일주소</label><br>
 				<input type="text" id="userEmail" name="userEmail" placeholder="이메일주소"><br>

@@ -21,15 +21,6 @@
 			</ul>
 		</div>
 		
-
-		<%-- <div style="display:flex; flex-direction: row;">
-			<span>
-				<img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
-				<input type="button" class="IndexPageTab" id="btnStore" value="상점">
-				<input type="button" class="IndexPageTab" id="btnNotice" value="공지사항">
-			</span>
-		</div> --%>
-		
 		<div id="divHiUser">
 			<h3> 안녕하세요. 이주빈님!!</h3>
 		</div>
@@ -88,7 +79,13 @@
 		<hr style="border: 2px solid black; margin-top: 50px;">
 		<div id="divTeamInfo">
 			<h1 style="margin-left: 50px">team core</h1>
-			<button id="targetElement" onclick="window.open('/helloworld/minihome/main', 'window_name', 'width=1200px, height=720px, location=no, status=no, scrollbars=yes');">미니홈피</button>
+			<a href="/miniHome/main" target="_blank" style="width:1200px; height:720px;">미니홈피 가기</a>
+			<!-- 
+			★★★추후 새창으로 변환 예정★★★
+			<button id="targetElement" 
+				onclick="window.open('/helloworld/minihome/main'
+						, 'window_name', 'width=1200px, height=720px, location=no, status=no, scrollbars=yes');">미니홈피</button>
+			 -->
 		</div>
 		
 		<script>
