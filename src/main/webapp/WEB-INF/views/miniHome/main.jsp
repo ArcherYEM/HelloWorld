@@ -150,22 +150,22 @@
 				</div>
 				<div class="menu-frame">
 					<div class="menu-content" onclick="changeClass(this)">
-						<a href="/miniHome/main">홈</a>
+						<a href="/mnHome/mainView">홈</a>
 					</div>
 					<div class="menu-content" onclick="changeClass(this)">
-						<a href="/miniHome/diary">다이어리</a>
+						<a href="/mnHome/diaryView">다이어리</a>
 					</div>
 					<div class="menu-content" onclick="changeClass(this)">
-						<a href="/miniHome/album">사진첩</a>
+						<a href="/mnHome/albumView">사진첩</a>
 					</div>
 					<div class="menu-content" onclick="changeClass(this)">
-						<a href="/miniHome/board">게시판</a>
+						<a href="/mnHome/boardView">게시판</a>
 					</div>
 					<div class="menu-content" onclick="changeClass(this)">
-						<a href="/miniHome/visit">방명록</a>
+						<a href="/mnHome/visitView">방명록</a>
 					</div>
 					<div class="menu-content" onclick="changeClass(this)">
-						<a href="/miniHome/setting">관리</a>
+						<a href="/mnHome/settingView">관리</a>
 					</div>
 				</div>
 			</div>

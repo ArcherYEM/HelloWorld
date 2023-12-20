@@ -13,7 +13,7 @@
 		<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
 	</head>
 	<body>
-		<button id="targetElement" onclick="window.open('/helloworld/minihome/main', 'window_name', 'width=1200px, height=720px, location=no, status=no, scrollbars=yes');">미니홈피</button>
+		<button id="targetElement" onclick="window.open('/mnHome/main', 'window_name', 'width=1200px, height=720px, location=no, status=no, scrollbars=yes');">미니홈피</button>
 
 		<div style="display:flex; flex-direction: row;">
 			<span>

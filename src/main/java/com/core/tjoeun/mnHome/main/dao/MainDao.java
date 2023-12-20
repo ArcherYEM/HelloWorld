@@ -1,5 +1,5 @@
 package com.core.tjoeun.mnHome.main.dao;
 
-public interface WorldDao {
+public interface MainDao {
 
 }
