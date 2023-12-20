@@ -28,7 +28,7 @@
 		<div style="display:flex; flex-direction: row;">
 			<div id="divLogin">
 				<div >
-					<form style="text-align: center;" id="frmLogin" method="POST" action="">
+					<form style="text-align: center;" id="frmLogin" method="POST" action="/main/member/login">
 						<!-- <label for="userEmail">아이디: </label> -->
 						<input type="email" id="userEmail" name="userEmail" placeholder="Email"><br>
 						<br>
@@ -89,6 +89,14 @@
 		</div>
 		
 		<script>
+			document.getElementById('btnLogin').addEventListener('click', function() {
+				document.getElementById('frmLogin').submit();
+			});
+			
+			<c:if test="${loginResult == 0}">
+           		 alert("로그인에 실패했습니다. 다시 시도해주세요.");
+      		</c:if>
+			
 			let slideIndex = 0;
 			showSlides();
 	
