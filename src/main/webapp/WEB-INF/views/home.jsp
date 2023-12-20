@@ -14,10 +14,10 @@
 	</head>
 	<body>
 		<div style="display:flex; flex-direction: row; align-items: center;">
-			<a style="width:20%"><img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>"></a>
+			<a href="<c:url value='/'/>"  style="width:20%"><img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>"></a>
 			<ul>
-				<li><a href="#home">상점</a></li>
-				<li><a href="#news">공지사항</a></li>
+				<li><a href="<c:url value='/store/minimiView'/>">상점</a></li>
+				<li><a href="<c:url value='/notice/noticeView'/>">공지사항</a></li>
 			</ul>
 		</div>
 		
@@ -30,20 +30,20 @@
 				<div >
 					<form style="text-align: center;" id="frmLogin" method="POST" action="">
 						<!-- <label for="userEmail">아이디: </label> -->
-						<input type="text" id="userEmail" name="userEmail" placeholder="Email"><br>
+						<input type="email" id="userEmail" name="userEmail" placeholder="Email"><br>
 						<br>
 						<!-- <label for="userPw">비밀번호: </label> -->
-						<input type="text" id="userPw" name="userPw" placeholder="Password"><br>
+						<input type="password" id="userPw" name="userPw" placeholder="Password"><br>
 						<br>
 						<input type="button" id="btnLogin" value="로그인"><br>
 						<br>
-						<!-- <input type="button" style="width: 200px" id="btnNotice" value="공지사항"><br>
+						<!-- 슬라이드 이미지 추가하면 주석 풀기 <input type="button" style="width: 200px" id="btnNotice" value="공지사항"><br>
 						<br> -->
 					</form>
 				</div>
 				<div >
-					<a href="/main/member/signUp">회원가입</a>
-					<a href="/main/member/findId">아이디</a> / 
+					<a href="/main/member/signUp" style="margin-right:50px">회원가입</a>
+					<a href="/main/member/findId">아이디</a>/ 
 					<a href="/main/member/findPw">비밀번호 찾기</a>
 				</div>
 				
@@ -109,12 +109,7 @@
 			  setTimeout(showSlides, 2000); // Change image every 2 seconds
 			}
 		
-			document.getElementById('btnStore').addEventListener('click', function() {
-				location.href = '/store/minimiView';
-			});
-			document.getElementById('btnNotice').addEventListener('click', function() {
-				location.href = '/notice/noticeView';
-			});
+			
 
 	</script>
 	</body>
