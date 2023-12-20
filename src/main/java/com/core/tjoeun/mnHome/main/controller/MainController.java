@@ -38,10 +38,4 @@ public class MainController {
 		
 		return "miniHome/board";
 	}
-	
-	/* favicon 에러 처리 */
-	@RequestMapping("/favicon.ico")
-    public void favicon() {
-    }
-
 }
