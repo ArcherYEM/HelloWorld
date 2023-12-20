@@ -13,8 +13,6 @@
 		<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
 	</head>
 	<body>
-		<button id="targetElement" onclick="window.open('/helloworld/minihome/main', 'window_name', 'width=1200px, height=720px, location=no, status=no, scrollbars=yes');">미니홈피</button>
-
 		<div style="display:flex; flex-direction: row;">
 			<span>
 				<img id="loginLogo" src="<c:url value="/resources/images/helloworldIconFull.png"/>">
@@ -40,9 +38,9 @@
 					<br>
 					<input type="button" style="width: 200px" id="btnNotice" value="공지사항"><br>
 					<br>
-					<a style="margin: 30px;" href="/member/signUp">회원가입</a>
-					<a href="/member/findId">아이디</a> / 
-					<a href="/member/findPw">비밀번호 찾기</a>
+					<a style="margin: 30px;" href="/main/member/signUp">회원가입</a>
+					<a href="/main/member/findId">아이디</a> / 
+					<a href="/main/member/findPw">비밀번호 찾기</a>
 				</form>
 			</div>
 			<div id="divMainSlide">
@@ -56,6 +54,13 @@
 		<hr style="border: 2px solid black; margin-top: 50px;">
 		<div id="divTeamInfo">
 			<h1 style="margin-left: 50px">team core</h1>
+			<a href="/miniHome/main" target="_blank" style="width:1200px; height:720px;">미니홈피</a>
+			<!-- 
+			★★★추후 새창으로 변환 예정★★★
+			<button id="targetElement" 
+				onclick="window.open('/helloworld/minihome/main'
+						, 'window_name', 'width=1200px, height=720px, location=no, status=no, scrollbars=yes');">미니홈피</button>
+			 -->
 		</div>
 		
 		<script>

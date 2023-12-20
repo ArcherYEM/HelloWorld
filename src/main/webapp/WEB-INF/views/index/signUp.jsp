@@ -17,34 +17,47 @@
 		</div>
 		<div style="text-align: center;" id="divUserInfo">
 			<h2>회원가입</h2>
-			<form id="frmSignUp" method="POST" action="">
+			<form id="frmSignUp" method="POST" action="/main/member/signUpConfirm">
 				<label for="userName">이름</label><br>
+<<<<<<< HEAD
 				<input type="text" id="userName" placeholder="이름"><br>
 				<label for="userName">생년월일</label><br>
 				<input style="margin-left: 53px;" type="text" id="userName" placeholder="생년월일">
 				<select id="gender" name="gender">
-					<option value="M">남자</option>>
-					<option value="F">여자</option>>
+					<option value="M">남자</option>
+					<option value="F">여자</option>
+=======
+				<input type="text" id="userName" name="userName" placeholder="이름"><br>
+				<label for="userBirth">생년월일</label><br>
+				<input style="margin-left: 53px;" type="text" id="userBirth" name="userBirth" placeholder="생년월일">
+				<select id="userGender" name="userGender">
+					<option name="M" value="M" selected="selected">남자</option>
+					<option name="F" value="F">여자</option>
+>>>>>>> 59702c299fb228360b3d862c2bd189d4a5abe325
 				</select><br>
 				<label for="userEmail">이메일주소</label><br>
-				<input type="text" id="userEmail" placeholder="이메일주소"><br>
-				<label for="userPw">비밀번호</label><br>
-				<input type="text" id="userPw" placeholder="비밀번호"><br>
-				<label for="userPw2">비밀번호 확인</label><br>
-				<input type="text" id="userPw2" placeholder="비밀번호"><br>
+				<input type="text" id="userEmail" name="userEmail" placeholder="이메일주소"><br>
+				<label for="userPassword">비밀번호</label><br>
+				<input type="text" id="userPassword" name="userPassword" placeholder="비밀번호"><br>
+				<label for="userPassword2">비밀번호 확인</label><br>
+				<input type="text" id="userPassword2" name="userPassword2" placeholder="비밀번호"><br>
 				<label for="userNickName">닉네임</label><br>
-				<input type="text" id="userNickName" placeholder="닉네임"><br>
-				<label for="userPhoneNum">핸드폰번호</label><br>
-				<input type="text" id="userPhoneNum" placeholder="핸드폰번호"><br>
+				<input type="text" id="userNickname" name="userNickname" placeholder="닉네임"><br>
+				<label for="userPhone">핸드폰번호</label><br>
+				<input type="text" id="userPhone" name="userPhone" placeholder="핸드폰번호"><br>
 				<textarea style="width: 50%; height: 200px;" value="안내문">개인정보수집동의</textarea>
 				<br>
-				<input type="radio" name="confirm" value="confirm">동의
-				<input type="radio" name="noConfirm" value="noConfirm">비동의
+				<input type="radio" class="confirm" value="confirm">동의
+				<input type="radio" class="confirm" value="noConfirm">비동의
 				<br>
 				<input style="witdh: 300px; height: 50px; margin-top: 50px" type="button" id="btnSignUp" value="회원가입">
 			</form>
-			
 		</div>
 		
+		<script>
+			document.getElementById('btnSignUp').addEventListener('click', function() {
+					document.getElementById('frmSignUp').submit();
+			});
+		</script>
 	</body>
 </html>
