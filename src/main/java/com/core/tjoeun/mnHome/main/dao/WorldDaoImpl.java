@@ -1,4 +1,4 @@
-package com.core.tjoeun.helloworld.minihome.dao;
+package com.core.tjoeun.mnHome.main.dao;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
