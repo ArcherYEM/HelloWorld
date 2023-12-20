@@ -13,42 +13,74 @@
 		<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
 	</head>
 	<body>
-		<button id="targetElement" onclick="window.open('/helloworld/minihome/main', 'window_name', 'width=1200px, height=720px, location=no, status=no, scrollbars=yes');">미니홈피</button>
+		<div style="display:flex; flex-direction: row; align-items: center;">
+			<a style="width:20%"><img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>"></a>
+			<ul>
+				<li><a href="#home">상점</a></li>
+				<li><a href="#news">공지사항</a></li>
+			</ul>
+		</div>
+		
 
-		<div style="display:flex; flex-direction: row;">
+		<%-- <div style="display:flex; flex-direction: row;">
 			<span>
-				<img id="loginLogo" src="<c:url value="/resources/images/helloworldIconFull.png"/>">
+				<img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
 				<input type="button" class="IndexPageTab" id="btnStore" value="상점">
 				<input type="button" class="IndexPageTab" id="btnNotice" value="공지사항">
 			</span>
-		</div>
+		</div> --%>
 		
 		<div id="divHiUser">
-			<h3 style="color: white; margin: 10px; font-size: 20px;"> 안녕하세요. 이주빈님!!</h3>
+			<h3> 안녕하세요. 이주빈님!!</h3>
 		</div>
 		
 		<div style="display:flex; flex-direction: row;">
 			<div id="divLogin">
-				<form style="text-align: center;" id="frmLogin" method="POST" action="">
-					<label for="userEmail">아이디: </label>
-					<input type="text" id="userEmail" name="userEmail" placeholder="아이디"><br>
-					<br>
-					<label for="userPw">비밀번호: </label>
-					<input type="text" id="userPw" name="userPw" placeholder="비밀번호"><br>
-					<br>
-					<input type="button" style="width: 200px" id="btnLogin" value="로그인"><br>
-					<br>
-					<input type="button" style="width: 200px" id="btnNotice" value="공지사항"><br>
-					<br>
-					<a style="margin: 30px;" href="/main/member/signUp">회원가입</a>
+				<div >
+					<form style="text-align: center;" id="frmLogin" method="POST" action="">
+						<!-- <label for="userEmail">아이디: </label> -->
+						<input type="text" id="userEmail" name="userEmail" placeholder="Email"><br>
+						<br>
+						<!-- <label for="userPw">비밀번호: </label> -->
+						<input type="text" id="userPw" name="userPw" placeholder="Password"><br>
+						<br>
+						<input type="button" id="btnLogin" value="로그인"><br>
+						<br>
+						<!-- <input type="button" style="width: 200px" id="btnNotice" value="공지사항"><br>
+						<br> -->
+					</form>
+				</div>
+				<div >
+					<a href="/main/member/signUp">회원가입</a>
 					<a href="/main/member/findId">아이디</a> / 
 					<a href="/main/member/findPw">비밀번호 찾기</a>
-				</form>
+				</div>
+				
 			</div>
+			
 			<div id="divMainSlide">
-				<span>
-					<img id="mainSlideImg" src="<c:url value="/resources/images/mainSlideImg1.jpg"/>">
-				</span>
+				<div class="slideshow-container">
+
+				<div class="mySlides fade">
+				  <img src="<c:url value="/resources/images/mainSlideImg1.jpg"/>" style="width:100%">
+				</div>
+				
+				<div class="mySlides fade">
+				  <img src="<c:url value="/resources/images/sildeImg1.png"/>" style="width:100%">
+				</div>
+				
+				<%-- <div class="mySlides fade">
+				  <img src="<c:url value="/resources/images/mainSlideImg1.jpg"/>" style="width:100%">
+				</div> --%>
+			
+				</div>
+				<br>
+				
+				<div style="text-align:center">
+				  <span class="dot"></span> 
+				  <span class="dot"></span> 
+				  <!-- <span class="dot"></span>  -->
+				</div>
 			</div>
 			
 		</div>
@@ -56,9 +88,30 @@
 		<hr style="border: 2px solid black; margin-top: 50px;">
 		<div id="divTeamInfo">
 			<h1 style="margin-left: 50px">team core</h1>
+			<button id="targetElement" onclick="window.open('/helloworld/minihome/main', 'window_name', 'width=1200px, height=720px, location=no, status=no, scrollbars=yes');">미니홈피</button>
 		</div>
 		
 		<script>
+			let slideIndex = 0;
+			showSlides();
+	
+			function showSlides() {
+			  let i;
+			  let slides = document.getElementsByClassName("mySlides");
+			  let dots = document.getElementsByClassName("dot");
+			  for (i = 0; i < slides.length; i++) {
+			    slides[i].style.display = "none";  
+			  }
+			  slideIndex++;
+			  if (slideIndex > slides.length) {slideIndex = 1}    
+			  for (i = 0; i < dots.length; i++) {
+			    dots[i].className = dots[i].className.replace(" active", "");
+			  }
+			  slides[slideIndex-1].style.display = "block";  
+			  dots[slideIndex-1].className += " active";
+			  setTimeout(showSlides, 2000); // Change image every 2 seconds
+			}
+		
 			document.getElementById('btnStore').addEventListener('click', function() {
 				location.href = '/store/minimiView';
 			});
