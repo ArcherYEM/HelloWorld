@@ -39,6 +39,8 @@
 		    </c:choose>
 		</div>
 		
+		
+		
 		<div style="display:flex; flex-direction: row;">
 			<div id="divLogin">
 				<div >

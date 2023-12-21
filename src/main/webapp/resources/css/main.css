@@ -5,12 +5,12 @@
 }
 
 .IndexPageTab {
-	width:10%;
-	height:30%;
+	width: 10%;
+	height: 30%;
 	border-radius: 10px;
 	font-size: 20px;
 	margin: 50px;
-	margin-left:100px;
+	margin-left: 100px;
 }
 
 #divHiUser {
@@ -18,214 +18,301 @@
 	background-color: #ff8c1a;
 	display: flex;
 	align-items: center;
-	color : black;
-	word-break : keep-all;
-	/*font-size: 20px;*/
+	color: black;
+	word-break: keep-all;
 }
 
-#divHiUser h3{
-	margin : 20px;
+#divHiUser h3 {
+	margin: 20px;
 }
 
 #mainMinimi {
 	border: 2px solid black;
 	padding: 20px;
-	width:60%;
-	height:75%;
+	width: 60%;
+	height: 75%;
 }
 
 #divMainMinimi {
 	padding-top: 150px;
-	padding-left:120px;
+	padding-left: 120px;
 	width: 40%;
 	height: 60%;
 	border-color: navy;
-	
 }
 
 #divLogin {
 	padding-top: 80px;
-	padding-left:30px;
+	padding-left: 30px;
 	width: 40%;
 	height: 60%;
 	border-color: navy;
-	text-align : center;
-	
-}
-#divLogin a{
-	text-decoration : none;
-	color : black;
-	margin : 5px;
+	text-align: center;
 }
 
-#frmLogin input{
-	width:60%;
-	padding : 10px;
+#divLogin a {
+	text-decoration: none;
+	color: black;
+	margin: 5px;
+}
+
+#frmLogin input {
+	width: 60%;
+	padding: 10px;
 }
 
 #divMainSlide {
 	padding-top: 80px;
-	padding-left : 50px;
+	padding-left: 50px;
 	width: 40%;
 	height: 50%;
 }
 
 #mainSlideImg {
-	padding-left:50px;
+	padding-left: 50px;
 	padding-top: 50px;
 	width: 110%;
 }
- .mainBtn {
- 	width:10%;
- 	height:50px;
- 	margin-left: 100px;
- }
+
+.mainBtn {
+	width: 10%;
+	height: 50px;
+	margin-left: 100px;
+}
 
 .storeAtag {
 	text-decoration: none;
-	color : black;
+	color: black;
 	margin-left: 120px;
 	margin-right: 120px;
 }
 
-
-.products{
+.products {
 	text-align: center;
-	
 }
 
-.productList{
-    width: 100%;
-    height :100%;
-    margin-left: auto;
-    margin-right: auto;
-   	display : inline-block;
+.productList {
+	width: 100%;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	display: inline-block;
 }
 
-.product{
-    display: block;
-    width: 225px;
-    text-align: center;
-    text-decoration:none;
-    color: black;
-    float:left;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 30px;
+.product {
+	display: block;
+	width: 225px;
+	text-align: center;
+	text-decoration: none;
+	color: black;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 30px;
 }
 
-.product-name{
-    margin-top: 20px;
-    margin-bottom: 4px;
+.product-name {
+	margin-top: 20px;
+	margin-bottom: 4px;
 }
 
-.products h3{
-    font-size: 24px;
-    color: #545454;
-    margin-top:60px;
-    margin-bottom: 60px;
-    text-align: center;
+.products h3 {
+	font-size: 24px;
+	color: #545454;
+	margin-top: 60px;
+	margin-bottom: 60px;
+	text-align: center;
 }
-
 
 /****** main index slideshow css ****/
-* {box-sizing: border-box;}
+* {
+	box-sizing: border-box;
+}
 
-.mySlides {display: none;}
+.mySlides {
+	display: none;
+}
 
-.mySlides img {vertical-align: middle;}
+.mySlides img {
+	vertical-align: middle;
+}
 
 /* Slideshow container */
 .slideshow-container {
-  position: relative;
-  margin: auto;
+	position: relative;
+	margin: auto;
 }
 
 /* The dots/bullets/indicators */
 .dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
+	height: 15px;
+	width: 15px;
+	margin: 0 2px;
+	background-color: #bbb;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
 }
 
 .active {
-  background-color: #717171;
+	background-color: #717171;
 }
 
-.present{
-	color : white;
+.present {
+	color: white;
 }
 
 /* Fading animation */
 .fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
+	animation-name: fade;
+	animation-duration: 1.5s;
 }
 
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
+@
+keyframes fade {
+	from {opacity: .4
+}
+
+to {
+	opacity: 1
+}
+
 }
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
-  .text {font-size: 11px}
+	.text {
+		font-size: 11px
+	}
 }
 
 /*nav bar css*/
 ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
 }
+
 li {
-  float: left;
+	float: left;
 }
 
 li a {
-  display: block;
-  color : black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+	display: block;
+	color: black;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
 }
 
 li a:hover {
-	background-color :#ff8c1a;
-	color : white;
+	background-color: #ff8c1a;
+	color: white;
 }
 
-.right{
-	margin-left:auto;
+.right {
+	margin-left: auto;
 }
 
 /*******signUp.jsp********************************/
-#divUserInfo{
-	width:50%;
-	margin-left : auto;
-	margin-right : auto;
+#divUserInfo {
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-#loginLogo{
-	width : 100%;
+#loginLogo {
+	width: 100%;
 }
 
-.widthFull{
+.widthFull {
 	width: 100%;
 	padding: 8px 10px;
-  	margin: 8px 0;
+	margin: 8px 0;
 }
+
 .grid-container {
-  display: grid;
-  grid-template-columns: 300px auto 300px;
+	display: grid;
+	grid-template-columns: 300px auto 300px;
 }
+
 .grid-item {
-  padding: 20px;
- /*  text-align: center; */
+	padding: 20px;
+	/*  text-align: center; */
 }
-/***************************************/
+
+/*****************notice.jsp**********************/
+.btnNoticeGroup {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.btnNotice {
+	width: 70px;
+	height: 30px;
+	font-weight: bold;
+	margin-left: 10px;
+	margin-top: 20px;
+	border: 2px solid orange;
+	border-radius: 5px;
+}
+
+.notice-table-title {
+	height: 60px;
+	background-color: #ff8c1a;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	color: white;
+}
+
+.notice-table-title-mid {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	text-align: center;
+	font-weight:bold;
+}
+
+.notice-table-tr :hover{
+	cursor: pointer;
+	color:blue;
+}
+
+.notice-table-tr {
+	height: 50px;
+}
+
+.notice-tanle {
+	width: 100%;
+}
+
+.notice-cbx{
+	width:30px;
+	height:30px;
+}
+
+/* notice 열 너비 스타일 */
+.col-choice {
+	wodth: 10%;
+}
+
+.col-number {
+	width: 10%;
+}
+
+.col-title {
+	width: 65%;
+}
+
+.col-date {
+	width: 15%;
+}
+
+/* 팀정보 기재공간 위치 고정 */
+.bottom-fix {
+	width:100%;
+	position: absolute;
+	bottom: 0;
+}
