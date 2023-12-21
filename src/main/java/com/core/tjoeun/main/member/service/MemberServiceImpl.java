@@ -26,4 +26,10 @@ public class MemberServiceImpl implements MemberService{
 		}
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public Map login(Map map) throws Exception {
+		
+		return memberDao.selectUserInfo(map);
+	}
 }
