@@ -11,6 +11,9 @@
 		<title>HelloWorld</title>
 		<link  href="/resources/css/main.css" rel="stylesheet">
 		<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
+		<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="0">
 	</head>
 	<body>
 		<div style="display:flex; flex-direction: row; align-items: center;">
@@ -22,7 +25,18 @@
 		</div>
 		
 		<div id="divHiUser">
-			<h3> 안녕하세요. 이주빈님!!</h3>
+		    <c:choose>
+		        <c:when test="${sessionScope.userId != null}">
+		            <h3 style="color: white; margin: 10px; font-size: 35px;">
+		             	   안녕하세요. ${sessionScope.userId.userEmail}님!!
+		            </h3>
+		        </c:when>
+		        <c:otherwise>
+		            <h3 style="color: white; margin: 10px; font-size: 35px;">
+		              	  안녕하세요. HelloWorld에 오신 걸 환영합니다.
+		            </h3>
+		        </c:otherwise>
+		    </c:choose>
 		</div>
 		
 		<div style="display:flex; flex-direction: row;">
@@ -116,9 +130,7 @@
 			  dots[slideIndex-1].className += " active";
 			  setTimeout(showSlides, 2000); // Change image every 2 seconds
 			}
-		
-			
-
 	</script>
+	
 	</body>
 </html>
