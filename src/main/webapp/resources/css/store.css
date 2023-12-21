@@ -21,11 +21,6 @@
     align-items: center;
 }
 
-.divNoticeList {
-	width: 80%;
-    height: 70px;
-}
-
 .divNoticeBar span {
    color: white;
    margin: 20px;

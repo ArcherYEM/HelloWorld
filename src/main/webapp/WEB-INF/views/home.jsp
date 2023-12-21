@@ -25,6 +25,8 @@
 			<h3> 안녕하세요. 이주빈님!!</h3>
 		</div>
 		
+		
+		
 		<div style="display:flex; flex-direction: row;">
 			<div id="divLogin">
 				<div >
