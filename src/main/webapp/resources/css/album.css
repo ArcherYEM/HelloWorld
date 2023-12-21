@@ -1,0 +1,51 @@
+#albumTitle {
+	margin: 5px;
+}
+
+.underLine {
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  margin: -1px 0 20px 0;
+  display: block;
+  content: "";
+}
+#writerAndDate {
+	display: flex;
+	justify-content: space-between;
+	margin-top: -10px;
+}
+
+#albumWriter {
+	font-size: 15px;
+	color: steelblue;
+}
+
+#albumWrite_date {
+	font-size: 11px;
+}
+
+#writerUnderLine {
+	width: 100%;
+	height: 1px;
+	border-top: 1px dotted gray;
+	margin: 5px 0 20px 0;
+	color: grey;
+}
+
+.album-images {
+  display: flex; 
+  align-items: center;
+}
+
+.album-images img {
+  max-width: 95%; 
+  max-height: 95%; 
+  display: block;
+  margin: 0 auto;
+}
+#albumText{
+	margin-left: 40px;
+	width:100%
+	height:20%;
+}
