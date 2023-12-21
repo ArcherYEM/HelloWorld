@@ -72,8 +72,32 @@
 					<div class="visit-line">
 						<table>
 							<tr>
-								<td>No. 404</td>
+								<td>No. 405</td>
 								<td>양은모
+									<img src="../../../../resources/images/icon/minihome/homeIcon.png" class="visit-line-tbImg">
+								</td>
+								<td>2023-12-21 21:01</td>
+								<td>비밀로하기</td>
+								<td>수정</td>
+								<td>삭제</td>
+							</tr>
+						</table>
+					</div>
+					<div class="visit-frame-write view-margin">
+						<img class ="visit-minimi"
+								src="../../../../resources/images/icon/minimi/soulTeddyIcon.gif" />
+						<div class="visit-view">
+	    				<div class="visit-view-inner">
+	     					이건 버그 맞아요<br>
+	        			변명말고 고치세요 당장.
+	    				</div>
+						</div>						
+					</div>
+					<div class="visit-line">
+						<table>
+							<tr>
+								<td>No. 404</td>
+								<td>이진우
 									<img src="../../../../resources/images/icon/minihome/homeIcon.png" class="visit-line-tbImg">
 								</td>
 								<td>2023-12-20 21:17</td>
@@ -87,8 +111,10 @@
 						<img class ="visit-minimi"
 								src="../../../../resources/images/icon/minimi/Nova_2Icon.gif" />
 						<div class="visit-view">
-							이건 버그가아니에요.
-							이건 그저 '특징' 이라구요..!
+	    				<div class="visit-view-inner">
+	     					이거 버그 아니에요<br>
+	        			이건 그저 특징 이란말이에요
+	    				</div>
 						</div>						
 					</div>
 					
