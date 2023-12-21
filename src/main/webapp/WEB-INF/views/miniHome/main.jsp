@@ -15,26 +15,41 @@
 <style>
 	.audioPlayerContainer {
 		position: fixed;
-		right: 0;
+		right: 40;
 		top: 30%;
 		transform: translateY(-50%);
-		width: 280px;
+		width: 180px;
+		height: 50px;
 		background-color: #ddd;
 		border: 1px solid #ccc;
 		padding: 10px;
 		margin-right:15px;
 	}
 	
-	.audioControls {
+	.audioControlsContainer {
+		display:flex;
+		width: 170px;
+		height: 20px;
+		display: flex;
+		align-items: center;
+	}
+	
+	.audioBtnContainer {
 		display: flex;
 	    justify-content: space-between;
 	    align-items: center;
-	    width: 100%;
+	    width: 70px;
+	    height: 15px;
+	    margin-right:10px;
+	}
+	
+	.playingContainer{
+		display:flex;
 	}
 	
 	.audioButton {
-		width: 15px;
-		height: 15px;
+		width: 10px;
+		height: 10px;
 		border: none;
 		background: none;
 		cursor: pointer;
@@ -47,17 +62,23 @@
 	.audioVolumeContainer {
 		display: flex;
 		align-items: center;
-		width:90px;
+		width:70px;
 	}
 	
 	#audioVolumeControl {
-		width: 100%; 
+		width: 70px;
 	}
 	
 	.nowPlaying {
 	    overflow: hidden;
 	    white-space: nowrap;
-	    margin-bottom:5px;
+	    width: 140px;
+	    height: 25px;
+	    margin-left:5px;
+	    margin-right:auto;
+	    margin-bottom:7px;
+	    background-color: white;
+	    border: 1px solid #ddd;
 	}
 
 	.audioTitle {
@@ -236,23 +257,31 @@
 	</div>
 	<div class="audioPlayerContainer">
 		<audio id="audioElement" autoplay></audio>
-	    <div class="nowPlaying">
-    	    <div class="audioTitle" id="songTitle">노래 제목</div>
-    	</div>
-    	<div class="audioControls">
-			<button class="audioButton" id="audioPrev">
-				<img src="../../../../resources/images/audioPlayer/audioPrev.png">
-			</button>
-			<button class="audioButton" id="audioPlay">
-				<img src="../../../../resources/images/audioPlayer/audioPlay.png">
-			</button>
-			<button class="audioButton" id="audioPause">
-				<img src="../../../../resources/images/audioPlayer/audioPause.png">
-			</button>
-			<button class="audioButton" id="audioNext">
-				<img src="../../../../resources/images/audioPlayer/audioNext.png">
-			</button>
+		<div class="playingContainer">
+			<div>
+				<img src="../../../../resources/images/audioPlayer/nowPlaying.png">
+			</div>
+		    <div class="nowPlaying">
+	    	    <div class="audioTitle" id="songTitle">노래 제목</div>
+	    	</div>
+	    </div>
+    	<div class="audioControlsContainer">
+	    	<div class="audioBtnContainer">
+				<button class="audioButton" id="audioPrev">
+					<img src="../../../../resources/images/audioPlayer/audioPrev.png">
+				</button>
+				<button class="audioButton" id="audioPlay">
+					<img src="../../../../resources/images/audioPlayer/audioPlay.png">
+				</button>
+				<button class="audioButton" id="audioPause">
+					<img src="../../../../resources/images/audioPlayer/audioPause.png">
+				</button>
+				<button class="audioButton" id="audioNext">
+					<img src="../../../../resources/images/audioPlayer/audioNext.png">
+				</button>
+			</div>
 			<div class="audioVolumeContainer">
+				<img src="../../../../resources/images/audioPlayer/audioVolume.png" style="margin-right:5px;">
 				<input type="range" id="audioVolumeControl" min="0" max="100" value="50" step="1">
 			</div>
 		</div>
@@ -297,6 +326,7 @@
 		    var audioPrev = document.getElementById('audioPrev');
 		    var audioNext = document.getElementById('audioNext');
 		    var audioVolumeControl = document.getElementById('audioVolumeControl');
+		    var songTitle = document.getElementById('songTitle');
 
 		    function loadTrack(trackNumber) {
 		        if (trackNumber < 0) {
@@ -311,13 +341,13 @@
 		        
 		        var track = playlist[currentTrack];
 		        audioElement.src = track.url;
-		        document.getElementById('songTitle').textContent = track.title;
+				songTitle.textContent = track.title;
 		    }
 
 		    audioPrev.addEventListener('click', function() {
 		        loadTrack(--currentTrack);
 		        audioElement.play();
-		        document.getElementById('songTitle').style.animationPlayState = 'running';
+		        songTitle.style.animationPlayState = 'running';
 		        audioPlay.querySelector('img').src = '../../../../resources/images/audioPlayer/audioPlayPress.png';
 		        audioPause.querySelector('img').src = '../../../../resources/images/audioPlayer/audioPause.png';
 		    });
@@ -325,14 +355,14 @@
 		    audioNext.addEventListener('click', function() {
 		        loadTrack(++currentTrack);
 		        audioElement.play();
-		        document.getElementById('songTitle').style.animationPlayState = 'running';
+		        songTitle.style.animationPlayState = 'running';
 		        audioPlay.querySelector('img').src = '../../../../resources/images/audioPlayer/audioPlayPress.png';
 		        audioPause.querySelector('img').src = '../../../../resources/images/audioPlayer/audioPause.png';
 		    });
 
 		    audioPlay.addEventListener('click', function() {
 		        audioElement.play();
-		        document.getElementById('songTitle').style.animationPlayState = 'running';
+		        songTitle.style.animationPlayState = 'running';
 		        this.classList.add('active');		        
 		        this.querySelector('img').src = '../../../../resources/images/audioPlayer/audioPlayPress.png';
 		        audioPause.classList.remove('active');
@@ -341,7 +371,7 @@
 
 		    audioPause.addEventListener('click', function() {
 		        audioElement.pause();
-		        document.getElementById('songTitle').style.animationPlayState = 'paused';
+		        songTitle.style.animationPlayState = 'paused';
 		        this.classList.add('active');
 		        this.querySelector('img').src = '../../../../resources/images/audioPlayer/audioPausePress.png';
 		        audioPlay.classList.remove('active');
@@ -362,7 +392,7 @@
 		        currentTrack = trackNumber;
 		        var track = playlist[currentTrack];
 		        audioElement.src = track.url;
-		        document.getElementById('songTitle').textContent = track.title;
+		        songTitle.textContent = track.title;
 		        audioElement.load();
 		        audioElement.play();
 		    }
