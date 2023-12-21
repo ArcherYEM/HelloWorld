@@ -33,7 +33,7 @@
 						<input type="email" id="userEmail" name="userEmail" placeholder="Email"><br>
 						<br>
 						<!-- <label for="userPw">비밀번호: </label> -->
-						<input type="password" id="userPw" name="userPw" placeholder="Password"><br>
+						<input type="password" id="userPw" name="userPassword" placeholder="Password"><br>
 						<br>
 						<input type="button" id="btnLogin" value="로그인"><br>
 						<br>
