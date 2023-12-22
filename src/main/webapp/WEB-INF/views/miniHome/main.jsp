@@ -10,92 +10,10 @@
 <title>미니홈피</title>
 <link rel="stylesheet" href="../../../../resources/css/fonts.css" />
 <link rel="stylesheet" href="../../../../resources/css/frame.css" />
+<link rel="stylesheet" href="../../../../resources/css/audio.css" />
 <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
 <link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
-<style>
-	.audioPlayerContainer {
-		position: fixed;
-		right: 40;
-		top: 30%;
-		transform: translateY(-50%);
-		width: 180px;
-		height: 50px;
-		background-color: #ddd;
-		border: 1px solid #ccc;
-		padding: 10px;
-		margin-right:15px;
-	}
-	
-	.audioControlsContainer {
-		display:flex;
-		width: 170px;
-		height: 20px;
-		display: flex;
-		align-items: center;
-	}
-	
-	.audioBtnContainer {
-		display: flex;
-	    justify-content: space-between;
-	    align-items: center;
-	    width: 70px;
-	    height: 15px;
-	    margin-right:10px;
-	}
-	
-	.playingContainer{
-		display:flex;
-	}
-	
-	.audioButton {
-		width: 10px;
-		height: 10px;
-		border: none;
-		background: none;
-		cursor: pointer;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		margin: 0 2px;
-	}
-	
-	.audioVolumeContainer {
-		display: flex;
-		align-items: center;
-		width:70px;
-	}
-	
-	#audioVolumeControl {
-		width: 70px;
-	}
-	
-	.nowPlaying {
-	    overflow: hidden;
-	    white-space: nowrap;
-	    width: 140px;
-	    height: 25px;
-	    margin-left:5px;
-	    margin-right:auto;
-	    margin-bottom:7px;
-	    background-color: white;
-	    border: 1px solid #ddd;
-	}
 
-	.audioTitle {
-	    display: inline-block;
-	    padding-left: 100%;
-	    animation: scrollText 10s linear infinite;
-	}
-	
-	@keyframes scrollText {
-		from {
-			transform: translateX(0);
-	    }
-	    to {
-	        transform: translateX(-100%);
-	    }
-	}
-</style>
 </head>
 <body>
 	<div class="bookcover">
@@ -257,31 +175,35 @@
 	</div>
 	<div class="audioPlayerContainer">
 		<audio id="audioElement" autoplay></audio>
-		<div class="playingContainer">
-			<div>
-				<img src="../../../../resources/images/audioPlayer/nowPlaying.png">
+		<div class="audioPlayingContainer">
+			<div class="audioPlayingDiv">
+				<img id="audioPlayingImg" src="../../../../resources/images/audioPlayer/nowPlaying.png">
 			</div>
+			<div class="audioPlayingMargin">				
+			</div>			
 		    <div class="nowPlaying">
 	    	    <div class="audioTitle" id="songTitle">노래 제목</div>
 	    	</div>
 	    </div>
     	<div class="audioControlsContainer">
 	    	<div class="audioBtnContainer">
-				<button class="audioButton" id="audioPrev">
+				<button class="audioBtn" id="audioPrev">
 					<img src="../../../../resources/images/audioPlayer/audioPrev.png">
 				</button>
-				<button class="audioButton" id="audioPlay">
+				<button class="audioBtn" id="audioPlay">
 					<img src="../../../../resources/images/audioPlayer/audioPlay.png">
 				</button>
-				<button class="audioButton" id="audioPause">
+				<button class="audioBtn" id="audioPause">
 					<img src="../../../../resources/images/audioPlayer/audioPause.png">
 				</button>
-				<button class="audioButton" id="audioNext">
+				<button class="audioBtn" id="audioNext">
 					<img src="../../../../resources/images/audioPlayer/audioNext.png">
 				</button>
 			</div>
 			<div class="audioVolumeContainer">
-				<img src="../../../../resources/images/audioPlayer/audioVolume.png" style="margin-right:5px;">
+				<button id="audioVolumeBtn">
+					<img src="../../../../resources/images/audioPlayer/audioVolume.png" style="margin-right:5px;">
+				</button>
 				<input type="range" id="audioVolumeControl" min="0" max="100" value="50" step="1">
 			</div>
 		</div>
@@ -314,10 +236,10 @@
 		
 		// 오디오 관련 스크립트
 		document.addEventListener('DOMContentLoaded', function() {
-		    var playlist = [
-		       {url:'../../../../resources/sounds/OneDrink.mp3', title: '소주 한 잔'} ,
-		       {url:'../../../../resources/sounds/IBelieve.mp3', title: 'I Believe'} ,
-		       {url:'../../../../resources/sounds/Confession.mp3', title: '고백'}
+			var playlist = [
+				{url:'../../../../resources/sounds/OneDrink.mp3', title: '소주 한 잔'} ,
+				{url:'../../../../resources/sounds/IBelieve.mp3', title: 'I Believe'} ,
+				{url:'../../../../resources/sounds/Confession.mp3', title: '고백'}
 		    ];
 		    var currentTrack = 0;
 		    var audioElement = document.getElementById('audioElement');
@@ -326,8 +248,74 @@
 		    var audioPrev = document.getElementById('audioPrev');
 		    var audioNext = document.getElementById('audioNext');
 		    var audioVolumeControl = document.getElementById('audioVolumeControl');
+		    var audioVolumeBtn = document.getElementById('audioVolumeBtn');
+		    var muted=false;
+		    var volume= audioElement.volume;
 		    var songTitle = document.getElementById('songTitle');
+			var audioPlayingImg = document.getElementById('audioPlayingImg');
+			audioPlayingImg.classList.add('rotating');			
+		    
+			//이전,다음,재생,일시정지 버튼 작동			
+			audioPrev.addEventListener('click', function() {
+		        loadTrack(--currentTrack);
+		        audioElement.play();
+		        songTitle.style.animationPlayState = 'running';
+		        audioPlayingImg.classList.add('rotating');
+		        audioPlay.querySelector('img').src = '../../../../resources/images/audioPlayer/audioPlayPress.png';
+		        audioPause.querySelector('img').src = '../../../../resources/images/audioPlayer/audioPause.png';
+		    });
 
+		    audioNext.addEventListener('click', function() {
+		        loadTrack(++currentTrack);
+		        audioElement.play();
+		        songTitle.style.animationPlayState = 'running';
+		        audioPlayingImg.classList.add('rotating');
+		        audioPlay.querySelector('img').src = '../../../../resources/images/audioPlayer/audioPlayPress.png';
+		        audioPause.querySelector('img').src = '../../../../resources/images/audioPlayer/audioPause.png';
+		    });
+
+		    audioPlay.addEventListener('click', function() {
+		        audioElement.play();
+		        songTitle.style.animationPlayState = 'running';
+		        audioPlayingImg.classList.add('rotating');
+		        this.classList.add('active');		        
+		        this.querySelector('img').src = '../../../../resources/images/audioPlayer/audioPlayPress.png';
+		        audioPause.classList.remove('active');
+		        audioPause.querySelector('img').src = '../../../../resources/images/audioPlayer/audioPause.png';
+		    });
+
+		    audioPause.addEventListener('click', function() {
+		        audioElement.pause();
+		        songTitle.style.animationPlayState = 'paused';
+		        audioPlayingImg.classList.remove('rotating');
+		        this.classList.add('active');
+		        this.querySelector('img').src = '../../../../resources/images/audioPlayer/audioPausePress.png';
+		        audioPlay.classList.remove('active');
+		        audioPlay.querySelector('img').src = '../../../../resources/images/audioPlayer/audioPlay.png';
+		    });
+		    
+		    //음소거, 볼륨 조절
+		    audioVolumeBtn.addEventListener('click', function(){
+		    	if (!muted) {
+		            volume = audioElement.volume;
+		            audioElement.volume = 0;
+		            this.querySelector('img').src = '../../../../resources/images/audioPlayer/audioVolumeMute.png';
+		            muted = true;
+		        } else {
+		            audioElement.volume = volume;
+		            this.querySelector('img').src = '../../../../resources/images/audioPlayer/audioVolume.png';
+		            muted = false;
+		        }		    	
+		    });
+		    
+		    audioVolumeControl.addEventListener('input', function() {
+		        audioElement.volume = this.value / 100;
+		        if(muted==true){
+		        	audioVolumeBtn.querySelector('img').src = '../../../../resources/images/audioPlayer/audioVolume.png';
+		        	muted=false;
+		        }
+		    });			
+			
 		    function loadTrack(trackNumber) {
 		        if (trackNumber < 0) {
 		            trackNumber = playlist.length - 1;
@@ -344,44 +332,6 @@
 				songTitle.textContent = track.title;
 		    }
 
-		    audioPrev.addEventListener('click', function() {
-		        loadTrack(--currentTrack);
-		        audioElement.play();
-		        songTitle.style.animationPlayState = 'running';
-		        audioPlay.querySelector('img').src = '../../../../resources/images/audioPlayer/audioPlayPress.png';
-		        audioPause.querySelector('img').src = '../../../../resources/images/audioPlayer/audioPause.png';
-		    });
-
-		    audioNext.addEventListener('click', function() {
-		        loadTrack(++currentTrack);
-		        audioElement.play();
-		        songTitle.style.animationPlayState = 'running';
-		        audioPlay.querySelector('img').src = '../../../../resources/images/audioPlayer/audioPlayPress.png';
-		        audioPause.querySelector('img').src = '../../../../resources/images/audioPlayer/audioPause.png';
-		    });
-
-		    audioPlay.addEventListener('click', function() {
-		        audioElement.play();
-		        songTitle.style.animationPlayState = 'running';
-		        this.classList.add('active');		        
-		        this.querySelector('img').src = '../../../../resources/images/audioPlayer/audioPlayPress.png';
-		        audioPause.classList.remove('active');
-		        audioPause.querySelector('img').src = '../../../../resources/images/audioPlayer/audioPause.png';
-		    });
-
-		    audioPause.addEventListener('click', function() {
-		        audioElement.pause();
-		        songTitle.style.animationPlayState = 'paused';
-		        this.classList.add('active');
-		        this.querySelector('img').src = '../../../../resources/images/audioPlayer/audioPausePress.png';
-		        audioPlay.classList.remove('active');
-		        audioPlay.querySelector('img').src = '../../../../resources/images/audioPlayer/audioPlay.png';
-		    });
-
-		    audioVolumeControl.addEventListener('input', function() {
-		        audioElement.volume = this.value / 100;
-		    });
-		    
 		    function loadTrack(trackNumber) {
 		    	if (trackNumber < 0) { 
 		            trackNumber = playlist.length - 1;
