@@ -214,6 +214,7 @@
 				<div class="menu-frame">
 					<div class="menu-content" onclick="changeClass(this)">
 						<a href="/mnHome/mainView">홈</a>
+						
 					</div>
 					<div class="menu-content" onclick="changeClass(this)">
 						<a href="/mnHome/diaryView">다이어리</a>

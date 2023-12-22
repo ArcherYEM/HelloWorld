@@ -15,6 +15,7 @@
 	</head>
 	
 	<body>
+	<div class="index-frame">
 		<div style="display:flex; flex-direction: row; align-items: center;">
 			<a href="<c:url value='/'/>"  style="width:20%"><img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>"></a>
 			<h5 class="right">내 도토리: 1234개</h5>
@@ -149,9 +150,8 @@
 	                  	도토리10개
 	                </div>
 	            </a>
-				
-		
 			</div>
+		</div>
 		</div>
 	</body>
 </html>
