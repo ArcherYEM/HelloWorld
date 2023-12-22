@@ -46,6 +46,24 @@
 }
 #albumText{
 	margin-left: 40px;
-	width:100%
-	height:20%;
+	width: 100%;
+	height: 20%;
 }
+.album-folder-group{
+	font-size: 12px;
+}
+
+.album-folder-group img{
+	width: 20px;
+	height: auto;
+}
+
+.album-folder-span {
+	margin-bottom: 5px;
+	padding-bottom: 5px;
+}
+
+.album-folder-span span{
+	margin-left: 10px;
+}
+

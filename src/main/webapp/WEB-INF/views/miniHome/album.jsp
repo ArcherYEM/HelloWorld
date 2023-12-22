@@ -24,6 +24,17 @@
 							TODAY 404 | TOTAL 500
 						</div>
 						<div class="box profile-box">
+							<div class="album-folder-group">
+								<div class="album-folder-span">
+									<img src="/resources/images/icon/minihome/openFolderIcon.png"><span>전체보기</span><br/>
+								</div>
+								<div class="album-folder-span">
+									<img src="/resources/images/icon/minihome/closeFolderIcon.png"><span>~ 2014.10.11</span><br/>
+								</div>
+								<div class="album-folder-span">
+									<img src="/resources/images/icon/minihome/closeFolderIcon.png"><span>우리가족 ~♡</span><br/>
+								</div>
+							</div>
 							<div class="profile-dot">---------------------------------</div>
 							<div class="profile-username font-kyobohand">이주빈&#128698;</div>
 							<div class="profile-dropDown">
@@ -123,29 +134,30 @@
 			<div class="audioPlayingMargin">				
 			</div>			
 		    <div class="nowPlaying">
-	    	    <div class="audioTitle" id="songTitle">노래 제목</div>
+	    		<div class="audioTitle" id="songTitle">노래 제목</div>
 	    	</div>
 	    </div>
     	<div class="audioControlsContainer">
 	    	<div class="audioBtnContainer">
-				<button class="audioBtn" id="audioPrev">
-					<img src="../../../../resources/images/audioPlayer/audioPrev.png">
-				</button>
-				<button class="audioBtn" id="audioPlay">
-					<img src="../../../../resources/images/audioPlayer/audioPlay.png">
-				</button>
-				<button class="audioBtn" id="audioPause">
-					<img src="../../../../resources/images/audioPlayer/audioPause.png">
-				</button>
-				<button class="audioBtn" id="audioNext">
-					<img src="../../../../resources/images/audioPlayer/audioNext.png">
-				</button>
-			</div>
-			<div class="audioVolumeContainer">
-				<button id="audioVolumeBtn">
-					<img src="../../../../resources/images/audioPlayer/audioVolume.png" style="margin-right:5px;">
-				</button>
-				<input type="range" id="audioVolumeControl" min="0" max="100" value="50" step="1">
+					<button class="audioBtn" id="audioPrev">
+						<img src="../../../../resources/images/audioPlayer/audioPrev.png">
+					</button>
+					<button class="audioBtn" id="audioPlay">
+						<img src="../../../../resources/images/audioPlayer/audioPlay.png">
+					</button>
+					<button class="audioBtn" id="audioPause">
+						<img src="../../../../resources/images/audioPlayer/audioPause.png">
+					</button>
+					<button class="audioBtn" id="audioNext">
+						<img src="../../../../resources/images/audioPlayer/audioNext.png">
+					</button>
+				</div>
+				<div class="audioVolumeContainer">
+					<button id="audioVolumeBtn">
+						<img src="../../../../resources/images/audioPlayer/audioVolume.png" style="margin-right:5px;">
+					</button>
+					<input type="range" id="audioVolumeControl" min="0" max="100" value="50" step="1">
+				</div>
 			</div>
 		</div>
 		<script src="../../../../resources/js/default.js"></script>
