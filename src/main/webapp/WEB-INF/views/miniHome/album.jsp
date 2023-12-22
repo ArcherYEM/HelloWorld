@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="../../../../resources/css/fonts.css" />
 		<link rel="stylesheet" href="../../../../resources/css/frame.css" />
 		<link rel="stylesheet" href="../../../../resources/css/album.css" />
+		<link rel="stylesheet" href="../../../../resources/css/audio.css" />
 		<link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
 		<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
 	</head>
@@ -124,37 +125,40 @@
 				</div>
 			</div>
 		</div>
-		<div class="side-right">
-			<audio controls autoplay>
-				<source src="../../../../resources/sounds/OneDrink.mp3"
-					type="audio/mp3">
-			</audio>
+	<div class="audioPlayerContainer">
+		<audio id="audioElement" autoplay></audio>
+		<div class="audioPlayingContainer">
+			<div class="audioPlayingDiv">
+				<img id="audioPlayingImg" src="../../../../resources/images/audioPlayer/nowPlaying.png">
+			</div>
+			<div class="audioPlayingMargin">				
+			</div>			
+		    <div class="nowPlaying">
+	    	    <div class="audioTitle" id="songTitle">노래 제목</div>
+	    	</div>
+	    </div>
+    	<div class="audioControlsContainer">
+	    	<div class="audioBtnContainer">
+				<button class="audioBtn" id="audioPrev">
+					<img src="../../../../resources/images/audioPlayer/audioPrev.png">
+				</button>
+				<button class="audioBtn" id="audioPlay">
+					<img src="../../../../resources/images/audioPlayer/audioPlay.png">
+				</button>
+				<button class="audioBtn" id="audioPause">
+					<img src="../../../../resources/images/audioPlayer/audioPause.png">
+				</button>
+				<button class="audioBtn" id="audioNext">
+					<img src="../../../../resources/images/audioPlayer/audioNext.png">
+				</button>
+			</div>
+			<div class="audioVolumeContainer">
+				<button id="audioVolumeBtn">
+					<img src="../../../../resources/images/audioPlayer/audioVolume.png" style="margin-right:5px;">
+				</button>
+				<input type="range" id="audioVolumeControl" min="0" max="100" value="50" step="1">
+			</div>
 		</div>
-	
-		<script>
-			// 현재 선택된 메뉴 아이템을 저장하는 변수
-			var currentSelectedMenu = null;
-	
-			function changeClass(element) {
-				// 현재 선택된 메뉴의 클래스 초기화
-				if (currentSelectedMenu) {
-					currentSelectedMenu.classList.remove("menu-content-clicked");
-				}
-	
-				// 현재 선택된 메뉴를 업데이트하고 클래스를 토글
-				currentSelectedMenu = element;
-				element.classList.toggle("menu-content-clicked");
-			}
-			
-			// 화면 사이즈 조절 방지
-			var resizeTimeout;
-			window.onresize = function() {
-			  clearTimeout(resizeTimeout);
-			  resizeTimeout = setTimeout(function() {
-			    window.resizeTo(1200, 720);
-			  }, 100);
-			};
-			
-		</script>
+		<script src="../../../../resources/js/default.js"></script>
 	</body>
 </html>
