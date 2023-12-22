@@ -249,7 +249,5 @@ li a:hover {
 
 /* 팀정보 기재공간 위치 고정 */
 .bottom-fix {
-	width:90%;
-	position: absolute;
 	bottom: 0;
 }

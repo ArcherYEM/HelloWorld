@@ -83,12 +83,6 @@
 			<div class="bottom-fix">
 				<hr>
 				<h1>team core</h1>
-				<a href="/mnHome/mainView" target="_blank" style="width:1200px; height:720px;">미니홈피 가기</a>
-				<!-- ★★★추후 새창으로 변환 예정★★★ -->
-<!--		<button id="targetElement" 
-					onclick="window.open('/helloworld/minihome/main'
-					, 'window_name', 'width=1200px, height=720px, location=no, status=no, scrollbars=yes');">미니홈피</button>
--->				 
 			</div>
 		</div>
 		
