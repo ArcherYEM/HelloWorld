@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+.index-frame{
+	width:90%;
+	margin:0 auto;
+}
+
 #loginLogo {
 	width: 100%;
 }
@@ -242,77 +247,7 @@ li a:hover {
 	/*  text-align: center; */
 }
 
-/*****************notice.jsp**********************/
-.btnNoticeGroup {
-	display: flex;
-	justify-content: flex-end;
-}
-
-.btnNotice {
-	width: 70px;
-	height: 30px;
-	font-weight: bold;
-	margin-left: 10px;
-	margin-top: 20px;
-	border: 2px solid orange;
-	border-radius: 5px;
-}
-
-.notice-table-title {
-	height: 60px;
-	background-color: #ff8c1a;
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	color: white;
-}
-
-.notice-table-title-mid {
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	text-align: center;
-	font-weight:bold;
-}
-
-.notice-table-tr :hover{
-	cursor: pointer;
-	color:blue;
-}
-
-.notice-table-tr {
-	height: 50px;
-}
-
-.notice-tanle {
-	width: 100%;
-}
-
-.notice-cbx{
-	width:30px;
-	height:30px;
-}
-
-/* notice 열 너비 스타일 */
-.col-choice {
-	wodth: 10%;
-}
-
-.col-number {
-	width: 10%;
-}
-
-.col-title {
-	width: 65%;
-}
-
-.col-date {
-	width: 15%;
-}
-
 /* 팀정보 기재공간 위치 고정 */
 .bottom-fix {
-	width:100%;
-	position: absolute;
 	bottom: 0;
 }
