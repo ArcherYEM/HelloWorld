@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+.divProduct {
+	width:225px; 
+	height:225px;
+	border-width: 2px;
+	border-color: black;
+	border-style: solid;
+	border-radius: 20px;
+}

@@ -7,44 +7,60 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>회원가입</title>
+		<title>Hello World</title>
 		<link  href="/resources/css/main.css" rel="stylesheet">
 	</head>
 		
 	<body style="background-color: white">
-		<div style="text-align: center;" id="signUplogo">
-			<img id="loginLogo" src="<c:url value="/resources/images/helloworldIconFull.png"/>">
-		</div>
-		<div style="text-align: center;" id="divUserInfo">
-			<h2>회원가입</h2>
-			<form id="frmSignUp" method="POST" action="">
-				<label for="userName">이름</label><br>
-				<input type="text" id="userName" placeholder="이름"><br>
-				<label for="userName">생년월일</label><br>
-				<input style="margin-left: 53px;" type="text" id="userName" placeholder="생년월일">
-				<select id="gender" name="gender">
-					<option value="M">남자</option>>
-					<option value="F">여자</option>>
-				</select><br>
-				<label for="userEmail">이메일주소</label><br>
-				<input type="text" id="userEmail" placeholder="이메일주소"><br>
-				<label for="userPw">비밀번호</label><br>
-				<input type="text" id="userPw" placeholder="비밀번호"><br>
-				<label for="userPw2">비밀번호 확인</label><br>
-				<input type="text" id="userPw2" placeholder="비밀번호"><br>
-				<label for="userNickName">닉네임</label><br>
-				<input type="text" id="userNickName" placeholder="닉네임"><br>
-				<label for="userPhoneNum">핸드폰번호</label><br>
-				<input type="text" id="userPhoneNum" placeholder="핸드폰번호"><br>
-				<textarea style="width: 50%; height: 200px;" value="안내문">개인정보수집동의</textarea>
-				<br>
-				<input type="radio" name="confirm" value="confirm">동의
-				<input type="radio" name="noConfirm" value="noConfirm">비동의
-				<br>
-				<input style="witdh: 300px; height: 50px; margin-top: 50px" type="button" id="btnSignUp" value="회원가입">
-			</form>
-			
+		<div class="grid-container">
+		  <div class="grid-item"></div>
+		  <div class="grid-item">
+		  	<div id="divUserInfo">
+		  		<div id="signUplogo">
+					<img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+				</div>
+				
+			  	<h2 style="text-align : center">회원가입</h2>
+			  	
+				<form id="frmSignUp" method="POST" action="/main/member/signUpConfirm">
+					<label for="userName">이름</label><br>
+					<input type="text" id="userName" name="userName" placeholder="이름" class="widthFull"><br>
+					<label for="userBirth">생년월일</label><br>
+					<input type="text" id="userBirth" name="userBirth" placeholder="생년월일" class="widthFull">
+					<select id="userGender" name="userGender">
+						<option name="M" value="M" selected="selected">남자</option>
+						<option name="F" value="F">여자</option>
+					</select><br>
+					<label for="userEmail">이메일주소</label><br>
+					<input type="email" id="userEmail" name="userEmail" placeholder="이메일주소" class="widthFull"><br>
+					<label for="userPassword">비밀번호</label><br>
+					<input type="password" id="userPassword" name="userPassword" placeholder="비밀번호" class="widthFull"><br>
+					<label for="userPassword2">비밀번호 확인</label><br>
+					<input type="password" id="userPassword2" name="userPassword2" placeholder="비밀번호" class="widthFull"><br>
+					<label for="userNickName">닉네임</label><br>
+					<input type="text" id="userNickname" name="userNickname" placeholder="닉네임" class="widthFull"><br>
+					<label for="userPhone">핸드폰번호</label><br>
+					<input type="text" id="userPhone" name="userPhone" placeholder="핸드폰번호" class="widthFull"><br>
+					<textarea style="width: 100%; height: 200px; margin-top:20px;" value="안내문">개인정보수집동의</textarea>
+					<br>
+		
+					 <input type="radio"  name="confirm" value="confirm"><label for="confirm">동의</label>
+					 <input type="radio"  name="confirm" value="noConfirm"><label for="confirm">비동의</label><br>
+					<br>
+					<input style="width: 300px; height: 50px; " type="button" id="btnSignUp" value="회원가입">
+				</form>
+		  	</div>
+			  	
+		  </div>
+		  <div class="grid-item"></div>  
 		</div>
 		
+
+		
+		<script>
+			document.getElementById('btnSignUp').addEventListener('click', function() {
+					document.getElementById('frmSignUp').submit();
+			});
+		</script>
 	</body>
 </html>

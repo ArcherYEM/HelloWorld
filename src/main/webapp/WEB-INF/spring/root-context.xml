@@ -17,9 +17,9 @@
 	<bean id="dataSourceSpied"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/helloworld" />
-		<property name="username" value="root" />
-		<property name="password" value="1234" />
+		<property name="url" value="jdbc:mysql://core.cwnxzkscxxmk.ap-northeast-2.rds.amazonaws.com/helloworld" />
+		<property name="username" value="admin" />
+		<property name="password" value="core1234" />
 	</bean>
 	
 	<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
