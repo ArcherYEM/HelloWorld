@@ -95,7 +95,6 @@
 								</tr>
 								
 								<tr>
-<<<<<<< HEAD
 									<td class="td-checkbox"><input type="checkbox"></input></td>
 									<td class="td-title">댓글이 달린 게시글[15]</td>
 									<td class="td-writer">양은모</td>
@@ -107,19 +106,20 @@
 									<td class="td-title">이미지가 달린 게시글</td>
 									<td class="td-writer">이정은</td>
 									<td class="td-view">46</td>
-=======
-								<td class="td-checkbox"><input type="checkbox"></input></td>
-								<td class="td-title">댓글이 달린 게시글 <span class="comment">[15]</span></td>
-								<td class="td-writer">양은모</td>
-								<td class="td-view">121</td>
 								</tr>
 								
 								<tr>
-								<td class="td-checkbox"><input type="checkbox"></input></td>
-								<td class="td-title">이미지가 달린 게시글 <img src="../../../../resources/images/icon/minihome/photoIcon.png" class="photoIcon"></td>
-								<td class="td-writer">이정은</td>
-								<td class="td-view">46</td>
->>>>>>> 0ded40b345bbc9134bca02d2597dc0b2a489e67d
+									<td class="td-checkbox"><input type="checkbox"></input></td>
+									<td class="td-title">댓글이 달린 게시글 <span class="comment">[15]</span></td>
+									<td class="td-writer">양은모</td>
+									<td class="td-view">121</td>
+								</tr>
+								
+								<tr>
+									<td class="td-checkbox"><input type="checkbox"></input></td>
+									<td class="td-title">이미지가 달린 게시글 <img src="../../../../resources/images/icon/minihome/photoIcon.png" class="photoIcon"></td>
+									<td class="td-writer">이정은</td>
+									<td class="td-view">46</td>
 								</tr>
 								
 								<tr>
