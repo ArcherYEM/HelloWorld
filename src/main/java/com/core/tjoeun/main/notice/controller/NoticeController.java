@@ -19,5 +19,10 @@ public class NoticeController {
 		return "notice/noticeWrite";
 	}
 	
-
+	@RequestMapping(value="/notice/noticeDetail", method = RequestMethod.GET)
+	public String noticeDetail() {
+		
+		return "notice/noticeDetail";
+	}
+	
 }

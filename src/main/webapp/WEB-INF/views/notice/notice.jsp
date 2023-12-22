@@ -72,6 +72,12 @@
 						<td>크리스마스에 개발팀 전원 정발산동 에서 코딩합니다.</td>
 						<td>2023-12-22</td>
 					</tr>
+					<tr class="notice-table-tr">
+						<td><input type="checkbox" class="notice-cbx"></td>
+						<td>5</td>
+						<td><a href="<c:url value='/notice/noticeDetail'/>">게시글 보는 주소가 걸려있는 곳 입니다.</a></td>
+						<td>2023-12-22</td>
+					</tr>
 				</table>
 			</div>
 			<div class="btnNoticeGroup">

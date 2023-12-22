@@ -20,21 +20,10 @@
 			<div class="bookdot">
 				<div class="page">
 					<div class="profile-container">
-						<div class="header profile-title font-neo">TODAY 404 | TOTAL
-							500</div>
+						<div class="header profile-title font-neo">
+							TODAY 404 | TOTAL 500
+						</div>
 						<div class="box profile-box">
-							<div class="profile-image">
-								<img class="profile-image-img"
-									src="../../../../resources/images/profile.jpg" alt="프로필 이미지" />
-							</div>
-							<div class="profile-dot">---------------------------------</div>
-							<div class="profile-text font-kyobohand">
-								안녕하세요 이주빈 입니다.<br /> 미모최강 풀스택 개발자 입니다.
-							</div>
-							<div class="profile-history">
-								<a href="#" class="profile-hs-edit">▶Edit</a> <a href="#"
-									class="profile-hs-hs">▶History</a>
-							</div>
 							<div class="profile-dot">---------------------------------</div>
 							<div class="profile-username font-kyobohand">이주빈&#128698;</div>
 							<div class="profile-dropDown">
