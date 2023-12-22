@@ -27,6 +27,10 @@ body a {
 	justify-content: flex-end;
 }
 
+.view-margin{
+	margin-bottom:50px;
+}
+
 .visit-frame-write input[type="text"] {
 	width: 320px;
 	height: 130px;
@@ -42,6 +46,10 @@ body a {
 .visit-minimi {
 	height: 130px;
 	width: auto;
+	background-color: #f5f5f2;
+	border: 1px solid lightgray;
+	border-radius: 3px;
+	margin-right: 10px;
 }
 
 .visit-line {
@@ -50,24 +58,33 @@ body a {
 
 .visit-line table {
 	width: 100%;
-	font-size: 10px;
+	font-size: 12px;
 	font-weight: bold;
 	text-align: center;
 }
 
 .visit-line-tbImg {
-	width: 12px;
+	width: 10px;
 	height: auto;
 	margin-top: 1px;
+	margin-left: 5px;
+}
+
+.visit-view {
+	display: table;
+	width: 320px;
+	height: 130px;
+}
+
+.visit-view-inner {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: left;
+	font-size: 12px;
+	padding-left: 5px;
 }
 
 /* 임시효과 */
 .visit-line-tbImg:hover {
 	cursor: pointer;
-}
-
-.visit-view {
-	width: 320px;
-	height: 130px;
-	font-size: 12px;
 }
