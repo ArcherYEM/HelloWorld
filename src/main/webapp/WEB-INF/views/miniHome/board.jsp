@@ -67,17 +67,10 @@
 							</thead>							
 							<tbody>							
 								<tr>
-<<<<<<< HEAD
 									<td class="td-checkbox"><input type="checkbox"></input></td>
 									<td class="td-title">[스크랩]너는 내 운명<img src="../../../../resources/images/icon/minihome/newIcon.png" class="newIcon"></td>
 									<td class="td-writer">채승원</td>
 									<td class="td-view">21</td>
-=======
-								<td class="td-checkbox"><input type="checkbox"></input></td>
-								<td class="td-title">[스크랩]너는 내 운명 <img src="../../../../resources/images/icon/minihome/newIcon.png" class="newIcon"></td>
-								<td class="td-writer">채승원</td>
-								<td class="td-view">21</td>
->>>>>>> 0ded40b345bbc9134bca02d2597dc0b2a489e67d
 								</tr>
 								
 								<tr>

@@ -36,7 +36,7 @@
 								</div>
 							</div>
 							<div class="profile-dot">---------------------------------</div>
-							<div class="profile-username font-kyobohand">이주빈&#128698;</div>
+							<div class="profile-username font-kyobohand album-profile-username">이주빈&#128698;</div>
 							<div class="profile-dropDown">
 								<select>
 									<option value="" disabled selected hidden>파도타기</option>
