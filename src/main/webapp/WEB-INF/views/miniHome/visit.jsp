@@ -29,7 +29,8 @@
 						</div>
 						<div class="profile-dot">---------------------------------</div>
 						<div class="profile-text font-kyobohand">
-							안녕하세요 이주빈 입니다.<br /> 미모최강 풀스택 개발자 입니다.
+							안녕하세요 이주빈 입니다.<br />
+							미모최강 풀스택 개발자 입니다.
 						</div>
 						<div class="profile-history">
 							<a href="#" class="profile-hs-edit">▶Edit</a> <a href="#"
