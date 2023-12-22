@@ -35,8 +35,8 @@
 									<img src="/resources/images/icon/minihome/closeFolderIcon.png"><span>우리가족 ~♡</span><br/>
 								</div>
 							</div>
-							<div class="profile-dot">---------------------------------</div>
-							<div class="profile-username font-kyobohand album-profile-username">이주빈&#128698;</div>
+							<div class="album-dot">---------------------------------</div>
+							<div class="font-kyobohand album-profile-username">이주빈&#128698;</div>
 							<div class="profile-dropDown">
 								<select>
 									<option value="" disabled selected hidden>파도타기</option>
@@ -59,14 +59,13 @@
 							</div>
 						</div>
 						<div class="box content-box">
-							<div id="albumTitle">
+						
+							<div class="album-title">
 								앨범 게시물 제목
 							</div>
-							<div class="underLine">
-							</div>
-							<div id="writerAndDate">
-								<span id="albumWriter">채승원(작성자)</span>
-								<span id="albumWrite_date">2023.12.21 19:39</span>
+							<div >
+								<span >채승원(작성자)</span>
+								<span>2023.12.21 19:39</span>
 							</div>
 							<div id="writerUnderLine">
 							</div>
@@ -79,14 +78,13 @@
 							  </div>
 						    <div class="underLine">
 							</div>
-							<div id="albumTitle">
+							
+							<div class="album-title">
 								앨범 게시물 제목
 							</div>
-							<div class="underLine">
-							</div>
-							<div id="writerAndDate">
-								<span id="albumWriter">채승원(작성자)</span>
-								<span id="albumWrite_date">2023.12.20 20:52</span>
+							<div>
+								<span>채승원(작성자)</span>
+								<span>2023.12.20 20:52</span>
 							</div>
 							<div id="writerUnderLine">
 							</div>
