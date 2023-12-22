@@ -33,6 +33,7 @@
 	color: grey;
 }
 
+/* 좌측라인 */
 .album-images {
   display: flex; 
   align-items: center;
@@ -66,4 +67,10 @@
 .album-folder-span span{
 	margin-left: 10px;
 }
+
+.album-profile-username{
+	
+}
+
+
 
