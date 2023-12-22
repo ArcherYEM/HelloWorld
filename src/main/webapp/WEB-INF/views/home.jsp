@@ -10,12 +10,14 @@
 		<meta charset="UTF-8">
 		<title>HelloWorld</title>
 		<link  href="/resources/css/main.css" rel="stylesheet">
+		<link  href="/resources/css/notice.css" rel="stylesheet">
 		<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
 		<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
 		<meta http-equiv="Pragma" content="no-cache">
 		<meta http-equiv="Expires" content="0">
 	</head>
 	<body>
+	<div class="index-frame">
 		<div style="display:flex; flex-direction: row; align-items: center;">
 			<a href="<c:url value='/'/>"  style="width:20%"><img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>"></a>
 			<ul>
@@ -92,16 +94,16 @@
 			
 		</div>
 		
-		<hr style="border: 2px solid black; margin-top: 50px;">
-		<div id="divTeamInfo">
-			<h1 style="margin-left: 50px">team core</h1>
-			<a href="/mnHome/mainView" target="_blank" style="width:1200px; height:720px;">미니홈피 가기</a>
-			<!-- 
-			★★★추후 새창으로 변환 예정★★★
-			<button id="targetElement" 
-				onclick="window.open('/helloworld/minihome/main'
-						, 'window_name', 'width=1200px, height=720px, location=no, status=no, scrollbars=yes');">미니홈피</button>
-			 -->
+		<div class="bottom-fix">
+				<hr>
+				<h1>team core</h1>
+				<a href="/mnHome/mainView" target="_blank" style="width:1200px; height:720px;">미니홈피 가기</a>
+				<!-- ★★★추후 새창으로 변환 예정★★★ -->
+<!--		<button id="targetElement" 
+					onclick="window.open('/helloworld/minihome/main'
+					, 'window_name', 'width=1200px, height=720px, location=no, status=no, scrollbars=yes');">미니홈피</button>
+-->				 
+			</div>
 		</div>
 		
 		<script>

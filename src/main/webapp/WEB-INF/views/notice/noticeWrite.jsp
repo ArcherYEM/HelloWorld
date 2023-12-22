@@ -8,19 +8,22 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Hello World</title>
+		<title>HelloWorld</title>
 		<link  href="/resources/css/main.css" rel="stylesheet">
 		<link  href="/resources/css/store.css" rel="stylesheet">
+		<link  href="/resources/css/notice.css" rel="stylesheet">
+		<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
 	</head>
-	
 	<body>
-		<div class="divNotice">
-			<div>
-				<img id="loginLogo" src="<c:url value="/resources/images/helloworldIconFull.png"/>">
-			</div>
-			<div>
-				<h2 style="font-weight: bold;">공지사항</h2>
-			</div>
+	<div class="index-frame">
+		<div style="display:flex; flex-direction: row; align-items: center;">
+			<a href="<c:url value='/'/>"  style="width:20%"><img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>"></a>
+			<ul>
+				<li><a href="<c:url value='/store/minimiView'/>">상점</a></li>
+				<li><a href="<c:url value='/notice/noticeView'/>">공지사항</a></li>
+			</ul>
+		</div>
+		
 			<div class="divNoticeBar">
 				<span style="margin: 0 auto;">공지사항 등록</span>
 			</div>
@@ -38,7 +41,6 @@
 				</form>
 			</div>
 		</div>
-		
 		<script>
 			document.getElementById('btnNoticeWrite').addEventListener('click', function() {
 				document.getElementById('frmNotice').submit();

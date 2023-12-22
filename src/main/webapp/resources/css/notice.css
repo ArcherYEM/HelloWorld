@@ -1,0 +1,105 @@
+@charset "UTF-8";
+
+.btnNoticeGroup {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.btnNotice {
+	width: 70px;
+	height: 30px;
+	font-weight: bold;
+	margin-left: 10px;
+	margin-top: 20px;
+	border: 2px solid orange;
+	border-radius: 5px;
+}
+
+.notice-table-title {
+	height: 60px;
+	background-color: #ff8c1a;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	color: white;
+}
+
+.notice-table-title-mid {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	text-align: center;
+	font-weight:bold;
+}
+
+.notice-table-tr :hover{
+	cursor: pointer;
+	color:blue;
+}
+
+.notice-table-tr {
+	height: 50px;
+}
+
+.notice-tanle {
+	width: 100%;
+}
+
+.notice-cbx{
+	width:30px;
+	height:30px;
+}
+
+/* notice 열 너비 스타일 */
+.col-choice {
+	wodth: 10%;
+}
+
+.col-number {
+	width: 10%;
+}
+
+.col-title {
+	width: 65%;
+}
+
+.col-date {
+	width: 15%;
+}
+
+.divNotice {
+	text-align: center;
+}
+
+.divNoticeBar{
+   width: 80%;
+    height: 70px;
+    background-color: orange;
+    margin: 0 auto; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.divNoticeBar span {
+   color: white;
+   margin: 20px;
+   font-weight: bold;
+}
+
+.divNoticeBar .noticeNum {
+    margin-right: auto; /* 번호는 왼쪽으로 정렬 */
+}
+
+.divNoticeBar .noticeTitle {
+    /* 제목은 중앙 정렬 */
+}
+
+.divNoticeBar .noticeCDate {
+    margin-left: auto; /* 등록일은 오른쪽으로 정렬 */
+}
+.btn-notice {
+	width: 70px;
+	height: 30px;
+	margin-left: 10px;
+}
