@@ -103,3 +103,60 @@
 	height: 30px;
 	margin-left: 10px;
 }
+
+/* ##### noticeWrite.jsp ##### */
+.notice-write{
+	height: 60px;
+	background-color: #ff8c1a;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 30px;
+}
+
+.notice-write-group{
+	resize: none;
+}
+
+.notice-write-title{
+	width: 100%;
+	height: 30px;
+	margin-bottom: 10px;
+	padding-left:10px;
+	font-weight: bold;
+}
+
+.notice-write-content{
+	width: 100%;
+	height: 300px;
+	padding-left: 10px;
+	padding-top: 5px;
+	resize: none;
+	margin-bottom: 10px;
+}
+
+.btn-container{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.nw-btn-list{
+	width: 60px;
+	height: 30px;
+	border: 1px solid orange;
+}
+
+.nw-btn-write{
+	width: 60px;
+	height: 30px;
+	border: 1px solid orange;
+}
+
+
+
+
+
