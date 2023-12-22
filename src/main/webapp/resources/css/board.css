@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+body {
+	overflow-y: auto;
+	font-family: "Noto Sans KR", sans-serif;
+}
+
+body a:hover {
+	font-weight: bold;
+}
+
+body a {
+	text-decoration: none;
+}
+
+.board-container{
+	border-top: 1px solid black;
+	padding-top: 4px;
+}
+
+
+thead tr:last-child th {
+	border-bottom: 1px dotted #000;
+	padding-bottom:4px;
+}
+
+.th-checkbox{
+	width: 25px;
+	height: 25px;
+}
+
+.th-title{
+	width: 300px;
+	height: 25px;
+}
+
+.th-writer{
+	width: 150px;
+	height: 25px;
+}
+
+.th-view{
+	width: 100px;
+	height: 25px;
+}
+
+.td-checkbox{
+	text-align: center;
+	height: 25px;
+}
+
+.td-title{
+	padding-left: 10px;
+	font-size: 15px;
+}
+
+.td-writer{
+	text-align: center;
+	font-size: 15px;
+	color: steelblue;
+}
+
+.td-view{
+	text-align: center;
+	font-size: 15px;
+}
+
+.board-btn{
+	margin-top: 10px;
+	text-align: right;
+}
+
+.board-pages{
+	text-align: center;
+}
+
+.board-page{
+	font-size: 13px;
+	cursor: pointer;
+}
+
+.newIcon{
+	width:10px;
+	height:10px;
+}
