@@ -109,7 +109,27 @@ thead tr:last-child th {
 }
 
 .board-writer{
+	border:none;
+	outline:none;
 	text-align: left;
 	font-size: 15px;
 	color: steelblue;
+	margin-left:10px;
+	align-items:center;
+}
+
+.board-write-date{
+	border:none;
+	outline:none;
+	float:right;
+	text-align:right;
+	align-items:center;
+
+}
+
+.board-write-container{
+	border-bottom: 1px dotted #000;
+	padding-bottom:4px;
+	display:flex;
+	align-items:center;
 }
