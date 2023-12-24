@@ -60,44 +60,50 @@
 						</div>
 						<div class="box content-box">
 						
-							<div class="album-title">
-								앨범 게시물 제목
-							</div>
-							<div >
-								<span >채승원(작성자)</span>
-								<span>2023.12.21 19:39</span>
-							</div>
-							<div id="writerUnderLine">
-							</div>
-							<div class="album-images">
-								
+							<div class="album-container">
+								<div class="album-title">
+									싸이월드가 헬로월드로 새롭게 바뀌었습니다!
+								</div>
+								<div class="album-wd">
+									<span class="album-writer">
+										양은모
+									</span>
+									<span class="album-date">
+										2023-12-24 16:33
+									</span>
+								</div>
+								<div class="album-images">
 						      <img src="<c:url value="/resources/images/album/albumImg1.jpg" />" alt="이미지 설명">
 						    </div>
-							  <div id="albumText">
-							   	해당 사진에 추가한 글 내용이 들어가는 곳
+							  <div class="album-content">
+								<!--임시글 -->
+								바야흐로 2008년,,<br />
+								우zi는 ㄱr끔 눈물을 흘렸ㄷr...☆
 							  </div>
-						    <div class="underLine">
-							</div>
-							
-							<div class="album-title">
-								앨범 게시물 제목
-							</div>
-							<div>
-								<span>채승원(작성자)</span>
-								<span>2023.12.20 20:52</span>
-							</div>
-							<div id="writerUnderLine">
-							</div>
-							<div class="album-images">
-								
+						  </div>
+						  
+						  <div class="album-container">
+								<div class="album-title">
+									[스크랩] 어느덧 이만큼 자란 우리 뽀삐
+								</div>
+								<div class="album-wd">
+									<span class="album-writer">
+										채승원
+									</span>
+									<span class="album-date">
+										2023.12.20 20:52
+									</span>
+								</div>
+								<div class="album-images">
 						      <img src="<c:url value="/resources/images/album/albumPuppy.jpg" />" alt="이미지 설명">
 						    </div>
-							  <div id="albumText">
-							   	해당 사진에 추가한 글 내용이 들어가는 곳
+							  <div class="album-content">
+							   	<!--임시글 -->
+									벌써 1년<br />
+									너와 함께 한 지난 세월이 무색하구나
 							  </div>
-						    <div class="underLine">
-							</div>
-							
+						  </div>
+						  
 						</div>
 					</div>
 					<div class="menu-frame">
@@ -123,19 +129,19 @@
 				</div>
 			</div>
 		</div>
-	<div class="audioPlayerContainer">
-		<audio id="audioElement" autoplay></audio>
-		<div class="audioPlayingContainer">
-			<div class="audioPlayingDiv">
-				<img id="audioPlayingImg" src="../../../../resources/images/audioPlayer/nowPlaying.png">
-			</div>
-			<div class="audioPlayingMargin">				
-			</div>			
+		<div class="audioPlayerContainer">
+			<audio id="audioElement" autoplay></audio>
+			<div class="audioPlayingContainer">
+				<div class="audioPlayingDiv">
+					<img id="audioPlayingImg" src="../../../../resources/images/audioPlayer/nowPlaying.png">
+				</div>
+				<div class="audioPlayingMargin">				
+				</div>			
 		    <div class="nowPlaying">
 	    		<div class="audioTitle" id="songTitle">노래 제목</div>
 	    	</div>
 	    </div>
-    	<div class="audioControlsContainer">
+	   	<div class="audioControlsContainer">
 	    	<div class="audioBtnContainer">
 					<button class="audioBtn" id="audioPrev">
 						<img src="../../../../resources/images/audioPlayer/audioPrev.png">

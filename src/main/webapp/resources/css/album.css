@@ -6,23 +6,7 @@
 	color: grey;
 }
 
-/* 좌측라인 */
-.album-images {
-  display: flex; 
-  align-items: center;
-}
-
-.album-images img {
-  max-width: 95%; 
-  max-height: 95%; 
-  display: block;
-  margin: 0 auto;
-}
-#albumText{
-	margin-left: 40px;
-	width: 100%;
-	height: 20%;
-}
+/* 좌측라인  */
 .album-folder-group{
 	font-size: 12px;
 }
@@ -52,10 +36,61 @@
 	margin-top: 160px;
 }
 
-.album-title{
-	text-align: center;
-  font-size: 15px;
-  border-top: 1px solid grey;
-  border-bottom: 1px solid grey;
-  background-color: #e6e6e6;
+/* 센터라인 */
+.album-container{
+	margin-bottom: 40px;
+	padding-bottom: 20px;
+	border-bottom: 1px dotted lightgray;
 }
+
+.album-title{
+  border-top: 1px solid #9e9c9c;
+  border-bottom: 1px solid lightgrey;
+  background-color: #e6e6e6;
+  width: 100%;
+  hight: 30px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.album-wd{
+	width: 100%;
+}
+
+.album-writer{
+	color: darkblue;
+	font-size: 12px;
+	padding-left: 12px;
+}
+
+.album-date{
+	color: gray;
+	font-size: 10px;
+	padding-left: 10px;
+}
+
+.album-images {
+  display: flex; 
+  align-items: center;
+  margin-top: 20px;
+}
+
+.album-images img {
+	min-width: 500px;
+	height: auto;
+  max-width: 500px; 
+  display: block;
+  margin: 0 auto;
+}
+
+.album-content{
+	margin-top: 20px;
+	padding-left: 10px;
+	width: 100%;
+	font-size: 12px;
+}
+
+
