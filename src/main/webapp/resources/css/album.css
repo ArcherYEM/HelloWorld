@@ -37,6 +37,39 @@
 }
 
 /* 센터라인 */
+.album-submit {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 8px;
+  width: 100%;
+  position: relative;
+}
+
+.album-submit input {
+	background-color: white;
+	border-radius: 2px;
+	border: 1px solid gray;
+	padding: 0 20px;
+	font-size: 12px;
+	font-weight: bold;
+	height: 25px;
+}
+
+.album-box-container{
+	display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  max-height: 370px;
+  
+}
+
+.album-overflow {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 .album-container{
 	margin-bottom: 40px;
 	padding-bottom: 20px;
@@ -76,12 +109,12 @@
   display: flex; 
   align-items: center;
   margin-top: 20px;
+  width: 100%;
 }
 
 .album-images img {
-	min-width: 500px;
-	height: auto;
-  max-width: 500px; 
+  max-width: 90%;
+  height: auto;
   display: block;
   margin: 0 auto;
 }
