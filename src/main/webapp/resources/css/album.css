@@ -16,12 +16,12 @@
 	height: auto;
 }
 
-.album-folder-span {
+.album-folder {
 	margin-bottom: 5px;
 	padding-bottom: 5px;
 }
 
-.album-folder-span span{
+.album-folder a{
 	margin-left: 10px;
 }
 
@@ -49,11 +49,17 @@
 	background-color: white;
 	border-radius: 2px;
 	border: 1px solid gray;
+	margin-right: 20px;
 	padding: 0 20px;
 	font-size: 12px;
 	font-weight: bold;
 	height: 25px;
 }
+/*임시효과*/
+.album-submit input:hover{
+	cursor: pointer;
+}
+/*******/
 
 .album-box-container{
 	display: flex;
@@ -70,10 +76,64 @@
   overflow-y: auto;
 }
 
-.album-container{
-	margin-bottom: 40px;
+.album-container1{
 	padding-bottom: 20px;
 	border-bottom: 1px dotted lightgray;
+}
+
+.album-public{
+	color: gray;
+	font-size: 12px;
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.album-dropDown {
+  min-width: 90px;
+}
+
+.album-dropDown select{
+	color: gray;
+  font-size: 12px;
+  border: none;
+}
+
+.album-container2{
+	border-bottom: 1px dotted lightgray;
+}
+
+.album-container-under{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 12px;	
+ }
+ 
+.album-under {
+  display: flex;
+  align-items: center;
+  padding-right: 15px;
+}
+
+.album-under a {
+  white-space: nowrap;
+  color: orange;
+}
+
+.album-under-left {
+  margin-right: auto;
+  padding-left: 10px;
+}
+
+.album-under-right {
+  text-align: right;
+  margin-right: 5px;
+}
+
+
+.album-container3{
+	border-bottom: 1px dotted lightgray;
+	margin-bottom: 30px;
 }
 
 .album-title{
