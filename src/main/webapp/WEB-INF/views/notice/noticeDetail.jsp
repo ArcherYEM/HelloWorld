@@ -8,37 +8,64 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Hello World</title>
+		<title>HelloWorld</title>
 		<link  href="/resources/css/main.css" rel="stylesheet">
 		<link  href="/resources/css/store.css" rel="stylesheet">
+		<link  href="/resources/css/notice.css" rel="stylesheet">
+		<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
 	</head>
-	
 	<body>
-		<div class="divNotice">
-			<div>
-				<img id="loginLogo" src="<c:url value="/resources/images/helloworldIconFull.png"/>">
-			</div>
-			<div class="divNoticeBar">
-				<span style="margin: 0 auto;">공지사항</span>
-			</div>
-			<br>
-			<div>
-				<form id="frmNotice" method="POST" action="">
-					<label for="noticeTitle">제목:  </label>
-					<p>1. 첫번째 테스트 공지사항입니다.</p>
-					<br>
-					<br>
-					<p> 첫번째 테스트 공지사항 글 내용부분 일단 p태그 사용하고 나중에 list로 가져와야함</p>
-					<br>
-					<input type="button" id="btnDNoticeView" value="목록">
-					<input type="button" id="btnDNoticeUpdate" value="수정">
-					<input type="button" id="btnDNoticeDelete" value="삭제">
-				</form>
-			</div>
-		</div>
+		<div class="index-frame">
 		
+			<div style="display:flex; flex-direction: row; align-items: center;">
+				<a href="<c:url value='/'/>"  style="width:20%">
+					<img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+				</a>
+				<ul>
+					<li><a href="<c:url value='/store/minimiView'/>">상점</a></li>
+					<li><a href="<c:url value='/notice/noticeView'/>">공지사항</a></li>
+				</ul>
+			</div>
+			
+			<div class="notice-default">
+				<p>공지사항</p>
+			</div>
+			<div class="notice-info">
+				<span>
+					작성자:admin
+				</span>
+				<span class="notice-write-date">
+					2023-12-06 16:58
+				</span>
+			</div>
+			
+			<div class="notice-info-group">
+				<input class="notice-title" type="text" value="1. 첫번째 테스트 공지사항입니다." readonly>
+				<p class="notice-info-content">
+					첫번째 테스트 공지사항 글 내용부분 일단 p태그 사용하고 나중에 list로 가져와야함
+				</p>
+			</div>
+			
+			<form id="frmNotice" method="POST" action="">
+				<div class="btn-container">
+					<div class="btn-left">
+						<input class="nd-btn-list" type="button" id="btnNoticeView" value="목록">					
+					</div>
+					<div class="btn-right">
+						<input class="nd-btn-update" type="button" id="btnNoticeUpdate" value="수정">
+						<input class="nd-btn-delete" type="button" id="btnNoticeDelete" value="삭제">				
+					</div>
+				</div>
+			</form>
+			
+			<div class="bottom-fix">
+				<hr>
+				<h1>team core</h1>
+			</div>
+				
+			</div>
 		<script>
-			document.getElementById('btnDNoticeView').addEventListener('click', function() {
+			document.getElementById('btnNoticeView').addEventListener('click', function() {
 				location.href = '/notice/noticeView';
 			});
 		</script>

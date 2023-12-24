@@ -69,8 +69,16 @@
 						<span class="board-writer">  채승원(작성자)</span>
 						<span class="board-write-date">2023.12.10 14:21</span>						
 					</div>
-					<textarea name="content" id="txtContent"></textarea><br>
-
+					<textarea name="content" id="txtContent" rows="10" cols="100" style="width:100%; height:180px; min-width:610px; display:none;"></textarea><br>
+					<div class="btn-container">
+						<div class="btn-left">
+							<input class="btn-list" type="button" id="btnBoardView" value="목록">
+						</div>
+						<div class="btn-right">
+							<input class="btn-write" type="button" id="btnBoardWrite" value="글쓰기">
+						</div>
+					</div>
+					
 					</div>
 				</div>
 				<div class="menu-frame">
@@ -133,10 +141,6 @@
 	</div>
 	<script src="../../../../resources/js/default.js"></script>
 	<script>
-		document.getElementById('txtContent').onload=function(){
-			document.getElementById('smart_editor2').style.width="500px;";
-		}
-	
 		var checkboxAll=document.getElementById('checkbox-all');
 	
 		function selectAll() {
@@ -147,6 +151,10 @@
 		    checkbox.checked = allChecked;
 		  });
 		}
+		
+		document.getElementById('btnBoardView').addEventListener('click', function() {
+			location.href = '/miniHome/board';
+		});
 	</script>
 	<script id="smartEditor" type="text/javascript"> 
 			var oEditors = [];
