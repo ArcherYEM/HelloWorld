@@ -11,4 +11,16 @@ public class BoardController {
 		
 		return "miniHome/board";
 	}
+	
+	@RequestMapping(value="/miniHome/boardWriteView")
+	public String boardWriteView() {
+		
+		return "miniHome/boardWrite";
+	}
+	
+	@RequestMapping(value="/miniHome/boardDetail")
+	public String boardDetail() {
+		
+		return "miniHome/boardDetail";
+	}
 }

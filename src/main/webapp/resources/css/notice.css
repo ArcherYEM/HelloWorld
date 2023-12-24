@@ -117,6 +117,18 @@
 	margin-bottom: 30px;
 }
 
+.notice-default{
+	height: 60px;
+	background-color: #ff8c1a;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
 .notice-write-group{
 	resize: none;
 }
@@ -154,7 +166,53 @@
 	height: 30px;
 }
 
+.notice-info{
+	 display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.notice-write-date{
+	text-align:right;
+}
 
+.notice-info-group{
+	resize:none;
+}
 
+.notice-title{
+	width: 100%;
+	height: 30px;
+	margin-bottom: 10px;
+	font-weight: bold;
+	padding-left:10px;
+	text-align:center;	
+	color:gray;
+	border:none;
+	outline:none;
+}
 
+.notice-info-content{
+	width: 100%;
+	height: 300px;
+	padding-left: 10px;
+	padding-top: 5px;
+	resize: none;
+	margin-bottom: 10px;
+	text-align:center;
+}
+
+.btn-right{
+	display:flex;
+}
+
+.nd-btn-update{
+	margin-right:10px;
+	width: 60px;
+	height: 30px;
+}
+
+.nd-btn-list, .nd-btn-delete{
+	width: 60px;
+	height: 30px;
+}
