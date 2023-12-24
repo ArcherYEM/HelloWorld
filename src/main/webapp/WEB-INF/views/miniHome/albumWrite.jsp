@@ -63,32 +63,17 @@
 						</div>
 						
 						<div class="box content-box">
-							<div class=" album-submit">
-								<input type="button" id="btnUpload" value="사진올리기">
-							</div>
 							<div class="album-overflow">
 							
 								<div class="album-container3">
 									<div class="album-container2">
 										<div class="album-container1">
-											<div class="album-title">
-												싸이월드가 헬로월드로 새롭게 바뀌었습니다!
+											<div class="album-title albumWrite-title">
+												<input type="text" placeholder="제목을 입력하세요">
 											</div>
-											<div class="album-wd">
-												<span class="album-writer">
-													채승원
-												</span>
-												<span class="album-date">
-													2023-12-24 16:33
-												</span>
-											</div>
-											<div class="album-images">
-									      <img src="<c:url value="/resources/images/album/albumImg1.jpg" />" alt="이미지 설명">
-									    </div>
-										  <div class="album-content">
-											<!--임시글 -->
-											바야흐로 2008년,,<br />
-											우zi는 ㄱr끔 눈물을 흘렸ㄷr...☆
+										  <div class="album-content albumWrite-content">
+										  	<textarea placeholder="내용을 입력하세요"></textarea>
+										  	<input type="file" class="albumWirte-file">
 										  </div>
 									  </div>
 									  <div class="album-public">
@@ -104,60 +89,15 @@
 								  </div>
 								  <div class="album-container-under">
 								  	<div class="album-under">
-								  		<a href="#" class="album-under-left">스크랩하기</a>
-								  		<a href="#" class="album-under-right">이동</a>
-								  		<a href="#" class="album-under-right">수정</a>
-								  		<a href="#" class="album-under-right">삭제</a>
-								  	</div>
-								  </div>
-							  </div>
-							  
-							  <div class="album-container3">
-									<div class="album-container2">
-										<div class="album-container1">
-											<div class="album-title">
-												[스크랩] 어느덧 이만큼 자란 우리 뽀삐
-											</div>
-											<div class="album-wd">
-												<span class="album-writer">
-													채승원
-												</span>
-												<span class="album-date">
-													2023.12.20 20:52
-												</span>
-											</div>
-											<div class="album-images">
-									      <img src="<c:url value="/resources/images/album/albumPuppy.jpg" />" alt="이미지 설명">
-									    </div>
-										  <div class="album-content">
-										   	<!--임시글 -->
-												벌써 1년<br />
-												너와 함께 한 지난 세월이 무색하구나
-										  </div>
-										</div>
-										<div class="album-public">
-									  	<div class="album-dropDown">
-									  		<span>공개설정 :</span>
-												<select>
-													<option value="" disabled selected hidden="">전체공개</option>
-													<option value="temp1">비공개</option>
-													<option value="temp2">전체공개</option>
-												</select>
-											</div>
-									  </div>
-									</div>
-									<div class="album-container-under">
-								  	<div class="album-under">
-								  		<a href="#" class="album-under-left">스크랩하기</a>
-								  		<a href="#" class="album-under-right">이동</a>
-								  		<a href="#" class="album-under-right">수정</a>
-								  		<a href="#" class="album-under-right">삭제</a>
+								  		<a href="/mnHome/albumView" class="album-under-left">목록</a>
+								  		<a href="/mnHome/albumView" class="album-under-right">등록</a>
 								  	</div>
 								  </div>
 							  </div>
 							  
 						  </div>
 						</div>
+						
 					</div>
 					<div class="menu-frame">
 						<div class="menu-content" onclick="changeClass(this)">
@@ -219,10 +159,5 @@
 			</div>
 		</div>
 	<script src="../../../../resources/js/default.js"></script>
-	<script>
-	  document.getElementById('btnUpload').addEventListener('click', function() {
-	    window.location.href = '/mnHome/albumWrite';
-	  });
-	</script>
 	</body>
 </html>

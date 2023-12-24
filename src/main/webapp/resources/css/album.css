@@ -186,4 +186,30 @@
 	font-size: 12px;
 }
 
+/* albumWrite.jsp */
+.albumWrite-title input{
+	width: 90%;
+	height: 25px;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+	border: 1px solid gray;
+	border-radius: 2px;
+}
 
+.albumWrite-content textarea{
+	margin-left: 15px;
+	width: 90%;
+	min-height: 200px;
+	border-radius: 2px;
+	resize: none;
+}
+
+.albumWirte-file{
+	margin-left: 15px;
+	margin-top: 5px;
+	border: 1px solid gray;
+	border-radius: 2px;
+	width: 90%;
+	height: 80px;
+}
