@@ -1,30 +1,3 @@
-#albumTitle {
-	margin: 5px;
-}
-
-.underLine {
-  width: 100%;
-  height: 2px;
-  background-color: black;
-  margin: -1px 0 20px 0;
-  display: block;
-  content: "";
-}
-#writerAndDate {
-	display: flex;
-	justify-content: space-between;
-	margin-top: -10px;
-}
-
-#albumWriter {
-	font-size: 15px;
-	color: steelblue;
-}
-
-#albumWrite_date {
-	font-size: 11px;
-}
-
 #writerUnderLine {
 	width: 100%;
 	height: 1px;
@@ -33,19 +6,210 @@
 	color: grey;
 }
 
+/* 좌측라인  */
+.album-folder-group{
+	font-size: 12px;
+}
+
+.album-folder-group img{
+	width: 20px;
+	height: auto;
+}
+
+.album-folder {
+	margin-bottom: 5px;
+	padding-bottom: 5px;
+}
+
+.album-folder a{
+	margin-left: 10px;
+}
+
+.album-profile-username{
+	flex: 1;
+  color: #0f1b5c;
+	height: 20px;
+}
+
+.album-dot{
+	color: #3b7ada;
+	margin-top: 160px;
+}
+
+/* 센터라인 */
+.album-submit {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 8px;
+  width: 100%;
+  position: relative;
+}
+
+.album-submit input {
+	background-color: white;
+	border-radius: 2px;
+	border: 1px solid gray;
+	margin-right: 20px;
+	padding: 0 20px;
+	font-size: 12px;
+	font-weight: bold;
+	height: 25px;
+}
+/*임시효과*/
+.album-submit input:hover{
+	cursor: pointer;
+}
+/*******/
+
+.album-box-container{
+	display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  max-height: 370px;
+  
+}
+
+.album-overflow {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.album-container1{
+	padding-bottom: 20px;
+	border-bottom: 1px dotted lightgray;
+}
+
+.album-public{
+	color: gray;
+	font-size: 12px;
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.album-dropDown {
+  min-width: 90px;
+}
+
+.album-dropDown select{
+	color: gray;
+  font-size: 12px;
+  border: none;
+}
+
+.album-container2{
+	border-bottom: 1px dotted lightgray;
+}
+
+.album-container-under{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 12px;	
+ }
+ 
+.album-under {
+  display: flex;
+  align-items: center;
+  padding-right: 15px;
+}
+
+.album-under a {
+  white-space: nowrap;
+  color: orange;
+}
+
+.album-under-left {
+  margin-right: auto;
+  padding-left: 10px;
+}
+
+.album-under-right {
+  text-align: right;
+  margin-right: 5px;
+}
+
+
+.album-container3{
+	border-bottom: 1px dotted lightgray;
+	margin-bottom: 30px;
+}
+
+.album-title{
+  border-top: 1px solid #9e9c9c;
+  border-bottom: 1px solid lightgrey;
+  background-color: #e6e6e6;
+  width: 100%;
+  hight: 30px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.album-wd{
+	width: 100%;
+}
+
+.album-writer{
+	color: darkblue;
+	font-size: 12px;
+	padding-left: 12px;
+}
+
+.album-date{
+	color: gray;
+	font-size: 10px;
+	padding-left: 10px;
+}
+
 .album-images {
   display: flex; 
   align-items: center;
+  margin-top: 20px;
+  width: 100%;
 }
 
 .album-images img {
-  max-width: 95%; 
-  max-height: 95%; 
+  max-width: 90%;
+  height: auto;
   display: block;
   margin: 0 auto;
 }
-#albumText{
-	margin-left: 40px;
-	width:100%
-	height:20%;
+
+.album-content{
+	margin-top: 20px;
+	padding-left: 10px;
+	width: 100%;
+	font-size: 12px;
+}
+
+/* albumWrite.jsp */
+.albumWrite-title input{
+	width: 90%;
+	height: 25px;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+	border: 1px solid gray;
+	border-radius: 2px;
+}
+
+.albumWrite-content textarea{
+	margin-left: 15px;
+	width: 90%;
+	min-height: 200px;
+	border-radius: 2px;
+	resize: none;
+}
+
+.albumWirte-file{
+	margin-left: 15px;
+	margin-top: 5px;
+	border: 1px solid gray;
+	border-radius: 2px;
+	width: 90%;
+	height: 80px;
 }

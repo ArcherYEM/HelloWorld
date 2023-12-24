@@ -58,75 +58,89 @@
 					<div class="board-container">
 						<table class="board-table">
 							<thead>
-							<tr>
-								<th class="th-checkbox"><input type="checkbox" id="checkbox-all" onclick="selectAll()"></th>
-								<th class="th-title">제목</th>
-								<th class="th-writer">작성자</th>
-								<th class="th-view">조회</th>
-							</tr>
+								<tr>
+									<th class="th-checkbox"><input type="checkbox" id="checkbox-all" onclick="selectAll()"></th>
+									<th class="th-title">제목</th>
+									<th class="th-writer">작성자</th>
+									<th class="th-view">조회</th>
+								</tr>
 							</thead>							
 							<tbody>							
 								<tr>
-								<td class="td-checkbox"><input type="checkbox"></input></td>
-								<td class="td-title">[스크랩]너는 내 운명 <img src="../../../../resources/images/icon/minihome/newIcon.png" class="newIcon"></td>
-								<td class="td-writer">채승원</td>
-								<td class="td-view">21</td>
+									<td class="td-checkbox"><input type="checkbox"></input></td>
+									<td class="td-title">[스크랩]너는 내 운명<img src="../../../../resources/images/icon/minihome/newIcon.png" class="newIcon"></td>
+									<td class="td-writer">채승원</td>
+									<td class="td-view">21</td>
 								</tr>
 								
 								<tr>
-								<td class="td-checkbox"><input type="checkbox"></input></td>
-								<td class="td-title">테스트용 게시물</td>
-								<td class="td-writer">채승원</td>
-								<td class="td-view">12</td>
+									<td class="td-checkbox"><input type="checkbox"></input></td>
+									<td class="td-title">테스트용 게시물</td>
+									<td class="td-writer">채승원</td>
+									<td class="td-view">12</td>
 								</tr>
 								
 								<tr>
-								<td class="td-checkbox"><input type="checkbox"></input></td>
-								<td class="td-title">Board Test</td>
-								<td class="td-writer">이진우</td>
-								<td class="td-view">33</td>
+									<td class="td-checkbox"><input type="checkbox"></input></td>
+									<td class="td-title">Board Test</td>
+									<td class="td-writer">이진우</td>
+									<td class="td-view">33</td>
 								</tr>
 								
 								<tr>
-								<td class="td-checkbox"><input type="checkbox"></input></td>
-								<td class="td-title">댓글이 달린 게시글 <span class="comment">[15]</span></td>
-								<td class="td-writer">양은모</td>
-								<td class="td-view">121</td>
+									<td class="td-checkbox"><input type="checkbox"></input></td>
+									<td class="td-title">댓글이 달린 게시글[15]</td>
+									<td class="td-writer">양은모</td>
+									<td class="td-view">121</td>
 								</tr>
 								
 								<tr>
-								<td class="td-checkbox"><input type="checkbox"></input></td>
-								<td class="td-title">이미지가 달린 게시글 <img src="../../../../resources/images/icon/minihome/photoIcon.png" class="photoIcon"></td>
-								<td class="td-writer">이정은</td>
-								<td class="td-view">46</td>
+									<td class="td-checkbox"><input type="checkbox"></input></td>
+									<td class="td-title">이미지가 달린 게시글</td>
+									<td class="td-writer">이정은</td>
+									<td class="td-view">46</td>
 								</tr>
 								
 								<tr>
-								<td class="td-checkbox"><input type="checkbox"></input></td>
-								<td class="td-title">소환사의 협곡에 오신것을 환영합니다</td>
-								<td class="td-writer">라이엇 게임즈</td>
-								<td class="td-view">863</td>
+									<td class="td-checkbox"><input type="checkbox"></input></td>
+									<td class="td-title">댓글이 달린 게시글 <span class="comment">[15]</span></td>
+									<td class="td-writer">양은모</td>
+									<td class="td-view">121</td>
 								</tr>
 								
 								<tr>
-								<td class="td-checkbox"><input type="checkbox"></input></td>
-								<td class="td-title">미리 메리크리스마스</td>
-								<td class="td-writer">아이유</td>
-								<td class="td-view">9513</td>
+									<td class="td-checkbox"><input type="checkbox"></input></td>
+									<td class="td-title">이미지가 달린 게시글 <img src="../../../../resources/images/icon/minihome/photoIcon.png" class="photoIcon"></td>
+									<td class="td-writer">이정은</td>
+									<td class="td-view">46</td>
 								</tr>
 								
 								<tr>
-								<td class="td-checkbox"><input type="checkbox"></input></td>
-								<td class="td-title">Board Test</td>
-								<td class="td-writer">이진우</td>
-								<td class="td-view">33</td>
+									<td class="td-checkbox"><input type="checkbox"></input></td>
+									<td class="td-title">소환사의 협곡에 오신것을 환영합니다</td>
+									<td class="td-writer">라이엇 게임즈</td>
+									<td class="td-view">863</td>
 								</tr>
 								
 								<tr>
-								<td class="td-checkbox"><input type="checkbox"></input></td>
-								<td class="td-title">Board Test</td>
-								<td class="td-writer">이진우</td>
-								<td class="td-view">33</td>
+									<td class="td-checkbox"><input type="checkbox"></input></td>
+									<td class="td-title">미리 메리크리스마스</td>
+									<td class="td-writer">아이유</td>
+									<td class="td-view">9513</td>
+								</tr>
+								
+								<tr>
+									<td class="td-checkbox"><input type="checkbox"></input></td>
+									<td class="td-title">Board Test</td>
+									<td class="td-writer">이진우</td>
+									<td class="td-view">33</td>
+								</tr>
+								
+								<tr>
+									<td class="td-checkbox"><input type="checkbox"></input></td>
+									<td class="td-title">Board Test</td>
+									<td class="td-writer">이진우</td>
+									<td class="td-view">33</td>
 								</tr>								
 							</tbody>						
 						</table>	
