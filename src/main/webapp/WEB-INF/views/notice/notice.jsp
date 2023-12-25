@@ -51,25 +51,31 @@
 					<tr class="notice-table-tr">
 						<td><input type="checkbox" class="notice-cbx"></td>
 						<td>1</td>
-						<td>싸이월드가 헬로월드로 새롭게 태어납니다</td>
+						<td class="notice-td-title">싸이월드가 헬로월드로 새롭게 태어납니다</td>
 						<td>2023-12-19</td>
 					</tr>
 					<tr class="notice-table-tr">
 						<td><input type="checkbox" class="notice-cbx"></td>
 						<td>2</td>
-						<td>취업이 늦어지면 리액트 배워서 써보려고 합니다.</td>
+						<td class="notice-td-title">취업이 늦어지면 리액트 배워서 써보려고 합니다.</td>
 						<td>2023-12-20</td>
 					</tr>
 					<tr class="notice-table-tr">
 						<td><input type="checkbox" class="notice-cbx"></td>
 						<td>3</td>
-						<td>스프링 부트 너무 어려우니 스프링까지만 구현하고자 합니다.</td>
+						<td class="notice-td-title">스프링 부트 너무 어려우니 스프링까지만 구현하고자 합니다.</td>
 						<td>2023-12-21</td>
 					</tr>
 					<tr class="notice-table-tr">
 						<td><input type="checkbox" class="notice-cbx"></td>
 						<td>4</td>
-						<td>크리스마스에 개발팀 전원 정발산동 에서 코딩합니다.</td>
+						<td class="notice-td-title">크리스마스에 개발팀 전원 정발산동 에서 코딩합니다.</td>
+						<td>2023-12-22</td>
+					</tr>
+					<tr class="notice-table-tr">
+						<td><input type="checkbox" class="notice-cbx"></td>
+						<td>5</td>
+						<td><a href="<c:url value='/notice/noticeDetail'/>">게시글 보는 주소가 걸려있는 곳 입니다.</a></td>
 						<td>2023-12-22</td>
 					</tr>
 				</table>
@@ -90,6 +96,15 @@
 			document.getElementById('btnWrite').addEventListener('click', function() {
 				location.href = '/notice/noticeWrite';
 			});
+			
+			var titles = document.getElementsByClassName('notice-td-title');
+
+			for (var i = 0; i < titles.length; i++) {
+			  titles[i].addEventListener('click', function() {
+			    location.href = '/notice/noticeDetail';
+			  });
+			}
+
 		</script>
 	</body>
 </html>

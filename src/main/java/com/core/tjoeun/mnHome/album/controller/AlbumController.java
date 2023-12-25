@@ -11,5 +11,11 @@ public class AlbumController {
 		
 		return "miniHome/album";
 	}
+	
+	@RequestMapping(value="/mnHome/albumWrite")
+	public String albumWriteView() {
+		
+		return "miniHome/albumWrite";
+	}
 }
 
