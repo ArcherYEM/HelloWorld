@@ -128,13 +128,6 @@ thead tr:last-child th {
 
 }
 
-.board-write-container{
-	border-bottom: 1px dotted #000;
-	padding-bottom:4px;
-	display:flex;
-	align-items:center;
-}
-
 .btn-right{
 	display:flex;
 }
@@ -144,42 +137,69 @@ thead tr:last-child th {
 	justify-content: space-between;
 }
 
+/* boardDetail.jsp */
 .board-outer-container{
 	border-bottom: 1px solid black;
 	padding-top: 4px;
-}
-
-.board-inner-container{
-	display: flex;
-	justify-content: space-between;
 	margin-bottom:5px;
 }
 
-.board-detail-left{
-	margin-left:10px;
+.board-detail-title{
+	text-align: center;
+	font-size: 15px;
+	font-weight: bold;
+	padding-bottom: 10px;
+	color: darkblue;
 }
 
-.board-detail-content{
-	width: 100%;
-	height: 200px;
+.board-write-container{
+	padding-bottom:4px;
+	display:flex;
+	justify-content: space-between;
+	align-items:center;
+	font-size: 13px;
+}
+
+.board-content-container {
+	margin-top: 15 0;
 	padding-left: 10px;
-	padding-top: 5px;
-	resize: none;
+	border-bottom: 1px dotted gray;
+}
+
+.board-comment-write{
+	display:flex;
+	padding-left: 10px;
+	margin-top: 10px;
 	margin-bottom: 10px;
-	text-align:center;
+	border-left:none;
+	border-right:none;
+	font-size: 13px;
+}
+
+.comment-content-write{
+	margin-left:10px;
+	margin-right:5px;
+	width:410px;
+}
+
+.board-comment-container {
+	
 }
 
 .board-comment{
 	display:flex;
-	border:1px solid black;
-	padding:5px;
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 	margin-bottom:3px;
 	background-color: #E2E2E2;
 	align-items:center;
+	font-size: 12px;
 }
 
 .board-comment-writer{
 	color:steelblue;
+	font-weight: bold;
 }
 
 .board-comment-content{
@@ -193,16 +213,13 @@ thead tr:last-child th {
 	color:gray;
 }
 
-.board-comment-write{
-	display:flex;
-	border:1px solid black;
-	padding:3px;
-	border-left:none;
-	border-right:none;
+.board-detail-right{
+	display: flex;
+  justify-content: flex-end;
 }
 
-.comment-content-write{
-	margin-left:10px;
-	margin-right:5px;
-	width:410px;
+.board-detail-right button {
+	margin-right: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }

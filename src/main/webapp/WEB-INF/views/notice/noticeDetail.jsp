@@ -26,7 +26,6 @@
 					<li><a href="<c:url value='/notice/noticeView'/>">공지사항</a></li>
 				</ul>
 			</div>
-			<!-- 시점 -->
 			<div class="noticeDetail-container">
 				<div class="notice-default">
 					<p>공지사항</p>
@@ -76,7 +75,6 @@
 					</div>
 				</form>
 			</div>
-			<!-- 종점 -->
 			<div class="bottom-fix">
 				<hr>
 				<h1>team core</h1>
