@@ -1,0 +1,210 @@
+CREATE TABLE user (
+  userEmail varchar(100) NOT NULL,
+  userPassword varchar(30) NOT NULL,
+  userName varchar(50) NOT NULL,
+  userNickname varchar(20) NOT NULL,
+  userGender varchar(10) NOT NULL,
+  userBirth date NOT NULL,
+  userPhone varchar(20) NOT NULL,
+  createDate timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  userAvailable varchar(1) NOT NULL DEFAULT 'N',
+  haveDotoriCnt varchar(10) NOT NULL DEFAULT '0',
+  
+  etc1 varchar(100) DEFAULT NULL,
+  etc2 varchar(100) DEFAULT NULL,
+  etc3 varchar(100) DEFAULT NULL,
+  have_cash varchar(100) NOT NULL DEFAULT '0',
+  PRIMARY KEY (userEmail),
+  UNIQUE KEY userNickname (userNickname),
+  UNIQUE KEY userPhone (userPhone)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
+
+CREATE TABLE userStorage (
+  userNickname varchar(100) DEFAULT NULL,
+  category varchar(50) NOT NULL,
+  productName varchar(100) NOT NULL,
+  buy_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  etc1 varchar(100) DEFAULT NULL,
+  etc2 varchar(100) DEFAULT NULL,
+  KEY userNickname (userNickname),
+  CONSTRAINT userStorage_ibfk_1 FOREIGN KEY (userNickname) REFERENCES user (userNickname) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
+
+CREATE TABLE profile (
+  seq int NOT NULL AUTO_INCREMENT,
+  userNickname varchar(100) NOT NULL,
+  image varchar(10000) DEFAULT NULL,
+  msg varchar(200) DEFAULT NULL,
+  create_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  update_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  etc1 varchar(100) NOT NULL,
+  etc2 varchar(100) NOT NULL,
+  PRIMARY KEY (seq),
+  KEY userNickname (userNickname),
+  CONSTRAINT profile_ibfk_1 FOREIGN KEY (userNickname) REFERENCES user (userNickname) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
+
+CREATE TABLE store (
+  seq int NOT NULL AUTO_INCREMENT,
+  category varchar(50) NOT NULL,
+  productName varchar(100) NOT NULL,
+  contentPath varchar(200) NOT NULL,
+  productPrice varchar(20) NOT NULL,
+  etc1 varchar(100) DEFAULT NULL,
+  etc2 varchar(100) DEFAULT NULL,
+  etc3 varchar(100) DEFAULT NULL,
+  PRIMARY KEY (seq)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
+
+CREATE TABLE notice (
+  seq int NOT NULL AUTO_INCREMENT,
+  title varchar(200) NOT NULL,
+  content varchar(5000) NOT NULL,
+  create_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  update_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  del_yn varchar(1) NOT NULL DEFAULT 'N',
+  etc1 varchar(100) DEFAULT NULL,
+  etc2 varchar(100) DEFAULT NULL,
+  etc3 varchar(100) DEFAULT NULL,
+  PRIMARY KEY (seq)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
+
+CREATE TABLE board (
+  seq int NOT NULL AUTO_INCREMENT,
+  userNickname varchar(100) NOT NULL,
+  boardNo varchar(20) NOT NULL,
+  title varchar(200) NOT NULL,
+  content varchar(10000) NOT NULL,
+  hits int NOT NULL,
+  create_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  update_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  del_yn varchar(1) NOT NULL DEFAULT 'N',
+  openScope varchar(1) NOT NULL DEFAULT '0',
+  etc1 varchar(100) DEFAULT NULL,
+  etc2 varchar(100) DEFAULT NULL,
+  etc3 varchar(100) DEFAULT NULL,
+  PRIMARY KEY (seq),
+  KEY userNickname (userNickname),
+  CONSTRAINT board_ibfk_1 FOREIGN KEY (userNickname) REFERENCES user (userNickname) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
+
+CREATE TABLE boardCMT (
+  seq int NOT NULL AUTO_INCREMENT,
+  cmtSeq int NOT NULL,
+  userNickname varchar(100) NOT NULL,
+  create_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  update_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  openScope varchar(1) NOT NULL DEFAULT '0',
+  etc1 varchar(100) DEFAULT NULL,
+  etc2 varchar(100) DEFAULT NULL,
+  PRIMARY KEY (seq),
+  KEY userNickname (userNickname),
+  CONSTRAINT boardCMT_ibfk_1 FOREIGN KEY (userNickname) REFERENCES user (userNickname) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
+
+CREATE TABLE diary (
+  seq int NOT NULL AUTO_INCREMENT,
+  userNickname varchar(100) NOT NULL,
+  No varchar(20) NOT NULL,
+  title varchar(200) NOT NULL,
+  content varchar(10000) NOT NULL,
+  hits int NOT NULL,
+  create_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  update_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  del_yn varchar(1) NOT NULL DEFAULT 'N',
+  openScope varchar(1) NOT NULL DEFAULT '0',
+  etc1 varchar(100) DEFAULT NULL,
+  etc2 varchar(100) DEFAULT NULL,
+  PRIMARY KEY (seq),
+  KEY userNickname (userNickname),
+  CONSTRAINT diary_ibfk_1 FOREIGN KEY (userNickname) REFERENCES user (userNickname) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
+
+CREATE TABLE dotori (
+  userNickname varchar(100) NOT NULL,
+  currentDotori int NOT NULL DEFAULT '0',
+  etc1 varchar(100) DEFAULT NULL,
+  etc2 varchar(100) DEFAULT NULL,
+  KEY userNickname (userNickname),
+  CONSTRAINT dotori_ibfk_1 FOREIGN KEY (userNickname) REFERENCES user (userNickname) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
+
+CREATE TABLE dotoriU (
+  userNickname varchar(100) NOT NULL,
+  dotoriUse int NOT NULL DEFAULT '0',
+  dotoriUseDate timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  etc1 varchar(100) DEFAULT NULL,
+  etc2 varchar(100) DEFAULT NULL,
+  KEY userNickname (userNickname),
+  CONSTRAINT dotoriU_ibfk_1 FOREIGN KEY (userNickname) REFERENCES user (userNickname) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
+
+CREATE TABLE dotoriC (
+  userNickname varchar(100) NOT NULL,
+  dotoriCharge int NOT NULL DEFAULT '0',
+  dotoriChargeDate timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  etc1 varchar(100) DEFAULT NULL,
+  etc2 varchar(100) DEFAULT NULL,
+  KEY userNickname (userNickname),
+  CONSTRAINT dotoriC_ibfk_1 FOREIGN KEY (userNickname) REFERENCES user (userNickname) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
+
+CREATE TABLE visit (
+  seq int NOT NULL AUTO_INCREMENT,
+  userNickname varchar(100) DEFAULT NULL,
+  No varchar(200) NOT NULL,
+  content varchar(5000) NOT NULL,
+  create_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  update_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  etc1 varchar(100) DEFAULT NULL,
+  etc2 varchar(100) DEFAULT NULL,
+  etc3 varchar(100) DEFAULT NULL,
+  PRIMARY KEY (seq),
+  KEY userNickname (userNickname),
+  CONSTRAINT visit_ibfk_1 FOREIGN KEY (userNickname) REFERENCES user (userNickname) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
+
+CREATE TABLE visitCMT (
+  seq int NOT NULL AUTO_INCREMENT,
+  cmtSeq int NOT NULL,
+  userNickname varchar(100) DEFAULT NULL,
+  create_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  update_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  openScope varchar(1) NOT NULL DEFAULT '0',
+  etc1 varchar(100) DEFAULT NULL,
+  etc2 varchar(100) DEFAULT NULL,
+  PRIMARY KEY (seq),
+  KEY userNickname (userNickname),
+  CONSTRAINT visitCMT_ibfk_1 FOREIGN KEY (userNickname) REFERENCES user (userNickname) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
+
+CREATE TABLE visitCnt (
+  seq int NOT NULL AUTO_INCREMENT,
+  userNickname varchar(100) DEFAULT NULL,
+  todayCnt int DEFAULT '0',
+  totalCnt int DEFAULT NULL,
+  etc1 varchar(100) DEFAULT NULL,
+  etc2 varchar(100) DEFAULT NULL,
+  PRIMARY KEY (seq),
+  KEY userNickname (userNickname),
+  CONSTRAINT visitCnt_ibfk_1 FOREIGN KEY (userNickname) REFERENCES user (userNickname) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
+
+CREATE TABLE log (
+  seq int NOT NULL AUTO_INCREMENT,
+  userNickname varchar(100) NOT NULL,
+  logDate timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (seq),
+  KEY userNickname (userNickname),
+  CONSTRAINT log_ibfk_1 FOREIGN KEY (userNickname) REFERENCES user (userNickname) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
+
+CREATE TABLE loginStatus (
+  seq int NOT NULL AUTO_INCREMENT,
+  userNickname varchar(100) NOT NULL,
+  status varchar(1) NOT NULL DEFAULT '0',
+  etc1 varchar(100) NOT NULL,
+  PRIMARY KEY (seq),
+  KEY userNickname (userNickname),
+  CONSTRAINT loginStatus_ibfk_1 FOREIGN KEY (userNickname) REFERENCES user (userNickname) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
