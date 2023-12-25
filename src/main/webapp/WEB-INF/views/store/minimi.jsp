@@ -9,7 +9,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>HelloWorld</title>
-		<link  href="/resources/css/main.css" rel="stylesheet">
+		<link  href="/resources/css/index/main.css" rel="stylesheet">
 		<link rel="icon" href="/resources/images/icon/minihome/favicon.png" type="image/x-icon">
 	</head>
 	
