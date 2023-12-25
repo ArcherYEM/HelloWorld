@@ -389,9 +389,16 @@ margin-left: 353px;
 .diary-cmt-info {
 	color: black;
 	font-weight: bold;
-	margin-left: 20px;
+}
+
+.diary-cmt-info a{
+	color : black;
 }
 .divForBtnDiary{
 	margin : 2px;
 }
 
+#div-btn-write{
+	background-color : lightblue;
+	align-items : center;
+}

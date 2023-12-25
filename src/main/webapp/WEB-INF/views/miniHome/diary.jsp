@@ -53,7 +53,7 @@
 							https://www.helloworld.com/minihome/leejubin</div>
 					</div>
 					<div class="box content-box">
-						<div>
+						<div id="div-btn-write">
 							<button id="btn-write-diary">글쓰기</button> 
 						</div>
 						<div class="diary">
@@ -90,18 +90,26 @@
 									</div>
 									<div class="diary-cmt-content">
 										<ul class="diary-ul">
-											<li>푸르른 우리 위로 <span
-												class="diary-cmt-info"><a href="#">(이정은)</a> 2023.12.22 </span>
+											<li>
+												<span class="diary-cmt-info">
+													<a href="#">이정은 : </a> 푸르른 우리 위로 (2023.12.22 09:35) <i class="fa-solid fa-delete-left"></i>
+												</span>
+											<li>
+												<span class="diary-cmt-info">
+													<a href="#">채승원 : </a> 커다란 strawberry moon 한 스쿱 (2023.12.22 10:35)
+												</span>
 											</li>
-											<li>커다란 strawberry moon 한 스쿱 <span class="diary-cmt-info"><a
-													href="#">(채승원)</a> 2023.12.22</span>
+											<li>
+												<span class="diary-cmt-info">
+													<a href="#">이진우 : </a> 나에게 너를 맡겨볼래 (2023.12.22 12:35)
+												</span>
 											</li>
-											<li>나에게 너를 맡겨볼래<span class="diary-cmt-info"><a
-													href="#">(이진우)</a> 2023.12.22</span>
+											<li>
+												<span class="diary-cmt-info">
+													<a href="#">양은모 : </a> eh-oh (2023.12.22 14:35)
+												</span>
 											</li>
-											<li> eh-oh  <span
-												class="diary-cmt-info"><a href="#">(양은모)</a> 2023.12.22</span>
-											</li>
+											
 											
 										</ul>
 									</div>
@@ -134,18 +142,28 @@
 									</div>
 									<div class="diary-cmt-content">
 										<ul class="diary-ul">
-											<li>정해진 이별 따위는 없어 <span
-												class="diary-cmt-info"><a href="#">(이정은)</a> 2023.12.22 </span>
+											<li>
+												<span class="diary-cmt-info">
+													<a href="#">이정은 : </a> 정해진 이별 따위는 없어 (2023.12.22 16:35)
+												</span>
 											</li>
-											<li>아름다웠던 그 기억에서 만나 <span class="diary-cmt-info"><a
-													href="#">(채승원)</a> 2023.12.22 </span>
+											<li>
+												<span class="diary-cmt-info">
+													<a href="#">채승원 : </a> 아름다웠던 그 기억에서 만나 (2023.12.22 20:35)
+												</span>
 											</li>
-											<li>Forever young<span class="diary-cmt-info"><a
-													href="#">(이진우)</a> 2023.12.22</span>
+											<li>
+												<span class="diary-cmt-info">
+													<a href="#">이진우 : </a> Forever young (2023.12.22 21:35)
+												</span>
 											</li>
-											<li> 우우우 우우우우 우우우 우우우우 <span
-												class="diary-cmt-info"><a href="#">(양은모)</a> 2023.12.22</span>
+											<li>
+												<span class="diary-cmt-info">
+													<a href="#">양은모 : </a> 우우우 우우우우 우우우 우우우우 (2023.12.22 23:35)
+												</span>
 											</li>
+											
+											
 											
 										</ul>
 									</div>
