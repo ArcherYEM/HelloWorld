@@ -146,7 +146,6 @@
 						</table>	
 						<div class="board-btn">
 							<input type="button" value="이동">
-							<input type="button" value="수정">
 							<input type="button" value="삭제">
 							<input type="button" value="등록" onclick="location.href='/miniHome/boardWriteView'">
 						</div>	
