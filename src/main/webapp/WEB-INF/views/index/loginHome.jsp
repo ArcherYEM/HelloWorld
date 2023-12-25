@@ -12,7 +12,7 @@
 		<meta http-equiv="Expires" content="0">
 		<meta charset="UTF-8">
 		<title>HelloWorld</title>
-		<link  href="/resources/css/main.css" rel="stylesheet">
+		<link  href="/resources/css/index/main.css" rel="stylesheet">
 	</head>
 	
 	<body>
