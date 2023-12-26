@@ -27,19 +27,10 @@
       </div>
       
       <div id="divHiUser">
-          <c:choose>
-              <c:when test="${sessionScope.userId != null}">
-                  <h3 style="color: white; margin: 10px; font-size: 35px;">
-                         안녕하세요. ${sessionScope.userId.userEmail}님!!
-                  </h3>
-              </c:when>
-              <c:otherwise>
-                  <h3 style="color: white; margin: 10px; font-size: 35px;">
-                         안녕하세요. HelloWorld에 오신 걸 환영합니다.
-                  </h3>
-              </c:otherwise>
-          </c:choose>
-      </div>
+		  <h3 style="color: white; margin: 10px; font-size: 35px;" id="helloMessage">
+		        안녕하세요. HelloWorld에 오신 걸 환영합니다.
+		  </h3>
+	  </div>
       
       
       
@@ -124,7 +115,7 @@
       <script>
          
          document.getElementById('btnLogin').addEventListener('click', function() {
-            let userEmail = document.getElementById('userEmail').value;
+              let userEmail = document.getElementById('userEmail').value;
               let userPassword = document.getElementById('userPassword').value;
 
               let jsonData = {
@@ -140,12 +131,15 @@
                   data: JSON.stringify(jsonData)
                   
               }).done(function(json) {
+                  let helloMessage = document.getElementById('helloMessage');
                  
                   if (json.resultCode === '1') {
+                	  helloMessage.innerText = '안녕하세요. ' + json.userEmail + '님!!';
                       divHome.style.display = 'none';
                       divLogin.style.display = 'block';
                   } else {
                       alert('아이디와 비밀번호를 다시 확인해 주세요.');
+                      helloMessage.innerText = '안녕하세요. HelloWorld에 오신 걸 환영합니다.';
                       divHome.style.display = 'block';
                       divLogin.style.display = 'none';
                   }
@@ -175,7 +169,7 @@
          
          $(function() {
              let userEmail = '<c:out value="${sessionScope.userId.userEmail}" />';
-             
+             let helloMessage = document.getElementById('helloMessage');
              let divHome = document.getElementById('divHome');
              let divLogin = document.getElementById('divLogin');
              
@@ -183,6 +177,7 @@
                  divHome.style.display = 'block';
                  divLogin.style.display = 'none';
              } else {
+            	 helloMessage.innerText = '안녕하세요. ' + ${userEmail} + '님!!';
                  divHome.style.display = 'none';
                  divLogin.style.display = 'block';
              }
