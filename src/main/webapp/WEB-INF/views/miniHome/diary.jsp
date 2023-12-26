@@ -10,9 +10,15 @@
 <link rel="stylesheet" href="../../../../resources/css/minihome/fonts.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/frame.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/diary.css" />
+<link rel="stylesheet" href="../../../../resources/css/minihome/jquery-ui(1.13.2).css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
 <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
 <link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
+<script src="https://kit.fontawesome.com/91b557f547.js" crossorigin="anonymous"></script> 
+<!-- date picker  -->
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<!-- date picker  -->
 </head>
 <body>
 <div class="main-frame">
@@ -24,11 +30,22 @@
 						500</div>
 					<div class="box profile-box">
 						<div class="profile-image">
-							<div>달력자리</div>
+							<div id="datepicker" style="width:80%"></div>
 						</div>
 						<div class="profile-dot">---------------------------------</div>
-						<div class="profile-text font-kyobohand">
-							폴더자리 
+						<div class="album-folder-group">
+								<div class="album-folder">
+									<img src="/resources/images/icon/minihome/openFolderIcon.png">
+									<a href="#" class="folder-name">전체보기</a><br/>
+								</div>
+								<div class="album-folder">
+									<img src="/resources/images/icon/minihome/closeFolderIcon.png">
+									<a href="#" class="folder-name">일상생활</a><br/>
+								</div>
+								<div class="album-folder">
+									<img src="/resources/images/icon/minihome/closeFolderIcon.png">
+									<a href="#" class="folder-name">개발 이야기</a><br/>
+								</div>
 						</div>
 						
 						<div class="profile-dot">---------------------------------</div>
@@ -54,10 +71,206 @@
 							https://www.helloworld.com/minihome/leejubin</div>
 					</div>
 					<div class="box content-box">
-						<div id="div-btn-write">
-							<button id="btn-write-diary">글쓰기</button> 
+						<div class=" album-submit">
+								<input type="button" id="btnUpload" value="글쓰기">
 						</div>
-						<div class="diary">
+								<div class="album-overflow">
+							
+								<div class="album-container3">
+									<div class="album-container2">
+										<div class="album-container1">
+											<div class="album-title">
+												2023.12.21 23:50
+											</div>
+											
+											
+										  <div class="album-content">
+											달이 익어가니 서둘러 젊은 피야<br>
+		
+											민들레 한 송이 들고<br>
+										
+											사랑이 어지러이 떠다니는 밤이야<br>
+										
+											날아가 사뿐히 이루렴<br>
+										
+											팽팽한 어둠 사이로<br>
+										
+											떠오르는 기분<br>
+										
+											이 거대한 무중력에 혹 휘청해도<br>
+										
+											두렵진 않을 거야<br>
+										  </div>
+									  </div>
+									  <div class="album-public">
+									  	<div class="album-dropDown">
+									  		<span>공개설정 :</span>
+												<select>
+													<option value="" disabled selected hidden="">전체공개</option>
+													<option value="temp1">비공개</option>
+													<option value="temp2">전체공개</option>
+												</select>
+										</div>
+										<div class="album-under">
+									  		<a href="#" class="album-under-left"></a>
+									  		<a href="#" class="album-under-right">이동</a>
+									  		<a href="#" class="album-under-right">수정</a>
+									  		<a href="#" class="album-under-right">삭제</a>
+									  	</div>
+									  </div>
+								  </div>
+								  <!-- <div class="album-container-under">
+								  	
+								  	<div class="album-under">
+								  		<a href="#" class="album-under-left"></a>
+								  		<a href="#" class="album-under-right">이동</a>
+								  		<a href="#" class="album-under-right">수정</a>
+								  		<a href="#" class="album-under-right">삭제</a>
+								  	</div>
+								  </div> -->
+								  <div class="board-comment-write">
+									<span>
+										댓글
+									</span>
+									<input type="text" class="comment-content-write">
+									<input type="button" value="확인">
+								</div>
+								<div class="board-comment-container">
+									<div class="board-comment">
+										<span class="board-comment-writer">
+											이진우
+										</span>
+										<span class="board-comment-content">
+											푸르른 우리 위로
+										</span>
+										<span class="board-comment-date">
+											(2023.12.24 13:25)
+										</span>
+										<i class="fa-regular fa-rectangle-xmark icon-color btn-cmt-del"></i>
+									</div>
+									<div class="board-comment">
+										<span class="board-comment-writer">
+											양은모
+										</span>
+										<span class="board-comment-content">
+											커다란 strawberry moon 한 스쿱
+										</span>
+										<span class="board-comment-date">
+											(2023.12.24 15:20)
+										</span>
+										<i class="fa-regular fa-rectangle-xmark icon-color btn-cmt-del"></i>
+									</div>
+									<div class="board-comment">
+										<span class="board-comment-writer">
+											채승원
+										</span>
+										<span class="board-comment-content">
+											나에게 너를 맡겨볼래
+										</span>
+										<span class="board-comment-date">
+											(2023.12.24 20:15)
+										</span>
+										<i class="fa-regular fa-rectangle-xmark icon-color btn-cmt-del"></i>
+									</div>
+								</div>
+							  </div>
+							  
+							  <div class="album-container3">
+									<div class="album-container2">
+										<div class="album-container1">
+											<div class="album-title">
+												2023.12.22 10:45
+											</div>
+											
+											
+										  <div class="album-content">
+										   	So are you happy now<br>
+											Finally happy now are you<br>
+											뭐 그대로야 난<br>
+											다 잃어버린 것 같아<br>
+											모든 게 맘대로 왔다가 인사도 없이 떠나<br>
+											이대로는 무엇도 사랑하고 싶지 않아<br>
+											다 해질 대로 해져버린<br>
+											기억 속을 여행해<br>
+											우리는 오렌지 태양 아래<br>
+											그림자 없이 함께 춤을 춰<br>
+										  </div>
+										</div>
+										<div class="album-public">
+									  		<div class="album-dropDown">
+									  			<span>공개설정 :</span>
+												<select>
+													<option value="" disabled selected hidden="">전체공개</option>
+													<option value="temp1">비공개</option>
+													<option value="temp2">전체공개</option>
+												</select>
+											</div>
+											<div class="album-under">
+										  		<a href="#" class="album-under-left"></a>
+										  		<a href="#" class="album-under-right">이동</a>
+										  		<a href="#" class="album-under-right">수정</a>
+										  		<a href="#" class="album-under-right">삭제</a>
+										  	</div>
+									  	</div>
+									</div>
+									<div class="album-container-under">
+								  	<!-- <div class="album-under">
+								  		<a href="#" class="album-under-left"></a>
+								  		<a href="#" class="album-under-right">이동</a>
+								  		<a href="#" class="album-under-right">수정</a>
+								  		<a href="#" class="album-under-right">삭제</a>
+								  	</div> -->
+									  	<div class="board-comment-write">
+											<span>
+												댓글
+											</span>
+											<input type="text" class="comment-content-write">
+											<input type="button" value="확인">
+										</div>
+										<div class="board-comment-container">
+											<div class="board-comment">
+												<span class="board-comment-writer">
+													이진우
+												</span>
+												<span class="board-comment-content">
+													정해진 이별 따위는 없어
+												</span>
+												<span class="board-comment-date">
+													(2023.12.24 13:25)
+												</span>
+												<i class="fa-regular fa-rectangle-xmark icon-color btn-cmt-del"></i>
+											</div>
+											<div class="board-comment">
+												<span class="board-comment-writer">
+													양은모
+												</span>
+												<span class="board-comment-content">
+													아름다웠던 그 기억에서 만나
+												</span>
+												<span class="board-comment-date">
+													(2023.12.24 15:20)
+												</span>
+												<i class="fa-regular fa-rectangle-xmark icon-color btn-cmt-del"></i>
+											</div>
+											<div class="board-comment">
+												<span class="board-comment-writer">
+													채승원
+												</span>
+												<span class="board-comment-content">
+													Forever young
+												</span>
+												<span class="board-comment-date">
+													(2023.12.24 20:15)
+												</span>
+												<i class="fa-regular fa-rectangle-xmark icon-color btn-cmt-del"></i>
+											</div>
+										</div>
+								  </div>
+							  </div>
+							  
+						  </div>
+						
+						<!-- <div class="diary">
 							
 								<div class="diary-box">
 									<div class="diary-date font-kyobohand">2023.12.21 23:50</div>
@@ -93,21 +306,25 @@
 										<ul class="diary-ul">
 											<li>
 												<span class="diary-cmt-info">
-													<a href="#">이정은 : </a> 푸르른 우리 위로 (2023.12.22 09:35) <i class="fa-solid fa-delete-left"></i>
+													<a href="#">이정은 : </a> 푸르른 우리 위로 (2023.12.22 09:35) 
+													<i class="fa-regular fa-rectangle-xmark icon-color"></i>
 												</span>
 											<li>
 												<span class="diary-cmt-info">
 													<a href="#">채승원 : </a> 커다란 strawberry moon 한 스쿱 (2023.12.22 10:35)
+													<i class="fa-regular fa-rectangle-xmark icon-color"></i>
 												</span>
 											</li>
 											<li>
 												<span class="diary-cmt-info">
 													<a href="#">이진우 : </a> 나에게 너를 맡겨볼래 (2023.12.22 12:35)
+													<i class="fa-regular fa-rectangle-xmark icon-color"></i>
 												</span>
 											</li>
 											<li>
 												<span class="diary-cmt-info">
 													<a href="#">양은모 : </a> eh-oh (2023.12.22 14:35)
+													<i class="fa-regular fa-rectangle-xmark icon-color"></i>
 												</span>
 											</li>
 											
@@ -145,21 +362,25 @@
 											<li>
 												<span class="diary-cmt-info">
 													<a href="#">이정은 : </a> 정해진 이별 따위는 없어 (2023.12.22 16:35)
+													<i class="fa-regular fa-rectangle-xmark icon-color"></i>
 												</span>
 											</li>
 											<li>
 												<span class="diary-cmt-info">
 													<a href="#">채승원 : </a> 아름다웠던 그 기억에서 만나 (2023.12.22 20:35)
+													<i class="fa-regular fa-rectangle-xmark icon-color"></i>
 												</span>
 											</li>
 											<li>
 												<span class="diary-cmt-info">
 													<a href="#">이진우 : </a> Forever young (2023.12.22 21:35)
+													<i class="fa-regular fa-rectangle-xmark icon-color"></i>
 												</span>
 											</li>
 											<li>
 												<span class="diary-cmt-info">
 													<a href="#">양은모 : </a> 우우우 우우우우 우우우 우우우우 (2023.12.22 23:35)
+													<i class="fa-regular fa-rectangle-xmark icon-color"></i>
 												</span>
 											</li>
 											
@@ -167,7 +388,7 @@
 									</div>
 								</div>
 							
-						</div>
+						</div> -->
 						
 					</div>
 				</div>
@@ -232,7 +453,14 @@
 			</div>
 		</div>
 	</div>
-</div>
-<script src="../../../../resources/js/default.js"></script>
+	
+	<script src="../../../../resources/js/default.js"></script>
+	<script>
+	
+	$( function() {
+	    $( "#datepicker" ).datepicker();
+	  } );
+	
+	</script>
 </body>
 </html>
