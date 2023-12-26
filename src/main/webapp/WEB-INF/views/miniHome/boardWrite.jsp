@@ -165,20 +165,37 @@
 		        
 		        reader.onload = function(e) {
 		       	  var newDiv = document.createElement("div");
-			      newDiv.className = "name-container";
+			      newDiv.className = "image-container";
+			      newDiv.style.position = "relative";
 		          var newDiv2 = document.createElement("div");
-		          newDiv2.className = "image-container";
+		          newDiv2.className = "name-container";
 
 		          var newImg = document.createElement("img");
 		          newImg.src = e.target.result;
-		          newImg.style.width = "90%"; // 이미지 크기 설정
+		          newImg.style.width = "50%"; // 이미지 크기 설정
 		          newImg.style.height = "auto";
+		          newImg.style.marginBottom = "5px";
 
 		          // 파일 이름을 표시하는 텍스트 노드 생성
 		          var imageName = document.createTextNode(file.name);
+		          
+		          var newBtn = document.createElement("button");
+		          newBtn.className="removeBtn";
+		          newBtn.style.position = "absolute";
+		          newBtn.style.top = "10px";
+		          newBtn.style.right = "10px";
+		          newBtn.onclick = function() {
+					if(confirm("댓글을 삭제하시겠습니까?")==true){
+						previewContainer.removeChild(newDiv);
+						 removeFile(document.querySelector('.fileUpload'));
+					}else{
+						return false;
+					}
+		          };
 
 		          // div 안에 img와 텍스트 노드 추가
 		          newDiv.appendChild(newDiv2);
+		          newDiv.appendChild(newBtn);
 		          newDiv2.appendChild(imageName); 
 		          newDiv.appendChild(newImg);
 

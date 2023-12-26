@@ -43,7 +43,7 @@
   display:block;
   width:10px; /* same with indentation */
   height:0;
-  border-top:1px solid;
+  /* border-top:1px solid; */
   margin-top:-1px; /* border top width */
   position:absolute;
   top:1em; /* (line-height/2) */
