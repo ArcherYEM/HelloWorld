@@ -177,7 +177,7 @@
                  divHome.style.display = 'block';
                  divLogin.style.display = 'none';
              } else {
-            	 helloMessage.innerText = '안녕하세요. ' + ${userEmail} + '님!!';
+            	 helloMessage.innerText = '안녕하세요. ' + userEmail + '님!!';
                  divHome.style.display = 'none';
                  divLogin.style.display = 'block';
              }
