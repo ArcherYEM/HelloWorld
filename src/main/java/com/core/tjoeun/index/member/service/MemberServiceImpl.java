@@ -1,4 +1,4 @@
-package com.core.tjoeun.main.member.service;
+package com.core.tjoeun.index.member.service;
 
 import java.util.Map;
 
@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.core.tjoeun.main.member.dao.MemberDao;
+import com.core.tjoeun.index.member.dao.MemberDao;
 
 @Service
 @EnableTransactionManagement

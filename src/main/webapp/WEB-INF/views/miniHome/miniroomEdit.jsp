@@ -1,4 +1,4 @@
-<!-- views/miniHome/main -->
+<!-- views/miniHome/miniroomEdit -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -8,13 +8,13 @@
 <head>
 <meta charset="UTF-8">
 <title>프로필 수정</title>
-<link rel="stylesheet" href="../../../../resources/css/minihome/fonts.css" />
-<link rel="stylesheet" href="../../../../resources/css/minihome/frame.css" />
-<link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
+<link rel="stylesheet" href="../../../../resources/css/minihome/miniroomEdit.css" />
 <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
 <link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
 </head>
 <body>
-
+	<div class="edit-frame">
+		test
+	</div>
 </body>
 </html>
