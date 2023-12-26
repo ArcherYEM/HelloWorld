@@ -25,6 +25,15 @@ body a{
 }
 
 /*미니홈피 테두리*/
+.main-frame{
+  width: 1165px;
+  height: 510px;
+  position: relative;
+  top: 50%;
+  left: 53%;
+  transform: translate(-50%, -50%);
+}
+
 .bookcover {
   background-color: #b4d1da;
   border-radius: 9px;
@@ -33,7 +42,7 @@ body a{
   height: 510px;
   position: absolute;
   top: 50%;
-  left: 47%;
+  left: 40%;
   transform: translate(-50%, -50%);
 }
 

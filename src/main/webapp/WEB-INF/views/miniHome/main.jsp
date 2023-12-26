@@ -16,6 +16,7 @@
 
 </head>
 <body>
+<div class="main-frame">
 	<div class="bookcover">
 		<div class="bookdot">
 			<div class="page">
@@ -174,6 +175,7 @@
 			</div>
 		</div>
 	</div>
+	
 	<div class="audioPlayerContainer">
 		<audio id="audioElement" autoplay></audio>
 		<div class="audioPlayingContainer">
@@ -209,6 +211,8 @@
 			</div>
 		</div>
 	</div>
+</div>
+
 	<script src="../../../../resources/js/default.js"></script>
 </body>
 </html>
