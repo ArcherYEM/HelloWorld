@@ -218,6 +218,18 @@ thead tr:last-child th {
   justify-content: flex-end;
 }
 
+.comment-content-write{
+	margin-left:10px;
+	margin-right:5px;
+	width:410px;
+}
+
+.board-overflow{
+	width: 100%;
+	max-width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+  
 .board-detail-right button {
 	margin-right: 5px;
 	margin-top: 10px;
