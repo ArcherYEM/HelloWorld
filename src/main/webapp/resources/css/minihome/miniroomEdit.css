@@ -1,0 +1,12 @@
+body {
+	background-color: lightgrey;
+}
+
+.edit-frame {
+  width: 95%;
+  height: 90%;
+  border: 3px dotted orange;
+  border-radius: 15px;
+  margin: 0 auto;
+  margin-top: 35px;
+}

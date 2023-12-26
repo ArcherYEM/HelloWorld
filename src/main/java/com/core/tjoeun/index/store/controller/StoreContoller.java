@@ -1,4 +1,4 @@
-package com.core.tjoeun.main.store.controller;
+package com.core.tjoeun.index.store.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

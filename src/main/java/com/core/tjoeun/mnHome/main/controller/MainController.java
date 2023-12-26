@@ -18,29 +18,41 @@ public class MainController {
 		
 		return "miniHome/main";
 	}
+	
+	@RequestMapping("/mnHome/miniroomEditView")
+	public String miniroomEiditView() {
+		
+		return "miniHome/miniroomEdit";
+	}
+	
+	@RequestMapping("/mnHome/diaryView")
+	public String diary() {
+		
+		return "miniHome/diary";
+	}
+	
 	@RequestMapping("/mnHome/albumView")
 	public String album() {
 		
 		return "miniHome/album";
 	}
-	@RequestMapping("/mnHome/visitView")
-	public String visit() {
-		
-		return "miniHome/visit";
-	}
-	@RequestMapping("/mnHome/settingView")
-	public String setting() {
-		
-		return "miniHome/setting";
-	}
+	
 	@RequestMapping("/mnHome/boardView")
 	public String board() {
 		
 		return "miniHome/board";
 	}
-	@RequestMapping("/mnHome/diaryView")
-	public String diaryView() {
+	
+	@RequestMapping("/mnHome/visitView")
+	public String visit() {
 		
-		return "miniHome/diary";
+		return "miniHome/visit";
 	}
+	
+	@RequestMapping("/mnHome/settingView")
+	public String setting() {
+		
+		return "miniHome/setting";
+	}
+	
 }

@@ -32,14 +32,19 @@
 								안녕하세요 이주빈 입니다.<br /> 미모최강 풀스택 개발자 입니다.
 							</div>
 							<div class="profile-history">
-								<a href="#" class="profile-hs-edit">▶Edit</a> <a href="#"
-									class="profile-hs-hs">▶History</a>
+								<a 
+								  href="/mnHome/miniroomEditView" 
+								  class="profile-hs-edit miniroom-edit-frame" 
+								  target="_blank" 
+								  onclick="openNewWindowWithSettings()">▶Edit
+								</a>
+								<a href="#" class="profile-hs-hs">▶History</a>
 							</div>
 							<div class="profile-dot">---------------------------------</div>
 							<div class="profile-username font-kyobohand">이주빈&#128698;</div>
 							<div class="profile-dropDown">
 								<select>
-									<option value="" disabled selected hidden>파도타기</option>
+									<option value="" disabled selected hidden="">파도타기</option>
 									<option value="temp1">이정은(jungeun@gmail.com)</option>
 									<option value="temp2">이진우(junwoo@naver.com)</option>
 									<option value="temp3">채승원(seungwon@daum.net)</option>
@@ -214,5 +219,16 @@
 	</div>
 
 	<script src="../../../../resources/js/default.js"></script>
+	<script>
+		function openNewWindowWithSettings() {
+		  var windowSettings = 'width=400, height=570, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50';
+		  openNewWindow('/mnHome/miniroomEditView', windowSettings);
+		}
+		
+		function openNewWindow(url, settings) {
+		  window.open(url, '_blank', settings);
+		}
+	</script>
+	
 </body>
 </html>

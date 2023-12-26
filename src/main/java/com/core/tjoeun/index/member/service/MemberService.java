@@ -1,4 +1,4 @@
-package com.core.tjoeun.main.member.service;
+package com.core.tjoeun.index.member.service;
 
 import java.util.Map;
 
