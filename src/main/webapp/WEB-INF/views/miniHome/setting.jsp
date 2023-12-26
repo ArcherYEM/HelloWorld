@@ -29,20 +29,16 @@
 									<div>
 									  <p class="setting-menu-title">미니홈피관리</p>
 									  <ul class="tree">
-									    <li>홈설정</li>
-									    <li>방문통계</li>
+									    <li>BGM설정</li>
+									    <li>메뉴탭설정</li>
+									    <li>스킨설정</li>
 									  </ul>
 									  
-									  <p class="setting-menu-title">아이템 설정관리</p>
-									  <ul class="tree">
-									    <li>음악설정</li>
-									    <li>방문통계</li>
-									  </ul>
-									  
+									 
 									  <p class="setting-menu-title">아이템/내역관리</p>
 									  <ul class="tree">
-									    <li>도토리 사용/충전내역</li>
-									    <li>상점구매목록</li>
+									    <li>도토리 사용내역</li>
+									    <li>도토리 충전내역</li>
 									  </ul>
 									  
 									  <p class="setting-menu-title">인맥관리</p>
@@ -89,13 +85,13 @@
 						<div class="menu-content">
 							<a href="/mnHome/albumView">사진첩</a>
 						</div>
-						<div class="menu-content-clicked">
+						<div class="menu-content">
 							<a href="/mnHome/boardView">게시판</a>
 						</div>
 						<div class="menu-content">
 							<a href="/mnHome/visitView">방명록</a>
 						</div>
-						<div class="menu-content">
+						<div class="menu-content-clicked">
 							<a href="/mnHome/settingView">관리</a>
 						</div>
 					</div>
