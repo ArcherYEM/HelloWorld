@@ -13,5 +13,56 @@ body {
 }
 
 .edit-file{
+	margin-top: 25px;
+	margin-left: 35px;
+	margin-bottom: 10px;
+}
+
+.edit-file input{
+	font-weight: bold;
+}
+
+.image-container{
+	text-align: center;
+	margin-bottom: 15px;
+	font-weight: bold;
+	color: blue;
+}
+
+.preview-container {
+	border: 1px solid gray;
+	border-radius: 5px;
+	width:80%;
+	margin-left: 35;
+	padding-bottom: 10px;
+}
+
+.preview-container img{
+	margin-left: 45;
+}
+
+.edit-container-under{
+	margin-left: 35px;
+	margin-right: 35px;
+	margin-top: 10px;
+}
+
+.edit-introduce textarea{
+	width: 100%;
+	height: 100px;
+	border-radius: 5px;
+	resize: none;
+	font-size: 14px;
+	font-weight: bold;
 	padding: 10px;
+}
+
+.edit-btn {
+	margin-top: 20px;
+	margin-left: 35px;
+}
+
+.edit-btn input {
+	width: 90%;
+	font-weight: bold;
 }

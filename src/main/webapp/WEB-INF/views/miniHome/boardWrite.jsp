@@ -154,7 +154,7 @@
 </div>
 	<script src="../../../../resources/js/default.js"></script>
 	<script>
-		
+	// 여러파일 업로드
 	function multiFiles(input) {
 		  var previewContainer = document.getElementById('preview-container');
 
@@ -192,7 +192,6 @@
 		  }
 		}
 
-		
 		var oEditors=[];
 		
 		nhn.husky.EZCreator.createInIFrame({
