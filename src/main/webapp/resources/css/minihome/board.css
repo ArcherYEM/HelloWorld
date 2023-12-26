@@ -241,6 +241,30 @@ thead tr:last-child th {
 	margin-bottom: 10px;
 }
 
+.image-container{
+	margin-top:10px;
+	text-align:center;
+	border:1px solid black;
+	border-radius:5px;
+	
+}
+
+.image-container:hover .removeBtn{
+	visibility: visible;
+	opacity: 1;	
+}
+
 .name-container{
-	margin-bottom:15px;
+	text-align:center;
+}
+
+.removeBtn{
+	background:url("/resources/images/icon/minihome/removeIcon.png");
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s, opacity 0.5s linear;
+	width:26px;
+	height:20px;
+	text-align:center;
+	border:none;
 }
