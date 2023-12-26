@@ -79,7 +79,7 @@
 
 						<div class="btn-container">
 							<div class="btn-left">
-								<input type="file" multiple="multiple" onchange="multiFiles(this.files)">
+								<input type="file" multiple="multiple" onchange="multiFiles(this.files)" class="fileUpload">
 							</div>
 							<div class="btn-right">
 								<input class="btn-list" type="button" id="btnBoardView" value="목록">
@@ -164,23 +164,29 @@
 		        var reader = new FileReader();
 		        
 		        reader.onload = function(e) {
-		          var newDiv = document.createElement("div");
-		          newDiv.className = "image-container";
+		       	  var newDiv = document.createElement("div");
+			      newDiv.className = "name-container";
+		          var newDiv2 = document.createElement("div");
+		          newDiv2.className = "image-container";
 
 		          var newImg = document.createElement("img");
 		          newImg.src = e.target.result;
-		          newImg.style.width = "280px";
-		          newImg.style.height = "200px";
+		          newImg.style.width = "90%"; // 이미지 크기 설정
+		          newImg.style.height = "auto";
 
+		          // 파일 이름을 표시하는 텍스트 노드 생성
 		          var imageName = document.createTextNode(file.name);
 
+		          // div 안에 img와 텍스트 노드 추가
+		          newDiv.appendChild(newDiv2);
+		          newDiv2.appendChild(imageName); 
 		          newDiv.appendChild(newImg);
-		          newDiv.appendChild(imageName);
 
+		          // 생성한 div를 preview-container에 추가
 		          previewContainer.appendChild(newDiv);
 		        };
 
-		        reader.readAsDataURL(file);
+		        reader.readAsDataURL(file); // 파일 읽기 시작
 		      })(input[i]);
 		    }
 		  }
