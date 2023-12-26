@@ -27,8 +27,8 @@
 					<input type="text" id="userName" name="userName" placeholder="이름" class="widthFull"><br>
 					<label for="userBirth">생년월일</label><br>
 					<input type="text" id="userBirth" name="userBirth" placeholder="생년월일 ex)19931013" class="widthFull">
-					성별 : <input type="button" id="btnMale" value="남자">
-					<input type="button" id="btnFemale" value="여자"><br>
+					성별 : <input type="button" id="btnMale" data-value="M" value="남자">
+					<input type="button" id="btnFemale" data-value="F" value="여자"><br>
 					<label for="userEmail">이메일주소</label><br>
 					<input type="email" id="userEmail" name="userEmail" placeholder="이메일주소" class="widthFull"><br>
 					<label for="userPassword">비밀번호</label><br>
