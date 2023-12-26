@@ -1,4 +1,4 @@
-package com.core.tjoeun.main.member.cotroller;
+package com.core.tjoeun.index.member.cotroller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.core.tjoeun.main.member.service.MemberService;
+import com.core.tjoeun.index.member.service.MemberService;
 
 @Controller
 @RequestMapping("/main/member")

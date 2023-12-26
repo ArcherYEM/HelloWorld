@@ -1,8 +1,8 @@
-package com.core.tjoeun.main.member.sql;
+package com.core.tjoeun.index.member.dao;
 
 import java.util.Map;
 
-public interface MemberMapper {
+public interface MemberDao {
 
 	public int insertUserInfo(Map map);
 	
