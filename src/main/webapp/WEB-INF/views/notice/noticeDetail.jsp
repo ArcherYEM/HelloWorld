@@ -26,44 +26,61 @@
 					<li><a href="<c:url value='/notice/noticeView'/>">공지사항</a></li>
 				</ul>
 			</div>
-			
-			<div class="notice-default">
-				<p>공지사항</p>
-			</div>
-			<div class="notice-info">
-				<span>
-					작성자:admin
-				</span>
-				<span class="notice-write-date">
-					2023-12-06 16:58
-				</span>
-			</div>
-			
-			<div class="notice-info-group">
-				<input class="notice-title" type="text" value="1. 첫번째 테스트 공지사항입니다." readonly>
-				<p class="notice-info-content">
-					첫번째 테스트 공지사항 글 내용부분 일단 p태그 사용하고 나중에 list로 가져와야함
-				</p>
-			</div>
-			
-			<form id="frmNotice" method="POST" action="">
-				<div class="btn-container">
-					<div class="btn-left">
-						<input class="nd-btn-list" type="button" id="btnNoticeView" value="목록">					
-					</div>
-					<div class="btn-right">
-						<input class="nd-btn-update" type="button" id="btnNoticeUpdate" value="수정">
-						<input class="nd-btn-delete" type="button" id="btnNoticeDelete" value="삭제">				
+			<div class="noticeDetail-container">
+				<div class="notice-default">
+					<p>공지사항</p>
+				</div>
+				<div class="noticeDetail-content-container">
+					
+					<div class="notice-info-group">
+						<input class="notice-title" type="text" value="1. 첫번째 테스트 공지사항입니다." readonly>
+						<div class="notice-info">
+								작성자 : admin
+							<div class="notice-write-date">
+								2023-12-06 16:58
+							</div>
+						</div>
+						<div class="notice-info-content">
+							동해물과 백두산이 마르고 닳도록<br>
+							하느님,부처님,예수님,마리아님이 보우하사 우리나라 만세.<br>
+							무궁화 삼천리 화려강산<br>
+							 대한사람 대한으로 길이 보전하세.<br>
+							<br>
+							남산위에 저 소나무 철갑을 두른 듯<br>
+							바람서리 불변함은 우리 기상일세.<br>
+							무궁화 삼천리 화려강산<br>
+							대한사람 대한으로 길이 보전하세.<br>
+							<br>
+							가을 하늘 공활한데 높고 구름 없이<br>
+							밝은 달은 우리 가슴 일편단심일세.<br>
+							무궁화 삼천리 화려강산<br>
+							대한사람 대한으로 길이 보전하세.<br>
+							<br>
+							이 기상과 이 맘으로 충성을 다하여<br>
+							괴로우나 즐거우나 나라 사랑하세.<br>
+							무궁화 삼천리 화려강산<br>
+							대한사람 대한으로 길이 보전하세.<br>
+						</div>
 					</div>
 				</div>
-			</form>
-			
+				<form id="frmNotice" method="POST" action="">
+					<div class="btn-container">
+						<div class="btn-left">
+							<input class="nd-btn-list" type="button" id="btnNoticeView" value="목록">					
+						</div>
+						<div class="btn-right">
+							<input class="nd-btn-update" type="button" id="btnNoticeUpdate" value="수정">
+							<input class="nd-btn-delete" type="button" id="btnNoticeDelete" value="삭제">				
+						</div>
+					</div>
+				</form>
+			</div>
 			<div class="bottom-fix">
 				<hr>
 				<h1>team core</h1>
 			</div>
 				
-			</div>
+		</div>
 		<script>
 			document.getElementById('btnNoticeView').addEventListener('click', function() {
 				location.href = '/notice/noticeView';
