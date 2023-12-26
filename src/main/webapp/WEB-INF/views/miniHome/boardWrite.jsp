@@ -73,7 +73,7 @@
 						<textarea name="content" id="txtContent" rows="10" cols="100" style="width:500px; height:180px; min-width:500px; display:none;"></textarea><br>
 						<br>
 						<div class="file-upload">
-							<input type="file">
+							<input type="file" multiple="multiple">
 						</div>
 						<div class="btn-container">
 							<div class="btn-left">
@@ -172,7 +172,19 @@
 			fCreator : "createSEditor2"
 		});
 		
-	
+		function setThumbnail(event){
+			var reader = new FileReader();
+			
+			reader.onload = function(event){
+				var img = document.createElement("img");
+				img.setAttribute("src", event.target.result);
+				img.setAttribute("class", "col-lg-6");
+				document.querySelector("div#image_container").appendChild(img);
+			};
+			
+			reader.readAsDataURL(event.target.files[0]);
+		}
+
 	</script>
 	
 </body>
