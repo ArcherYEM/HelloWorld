@@ -43,8 +43,8 @@
 					<textarea style="width: 100%; height: 200px; margin-top:20px;resize: none;" value="안내문">개인정보수집동의</textarea>
 					<br>
 		
-					 <input type="radio"  name="confirm" value="confirm"><label for="confirm">동의</label>
-					 <input type="radio"  name="confirm" value="noConfirm"><label for="confirm">비동의</label><br>
+					 <input type="radio" id="confirm" name="confirm" value="confirm"><label for="confirm">동의</label>
+					 <input type="radio" id="noConfirm" name="confirm" value="noConfirm"><label for="confirm">비동의</label><br>
 					<br>
 					<input style="width: 100%; height: 50px; " type="button" id="btnSignUp" value="회원가입">
 				</form>
@@ -55,10 +55,17 @@
 		</div>
 		
 
-		
+		<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
 		<script>
 			document.getElementById('btnSignUp').addEventListener('click', function() {
-					document.getElementById('frmSignUp').submit();
+				var confirmation = document.querySelector('input[name="confirm"]:checked');
+		        
+		        if (confirmation && confirmation.value === "noConfirm") {
+		            alert("개인정보수집 약관에 동의하지 않았습니다.");
+		            return;
+		        }	
+				
+				document.getElementById('frmSignUp').submit();
 			});
 			
 			let selectedBtn = null;
