@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.core.tjoeun.main.member.sql.MemberMapper">
+<mapper namespace="com.core.tjoeun.index.member.sql.MemberMapper">
 
 	<insert id="insertUserInfo" parameterType="map">
 		insert into user (
