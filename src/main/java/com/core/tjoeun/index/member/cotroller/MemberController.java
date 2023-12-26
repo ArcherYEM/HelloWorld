@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.core.tjoeun.index.member.service.MemberService;
 
 @Controller
-@RequestMapping("/main/member")
+@RequestMapping("/index/member")
 public class MemberController {
 
     @Autowired
@@ -40,6 +40,7 @@ public class MemberController {
                 // 로그인 성공 시
                 session.setAttribute("userId", result);
                 resultMap.put("resultCode", "1");
+                resultMap.put("userEmail", result.get("userEmail"));
             } else {
                 // 로그인 실패 시
                 resultMap.put("resultCode", "0");
@@ -63,9 +64,10 @@ public class MemberController {
                 response.addCookie(cookie);
             }
         }
+        
         response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
         response.setHeader("Pragma", "no-cache");
-        response.setHeader("Expires", "0"); 
+        response.setHeader("Expires", "0");
         return "redirect:/";
     }
 
