@@ -19,8 +19,14 @@ public class MainController {
 		return "miniHome/main";
 	}
 	
+	@RequestMapping("/mnHome/mnhProfileEditView")
+	public String mnhProfileEdit() {
+		
+		return "miniHome/mnhProfileEdit";
+	}
+	
 	@RequestMapping("/mnHome/miniroomEditView")
-	public String miniroomEiditView() {
+	public String miniroomEdit() {
 		
 		return "miniHome/miniroomEdit";
 	}
