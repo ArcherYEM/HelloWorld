@@ -132,6 +132,10 @@ thead tr:last-child th {
 	display:flex;
 }
 
+.btn-list{
+	margin-right:5px;
+}
+
 .btn-container{
 	display: flex;
 	justify-content: space-between;
