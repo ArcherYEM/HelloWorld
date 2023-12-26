@@ -44,14 +44,14 @@
 		
 		
 		<div style="display:flex; flex-direction: row;">
-			<div id="divLogin">
+			<div id="divHome" class="divLogin">
 				<div >
 					<form style="text-align: center;" id="frmLogin" method="POST" action="/main/member/login">
 						<!-- <label for="userEmail">아이디: </label> -->
 						<input type="email" id="userEmail" name="userEmail" placeholder="Email"><br>
 						<br>
 						<!-- <label for="userPw">비밀번호: </label> -->
-						<input type="password" id="userPw" name="userPassword" placeholder="Password"><br>
+						<input type="password" id="userPassword" name="userPassword" placeholder="Password"><br>
 						<br>
 						<input type="button" id="btnLogin" value="로그인"><br>
 						<br>
@@ -66,33 +66,48 @@
 				</div>
 				
 			</div>
-			
+			<div id="divLogin" class="divLogin">
+				<div id="divMainMinimi">
+					<span>
+						<img id="mainMinimi" src="<c:url value="/resources/images/PepeIcon.gif"/>">
+					</span>
+				</div>
+				<div>
+			        <form id="logoutForm" action="<c:url value='/main/member/logout' />" method="post">
+			            <input type="button" class="mainBtn" id="btnGoMinihome" value="내 미니홈피">
+			            <input type="button" class="mainBtn" id="btnLogout" value="로그아웃">
+			        </form>
+    			</div>
+			</div>
 			<div id="divMainSlide">
 				<div class="slideshow-container">
-
-				<div class="mySlides fade">
-				  <img src="<c:url value="/resources/images/mainSlideImg1.jpg"/>" style="width:100%">
+	
+					<div class="mySlides fade">
+					  <img src="<c:url value="/resources/images/mainSlideImg1.jpg"/>" style="width:100%">
+					</div>
+					
+					<div class="mySlides fade">
+					  <img src="<c:url value="/resources/images/sildeImg1.png"/>" style="width:100%">
+					</div>
+					
+					<br>
+						
+					<div style="text-align:center">
+					  <span class="dot"></span> 
+					  <span class="dot"></span> 
+						  <!-- <span class="dot"></span>  -->
+					</div>
+					<%-- <div class="mySlides fade">
+					  <img src="<c:url value="/resources/images/mainSlideImg1.jpg"/>" style="width:100%">
+					</div> --%>
+				
 				</div>
 				
-				<div class="mySlides fade">
-				  <img src="<c:url value="/resources/images/sildeImg1.png"/>" style="width:100%">
-				</div>
-				
-				<%-- <div class="mySlides fade">
-				  <img src="<c:url value="/resources/images/mainSlideImg1.jpg"/>" style="width:100%">
-				</div> --%>
-			
-				</div>
-				<br>
-				
-				<div style="text-align:center">
-				  <span class="dot"></span> 
-				  <span class="dot"></span> 
-				  <!-- <span class="dot"></span>  -->
-				</div>
 			</div>
 			
 		</div>
+			
+	</div>
 		
 		<div class="bottom-fix">
 				<hr>
@@ -103,17 +118,40 @@
 					onclick="window.open('/helloworld/minihome/main'
 					, 'window_name', 'width=1200px, height=720px, location=no, status=no, scrollbars=yes');">미니홈피</button>
 -->				 
-			</div>
 		</div>
 		
+		<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
 		<script>
-			document.getElementById('btnLogin').addEventListener('click', function() {
-				document.getElementById('frmLogin').submit();
-			});
 			
-			<c:if test="${loginResult == 0}">
-           		 alert("로그인에 실패했습니다. 다시 시도해주세요.");
-      		</c:if>
+			document.getElementById('btnLogin').addEventListener('click', function() {
+				let userEmail = document.getElementById('userEmail').value;
+		        let userPassword = document.getElementById('userPassword').value;
+
+		        let jsonData = {
+		            "userEmail": userEmail,
+		            "userPassword": userPassword
+		        };
+
+		        $.ajax({
+		        	
+		            method: 'POST',
+		            url: "<c:url value='/main/member/login' />",
+		            contentType: 'application/json',
+		            data: JSON.stringify(jsonData)
+		            
+		        }).done(function(json) {
+		        	
+		            if (json.resultCode === '1') {
+		                divHome.style.display = 'none';
+		                divLogin.style.display = 'block';
+		            } else {
+		                alert('아이디와 비밀번호를 다시 확인해 주세요.');
+		                divHome.style.display = 'block';
+		                divLogin.style.display = 'none';
+		            }
+		        });
+		    });
+			
 			
 			let slideIndex = 0;
 			showSlides();
@@ -134,6 +172,30 @@
 			  dots[slideIndex-1].className += " active";
 			  setTimeout(showSlides, 2000); // Change image every 2 seconds
 			}
+			
+			$(function() {
+			    let userEmail = '<c:out value="${sessionScope.userId.userEmail}" />';
+			    
+			    let divHome = document.getElementById('divHome');
+			    let divLogin = document.getElementById('divLogin');
+			    
+			    if (userEmail === '') {
+			        divHome.style.display = 'block';
+			        divLogin.style.display = 'none';
+			    } else {
+			        divHome.style.display = 'none';
+			        divLogin.style.display = 'block';
+			    }
+			});
+		
+		document.getElementById('btnGoMinihome').addEventListener('click', function() {
+			location.href = "<c:url value="/mnHome/mainView" />"
+		});
+		
+		document.getElementById('btnLogout').addEventListener('click', function() {
+			location.href = "<c:url value="/main/member/logout" />"
+		});
+			
 	</script>
 	
 	</body>

@@ -10,10 +10,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.core.tjoeun.main.member.service.MemberService;
 
@@ -25,22 +26,30 @@ public class MemberController {
     MemberService memberService;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@RequestParam Map map, Model model, HttpSession session, HttpServletRequest request, HttpServletResponse res) throws Exception {
+    @ResponseBody
+    public Map login(@RequestBody Map req, HttpSession session) {
         Map resultMap = new HashMap<>();
-        resultMap = memberService.login(map);
+        try {
+            Map loginInfo = new HashMap<>();
+            loginInfo.put("userEmail", req.get("userEmail"));
+            loginInfo.put("userPassword", req.get("userPassword"));
 
-        if (resultMap != null) {
-            session.setAttribute("userId", resultMap);
+            Map result = memberService.login(loginInfo);
 
-            Cookie sessionCookie = new Cookie("sessionId", session.getId());
-            res.addCookie(sessionCookie);
-
-            model.addAttribute("loginResult", resultMap);
-            return "index/loginHome";
-        } else {
-            model.addAttribute("loginResult", 0);
-            return "home";
+            if (result != null) {
+                // 로그인 성공 시
+                session.setAttribute("userId", result);
+                resultMap.put("resultCode", "1");
+            } else {
+                // 로그인 실패 시
+                resultMap.put("resultCode", "0");
+            }
+        } catch (Exception e) {
+            // 예외 발생 시
+            resultMap.put("resultCode", "0");
         }
+
+        return resultMap;
     }
 
     @RequestMapping("/logout")
