@@ -15,10 +15,11 @@
 <link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
 <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
 <link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
-<script type="text/javascript" src="../../../../resources/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../../../resources/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <body>
+<div class="main-frame">
 	<div class="bookcover">
 		<div class="bookdot">
 			<div class="page">
@@ -65,50 +66,58 @@
 					</div>
 					<div class="box content-box">
 					
-					<div class="board-title-container">
-						<input type="text" placeholder="     제목을 입력하세요" class="board-title" maxlength="30">
-					</div>
-					<div class="board-write-container">
-						<span class="board-writer">  채승원(작성자)</span>
-						<span class="board-write-date">2023.12.10 14:21</span>						
-					</div>
-					<textarea name="content" id="txtContent" rows="10" cols="100" style="width:100%; height:180px; min-width:610px; display:none;"></textarea><br>
-					<div class="btn-container">
-						<div class="btn-left">
-							<input class="btn-list" type="button" id="btnBoardView" value="목록">
+					<div class="board-overflow">
+						<div class="board-title-container">
+							<input type="text" placeholder="     제목을 입력하세요" class="board-title" maxlength="30">
 						</div>
-						<div class="btn-right">
-							<input class="btn-write" type="button" id="btnBoardWrite" value="글쓰기">
+						<div class="board-write-container">
+							<span class="board-writer">  채승원(작성자)</span>
+							<span class="board-write-date">2023.12.10 14:21</span>						
+						</div>
+						<textarea name="content" id="txtContent" rows="10" cols="100" style="width:500px; height:180px; min-width:500px; display:none;"></textarea><br>
+						<br>
+						<div class="file-upload">
+							<input type="file">
+						</div>
+						<div class="btn-container">
+							<div class="btn-left">
+								<input class="btn-list" type="button" id="btnBoardView" value="목록">
+							</div>
+							<div class="btn-right">
+								<input class="btn-write" type="button" id="btnBoardWrite" value="글쓰기">
+							</div>
 						</div>
 					</div>
 					
 					</div>
 				</div>
-				<div class="menu-frame">
-					<div class="menu-content" onclick="changeClass(this)">
+				
+				<div class="menu-container">
+					<div class="menu-content">
 						<a href="/mnHome/mainView">홈</a>
 					</div>
-					<div class="menu-content" onclick="changeClass(this)">
+					<div class="menu-content">
 						<a href="/mnHome/diaryView">다이어리</a>
 					</div>
-					<div class="menu-content" onclick="changeClass(this)">
+					<div class="menu-content">
 						<a href="/mnHome/albumView">사진첩</a>
 					</div>
-					<div class="menu-content" onclick="changeClass(this)">
+					<div class="menu-content-clicked">
 						<a href="/mnHome/boardView">게시판</a>
 					</div>
-					<div class="menu-content" onclick="changeClass(this)">
+					<div class="menu-content">
 						<a href="/mnHome/visitView">방명록</a>
 					</div>
-					<div class="menu-content" onclick="changeClass(this)">
+					<div class="menu-content">
 						<a href="/mnHome/settingView">관리</a>
 					</div>
 				</div>
+				
 			</div>
 		</div>
 	</div>
 	<div class="audioPlayerContainer">
-		<audio id="audioElement" autoplay></audio>
+<!-- 		<audio id="audioElement" autoplay></audio> -->
 		<div class="audioPlayingContainer">
 			<div class="audioPlayingDiv">
 				<img id="audioPlayingImg" src="../../../../resources/images/audioPlayer/nowPlaying.png">
@@ -142,39 +151,19 @@
 			</div>
 		</div>
 	</div>
+</div>
 	<script src="../../../../resources/js/default.js"></script>
 	<script>
-		var checkboxAll=document.getElementById('checkbox-all');
-	
-		function selectAll() {
-		  var checkboxes = document.querySelectorAll('.td-checkbox input[type="checkbox"]');
-		  var allChecked = checkboxAll.checked;
-
-		  checkboxes.forEach(function(checkbox) {
-		    checkbox.checked = allChecked;
-		  });
-		}
+		var oEditors=[];
 		
-		document.getElementById('btnBoardView').addEventListener('click', function() {
-			location.href = '/miniHome/board';
+		nhn.husky.EZCreator.createInIFrame({
+			oAppRef : oEditors,
+			elPlaceHolder : "txtContent",
+			sSkinURI : "../../../../resources/smarteditor2/SmartEditor2Skin.html",
+			fCreator : "createSEditor2"
 		});
-	</script>
-	<script id="smartEditor" type="text/javascript"> 
-			var oEditors = [];
-			nhn.husky.EZCreator.createInIFrame({
-			    oAppRef: oEditors,
-			    elPlaceHolder: "txtContent",  //textarea ID 입력
-			    sSkinURI: "../../../../resources/smarteditor/SmartEditor2Skin.html",  //martEditor2Skin.html 경로 입력
-			    fCreator: "createSEditor2",
-			    htParams : { 
-			    	// 툴바 사용 여부 (true:사용/ false:사용하지 않음) 
-			        bUseToolbar : true, 
-				// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음) 
-				bUseVerticalResizer : false, 
-				// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음) 
-				bUseModeChanger : false 
-			    }
-			});
+		
+	
 	</script>
 	
 </body>

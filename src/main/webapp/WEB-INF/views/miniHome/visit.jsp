@@ -16,6 +16,7 @@
 <link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
 </head>
 <body>
+<div class="main-frame">
 	<div class="bookcover">
 		<div class="bookdot">
 			<div class="page">
@@ -40,7 +41,7 @@
 						<div class="profile-username font-kyobohand">이주빈&#128698;</div>
 						<div class="profile-dropDown">
 							<select>
-								<option value="" disabled selected hidden>파도타기</option>
+								<option value="" disabled selected hidden="">파도타기</option>
 								<option value="temp1">이정은(jungeun@gmail.com)</option>
 								<option value="temp2">이진우(junwoo@naver.com)</option>
 								<option value="temp3">채승원(seungwon@daum.net)</option>
@@ -122,31 +123,33 @@
 					
 					</div>
 				</div>
-				<div class="menu-frame">
-					<div class="menu-content" onclick="changeClass(this)">
+				
+				<div class="menu-container">
+					<div class="menu-content">
 						<a href="/mnHome/mainView">홈</a>
 					</div>
-					<div class="menu-content" onclick="changeClass(this)">
+					<div class="menu-content">
 						<a href="/mnHome/diaryView">다이어리</a>
 					</div>
-					<div class="menu-content" onclick="changeClass(this)">
+					<div class="menu-content">
 						<a href="/mnHome/albumView">사진첩</a>
 					</div>
-					<div class="menu-content" onclick="changeClass(this)">
+					<div class="menu-content">
 						<a href="/mnHome/boardView">게시판</a>
 					</div>
-					<div class="menu-content" onclick="changeClass(this)">
+					<div class="menu-content-clicked">
 						<a href="/mnHome/visitView">방명록</a>
 					</div>
-					<div class="menu-content" onclick="changeClass(this)">
+					<div class="menu-content">
 						<a href="/mnHome/settingView">관리</a>
 					</div>
 				</div>
+				
 			</div>
 		</div>
 	</div>
 	<div class="audioPlayerContainer">
-		<audio id="audioElement" autoplay></audio>
+<!-- 		<audio id="audioElement" autoplay></audio> -->
 		<div class="audioPlayingContainer">
 			<div class="audioPlayingDiv">
 				<img id="audioPlayingImg" src="../../../../resources/images/audioPlayer/nowPlaying.png">
@@ -179,6 +182,8 @@
 				<input type="range" id="audioVolumeControl" min="0" max="100" value="50" step="1">
 			</div>
 		</div>
-	<script src="../../../../resources/js/default.js"></script>
+	</div>
+</div>
+<script src="../../../../resources/js/default.js"></script>
 </body>
 </html>

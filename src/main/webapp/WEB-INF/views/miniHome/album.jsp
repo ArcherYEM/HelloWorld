@@ -5,17 +5,18 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html lang="ko" style="resizeable:no">
-	<head>
-		<meta charset="UTF-8">
-		<title>미니홈피</title>
-		<link rel="stylesheet" href="../../../../resources/css/minihome/fonts.css" />
-		<link rel="stylesheet" href="../../../../resources/css/minihome/frame.css" />
-		<link rel="stylesheet" href="../../../../resources/css/minihome/album.css" />
-		<link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
-		<link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
-		<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
-	</head>
-	<body>
+<head>
+	<meta charset="UTF-8">
+	<title>미니홈피</title>
+	<link rel="stylesheet" href="../../../../resources/css/minihome/fonts.css" />
+	<link rel="stylesheet" href="../../../../resources/css/minihome/frame.css" />
+	<link rel="stylesheet" href="../../../../resources/css/minihome/album.css" />
+	<link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
+	<link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
+	<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
+</head>
+<body>
+	<div class="main-frame">
 		<div class="bookcover">
 			<div class="bookdot">
 				<div class="page">
@@ -159,32 +160,34 @@
 						  </div>
 						</div>
 					</div>
-					<div class="menu-frame">
-						<div class="menu-content" onclick="changeClass(this)">
+					
+					<div class="menu-container">
+						<div class="menu-content">
 							<a href="/mnHome/mainView">홈</a>
 						</div>
-						<div class="menu-content" onclick="changeClass(this)">
+						<div class="menu-content">
 							<a href="/mnHome/diaryView">다이어리</a>
 						</div>
-						<div class="menu-content" onclick="changeClass(this)">
+						<div class="menu-content-clicked">
 							<a href="/mnHome/albumView">사진첩</a>
 						</div>
-						<div class="menu-content" onclick="changeClass(this)">
+						<div class="menu-content">
 							<a href="/mnHome/boardView">게시판</a>
 						</div>
-						<div class="menu-content" onclick="changeClass(this)">
+						<div class="menu-content">
 							<a href="/mnHome/visitView">방명록</a>
 						</div>
-						<div class="menu-content" onclick="changeClass(this)">
+						<div class="menu-content">
 							<a href="/mnHome/settingView">관리</a>
 						</div>
 					</div>
+					
 				</div>
 			</div>
 		</div>
 			
 		<div class="audioPlayerContainer">
-			<audio id="audioElement" autoplay></audio>
+<!-- 			<audio id="audioElement" autoplay></audio> -->
 			<div class="audioPlayingContainer">
 				<div class="audioPlayingDiv">
 					<img id="audioPlayingImg" src="../../../../resources/images/audioPlayer/nowPlaying.png">
@@ -218,11 +221,12 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	<script src="../../../../resources/js/default.js"></script>
 	<script>
 	  document.getElementById('btnUpload').addEventListener('click', function() {
 	    window.location.href = '/mnHome/albumWrite';
 	  });
 	</script>
-	</body>
+</body>
 </html>

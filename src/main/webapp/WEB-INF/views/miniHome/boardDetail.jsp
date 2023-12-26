@@ -19,6 +19,7 @@
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <body>
+<div class="main-frame">
 	<div class="bookcover">
 		<div class="bookdot">
 			<div class="page">
@@ -64,7 +65,6 @@
 						</div>
 					</div>
 					<div class="box content-box">
-					<!-- 시점 -->
 					<div class="board-outer-container">
 						<div class="board-detail-title">
 							크리스마스
@@ -134,34 +134,35 @@
 							</span>
 						</div>
 					</div>
-					<!-- 종점 -->
 					</div>
 				</div>
-				<div class="menu-frame">
-					<div class="menu-content" onclick="changeClass(this)">
+				
+				<div class="menu-container">
+					<div class="menu-content">
 						<a href="/mnHome/mainView">홈</a>
 					</div>
-					<div class="menu-content" onclick="changeClass(this)">
+					<div class="menu-content">
 						<a href="/mnHome/diaryView">다이어리</a>
 					</div>
-					<div class="menu-content" onclick="changeClass(this)">
+					<div class="menu-content">
 						<a href="/mnHome/albumView">사진첩</a>
 					</div>
-					<div class="menu-content" onclick="changeClass(this)">
+					<div class="menu-content-clicked">
 						<a href="/mnHome/boardView">게시판</a>
 					</div>
-					<div class="menu-content" onclick="changeClass(this)">
+					<div class="menu-content">
 						<a href="/mnHome/visitView">방명록</a>
 					</div>
-					<div class="menu-content" onclick="changeClass(this)">
+					<div class="menu-content">
 						<a href="/mnHome/settingView">관리</a>
 					</div>
 				</div>
+				
 			</div>
 		</div>
 	</div>
 	<div class="audioPlayerContainer">
-		<audio id="audioElement" autoplay></audio>
+<!-- 		<audio id="audioElement" autoplay></audio> -->
 		<div class="audioPlayingContainer">
 			<div class="audioPlayingDiv">
 				<img id="audioPlayingImg" src="../../../../resources/images/audioPlayer/nowPlaying.png">
@@ -195,40 +196,9 @@
 			</div>
 		</div>
 	</div>
-	<script src="../../../../resources/js/default.js"></script>
-	<script>
-		var checkboxAll=document.getElementById('checkbox-all');
-	
-		function selectAll() {
-		  var checkboxes = document.querySelectorAll('.td-checkbox input[type="checkbox"]');
-		  var allChecked = checkboxAll.checked;
+</div>
 
-		  checkboxes.forEach(function(checkbox) {
-		    checkbox.checked = allChecked;
-		  });
-		}
-		
-		document.getElementById('btnBoardView').addEventListener('click', function() {
-			location.href = '/miniHome/board';
-		});
-	</script>
-	<script id="smartEditor" type="text/javascript"> 
-			var oEditors = [];
-			nhn.husky.EZCreator.createInIFrame({
-			    oAppRef: oEditors,
-			    elPlaceHolder: "txtContent",  //textarea ID 입력
-			    sSkinURI: "../../../../resources/smarteditor/SmartEditor2Skin.html",  //martEditor2Skin.html 경로 입력
-			    fCreator: "createSEditor2",
-			    htParams : { 
-			    	// 툴바 사용 여부 (true:사용/ false:사용하지 않음) 
-			        bUseToolbar : true, 
-				// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음) 
-				bUseVerticalResizer : false, 
-				// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음) 
-				bUseModeChanger : false 
-			    }
-			});
-	</script>
-	
+<script src="../../../../resources/js/default.js"></script>
+
 </body>
 </html>
