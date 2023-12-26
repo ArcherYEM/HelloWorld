@@ -8,37 +8,81 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Hello World</title>
-		<link  href="/resources/css/main.css" rel="stylesheet">
-		<link  href="/resources/css/store.css" rel="stylesheet">
+		<title>HelloWorld</title>
+		<link  href="/resources/css/index/main.css" rel="stylesheet">
+		<link  href="/resources/css/index/store.css" rel="stylesheet">
+		<link  href="/resources/css/index/notice.css" rel="stylesheet">
+		<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
 	</head>
-	
 	<body>
-		<div class="divNotice">
-			<div>
-				<img id="loginLogo" src="<c:url value="/resources/images/helloworldIconFull.png"/>">
+		<div class="index-frame">
+		
+			<div style="display:flex; flex-direction: row; align-items: center;">
+				<a href="<c:url value='/'/>"  style="width:20%">
+					<img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+				</a>
+				<ul>
+					<li><a href="<c:url value='/store/minimiView'/>">상점</a></li>
+					<li><a href="<c:url value='/notice/noticeView'/>">공지사항</a></li>
+				</ul>
 			</div>
-			<div class="divNoticeBar">
-				<span style="margin: 0 auto;">공지사항</span>
-			</div>
-			<br>
-			<div>
+			<div class="noticeDetail-container">
+				<div class="notice-default">
+					<p>공지사항</p>
+				</div>
+				<div class="noticeDetail-content-container">
+					
+					<div class="notice-info-group">
+						<input class="notice-title" type="text" value="1. 첫번째 테스트 공지사항입니다." readonly>
+						<div class="notice-info">
+								작성자 : admin
+							<div class="notice-write-date">
+								2023-12-06 16:58
+							</div>
+						</div>
+						<div class="notice-info-content">
+							동해물과 백두산이 마르고 닳도록<br>
+							하느님,부처님,예수님,마리아님이 보우하사 우리나라 만세.<br>
+							무궁화 삼천리 화려강산<br>
+							 대한사람 대한으로 길이 보전하세.<br>
+							<br>
+							남산위에 저 소나무 철갑을 두른 듯<br>
+							바람서리 불변함은 우리 기상일세.<br>
+							무궁화 삼천리 화려강산<br>
+							대한사람 대한으로 길이 보전하세.<br>
+							<br>
+							가을 하늘 공활한데 높고 구름 없이<br>
+							밝은 달은 우리 가슴 일편단심일세.<br>
+							무궁화 삼천리 화려강산<br>
+							대한사람 대한으로 길이 보전하세.<br>
+							<br>
+							이 기상과 이 맘으로 충성을 다하여<br>
+							괴로우나 즐거우나 나라 사랑하세.<br>
+							무궁화 삼천리 화려강산<br>
+							대한사람 대한으로 길이 보전하세.<br>
+						</div>
+					</div>
+				</div>
 				<form id="frmNotice" method="POST" action="">
-					<label for="noticeTitle">제목:  </label>
-					<p>1. 첫번째 테스트 공지사항입니다.</p>
-					<br>
-					<br>
-					<p> 첫번째 테스트 공지사항 글 내용부분 일단 p태그 사용하고 나중에 list로 가져와야함</p>
-					<br>
-					<input type="button" id="btnDNoticeView" value="목록">
-					<input type="button" id="btnDNoticeUpdate" value="수정">
-					<input type="button" id="btnDNoticeDelete" value="삭제">
+					<div class="btn-container">
+						<div class="btn-left">
+							<input class="nd-btn-list" type="button" id="btnNoticeView" value="목록">					
+						</div>
+						<div class="btn-right">
+							<input class="nd-btn-update" type="button" id="btnNoticeUpdate" value="수정">
+							<input class="nd-btn-delete" type="button" id="btnNoticeDelete" value="삭제">				
+						</div>
+					</div>
 				</form>
 			</div>
+			<div class="bottom-fix">
+				<hr>
+				<h1>team core</h1>
+			</div>
+				
 		</div>
-		
 		<script>
-			document.getElementById('btnDNoticeView').addEventListener('click', function() {
+			document.getElementById('btnNoticeView').addEventListener('click', function() {
 				location.href = '/notice/noticeView';
 			});
 		</script>

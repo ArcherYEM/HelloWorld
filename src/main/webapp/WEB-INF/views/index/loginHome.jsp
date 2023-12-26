@@ -7,13 +7,15 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="0">
 		<meta charset="UTF-8">
 		<title>HelloWorld</title>
-		<link  href="/resources/css/main.css" rel="stylesheet">
+		<link  href="/resources/css/index/main.css" rel="stylesheet">
 	</head>
 	
 	<body>
-		<button onclick="window.open('/helloworld/minihome/main', 'window_name', 'width=1200, height=750, location=no, status=no, scrollbars=yes');">미니홈피</button>
 		
 		<div style="display:flex; flex-direction: row;">
 			<span>
@@ -24,7 +26,18 @@
 		</div>
 		
 		<div id="divHiUser">
-			<h3 style="color: white; margin: 10px; font-size: 35px;"> 안녕하세요. 이주빈님!!</h3>
+			<c:choose>
+		        <c:when test="${sessionScope.userId != null}">
+		            <h3 style="color: white; margin: 10px; font-size: 35px;">
+		             	   안녕하세요. ${sessionScope.userId.userEmail}님!!
+		            </h3>
+		        </c:when>
+		        <c:otherwise>
+		            <h3 style="color: white; margin: 10px; font-size: 35px;">
+		              	  안녕하세요. HelloWorld에 오신 걸 환영합니다.
+		            </h3>
+		        </c:otherwise>
+		    </c:choose>
 		</div>
 		
 		<div style="display:flex; flex-direction: row;">
@@ -41,18 +54,27 @@
 			
 		</div>
 		<div>
-			<input type="button" class="mainBtn" id="btnGoMinihome" value="내 미니홈피">
-			<input type="button" class="mainBtn" id="btnLogout" value="로그아웃">
-		</div>
+        <form id="logoutForm" action="<c:url value='/main/member/logout' />" method="post">
+            <input type="button" class="mainBtn" id="btnGoMinihome" value="내 미니홈피" onclick="openMinihome()">
+            <input type="button" class="mainBtn" id="btnLogout" value="로그아웃" onclick="logout()">
+        </form>
+   	 </div>
 		<hr style="border: 2px solid black; margin-top: 200px;">
 		<div id="divTeamInfo">
 			<h1 style="margin-left: 50px">team core</h1>
 		</div>
+		
+		
 	</body>
 	
 	<script>
-	document.getElementById('btnStore').addEventListener('click', function() {
-		location.href = '/store/minimiView';
-	});
+	
+	    function openMinihome() {
+	        window.open('/mnHome/mainView', 'window_name', 'width=1200, height=750, location=no, status=no, scrollbars=yes');
+	    }
+	
+	    function logout() {
+	        document.getElementById('logoutForm').submit();
+	    }
 	</script>
 </html>

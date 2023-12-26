@@ -26,4 +26,20 @@ public class MemberServiceImpl implements MemberService{
 		}
 	}
 
+	@Override
+    @Transactional(readOnly = true)
+    public Map login(Map map) throws Exception {
+        Map selectMap = memberDao.selectUserInfo(map);
+
+        if (selectMap != null &&
+                map.get("userEmail").equals(selectMap.get("userEmail")) &&
+                map.get("userPassword").equals(selectMap.get("userPassword"))) {
+
+            // 로그인 성공 시, 사용자 정보 반환
+            return selectMap;
+        } else {
+            // 로그인 실패 시, null 반환
+            return null;
+        }
+    }
 }
