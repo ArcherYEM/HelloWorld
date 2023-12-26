@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
 <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
 <link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
-
 </head>
 <body>
 	<div class="main-frame">
@@ -178,7 +177,7 @@
 		</div>
 		
 		<div class="audioPlayerContainer">
-			<audio id="audioElement" autoplay></audio>
+<!-- 			<audio id="audioElement" autoplay></audio> -->
 			<div class="audioPlayingContainer">
 				<div class="audioPlayingDiv">
 					<img id="audioPlayingImg" src="../../../../resources/images/audioPlayer/nowPlaying.png">

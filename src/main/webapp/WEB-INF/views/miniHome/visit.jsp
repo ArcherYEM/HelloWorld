@@ -149,7 +149,7 @@
 		</div>
 	</div>
 	<div class="audioPlayerContainer">
-		<audio id="audioElement" autoplay></audio>
+<!-- 		<audio id="audioElement" autoplay></audio> -->
 		<div class="audioPlayingContainer">
 			<div class="audioPlayingDiv">
 				<img id="audioPlayingImg" src="../../../../resources/images/audioPlayer/nowPlaying.png">
