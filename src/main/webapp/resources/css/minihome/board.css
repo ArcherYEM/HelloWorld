@@ -233,6 +233,7 @@ thead tr:last-child th {
 	max-width: 100%;
 	overflow-x: hidden;
 	overflow-y: auto;
+}
   
 .board-detail-right button {
 	margin-right: 5px;
