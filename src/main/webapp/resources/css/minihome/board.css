@@ -206,3 +206,10 @@ thead tr:last-child th {
 	margin-right:5px;
 	width:410px;
 }
+
+.board-overflow{
+	width: 100%;
+	max-width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
