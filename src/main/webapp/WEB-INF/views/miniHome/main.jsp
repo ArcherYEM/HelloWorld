@@ -33,12 +33,10 @@
 							</div>
 							<div class="profile-history">
 								<a 
-								  href="/mnHome/miniroomEditView" 
-								  class="profile-hs-edit miniroom-edit-frame" 
-								  target="_blank" 
-								  onclick="openNewWindowWithSettings()">▶Edit
+								  class="profile-edit" 
+								  onclick="openNewWindowMinihomeProfileEdit()">▶ Edit
 								</a>
-								<a href="#" class="profile-hs-hs">▶History</a>
+								<a href="#" class="profile-hs">▶ History</a>
 							</div>
 							<div class="profile-dot">---------------------------------</div>
 							<div class="profile-username font-kyobohand">이주빈&#128698;</div>
@@ -121,10 +119,13 @@
 							<div class="miniroom">
 								<div>
 									<span class="box-title miniroom-title">Miniroom</span>
-									<button class="btn-edit miniroom-edit">미니룸 설정</button>
+									<a 
+									  class="mnh-Edit" 
+									  onclick="openNewWindowMiniroomEdit()">미니룸 설정
+									</a>
 								</div>
 								<div class="miniroom-gif-box">
-									<img src="../../../../resources/images/aquariumBg.png" />
+									<img src="../../../../resources/images/miniroom/aquariumBg.png" />
 								</div>
 							</div>
 							<br>
@@ -220,8 +221,20 @@
 
 	<script src="../../../../resources/js/default.js"></script>
 	<script>
-		function openNewWindowWithSettings() {
+		// 미니홈피 프로필 수정창
+		function openNewWindowMinihomeProfileEdit() {
 		  var windowSettings = 'width=460, height=570, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50';
+		  openNewWindow('/mnHome/mnhProfileEditView', windowSettings);
+		}
+		
+		function openNewWindow(url, settings) {
+		  window.open(url, '_blank', settings);
+		}
+	</script>
+	<script>
+		// 미니룸 수정창
+		function openNewWindowMiniroomEdit() {
+		  var windowSettings = 'width=800, height=600, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50';
 		  openNewWindow('/mnHome/miniroomEditView', windowSettings);
 		}
 		
