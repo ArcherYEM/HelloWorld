@@ -195,7 +195,7 @@
 		document.getElementById('btnLogout').addEventListener('click', function() {
 			location.href = "<c:url value="/main/member/logout" />"
 		});
-			
+	
 	</script>
 	
 	</body>

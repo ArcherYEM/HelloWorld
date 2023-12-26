@@ -221,7 +221,7 @@
 	<script src="../../../../resources/js/default.js"></script>
 	<script>
 		function openNewWindowWithSettings() {
-		  var windowSettings = 'width=400, height=570, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50';
+		  var windowSettings = 'width=460, height=570, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50';
 		  openNewWindow('/mnHome/miniroomEditView', windowSettings);
 		}
 		
