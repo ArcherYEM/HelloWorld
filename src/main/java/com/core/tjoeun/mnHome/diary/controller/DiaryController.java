@@ -11,5 +11,10 @@ public class DiaryController {
 		
 		return "miniHome/diary";
 	}
+	
+	@RequestMapping(value="/miniHome/diaryWriteView")
+	public String diaryWriteView() {
+		return "miniHome/diaryWrite";
+	}
 
 }

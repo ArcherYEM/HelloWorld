@@ -1,4 +1,3 @@
-<!-- views/miniHome/main -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -10,10 +9,18 @@
 <title>미니홈피</title>
 <link rel="stylesheet" href="../../../../resources/css/minihome/fonts.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/frame.css" />
-<link rel="stylesheet" href="../../../../resources/css/minihome/visit.css" />
+<link rel="stylesheet" href="../../../../resources/css/minihome/diary.css" />
+<link rel="stylesheet" href="../../../../resources/css/minihome/jquery-ui(1.13.2).css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
 <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
 <link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
+<script src="https://kit.fontawesome.com/91b557f547.js" crossorigin="anonymous"></script> 
+<script type="text/javascript" src="../../../../resources/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>
+
+<!-- date picker  -->
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<!-- date picker  -->
 </head>
 <body>
 <div class="main-frame">
@@ -25,18 +32,24 @@
 						500</div>
 					<div class="box profile-box">
 						<div class="profile-image">
-							<img class="profile-image-img"
-								src="../../../../resources/images/profile.jpg" alt="프로필 이미지" />
+							<div id="datepicker" style="width:80%"></div>
 						</div>
 						<div class="profile-dot">---------------------------------</div>
-						<div class="profile-text font-kyobohand">
-							안녕하세요 이주빈 입니다.<br />
-							미모최강 풀스택 개발자 입니다.
+						<div class="album-folder-group">
+								<div class="album-folder">
+									<img src="/resources/images/icon/minihome/openFolderIcon.png">
+									<a href="#" class="folder-name">전체보기</a><br/>
+								</div>
+								<div class="album-folder">
+									<img src="/resources/images/icon/minihome/closeFolderIcon.png">
+									<a href="#" class="folder-name">일상생활</a><br/>
+								</div>
+								<div class="album-folder">
+									<img src="/resources/images/icon/minihome/closeFolderIcon.png">
+									<a href="#" class="folder-name">개발 이야기</a><br/>
+								</div>
 						</div>
-						<div class="profile-history">
-							<a href="#" class="profile-hs-edit">▶Edit</a> <a href="#"
-								class="profile-hs-hs">▶History</a>
-						</div>
+						
 						<div class="profile-dot">---------------------------------</div>
 						<div class="profile-username font-kyobohand">이주빈&#128698;</div>
 						<div class="profile-dropDown">
@@ -57,70 +70,32 @@
 							<button class="btn-edit">수정</button>
 						</div>
 						<div class="content-title-url">
-							https://www.helloworld.com/minihome/leejubin
-						</div>
+							https://www.helloworld.com/minihome/leejubin</div>
 					</div>
 					<div class="box content-box">
-					
-					<div class="visit-frame">
-						<div class="visit-frame-write">
-							<img class ="visit-minimi"
-								src="../../../../resources/images/icon/minimi/zombiIcon.gif" />
-							<input type="text" />
+						<div class="board-overflow">
+							<div class="board-title-container">
+								<input type="text" placeholder="제목을 입력하세요" class="board-title" maxlength="30">
+							</div>
+							<div class="board-write-container">
+								<span class="board-writer">  이정은(작성자)</span>
+								<span class="board-write-date">2023.12.26 14:21</span>						
+							</div>
+							<textarea name="content" id="txtContent" rows="10" cols="100" style="width:500px; height:180px; min-width:500px; display:none;"></textarea><br>
+							<br>
+	
+							<div class="btn-container">
+								<div class="btn-left">
+									<input type="file" multiple="multiple" onchange="multiFiles(this.files)">
+								</div>
+								<div class="btn-right">
+									<input class="btn-list" type="button" id="btnBoardView" value="목록">
+									<input class="btn-write" type="button" id="btnBoardWrite" value="글쓰기">
+								</div>
+							</div>
+							<div id="preview-container"></div>
 						</div>
-						<div class="visit-frame-btn">
-							<input type="button" value="등록" />
-						</div>
-					</div>
-					<div class="visit-line">
-						<table>
-							<tr>
-								<td>No. 405</td>
-								<td>양은모
-									<img src="../../../../resources/images/icon/minihome/homeIcon.png" class="visit-line-tbImg">
-								</td>
-								<td>2023-12-21 21:01</td>
-								<td>비밀로하기</td>
-								<td>수정</td>
-								<td>삭제</td>
-							</tr>
-						</table>
-					</div>
-					<div class="visit-frame-write view-margin">
-						<img class ="visit-minimi"
-								src="../../../../resources/images/icon/minimi/soulTeddyIcon.gif" />
-						<div class="visit-view">
-	    				<div class="visit-view-inner">
-	     					이건 버그 맞아요<br>
-	        			변명말고 고치세요 당장.
-	    				</div>
-						</div>						
-					</div>
-					<div class="visit-line">
-						<table>
-							<tr>
-								<td>No. 404</td>
-								<td>이진우
-									<img src="../../../../resources/images/icon/minihome/homeIcon.png" class="visit-line-tbImg">
-								</td>
-								<td>2023-12-20 21:17</td>
-								<td>비밀로하기</td>
-								<td>수정</td>
-								<td>삭제</td>
-							</tr>
-						</table>
-					</div>
-					<div class="visit-frame-write">
-						<img class ="visit-minimi"
-								src="../../../../resources/images/icon/minimi/Nova_2Icon.gif" />
-						<div class="visit-view">
-	    				<div class="visit-view-inner">
-	     					이거 버그 아니에요<br>
-	        			이건 그저 특징 이란말이에요
-	    				</div>
-						</div>						
-					</div>
-					
+						
 					</div>
 				</div>
 				
@@ -128,7 +103,7 @@
 					<div class="menu-content">
 						<a href="/mnHome/mainView">홈</a>
 					</div>
-					<div class="menu-content">
+					<div class="menu-content-clicked">
 						<a href="/mnHome/diaryView">다이어리</a>
 					</div>
 					<div class="menu-content">
@@ -137,7 +112,7 @@
 					<div class="menu-content">
 						<a href="/mnHome/boardView">게시판</a>
 					</div>
-					<div class="menu-content-clicked">
+					<div class="menu-content">
 						<a href="/mnHome/visitView">방명록</a>
 					</div>
 					<div class="menu-content">
@@ -148,6 +123,7 @@
 			</div>
 		</div>
 	</div>
+	
 	<div class="audioPlayerContainer">
 <!-- 		<audio id="audioElement" autoplay></audio> -->
 		<div class="audioPlayingContainer">
@@ -183,7 +159,55 @@
 			</div>
 		</div>
 	</div>
-</div>
-<script src="../../../../resources/js/default.js"></script>
+	
+	<script src="../../../../resources/js/default.js"></script>
+	<script>
+	
+	$( function() {
+	    $( "#datepicker" ).datepicker();
+	  } );
+	
+	function multiFiles(input) {
+		  var previewContainer = document.getElementById('preview-container');
+
+		  if (input && input.length) {
+		    for (var i = 0; i < input.length; i++) {
+		      (function(file) {
+		        var reader = new FileReader();
+		        
+		        reader.onload = function(e) {
+		          var newDiv = document.createElement("div");
+		          newDiv.className = "image-container";
+
+		          var newImg = document.createElement("img");
+		          newImg.src = e.target.result;
+		          newImg.style.width = "280px";
+		          newImg.style.height = "200px";
+
+		          var imageName = document.createTextNode(file.name);
+
+		          newDiv.appendChild(newImg);
+		          newDiv.appendChild(imageName);
+
+		          previewContainer.appendChild(newDiv);
+		        };
+
+		        reader.readAsDataURL(file);
+		      })(input[i]);
+		    }
+		  }
+		}
+
+		
+		var oEditors=[];
+		
+		nhn.husky.EZCreator.createInIFrame({
+			oAppRef : oEditors,
+			elPlaceHolder : "txtContent",
+			sSkinURI : "../../../../resources/smarteditor2/SmartEditor2Skin.html",
+			fCreator : "createSEditor2"
+		});
+	
+	</script>
 </body>
 </html>

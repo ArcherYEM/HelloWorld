@@ -1,0 +1,17 @@
+body {
+	background-color: orange;
+}
+
+.edit-frame {
+	background-color: white;
+  width: 95%;
+  height: 90%;
+  border: 3px dotted orange;
+  border-radius: 15px;
+  margin: 0 auto;
+  margin-top: 35px;
+}
+
+.edit-file{
+	padding: 10px;
+}

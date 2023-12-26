@@ -132,6 +132,10 @@ thead tr:last-child th {
 	display:flex;
 }
 
+.btn-list{
+	margin-right:5px;
+}
+
 .btn-container{
 	display: flex;
 	justify-content: space-between;
@@ -229,9 +233,14 @@ thead tr:last-child th {
 	max-width: 100%;
 	overflow-x: hidden;
 	overflow-y: auto;
+}
   
 .board-detail-right button {
 	margin-right: 5px;
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+
+.name-container{
+	margin-bottom:15px;
 }
