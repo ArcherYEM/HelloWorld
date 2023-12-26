@@ -240,3 +240,7 @@ thead tr:last-child th {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+
+.name-container{
+	margin-bottom:15px;
+}
