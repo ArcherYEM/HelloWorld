@@ -250,3 +250,7 @@ li a:hover {
 .bottom-fix {
    bottom: 0;
 }
+
+.selected {
+    background-color: lightblue;
+ }
