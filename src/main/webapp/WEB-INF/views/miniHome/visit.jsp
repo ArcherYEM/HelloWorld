@@ -41,7 +41,7 @@
 						<div class="profile-username font-kyobohand">이주빈&#128698;</div>
 						<div class="profile-dropDown">
 							<select>
-								<option value="" disabled selected hidden>파도타기</option>
+								<option value="" disabled selected hidden="">파도타기</option>
 								<option value="temp1">이정은(jungeun@gmail.com)</option>
 								<option value="temp2">이진우(junwoo@naver.com)</option>
 								<option value="temp3">채승원(seungwon@daum.net)</option>

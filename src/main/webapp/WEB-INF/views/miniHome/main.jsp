@@ -67,48 +67,48 @@
 									<div class="news-row">
 										<div class="news-category category-post">게시판</div>
 										<div class="news-title">
-											<a href="#">HTML, CSS, JAVASCRIPT</a>
+											<a href="/mnHome/boardView">HTML, CSS, JAVASCRIPT</a>
 										</div>
 									</div>
 									<div class="news-row">
 										<div class="news-category category-pic">사진첩</div>
 										<div class="news-title">
-											<a href="#">2023을 보내며...</a>
+											<a href="/mnHome/albumView">2023을 보내며...</a>
 										</div>
 									</div>
 									<div class="news-row">
 										<div class="news-category category-post">게시판</div>
 										<div class="news-title">
-											<a href="#">스프링이란 무엇인가</a>
+											<a href="/mnHome/boardView">스프링이란 무엇인가</a>
 										</div>
 									</div>
 									<div class="news-row">
-										<div class="news-category category-post">사진첩</div>
+										<div class="news-category category-post">게시판</div>
 										<div class="news-title">
-											<a href="#">Maven 과 Gradle 의 차이</a>
+											<a href="/mnHome/boardView">Maven 과 Gradle 의 차이</a>
 										</div>
 									</div>
 								</div>
 								<div class="update-box">
 									<div class="menu-row">
 										<div class="menu-item">
-											<a href="#">다이어리<span class="menu-num">0/51</span></a>
+											<a href="/mnHome/diaryView">다이어리<span class="menu-num">0/51</span></a>
 										</div>
 										<div class="menu-item">
-											<a href="#">사진첩<span class="menu-num">1/88</span></a> <img
-												src="../../../../resources/images/icon/minihome/newIcon.png"
+											<a href="/mnHome/albumView">사진첩<span class="menu-num">1/88</span></a>
+											<img src="../../../../resources/images/icon/minihome/newIcon.png"
 												alt="new Icon" class="minihome-nIcon">
 										</div>
 									</div>
 									<div class="menu-row">
 										<div class="menu-item">
-											<a href="#">게시판<span class="menu-num">3/17</span></a> <img
-												src="../../../../resources/images/icon/minihome/newIcon.png"
+											<a href="/mnHome/boardView">게시판<span class="menu-num">3/17</span></a>
+											<img src="../../../../resources/images/icon/minihome/newIcon.png"
 												alt="new Icon" class="minihome-nIcon">
 										</div>
 										<div class="menu-item">
-											<a href="#">방명록<span class="menu-num">25/500</span></a> <img
-												src="../../../../resources/images/icon/minihome/newIcon.png"
+											<a href="/mnHome/visitView">방명록<span class="menu-num">25/500</span></a>
+											<img src="../../../../resources/images/icon/minihome/newIcon.png"
 												alt="new Icon" class="minihome-nIcon">
 										</div>
 									</div>
