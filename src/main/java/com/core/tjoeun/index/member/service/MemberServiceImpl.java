@@ -15,19 +15,19 @@ import com.core.tjoeun.index.member.service.MemberService;
 @EnableTransactionManagement
 public class MemberServiceImpl implements MemberService{
 
-	@Autowired
-	MemberDao memberDao;
-	
-	@Override
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
-	public void signUp(Map map) throws Exception {
-		int result = memberDao.insertUserInfo(map);
-		if(result != 1) {
-			throw new Exception();
-		}
-	}
+   @Autowired
+   MemberDao memberDao;
+   
+   @Override
+   @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
+   public void signUp(Map map) throws Exception {
+      int result = memberDao.insertUserInfo(map);
+      if(result != 1) {
+         throw new Exception();
+      }
+   }
 
-	@Override
+   @Override
     @Transactional(readOnly = true)
     public Map login(Map map) throws Exception {
         Map selectMap = memberDao.selectUserInfo(map);

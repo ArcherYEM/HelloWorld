@@ -58,7 +58,7 @@
             <input type="button" class="mainBtn" id="btnGoMinihome" value="내 미니홈피" onclick="openMinihome()">
             <input type="button" class="mainBtn" id="btnLogout" value="로그아웃" onclick="logout()">
         </form>
-    </div>
+   	 </div>
 		<hr style="border: 2px solid black; margin-top: 200px;">
 		<div id="divTeamInfo">
 			<h1 style="margin-left: 50px">team core</h1>
