@@ -63,10 +63,9 @@ public class MemberController {
                 response.addCookie(cookie);
             }
         }
-        
         response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
         response.setHeader("Pragma", "no-cache");
-        response.setHeader("Expires", "0");
+        response.setHeader("Expires", "0"); 
         return "redirect:/";
     }
 
