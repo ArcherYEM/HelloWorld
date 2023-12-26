@@ -15,7 +15,7 @@
 <link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
 </head>
 <body>
-
+<div class="main-frame">
 	<div class="bookcover">
 		<div class="bookdot">
 			<div class="page">
@@ -111,7 +111,6 @@
 												</span>
 											</li>
 											
-											
 										</ul>
 									</div>
 								</div>
@@ -164,37 +163,36 @@
 												</span>
 											</li>
 											
-											
-											
 										</ul>
 									</div>
 								</div>
-							
 							
 						</div>
 						
 					</div>
 				</div>
-				<div class="menu-frame">
-					<div class="menu-content" onclick="changeClass(this)">
+				
+				<div class="menu-container">
+					<div class="menu-content">
 						<a href="/mnHome/mainView">홈</a>
 					</div>
-					<div class="menu-content" onclick="changeClass(this)">
+					<div class="menu-content-clicked">
 						<a href="/mnHome/diaryView">다이어리</a>
 					</div>
-					<div class="menu-content" onclick="changeClass(this)">
+					<div class="menu-content">
 						<a href="/mnHome/albumView">사진첩</a>
 					</div>
-					<div class="menu-content" onclick="changeClass(this)">
+					<div class="menu-content">
 						<a href="/mnHome/boardView">게시판</a>
 					</div>
-					<div class="menu-content" onclick="changeClass(this)">
+					<div class="menu-content">
 						<a href="/mnHome/visitView">방명록</a>
 					</div>
-					<div class="menu-content" onclick="changeClass(this)">
+					<div class="menu-content">
 						<a href="/mnHome/settingView">관리</a>
 					</div>
 				</div>
+				
 			</div>
 		</div>
 	</div>
@@ -234,7 +232,7 @@
 			</div>
 		</div>
 	</div>
-	
-	<script src="../../../../resources/js/default.js"></script>
+</div>
+<script src="../../../../resources/js/default.js"></script>
 </body>
 </html>

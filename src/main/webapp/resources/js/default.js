@@ -1,19 +1,6 @@
-// 현재 선택된 메뉴 아이템을 저장하는 변수
-var currentSelectedMenu = null;
-
-function changeClass(element) {
-	// 현재 선택된 메뉴의 클래스 초기화
-	if (currentSelectedMenu) {
-		currentSelectedMenu.classList.remove("menu-content-clicked");
-	}
-
-	// 현재 선택된 메뉴를 업데이트하고 클래스를 토글
-	currentSelectedMenu = element;
-	element.classList.toggle("menu-content-clicked");
-}
-
 // 화면 사이즈 조절 방지
 var resizeTimeout;
+
 window.onresize = function() {
   clearTimeout(resizeTimeout);
   resizeTimeout = setTimeout(function() {
