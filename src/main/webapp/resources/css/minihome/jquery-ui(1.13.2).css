@@ -370,7 +370,7 @@ button.ui-button::-moz-focus-inner {
 }
 .ui-datepicker table {
 	width: 100%;
-	font-size: .8em;
+	font-size: .7em; /* 날짜 글씨 크기 */
 	border-collapse: collapse;
 	margin: 0 0 .4em;
 }
