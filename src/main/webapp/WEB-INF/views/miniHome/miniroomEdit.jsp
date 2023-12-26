@@ -14,22 +14,27 @@
 </head>
 <body>
 	<div class="edit-frame">
-		<div class="edit-container-over">
-	    <div class="edit-file">
-	   	  <input type="file" id="fileInput" onchange="addFile(this.files)">
-	    </div>
-	    <div class="file-preview" id="preview-container"></div>
-	  </div>
-	  <div class="edit-container-under">
-	  	<div class="edit-introduce">
-	  		<textarea id="introduction" placeholder="자기소개 문구를 입력하세요" rows="3"></textarea>
-	  	</div>
-	  </div>
-	  <div class="edit-btn">
-	 		<input type="button" value="프로필 등록하기">
-		</div>
+		<div class="edit-pad">
+			<div class="edit-container-over">
+		    <div class="edit-file">
+		   	  <input type="file" id="fileInput" onchange="addFile(this.files)">
+		    </div>
+		    <div class="file-preview" id="preview-container"></div>
+		  </div>
+		  <div class="edit-container-under">
+		  	<div class="edit-introduce">
+		  		<textarea id="introduction" placeholder="자기소개 문구를 입력하세요" rows="3"></textarea>
+		  	</div>
+		  </div>
+		  <div class="edit-btn">
+		 		<input type="button" value="등록">
+		 		<input type="button" value="취소">
+			</div>
+		</div>	
 	</div>
+	
 <script>
+  // 등록파일 미리보기
   var fileInput = document.getElementById('fileInput');
   var previewContainer = document.getElementById('preview-container');
 
@@ -50,12 +55,14 @@
         newImg.src = e.target.result;
         newImg.style.width = "200px";
         newImg.style.height = "auto";
+        newImg.style.display = "inline-block"; // 이미지를 가운데 정렬하기 위한 스타일
+        newDiv2.style.textAlign = "center"; // 이미지 컨테이너를 가운데 정렬하기 위한 스타일
 
         // 파일 이름을 표시하는 텍스트 노드 생성
 
         // div 안에 img와 텍스트 노드 추가
+        newDiv2.appendChild(newImg);
         newDiv.appendChild(newDiv2);
-        newDiv.appendChild(newImg);
 
         // 생성한 div를 preview-container에 추가
         previewContainer.appendChild(newDiv);
