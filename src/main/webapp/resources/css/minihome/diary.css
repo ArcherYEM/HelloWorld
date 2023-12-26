@@ -120,10 +120,12 @@
 	padding-left: 10px;
 	padding-top: 5px;
 	padding-bottom: 5px;
+	display: flex;
 }
 
 .album-dropDown {
   min-width: 90px;
+  margin-right: auto;
 }
 
 .album-dropDown select{
