@@ -76,17 +76,17 @@
 						</div>
 						<textarea name="content" id="txtContent" rows="10" cols="100" style="width:500px; height:180px; min-width:500px; display:none;"></textarea><br>
 						<br>
-						<div class="file-upload">
-							<input type="file" multiple="multiple" onchange="setThumbnail(event);">
-						</div>
+
 						<div class="btn-container">
 							<div class="btn-left">
-								<input class="btn-list" type="button" id="btnBoardView" value="목록">
+								<input type="file" multiple="multiple" onchange="multiFiles(this.files)">
 							</div>
 							<div class="btn-right">
+								<input class="btn-list" type="button" id="btnBoardView" value="목록">
 								<input class="btn-write" type="button" id="btnBoardWrite" value="글쓰기">
 							</div>
 						</div>
+						<div id="preview-container"></div>
 					</div>
 					
 					</div>
@@ -154,20 +154,38 @@
 </div>
 	<script src="../../../../resources/js/default.js"></script>
 	<script>
-		function setThumbnail(event){
-			var reader = new FileReader();
-			
-			reader.onload = function(event){
-				var img = document.createElement("img");
-				img.setAttribute("src", event.target.result);
-				img.setAttribute("class", "col-lg-6");
-				document.querySelector("body.se2_inputarea").appendChild(img);
-			};
-			
-			reader.readAsDataURL(event.target.files[0]);
-		}
 		
-		console.log(body.se2_inpuarea);
+	function multiFiles(input) {
+		  var previewContainer = document.getElementById('preview-container');
+
+		  if (input && input.length) {
+		    for (var i = 0; i < input.length; i++) {
+		      (function(file) {
+		        var reader = new FileReader();
+		        
+		        reader.onload = function(e) {
+		          var newDiv = document.createElement("div");
+		          newDiv.className = "image-container";
+
+		          var newImg = document.createElement("img");
+		          newImg.src = e.target.result;
+		          newImg.style.width = "280px";
+		          newImg.style.height = "200px";
+
+		          var imageName = document.createTextNode(file.name);
+
+		          newDiv.appendChild(newImg);
+		          newDiv.appendChild(imageName);
+
+		          previewContainer.appendChild(newDiv);
+		        };
+
+		        reader.readAsDataURL(file);
+		      })(input[i]);
+		    }
+		  }
+		}
+
 		
 		var oEditors=[];
 		
