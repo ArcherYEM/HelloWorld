@@ -27,8 +27,9 @@
 					<input type="text" id="userName" name="userName" placeholder="이름" class="widthFull"><br>
 					<label for="userBirth">생년월일</label><br>
 					<input type="text" id="userBirth" name="userBirth" placeholder="생년월일 ex)19931013" class="widthFull">
-					성별 : <input type="button" id="btnMale" data-value="M" value="남자">
-					<input type="button" id="btnFemale" data-value="F" value="여자"><br>
+					<label>성별 : </label>
+					<input type="radio" id="userGenderM" name="userGender" value="M" checked><label for="userGenderM">남자</label>
+					<input type="radio" id="userGenderF" name="userGender" value="F"><label for="userGenderF">여자</label><br>
 					<label for="userEmail">이메일주소</label><br>
 					<input type="email" id="userEmail" name="userEmail" placeholder="이메일주소" class="widthFull"><br>
 					<label for="userPassword">비밀번호</label><br>
@@ -43,8 +44,8 @@
 					<textarea style="width: 100%; height: 200px; margin-top:20px;resize: none;" value="안내문">개인정보수집동의</textarea>
 					<br>
 		
-					 <input type="radio" id="confirm" name="confirm" value="confirm"><label for="confirm">동의</label>
-					 <input type="radio" id="noConfirm" name="confirm" value="noConfirm"><label for="confirm">비동의</label><br>
+					 <input type="radio" id="confirm" name="confirm" value="confirm" checked><label for="confirm">동의</label>
+					 <input type="radio" id="noConfirm" name="confirm" value="noConfirm"><label for="noConfirm">비동의</label><br>
 					<br>
 					<input style="width: 100%; height: 50px; " type="button" id="btnSignUp" value="회원가입">
 				</form>
@@ -66,26 +67,7 @@
 		        }	
 				
 				document.getElementById('frmSignUp').submit();
-			});
-			
-			let selectedBtn = null;
-
-			  document.getElementById('btnMale').addEventListener('click', function() {
-				  btnClick('btnMale');
-			  });
-
-			  document.getElementById('btnFemale').addEventListener('click', function() {
-				  btnClick('btnFemale');
-			  });
-
-			  function btnClick(btnId) {
-			    if (selectedBtn) {
-			    	selectedBtn.classList.remove('selected');
-			    }
-
-			    selectedBtn = document.getElementById(btnId);
-			    selectedBtn.classList.add('selected');
-			  }
+			});						
 			  
 			  function checkPasswordMatch() {
 				    var password = document.getElementById('userPassword').value;
