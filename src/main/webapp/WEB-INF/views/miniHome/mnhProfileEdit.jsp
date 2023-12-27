@@ -28,7 +28,7 @@
 		  </div>
 		  <div class="edit-btn">
 		 		<input type="button" value="등록">
-		 		<input type="button" value="취소">
+		 		<input type="button" value="취소" id="cancel-button">
 			</div>
 		</div>	
 	</div>
@@ -85,6 +85,11 @@
     }
   });
 </script>
-
+<script>
+    // 취소 버튼을 클릭했을 때 창 닫기
+    document.getElementById("cancel-button").addEventListener("click", function() {
+        window.close();
+    });
+</script>
 </body>
 </html>
