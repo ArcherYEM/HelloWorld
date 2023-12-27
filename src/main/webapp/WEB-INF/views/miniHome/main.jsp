@@ -30,7 +30,7 @@
 							</div>
 							<div class="profile-dot">---------------------------------</div>
 							<div class="profile-text font-kyobohand">
-								안녕하세요 이주빈 입니다.<br /> 미모최강 풀스택 개발자 입니다.
+								안녕하세요 ${sessionScope.userId.userEmail } 입니다.<br /> 미모최강 풀스택 개발자 입니다.
 							</div>
 							<div class="profile-history">
 								<a 
@@ -54,7 +54,7 @@
 					</div>
 					<div class="content-container">
 						<div class="header content-title">
-							<div class="content-title-name">지구 최강 미모 이주빈 입니다</div>
+							<div class="content-title-name">지구 최강 미모  ${sessionScope.userId.userEmail } 입니다</div>
 							<div>
 								<button class="btn-edit">수정</button>
 							</div>
