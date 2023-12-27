@@ -230,7 +230,7 @@ thead tr:last-child th {
 
 .board-overflow{
 	width: 100%;
-	max-width: 100%;
+/* 	max-width: 100%; */
 	overflow-x: hidden;
 	overflow-y: auto;
 }
@@ -258,13 +258,13 @@ thead tr:last-child th {
 	text-align:center;
 }
 
-.removeBtn{
-	background:url("/resources/images/icon/minihome/removeIcon.png");
-	visibility: hidden;
-	opacity: 0;
-	transition: visibility 0s, opacity 0.5s linear;
-	width:26px;
-	height:20px;
-	text-align:center;
-	border:none;
+.removeBtn {
+   background: url(/resources/images/icon/minihome/deleteIcon.png);
+   opacity: 0;
+   transition: visibility 0s, opacity 0.5s linear;
+   width: 30px;
+   height: 28px;
+   text-align: center;
+   border: none;
+   margin: 0 auto;
 }
