@@ -35,9 +35,9 @@
 							<div class="profile-history">
 								<a 
 								  class="profile-edit" 
-								  onclick="openNewWindowMinihomeProfileEdit()">▶ Edit
+								  onclick="openNewWindowMinihomeProfileEdit()">Edit
 								</a>
-								<a href="#" class="profile-hs">▶ History</a>
+								<a href="#" class="profile-hs">History</a>
 							</div>
 							<div class="profile-dot">---------------------------------</div>
 							<div class="profile-username font-kyobohand"> ${sessionScope.userId.userName }&#128698;</div>
@@ -54,7 +54,7 @@
 					</div>
 					<div class="content-container">
 						<div class="header content-title">
-							<div class="content-title-name">지구 최강 미모  ${sessionScope.userId.userEmail } 입니다</div>
+							<div class="content-title-name">지구 최강 미모 이주빈 입니다</div>
 							<div>
 								<button class="btn-edit">수정</button>
 							</div>

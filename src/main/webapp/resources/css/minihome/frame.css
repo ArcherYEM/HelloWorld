@@ -108,11 +108,28 @@ body a{
   line-height: 1.7;
   flex: 1;
   margin-bottom: 20px;
+  margin-left: 10px;
 }
 
 .profile-history{
   font-size: 10px;
-  margin-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-history a {
+	color: orange;
+	padding: 0 10px;
+	font-weight: bold;
+	border: 1px solid white;
+	margin-right: 20px;
+}
+
+.profile-history a:hover{
+	cursor: pointer;
+	border: 1px solid gray;
+	border-radius: 5px;
 }
 
 .profile-hs{
