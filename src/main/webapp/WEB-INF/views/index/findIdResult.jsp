@@ -12,26 +12,34 @@
 		<link  href="/resources/css/index/findIdResult.css" rel="stylesheet">
 	</head>
 		
-	<body style="background-color: white">
-		<div style="text-align: center;" id="signUplogo">
-			<img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
-		</div>
-		<div style="text-align: center;" id="divUserInfo">
-			<p>양은모님의 아이디 입니다.</p>
-			<p>DevYem@gmail.com</p>
-			<div >
-               <a href="/index/member/findId">아이디</a>/ 
-               <a href="/index/member/findPw">비밀번호 찾기</a>
-            </div>
-			
-			
+	<body>
+		
+		<div class="grid-container container1">
+		  <div class="grid-item"></div>
+		  <div class="grid-item">
+		  	<div class="container2">
+		  		<div id="signUplogo">
+			  		 <a href="<c:url value='/'/>">
+						<img id="mainLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+			  		 </a>
+				</div>
+				<div id="divFindIdResult">
+					<p class="p-userInfo">양은모님의 아이디 입니다.</p>
+					<p class="p-userEmail">DevYem@gmail.com</p>
+					<div >
+		               <a href="<c:url value='/'/>">로그인</a> / 
+		               <a href="<c:url value='/index/member/findPw'/>">비밀번호 찾기</a>
+		            </div>
+					
+				</div>
+			  	
+		  	</div>
+			  	
+		  </div>
+		  <div class="grid-item"></div>  
 		</div>
 		
-		<script>
-			document.getElementById('btnFindUp').addEventListener('click', function() {
-				document.getElementById('frmFindId').submit();
-			});
-		</script>
+		
 		
 	</body>
 </html>
