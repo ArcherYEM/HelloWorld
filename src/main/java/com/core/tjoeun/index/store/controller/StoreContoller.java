@@ -33,7 +33,7 @@ public class StoreContoller {
 	@RequestMapping(value = "/store/bgmView")
 	public String bgm() {
 		
-		return "/store/dotori";
+		return "/store/bgm";
 	}
 	
 }
