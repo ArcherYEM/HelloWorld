@@ -28,19 +28,22 @@
 }
 
 .album-folder-group img{
-	width: 20px;
+	width: 15px;
 	height: auto;
 	
 }
 
 .album-folder {
 	margin-bottom: 5px;
-	padding-bottom: 5px;
 }
 
 .album-folder a{
-	margin-left: 10px;
-	margin-bottom : 1px;
+	margin-left: 5px;
+	top : 50%;
+}
+
+.folder-name{
+	
 }
 
 .diary-content{
@@ -168,6 +171,7 @@
 .album-container3{
 	border-bottom: 1px dotted lightgray;
 	margin-bottom: 30px;
+	margin-right : 5px;
 }
 
 
@@ -196,7 +200,7 @@
 .board-comment-write{
 	display:flex;
 	padding-left: 10px;
-	margin-top: 10px;
+	margin-top: 12px;
 	margin-bottom: 10px;
 	border-left:none;
 	border-right:none;
