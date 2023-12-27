@@ -4,6 +4,11 @@
 	margin-top : 10%;
 }
 
+a{
+	text-decoration : none;
+	color : black;
+}
+
 #divFindIdResult {
    width: 70%;
    margin-left: auto;
@@ -36,9 +41,14 @@
 }
 
 .p-userInfo{
-	font-size : 15px;
+	font-size : 20px;
 }
 
 .p-userEmail{
-	
+	font-size : 30px;
+	font-weight : bold;
+	color : #0066cc;
+}
+.after-link{
+	margin-bottom : 20px;
 }
