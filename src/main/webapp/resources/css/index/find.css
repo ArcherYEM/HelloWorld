@@ -1,0 +1,27 @@
+body{
+	
+}
+
+.findId-title {
+	font-weight: bold;
+	font-size: 25px;
+	text-align: center;
+}
+
+.find-tag {
+	margin-top: 20px;
+}
+
+.find-btn {
+	margin-top: 40px;
+	text-align: center;
+}
+
+.find-btn form{
+	display: inline;
+}
+
+.find-btn input {
+	margin: 0 20px;
+	padding: 5px 20px;
+}

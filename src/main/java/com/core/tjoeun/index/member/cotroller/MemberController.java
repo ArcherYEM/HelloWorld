@@ -101,4 +101,9 @@ public class MemberController {
         memberService.signUp(map);
         return "redirect:/";
     }
+    
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    public String indexHome() {
+    	return "home";
+    }
 }

@@ -11,7 +11,7 @@
 		<link  href="/resources/css/index/main.css" rel="stylesheet">
 	</head>
 		
-	<body style="background-color: white">
+	<body>
 		<div class="grid-container">
 		  <div class="grid-item"></div>
 		  <div class="grid-item">
@@ -54,7 +54,6 @@
 		  </div>
 		  <div class="grid-item"></div>  
 		</div>
-		
 
 		<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
 		<script>
