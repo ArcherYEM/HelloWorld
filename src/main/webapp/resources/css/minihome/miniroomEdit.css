@@ -26,16 +26,10 @@ body{
   border: 1px solid red;
 }
 
-.section1-title {
-	width: 100%;
-	height: 20px;
-	font-weight: bold;
-	padding-left: 10px;
-	background-color: lightgray;
-}
-
-.section1-canvas {
-	height: 100%;
+.div-canvas{
+	width:515px;
+	height:320px;
+	position:relative;
 }
 
 .section2 {
@@ -57,10 +51,10 @@ body{
 }
 
 .section-under {
-  width: 100%;
-  height: 38%;
-  display: flex;
-  margin-top: 10px;
+    width: 100%;
+    height: 38%;
+    display: flex;
+    margin-top: 10px;
 }
 
 .section3 {
@@ -68,4 +62,9 @@ body{
 	height: 100%;
 	padding: 3px;
 	border: 1px solid yellow;
+}
+
+.section3 img{
+	width:100px;
+	height:100px;
 }
