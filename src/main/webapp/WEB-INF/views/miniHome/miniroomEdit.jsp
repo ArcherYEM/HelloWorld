@@ -73,11 +73,13 @@
   				img.addEventListener('click',function(){
   					var minimiContainer = document.createElement('div');
   					minimiContainer.style.width="100px";
-  					minimiContainer.style.height="120px";					
+  					minimiContainer.style.height="120px";	
+  					minimiContainer.className="minimiContainer";
   					
   					var minimiBtnContainer = document.createElement('div');
   					minimiBtnContainer.style.width="100px";
   					minimiBtnContainer.style.height="20px";
+  					minimiContainer.className="btnContainer";
   					
   					var minimiBtnPlus = document.createElement('button');
   					minimiBtnPlus.style.width="20px";
@@ -97,7 +99,7 @@
   					var imgSrc = img.getAttribute('src');
   		            var newImg = document.createElement('img');
   		          	newImg.className="minimi";
-  		            newImg.style.width="100px";
+  		          	newImg.style.width="100px";
   		          	newImg.style.height="100px";
   		            newImg.src = imgSrc;
 
@@ -117,17 +119,39 @@
 		// 미니미 드래그 스크립트//
   		function addDragEvent(img) {
   		    img.addEventListener('mousedown', function(e) {
-  		        draggingImg = img;
-  		        offsetX = e.clientX - img.getBoundingClientRect().left;
-  		        offsetY = e.clientY - img.getBoundingClientRect().top;
-  		        img.style.position = 'absolute';
+				e.preventDefault(); // 브라우저 기본 동작 방지
+	  		      draggingImg = img;
+	  		      
+	  		      // 이미지 내의 클릭 위치 계산
+	  		      var rect = img.getBoundingClientRect();
+	  		      offsetX = e.clientX - rect.left;
+	  		      offsetY = e.clientY - rect.top;
+	
+	  		      img.style.position = 'absolute'; // 이미지를 절대 위치로 설정
   		    });
   		}
 
   		document.addEventListener('mousemove', function(e) {
-  		    if (draggingImg) {
-  		        draggingImg.style.left = (e.clientX - offsetX) + 'px';
-  		        draggingImg.style.top = (e.clientY - offsetY) + 'px';
+  			if (draggingImg) {
+  		        // div-canvas의 경계 및 스타일 계산
+  		        var canvasRect = divCanvas.getBoundingClientRect();
+  		        var canvasStyle = window.getComputedStyle(divCanvas);
+  		        var borderLeft = parseInt(canvasStyle.borderLeftWidth, 10);
+  		        var borderTop = parseInt(canvasStyle.borderTopWidth, 10);
+  		        var borderRight = parseInt(canvasStyle.borderRightWidth, 10);
+  		        var borderBottom = parseInt(canvasStyle.borderBottomWidth, 10);
+  		        
+  		        // 이미지의 새 위치 계산
+  		        var newX = e.clientX - offsetX;
+  		        var newY = e.clientY - offsetY;
+
+  		        // 이미지가 div-canvas 내부에서만 이동하도록 조정
+  		        newX = Math.max(canvasRect.left + borderLeft, Math.min(newX, canvasRect.right - borderRight - draggingImg.offsetWidth));
+  		        newY = Math.max(canvasRect.top + borderTop, Math.min(newY, canvasRect.bottom - borderBottom - draggingImg.offsetHeight));
+
+  		        // 이미지를 새 위치로 이동
+  		        draggingImg.style.left = newX - canvasRect.left - borderLeft + 'px'; // div-canvas 내부의 상대적 위치
+  		        draggingImg.style.top = newY - canvasRect.top - borderTop + 'px'; // div-canvas 내부의 상대적 위치
   		    }
   		});
 
