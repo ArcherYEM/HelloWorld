@@ -160,28 +160,44 @@
   		});
  		
 		// 버튼 기능 구현//
-		function addButtonEvent(img) {
-		    var plusButton = img.querySelector('.minimiBtnPlus');
-		    var minusButton = img.querySelector('.minimiBtnMinus');
-		    var deleteButton = img.querySelector('.minimiBtnDelete');
+		function addButtonEvent(container) {
+		    var plusButton = container.querySelector('.minimiBtnPlus');
+		    var minusButton = container.querySelector('.minimiBtnMinus');
+		    var deleteButton = container.querySelector('.minimiBtnDelete');
+		    var img = container.querySelector('.minimi');
 				
 		    plusButton.addEventListener('click', function() {
-		        
-		    	img.style.width += 10;
-		        console.log(img.style.width);
+		    	var currentWidth = parseInt(img.style.width, 10);
+		        var currentHeight = parseInt(img.style.height, 10);
+		    
+		        // 이미지를 증가시킬 수 있는 최대 너비와 높이를 계산합니다.
+		        var maxIncreaseWidth = divCanvas.clientWidth - img.offsetLeft - currentWidth;
+		        var maxIncreaseHeight = divCanvas.clientHeight - img.offsetTop - currentHeight;
+		    
+		        // 실제로 증가시킬 너비와 높이를 결정합니다. 
+		        var increaseWidth = Math.min(10, maxIncreaseWidth);
+		        var increaseHeight = Math.min(10, maxIncreaseHeight);
+
+		        if (increaseWidth > 0) {
+		            img.style.width = (currentWidth + increaseWidth) + 'px';
+		        }
+		        if (increaseHeight > 0) {
+		            img.style.height = (currentHeight + increaseHeight) + 'px';
+		        }
 		    });
 		
 		    minusButton.addEventListener('click', function() {
-		        // 이미지 크기를 줄이는 로직 추가
-		        if (currentWidth > sizeIncrement) {
-		            currentWidth -= sizeIncrement;
-		            img.style.width = currentWidth + 'px';
-		        }
+				var currentWidth = parseInt(img.style.width, 10);
+				var currentHeight = parseInt(img.style.height, 10);
+				if (currentWidth > 10) {
+					img.style.width = (currentWidth - 10) + 'px';
+					img.style.height = (currentHeight - 10) + 'px';
+				}
 		    });
 		
 		    deleteButton.addEventListener('click', function() {
 		        // 이미지 삭제
-		        img.remove();
+		        container.remove();
 		    });
 		}
 	
