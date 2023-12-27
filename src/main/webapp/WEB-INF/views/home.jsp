@@ -28,12 +28,10 @@
       
       <div id="divHiUser">
 		  <h3 style="color: white; margin: 10px; font-size: 35px;" id="helloMessage">
-		        안녕하세요. HelloWorld에 오신 걸 환영합니다.
+		    HelloWorld 에 오신 걸 환영합니다.
 		  </h3>
 	  </div>
-      
-      
-      
+	  
       <div style="display:flex; flex-direction: row;">
          <div id="divHome" class="divLogin">
             <div >

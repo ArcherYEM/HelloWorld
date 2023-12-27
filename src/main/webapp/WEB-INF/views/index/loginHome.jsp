@@ -29,12 +29,12 @@
 			<c:choose>
 		        <c:when test="${sessionScope.userId != null}">
 		            <h3 style="color: white; margin: 10px; font-size: 35px;">
-		             	   안녕하세요. ${sessionScope.userId.userEmail}님!!
+		             	 ${sessionScope.userId.userEmail}님, 환영합니다.
 		            </h3>
 		        </c:when>
 		        <c:otherwise>
 		            <h3 style="color: white; margin: 10px; font-size: 35px;">
-		              	  안녕하세요. HelloWorld에 오신 걸 환영합니다.
+		              	  HelloWorld 에 오신 걸 환영합니다.
 		            </h3>
 		        </c:otherwise>
 		    </c:choose>
