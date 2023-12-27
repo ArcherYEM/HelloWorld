@@ -40,7 +40,7 @@
 					<form action="/index/member/home" method="GET">
 						<input type="submit" value="취소"> 
 					</form>
-					<form action="비밀번호 찾은 화면 utl 넣을예정" method="POST">
+					<form action="<c:url value='/index/member/afterFindPw'/>" method="GET"> <!-- 추후 포스트로 변경 필요  --> 
 						<input type="submit" value="찾기"> 
 					</form>
 				</div>
