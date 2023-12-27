@@ -27,7 +27,7 @@ public class MemberController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public Map login(@RequestBody Map req, HttpSession session) {
+    public Map login(@RequestBody Map req, HttpSession session, HttpServletResponse res) {
         Map resultMap = new HashMap<>();
         try {
             Map loginInfo = new HashMap<>();
@@ -41,6 +41,13 @@ public class MemberController {
                 session.setAttribute("userId", result);
                 resultMap.put("resultCode", "1");
                 resultMap.put("userEmail", result.get("userEmail"));
+                resultMap.put("userPassword", result.get("userPassword"));
+            
+                Cookie userCookie = new Cookie("userEmail", result.get("userEmail").toString());
+                userCookie.setMaxAge(60 * 60 * 24 * 7);
+                userCookie.setPath("/");
+                res.addCookie(userCookie);
+            
             } else {
                 // 로그인 실패 시
                 resultMap.put("resultCode", "0");
@@ -94,7 +101,7 @@ public class MemberController {
 
     @RequestMapping(value = "/afterFindPw", method = RequestMethod.GET)
     public String afterFindPw() {
-        return "index/afterFindPw";
+        return "index/findPwResult";
     }
 
     @RequestMapping(value = "/signUpConfirm", method = RequestMethod.POST)
