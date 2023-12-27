@@ -81,9 +81,9 @@ public class MemberController {
         return "index/findId";
     }
 
-    @RequestMapping("/afterFindId")
+    @RequestMapping(value="/afterFindId")
     public String afterFindId() {
-        return "index/afterFindId";
+        return "index/findIdResult";
     }
 
     @RequestMapping(value = "/findPw", method = RequestMethod.GET)
