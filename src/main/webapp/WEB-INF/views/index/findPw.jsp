@@ -5,42 +5,49 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Hello World</title>
-		<link  href="/resources/css/index/main.css" rel="stylesheet">
-	</head>
-		
-	<body style="background-color: white">
-		<div style="text-align: center;" id="signUplogo">
-			<img id="loginLogo" src="<c:url value="/resources/images/helloworldIconFull.png"/>">
-		</div>
-		<div style="text-align: center;" id="divUserInfo">
-			<h2>비밀번호 찾기</h2>
-			<form id="frmFindPw" method="GET" action="/member/afterFindPw">
-				<label for="userEmail">아이디</label><br>
-				<input type="text" id="userEmail" placeholder="아이디"> @ 
-				<select id="mail" name="mail">
-					<option value="gmail">gmail.com</option>
-					<option value="naver">naver.com</option>
-					<option value="nate">nate.com</option>
-				</select>
-				<br>
-				<label for="userName">이름</label><br>
-				<input type="text" id="userName" placeholder="userName"><br>
-				<label for="userPhoneNum">핸드폰번호</label><br>
-				<input type="text" id="userPhoneNum" placeholder="핸드폰번호"><br>
-				<input style="witdh: 300px; height: 30px; margin-top: 10px" 
-						type="button" id="btnFindPw" value="확인">
-			</form>
-			
-		</div>
-		
-		<script>
-			document.getElementById('btnFindPw').addEventListener('click', function() {
-				document.getElementById('frmFindPw').submit();
-			});
-		</script>
-		
-	</body>
-</html>
+<head>
+	<meta charset="UTF-8">
+	<title>Hello World</title>
+	<link  href="/resources/css/index/main.css" rel="stylesheet">
+	<link  href="/resources/css/index/find.css" rel="stylesheet">
+	<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
+</head>
+	
+<body>
+	<div class="grid-container">
+	  <div class="grid-item"></div>
+	  
+	  <div class="grid-item">
+	  	<div id="divUserInfo">
+				<img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+				<div class="findId-title">
+			  	비밀번호 찾기
+			  </div>
+			  <div class="find-tag">
+			  	<label for="userId">아이디</label><br>
+					<input type="text" id="userId"placeholder="아이디" class="widthFull"><br>
+				</div>
+				<div class="find-tag">
+					<label for="userName">이름</label><br>
+					<input type="text" id="userName" placeholder="이름" class="widthFull">
+				</div>
+				<div class="find-tag">
+					<label for="userPhone">연락처</label><br>
+					<input type="text" id="userPhone" placeholder="' ㅡ ' 를 제외한 숫자만 입력하세요" class="widthFull">
+				</div>
+				
+				<div class="find-btn">
+					<form action="/index/member/home" method="GET">
+						<input type="submit" value="취소"> 
+					</form>
+					<form action="비밀번호 찾은 화면 utl 넣을예정" method="POST">
+						<input type="submit" value="찾기"> 
+					</form>
+				</div>
+				
+	  	</div>
+	  </div>
+		  	
+	 	<div class="grid-item"></div>  
+	</div>
+</body>

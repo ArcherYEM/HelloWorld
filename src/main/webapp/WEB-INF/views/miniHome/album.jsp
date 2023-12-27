@@ -22,7 +22,7 @@
 				<div class="page">
 					<div class="profile-container">
 						<div class="header profile-title font-neo">
-							TODAY 404 | TOTAL 500
+								TODAY&nbsp;<span class="today-span">404</span>&nbsp;| TOTAL 500
 						</div>
 						<div class="box profile-box">
 							<div class="album-folder-group">

@@ -81,9 +81,10 @@ public class MemberController {
         return "index/findId";
     }
 
-    @RequestMapping("/afterFindId")
+    @RequestMapping(value="/afterFindId")
     public String afterFindId() {
-        return "index/afterFindId";
+        return "index/findIdResult";
+     
     }
 
     @RequestMapping(value = "/findPw", method = RequestMethod.GET)
@@ -100,5 +101,10 @@ public class MemberController {
     public String signUpConfirm(@RequestParam Map<String, String> map) throws Exception {
         memberService.signUp(map);
         return "redirect:/";
+    }
+    
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    public String indexHome() {
+    	return "home";
     }
 }

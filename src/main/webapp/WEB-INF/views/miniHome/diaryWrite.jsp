@@ -28,8 +28,9 @@
 		<div class="bookdot">
 			<div class="page">
 				<div class="profile-container">
-					<div class="header profile-title font-neo">TODAY 404 | TOTAL
-						500</div>
+					<div class="header profile-title font-neo">
+						TODAY&nbsp;<span class="today-span">404</span>&nbsp;| TOTAL 500
+					</div>
 					<div class="box profile-box">
 						<div class="profile-image">
 							<div id="datepicker" style="width:80%"></div>
@@ -50,17 +51,7 @@
 								</div>
 						</div>
 						
-						<div class="profile-dot">---------------------------------</div>
-						<div class="profile-username font-kyobohand">이주빈&#128698;</div>
-						<div class="profile-dropDown">
-							<select>
-								<option value="" disabled selected hidden="">파도타기</option>
-								<option value="temp1">이정은(jungeun@gmail.com)</option>
-								<option value="temp2">이진우(junwoo@naver.com)</option>
-								<option value="temp3">채승원(seungwon@daum.net)</option>
-								<option value="temp4">양은모(eunmo@nate.com)</option>
-							</select>
-						</div>
+						
 					</div>
 				</div>
 				<div class="content-container">
@@ -85,9 +76,7 @@
 							<br>
 	
 							<div class="btn-container">
-								<div class="btn-left">
-									<input type="file" multiple="multiple" onchange="multiFiles(this.files)">
-								</div>
+								<div class="btn-left"></div>
 								<div class="btn-right">
 									<input class="btn-list" type="button" id="btnBoardView" value="목록">
 									<input class="btn-write" type="button" id="btnBoardWrite" value="글쓰기">
@@ -159,10 +148,21 @@
 			</div>
 		</div>
 	</div>
-	
+</div>
 	<script src="../../../../resources/js/default.js"></script>
 	<script>
-	
+	$.datepicker.setDefaults({
+        dateFormat: 'yymmdd',
+        prevText: '이전 달',
+        nextText: '다음 달',
+        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+        dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+        showMonthAfterYear: true,
+        yearSuffix: '년'
+    });
 	$( function() {
 	    $( "#datepicker" ).datepicker();
 	  } );

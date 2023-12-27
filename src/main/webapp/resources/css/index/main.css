@@ -255,21 +255,10 @@ li a:hover {
     background-color: lightblue;
  }
 
-/* 아이디 찾기 관련 css */
- .frmFindId{
- 	text-align:center;
- }
- 
- .confirm-btn{
-	width:80px;
-	height:30px;
-	background-color: #FF9016;
-	border-radius: 5px;
- }
- 
- .cancel-btn{
- 	width:80px;
-	height:30px;
-	background-color: #FF9016;
-	border-radius: 5px;
- }
+.confirm-group {
+    text-align: center;
+}
+
+.divGender {
+	margin-bottom: 4px;
+}

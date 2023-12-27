@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+.container1{
+	margin-top : 10%;
+}
+
+a{
+	text-decoration : none;
+	color : black;
+}
+
+#divFindIdResult {
+   width: 70%;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top : 20px;
+   padding-top: 20px;
+   padding-bottom : 20px;
+   text-align : center;
+   border : 1px solid lightgray;
+}
+
+.container2{
+	width : 100%;
+	height : 500px;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+#mainLogo{
+	width : 50%;
+	margin : auto;
+}
+
+#signUplogo{
+	text-align:center;
+}
+
+.p-userInfo .p-userEmail{
+	padding : 10px;
+}
+
+.p-userInfo{
+	font-size : 20px;
+}
+
+.p-userEmail{
+	font-size : 30px;
+	font-weight : bold;
+	color : #0066cc;
+}
+.after-link{
+	margin-bottom : 20px;
+}

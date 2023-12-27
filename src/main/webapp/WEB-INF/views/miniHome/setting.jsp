@@ -22,11 +22,13 @@
 			<div class="bookdot">
 				<div class="page">
 					<div class="profile-container">
-						<div class="header profile-title font-neo">TODAY 404 | TOTAL
-							500</div>
+						<div class="header profile-title font-neo">
+							TODAY&nbsp;<span class="today-span">404</span>&nbsp;| TOTAL 500
+						</div>
 						<div class="box profile-box">
 								<div class="album-folder-group">
 									<div>
+									  <p class="setting-menu-title">개인정보변경</p>
 									  <p class="setting-menu-title">미니홈피관리</p>
 									  <ul class="tree">
 									    <li>BGM설정</li>
