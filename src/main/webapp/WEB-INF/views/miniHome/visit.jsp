@@ -21,8 +21,9 @@
 		<div class="bookdot">
 			<div class="page">
 				<div class="profile-container">
-					<div class="header profile-title font-neo">TODAY 404 | TOTAL
-						500</div>
+					<div class="header profile-title font-neo">
+						TODAY&nbsp;<span class="today-span">404</span>&nbsp;| TOTAL 500
+					</div>
 					<div class="box profile-box">
 						<div class="profile-image">
 							<img class="profile-image-img"
@@ -34,8 +35,11 @@
 							미모최강 풀스택 개발자 입니다.
 						</div>
 						<div class="profile-history">
-							<a href="#" class="profile-hs-edit">▶Edit</a> <a href="#"
-								class="profile-hs-hs">▶History</a>
+							<a 
+							  class="profile-edit" 
+							  onclick="openNewWindowMinihomeProfileEdit()">▶ Edit
+							</a>
+							<a href="#" class="profile-hs-hs">▶ History</a>
 						</div>
 						<div class="profile-dot">---------------------------------</div>
 						<div class="profile-username font-kyobohand">이주빈&#128698;</div>
@@ -185,5 +189,16 @@
 	</div>
 </div>
 <script src="../../../../resources/js/default.js"></script>
+<script>
+	// 미니홈피 프로필 수정창
+	function openNewWindowMinihomeProfileEdit() {
+	  var windowSettings = 'width=460, height=570, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50';
+	  openNewWindow('/mnHome/mnhProfileEditView', windowSettings);
+	}
+	
+	function openNewWindow(url, settings) {
+	  window.open(url, '_blank', settings);
+	}
+</script>
 </body>
 </html>

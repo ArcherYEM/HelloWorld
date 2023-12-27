@@ -37,3 +37,7 @@
 .font-neo {
   font-family: "NeoDunggeunmo";
 }
+
+.today-span{
+	color: red;
+}
