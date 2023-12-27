@@ -36,12 +36,15 @@ public class MemberServiceImpl implements MemberService{
    @Override
    @Transactional(readOnly = true)
    public Map login(Map map) throws Exception {
+	    map.put("userPassword", SHA256.encryptSHA256((String) map.get("userPassword")));
         Map selectMap = memberDao.selectUserInfo(map);
 
         if (selectMap != null &&
                 map.get("userEmail").equals(selectMap.get("userEmail")) &&
                 map.get("userPassword").equals(selectMap.get("userPassword"))) {
-
+        	System.out.println(SHA256.encryptSHA256((String) map.get("userPassword")));
+        	System.out.println((String)selectMap.get("userPassword"));
+        	System.out.println();
             // 로그인 성공 시, 사용자 정보 반환
             return selectMap;
         } else {

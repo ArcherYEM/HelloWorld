@@ -81,10 +81,10 @@
 			    var confirmPassword = document.getElementById('userPassword2').value;
 	
 			    if (password === confirmPassword) {
-			        document.getElementById('passwordMatchMessage').innerHTML = '<span style="color: #008000;">비밀번호가 일치합니다.</span>';;
+			        document.getElementById('passwordMatchMessage').innerHTML = '<span style="color: #008000;">비밀번호가 일치합니다.</span>';
 			        document.getElementById('btnSignUp').disabled = false;
 			    } else {
-			        document.getElementById('passwordMatchMessage').innerHTML ='<span style="color: red;">비밀번호가 일치하지 않습니다.</span>';;
+			        document.getElementById('passwordMatchMessage').innerHTML ='<span style="color: red;">비밀번호가 일치하지 않습니다.</span>';
 			        document.getElementById('btnSignUp').disabled = true;
 			    }
 			}
@@ -94,6 +94,8 @@
 			  
 			  if (userBirth.length > 8) {
 				  alert ('생년월일은 8자리를 초과할 수 없습니다.');
+				  
+				  $('#userBirth').val(userBirth.slice(0, 8));
 			  };
 		  };
 		  
@@ -103,6 +105,8 @@
 			  
 			  if (userPhone.length === 11 && !regex.test(userPhone)) {
 			    alert('입력하신 핸드폰 번호를 확인해주세요.');
+			    
+			    $('#userBirth').val(userBirth.slice(0, 10));
 			  }
 			}
 			 
