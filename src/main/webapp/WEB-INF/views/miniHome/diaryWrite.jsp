@@ -147,7 +147,7 @@
 			</div>
 		</div>
 	</div>
-	
+</div>
 	<script src="../../../../resources/js/default.js"></script>
 	<script>
 	$.datepicker.setDefaults({
