@@ -20,7 +20,7 @@
 			<a href="<c:url value='/'/>"  style="width:20%"><img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>"></a>
 			<h5 class="right">내 도토리: 1234개</h5>
 			<ul class="right">
-				<li ><a href="<c:url value='/store/minimiView'/>">상점</a></li>
+				<li><a href="<c:url value='/store/minimiView'/>">상점</a></li>
 				<li><a href="<c:url value='/notice/noticeView'/>">공지사항</a></li>
 				<li><a href="<c:url value="/helloworld/minihome/main" />">내 미니홈피</a></li>
 				<li><a href="<c:url value="/" />">로그아웃</a></li>
