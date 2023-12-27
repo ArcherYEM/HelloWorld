@@ -1,8 +1,15 @@
 package com.core.tjoeun.mnHome.main.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.core.tjoeun.mnHome.main.service.MainService;
 
@@ -14,8 +21,13 @@ public class MainController {
 	MainService mainService;
 	
 	@RequestMapping("/mnHome/mainView")
-	public String minihome() {
+	public String minihome(@RequestParam Map map, HttpServletRequest req , HttpSession session) {
+		Map userMap = new HashMap();
 		
+		session = req.getSession();
+		userMap = (Map) session.getAttribute("userId");
+		
+		session.setAttribute("userId", userMap);
 		return "miniHome/main";
 	}
 	
