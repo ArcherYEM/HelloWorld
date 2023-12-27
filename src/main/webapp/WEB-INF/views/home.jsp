@@ -18,9 +18,9 @@
    </head>
    <body>
    <div class="index-frame">
-      <div style="display:flex; flex-direction: row; align-items: center;">
-         <a href="<c:url value='/'/>"  style="width:20%">
-         	<img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+      <div class="divIndexMenu">
+         <a class="logoATag" href="<c:url value='/'/>">
+           <img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
          </a>
          <ul>
             <li><a href="<c:url value='/store/minimiView'/>">상점</a></li>
@@ -29,15 +29,15 @@
       </div>
       
       <div id="divHiUser">
-		  <h3 style="color: white; margin: 10px; font-size: 35px;" id="helloMessage">
+		  <h3 id="helloMessage">
 		    HelloWorld 에 오신 걸 환영합니다.
 		  </h3>
 	  </div>
 	  
-      <div style="display:flex; flex-direction: row;">
+      <div class="divIndexMain">
          <div id="divHome" class="divLogin">
             <div >
-               <form style="text-align: center;" id="frmLogin" method="POST" action="/index/member/login">
+               <form class="frmLogin" id="frmLogin" method="POST" action="/index/member/login">
                   <!-- <label for="userEmail">아이디: </label> -->
                   <input type="email" id="userEmail" name="userEmail" placeholder="Email"><br>
                   <br>
@@ -51,7 +51,7 @@
                </form>
             </div>
             <div >
-               <a href="/index/member/signUp" style="margin-right:50px">회원가입</a>
+               <a class="signUpATag" href="/index/member/signUp">회원가입</a>
                <a href="/index/member/findId">아이디</a>/ 
                <a href="/index/member/findPw">비밀번호 찾기</a>
             </div>
@@ -83,7 +83,7 @@
                
                <br>
                   
-               <div style="text-align:center">
+               <div class="divdot">
                  <span class="dot"></span> 
                  <span class="dot"></span> 
                     <!-- <span class="dot"></span>  -->
