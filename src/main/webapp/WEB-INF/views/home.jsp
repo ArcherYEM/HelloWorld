@@ -19,7 +19,9 @@
    <body>
    <div class="index-frame">
       <div class="divIndexMenu">
-         <a class="logoATag" href="<c:url value='/'/>"><img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>"></a>
+         <a class="logoATag" href="<c:url value='/'/>">
+           <img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+         </a>
          <ul>
             <li><a href="<c:url value='/store/minimiView'/>">상점</a></li>
             <li><a href="<c:url value='/notice/noticeView'/>">공지사항</a></li>
