@@ -26,26 +26,34 @@
 					<label for="userName">이름</label><br>
 					<input type="text" id="userName" name="userName" placeholder="이름" class="widthFull"><br>
 					<label for="userBirth">생년월일</label><br>
-					<input type="text" id="userBirth" name="userBirth" placeholder="생년월일 ex)19931013" class="widthFull">
-					<label>성별 : </label>
-					<input type="radio" id="userGenderM" name="userGender" value="M" checked><label for="userGenderM">남자</label>
-					<input type="radio" id="userGenderF" name="userGender" value="F"><label for="userGenderF">여자</label><br>
+					<input type="number" id="userBirth" name="userBirth" placeholder="생년월일 ex)19931013"
+						   class="widthFull" oninput="checkBirthLength()">
+					<div class="divGender">
+						<label>성별 : </label>
+						<input type="radio" id="userGenderM" name="userGender" value="M" checked><label for="userGenderM">남자</label>
+						<input type="radio" id="userGenderF" name="userGender" value="F"><label for="userGenderF">여자</label><br>
+					</div>
 					<label for="userEmail">이메일주소</label><br>
 					<input type="email" id="userEmail" name="userEmail" placeholder="이메일주소" class="widthFull"><br>
 					<label for="userPassword">비밀번호</label><br>
 					<input type="password" id="userPassword" name="userPassword" placeholder="비밀번호" class="widthFull" oninput="checkPasswordMatch()"><br>
-					<label for="userPassword2">비밀번호 확인</label><br>
+					<label for="userPassword2">비밀번호 확인  </label><span id="passwordMatchMessage"></span><br>
 					<input type="password" id="userPassword2" name="userPassword2" placeholder="비밀번호" class="widthFull" oninput="checkPasswordMatch()"><br>
 					<div id="passwordMatchMessage"></div>
-					<label for="userNickName">닉네임</label><br>
+					<label for="userNickname">닉네임</label><br>
 					<input type="text" id="userNickname" name="userNickname" placeholder="닉네임" class="widthFull"><br>
 					<label for="userPhone">핸드폰번호</label><br>
-					<input type="text" id="userPhone" name="userPhone" placeholder="핸드폰번호" class="widthFull"><br>
+					<input type="number" id="userPhone" name="userPhone" placeholder="핸드폰번호"
+						   class="widthFull" oninput="checkPhoneForm()"><br>
 					<textarea style="width: 100%; height: 200px; margin-top:20px;resize: none;" value="안내문">개인정보수집동의</textarea>
 					<br>
-		
-					 <input type="radio" id="confirm" name="confirm" value="confirm" checked><label for="confirm">동의</label>
-					 <input type="radio" id="noConfirm" name="confirm" value="noConfirm"><label for="noConfirm">비동의</label><br>
+					<div class="confirm-group">
+					    <input type="radio" id="confirm" name="confirm" value="confirm" checked>
+					    <label for="confirm">동의</label>
+					
+					    <input type="radio" id="noConfirm" name="confirm" value="noConfirm">
+					    <label for="noConfirm">비동의</label>
+					</div>
 					<br>
 					<input style="width: 100%; height: 50px; " type="button" id="btnSignUp" value="회원가입">
 				</form>
@@ -69,18 +77,36 @@
 				document.getElementById('frmSignUp').submit();
 			});						
 			  
-			  function checkPasswordMatch() {
-				    var password = document.getElementById('userPassword').value;
-				    var confirmPassword = document.getElementById('userPassword2').value;
-
-				    if (password === confirmPassword) {
-				        document.getElementById('passwordMatchMessage').innerHTML = '<span style="color: #008000;">비밀번호가 일치합니다.</span>';;
-				        document.getElementById('btnSignUp').disabled = false;
-				    } else {
-				        document.getElementById('passwordMatchMessage').innerHTML ='<span style="color: red;">비밀번호가 일치하지 않습니다.</span>';;
-				        document.getElementById('btnSignUp').disabled = true;
-				    }
-				}
+		  function checkPasswordMatch() {
+			    var password = document.getElementById('userPassword').value;
+			    var confirmPassword = document.getElementById('userPassword2').value;
+	
+			    if (password === confirmPassword) {
+			        document.getElementById('passwordMatchMessage').innerHTML = '<span style="color: #008000;">비밀번호가 일치합니다.</span>';;
+			        document.getElementById('btnSignUp').disabled = false;
+			    } else {
+			        document.getElementById('passwordMatchMessage').innerHTML ='<span style="color: red;">비밀번호가 일치하지 않습니다.</span>';;
+			        document.getElementById('btnSignUp').disabled = true;
+			    }
+			}
+			
+		  function checkBirthLength() {
+			  let userBirth = $('#userBirth').val();
+			  
+			  if (userBirth.length > 8) {
+				  alert ('생년월일은 8자리를 초과할 수 없습니다.');
+			  };
+		  };
+		  
+		  function checkPhoneForm() {
+			  let userPhone = $('#userPhone').val();
+			  var regex = /^010\d{8}$/;
+			  
+			  if (userPhone.length === 11 && !regex.test(userPhone)) {
+			    alert('입력하신 핸드폰 번호를 확인해주세요.');
+			  }
+			}
+			 
 		</script>
 	</body>
 </html>

@@ -113,38 +113,44 @@
       
       <script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
       <script>
-         
-         document.getElementById('btnLogin').addEventListener('click', function() {
-              let userEmail = document.getElementById('userEmail').value;
-              let userPassword = document.getElementById('userPassword').value;
 
-              let jsonData = {
-                  "userEmail": userEmail,
-                  "userPassword": userPassword
-              };
+	      document.getElementById('frmLogin').addEventListener('keydown', function (e) {
+	          if (e.key === 'Enter') {
+	             loginUser();
+	          }
+	      });
+      
+	      document.getElementById('btnLogin').addEventListener('click', loginUser);
 
-              $.ajax({
-                 
-                  method: 'POST',
-                  url: "<c:url value='/index/member/login' />",
-                  contentType: 'application/json',
-                  data: JSON.stringify(jsonData)
-                  
-              }).done(function(json) {
-                  let helloMessage = document.getElementById('helloMessage');
-                 
-                  if (json.resultCode === '1') {
-                	  helloMessage.innerText = '안녕하세요. ' + json.userEmail + '님!!';
-                      divHome.style.display = 'none';
-                      divLogin.style.display = 'block';
-                  } else {
-                      alert('아이디와 비밀번호를 다시 확인해 주세요.');
-                      helloMessage.innerText = '안녕하세요. HelloWorld에 오신 걸 환영합니다.';
-                      divHome.style.display = 'block';
-                      divLogin.style.display = 'none';
-                  }
-              });
-          });
+	      function loginUser() {
+	         let userEmail = document.getElementById('userEmail').value;
+	         let userPassword = document.getElementById('userPassword').value;
+
+	         let jsonData = {
+	            "userEmail": userEmail,
+	            "userPassword": userPassword
+	         };
+
+	         $.ajax({
+	            method: 'POST',
+	            url: "<c:url value='/index/member/login' />",
+	            contentType: 'application/json',
+	            data: JSON.stringify(jsonData)
+	         }).done(function (json) {
+	            let helloMessage = document.getElementById('helloMessage');
+
+	            if (json.resultCode === '1') {
+	               helloMessage.innerText = '안녕하세요. ' + json.userEmail + '님!!';
+	               divHome.style.display = 'none';
+	               divLogin.style.display = 'block';
+	            } else {
+	               alert('아이디와 비밀번호를 다시 확인해 주세요.');
+	               helloMessage.innerText = '안녕하세요. HelloWorld에 오신 걸 환영합니다.';
+	               divHome.style.display = 'block';
+	               divLogin.style.display = 'none';
+	            }
+	         });
+	      }
          
          
          let slideIndex = 0;

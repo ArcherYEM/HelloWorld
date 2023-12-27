@@ -254,3 +254,11 @@ li a:hover {
 .selected {
     background-color: lightblue;
  }
+
+.confirm-group {
+    text-align: center;
+}
+
+.divGender {
+	margin-bottom: 4px;
+}
