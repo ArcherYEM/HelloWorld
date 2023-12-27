@@ -26,6 +26,12 @@ body{
   border: 1px solid red;
 }
 
+.div-canvas{
+	width:515px;
+	height:320px;
+	position:relative;
+}
+
 .section2 {
   width: 29%;
   height: 100%;
@@ -56,4 +62,9 @@ body{
 	height: 100%;
 	padding: 3px;
 	border: 1px solid yellow;
+}
+
+.section3 img{
+	width:100px;
+	height:100px;
 }
