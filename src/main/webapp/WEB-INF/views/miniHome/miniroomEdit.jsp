@@ -17,8 +17,12 @@
   <div class="mnr-frame">
     <div class="section-over">
 	    <div class="section1">
-      	미니룸 배경
-        <canvas id="canvas" width="515" height="320"></canvas>
+	    	<div class="section1-title">
+      		미니룸 배경
+      	</div>
+      	<div class="section1-canvas">
+        	<canvas id="canvas" width="515" height="320"></canvas>
+        </div>
 	    </div>
 	    <div class="section2">
 	   	  배경 목록
