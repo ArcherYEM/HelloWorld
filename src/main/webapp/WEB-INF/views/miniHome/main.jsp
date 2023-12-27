@@ -30,7 +30,7 @@
 							</div>
 							<div class="profile-dot">---------------------------------</div>
 							<div class="profile-text font-kyobohand">
-								안녕하세요 ${sessionScope.userId.userEmail } 입니다.<br /> 미모최강 풀스택 개발자 입니다.
+								안녕하세요 이주빈 입니다.<br /> 미모최강 풀스택 개발자 이주빈 입니다.
 							</div>
 							<div class="profile-history">
 								<a 
@@ -40,7 +40,7 @@
 								<a href="#" class="profile-hs">▶ History</a>
 							</div>
 							<div class="profile-dot">---------------------------------</div>
-							<div class="profile-username font-kyobohand">이주빈&#128698;</div>
+							<div class="profile-username font-kyobohand"> ${sessionScope.userId.userName }&#128698;</div>
 							<div class="profile-dropDown">
 								<select>
 									<option value="" disabled selected hidden="">파도타기</option>
