@@ -37,9 +37,9 @@
 						<div class="profile-history">
 							<a 
 							  class="profile-edit" 
-							  onclick="openNewWindowMinihomeProfileEdit()">▶ Edit
+							  onclick="openNewWindowMinihomeProfileEdit()">Edit
 							</a>
-							<a href="#" class="profile-hs-hs">▶ History</a>
+							<a href="#" class="profile-hs">History</a>
 						</div>
 						<div class="profile-dot">---------------------------------</div>
 						<div class="profile-username font-kyobohand">이주빈&#128698;</div>
