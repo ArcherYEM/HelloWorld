@@ -49,20 +49,21 @@
 					
 					<div class="section">
 						<label for="userEmail">이메일주소</label>
-						<input type="button" id="btnEmailDuplcheck" value="중복체크"><br>
-						<div class="MatchMessage" id="emailFormMessage"></div>
+						<input type="button" id="btnEmailDuplcheck" value="중복체크">
+						<div class="" id="emailFormMessage"></div>
 						<input type="email" id="userEmail" name="userEmail" placeholder="이메일주소" 
 								class="widthFull" onblur="checkEmailForm()">
 					</div>
 					
 					<div class="section">
-						<label for="userPassword">비밀번호</label><br>
+						<label for="userPassword">비밀번호</label>
 						<input type="password" id="userPassword" name="userPassword" placeholder="비밀번호" class="widthFull" oninput="checkPasswordMatch()">
 					</div>
 					
 					<div class="section">
 						<div class="divPwCheck">
-							<label for="userPassword2">비밀번호 확인  </label><span id="passwordMatchMessage" class="MatchMessage"></span>
+							<label for="userPassword2">비밀번호 확인  </label>
+							<span id="passwordMatchMessage" class="MatchMessage"></span>
 						</div>
 						<input type="password" id="userPassword2" name="userPassword2" placeholder="비밀번호" class="widthFull" oninput="checkPasswordMatch()">
 					</div>
@@ -163,17 +164,19 @@
 	        }	
 			
 			document.getElementById('frmSignUp').submit();
-		});						
-		  
-	  function checkPasswordMatch() {
+		});
+		
+		// 비밀번호 일치 여부 확인
+	    function checkPasswordMatch() {
 		    var password = document.getElementById('userPassword').value;
 		    var confirmPassword = document.getElementById('userPassword2').value;
-
+		    var passwordMatchMessage = document.getElementById('passwordMatchMessage');
+		
 		    if (password === confirmPassword) {
-		        document.getElementById('passwordMatchMessage').innerHTML = '<span style="color: #008000;">비밀번호가 일치합니다.</span>';
+		        passwordMatchMessage.innerHTML = '<span style="color: #14ad14; font-weight: bold; font-size: 10px;">비밀번호가 일치합니다.</span>';
 		        document.getElementById('btnSignUp').disabled = false;
 		    } else {
-		        document.getElementById('passwordMatchMessage').innerHTML ='<span style="color: red;">비밀번호가 일치하지 않습니다.</span>';
+		        passwordMatchMessage.innerHTML = '<span style="color: red; font-weight: bold; font-size: 10px;">비밀번호가 일치하지 않습니다.</span>';
 		        document.getElementById('btnSignUp').disabled = true;
 		    }
 		}
