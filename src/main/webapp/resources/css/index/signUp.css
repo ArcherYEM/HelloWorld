@@ -12,7 +12,7 @@
 
 .grid-container {
 	display: grid;
-	grid-template-columns: 300px auto 300px;
+	grid-template-columns: auto 500px auto;
 }
 
 .grid-item {
@@ -21,5 +21,4 @@
 }
 
 .signUp-frame {
-	margin: 0 215px;
 }

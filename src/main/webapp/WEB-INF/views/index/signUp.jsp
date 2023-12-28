@@ -26,41 +26,71 @@
 			  	<h2 style="text-align : center">회원가입</h2>
 			  	
 				<form class="signUp-frame" id="frmSignUp" method="POST" action="/index/member/signUpConfirm">
-					<label for="userName">이름</label><br>
-					<input type="text" id="userName" name="userName" placeholder="이름" class="widthFull"><br>
-					<label for="userBirth">생년월일</label><br>
-					<input type="number" id="userBirth" name="userBirth" placeholder="생년월일 ex)19931013"
-						   class="widthFull" oninput="checkBirthLength()">
-					<div class="divGender">
-						<label>성별 : </label>
-						<input type="radio" id="userGenderM" name="userGender" value="M" checked><label for="userGenderM">남자</label>
-						<input type="radio" id="userGenderF" name="userGender" value="F"><label for="userGenderF">여자</label><br>
+					<div class="section">
+						<label for="userName">이름</label><br>
+						<input type="text" id="userName" name="userName" placeholder="이름" class="widthFull">
 					</div>
-					<label for="userEmail">이메일주소</label>
-					<input type="button" id="btnEmailDuplcheck" value="중복체크"><br>
-					<div class="MatchMessage" id="emailFormMessage"></div>
-					<input type="email" id="userEmail" name="userEmail" placeholder="이메일주소" class="widthFull" onblur="checkEmailForm()"><br>
-					<label for="userPassword">비밀번호</label><br>
-					<input type="password" id="userPassword" name="userPassword" placeholder="비밀번호" class="widthFull" oninput="checkPasswordMatch()"><br>
-					<div class="divPwCheck">
-						<label for="userPassword2">비밀번호 확인  </label><span id="passwordMatchMessage" class="MatchMessage"></span>
-					</div>
-					<input type="password" id="userPassword2" name="userPassword2" placeholder="비밀번호" class="widthFull" oninput="checkPasswordMatch()"><br>
-					<label for="userNickname">닉네임</label><br>
-					<input type="text" id="userNickname" name="userNickname" placeholder="닉네임" class="widthFull"><br>
-					<label for="userPhone">핸드폰번호</label><br>
-					<input type="number" id="userPhone" name="userPhone" placeholder="핸드폰번호"
-						   class="widthFull" oninput="checkPhoneForm()"><br>
-					<textarea style="width: 100%; height: 200px; margin-top:20px;resize: none;" value="안내문">개인정보수집동의</textarea>
-					<br>
-					<div class="confirm-group">
-					    <input type="radio" id="confirm" name="confirm" value="confirm" checked>
-					    <label for="confirm">동의</label>
 					
-					    <input type="radio" id="noConfirm" name="confirm" value="noConfirm">
-					    <label for="noConfirm">비동의</label>
+					<div class="section">
+						<label for="userBirth">생년월일</label>
+						<input type="number" id="userBirth" name="userBirth" placeholder="생년월일 ex)19931013"
+							   class="widthFull" oninput="checkBirthLength()">
 					</div>
-					<br>
+					
+					<div class="section">
+						<div class="divGender">
+							<label>성별 : </label>
+							<input type="radio" id="userGenderM" name="userGender" value="M" checked>
+							<label for="userGenderM">남자</label>
+							<input type="radio" id="userGenderF" name="userGender" value="F">
+							<label for="userGenderF">여자</label><br>
+						</div>
+					</div>
+					
+					<div class="section">
+						<label for="userEmail">이메일주소</label>
+						<input type="button" id="btnEmailDuplcheck" value="중복체크"><br>
+						<div class="MatchMessage" id="emailFormMessage"></div>
+						<input type="email" id="userEmail" name="userEmail" placeholder="이메일주소" 
+								class="widthFull" onblur="checkEmailForm()">
+					</div>
+					
+					<div class="section">
+						<label for="userPassword">비밀번호</label><br>
+						<input type="password" id="userPassword" name="userPassword" placeholder="비밀번호" class="widthFull" oninput="checkPasswordMatch()">
+					</div>
+					
+					<div class="section">
+						<div class="divPwCheck">
+							<label for="userPassword2">비밀번호 확인  </label><span id="passwordMatchMessage" class="MatchMessage"></span>
+						</div>
+						<input type="password" id="userPassword2" name="userPassword2" placeholder="비밀번호" class="widthFull" oninput="checkPasswordMatch()">
+					</div>
+					
+					<div class="section">
+						<label for="userNickname">닉네임</label>
+						<input type="text" id="userNickname" name="userNickname" placeholder="닉네임" class="widthFull">
+					</div>
+					
+					<div class="section">
+						<label for="userPhone">핸드폰번호</label>
+						<input type="number" id="userPhone" name="userPhone" placeholder="핸드폰번호"
+							   class="widthFull" oninput="checkPhoneForm()">
+					</div>
+					
+					<div class="section">
+						<textarea style="width: 100%; height: 200px; margin-top:20px;resize: none;">개인정보수집동의</textarea>
+					</div>
+					
+					<div class="section">
+						<div class="confirm-group">
+						    <input type="radio" id="confirm" name="confirm" value="confirm" checked>
+						    <label for="confirm">동의</label>
+						    <input type="radio" id="noConfirm" name="confirm" value="noConfirm">
+						    <label for="noConfirm">비동의</label>
+						</div>
+					</div>
+					
 					<input style="width: 100%; height: 50px; " type="button" id="btnSignUp" value="회원가입">
 				</form>
 		  	</div>
