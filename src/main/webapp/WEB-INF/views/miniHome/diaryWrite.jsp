@@ -89,24 +89,24 @@
 				</div>
 				
 				<div class="menu-container">
-					<div class="menu-content">
-						<a href="/mnHome/mainView">홈</a>
-					</div>
-					<div class="menu-content-clicked">
-						<a href="/mnHome/diaryView">다이어리</a>
-					</div>
-					<div class="menu-content">
-						<a href="/mnHome/albumView">사진첩</a>
-					</div>
-					<div class="menu-content">
-						<a href="/mnHome/boardView">게시판</a>
-					</div>
-					<div class="menu-content">
-						<a href="/mnHome/visitView">방명록</a>
-					</div>
-					<div class="menu-content">
-						<a href="/mnHome/settingView">관리</a>
-					</div>
+					    <div class="menu-content-clicked">
+					        <a href="<c:url value='/mnHome/mainView'/>">홈</a>
+					    </div>
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/diaryView'/>">
+					        <a href="#">다이어리</a>
+					    </div>
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/albumView'/>">
+					        <a href="#">사진첩</a>
+					    </div>
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/boardView'/>">
+					        <a href="#">게시판</a>
+					    </div>
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/visitView'/>">
+					        <a href="#">방명록</a>
+					    </div>
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView'/>">
+					        <a href="#">관리</a>
+					    </div>
 				</div>
 				
 			</div>
@@ -149,6 +149,7 @@
 		</div>
 	</div>
 </div>
+	<script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
 	<script src="../../../../resources/js/default.js"></script>
 	<script>
 	$.datepicker.setDefaults({
