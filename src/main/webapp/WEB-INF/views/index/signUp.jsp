@@ -17,13 +17,15 @@
       <div class="grid-container">
         <div class="grid-item"></div>
         
-        <div class="grid-item">
+        <div class="grid-item content">
            <div id="divUserInfo">
 <!--               <div id="signUplogo"> -->
-            <img class="index-header-logo otherPage-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+			<a class="logoATag" href="<c:url value='/'/>">
+            	<img class="index-header-logo otherPage-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+         	</a>
          </div>
             
-              <h2 style="text-align : center">회원가입</h2>
+              <div class="signUp-title">회원가입</div>
               
             <form class="signUp-frame" id="frmSignUp" method="POST" action="/index/member/signUpConfirm">
                <div class="section">

@@ -4,6 +4,13 @@
 	margin-right: auto;
 }
 
+.signUp-title {
+	font-size: 25px;
+	font-weight: bold;
+	text-align: center;
+	margin: 20px 0;
+}
+
 .widthFull {
 	width: 100%;
 	padding: 8px 10px;
@@ -36,6 +43,7 @@
 .email-right {
 	flex: 1;
 	text-align: right;
+	justify-content: center;
 }
 
 .pw-group {
@@ -50,6 +58,7 @@
 .pw-right {
 	flex: 1;
 	text-align: right;
+	justify-content: center;
 }
 
 .info-check {
