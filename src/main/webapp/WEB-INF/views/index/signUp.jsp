@@ -43,12 +43,12 @@
 					<label for="userPassword">비밀번호</label><br>
 					<input type="password" id="userPassword" name="userPassword" placeholder="비밀번호" class="widthFull" oninput="checkPasswordMatch()"><br>
 					<div class="divPwCheck">
-						<label for="userPassword2">비밀번호 확인  </label><span id="passwordMatchMessage" class="MatchMessage"></span>
+						<label for="userPassword2">비밀번호 확인   </label><span id="passwordMatchMessage" class="MatchMessage"></span>
 					</div>
 					<input type="password" id="userPassword2" name="userPassword2" placeholder="비밀번호" class="widthFull" oninput="checkPasswordMatch()"><br>
 					<label for="userNickname">닉네임</label><br>
 					<input type="text" id="userNickname" name="userNickname" placeholder="닉네임" class="widthFull"><br>
-					<label for="userPhone">핸드폰번호</label><br>
+					<label for="userPhone">핸드폰번호  </label><input type="button" id="btnPhoneDuplcheck" value="중복체크"><br>
 					<input type="number" id="userPhone" name="userPhone" placeholder="핸드폰번호"
 						   class="widthFull" oninput="checkPhoneForm()"><br>
 					<textarea style="width: 100%; height: 200px; margin-top:20px;resize: none;" value="안내문">개인정보수집동의</textarea>
@@ -81,7 +81,51 @@
 				
 				document.getElementById('frmSignUp').submit();
 			});						
-			  
+			
+			document.getElementById('btnEmailDuplcheck').addEventListener('click', function () {
+				let userEmail = document.getElementById('userEmail').value;
+				
+				let jsonData = {
+			            "userEmail": userEmail,
+			         };
+
+			         $.ajax({
+			            method: 'POST',
+			            url: "<c:url value='/index/member/emailCheck' />",
+			            contentType: 'application/json',
+			            data: JSON.stringify(jsonData)
+			         }).done(function (json) {
+
+			            if (json.resultCode === '1') {
+			            	alert('사용 가능한 이메일 입니다.');
+			            } else {
+			               alert('이미 사용 중인 이메일 입니다.');
+			            }
+			         });
+			});
+			
+			document.getElementById('btnPhoneDuplcheck').addEventListener('click', function () {
+				let userPhone = document.getElementById('userPhone').value;
+				
+				let jsonData = {
+			            "userPhone": userPhone,
+			         };
+
+			         $.ajax({
+			            method: 'POST',
+			            url: "<c:url value='/index/member/phoneCheck' />",
+			            contentType: 'application/json',
+			            data: JSON.stringify(jsonData)
+			         }).done(function (json) {
+
+			            if (json.resultCode === '1') {
+			            	alert('사용 가능한 전화번호 입니다.');
+			            } else {
+			               alert('이미 사용 중인 전화번호 입니다.');
+			            }
+			         });
+			});
+			
 		  function checkPasswordMatch() {
 			    var password = document.getElementById('userPassword').value;
 			    var confirmPassword = document.getElementById('userPassword2').value;

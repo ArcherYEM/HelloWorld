@@ -13,4 +13,8 @@ public interface MemberService {
 	public Map login(Map map) throws Exception ;
 
 	void logout(HttpSession session, HttpServletRequest request, HttpServletResponse response);
+
+	public Map selectEmail(Map map);
+
+	public Map selectPhone(Map map);
 }

@@ -34,8 +34,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    ,userBirth
 		    ,userPhone
 		from user
-		where userEmail = #{userEmail}
+		where 1=1
+		<if test="userEmail != null">
+			and userEmail = #{userEmail}
+		</if>
+		<if test="userPassword != null">
 			and userPassword = #{userPassword}
+		</if>
+		<if test="userPhone != null">
+			and userPhone = #{userPhone}
+		</if>
 		
 	</select>
 	

@@ -1,5 +1,6 @@
 package com.core.tjoeun.index.member.service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -52,6 +53,22 @@ public class MemberServiceImpl implements MemberService{
             return null;
         }
     }
+   
+   @Override
+   @Transactional(readOnly = true)
+   public Map selectEmail(Map map) {
+	   Map emailMap = new HashMap();
+	   emailMap = memberDao.selectUserInfo(map);
+	   return emailMap;
+   }
+   
+   @Override
+   @Transactional(readOnly = true)
+   public Map selectPhone(Map map) {
+	   Map phoneMap = new HashMap();
+	   phoneMap = memberDao.selectUserInfo(map);
+	   return phoneMap;
+   }
 
     @Override
     public void logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {

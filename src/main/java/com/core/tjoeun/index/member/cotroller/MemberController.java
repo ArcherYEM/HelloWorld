@@ -80,9 +80,58 @@ public class MemberController {
 
     @RequestMapping("/signUp")
     public String signUp() {
-        return "index/signUp";
+    	return "index/signUp";
+    }
+    
+    @RequestMapping(value="/emailCheck", method=RequestMethod.POST)
+    @ResponseBody
+    public Map emailCheck(@RequestBody Map req) {
+        Map resultMap = new HashMap();
+        try {
+            Map emailMap = new HashMap();
+            emailMap.put("userEmail", req.get("userEmail"));
+            resultMap = memberService.selectEmail(emailMap);
+
+            // resultMap 초기화
+            if(resultMap == null) {
+                resultMap = new HashMap();
+                resultMap.put("resultCode", "1");
+            } else {
+                resultMap.put("resultCode", "0");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            resultMap.put("resultCode", "0");
+        }
+        
+        return resultMap;
+    }
+    
+    @RequestMapping(value="/phoneCheck", method=RequestMethod.POST)
+    @ResponseBody
+    public Map phoneCheck(@RequestBody Map req) {
+    	Map resultMap = new HashMap();
+    	try {
+    		Map phoneMap = new HashMap();
+    		phoneMap.put("userPhone", req.get("userPhone"));
+    		resultMap = memberService.selectEmail(phoneMap);
+    		
+    		if(resultMap == null) {
+    			resultMap = new HashMap();
+    			resultMap.put("resultCode", "1");
+    		} else {
+    			resultMap.put("resultCode", "0");
+    		}
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    		resultMap.put("resultCode", "0");
+    	}
+    	
+    	return resultMap;
     }
 
+    
+    
     @RequestMapping("/findId")
     public String findId() {
         return "index/findId";
