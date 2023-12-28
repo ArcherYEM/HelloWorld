@@ -24,6 +24,34 @@
 	margin-top: 20px; 
 }
 
+.email-group {
+	display: flex;
+	justify-content: space-between;
+}
+
+.email-left {
+	flex: 1;
+}
+
+.email-right {
+	flex: 1;
+	text-align: right;
+}
+
+.pw-group {
+	display: flex;
+	justify-content: space-between;
+}
+
+.pw-left {
+	flex: 1;
+}
+
+.pw-right {
+	flex: 1;
+	text-align: right;
+}
+
 .info-check {
 	font-size: 11px;
 	border: 1px solid gray;
