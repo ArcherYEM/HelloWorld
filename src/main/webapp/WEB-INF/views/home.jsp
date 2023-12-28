@@ -74,11 +74,11 @@
             <div class="slideshow-container">
    
                <div class="mySlides fade">
-                 <img src="<c:url value="/resources/images/mainSlideImg1.jpg"/>" style="width:100%">
+                 <img src="<c:url value="/resources/images/mainSlideImg1.jpg"/>" >
                </div>
                
                <div class="mySlides fade">
-                 <img src="<c:url value="/resources/images/sildeImg1.png"/>" style="width:100%">
+                 <img src="<c:url value="/resources/images/sildeImg1.png"/>" >
                </div>
                
                <br>
