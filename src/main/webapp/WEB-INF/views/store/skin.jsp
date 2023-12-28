@@ -16,18 +16,20 @@
 	
 	<body>
 	<div class="index-frame">
-		<div style="display:flex; flex-direction: row; align-items: center;">
-			<a href="<c:url value='/'/>"  style="width:20%"><img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>"></a>
-			<h5 class="right">내 도토리: 1234개</h5>
-			<ul class="right">
-				<li><a href="<c:url value='/store/minimiView'/>">상점</a></li>
-				<li><a href="<c:url value='/notice/noticeView'/>">공지사항</a></li>
-				<li><a href="<c:url value="/helloworld/minihome/main" />">내 미니홈피</a></li>
-				<li><a href="<c:url value="/" />">로그아웃</a></li>
-			</ul>
-			
-		</div>
-		
+		<div class="divIndexMenu index-header">
+	      <div class="index-header-left">
+	         <a class="logoATag" href="<c:url value='/'/>">
+	           <img class="index-header-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+	         </a>
+	       </div>
+				<h5 class="right">내 도토리: 1234개</h5>
+	       <div class="index-header-right">
+	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
+	            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
+	            <a href="<c:url value="/helloworld/minihome/main" />" class="index-a-mnh">내 미니홈피</a>
+				<a href="<c:url value="/" />" class="index-a-logout">로그아웃</a>
+	       </div>
+      </div>
 		
 		<div id="divHiUser">
 			<a class="storeAtag" href="/store/minimiView">미니미</a>
