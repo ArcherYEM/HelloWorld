@@ -11,6 +11,7 @@
 		<title>HelloWorld</title>
 		<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
 		<link  href="/resources/css/index/main.css" rel="stylesheet">
+		<link  href="/resources/css/index/store.css" rel="stylesheet">
 	</head>
 	
 	<body>
