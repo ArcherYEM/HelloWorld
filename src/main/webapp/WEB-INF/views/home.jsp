@@ -43,7 +43,7 @@
                   <!-- <label for="userEmail">아이디: </label> -->
                   <input type="email" id="userEmail" name="userEmail" placeholder="Email"><br>
                   <br>
-                  <!-- <label for="userPw">비밀번호: </label> -->
+<!--                   <label for="userPw">비밀번호: </label> -->
                   <input type="password" id="userPassword" name="userPassword" placeholder="Password"><br>
                   <br>
                   <input type="button" id="btnLogin" value="로그인"><br>
@@ -63,9 +63,7 @@
 <!--          로그인후 시점 -->
          <div id="divLogin" class="divLogin">
             <div id="divMainMinimi">
-               <span>
-                  <img id="mainMinimi" src="<c:url value="/resources/images/PepeIcon.gif"/>">
-               </span>
+                <img id="mainMinimi" src="<c:url value="/resources/images/PepeIcon.gif"/>">
             </div>
             <div>
                  <form id="logoutForm" action="<c:url value='/main/member/logout' />" method="post">
