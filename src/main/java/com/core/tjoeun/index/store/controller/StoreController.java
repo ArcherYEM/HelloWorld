@@ -1,11 +1,24 @@
 package com.core.tjoeun.index.store.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.core.tjoeun.index.store.service.StoreService;
 
 @Controller
-public class StoreContoller {
+public class StoreController {
 
+	@Autowired
+	StoreService storeService;
+	
 	@RequestMapping(value = "/store/minimiView")
 	public String minimi() {
 		
@@ -31,7 +44,13 @@ public class StoreContoller {
 	}
 
 	@RequestMapping(value = "/store/bgmView")
-	public String bgm() {
+	public String getBgmList(Model model) {
+		try {
+			List<Map> bgm = storeService.getBgmList();
+			model.addAttribute("bgmInfo",bgm);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		return "/store/bgm";
 	}
