@@ -15,6 +15,7 @@
 	<body>
 		<div class="grid-container">
 		  <div class="grid-item"></div>
+		  
 		  <div class="grid-item">
 		  	<div id="divUserInfo">
 <!-- 		  		<div id="signUplogo"> -->
@@ -63,8 +64,8 @@
 				</form>
 		  	</div>
 			  	
-		  </div>
 		  <div class="grid-item"></div>  
+		  </div>
 		
 
 		<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
