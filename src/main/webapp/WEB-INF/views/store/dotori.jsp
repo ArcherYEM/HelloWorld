@@ -31,7 +31,6 @@
 	       </div>
       </div>
 		
-		
 		<div id="divHiUser">
 			<a class="storeAtag" href="/store/minimiView">미니미</a>
 			<a class="storeAtag" href="/store/skinView">스킨</a>

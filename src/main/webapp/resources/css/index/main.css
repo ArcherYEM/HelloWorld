@@ -216,8 +216,6 @@ to {
 	opacity: 1
 }
 
-
-
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
 	.text {
@@ -225,61 +223,11 @@ to {
 	}
 }
 
-/*nav bar css*/
-ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-}
-
-li {
-	float: left;
-}
-
-li a {
-	display: block;
-	color: black;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-}
-
-li a:hover {
-	background-color: #ff8c1a;
-	color: white;
-}
-
 .right {
 	margin-left: auto;
 }
 
 /*******signUp.jsp********************************/
-#divUserInfo {
-	width: 50%;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.widthFull {
-	width: 100%;
-	padding: 8px 10px;
-	margin: 8px 0;
-}
-
-.grid-container {
-	display: grid;
-	grid-template-columns: 300px auto 300px;
-}
-
-.grid-item {
-	padding: 20px;
-	/*  text-align: center; */
-}
-
-.signUp-frame {
-	margin: 0 215px;
-}
 
 /* 팀정보 기재공간 위치 고정 */
 .bottom-fix {
