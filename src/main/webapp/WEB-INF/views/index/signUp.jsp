@@ -37,9 +37,10 @@
 					<input type="email" id="userEmail" name="userEmail" placeholder="이메일주소" class="widthFull"><br>
 					<label for="userPassword">비밀번호</label><br>
 					<input type="password" id="userPassword" name="userPassword" placeholder="비밀번호" class="widthFull" oninput="checkPasswordMatch()"><br>
-					<label for="userPassword2">비밀번호 확인  </label><span id="passwordMatchMessage"></span><br>
+					<div class="divPwCheck">
+						<label for="userPassword2">비밀번호 확인  </label><span id="passwordMatchMessage"></span>
+					</div>
 					<input type="password" id="userPassword2" name="userPassword2" placeholder="비밀번호" class="widthFull" oninput="checkPasswordMatch()"><br>
-					<div id="passwordMatchMessage"></div>
 					<label for="userNickname">닉네임</label><br>
 					<input type="text" id="userNickname" name="userNickname" placeholder="닉네임" class="widthFull"><br>
 					<label for="userPhone">핸드폰번호</label><br>

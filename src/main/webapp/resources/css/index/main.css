@@ -295,3 +295,13 @@ li a:hover {
 .divGender {
 	margin-bottom: 4px;
 }
+
+.divPwCheck {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#passwordMatchMessage {
+	font-size: 14px;
+}
