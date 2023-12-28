@@ -177,6 +177,10 @@
    margin: auto;
 }
 
+.slideshow-container img {
+	width: 100%;
+}
+
 /* The dots/bullets/indicators */
 .dot {
    height: 15px;
