@@ -7,4 +7,6 @@ public interface MemberMapper {
 	public int insertUserInfo(Map map);
 	
 	public Map selectUserInfo(Map map);
+	
+	public Map selectUserId(Map map);
 }

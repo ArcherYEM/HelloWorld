@@ -73,4 +73,13 @@ public class MemberServiceImpl implements MemberService{
         response.setHeader("Pragma", "no-cache");
         response.setHeader("Expires", "0");
     }
+
+    
+	@Override
+	@Transactional(readOnly = true)
+	public Map findId(Map map) {
+		
+		
+		return memberDao.selectUserId(map);
+	}
 }

@@ -39,4 +39,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 	</select>
 	
+	<select id="selectUserId" parameterType="map" resultType="map">
+		select 
+			userEmail 
+		from user 
+		where 
+			userName = #{userName} 
+		and userPhone = #{userPhone} 
+	</select>
+	
 </mapper>

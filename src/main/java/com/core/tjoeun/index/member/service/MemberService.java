@@ -13,4 +13,6 @@ public interface MemberService {
 	public Map login(Map map) throws Exception ;
 
 	void logout(HttpSession session, HttpServletRequest request, HttpServletResponse response);
+	
+	public Map findId(Map map);
 }

@@ -25,8 +25,8 @@
 			  		 </a>
 				</div>
 				<div id="divFindIdResult">
-					<p class="p-userInfo">양은모님의 아이디 입니다.</p>
-					<p class="p-userEmail">DevYem@gmail.com</p>
+					<p class="p-userInfo"><c:out value="${userName }"/>님의 아이디 입니다.</p>
+					<p class="p-userEmail"><c:out value="${userId }"/></p>
 					<div class="after-link">
 		               <a href="<c:url value='/'/>">로그인</a> / 
 		               <a href="<c:url value='/index/member/findPw'/>">비밀번호 찾기</a>

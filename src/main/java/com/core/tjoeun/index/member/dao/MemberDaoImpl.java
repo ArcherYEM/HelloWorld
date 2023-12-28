@@ -28,4 +28,11 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return mapper.selectUserInfo(map);
 	}
+
+	@Override
+	public Map selectUserId(Map map) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		
+		return mapper.selectUserId(map);
+	}
 }

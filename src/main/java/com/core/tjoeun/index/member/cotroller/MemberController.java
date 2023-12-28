@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -88,8 +89,20 @@ public class MemberController {
         return "index/findId";
     }
 
-    @RequestMapping(value="/afterFindId")
-    public String afterFindId() {
+    @RequestMapping(value="/afterFindId", method=RequestMethod.POST)
+    public String afterFindId(Model model, @RequestParam Map map) {
+    	System.out.println(map);
+    	String userId = "";
+    	Map resultMap = memberService.findId(map);
+    	
+    	if(resultMap.size() > 0) {
+    		userId = (String)resultMap.get("userEmail");
+    		
+    	}
+    	model.addAttribute("userId", userId);
+    	model.addAttribute("userName", map.get("userName"));
+    	
+    	
         return "index/findIdResult";
      
     }
@@ -114,4 +127,5 @@ public class MemberController {
     public String indexHome() {
     	return "home";
     }
+    
 }
