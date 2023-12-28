@@ -18,6 +18,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			or artist like concat('%',#{content},'%')
 		</if>
 	</select>
+	
+	<select id="getProductList" resultType="map" parameterType="map">
+		select 
+			seq
+		    ,category
+		    ,productName
+		    ,contentPath
+		    ,productPrice
+		from store
+		where 1 = 1
+	</select>
 
 
 

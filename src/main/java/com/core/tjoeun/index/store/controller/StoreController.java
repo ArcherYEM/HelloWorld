@@ -20,11 +20,11 @@ public class StoreController {
 	@Autowired
 	StoreService storeService;
 	
-	@RequestMapping(value = "/store/minimiView")
-	public String minimi() {
-		
-		return "store/minimi";
-	}
+//	@RequestMapping(value = "/store/minimiView")
+//	public String minimi() {
+//		
+//		return "store/minimi";
+//	}
 	
 	@RequestMapping(value = "/store/skinView")
 	public String skin() {
@@ -52,8 +52,18 @@ public class StoreController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return "/store/bgm";
+	}
+	
+	@RequestMapping(value = "/store/minimiView")
+	public String getProductList(Model model, @RequestParam Map map) {
+		try {
+			List<Map> minimi = storeService.getProductList(map);
+			model.addAttribute("minimi",minimi);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "/store/minimi";
 	}
 	
 }
