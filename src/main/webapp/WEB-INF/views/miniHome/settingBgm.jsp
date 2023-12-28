@@ -139,9 +139,9 @@
 							
 						</div>
 						
+							<div id="divDivideLine"></div>
 							
-							
-							<div class="bgm-frame">
+							<div class="bgm-frame bgm-myList">
 							
 							<div class="menuTitle">보유 BGM</div>
 		
@@ -161,7 +161,7 @@
 							
 							
 							<div class="bgm-list-group bgm-grid">
-								<div><input type=""></div>
+								<div><input type="checkbox"></div>
 								<div>순번</div>
 								<div>제목</div>
 								<div>아티스트</div>
