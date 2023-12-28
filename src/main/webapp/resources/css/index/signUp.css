@@ -20,5 +20,30 @@
 	/*  text-align: center; */
 }
 
-.signUp-frame {
+.section {
+	margin-top: 20px; 
 }
+
+.info-check {
+	font-size: 11px;
+	border: 1px solid gray;
+	border-radius: 2px;
+	padding: 10px;
+	height: 150px;
+	overflow-y: auto;
+}
+
+.confirm-group {
+	margin-bottom: 50px;
+	text-align: center;
+}
+
+.join-ok input{
+	width: 100%;
+	height: 50px;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+
+
