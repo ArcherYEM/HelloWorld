@@ -46,14 +46,14 @@ a {
    background-color: #ff8c1a;
    display: flex;
    align-items: center;
-   color: black;
    word-break: keep-all;
 }
 
-#divHiUser h3 {
+.hello-message {
    color: white;
    margin: 20px;
-   font-size: 35px;
+   font-size: 25px;
+   font-weight: bold;
 }
 
 .divIndexMenu {

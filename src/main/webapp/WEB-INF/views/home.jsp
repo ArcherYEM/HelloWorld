@@ -31,9 +31,9 @@
       </div>
       
       <div id="divHiUser">
-		  <h3 id="helloMessage">
+		  <p class="hello-message" id="helloMessage">
 		    HelloWorld 에 오신 걸 환영합니다.
-		  </h3>
+		  </p>
 	  </div>
 	  
       <div class="divIndexMain">
