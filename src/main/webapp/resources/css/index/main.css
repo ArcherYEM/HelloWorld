@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+.logoATag {
+	width:20%;
+}
+
 .index-frame{
    width:90%;
    margin:0 auto;
@@ -18,6 +22,15 @@
    margin-left: 100px;
 }
 
+.divIndexMain {
+	display: flex;
+	flex-direction: row;
+}
+
+.frmLogin {
+	text-align: center;
+}
+
 #divHiUser {
    height: 60px;
    background-color: #ff8c1a;
@@ -28,7 +41,15 @@
 }
 
 #divHiUser h3 {
+   color: white;
    margin: 20px;
+   font-size: 35px;
+}
+
+.divIndexMenu {
+	display:flex; 
+	flex-direction: row; 
+	align-items: center;
 }
 
 #mainMinimi {
@@ -46,6 +67,10 @@
    border-color: navy;
 }
 
+.divdot {
+	text-align:center;
+}
+
 .divLogin {
    padding-top: 80px;
    padding-left: 30px;
@@ -53,6 +78,10 @@
    height: 60%;
    border-color: navy;
    text-align: center;
+}
+
+.signUpATag {
+	margin-right:50px;
 }
 
 #divLogin a {

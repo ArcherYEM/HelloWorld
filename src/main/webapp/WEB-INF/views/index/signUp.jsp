@@ -100,14 +100,18 @@
 		  };
 		  
 		  function checkPhoneForm() {
-			  let userPhone = $('#userPhone').val();
-			  var regex = /^010\d{8}$/;
-			  
-			  if (userPhone.length === 11 && !regex.test(userPhone)) {
-			    alert('입력하신 핸드폰 번호를 확인해주세요.');
-			    
-			    $('#userBirth').val(userBirth.slice(0, 10));
-			  }
+			    let userPhone = $('#userPhone').val();
+
+			    if (userPhone.length > 11) {
+			        alert('입력하신 핸드폰 번호를 확인해주세요.');
+			        $('#userPhone').val(userPhone.slice(0, 11));
+			        return;
+			    }
+
+			    if (userPhone.length >= 3 && userPhone.slice(0, 3) !== "010") {
+			        alert('전화번호는 "010"으로 시작해야 합니다.');
+			        $('#userPhone').val('');
+			    }
 			}
 			 
 		</script>
