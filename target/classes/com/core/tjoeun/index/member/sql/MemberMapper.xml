@@ -4,48 +4,56 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core.tjoeun.index.member.sql.MemberMapper">
 
-	<insert id="insertUserInfo" parameterType="map">
-		insert into user (
-			userEmail
-		    ,userPassword
-		    ,userName
-		    ,userNickname
-		    ,userGender
-		    ,userBirth
-		    ,userPhone
-		) values (
-			#{userEmail}
-		    ,#{userPassword}
-		    ,#{userName}
-		    ,#{userNickname}
-		    ,#{userGender}
-		    ,#{userBirth}
-		    ,#{userPhone}
-		)	
-	</insert>
-	
-	<select id="selectUserInfo" parameterType="map" resultType="map">
-		select 
-			userEmail
-		    ,userPassword
-		    ,userName
-		    ,userNickname
-		    ,userGender
-		    ,userBirth
-		    ,userPhone
-		from user
-		where userEmail = #{userEmail}
-			and userPassword = #{userPassword}
-		
-	</select>
-	
-	<select id="selectUserId" parameterType="map" resultType="map">
-		select 
-			userEmail 
-		from user 
-		where 
-			userName = #{userName} 
-		and userPhone = #{userPhone} 
-	</select>
-	
+   <insert id="insertUserInfo" parameterType="map">
+      insert into user (
+         userEmail
+          ,userPassword
+          ,userName
+          ,userNickname
+          ,userGender
+          ,userBirth
+          ,userPhone
+      ) values (
+         #{userEmail}
+          ,#{userPassword}
+          ,#{userName}
+          ,#{userNickname}
+          ,#{userGender}
+          ,#{userBirth}
+          ,#{userPhone}
+      )   
+   </insert>
+   
+   <select id="selectUserInfo" parameterType="map" resultType="map">
+      select 
+         userEmail
+          ,userPassword
+          ,userName
+          ,userNickname
+          ,userGender
+          ,userBirth
+          ,userPhone
+      from user
+      where 1=1
+         <if test="userEmail != null">
+            and userEmail = #{userEmail}
+         </if>
+         <if test="userPassword != null">
+            and userPassword = #{userPassword}
+         </if>
+         <if test="userPhone != null">
+            and userPhone = #{userPhone}
+         </if>
+      
+   </select>
+   
+   <select id="selectUserId" parameterType="map" resultType="map">
+      select 
+         userEmail 
+      from user 
+      where 
+         userName = #{userName} 
+      and userPhone = #{userPhone} 
+   </select>
+   
 </mapper>
