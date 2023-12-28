@@ -76,7 +76,7 @@ document.addEventListener('mousemove', function(e) {
         var newX = e.clientX - offsetX - divCanvas.offsetLeft;
         var newY = e.clientY - offsetY - divCanvas.offsetTop;
         newX = Math.max(0, Math.min(newX, divCanvas.offsetWidth - draggingImg.offsetWidth));
-        newY = Math.max(-20, Math.min(newY, divCanvas.offsetHeight - draggingImg.offsetHeight));
+        newY = Math.max(0, Math.min(newY, divCanvas.offsetHeight - draggingImg.offsetHeight));
         draggingImg.style.left = newX + 'px';
         draggingImg.style.top = newY + 'px';
     }
