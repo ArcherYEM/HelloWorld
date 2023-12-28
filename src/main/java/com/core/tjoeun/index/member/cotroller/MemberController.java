@@ -91,22 +91,69 @@ public class MemberController {
 
     @RequestMapping(value="/afterFindId", method=RequestMethod.POST)
     public String afterFindId(Model model, @RequestParam Map map) {
-    	System.out.println(map);
-    	String userId = "";
-    	Map resultMap = memberService.findId(map);
-    	
-    	if(resultMap.size() > 0) {
-    		userId = (String)resultMap.get("userEmail");
-    		
-    	}
-    	model.addAttribute("userId", userId);
-    	model.addAttribute("userName", map.get("userName"));
-    	
-    	
+       System.out.println(map);
+       String userId = "";
+       Map resultMap = memberService.findId(map);
+       
+       if(resultMap.size() > 0) {
+          userId = (String)resultMap.get("userEmail");
+          
+       }
+       model.addAttribute("userId", userId);
+       model.addAttribute("userName", map.get("userName"));
+       
+       
         return "index/findIdResult";
      
     }
 
+    @RequestMapping(value="/emailCheck", method=RequestMethod.POST)
+    @ResponseBody
+    public Map emailCheck(@RequestBody Map req) {
+        Map resultMap = new HashMap();
+        try {
+            Map emailMap = new HashMap();
+            emailMap.put("userEmail", req.get("userEmail"));
+            resultMap = memberService.selectEmail(emailMap);
+
+            // resultMap 초기화
+            if(resultMap == null) {
+                resultMap = new HashMap();
+                resultMap.put("resultCode", "1");
+            } else {
+                resultMap.put("resultCode", "0");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            resultMap.put("resultCode", "0");
+        }
+
+        return resultMap;
+    }
+
+    @RequestMapping(value="/phoneCheck", method=RequestMethod.POST)
+    @ResponseBody
+    public Map phoneCheck(@RequestBody Map req) {
+       Map resultMap = new HashMap();
+       try {
+          Map phoneMap = new HashMap();
+          phoneMap.put("userPhone", req.get("userPhone"));
+          resultMap = memberService.selectPhone(phoneMap);
+
+          if(resultMap == null) {
+             resultMap = new HashMap();
+             resultMap.put("resultCode", "1");
+          } else {
+             resultMap.put("resultCode", "0");
+          }
+       } catch (Exception e) {
+          e.printStackTrace();
+          resultMap.put("resultCode", "0");
+       }
+
+       return resultMap;
+    }
+    
     @RequestMapping(value = "/findPw", method = RequestMethod.GET)
     public String findPw() {
         return "index/findPw";
@@ -125,7 +172,7 @@ public class MemberController {
     
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String indexHome() {
-    	return "home";
+       return "home";
     }
     
 }

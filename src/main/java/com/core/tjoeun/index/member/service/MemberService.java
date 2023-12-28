@@ -15,4 +15,8 @@ public interface MemberService {
 	void logout(HttpSession session, HttpServletRequest request, HttpServletResponse response);
 	
 	public Map findId(Map map);
+
+	public Map selectEmail(Map map);
+
+	public Map selectPhone(Map map);
 }
