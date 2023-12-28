@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.core.tjoeun.index.store.service.StoreService;
@@ -44,9 +45,9 @@ public class StoreController {
 	}
 
 	@RequestMapping(value = "/store/bgmView")
-	public String getBgmList(Model model) {
+	public String getBgmList(Model model, @RequestParam Map map) {
 		try {
-			List<Map> bgm = storeService.getBgmList();
+			List<Map> bgm = storeService.getBgmList(map);
 			model.addAttribute("bgmInfo",bgm);
 		} catch (Exception e) {
 			e.printStackTrace();
