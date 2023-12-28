@@ -19,11 +19,11 @@ public class StoreServiceImpl implements StoreService {
 
 	@Override
 	@Transactional(readOnly= false)
-	public List<Map> getBgmList() throws Exception {
-		if(storeDao.getBgmList()==null) {
+	public List<Map> getBgmList(Map map) throws Exception {
+		if(storeDao.getBgmList(map)==null) {
 			throw new Exception();
 		}		
-		return storeDao.getBgmList();
+		return storeDao.getBgmList(map);
 	}
 
 }

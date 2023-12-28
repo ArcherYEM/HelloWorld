@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core.tjoeun.index.store.sql.StoreMapper">
 	
-	<select id="getBgmList" resultType="map">
+	<select id="getBgmList" resultType="map" parameterType="map">
 		select 
 			seq
 		    ,title
@@ -12,7 +12,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    ,runningTime
 		    ,bgmPrice
 		from bgm
-	
+		where 1 = 1
+		<if test="null != content and '' != content">
+			and title like concat('%',#{content},'%')
+			or artist like concat('%',#{content},'%')
+		</if>
 	</select>
 
 

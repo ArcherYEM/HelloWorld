@@ -5,5 +5,5 @@ import java.util.Map;
 
 public interface StoreMapper {
 
-	public List<Map> getBgmList();
+	public List<Map> getBgmList(Map map);
 }

@@ -44,7 +44,7 @@
 		
 			<div class="bgm-search-group">
 				<input type="text" class="bgm-search-input" id="searchInput" onkeyup="searchFunction()" placeholder="제목 혹은 가수명을 입력하세요" maxlength="18">
-				<button class="bgm-search-btn" onclick="searchFunction();"></button> <!-- 돋보기 아이콘 css 처리 -->
+				<button class="bgm-search-btn" id="searchBtn"></button> <!-- 돋보기 아이콘 css 처리 -->
 			</div>
 			
 			<div class="bgm-list-group bgm-grid">
@@ -56,10 +56,10 @@
 				<div>금액</div>
 			</div>
 			
-			<c:forEach var="bgm" items="${bgmInfo}">
+			<c:forEach var="bgm" items="${bgmInfo}" varStatus="seq">
 				<div class="bgm-list bgm-grid" id="ajaxTable">
 					<div><input type="checkbox"></div>
-					<div><c:out value="${bgm.seq }"/></div>
+					<div><c:out value="${seq.count }"/></div>
 					<div><c:out value="${bgm.title }"/></div>
 					<div><c:out value="${bgm.artist }"/></div>
 					<div><c:out value="${bgm.runningTime }"/></div>
@@ -79,6 +79,10 @@
 		<hr>
 		<h1>team core</h1>
 	</div>
+	
+	<form id="frmSearch" action="<c:url value='/store/bgmView'/>" method="post">
+		<input type="hidden" name="content" id="content">	
+	</form>
 	
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -123,7 +127,10 @@
     });
 </script>
 <script>
-
+	$('#searchBtn').on('click',function(){
+		$('#content').val($('#searchInput').val());
+		$('#frmSearch').submit();
+	})
 </script>
 
 
