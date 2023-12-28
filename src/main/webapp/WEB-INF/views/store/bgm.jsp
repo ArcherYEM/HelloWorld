@@ -43,8 +43,8 @@
 		<div class="bgm-frame">
 		
 			<div class="bgm-search-group">
-				<input type="text" class="bgm-search-input" placeholder="제목 혹은 가수명을 입력하세요" maxlength="18">
-				<button class="bgm-search-btn"></button> <!-- 돋보기 아이콘 css 처리 -->
+				<input type="text" class="bgm-search-input" id="searchInput" onkeyup="searchFunction()" placeholder="제목 혹은 가수명을 입력하세요" maxlength="18">
+				<button class="bgm-search-btn" onclick="searchFunction();"></button> <!-- 돋보기 아이콘 css 처리 -->
 			</div>
 			
 			<div class="bgm-list-group bgm-grid">
@@ -55,62 +55,18 @@
 				<div>재생시간</div>
 				<div>금액</div>
 			</div>
-			<div class="bgm-list bgm-grid">
-				<div><input type="checkbox"></div>
-				<div>1</div>
-				<div>Super Star</div>
-				<div>쥬얼리</div>
-				<div>03:18</div>
-				<div>10</div>
-			</div>
-			<div class="bgm-list bgm-grid">
-				<div><input type="checkbox"></div>
-				<div>2</div>
-				<div>죽을만큼 아파서</div>
-				<div>mc몽</div>
-				<div>03:38</div>
-				<div>10</div>
-			</div>
-			<div class="bgm-list bgm-grid">
-				<div><input type="checkbox"></div>
-				<div>3</div>
-				<div>거짓말</div>
-				<div>빅뱅</div>
-				<div>03:58</div>
-				<div>10</div>
-			</div>
-			<div class="bgm-list bgm-grid">
-				<div><input type="checkbox"></div>
-				<div>4</div>
-				<div>Tell me</div>
-				<div>원더걸스</div>
-				<div>04:10</div>
-				<div>10</div>
-			</div>
-			<div class="bgm-list bgm-grid">
-				<div><input type="checkbox"></div>
-				<div>5</div>
-				<div>Gee</div>
-				<div>소녀시대</div>
-				<div>03:11</div>
-				<div>10</div>
-			</div>
-			<div class="bgm-list bgm-grid">
-				<div><input type="checkbox"></div>
-				<div>6</div>
-				<div>U</div>
-				<div>슈퍼주니어</div>
-				<div>04:11</div>
-				<div>10</div>
-			</div>
-			<div class="bgm-list bgm-grid">
-				<div><input type="checkbox"></div>
-				<div>7</div>
-				<div>슬픈다짐</div>
-				<div>다빈치</div>
-				<div>03:17</div>
-				<div>10</div>
-			</div>
+			
+			<c:forEach var="bgm" items="${bgmInfo}">
+				<div class="bgm-list bgm-grid" id="ajaxTable">
+					<div><input type="checkbox"></div>
+					<div><c:out value="${bgm.seq }"/></div>
+					<div><c:out value="${bgm.title }"/></div>
+					<div><c:out value="${bgm.artist }"/></div>
+					<div><c:out value="${bgm.runningTime }"/></div>
+					<div><c:out value="${bgm.bgmPrice }"/></div>
+				</div>
+			</c:forEach>
+			
 			
 			<div class="bgm-buy">
 				<input type="button" value="구매">
@@ -165,6 +121,9 @@
             $checkbox.prop("checked", !$checkbox.prop("checked"));
         });
     });
+</script>
+<script>
+
 </script>
 
 
