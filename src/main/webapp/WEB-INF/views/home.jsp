@@ -31,13 +31,12 @@
       </div>
       
       <div id="divHiUser">
-		  <h3 id="helloMessage">
+		  <p class="hello-message" id="helloMessage">
 		    HelloWorld 에 오신 걸 환영합니다.
-		  </h3>
+		  </p>
 	  </div>
 	  
       <div class="divIndexMain">
-<!--       로그인전 -->
          <div id="divHome" class="divLogin">
             <div >
                <form class="frmLogin" id="frmLogin" method="POST" action="/index/member/login">
@@ -60,7 +59,8 @@
             </div>
             
          </div>
-<!--          로그인후 -->
+         
+<!--          로그인후 시점 -->
          <div id="divLogin" class="divLogin">
             <div id="divMainMinimi">
                <span>
@@ -74,6 +74,8 @@
                  </form>
              </div>
          </div>
+<!--          로그인후 종점 -->
+
          <div id="divMainSlide">
             <div class="slideshow-container">
    
@@ -84,9 +86,6 @@
                <div class="mySlides fade">
                  <img src="<c:url value="/resources/images/sildeImg1.png"/>" >
                </div>
-               
-               <br>
-                  
                <div class="divdot">
                  <span class="dot"></span> 
                  <span class="dot"></span> 

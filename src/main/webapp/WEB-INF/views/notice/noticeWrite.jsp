@@ -17,15 +17,17 @@
 	<body>
 		<div class="index-frame">
 		
-			<div style="display:flex; flex-direction: row; align-items: center;">
-				<a href="<c:url value='/'/>"  style="width:20%">
-					<img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
-				</a>
-				<ul>
-					<li><a href="<c:url value='/store/minimiView'/>">상점</a></li>
-					<li><a href="<c:url value='/notice/noticeView'/>">공지사항</a></li>
-				</ul>
-			</div>
+			<div class="divIndexMenu index-header">
+		      <div class="index-header-left">
+		         <a class="logoATag" href="<c:url value='/'/>">
+		           <img class="index-header-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+		         </a>
+		       </div>
+		       <div class="index-header-right">
+		            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
+		            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
+		       </div>
+	      </div>
 			
 			<div class="notice-write">
 				<p>공지사항 글쓰기</p>
