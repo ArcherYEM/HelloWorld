@@ -9,6 +9,7 @@
 		<meta charset="UTF-8">
 		<title>Hello World</title>
 		<link  href="/resources/css/index/main.css" rel="stylesheet">
+		<link  href="/resources/css/index/signUp.css" rel="stylesheet">
 		<link  href="/resources/css/index/findIdResult.css" rel="stylesheet">
 	</head>
 		
