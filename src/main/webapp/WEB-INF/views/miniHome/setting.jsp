@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="../../../../resources/css/minihome/setting.css" />
 <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
 <link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
+<script src="https://kit.fontawesome.com/91b557f547.js" crossorigin="anonymous"></script> 
 </head>
 <body>
 	<div class="main-frame">
@@ -28,26 +29,27 @@
 								<div class="setting-folder-group">
 									<div>
 									  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/icon/minihome/menu-dot.png'/>"></span>
-									  <span class="setting-menu-title">개인정보변경</span><br>
+									  <a href="<c:url value='/miniHome/setting'/>"><span class="setting-menu-title">개인정보변경</span></a><br>
 									  
 									  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/icon/minihome/menu-dot.png'/>"></span>
 									  <span class="setting-menu-title">미니홈피관리</span>
+									  
 									  <ul class="tree">
-									    <li>BGM설정</li>
-									    <li>메뉴탭설정</li>
-									    <li>스킨설정</li>
+									    <li><a href="<c:url value='/miniHome/settingBgm'/>">BGM설정</a></li>
+									    <li><a href="<c:url value='/miniHome/settingMenu'/>">메뉴탭설정</a></li>
+									    <li><a href="<c:url value='/miniHome/settingSkin'/>">스킨설정</a></li>
 									  </ul>
 									  
 									 
 									  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/icon/minihome/menu-dot.png'/>"></span>
 									  <span class="setting-menu-title">아이템/내역관리</span>
 									  <ul class="tree">
-									    <li>도토리 사용내역</li>
-									    <li>도토리 충전내역</li>
+									    <li><a href="<c:url value='/miniHome/settingDotoriUse'/>">도토리 사용내역</a></li>
+									    <li><a href="<c:url value='/miniHome/settingDotoriCharge'/>">도토리 충전내역</a></li>
 									  </ul>
 									  
 									  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/icon/minihome/menu-dot.png'/>"></span>
-									  <span class="setting-menu-title">인맥관리</span>
+									  <a href="<c:url value='/miniHome/settingFriends'/>"><span class="setting-menu-title">인맥관리</span></a>
 									</div>
 									
 								</div>
@@ -75,8 +77,51 @@
 							</div>
 						</div>
 						<div class="box content-box">
-							개인정보변경 탭 
-						
+							<div class="menuTitle">이주빈님</div>
+							
+							<div class="divForTable">
+								<table>
+									<tr>
+										<th>내 프로필</th>
+									<tr>
+									<tr>
+										<td>
+											<span class="infoIcon"><i class="fa-regular fa-user"></i></span>
+											<span>abc123</span>
+										</td>
+									</tr>
+									<tr>
+										<td class="infoRow">
+											<div class="row-container">
+												<span class="infoIcon"><i class="fa-solid fa-mobile-screen"></i></span>
+												<span>010-1234-1234</span>
+												<button class="btn-right btnModify">수정</button>
+											</div>
+											
+											
+										</td>
+									</tr>
+									<tr>
+										<td class="infoRow">
+											<div class="row-container">
+												<span class="infoIcon"><i class="fa-regular fa-envelope"></i></span>
+												<span>abc123@gmail.com</span>
+												<button class="btn-right btnModify">수정</button>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="infoRow">
+											<div class="row-container">
+												<span class="infoIcon"><i class="fa-solid fa-lock"></i></span>
+												<span>비밀번호</span>
+												<button class="btn-right btnModify">수정</button>
+											</div>
+										</td>
+									</tr>
+								</table>
+							
+							</div>
 							
 						</div>
 					</div>
