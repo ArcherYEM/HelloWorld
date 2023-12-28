@@ -16,13 +16,13 @@
 		  <div class="grid-item"></div>
 		  <div class="grid-item">
 		  	<div id="divUserInfo">
-		  		<div id="signUplogo">
-					<img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
-				</div>
+<!-- 		  		<div id="signUplogo"> -->
+				<img class="index-header-logo otherPage-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+			</div>
 				
 			  	<h2 style="text-align : center">회원가입</h2>
 			  	
-				<form id="frmSignUp" method="POST" action="/index/member/signUpConfirm">
+				<form class="signUp-frame" id="frmSignUp" method="POST" action="/index/member/signUpConfirm">
 					<label for="userName">이름</label><br>
 					<input type="text" id="userName" name="userName" placeholder="이름" class="widthFull"><br>
 					<label for="userBirth">생년월일</label><br>
