@@ -28,26 +28,27 @@
 								<div class="setting-folder-group">
 									<div>
 									  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/icon/minihome/menu-dot.png'/>"></span>
-									  <span class="setting-menu-title">개인정보변경</span><br>
+									  <a href="<c:url value='/miniHome/setting'/>"><span class="setting-menu-title">개인정보변경</span></a><br>
 									  
 									  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/icon/minihome/menu-dot.png'/>"></span>
 									  <span class="setting-menu-title">미니홈피관리</span>
+									  
 									  <ul class="tree">
-									    <li>BGM설정</li>
-									    <li>메뉴탭설정</li>
-									    <li>스킨설정</li>
+									    <li><a href="<c:url value='/miniHome/settingBgm'/>">BGM설정</a></li>
+									    <li><a href="<c:url value='/miniHome/settingMenu'/>">메뉴탭설정</a></li>
+									    <li><a href="<c:url value='/miniHome/settingSkin'/>">스킨설정</a></li>
 									  </ul>
 									  
 									 
 									  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/icon/minihome/menu-dot.png'/>"></span>
 									  <span class="setting-menu-title">아이템/내역관리</span>
 									  <ul class="tree">
-									    <li>도토리 사용내역</li>
-									    <li>도토리 충전내역</li>
+									    <li><a href="<c:url value='/miniHome/settingDotoriUse'/>">도토리 사용내역</a></li>
+									    <li><a href="<c:url value='/miniHome/settingDotoriCharge'/>">도토리 충전내역</a></li>
 									  </ul>
 									  
 									  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/icon/minihome/menu-dot.png'/>"></span>
-									  <span class="setting-menu-title">인맥관리</span>
+									  <a href="<c:url value='/miniHome/settingFriends'/>"><span class="setting-menu-title">인맥관리</span></a>
 									</div>
 									
 								</div>
@@ -75,7 +76,7 @@
 							</div>
 						</div>
 						<div class="box content-box">
-						메뉴탭  변경 탭 
+						인맥관리  탭 
 						
 							
 						</div>

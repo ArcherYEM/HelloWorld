@@ -81,3 +81,174 @@
 .devide-dot{
 	margin-top : 70px; /* 임의값  */
 }
+
+.menuTitle{
+	font-size : 17px;
+	font-weight : bold;
+	margin : 10px;
+}
+/* .menuSubtitle{
+	font-size : 15px;
+} */
+
+.menuList{
+	list-style: none;
+	list-style-position : outside;
+	font-size : 15px;
+	
+}
+
+.menuList li::before {
+  content: "\2022";
+  color: orange;
+  font-weight: bold;
+  /* display: inline-block;  */
+  width: 2em;
+  margin-left: -1em;
+  margin-right : 0.5em;
+}
+
+.divForTable{
+	
+}
+
+
+table {
+  border-collapse: collapse;
+  border-radius : 10px;
+  border-style : hidden;
+  box-shadow : 0 0 0 1px #000;
+  width: 80%;
+  font-size : 13px;
+  margin-bottom : 20px;
+  margin : auto;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  padding: 7px;
+}
+
+th {
+  background-color: #ffcc66;
+  text-align : left;
+  width : 30%;
+  border-top-left-radius : 10px;
+  border-top-right-radius : 10px;
+  
+}
+
+.infoIcon{
+	padding : 8px;
+}
+
+.infoRow{
+	text-align: right;
+}
+
+.btn-right{
+	 margin-left: auto;
+}
+.row-container{
+	 display: flex;
+     justify-content: flex-end;
+     align-items: center; 
+}
+
+.btnModify{
+	border : 1px solid darkgrey;
+	border-radius : 4px;
+	color :#999999;
+}
+
+/*************bgm********************/
+
+.bgm-frame input[type="checkbox"] {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.bgm-search-group {
+	width: 300px;
+	height: 25px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-left: 10px;
+	border-radius: 10px;
+	border: 2px solid orange;
+	display: flex;
+	align-items: center;
+	/* margin-left : auto; */
+}
+
+.bgm-search-input {
+	font-size: 16px;
+	font-weight: bold;
+	width: 250px;
+	height: 90%;
+	border: none;
+	outline: none;
+}
+
+.bgm-search-input::placeholder {
+    font-size: 14px;
+}
+
+.bgm-order-select{
+	margin-bottom : 10px;
+	/* display : flex;
+	justify-content: flex-end;
+	margin-left : auto; */
+}
+
+
+.bgm-search-btn {
+    width: 20px; 
+    height: 20px;
+    background-image: url('/resources/images/store/searchIcon.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+     margin-left: 15px;
+}
+
+.bgm-search-btn:hover {
+	cursor: pointer; 
+}
+
+
+.bgm-list-group {
+	border-top: 1px solid #ff9933;
+	border-bottom: 2px solid #ff9933;
+	height: 50px;
+	font-weight: bold;
+	font-size : 16px;
+}
+
+.bgm-grid {
+	width: 98%;
+	display: grid;
+    grid-template-columns: 10% 10% 30% 30% 20%;
+    align-items: center;
+    text-align: center;
+    gap: 5px;
+    height: 40px;
+}
+
+
+.bgm-list {
+	border-bottom: 1px solid #ff9933;
+	font-size : 14px;
+}
+
+.bgm-list:hover {
+	cursor: pointer;
+	background-color: #ffcc99;
+}
+
+.bgm-list-delete
+,.bgm-list-add{
+	margin-top : 10px;
+}

@@ -11,4 +11,40 @@ public class SettingController {
 		
 		return "miniHome/setting";
 	}
+	
+	@RequestMapping(value="/miniHome/settingBgm")
+	public String settingBgmView() {
+		
+		return "miniHome/settingBgm";
+	}
+	
+	@RequestMapping(value="/miniHome/settingMenu")
+	public String settingMenuView() {
+		
+		return "miniHome/settingMenu";
+	}
+	
+	@RequestMapping(value="/miniHome/settingSkin")
+	public String settingSkinView() {
+		
+		return "miniHome/settingSkin";
+	}
+	
+	@RequestMapping(value="/miniHome/settingDotoriUse")
+	public String settingDotoriUseView() {
+		
+		return "miniHome/settingDotoriUse";
+	}
+	
+	@RequestMapping(value="/miniHome/settingDotoriCharge")
+	public String settingDotoriChargeView() {
+		
+		return "miniHome/settingDotoriCharge";
+	}
+	
+	@RequestMapping(value="/miniHome/settingFriends")
+	public String settingFriendsView() {
+		
+		return "miniHome/settingFriends";
+	}
 }
