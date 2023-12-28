@@ -48,11 +48,15 @@
                </div>
                
                <div class="section">
-                  <label for="userEmail">이메일주소</label>
-                  <input type="button" id="btnEmailDuplcheck" value="중복체크">
-                  <div class="" id="emailFormMessage"></div>
-                  <input type="email" id="userEmail" name="userEmail" placeholder="이메일주소" 
-                        class="widthFull" onblur="checkEmailForm()">
+	               <div class="email-group">
+		               <div class="email-left">
+		                   <label for="userEmail">이메일주소</label>
+		                   <input type="button" id="btnEmailDuplcheck" value="중복체크">
+		               </div>
+	                   <div class="email-right" id="emailFormMessage"></div>
+	               </div>
+	                   <input type="email" id="userEmail" name="userEmail" placeholder="이메일주소" 
+	                        class="widthFull" onblur="checkEmailForm()">
                </div>
                
                <div class="section">
@@ -61,9 +65,13 @@
                </div>
                
                <div class="section">
-                  <div class="divPwCheck">
-                     <label for="userPassword2">비밀번호 확인  </label>
-                     <span id="passwordMatchMessage" class="MatchMessage"></span>
+                  <div class="pw-group">
+	                  <div class="pw-left">
+	                    <label for="userPassword2">비밀번호 확인  </label>
+	                  </div>
+	                  <div class="pw-right">
+                      	<span id="passwordMatchMessage" class="MatchMessage"></span>
+                      </div>
                   </div>
                   <input type="password" id="userPassword2" name="userPassword2" placeholder="비밀번호" class="widthFull" oninput="checkPasswordMatch()">
                </div>
@@ -259,7 +267,7 @@
           var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
           if (!emailRegex.test(emailInput.value)) {
-             emailFormMessage.innerHTML = '<span style="color: red;">올바른 이메일 주소를 입력하세요.</span>';
+             emailFormMessage.innerHTML = '<span style="color: red; font-weight: bold; font-size: 10px;">올바른 이메일 주소를 입력하세요.</span>';
           } else {
              emailFormMessage.innerHTML = '';
           }
