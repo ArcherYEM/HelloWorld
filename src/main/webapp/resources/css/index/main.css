@@ -19,6 +19,10 @@ a {
 	height: auto;
 }
 
+.otherPage-logo {
+	width: 100%;
+}
+
 .IndexPageTab {
    width: 10%;
    height: 30%;
@@ -319,6 +323,10 @@ li a:hover {
 .grid-item {
    padding: 20px;
    /*  text-align: center; */
+}
+
+.signUp-frame{
+	margin: 0 215px;
 }
 
 /* 팀정보 기재공간 위치 고정 */
