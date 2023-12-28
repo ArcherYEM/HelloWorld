@@ -102,7 +102,7 @@
 											<img src="../../../../resources/images/icon/minihome/newIcon.png"
 												alt="new Icon" class="minihome-nIcon">
 										</div>
-									</div>ㅂ
+									</div>
 									<div class="menu-row">
 										<div class="menu-item">
 											<a href="/mnHome/boardView">게시판<span class="menu-num">3/17</span></a>

@@ -75,7 +75,7 @@
 							</div>
 						</div>
 						<div class="box content-box">
-							개인정보변경 탭 
+							배경음악 변경 탭 
 						
 							
 						</div>

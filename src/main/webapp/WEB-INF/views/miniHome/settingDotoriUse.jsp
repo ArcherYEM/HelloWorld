@@ -75,7 +75,7 @@
 							</div>
 						</div>
 						<div class="box content-box">
-							개인정보변경 탭 
+							스킨 설정 탭 
 						
 							
 						</div>
