@@ -62,15 +62,15 @@
          
 <!--          로그인후 시점 -->
          <div id="divLogin" class="divLogin">
-            <div id="divMainMinimi">
-                <img id="mainMinimi" src="<c:url value="/resources/images/PepeIcon.gif"/>">
-            </div>
-            <div>
-                 <form id="logoutForm" action="<c:url value='/main/member/logout' />" method="post">
-                     <input type="button" class="mainBtn" id="btnGoMinihome" value="내 미니홈피">
-                     <input type="button" class="mainBtn" id="btnLogout" value="로그아웃">
-                 </form>
-             </div>
+         	<div class="divLogin-left">
+	    	    <form id="logoutForm" action="<c:url value='/main/member/logout' />" method="post">
+		    	    <input type="button" class="mainBtn" id="btnGoMinihome" value="내 미니홈피">
+		        	<input type="button" class="mainBtn" id="btnLogout" value="로그아웃">
+		        </form>
+	        </div>
+			<div class="divLogin-right" id="divMainMinimi">
+	          	<img class="index-my-minimi" id="mainMinimi" src="<c:url value="/resources/images/PepeIcon.gif"/>">
+        	</div>
          </div>
 <!--          로그인후 종점 -->
 

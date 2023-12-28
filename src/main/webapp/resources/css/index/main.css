@@ -102,19 +102,9 @@ a {
 	padding: 25px 40px;
 }
 
-#mainMinimi {
-	border: 2px solid black;
-	padding: 20px;
-	width: 60%;
-	height: 75%;
-}
-
-#divMainMinimi {
-	padding-top: 150px;
-	padding-left: 120px;
-	width: 40%;
-	height: 60%;
-	border-color: navy;
+.index-my-minimi {
+	height: 100%;
+	margin-bottom: 10px;
 }
 
 .divdot {
@@ -126,8 +116,18 @@ a {
 	padding-top: 3%;
 	width: 50%;
 	height: 80%;
-	border-color: navy;
 	text-align: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.divLogin-left{
+	flex: 30%;
+}
+
+.divLogin-right{
+	flex: 70%;
 }
 
 .signUpATag {
@@ -208,8 +208,7 @@ a {
 	animation-duration: 1.5s;
 }
 
-@
-keyframes fade {
+@keyframes fade {
 	from {opacity: 0.4
 }
 
