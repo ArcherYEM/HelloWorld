@@ -18,14 +18,16 @@
    </head>
    <body>
    <div class="index-frame">
-      <div class="divIndexMenu">
-         <a class="logoATag" href="<c:url value='/'/>">
-           <img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
-         </a>
-         <ul>
-            <li><a href="<c:url value='/store/minimiView'/>">상점</a></li>
-            <li><a href="<c:url value='/notice/noticeView'/>">공지사항</a></li>
-         </ul>
+      <div class="divIndexMenu index-header">
+	      <div class="index-header-left">
+	         <a class="logoATag" href="<c:url value='/'/>">
+	           <img class="index-header-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+	         </a>
+	       </div>
+	       <div class="index-header-right">
+	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
+	            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
+	       </div>
       </div>
       
       <div id="divHiUser">
@@ -35,6 +37,7 @@
 	  </div>
 	  
       <div class="divIndexMain">
+<!--       로그인전 -->
          <div id="divHome" class="divLogin">
             <div >
                <form class="frmLogin" id="frmLogin" method="POST" action="/index/member/login">
@@ -57,6 +60,7 @@
             </div>
             
          </div>
+<!--          로그인후 -->
          <div id="divLogin" class="divLogin">
             <div id="divMainMinimi">
                <span>
