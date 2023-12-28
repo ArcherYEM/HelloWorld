@@ -9,6 +9,7 @@
 		<meta charset="UTF-8">
 		<title>Hello World</title>
 		<link  href="/resources/css/index/main.css" rel="stylesheet">
+		<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
 	</head>
 		
 	<body>
