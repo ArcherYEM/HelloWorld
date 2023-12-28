@@ -102,9 +102,34 @@ a {
 	padding: 25px 40px;
 }
 
-.index-my-minimi {
-	height: 100%;
+.my-title {
+	font-weight: bold;
 	margin-bottom: 10px;
+}
+
+.index-my-minimi {
+	height: 200px;
+	border: 2px solid orange;
+	border-radius: 5px;
+	padding: 20px;
+	margin-bottom: 30px;
+}
+
+.my-btn {
+	display: flex;
+	justify-content: space-between;
+}
+
+.mainBtn1{
+	flext: 1;
+	margin-left: 210px;
+	width: 100px;
+}
+
+.mainBtn2{
+	flext: 1;
+	margin-right: 210px;
+	width: 100px;
 }
 
 .divdot {
@@ -118,16 +143,7 @@ a {
 	height: 80%;
 	text-align: center;
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
-}
-
-.divLogin-left{
-	flex: 30%;
-}
-
-.divLogin-right{
-	flex: 70%;
 }
 
 .signUpATag {
