@@ -1,25 +1,35 @@
 @charset "UTF-8";
 
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
 .logoATag {
-	width:20%;
+	width: 20%;
 }
 
-.index-frame{
-   width:90%;
-   margin:0 auto;
+.index-frame {
+	width: 90%;
+	margin: 0 auto;
 }
 
-#loginLogo {
-   width: 100%;
+.index-header-logo {
+	width: 50%;
+	height: auto;
+}
+
+.otherPage-logo {
+	width: 100%;
 }
 
 .IndexPageTab {
-   width: 10%;
-   height: 30%;
-   border-radius: 10px;
-   font-size: 20px;
-   margin: 50px;
-   margin-left: 100px;
+	width: 10%;
+	height: 30%;
+	border-radius: 10px;
+	font-size: 20px;
+	margin: 50px;
+	margin-left: 100px;
 }
 
 .divIndexMain {
@@ -32,149 +42,141 @@
 }
 
 #divHiUser {
-   height: 60px;
-   background-color: #ff8c1a;
-   display: flex;
-   align-items: center;
-   color: black;
-   word-break: keep-all;
+	height: 60px;
+	background-color: #ff8c1a;
+	display: flex;
+	align-items: center;
+	word-break: keep-all;
 }
 
-#divHiUser h3 {
-   color: white;
-   margin: 20px;
-   font-size: 35px;
+.hello-message {
+	color: white;
+	margin: 20px;
+	font-size: 25px;
+	font-weight: bold;
 }
 
 .divIndexMenu {
-	display:flex; 
-	flex-direction: row; 
+	display: flex;
+	flex-direction: row;
 	align-items: center;
 }
 
-#mainMinimi {
-   border: 2px solid black;
-   padding: 20px;
-   width: 60%;
-   height: 75%;
+.index-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
-#divMainMinimi {
-   padding-top: 150px;
-   padding-left: 120px;
-   width: 40%;
-   height: 60%;
-   border-color: navy;
+.index-header-left {
+	flex: 40%;
+}
+
+.index-header-right {
+	flex: 60%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.index-header-right a:hover {
+	cursor: pointer;
+	background-color: orange;
+}
+
+.index-a-store {
+	padding: 25px 60px;
+}
+
+.index-a-notice {
+	padding: 25px 40px;
+}
+
+.index-a-mnh {
+	padding: 25px 30px;
+}
+
+.index-a-logout {
+	padding: 25px 40px;
+}
+
+.index-my-minimi {
+	height: 100%;
+	margin-bottom: 10px;
 }
 
 .divdot {
-	text-align:center;
+	text-align: center;
 }
 
 .divLogin {
-   padding-top: 80px;
-   padding-left: 30px;
-   width: 40%;
-   height: 60%;
-   border-color: navy;
-   text-align: center;
+	margin: auto 0;
+	padding-top: 3%;
+	width: 50%;
+	height: 80%;
+	text-align: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.divLogin-left{
+	flex: 30%;
+}
+
+.divLogin-right{
+	flex: 70%;
 }
 
 .signUpATag {
-	margin-right:50px;
+	margin-right: 50px;
 }
 
 #divLogin a {
-   text-decoration: none;
-   color: black;
-   margin: 5px;
+	text-decoration: none;
+	color: black;
+	margin: 5px;
 }
 
 #frmLogin input {
-   width: 60%;
-   padding: 10px;
+	width: 60%;
+	padding: 10px;
 }
 
 #divMainSlide {
-   padding-top: 80px;
-   padding-left: 50px;
-   width: 40%;
-   height: 50%;
+	padding-top: 80px;
+	padding-left: 50px;
+	width: 40%;
+	height: 50%;
 }
 
 #mainSlideImg {
-   padding-left: 50px;
-   padding-top: 50px;
-   width: 110%;
+	padding-left: 50px;
+	padding-top: 50px;
+	width: 110%;
 }
 
-.mainBtn {
-   width: 10%;
-   height: 50px;
-   margin-left: 100px;
-}
-
-.storeAtag {
-   text-decoration: none;
-   color: black;
-   margin-left: 120px;
-   margin-right: 120px;
-}
-
-.products {
-   text-align: center;
-}
-
-.productList {
-   width: 100%;
-   height: 100%;
-   margin-left: auto;
-   margin-right: auto;
-   display: inline-block;
-}
-
-.product {
-   display: block;
-   width: 225px;
-   text-align: center;
-   text-decoration: none;
-   color: black;
-   float: left;
-   margin-left: 10px;
-   margin-right: 10px;
-   margin-bottom: 30px;
-}
-
-.product-name {
-   margin-top: 20px;
-   margin-bottom: 4px;
-}
-
-.products h3 {
-   font-size: 24px;
-   color: #545454;
-   margin-top: 60px;
-   margin-bottom: 60px;
-   text-align: center;
-}
 
 /****** main index slideshow css ****/
 * {
-   box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .mySlides {
-   display: none;
+	display: none;
+	margin-bottom: 20px;
 }
 
 .mySlides img {
-   vertical-align: middle;
+	vertical-align: middle;
 }
 
 /* Slideshow container */
 .slideshow-container {
-   position: relative;
-   margin: auto;
+	position: relative;
+	margin: auto;
 }
 
 .slideshow-container img {
@@ -183,115 +185,73 @@
 
 /* The dots/bullets/indicators */
 .dot {
-   height: 15px;
-   width: 15px;
-   margin: 0 2px;
-   background-color: #bbb;
-   border-radius: 50%;
-   display: inline-block;
-   transition: background-color 0.6s ease;
+	height: 15px;
+	width: 15px;
+	margin: 0 2px;
+	background-color: #bbb;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
 }
 
 .active {
-   background-color: #717171;
+	background-color: #717171;
 }
 
 .present {
-   color: white;
+	color: white;
 }
 
 /* Fading animation */
 .fade {
-   animation-name: fade;
-   animation-duration: 1.5s;
+	animation-name: fade;
+	animation-duration: 1.5s;
 }
 
 @keyframes fade {
-   from {opacity: 0.4
+	from {opacity: 0.4
 }
 
 to {
-   opacity: 1
-}
-
+	opacity: 1
 }
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
-   .text {
-      font-size: 11px
-   }
-}
-
-/*nav bar css*/
-ul {
-   list-style-type: none;
-   margin: 0;
-   padding: 0;
-   overflow: hidden;
-}
-
-li {
-   float: left;
-}
-
-li a {
-   display: block;
-   color: black;
-   text-align: center;
-   padding: 14px 16px;
-   text-decoration: none;
-}
-
-li a:hover {
-   background-color: #ff8c1a;
-   color: white;
+	.text {
+		font-size: 11px
+	}
 }
 
 .right {
-   margin-left: auto;
+	margin-left: auto;
 }
 
 /*******signUp.jsp********************************/
-#divUserInfo {
-   width: 50%;
-   margin-left: auto;
-   margin-right: auto;
-}
-
-#loginLogo {
-   width: 100%;
-}
-
-.widthFull {
-   width: 100%;
-   padding: 8px 10px;
-   margin: 8px 0;
-}
-
-.grid-container {
-   display: grid;
-   grid-template-columns: 300px auto 300px;
-}
-
-.grid-item {
-   padding: 20px;
-   /*  text-align: center; */
-}
 
 /* 팀정보 기재공간 위치 고정 */
 .bottom-fix {
-   bottom: 0;
+	bottom: 0;
 }
 
 .selected {
-    background-color: lightblue;
- }
+	background-color: lightblue;
+}
 
 .confirm-group {
-    text-align: center;
+	text-align: center;
 }
 
 .divGender {
 	margin-bottom: 4px;
+}
+
+.divPwCheck {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.MatchMessage {
+	font-size: 14px;
 }

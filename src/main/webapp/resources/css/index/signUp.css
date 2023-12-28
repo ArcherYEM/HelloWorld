@@ -1,0 +1,25 @@
+#divUserInfo {
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.widthFull {
+	width: 100%;
+	padding: 8px 10px;
+	margin: 8px 0;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: 300px auto 300px;
+}
+
+.grid-item {
+	padding: 20px;
+	/*  text-align: center; */
+}
+
+.signUp-frame {
+	margin: 0 215px;
+}

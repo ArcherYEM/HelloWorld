@@ -18,20 +18,22 @@
    </head>
    <body>
    <div class="index-frame">
-      <div class="divIndexMenu">
-         <a class="logoATag" href="<c:url value='/'/>">
-           <img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
-         </a>
-         <ul>
-            <li><a href="<c:url value='/store/minimiView'/>">상점</a></li>
-            <li><a href="<c:url value='/notice/noticeView'/>">공지사항</a></li>
-         </ul>
+      <div class="divIndexMenu index-header">
+	      <div class="index-header-left">
+	         <a class="logoATag" href="<c:url value='/'/>">
+	           <img class="index-header-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+	         </a>
+	       </div>
+	       <div class="index-header-right">
+	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
+	            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
+	       </div>
       </div>
       
       <div id="divHiUser">
-		  <h3 id="helloMessage">
+		  <p class="hello-message" id="helloMessage">
 		    HelloWorld 에 오신 걸 환영합니다.
-		  </h3>
+		  </p>
 	  </div>
 	  
       <div class="divIndexMain">
@@ -41,7 +43,7 @@
                   <!-- <label for="userEmail">아이디: </label> -->
                   <input type="email" id="userEmail" name="userEmail" placeholder="Email"><br>
                   <br>
-                  <!-- <label for="userPw">비밀번호: </label> -->
+<!--                   <label for="userPw">비밀번호: </label> -->
                   <input type="password" id="userPassword" name="userPassword" placeholder="Password"><br>
                   <br>
                   <input type="button" id="btnLogin" value="로그인"><br>
@@ -57,19 +59,21 @@
             </div>
             
          </div>
+         
+<!--          로그인후 시점 -->
          <div id="divLogin" class="divLogin">
-            <div id="divMainMinimi">
-               <span>
-                  <img id="mainMinimi" src="<c:url value="/resources/images/PepeIcon.gif"/>">
-               </span>
-            </div>
-            <div>
-                 <form id="logoutForm" action="<c:url value='/main/member/logout' />" method="post">
-                     <input type="button" class="mainBtn" id="btnGoMinihome" value="내 미니홈피">
-                     <input type="button" class="mainBtn" id="btnLogout" value="로그아웃">
-                 </form>
-             </div>
+         	<div class="divLogin-left">
+	    	    <form id="logoutForm" action="<c:url value='/main/member/logout' />" method="post">
+		    	    <input type="button" class="mainBtn" id="btnGoMinihome" value="내 미니홈피">
+		        	<input type="button" class="mainBtn" id="btnLogout" value="로그아웃">
+		        </form>
+	        </div>
+			<div class="divLogin-right" id="divMainMinimi">
+	          	<img class="index-my-minimi" id="mainMinimi" src="<c:url value="/resources/images/PepeIcon.gif"/>">
+        	</div>
          </div>
+<!--          로그인후 종점 -->
+
          <div id="divMainSlide">
             <div class="slideshow-container">
    
@@ -80,9 +84,6 @@
                <div class="mySlides fade">
                  <img src="<c:url value="/resources/images/sildeImg1.png"/>" >
                </div>
-               
-               <br>
-                  
                <div class="divdot">
                  <span class="dot"></span> 
                  <span class="dot"></span> 

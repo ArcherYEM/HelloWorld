@@ -9,20 +9,23 @@
 		<meta charset="UTF-8">
 		<title>Hello World</title>
 		<link  href="/resources/css/index/main.css" rel="stylesheet">
+		<link  href="/resources/css/index/signUp.css" rel="stylesheet">
+		<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
 	</head>
 		
 	<body>
 		<div class="grid-container">
 		  <div class="grid-item"></div>
+		  
 		  <div class="grid-item">
 		  	<div id="divUserInfo">
-		  		<div id="signUplogo">
-					<img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
-				</div>
+<!-- 		  		<div id="signUplogo"> -->
+				<img class="index-header-logo otherPage-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+			</div>
 				
 			  	<h2 style="text-align : center">회원가입</h2>
 			  	
-				<form id="frmSignUp" method="POST" action="/index/member/signUpConfirm">
+				<form class="signUp-frame" id="frmSignUp" method="POST" action="/index/member/signUpConfirm">
 					<label for="userName">이름</label><br>
 					<input type="text" id="userName" name="userName" placeholder="이름" class="widthFull"><br>
 					<label for="userBirth">생년월일</label><br>
@@ -33,13 +36,16 @@
 						<input type="radio" id="userGenderM" name="userGender" value="M" checked><label for="userGenderM">남자</label>
 						<input type="radio" id="userGenderF" name="userGender" value="F"><label for="userGenderF">여자</label><br>
 					</div>
-					<label for="userEmail">이메일주소</label><br>
-					<input type="email" id="userEmail" name="userEmail" placeholder="이메일주소" class="widthFull"><br>
+					<label for="userEmail">이메일주소</label>
+					<input type="button" id="btnEmailDuplcheck" value="중복체크"><br>
+					<div class="MatchMessage" id="emailFormMessage"></div>
+					<input type="email" id="userEmail" name="userEmail" placeholder="이메일주소" class="widthFull" onblur="checkEmailForm()"><br>
 					<label for="userPassword">비밀번호</label><br>
 					<input type="password" id="userPassword" name="userPassword" placeholder="비밀번호" class="widthFull" oninput="checkPasswordMatch()"><br>
-					<label for="userPassword2">비밀번호 확인  </label><span id="passwordMatchMessage"></span><br>
+					<div class="divPwCheck">
+						<label for="userPassword2">비밀번호 확인  </label><span id="passwordMatchMessage" class="MatchMessage"></span>
+					</div>
 					<input type="password" id="userPassword2" name="userPassword2" placeholder="비밀번호" class="widthFull" oninput="checkPasswordMatch()"><br>
-					<div id="passwordMatchMessage"></div>
 					<label for="userNickname">닉네임</label><br>
 					<input type="text" id="userNickname" name="userNickname" placeholder="닉네임" class="widthFull"><br>
 					<label for="userPhone">핸드폰번호</label><br>
@@ -59,9 +65,9 @@
 				</form>
 		  	</div>
 			  	
-		  </div>
 		  <div class="grid-item"></div>  
-		</div>
+		  </div>
+		
 
 		<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
 		<script>
@@ -113,7 +119,19 @@
 			        $('#userPhone').val('');
 			    }
 			}
-			 
+			
+		  function checkEmailForm() {
+			    var emailInput = document.getElementById('userEmail');
+			    var emailFormMessage = document.getElementById('emailFormMessage');
+
+			    var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+			    if (!emailRegex.test(emailInput.value)) {
+			    	emailFormMessage.innerHTML = '<span style="color: red;">올바른 이메일 주소를 입력하세요.</span>';
+			    } else {
+			    	emailFormMessage.innerHTML = '';
+			    }
+			}
 		</script>
 	</body>
 </html>

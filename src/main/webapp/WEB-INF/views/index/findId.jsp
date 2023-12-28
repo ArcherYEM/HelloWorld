@@ -10,6 +10,7 @@
 	<title>Hello World</title>
 	<link  href="/resources/css/index/main.css" rel="stylesheet">
 	<link  href="/resources/css/index/find.css" rel="stylesheet">
+	<link  href="/resources/css/index/signUp.css" rel="stylesheet">
 	<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
 </head>
 	
@@ -19,9 +20,9 @@
 	  
 	  <div class="grid-item">
 	  	<div id="divUserInfo">
-				<img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+				<img class="index-header-logo otherPage-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
 				<div class="findId-title">
-			  	아이디 찾기
+			  		아이디 찾기
 			  </div>
 			  <div class="find-tag">
 			  	<label for="userName">이름</label><br>
@@ -36,7 +37,7 @@
 					<form action="/index/member/home" method="GET">
 						<input type="submit" value="취소"> 
 					</form>
-					<form action="아이디 찾은 화면 utl 넣을예정" method="POST">
+					<form action="/index/member/afterFindId" method="POST">
 						<input type="submit" value="찾기"> 
 					</form>
 				</div>
