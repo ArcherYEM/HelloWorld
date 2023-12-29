@@ -93,7 +93,6 @@ public class MemberController {
     @RequestMapping(value="/afterFindId", method=RequestMethod.POST)
     public String afterFindId(Model model, @RequestParam Map map) {
        String userId = "";
-       String page = "";
        
        Map resultMap = memberService.findId(map);
        
@@ -161,15 +160,40 @@ public class MemberController {
        return resultMap;
     }
     
-    @RequestMapping(value = "/findPw", method = RequestMethod.GET)
+    @RequestMapping(value = "/findPwView", method = RequestMethod.GET)
+    public String findPwView() {
+        return "index/findPw";
+    }
+    
+    @RequestMapping(value = "/afterFindPw", method = RequestMethod.POST)
+    public String afterFindPw(Model model, @RequestParam Map map) {
+    	String userId = "";
+        System.out.println(map);
+        
+        Map resultMap = memberService.findId(map);
+        
+        if(resultMap != null) {
+           userId = (String)resultMap.get("userEmail");
+           model.addAttribute("findId", userId);
+           model.addAttribute("resultCode","1");
+           
+        }else {
+     	  model.addAttribute("resultCode","0");
+     	  model.addAttribute("msg", "정보를 찾을 수 없습니다.");
+     	  
+        }
+    	
+        return "index/findPwResult";
+    }
+    
+    @RequestMapping(value = "/findPw", method = RequestMethod.POST)
     public String findPw() {
+    	
+    	
         return "index/findPw";
     }
 
-    @RequestMapping(value = "/afterFindPw", method = RequestMethod.GET)
-    public String afterFindPw() {
-        return "index/findPwResult";
-    }
+   
 
     @RequestMapping(value = "/signUpConfirm", method = RequestMethod.POST)
     public String signUpConfirm(@RequestParam Map<String, String> map) throws Exception {
