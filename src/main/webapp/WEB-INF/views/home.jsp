@@ -55,7 +55,7 @@
             <div >
                <a class="signUpATag" href="/index/member/signUp">회원가입</a>
                <a href="/index/member/findId">아이디</a>/ 
-               <a href="/index/member/findPw">비밀번호 찾기</a>
+               <a href="/index/member/findPwView">비밀번호 찾기</a>
             </div>
             
          </div>

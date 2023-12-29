@@ -92,5 +92,9 @@
 			
 			document.getElementById('frm1').submit();
 		});
+		
+		$('btnCancle').on('click',function(){
+			location.href = "<c:url value='/index/member/home'/>";
+		});
 	</script>
 </body>

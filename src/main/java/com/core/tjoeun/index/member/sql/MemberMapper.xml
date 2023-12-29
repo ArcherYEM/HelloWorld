@@ -54,6 +54,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       where 
          userName = #{userName} 
       and userPhone = #{userPhone} 
+      <if test="userId != null">
+      	and userEmail = #{userId}
+      </if>
    </select>
    
 </mapper>
