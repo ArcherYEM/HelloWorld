@@ -148,6 +148,7 @@ function search(){
                 resultHtml += '<div>' + item.artist + '</div>';
                 resultHtml += '<div>' + item.runningTime + '</div>';
                 resultHtml += '<div>' + item.bgmPrice + '</div>';
+                resultHtml += '<link href="/resources/css/index/test.css" rel="stylesheet">';
                 resultHtml += '</div>';
                 $('#test').html(resultHtml);
             });

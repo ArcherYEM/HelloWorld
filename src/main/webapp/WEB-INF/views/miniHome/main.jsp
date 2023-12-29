@@ -11,14 +11,16 @@
 <link rel="stylesheet" href="../../../../resources/css/minihome/fonts.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/frame.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
-<link rel="stylesheet" href="../../../../resources/css/minihome/album.css" />
-<link rel="stylesheet" href="../../../../resources/css/minihome/board.css" />
-<link rel="stylesheet" href="../../../../resources/css/minihome/diary.css" />
-<link rel="stylesheet" href="../../../../resources/css/minihome/setting.css" />
-<link rel="stylesheet" href="../../../../resources/css/minihome/visit.css" />
+
 <link rel="stylesheet" href="../../../../resources/css/minihome/jquery-ui(1.13.2).css" />
 <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
 <link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+<div id="test">
+	
+</div>
 </head>
 <body>
 	<div class="main-frame">
@@ -227,7 +229,6 @@
 	</div>
 
 	<script src="../../../../resources/js/default.js"></script>
-	<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
 	<script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
 	<script>
 		// 미니홈피 프로필 수정창
