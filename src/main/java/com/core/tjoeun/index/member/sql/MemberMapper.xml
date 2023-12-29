@@ -59,4 +59,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       </if>
    </select>
    
+   
+   <update id="updatePw" parameterType="map">
+	   	update user
+		set
+		userPassword = #{newPw}
+		where
+		userEmail = #{userId}
+   </update>
+   
 </mapper>

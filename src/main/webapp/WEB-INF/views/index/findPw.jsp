@@ -15,10 +15,12 @@
 </head>
 	
 <body>
+
 	<div class="grid-container">
 	  <div class="grid-item"></div>
 	  
 	  <div class="grid-item">
+	  
 	  	<div id="divUserInfo">
 				<img class="index-header-logo otherPage-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
 				<div class="findId-title">
@@ -74,7 +76,6 @@
 			let userName = $('#userName').val();
 			
 			
-			
 			/* 
 			let phoneNum = document.getElementById('userPhone').value;
 			let userName = document.getElementById('userName').value; */
@@ -105,16 +106,25 @@
 				/* document.getElementById('hiddenUserName').value = userName; */
 			}
 			$('#hiddenUserId').val(userId);
-			
-			console.log($('#hiddenUserId').val());
+		
 			
 			
 			document.getElementById('frm1').submit();
+			
+			
 		});
 		
 		$('btnCancle').on('click',function(){
 			location.href = "<c:url value='/index/member/home'/>";
 		});
+		
+		$(function(){
+			let result = '' + '${msg}';
+			if(result != ""){
+				alert(result);
+			}
+		});
+		
 		
 	</script>
 </body>

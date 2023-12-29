@@ -95,8 +95,18 @@ public class MemberServiceImpl implements MemberService{
    @Override
    @Transactional(readOnly = true)
    public Map findId(Map map) {
-      
-      
       return memberDao.selectUserId(map);
    }
+
+   
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
+	public void updatePw(Map map) throws Exception {
+		map.put("newPw", SHA256.encryptSHA256((String) map.get("newPw")));
+	    int result = memberDao.updatePw(map);
+	    if (result != 1) {
+	       throw new Exception();
+	    }
+		
+	}
 }
