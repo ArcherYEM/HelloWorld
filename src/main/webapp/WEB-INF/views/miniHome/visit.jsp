@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="../../../../resources/css/minihome/visit.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
 <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
-<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
+<link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 </head>
 <body>
 <div class="main-frame">
@@ -69,7 +69,7 @@
 					<div class="visit-frame">
 						<div class="visit-frame-write">
 							<img class ="visit-minimi"
-								src="../../../../resources/images/icon/minimi/zombiIcon.gif" />
+								src="../../../../resources/images/minimi/zombiIcon.gif" />
 							<input type="text" />
 						</div>
 						<div class="visit-frame-btn">
@@ -81,7 +81,7 @@
 							<tr>
 								<td>No. 405</td>
 								<td>양은모
-									<img src="../../../../resources/images/icon/minihome/homeIcon.png" class="visit-line-tbImg">
+									<img src="../../../../resources/images/minihome/homeIcon.png" class="visit-line-tbImg">
 								</td>
 								<td>2023-12-21 21:01</td>
 								<td>비밀로하기</td>
@@ -92,7 +92,7 @@
 					</div>
 					<div class="visit-frame-write view-margin">
 						<img class ="visit-minimi"
-								src="../../../../resources/images/icon/minimi/soulTeddyIcon.gif" />
+								src="../../../../resources/images/minimi/soulTeddyIcon.gif" />
 						<div class="visit-view">
 	    				<div class="visit-view-inner">
 	     					이건 버그 맞아요<br>
@@ -105,7 +105,7 @@
 							<tr>
 								<td>No. 404</td>
 								<td>이진우
-									<img src="../../../../resources/images/icon/minihome/homeIcon.png" class="visit-line-tbImg">
+									<img src="../../../../resources/images/minihome/homeIcon.png" class="visit-line-tbImg">
 								</td>
 								<td>2023-12-20 21:17</td>
 								<td>비밀로하기</td>
@@ -116,7 +116,7 @@
 					</div>
 					<div class="visit-frame-write">
 						<img class ="visit-minimi"
-								src="../../../../resources/images/icon/minimi/Nova_2Icon.gif" />
+								src="../../../../resources/images/minimi/Nova_2Icon.gif" />
 						<div class="visit-view">
 	    				<div class="visit-view-inner">
 	     					이거 버그 아니에요<br>
