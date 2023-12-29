@@ -26,23 +26,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    
    <select id="selectUserInfo" parameterType="map" resultType="map">
       select 
-         userEmail
-          ,userPassword
-          ,userName
-          ,userNickname
-          ,userGender
-          ,userBirth
-          ,userPhone
-      from user
+         user.userEmail
+          ,user.userPassword
+          ,user.userName
+          ,user.userNickname
+          ,user.userGender
+          ,user.userBirth
+          ,user.userPhone
+          ,dotori.currentDotori
+      from user, dotori
       where 1=1
          <if test="userEmail != null">
-            and userEmail = #{userEmail}
+            and user.userEmail = #{userEmail}
          </if>
          <if test="userPassword != null">
-            and userPassword = #{userPassword}
+            and user.userPassword = #{userPassword}
          </if>
          <if test="userPhone != null">
-            and userPhone = #{userPhone}
+            and user.userPhone = #{userPhone}
          </if>
       
    </select>
