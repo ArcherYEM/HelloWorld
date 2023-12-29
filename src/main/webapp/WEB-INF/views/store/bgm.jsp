@@ -68,7 +68,6 @@
 				</div>
 			</c:forEach> --%>
 			</div>
-				
 			
 			<div class="bgm-buy">
 				<input type="button" value="구매">
@@ -171,7 +170,6 @@ $(document).ready(function() {
 	search();
 });
 </script>
-
 
 </body>
 </html>
