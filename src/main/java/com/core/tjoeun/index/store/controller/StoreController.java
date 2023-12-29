@@ -72,11 +72,11 @@ public class StoreController {
 		return resultMap;
 	}
 	
-	@RequestMapping(value = "/store/minimiView")
+	@RequestMapping(value = "/store/minimiView", method= {RequestMethod.GET, RequestMethod.POST})
 	public String selectStoreList(Model model, @RequestParam(defaultValue = "1") int page) throws Exception {
 	    try {
 	        Map minimiMap = new HashMap();
-	        minimiMap.put("page", String.valueOf(page)); // page를 문자열로 변환하여 저장
+	        minimiMap.put("page", String.valueOf(page));
 	        List<Map> minimi = storeService.getStroeMinimiList(minimiMap);
 	        model.addAttribute("minimi", minimi);
 	        model.addAttribute("totalPage", storeService.selectStoreCnt(minimiMap));
