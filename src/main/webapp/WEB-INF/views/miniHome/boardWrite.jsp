@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="../../../../resources/css/minihome/album.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
 <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
-<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
+<link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 <script type="text/javascript" src="../../../../resources/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
@@ -30,16 +30,16 @@
 					<div class="box profile-box">
 							<div class="album-folder-group">
 								<div class="album-folder">
-									<img src="/resources/images/icon/minihome/openFolderIcon.png">
-									<a href="#">전체보기</a><br/>
+									<img src="/resources/images/minihome/openFolderIcon.png">
+									<a href="#">전체보기</a>
 								</div>
 								<div class="album-folder">
-									<img src="/resources/images/icon/minihome/closeFolderIcon.png">
-									<a href="#">일상생활</a><br/>
+									<img src="/resources/images/minihome/closeFolderIcon.png">
+									<a href="#">일상생활</a>
 								</div>
 								<div class="album-folder">
-									<img src="/resources/images/icon/minihome/closeFolderIcon.png">
-									<a href="#">개발 이야기</a><br/>
+									<img src="/resources/images/minihome/closeFolderIcon.png">
+									<a href="#">개발 이야기</a>
 								</div>
 							</div>
 							<div class="album-dot">---------------------------------</div>

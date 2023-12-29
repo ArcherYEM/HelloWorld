@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="../../../../resources/css/minihome/album.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
 <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
-<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
+<link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 </head>
 <body>
 	<div class="main-frame">
@@ -28,16 +28,16 @@
 						<div class="box profile-box">
 								<div class="album-folder-group">
 									<div class="album-folder">
-										<img src="/resources/images/icon/minihome/openFolderIcon.png">
-										<a href="#">전체보기</a><br/>
+										<img src="/resources/images/minihome/openFolderIcon.png">
+										<a href="#">전체보기</a>
 									</div>
 									<div class="album-folder">
-										<img src="/resources/images/icon/minihome/closeFolderIcon.png">
-										<a href="#">일상생활</a><br/>
+										<img src="/resources/images/minihome/closeFolderIcon.png">
+										<a href="#">일상생활</a>
 									</div>
 									<div class="album-folder">
-										<img src="/resources/images/icon/minihome/closeFolderIcon.png">
-										<a href="#">개발 이야기</a><br/>
+										<img src="/resources/images/minihome/closeFolderIcon.png">
+										<a href="#">개발 이야기</a>
 									</div>
 								</div>
 								<div class="album-dot">---------------------------------</div>
@@ -78,7 +78,7 @@
 								<tbody>							
 									<tr>
 										<td class="td-checkbox"><input type="checkbox"></input></td>
-										<td class="td-title">[스크랩]너는 내 운명<img src="../../../../resources/images/icon/minihome/newIcon.png" class="newIcon"></td>
+										<td class="td-title">[스크랩]너는 내 운명<img src="../../../../resources/images/minihome/newIcon.png" class="newIcon"></td>
 										<td class="td-writer">채승원</td>
 										<td class="td-view">21</td>
 									</tr>
@@ -120,7 +120,7 @@
 									
 									<tr>
 										<td class="td-checkbox"><input type="checkbox"></input></td>
-										<td class="td-title">이미지가 달린 게시글 <img src="../../../../resources/images/icon/minihome/photoIcon.png" class="photoIcon"></td>
+										<td class="td-title">이미지가 달린 게시글 <img src="../../../../resources/images/minihome/photoIcon.png" class="photoIcon"></td>
 										<td class="td-writer">이정은</td>
 										<td class="td-view">46</td>
 									</tr>
