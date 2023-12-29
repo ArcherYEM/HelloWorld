@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="../../../../resources/css/minihome/jquery-ui(1.13.2).css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
 <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
-<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
+<link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 <script src="https://kit.fontawesome.com/91b557f547.js" crossorigin="anonymous"></script> 
 <!-- date picker  -->
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -36,16 +36,16 @@
 						<div class="profile-dot">---------------------------------</div>
 						<div class="album-folder-group">
 								<div class="album-folder">
-									<img src="/resources/images/icon/minihome/openFolderIcon.png">
-									<a href="#" class="folder-name">전체보기</a><br/>
+									<img src="/resources/images/minihome/openFolderIcon.png">
+									<a href="#" class="folder-name">전체보기</a>
 								</div>
 								<div class="album-folder">
-									<img src="/resources/images/icon/minihome/closeFolderIcon.png">
-									<a href="#" class="folder-name">일상생활</a><br/>
+									<img src="/resources/images/minihome/closeFolderIcon.png">
+									<a href="#" class="folder-name">일상생활</a>
 								</div>
 								<div class="album-folder">
-									<img src="/resources/images/icon/minihome/closeFolderIcon.png">
-									<a href="#" class="folder-name">개발 이야기</a><br/>
+									<img src="/resources/images/minihome/closeFolderIcon.png">
+									<a href="#" class="folder-name">개발 이야기</a>
 								</div>
 						</div>
 						
@@ -63,7 +63,7 @@
 					</div>
 					<div class="box content-box">
 						<div class=" album-submit">
-								<input type="button" id="btnUpload" value="글쓰기" onclick="location.href='/miniHome/diaryWriteView'">
+								<input type="button" id="btnUpload" class="btnDiaryWrite" data-diaryWrite="<c:url value='/mnHome/diaryView'/>" value="글쓰기" onclick="location.href='/miniHome/diaryWriteView'">
 						</div>
 								<div class="album-overflow">
 							
@@ -317,7 +317,7 @@
 	<script src="../../../../resources/js/default.js"></script>
 	<script>
 	
-	$.datepicker.setDefaults({
+	$('.datepicker').setDefaults({
         dateFormat: 'yymmdd',
         prevText: '이전 달',
         nextText: '다음 달',

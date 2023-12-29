@@ -39,12 +39,14 @@
 				</div>
 				
 				<div class="find-btn">
-					<form action="/index/member/home" method="GET">
+					
+					<!-- <form action="/index/member/home" method="GET">
 						<input type="submit" value="취소"> 
 					</form>
 					<form action="" method="POST">
 						<input type="submit" value="찾기"> 
-					</form>
+					</form> -->
+					<button id="btnCancle">취소</button>
 					<button id="btnSubmit">찾기</button>
 				</div>
 				
@@ -60,9 +62,33 @@
 	</div>
 	
 	<script>
+		
 		document.getElementById('btnSubmit').addEventListener('click',function(){
-			document.getElementById('hiddenUserName').value = document.getElementById('userName').value;
-			document.getElementById('hiddenUserPhone').value = document.getElementById('userPhone').value;
+			/* let phonePattern = /[\s-]/g; 공백 및 하이픈 입력 확인 */
+			let phonePattern = /^\d+$/;
+			let numPattern = /\d+/;
+			let namePattern = /^[가-힣a-zA-Z]+$/i;
+			
+			let phoneNum = document.getElementById('userPhone').value;
+			let userName = document.getElementById('userName').value;
+			
+			if(phoneNum.length<1 || userName.length<1){
+				alert('모든 내용을 입력해주세요.');
+			}else if(!phoneNum.match(phonePattern)){
+				alert('숫자만 입력해주세요.');
+			}else if(phoneNum.length > 11 || phoneNum.length < 10){
+				alert('입력하신 번호를 확인해주세요.');
+			}else{
+				document.getElementById('hiddenUserPhone').value = phoneNum;
+			}
+			
+			if(userName.length <2){
+				alert('입력하신 이름을 확인해주세요.');
+			}else if(userName.match(numPattern)){
+				alert('이름은 숫자를 포함할 수 없습니다.');
+			}else{
+				document.getElementById('hiddenUserName').value = userName;
+			}
 			
 			document.getElementById('frm1').submit();
 		});

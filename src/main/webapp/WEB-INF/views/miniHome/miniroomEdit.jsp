@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="../../../../resources/css/minihome/fonts.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/miniroomEdit.css" />
 <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
-<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
+<link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 </head>
 <body>
 	<div class="mnr-frame">
@@ -40,22 +40,22 @@
 					미니미				
 				</div>
 			<div class="minimiImg">
-				<img src="../../../../resources/images/icon/minimi/balokIcon.gif">
-   	     		<img src="../../../../resources/images/icon/minimi/blueMushroomIcon.gif">    	     	
-   	     		<img src="../../../../resources/images/icon/minimi/bunnyIcon.gif">
-   	     		<img src="../../../../resources/images/icon/minimi/fairyIcon.gif">
-   	     		<img src="../../../../resources/images/icon/minimi/ticktockIcon.gif">
-   	     		<img src="../../../../resources/images/icon/minimi/stoneBallIcon.gif">
-   	     		<img src="../../../../resources/images/icon/minimi/toyTrojanIcon.gif">
+				<img src="../../../../resources/images/minimi/balokIcon.gif">
+   	     		<img src="../../../../resources/images/minimi/blueMushroomIcon.gif">    	     	
+   	     		<img src="../../../../resources/images/minimi/bunnyIcon.gif">
+   	     		<img src="../../../../resources/images/minimi/fairyIcon.gif">
+   	     		<img src="../../../../resources/images/minimi/ticktockIcon.gif">
+   	     		<img src="../../../../resources/images/minimi/stoneBallIcon.gif">
+   	     		<img src="../../../../resources/images/minimi/toyTrojanIcon.gif">
      	     </div>
      	     <div class="minimiImg">
-     	     	<img src="../../../../resources/images/icon/minimi/duckyFamilyIcon.gif">
-     	     	<img src="../../../../resources/images/icon/minimi/hornGoblinIcon.gif">
-     	     	<img src="../../../../resources/images/icon/minimi/juniorDarkYetiIcon.gif">
-     	     	<img src="../../../../resources/images/icon/minimi/rupanIcon.gif">
-     	     	<img src="../../../../resources/images/icon/minimi/ribbonPigIcon.gif">
-     	     	<img src="../../../../resources/images/icon/minimi/grupinIcon.gif">
-     	     	<img src="../../../../resources/images/icon/minimi/helicopterIcon.gif">
+     	     	<img src="../../../../resources/images/minimi/duckyFamilyIcon.gif">
+     	     	<img src="../../../../resources/images/minimi/hornGoblinIcon.gif">
+     	     	<img src="../../../../resources/images/minimi/juniorDarkYetiIcon.gif">
+     	     	<img src="../../../../resources/images/minimi/rupanIcon.gif">
+     	     	<img src="../../../../resources/images/minimi/ribbonPigIcon.gif">
+     	     	<img src="../../../../resources/images/minimi/grupinIcon.gif">
+     	     	<img src="../../../../resources/images/minimi/helicopterIcon.gif">
      	     </div>
 			</div>
 		</div>

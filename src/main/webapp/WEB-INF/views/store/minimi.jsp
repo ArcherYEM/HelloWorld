@@ -48,7 +48,7 @@
 				<c:forEach var="minimi" items="${minimi}" varStatus="seq">
 					<div class="product">
 			        	<div>
-			        		<img src="<c:url value="${minimi.contentPath }"/>" />
+			        		<img src="<c:url value="${minimi.contentPath }"/>" class="store-minimi-img"/>
 			        	</div>
 			          	<div class="product-name">
 			             	<c:out value="${minimi.productName }"/>

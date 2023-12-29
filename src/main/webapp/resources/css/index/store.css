@@ -24,14 +24,19 @@
 
 .products {
    text-align: center;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
 }
 
 .productList {
    width: 100%;
-   height: 100%;
    margin-left: auto;
    margin-right: auto;
-   display: inline-block;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
 }
 
 .product {
@@ -44,6 +49,14 @@
    margin-left: 10px;
    margin-right: 10px;
    margin-bottom: 30px;
+}
+
+.store-minimi-img {
+	width: 70%;
+	height: 70%;
+	padding: 15px;
+	border: 1px solid orange;
+	border-radius: 5px;
 }
 
 .product-name {

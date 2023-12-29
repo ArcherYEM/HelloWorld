@@ -29,3 +29,8 @@ body{
 #passwordMatchMessage{
 	font-size : 12px;
 }
+
+#btnCancle, #btnSubmit{
+	margin: 0 20px;
+	padding: 5px 20px;
+}

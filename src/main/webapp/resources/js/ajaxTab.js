@@ -13,17 +13,21 @@ function loadTabContent(tabName) {
                 htmlToAdd += '<script src="https://code.jquery.com/jquery-3.6.0.js"></script>';
                 htmlToAdd += '<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>';                
                 htmlToAdd += '<script type="text/javascript" src="../../../../resources/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>';
-                htmlToAdd += '<script src="../../../../resources/js/datepicker.js"></script>';
+                htmlToAdd += '<script src="../../../../resources/js/datePicker.js"></script>';
 
             }else if(tabName === '/mnHome/albumView'){
                 htmlToAdd += '<link class="album" href="/resources/css/minihome/album.css" rel="stylesheet">';
+                htmlToAdd += '<script src="https://code.jquery.com/jquery-3.6.0.js"></script>';
             }else if(tabName === '/mnHome/boardView'){
                 htmlToAdd += '<link class="board" href="/resources/css/minihome/board.css" rel="stylesheet">';
                 htmlToAdd += '<link class="board" href="/resources/css/minihome/album.css" rel="stylesheet">';
+                htmlToAdd += '<script src="https://code.jquery.com/jquery-3.6.0.js"></script>';
             }else if(tabName === '/mnHome/visitView'){
                 htmlToAdd += '<link href="/resources/css/minihome/visit.css" rel="stylesheet">';
+                htmlToAdd += '<script src="https://code.jquery.com/jquery-3.6.0.js"></script>';
             }else if(tabName === '/mnHome/settingView'){
                 htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
+                htmlToAdd += '<script src="https://code.jquery.com/jquery-3.6.0.js"></script>';
             }
             
             // Append all the HTML at once.
@@ -48,8 +52,5 @@ $(document).on("click", ".btnDiaryWrite", function (event) {
    tabName = $(this).data("diaryWrite");
    loadTabContent(tabName); 
 });
-
-
-
 
 

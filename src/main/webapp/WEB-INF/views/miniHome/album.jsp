@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="../../../../resources/css/minihome/album.css" />
 	<link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
 	<link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
-	<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
+	<link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 </head>
 <body>
 	<div class="main-frame">
@@ -27,15 +27,15 @@
 						<div class="box profile-box">
 							<div class="album-folder-group">
 								<div class="album-folder">
-									<img src="/resources/images/icon/minihome/openFolderIcon.png">
+									<img src="/resources/images/minihome/openFolderIcon.png">
 									<a href="#">전체보기</a><br/>
 								</div>
 								<div class="album-folder">
-									<img src="/resources/images/icon/minihome/closeFolderIcon.png">
+									<img src="/resources/images/minihome/closeFolderIcon.png">
 									<a href="#">~ 2014.10.11</a><br/>
 								</div>
 								<div class="album-folder">
-									<img src="/resources/images/icon/minihome/closeFolderIcon.png">
+									<img src="/resources/images/minihome/closeFolderIcon.png">
 									<a href="#">우리가족 ~♡</a><br/>
 								</div>
 							</div>

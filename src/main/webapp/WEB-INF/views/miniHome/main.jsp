@@ -11,18 +11,13 @@
 <link rel="stylesheet" href="../../../../resources/css/minihome/fonts.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/frame.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
-
-<link rel="stylesheet" href="../../../../resources/css/minihome/jquery-ui(1.13.2).css" />
 <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
-<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
+<link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
-<div id="test">
-	
-</div>
 </head>
 <body>
+	<div id="test"></div>
 	<div class="main-frame">
 		<div class="bookcover">
 			<div class="bookdot">
@@ -107,19 +102,19 @@
 										</div>
 										<div class="menu-item">
 											<a href="/mnHome/albumView">사진첩<span class="menu-num">1/88</span></a>
-											<img src="../../../../resources/images/icon/minihome/newIcon.png"
+											<img src="../../../../resources/images/minihome/newIcon.png"
 												alt="new Icon" class="minihome-nIcon">
 										</div>
 									</div>
 									<div class="menu-row">
 										<div class="menu-item">
 											<a href="/mnHome/boardView">게시판<span class="menu-num">3/17</span></a>
-											<img src="../../../../resources/images/icon/minihome/newIcon.png"
+											<img src="../../../../resources/images/minihome/newIcon.png"
 												alt="new Icon" class="minihome-nIcon">
 										</div>
 										<div class="menu-item">
 											<a href="/mnHome/visitView">방명록<span class="menu-num">25/500</span></a>
-											<img src="../../../../resources/images/icon/minihome/newIcon.png"
+											<img src="../../../../resources/images/minihome/newIcon.png"
 												alt="new Icon" class="minihome-nIcon">
 										</div>
 									</div>
@@ -227,7 +222,7 @@
 			</div>
 		</div>
 	</div>
-
+	
 	<script src="../../../../resources/js/default.js"></script>
 	<script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
 	<script>

@@ -26,7 +26,7 @@
 				</div>
 				<div id="divFindIdResult">
 					<p class="p-userInfo"><c:out value="${userName }"/>님의 아이디 입니다.</p>
-					<p class="p-userEmail"><c:out value="${userId }"/></p>
+					<p class="p-userEmail"><c:out value="${findId }"/></p>
 					<div class="after-link">
 		               <a href="<c:url value='/'/>">로그인</a> / 
 		               <a href="<c:url value='/index/member/findPw'/>">비밀번호 찾기</a>
@@ -40,7 +40,14 @@
 		  <div class="grid-item"></div>  
 		</div>
 		
-		
-		
+	<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
+	<script>
+		$(function(){
+			if(${resultCode} == 0){
+				alert('${msg}');
+				location.href = "<c:url value='/index/member/findId'/>";
+			}
+		});
+	</script>
 	</body>
 </html>
