@@ -9,5 +9,7 @@ public interface StoreMapper {
 	
 	public List<Map> searchBgm(Map map);
 
-	public List<Map> getProductList(Map map);
+	public List<Map> getStroeMinimiList(Map map);
+	
+	public Map selectStoreCnt(Map map);
 }
