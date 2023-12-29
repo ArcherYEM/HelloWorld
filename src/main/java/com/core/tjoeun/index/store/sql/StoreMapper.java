@@ -7,5 +7,7 @@ public interface StoreMapper {
 
 	public List<Map> getBgmList(Map map);
 	
+	public List<Map> searchBgm(Map map);
+
 	public List<Map> getProductList(Map map);
 }

@@ -27,6 +27,15 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
+	@Transactional(readOnly = false)
+	public List<Map> searchBgm(Map map) throws Exception {
+		if(storeDao.getBgmList(map)==null) {
+			throw new Exception();
+		}		
+		return storeDao.getBgmList(map);
+	}
+	
+	@Override
 	public List<Map> getProductList(Map map) throws Exception {
 		if(storeDao.getBgmList(map)==null) {
 			throw new Exception();

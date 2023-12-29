@@ -43,7 +43,7 @@
 		<div class="bgm-frame">
 		
 			<div class="bgm-search-group">
-				<input type="text" class="bgm-search-input" id="searchInput" onkeyup="searchFunction()" placeholder="제목 혹은 가수명을 입력하세요" maxlength="18">
+				<input type="text" class="bgm-search-input" id="searchInput" onkeyup="search()"placeholder="제목 혹은 가수명을 입력하세요" maxlength="18" autofocus>
 				<button class="bgm-search-btn" id="searchBtn"></button> <!-- 돋보기 아이콘 css 처리 -->
 			</div>
 			
@@ -56,7 +56,8 @@
 				<div>금액</div>
 			</div>
 			
-			<c:forEach var="bgm" items="${bgmInfo}" varStatus="seq">
+			<div id="test">
+<%-- 			<c:forEach var="bgm" items="${bgmInfo}" varStatus="seq">
 				<div class="bgm-list bgm-grid" id="ajaxTable">
 					<div><input type="checkbox"></div>
 					<div><c:out value="${seq.count }"/></div>
@@ -65,8 +66,9 @@
 					<div><c:out value="${bgm.runningTime }"/></div>
 					<div><c:out value="${bgm.bgmPrice }"/></div>
 				</div>
-			</c:forEach>
-			
+			</c:forEach> --%>
+			</div>
+				
 			
 			<div class="bgm-buy">
 				<input type="button" value="구매">
@@ -127,10 +129,47 @@
     });
 </script>
 <script>
-	$('#searchBtn').on('click',function(){
-		$('#content').val($('#searchInput').val());
-		$('#frmSearch').submit();
-	})
+//검색 기능
+function search(){
+	$('#content').val($('#searchInput').val());
+	$.ajax({
+		method:"POST"
+		,url: '<c:url value="/store/bgm/searchBgm"/>'
+		,data: {content:$('#content').val()}		
+	}).done(function( msg ){
+		var resultHtml = '';
+		if('success'==msg.result){
+			if(msg.data.length>0){
+            $.each(msg.data, function(i, item) {
+            	resultHtml += '<div class="bgm-list bgm-grid" id="ajaxTable">';
+                resultHtml += '<div><input type="checkbox"></div>';
+                resultHtml += '<div>' + (i + 1) + '</div>';
+                resultHtml += '<div>' + item.title + '</div>';
+                resultHtml += '<div>' + item.artist + '</div>';
+                resultHtml += '<div>' + item.runningTime + '</div>';
+                resultHtml += '<div>' + item.bgmPrice + '</div>';
+                resultHtml += '</div>';
+                $('#test').html(resultHtml);
+            });
+		} else {
+			 resultHtml += '<div>';
+             resultHtml += '<div style="text-align:center;">검색 결과가 없습니다.</div>';
+             resultHtml += '</div>';
+		}
+		$('#test').html(resultHtml);			
+		}else if('fail'==msg.result){
+			alert('에러');
+		}
+	});
+}
+
+$('#searchBtn').on('click',function(){
+	search();	
+});
+
+$(document).ready(function() {
+	search();
+});
 </script>
 
 

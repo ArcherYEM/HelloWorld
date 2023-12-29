@@ -6,5 +6,9 @@ import java.util.Map;
 public interface StoreService {
 
 	public List<Map> getBgmList(Map map) throws Exception;
+	
+	public List<Map> searchBgm(Map map) throws Exception;
+	
 	public List<Map> getProductList(Map map) throws Exception;
+
 }
