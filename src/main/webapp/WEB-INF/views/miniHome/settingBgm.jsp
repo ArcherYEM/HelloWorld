@@ -52,7 +52,7 @@
 									</div>
 									
 								</div>
-								<div class="devide-dot">---------------------------------</div>
+								<div class="setting-devide-dot">---------------------------------</div>
 								<div class="font-kyobohand setting-profile-username">이주빈&#128698;</div>
 								<div class="profile-dropDown">
 									<select>
@@ -77,13 +77,13 @@
 						</div>
 						<div class="box content-box">
 						
-							<div class="bgm-frame">
+							<div class="setting-bgm-frame">
 							
-							<div class="menuTitle">현재 재생목록</div>
+							<div class="setting-menuTitle">현재 재생목록</div>
 		
 							
 							
-							<div class="bgm-list-group bgm-grid">
+							<div class="setting-bgm-list-group setting-bgm-grid">
 								<div><input type="checkbox"></div>
 								<div>순번</div>
 								<div>제목</div>
@@ -91,7 +91,7 @@
 								<div>재생시간</div>
 								
 							</div>
-							<div class="bgm-list bgm-grid">
+							<div class="setting-bgm-list setting-bgm-grid">
 								<div><input type="checkbox"></div>
 								<div>1</div>
 								<div>Super Star</div>
@@ -99,7 +99,7 @@
 								<div>03:18</div>
 								
 							</div>
-							<div class="bgm-list bgm-grid">
+							<div class="setting-bgm-list setting-bgm-grid">
 								<div><input type="checkbox"></div>
 								<div>2</div>
 								<div>죽을만큼 아파서</div>
@@ -107,7 +107,7 @@
 								<div>03:38</div>
 								
 							</div>
-							<div class="bgm-list bgm-grid">
+							<div class="setting-bgm-list setting-bgm-grid">
 								<div><input type="checkbox"></div>
 								<div>3</div>
 								<div>거짓말</div>
@@ -115,7 +115,7 @@
 								<div>03:58</div>
 								
 							</div>
-							<div class="bgm-list bgm-grid">
+							<div class="setting-bgm-list setting-bgm-grid">
 								<div><input type="checkbox"></div>
 								<div>4</div>
 								<div>Tell me</div>
@@ -123,7 +123,7 @@
 								<div>04:10</div>
 								
 							</div>
-							<div class="bgm-list bgm-grid">
+							<div class="setting-bgm-list setting-bgm-grid">
 								<div><input type="checkbox"></div>
 								<div>5</div>
 								<div>Gee</div>
@@ -133,25 +133,25 @@
 							</div>
 							
 							
-							<div class="bgm-list-delete">
+							<div class="setting-bgm-list-delete">
 								<input type="button" value="삭제">
 							</div>
 							
 						</div>
 						
-							<div id="divDivideLine"></div>
+							<div id="setting-divDivideLine"></div>
 							
-							<div class="bgm-frame bgm-myList">
+							<div class="setting-bgm-frame setting-bgm-myList">
 							
-							<div class="menuTitle">보유 BGM</div>
+							<div class="setting-menuTitle">보유 BGM</div>
 		
-							<div class="bgm-search-group">
-								<input type="text" class="bgm-search-input" placeholder="제목 혹은 가수명을 입력하세요" maxlength="18">
-								<button class="bgm-search-btn"></button> <!-- 돋보기 아이콘 css 처리 -->
+							<div class="setting-bgm-search-group">
+								<input type="text" class="setting-bgm-search-input" placeholder="제목 혹은 가수명을 입력하세요" maxlength="18">
+								<button class="setting-bgm-search-btn"></button> <!-- 돋보기 아이콘 css 처리 -->
 								
 							</div>
 							
-							<div class="bgm-order-select">
+							<div class="setting-bgm-order-select">
 									<select>
 										<option>최근구매순</option>
 										<option>제목오름차순</option>
@@ -160,7 +160,7 @@
 							</div>
 							
 							
-							<div class="bgm-list-group bgm-grid">
+							<div class="setting-bgm-list-group setting-bgm-grid">
 								<div><input type="checkbox"></div>
 								<div>순번</div>
 								<div>제목</div>
@@ -168,7 +168,7 @@
 								<div>재생시간</div>
 								
 							</div>
-							<div class="bgm-list bgm-grid">
+							<div class="setting-bgm-list setting-bgm-grid">
 								<div><input type="checkbox"></div>
 								<div>1</div>
 								<div>Super Star</div>
@@ -176,7 +176,7 @@
 								<div>03:18</div>
 								
 							</div>
-							<div class="bgm-list bgm-grid">
+							<div class="setting-bgm-list setting-bgm-grid">
 								<div><input type="checkbox"></div>
 								<div>2</div>
 								<div>죽을만큼 아파서</div>
@@ -184,7 +184,7 @@
 								<div>03:38</div>
 								
 							</div>
-							<div class="bgm-list bgm-grid">
+							<div class="setting-bgm-list setting-bgm-grid">
 								<div><input type="checkbox"></div>
 								<div>3</div>
 								<div>거짓말</div>
@@ -192,7 +192,7 @@
 								<div>03:58</div>
 								
 							</div>
-							<div class="bgm-list bgm-grid">
+							<div class="setting-bgm-list setting-bgm-grid">
 								<div><input type="checkbox"></div>
 								<div>4</div>
 								<div>Tell me</div>
@@ -200,7 +200,7 @@
 								<div>04:10</div>
 								
 							</div>
-							<div class="bgm-list bgm-grid">
+							<div class="setting-bgm-list setting-bgm-grid">
 								<div><input type="checkbox"></div>
 								<div>5</div>
 								<div>Gee</div>
@@ -208,7 +208,7 @@
 								<div>03:11</div>
 								
 							</div>
-							<div class="bgm-list bgm-grid">
+							<div class="setting-bgm-list setting-bgm-grid">
 								<div><input type="checkbox"></div>
 								<div>6</div>
 								<div>U</div>
@@ -216,7 +216,7 @@
 								<div>04:11</div>
 								
 							</div>
-							<div class="bgm-list bgm-grid">
+							<div class="setting-bgm-list setting-bgm-grid">
 								<div><input type="checkbox"></div>
 								<div>7</div>
 								<div>슬픈다짐</div>
@@ -225,7 +225,7 @@
 								
 							</div>
 							
-							<div class="bgm-list-add">
+							<div class="setting-bgm-list-add">
 								<input type="button" value="재생목록추가">
 							</div>
 							
