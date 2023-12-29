@@ -39,12 +39,14 @@
 				</div>
 				
 				<div class="find-btn">
-					<form action="/index/member/home" method="GET">
+					
+					<!-- <form action="/index/member/home" method="GET">
 						<input type="submit" value="취소"> 
 					</form>
 					<form action="" method="POST">
 						<input type="submit" value="찾기"> 
-					</form>
+					</form> -->
+					<button id="btnCancle">취소</button>
 					<button id="btnSubmit">찾기</button>
 				</div>
 				

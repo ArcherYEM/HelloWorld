@@ -78,42 +78,20 @@
   bottom:0;
 }
 
-.devide-dot{
+.setting-devide-dot{
 	margin-top : 70px; /* 임의값  */
 }
 
-.menuTitle{
+.setting-menuTitle{
 	font-size : 17px;
 	font-weight : bold;
 	margin : 10px;
 }
-/* .menuSubtitle{
-	font-size : 15px;
-} */
-
-.menuList{
-	list-style: none;
-	list-style-position : outside;
-	font-size : 15px;
-	
-}
-
-.menuList li::before {
-  content: "\2022";
-  color: orange;
-  font-weight: bold;
-  /* display: inline-block;  */
-  width: 2em;
-  margin-left: -1em;
-  margin-right : 0.5em;
-}
-
-.divForTable{
-	
-}
 
 
-table {
+
+
+.setting-table-profile {
   border-collapse: collapse;
   border-radius : 10px;
   border-style : hidden;
@@ -124,12 +102,12 @@ table {
   margin : auto;
 }
 
-td, th {
+.setting-table-profile td, th {
   border: 1px solid #dddddd;
   padding: 7px;
 }
 
-th {
+.setting-table-profile th {
   background-color: #ffcc66;
   text-align : left;
   width : 30%;
@@ -138,24 +116,24 @@ th {
   
 }
 
-.infoIcon{
+.setting-infoIcon{
 	padding : 8px;
 }
 
-.infoRow{
+.setting-infoRow{
 	text-align: right;
 }
 
-.btn-right{
+.setting-btn-right{
 	 margin-left: auto;
 }
-.row-container{
+.setting-row-container{
 	 display: flex;
      justify-content: flex-end;
      align-items: center; 
 }
 
-.btnModify{
+.setting-btnModify{
 	border : 1px solid darkgrey;
 	border-radius : 4px;
 	color :#999999;
@@ -163,13 +141,13 @@ th {
 
 /*************bgm********************/
 
-.bgm-frame input[type="checkbox"] {
+.setting-bgm-frame input[type="checkbox"] {
     width: 10px;
     height: 10px;
     border-radius: 50%;
 }
 
-.bgm-search-group {
+.setting-bgm-search-group {
 	width: 300px;
 	height: 25px;
 	margin-top: 10px;
@@ -182,7 +160,7 @@ th {
 	/* margin-left : auto; */
 }
 
-.bgm-search-input {
+.setting-bgm-search-input {
 	font-size: 16px;
 	font-weight: bold;
 	width: 250px;
@@ -191,11 +169,11 @@ th {
 	outline: none;
 }
 
-.bgm-search-input::placeholder {
+.setting-bgm-search-input::placeholder {
     font-size: 14px;
 }
 
-.bgm-order-select{
+.setting-bgm-order-select{
 	margin-bottom : 10px;
 	/* display : flex;
 	justify-content: flex-end;
@@ -203,7 +181,7 @@ th {
 }
 
 
-.bgm-search-btn {
+.setting-bgm-search-btn {
     width: 20px; 
     height: 20px;
     background-image: url('/resources/images/store/searchIcon.png');
@@ -214,12 +192,12 @@ th {
      margin-left: 15px;
 }
 
-.bgm-search-btn:hover {
+.setting-bgm-search-btn:hover {
 	cursor: pointer; 
 }
 
 
-.bgm-list-group {
+.setting-bgm-list-group {
 	border-top: 1px solid #ff9933;
 	border-bottom: 2px solid #ff9933;
 	height: 50px;
@@ -227,7 +205,7 @@ th {
 	font-size : 14px;
 }
 
-.bgm-grid {
+.setting-bgm-grid {
 	width: 98%;
 	display: grid;
     grid-template-columns: 10% 10% 30% 30% 20%;
@@ -238,26 +216,26 @@ th {
 }
 
 
-.bgm-list {
+.setting-bgm-list {
 	border-bottom: 1px solid #ff9933;
 	font-size : 12px;
 }
 
-.bgm-list:hover {
+.setting-bgm-list:hover {
 	cursor: pointer;
 	background-color: #ffcc99;
 }
 
-.bgm-list-delete
-,.bgm-list-add{
+.setting-bgm-list-delete
+,.setting-bgm-list-add{
 	margin-top : 10px;
 }
 
-.bgm-myList{
+.setting-bgm-myList{
 	margin-top : 20px;
 }
 
-#divDivideLine{
+#setting-divDivideLine{
 	width : 100%;
 	border-top : 1px solid darkgrey;
 	margin-top : 20px;
