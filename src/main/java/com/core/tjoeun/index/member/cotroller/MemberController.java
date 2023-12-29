@@ -169,7 +169,7 @@ public class MemberController {
     @RequestMapping(value = "/afterFindPw", method = RequestMethod.POST)
     public String afterFindPw(Model model, @RequestParam Map map) {
     	String userId = "";
-        System.out.println(map);
+        String page = "";
         
         Map resultMap = memberService.findId(map);
         
@@ -177,21 +177,31 @@ public class MemberController {
            userId = (String)resultMap.get("userEmail");
            model.addAttribute("findId", userId);
            model.addAttribute("resultCode","1");
+           page = "index/findPwResult";
            
         }else {
      	  model.addAttribute("resultCode","0");
      	  model.addAttribute("msg", "정보를 찾을 수 없습니다.");
+     	  page = "index/findPw";
      	  
         }
     	
-        return "index/findPwResult";
+        return page;
     }
     
     @RequestMapping(value = "/findPw", method = RequestMethod.POST)
-    public String findPw() {
+    public String findPw(Model model, @RequestParam Map map) {
+    	try {
+			memberService.updatePw(map);
+			model.addAttribute("updateResult", "1");
+			model.addAttribute("msg", "변경되었습니다.");
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("updateResult", "0");
+			model.addAttribute("msg", "잠시 후 다시 시도해주세요.");
+		}
     	
-    	
-        return "index/findPw";
+        return "index/findPwResult";
     }
 
    

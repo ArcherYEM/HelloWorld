@@ -19,4 +19,6 @@ public interface MemberService {
 	public Map selectEmail(Map map);
 
 	public Map selectPhone(Map map);
+	
+	public void updatePw(Map map) throws Exception;
 }
