@@ -43,6 +43,7 @@ public class MemberController {
                 resultMap.put("resultCode", "1");
                 resultMap.put("userEmail", result.get("userEmail"));
                 resultMap.put("userPassword", result.get("userPassword"));
+                resultMap.put("userNickname", result.get("userNickname"));
             
                 Cookie userCookie = new Cookie("userEmail", result.get("userEmail").toString());
                 userCookie.setMaxAge(60 * 60 * 24 * 7);

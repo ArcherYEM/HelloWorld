@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</if>
 	</select>
 	
-		<select id="searchBgm" resultType="map" parameterType="map">
+	<select id="searchBgm" resultType="map" parameterType="map">
 		select 
 			seq
 		    ,title
@@ -32,6 +32,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			and title like concat('%',#{content},'%')
 			or artist like concat('%',#{content},'%')
 		</if>
+	</select>
+
+	<select id="getProductList" resultType="map" parameterType="map">
+		select 
+			seq
+		    ,category
+		    ,productName
+		    ,contentPath
+		    ,productPrice
+		from store
+		where 1 = 1
 	</select>
 
 

@@ -62,15 +62,18 @@
          
 <!--          로그인후 시점 -->
          <div id="divLogin" class="divLogin">
-         	<div class="divLogin-left">
-	    	    <form id="logoutForm" action="<c:url value='/main/member/logout' />" method="post">
-		    	    <input type="button" class="mainBtn" id="btnGoMinihome" value="내 미니홈피">
-		        	<input type="button" class="mainBtn" id="btnLogout" value="로그아웃">
-		        </form>
-	        </div>
-			<div class="divLogin-right" id="divMainMinimi">
+         	<div class="my-title">
+         		내 미니미
+        	</div>
+         	<div class="" id="divMainMinimi">
 	          	<img class="index-my-minimi" id="mainMinimi" src="<c:url value="/resources/images/PepeIcon.gif"/>">
         	</div>
+    	    <form id="logoutForm" action="<c:url value='/main/member/logout' />" method="post">
+	         	<div class="my-btn">
+		    	    <input type="button" class="mainBtn1" id="btnGoMinihome" value="내 미니홈피">
+		        	<input type="button" class="mainBtn2" id="btnLogout" value="로그아웃">
+		        </div>
+	        </form>
          </div>
 <!--          로그인후 종점 -->
 
@@ -99,12 +102,12 @@
          
       </div>
          
-   </div>
+    </div>
       
-      <div class="bottom-fix">
-            <hr>
-            <h1>team core</h1>
-            <a href="/mnHome/mainView" target="_blank" style="width:1200px; height:720px;">미니홈피 가기</a>
+	<div class="bottom-fix">
+		<hr>
+		<h1>team core</h1>
+		<a href="/mnHome/mainView" target="_blank" style="width:1200px; height:720px;">미니홈피 가기</a>
             <!-- ★★★추후 새창으로 변환 예정★★★ -->
 <!--      <button id="targetElement" 
                onclick="window.open('/helloworld/minihome/main'
@@ -112,93 +115,91 @@
 -->             
       </div>
       
-      <script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
-      <script>
-
-	      document.getElementById('frmLogin').addEventListener('keydown', function (e) {
-	          if (e.key === 'Enter') {
-	             loginUser();
-	          }
-	      });
-      
-	      document.getElementById('btnLogin').addEventListener('click', loginUser);
-
-	      function loginUser() {
-	         let userEmail = document.getElementById('userEmail').value;
-	         let userPassword = document.getElementById('userPassword').value;
-
-	         let jsonData = {
-	            "userEmail": userEmail,
-	            "userPassword": userPassword
-	         };
-
-	         $.ajax({
-	            method: 'POST',
-	            url: "<c:url value='/index/member/login' />",
-	            contentType: 'application/json',
-	            data: JSON.stringify(jsonData)
-	         }).done(function (json) {
-	            let helloMessage = document.getElementById('helloMessage');
-
-	            if (json.resultCode === '1') {
-	               helloMessage.innerText = '안녕하세요. ' + json.userEmail + '님!!';
-	               divHome.style.display = 'none';
-	               divLogin.style.display = 'block';
-	            } else {
-	               alert('아이디와 비밀번호를 다시 확인해 주세요.');
-	               helloMessage.innerText = '안녕하세요. HelloWorld에 오신 걸 환영합니다.';
-	               divHome.style.display = 'block';
-	               divLogin.style.display = 'none';
-	            }
-	         });
-	      }
-         
-         
-         let slideIndex = 0;
-         showSlides();
-   
-         function showSlides() {
-           let i;
-           let slides = document.getElementsByClassName("mySlides");
-           let dots = document.getElementsByClassName("dot");
-           for (i = 0; i < slides.length; i++) {
-             slides[i].style.display = "none";  
-           }
-           slideIndex++;
-           if (slideIndex > slides.length) {slideIndex = 1}    
-           for (i = 0; i < dots.length; i++) {
-             dots[i].className = dots[i].className.replace(" active", "");
-           }
-           slides[slideIndex-1].style.display = "block";  
-           dots[slideIndex-1].className += " active";
-           setTimeout(showSlides, 2000); // Change image every 2 seconds
+	<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
+    <script>
+    // Ajax 유저 로그인
+     document.getElementById('frmLogin').addEventListener('keydown', function (e) {
+         if (e.key === 'Enter') {
+            loginUser();
          }
-         
-         $(function() {
-             let userEmail = '<c:out value="${sessionScope.userId.userEmail}" />';
-             let helloMessage = document.getElementById('helloMessage');
-             let divHome = document.getElementById('divHome');
-             let divLogin = document.getElementById('divLogin');
-             
-             if (userEmail === '') {
-                 divHome.style.display = 'block';
-                 divLogin.style.display = 'none';
-             } else {
-            	 helloMessage.innerText = '안녕하세요. ' + userEmail + '님!!';
-                 divHome.style.display = 'none';
-                 divLogin.style.display = 'block';
-             }
-         });
-      
-      document.getElementById('btnGoMinihome').addEventListener('click', function() {
-         location.href = "<c:url value="/mnHome/mainView" />"
-      });
-      
-      document.getElementById('btnLogout').addEventListener('click', function() {
-         location.href = "<c:url value="/index/member/logout" />"
-      });
-         
-   </script>
-   
+     });
+    
+     document.getElementById('btnLogin').addEventListener('click', loginUser);
+
+     function loginUser() {
+        let userEmail = document.getElementById('userEmail').value;
+        let userPassword = document.getElementById('userPassword').value;
+
+        let jsonData = {
+           "userEmail": userEmail,
+           "userPassword": userPassword
+        };
+
+        $.ajax({
+           method: 'POST',
+           url: "<c:url value='/index/member/login' />",
+           contentType: 'application/json',
+           data: JSON.stringify(jsonData)
+        }).done(function (json) {
+           let helloMessage = document.getElementById('helloMessage');
+
+           if (json.resultCode === '1') {
+              helloMessage.innerText = json.userNickname + '  님 환영합니다.';
+              divHome.style.display = 'none';
+              divLogin.style.display = 'block';
+           } else {
+              alert('아이디와 비밀번호를 다시 확인해 주세요.');
+              helloMessage.innerText = '안녕하세요. HelloWorld에 오신 걸 환영합니다.';
+              divHome.style.display = 'block';
+              divLogin.style.display = 'none';
+           }
+        });
+     }
+       
+       let slideIndex = 0;
+       showSlides();
+ 
+       function showSlides() {
+         let i;
+         let slides = document.getElementsByClassName("mySlides");
+         let dots = document.getElementsByClassName("dot");
+         for (i = 0; i < slides.length; i++) {
+           slides[i].style.display = "none";  
+         }
+         slideIndex++;
+         if (slideIndex > slides.length) {slideIndex = 1}    
+         for (i = 0; i < dots.length; i++) {
+           dots[i].className = dots[i].className.replace(" active", "");
+         }
+         slides[slideIndex-1].style.display = "block";  
+         dots[slideIndex-1].className += " active";
+         setTimeout(showSlides, 2000); // Change image every 2 seconds
+       }
+       
+       $(function() {
+           let userEmail = '<c:out value="${sessionScope.userId.userEmail}" />';
+           let helloMessage = document.getElementById('helloMessage');
+           let divHome = document.getElementById('divHome');
+           let divLogin = document.getElementById('divLogin');
+           
+           if (userEmail === '') {
+               divHome.style.display = 'block';
+               divLogin.style.display = 'none';
+           } else {
+          	 helloMessage.innerText = '안녕하세요. ' + userEmail + '님!!';
+               divHome.style.display = 'none';
+               divLogin.style.display = 'block';
+           }
+       });
+    
+    document.getElementById('btnGoMinihome').addEventListener('click', function() {
+       location.href = "<c:url value="/mnHome/mainView" />"
+    });
+    
+    document.getElementById('btnLogout').addEventListener('click', function() {
+       location.href = "<c:url value="/index/member/logout" />"
+    });
+       
+	</script>
    </body>
 </html>
