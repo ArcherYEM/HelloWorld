@@ -28,7 +28,7 @@ public class MemberController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public Map login(@RequestBody Map req, HttpSession session, HttpServletResponse res) {
+    public Map login(@RequestBody Map req, Model model,HttpSession session, HttpServletResponse res) {
         Map resultMap = new HashMap<>();
         try {
             Map loginInfo = new HashMap<>();
@@ -44,6 +44,7 @@ public class MemberController {
                 resultMap.put("userEmail", result.get("userEmail"));
                 resultMap.put("userPassword", result.get("userPassword"));
                 resultMap.put("userNickname", result.get("userNickname"));
+                resultMap.put("userDotoriCnt", result.get("currentDotori"));
             
                 Cookie userCookie = new Cookie("userEmail", result.get("userEmail").toString());
                 userCookie.setMaxAge(60 * 60 * 24 * 7);

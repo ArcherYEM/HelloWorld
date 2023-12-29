@@ -24,6 +24,7 @@
 	           <img class="index-header-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
 	         </a>
 	       </div>
+	       <h5 id="userDotori" class="right"></h5>
 	       <div class="index-header-right">
 	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
 	            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
@@ -141,10 +142,14 @@
            contentType: 'application/json',
            data: JSON.stringify(jsonData)
         }).done(function (json) {
+        	console.log(json);
+        	
            let helloMessage = document.getElementById('helloMessage');
+           let userDotori = document.getElementById('userDotori');
 
            if (json.resultCode === '1') {
               helloMessage.innerText = json.userNickname + '  님 환영합니다.';
+              userDotori.innerText = '내 도토리 : ' + json.userDotoriCnt + ' 개';
               divHome.style.display = 'none';
               divLogin.style.display = 'block';
            } else {
