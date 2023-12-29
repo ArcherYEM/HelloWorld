@@ -35,21 +35,44 @@
 				
 				
 				<div class="find-btn">
-					<form action="/index/member/home" method="GET">
+					<%-- <form action="/index/member/home" method="GET">
 						<input type="submit" value="취소"> 
 					</form>
 					<form action="<c:url value='/'/>" method="GET"> 
 						<input type="submit" value="변경"> 
-					</form>
+					</form> --%>
+					<button id="btnCancle">취소</button>
+					<button id="btnSubmit">찾기</button>
 				</div>
 				
 	  	</div>
 	  </div>
 		  	
 	 	<div class="grid-item"></div>  
+	 	
+	 	 <form id="frm1" action="/index/member/findPw" method="POST">
+	  	 	<input id="hiddenUserId" type="hidden" name="userId">
+	  	 	<input id="hiddenNewPw" type="hidden" name="newPw">
+	  	 </form>
 	</div>
 	
+	<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
 	<script>
+	$(function(){
+		if(${resultCode} == 0){
+			alert('${msg}');
+			location.href = "<c:url value='/index/member/findPwView'/>";
+		}
+	});
+	
+	document.getElementById('btnSubmit').addEventListener('click',function(){
+		document.getElementById('hiddenUserId').value = "${findId}";
+		document.getElementById('hiddenNewPw').value = document.getElementById('userPassword').value;
+		console.log(document.getElementById('hiddenUserId').value);
+		
+		document.getElementById('frm1').submit();
+	});
+	
 	function checkPasswordMatch() {
 	    var password = document.getElementById('userPassword').value;
 	    var confirmPassword = document.getElementById('userPassword2').value;
@@ -62,5 +85,9 @@
 	        /* document.getElementById('btnSignUp').disabled = true; */
 	    }
 	}
+	
+	$('btnCancle').on('click',function(){
+		location.href = "<c:url value='/index/member/home'/>";
+	});
 	</script>
 </body>
