@@ -63,7 +63,7 @@
 					</div>
 					<div class="box content-box">
 						<div class=" album-submit">
-								<input type="button" id="btnUpload" value="글쓰기" onclick="location.href='/miniHome/diaryWriteView'">
+								<input type="button" id="btnUpload" class="btnDiaryWrite" data-diaryWrite="<c:url value='/mnHome/diaryView'/>" value="글쓰기" onclick="location.href='/miniHome/diaryWriteView'">
 						</div>
 								<div class="album-overflow">
 							
@@ -317,7 +317,7 @@
 	<script src="../../../../resources/js/default.js"></script>
 	<script>
 	
-	$.datepicker.setDefaults({
+	$('.datepicker').setDefaults({
         dateFormat: 'yymmdd',
         prevText: '이전 달',
         nextText: '다음 달',
