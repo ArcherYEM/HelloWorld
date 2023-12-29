@@ -33,20 +33,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			or artist like concat('%',#{content},'%')
 		</if>
 	</select>
-
-	<select id="getProductList" resultType="map" parameterType="map">
+	
+	<select id="getStroeMinimiList" resultType="map" parameterType="map">
+    <![CDATA[
+    SELECT
+        seq,
+        category,
+        productName,
+        contentPath,
+        productPrice
+    FROM store
+    LIMIT #{limit, jdbcType=INTEGER} 
+    OFFSET #{offset, jdbcType=INTEGER}
+    ]]>
+</select>
+	
+	
+	<select id="selectStoreCnt" resultType="map" parameterType="map">
 		select 
-			seq
-		    ,category
-		    ,productName
-		    ,contentPath
-		    ,productPrice
+			count(*) as totalCnt
 		from store
-		where 1 = 1
 	</select>
-
-
-
-
 
 </mapper>

@@ -1,5 +1,6 @@
 package com.core.tjoeun.index.store.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,11 +37,26 @@ public class StoreServiceImpl implements StoreService {
 	}
 	
 	@Override
-	public List<Map> getProductList(Map map) throws Exception {
-		if(storeDao.getBgmList(map)==null) {
-			throw new Exception();
+	public long selectStoreCnt(Map map) {
+		long totalCnt = (long) storeDao.selectStoreCnt(map).get("totalCnt");
+		long page = (totalCnt / 10);
+		
+		if (totalCnt % 10 > 0) {
+			page++;
 		}
-		return storeDao.getProductList(map);
+		return page;
 	}
-
+	
+	@Override
+	public List<Map> getStroeMinimiList(Map map) {
+	    Map minimiMap = new HashMap();
+	    Object pageObj = map.get("page");
+	    if (pageObj != null && !pageObj.toString().isEmpty()) {
+	        int iPage = Integer.parseInt(pageObj.toString());
+	        minimiMap.put("limit", 10);
+	        minimiMap.put("offset", 10 * (iPage - 1));
+	    }
+	    return storeDao.getStroeMinimiList(minimiMap);
+	}
+	
 }
