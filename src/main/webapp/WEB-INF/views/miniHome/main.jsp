@@ -247,6 +247,17 @@
 		  window.open(url, '_blank', settings);
 		}
 	</script>
+	<script>
+		// 대표 미니미 수정창 (setting page)
+		function MinimiChange() {
+		  var windowSettings = 'width=460, height=570, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50';
+		  openNewWindow('/mnHome/mnhMinimiChangeView', windowSettings);
+		}
+		
+		function openNewWindow(url, settings) {
+		  window.open(url, '_blank', settings);
+		}
+	</script>
 	
 </body>
 </html>

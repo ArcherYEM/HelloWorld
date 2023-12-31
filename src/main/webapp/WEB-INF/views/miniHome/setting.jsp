@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<html lang="ko" style="resizeable:no">
+<html lang="ko" style="resizable:no">
 <head>
 <meta charset="UTF-8">
 <title>미니홈피</title>
@@ -84,10 +84,7 @@
 										미니미화면
 									</div>
 									<div class="setting-myMinimi-Edit">
-										<a 
-										  class="setting-myMinimi-change" 
-										  onclick="openNewWindowmyMinimiSetting()">대표미니미 변경
-										</a>
+										<a class="setting-myMinimi-change" onclick="MinimiChange()">대표미니미 변경</a>
 									</div>
 								</div>
 								<table class="setting-table-profile">
@@ -194,7 +191,7 @@
 			</div>
 		</div>
 	</div>
-	<script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
+  	<script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
 	<script src="../../../../resources/js/default.js"></script>
 	<script>
 // 		전체선택 기능
@@ -218,15 +215,16 @@
 		}
 	</script>
 	<script>
-		// 대표미니미 선택창
-		function openNewWindowmyMinimiSetting() {
+		// 대표 미니미 수정창
+		function MinimiChange() {
 		  var windowSettings = 'width=460, height=570, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50';
-		  openNewWindow('/mnHome/mnhMinimiChange', windowSettings);
+		  openNewWindow('/mnHome/mnhMinimiChangeView', windowSettings);
 		}
 		
 		function openNewWindow(url, settings) {
 		  window.open(url, '_blank', settings);
 		}
 	</script>
+	
 </body>
 </html>
