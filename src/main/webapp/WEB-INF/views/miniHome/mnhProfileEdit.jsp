@@ -13,25 +13,27 @@
     <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 </head>
 <body>
+<form method="POST" action="<c:url value='/profile/download'/>" enctype="multipart/form-data">
 	<div class="edit-frame">
 		<div class="edit-pad">
 			<div class="edit-container-over">
 		    <div class="edit-file">
-		   	  <input type="file" id="fileInput" onchange="addFile(this.files)">
+		   	  <input type="file" id="fileInput" name="file">
 		    </div>
 		    <div class="file-preview" id="preview-container"></div>
 		  </div>
 		  <div class="edit-container-under">
 		  	<div class="edit-introduce">
-		  		<textarea id="introduction" placeholder="자기소개 문구를 입력하세요" rows="3"></textarea>
+		  		<textarea id="introduction" placeholder="자기소개 문구를 입력하세요" rows="3" name="msg"></textarea>
 		  	</div>
 		  </div>
 		  <div class="edit-btn">
-		 		<input type="button" value="등록">
+		 		<input type="submit" value="등록" id="btnUpload">
 		 		<input type="button" value="취소" id="cancel-button">
-			</div>
+		  </div>
 		</div>	
 	</div>
+</form>
 	
 <script>
   // 등록파일 미리보기
@@ -90,6 +92,10 @@
     document.getElementById("cancel-button").addEventListener("click", function() {
         window.close();
     });
+    
+    document.getElementById("btnUpload").addEventListener("click",function(){
+    	
+    })
 </script>
 </body>
 </html>

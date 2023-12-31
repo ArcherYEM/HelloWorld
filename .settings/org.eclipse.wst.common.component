@@ -2,7 +2,7 @@
 	<wb-module deploy-name="HELLOWORLD-1.1.1-BUILD-SNAPSHOT">
 		<wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
 		<wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-		<wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/webapp/resources"/>
 		<property name="java-output-path" value="target/classes"/>
         <property name="context-root" value="HELLOWORLD"/>
 	</wb-module>
