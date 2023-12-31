@@ -20,7 +20,7 @@
 	  
 	  <div class="grid-item">
 	  	<div id="divUserInfo">
-				<img id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+				<img class="index-header-logo otherPage-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
 				<div class="findId-title">
 			  	비밀번호 변경
 			  </div>
@@ -42,7 +42,7 @@
 						<input type="submit" value="변경"> 
 					</form> --%>
 					<button id="btnCancle">취소</button>
-					<button id="btnSubmit">찾기</button>
+					<button id="btnSubmit">확인</button>
 				</div>
 				
 	  	</div>
@@ -58,12 +58,20 @@
 	
 	<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
 	<script>
+	
 	$(function(){
-		if(${resultCode} == 0){
-			alert('${msg}');
+		let result = '${updateResult}';
+		let resultmsg = '' + '${msg}';
+		if(result == 0 && result != ''){
+			alert(resultmsg);
 			location.href = "<c:url value='/index/member/findPwView'/>";
+		}else if(result == 1 && result != ''){
+			alert(resultmsg);
+			location.href = "<c:url value='/'/>";
 		}
 	});
+	
+	
 	
 	document.getElementById('btnSubmit').addEventListener('click',function(){
 		document.getElementById('hiddenUserId').value = "${findId}";
@@ -71,6 +79,7 @@
 		console.log(document.getElementById('hiddenUserId').value);
 		
 		document.getElementById('frm1').submit();
+		
 	});
 	
 	function checkPasswordMatch() {

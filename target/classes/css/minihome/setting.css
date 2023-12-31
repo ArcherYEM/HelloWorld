@@ -82,24 +82,56 @@
 	margin-top : 70px; /* 임의값  */
 }
 
-.setting-menuTitle{
+.setting-menuTitle {
 	font-size : 17px;
 	font-weight : bold;
 	margin : 10px;
 }
 
+.divForTable {
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
 
+.setting-myMinimi {
+	width: 100%;
+	height: 160px;
+}
 
+.setting-myMinimi-view {
+	width: 100%;
+	height: 120px;
+	border:1px solid red;
+}
+
+.setting-myMinimi-Edit {
+	margin-top: 10px;
+	text-align: right;
+}
+
+.setting-myMinimi-change {
+	color: orange;
+	font-size: 12px;
+	border: none;
+}
+
+.setting-myMinimi-change:hover {
+	border: 1px solid gray;
+	border-radius: 5px;
+	cursor: pointer;
+}
 
 .setting-table-profile {
   border-collapse: collapse;
   border-radius : 10px;
   border-style : hidden;
   box-shadow : 0 0 0 1px #000;
-  width: 80%;
+  width: 100%;
   font-size : 13px;
   margin-bottom : 20px;
-  margin : auto;
 }
 
 .setting-table-profile td, th {
@@ -180,7 +212,6 @@
 	margin-left : auto; */
 }
 
-
 .setting-bgm-search-btn {
     width: 20px; 
     height: 20px;
@@ -195,7 +226,6 @@
 .setting-bgm-search-btn:hover {
 	cursor: pointer; 
 }
-
 
 .setting-bgm-list-group {
 	border-top: 1px solid #ff9933;
@@ -214,7 +244,6 @@
     gap: 5px;
     height: 40px;
 }
-
 
 .setting-bgm-list {
 	border-bottom: 1px solid #ff9933;

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="package com.core.tjoeun.mnHome.main.sql.MainMapper">
+
+	<select id="selectSettingUserStorage" parameterType="map"
+		resultType="map">
+		SELECT
+			userNickname,
+			category,
+			productName,
+			contentPath,
+			buy_date,
+			allocation
+		FROM userStorage
+		WHERE 1=1
+		<if test="userNickname != null">
+			AND userNickname = #{userNickname}
+		</if>
+		<if test="category != null">
+			AND category = 'minimi'
+			AND allocation = 1;
+		</if>
+	</select>
+	
+	<select id="getContentPath" parameterType="map" resultType="string">
+	    SELECT contentPath
+	    FROM userStorage
+	    WHERE 1=1
+	    <if test="userNickname != null">
+	        AND userNickname = #{userNickname}
+	    </if>
+	</select>
+	
+
+</mapper>

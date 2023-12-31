@@ -28,7 +28,7 @@ public class MemberController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public Map login(@RequestBody Map req, HttpSession session, HttpServletResponse res) {
+    public Map login(@RequestBody Map req, Model model,HttpSession session, HttpServletResponse res) {
         Map resultMap = new HashMap<>();
         try {
             Map loginInfo = new HashMap<>();
@@ -44,6 +44,7 @@ public class MemberController {
                 resultMap.put("userEmail", result.get("userEmail"));
                 resultMap.put("userPassword", result.get("userPassword"));
                 resultMap.put("userNickname", result.get("userNickname"));
+                resultMap.put("userDotoriCnt", result.get("currentDotori"));
             
                 Cookie userCookie = new Cookie("userEmail", result.get("userEmail").toString());
                 userCookie.setMaxAge(60 * 60 * 24 * 7);
@@ -101,12 +102,9 @@ public class MemberController {
           model.addAttribute("findId", userId);
           model.addAttribute("userName", map.get("userName"));
           model.addAttribute("resultCode","1");
-          
        }else {
-    	  
     	  model.addAttribute("resultCode","0");
     	  model.addAttribute("msg", "정보를 찾을 수 없습니다.");
-    	  
        }
             
         return "index/findIdResult";
@@ -168,7 +166,7 @@ public class MemberController {
     @RequestMapping(value = "/afterFindPw", method = RequestMethod.POST)
     public String afterFindPw(Model model, @RequestParam Map map) {
     	String userId = "";
-        System.out.println(map);
+        String page = "";
         
         Map resultMap = memberService.findId(map);
         
@@ -176,21 +174,31 @@ public class MemberController {
            userId = (String)resultMap.get("userEmail");
            model.addAttribute("findId", userId);
            model.addAttribute("resultCode","1");
+           page = "index/findPwResult";
            
         }else {
      	  model.addAttribute("resultCode","0");
      	  model.addAttribute("msg", "정보를 찾을 수 없습니다.");
+     	  page = "index/findPw";
      	  
         }
     	
-        return "index/findPwResult";
+        return page;
     }
     
     @RequestMapping(value = "/findPw", method = RequestMethod.POST)
-    public String findPw() {
+    public String findPw(Model model, @RequestParam Map map) {
+    	try {
+			memberService.updatePw(map);
+			model.addAttribute("updateResult", "1");
+			model.addAttribute("msg", "변경되었습니다.");
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("updateResult", "0");
+			model.addAttribute("msg", "잠시 후 다시 시도해주세요.");
+		}
     	
-    	
-        return "index/findPw";
+        return "index/findPwResult";
     }
 
    
