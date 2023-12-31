@@ -107,6 +107,23 @@
 	border:1px solid red;
 }
 
+.setting-myMinimi-Edit {
+	margin-top: 10px;
+	text-align: right;
+}
+
+.setting-myMinimi-change {
+	color: orange;
+	font-size: 12px;
+	border: none;
+}
+
+.setting-myMinimi-change:hover {
+	border: 1px solid gray;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
 .setting-table-profile {
   border-collapse: collapse;
   border-radius : 10px;

@@ -47,4 +47,11 @@ public class SettingController {
 		
 		return "miniHome/settingFriends";
 	}
+	
+
+	@RequestMapping("/mnHome/mnhMinimiChange")
+	public String mnhProfileEdit() {
+		
+		return "miniHome/mnhMinimiChange";
+	}
 }

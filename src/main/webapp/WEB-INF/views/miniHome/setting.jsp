@@ -84,7 +84,10 @@
 										미니미화면
 									</div>
 									<div class="setting-myMinimi-Edit">
-										대표미니미 변경
+										<a 
+										  class="setting-myMinimi-change" 
+										  onclick="openNewWindowmyMinimiSetting()">대표미니미 변경
+										</a>
 									</div>
 								</div>
 								<table class="setting-table-profile">
@@ -214,6 +217,16 @@
 		  });
 		}
 	</script>
-	
+	<script>
+		// 대표미니미 선택창
+		function openNewWindowmyMinimiSetting() {
+		  var windowSettings = 'width=460, height=570, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50';
+		  openNewWindow('/mnHome/mnhMinimiChange', windowSettings);
+		}
+		
+		function openNewWindow(url, settings) {
+		  window.open(url, '_blank', settings);
+		}
+	</script>
 </body>
 </html>
