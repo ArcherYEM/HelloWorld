@@ -102,12 +102,9 @@ public class MemberController {
           model.addAttribute("findId", userId);
           model.addAttribute("userName", map.get("userName"));
           model.addAttribute("resultCode","1");
-          
        }else {
-    	  
     	  model.addAttribute("resultCode","0");
     	  model.addAttribute("msg", "정보를 찾을 수 없습니다.");
-    	  
        }
             
         return "index/findIdResult";
