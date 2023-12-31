@@ -72,3 +72,62 @@ body {
 	margin: 0 15px;
 	padding: 5 20;
 }
+
+.edit-text{
+	text-align:center;
+	justify-content: center;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+}
+
+.confirm-btn{
+	display:flex;
+	justify-content: center;
+	margin-top:20px;
+}
+
+.edit-frame-success {
+	background-color: white;
+  	width: 100%;
+  	height: 90%;
+  	border: 3px dotted orange;
+  	border-radius: 15px;
+  	margin: 0 auto;
+  	margin-top: 35px;
+  	overflow-y: auto;
+}
+
+.edit-success{
+	margin-top:50%;
+}
+
+.profile-history {
+    margin: 20px auto; /* 상하 여백과 좌우 자동 마진으로 중앙 정렬 */
+    padding: 20px; /* 내부 여백 추가 */
+    border: 1px solid #ddd; /* 테두리 추가 */
+    border-radius: 10px; /* 모서리 둥글게 처리 */
+    background-color: #f9f9f9; /* 배경색 설정 */
+    width: 80%; /* 컨테이너 너비 설정, 필요에 따라 조정 */
+    max-width: 600px; /* 최대 너비 설정 */
+}
+
+.history-date, .history-msg {
+    text-align: center; /* 텍스트 중앙 정렬 */
+    margin-bottom: 10px; /* 아래 요소와의 여백 */
+    font-weight: bold; /* 날짜 굵게 설정, 메시지는 필요에 따라 조정 */
+}
+
+.history-image {
+    display: flex; /* Flexbox를 사용하여 가운데 정렬 */
+    justify-content: center; /* 가로 방향으로 가운데 정렬 */
+    margin-bottom: 10px; /* 이미지와 메시지 사이 여백 */
+}
+
+.history-image img {
+    max-width: 100%; /* 이미지가 컨테이너 너비를 초과하지 않도록 설정 */
+    max-height: 300px; /* 이미지 높이 제한 */
+    object-fit: cover; /* 이미지 비율 유지하면서 컨테이너 채우기 */
+    border: 3px solid #ddd; /* 이미지 테두리 추가 */
+    border-radius: 5px; /* 이미지 모서리 둥글게 처리 */
+}

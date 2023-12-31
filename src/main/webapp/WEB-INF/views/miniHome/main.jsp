@@ -28,19 +28,22 @@
 						</div>
 						<div class="box profile-box">
 							<div class="profile-image">
-								<img class="profile-image-img"
-									src="../../../../resources/images/profile.jpg" alt="프로필 이미지" />
+								<c:set var="imagePath" value="/resources/images/${image}" />
+								<img class="profile-image-img" src="/../../../../resources/images/download/${image}" alt="프로필 이미지" />
 							</div>
 							<div class="profile-dot">---------------------------------</div>
 							<div class="profile-text font-kyobohand">
-								안녕하세요 이주빈 입니다.<br /> 미모최강 풀스택 개발자 이주빈 입니다.
+								${msg }
 							</div>
 							<div class="profile-history">
 								<a 
 								  class="profile-edit" 
 								  onclick="openNewWindowMinihomeProfileEdit()">Edit
 								</a>
-								<a href="#" class="profile-hs">History</a>
+								<a
+								  class="profile-hs"
+								  onclick="openNewWindowMiniroomHistory()">History								
+								</a>
 							</div>
 							<div class="profile-dot">---------------------------------</div>
 							<div class="profile-username font-kyobohand"> ${sessionScope.userId.userName }&#128698;</div>
@@ -242,6 +245,11 @@
 		  var windowSettings = 'width=800, height=600, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50';
 		  openNewWindow('/mnHome/miniroomEditView', windowSettings);
 		}
+		
+		function openNewWindowMiniroomHistory() {
+			  var windowSettings = 'width=800, height=600, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50';
+			  openNewWindow('/mnHome/miniroomHistoryView', windowSettings);
+			}
 		
 		function openNewWindow(url, settings) {
 		  window.open(url, '_blank', settings);

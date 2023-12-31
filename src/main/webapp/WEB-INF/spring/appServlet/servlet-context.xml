@@ -26,11 +26,13 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
-	<context:component-scan
-		base-package="com.core.tjoeun" />
+	<context:component-scan base-package="com.core.tjoeun" />
+	
+	<context:property-placeholder location="classpath:project.properties" />
 
 	<!-- mp3 setting -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/sounds/**" location="/resources/sound/" />
+	
 
 </beans:beans>

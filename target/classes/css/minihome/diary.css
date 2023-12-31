@@ -1,0 +1,313 @@
+@charset "UTF-8";
+
+
+#btn-write-diary{
+	margin-bottom : 5px;
+	margin-left:auto;
+}
+
+.diary {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.diary-date{
+	text-align:center;
+	font-size:15px;
+	border-top: 1px solid grey;
+	border-bottom : 1px solid grey;
+	background-color : #e6e6e6;
+	
+}
+
+/* 좌측라인  */
+.album-folder-group{
+	font-size: 12px;
+	
+}
+
+.album-folder-group img{
+	width: 15px;
+	height: auto;
+	
+}
+
+.album-folder {
+	margin-bottom: 5px;
+}
+
+.album-folder a{
+	margin-left: 5px;
+	top : 50%;
+}
+
+.folder-name{
+	
+}
+
+.diary-content{
+	padding : 5px;
+	border-bottom : 0.5px solid darkgrey;
+}
+
+.diary-cmt-content li{
+  font-size: 12px;
+  border-bottom:  0.5px solid darkgrey;
+  padding: 5px;
+}
+
+.diary-ul{
+	list-style-type: none;
+	padding-inline-start: 5px;
+}
+
+.diary-cmt-info {
+	color: black;
+	font-weight: bold;
+	margin-left: 20px;
+}
+.diary-cmt-info a{
+	color : black;
+}
+
+.divForBtnDiary{
+	margin : 2px;
+}
+
+#div-btn-write{
+	background-color : lightblue;
+	align-items : center;
+}
+
+.icon-color{
+	background-color : lightgrey;
+}
+
+/* 센터라인 */
+.album-submit {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 8px;
+  width: 100%;
+  position: relative;
+  
+}
+
+.album-submit input {
+	background-color: white;
+	border-radius: 2px;
+	border: 1px solid gray;
+	margin-right: 20px;
+	padding: 0 20px;
+	font-size: 12px;
+	font-weight: bold;
+	height: 25px;
+}
+
+.album-overflow {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.album-container1{
+	padding-bottom: 20px;
+	border-bottom: 1px dotted lightgray;
+}
+
+.album-public{
+	color: gray;
+	font-size: 12px;
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	display: flex;
+}
+
+.album-dropDown {
+  min-width: 90px;
+  margin-right: auto;
+}
+
+.album-dropDown select{
+	color: gray;
+  font-size: 12px;
+  border: none;
+}
+.album-container2{
+	border-bottom: 1px dotted lightgray;
+}
+
+.album-container-under{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 12px;	
+ }
+ 
+ .album-under {
+  display: flex;
+  align-items: center;
+  padding-right: 15px;
+}
+
+.album-under a {
+  white-space: nowrap;
+  color: orange;
+}
+
+.album-under-left {
+  margin-right: auto;
+  padding-left: 10px;
+}
+
+.album-under-right {
+  text-align: right;
+  margin-right: 5px;
+}
+
+
+.album-container3{
+	border-bottom: 1px dotted lightgray;
+	margin-bottom: 30px;
+	margin-right : 5px;
+}
+
+
+.album-title{
+  border-top: 1px solid #9e9c9c;
+  border-bottom: 1px solid lightgrey;
+  background-color: #e6e6e6;
+  width: 100%;
+  hight: 30px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+.-content{
+	margin-top: 20px;
+	padding-left: 10px;
+	width: 100%;
+	font-size: 12px;
+}
+
+
+.board-comment-write{
+	display:flex;
+	padding-left: 10px;
+	margin-top: 12px;
+	margin-bottom: 10px;
+	border-left:none;
+	border-right:none;
+	font-size: 13px;
+}
+
+.comment-content-write{
+	margin-left:10px;
+	margin-right:5px;
+	width:410px;
+}
+
+.board-comment-container {
+	
+}
+
+.board-comment{
+	display:flex;
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom:3px;
+	background-color: #E2E2E2;
+	align-items:center;
+	font-size: 12px;
+}
+
+.board-comment-writer{
+	color:steelblue;
+	font-weight: bold;
+}
+
+.board-comment-content{
+	margin-left:20px;
+	margin-right:10px;
+}
+
+.board-comment-date{
+	right:0;
+	font-size:10px;
+	color:gray;
+}
+
+.btn-cmt-del{
+	margin-left : 3px;
+}
+
+.board-overflow{
+	width: 100%;
+	max-width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.board-title-container{
+	border-bottom: 1px solid black;
+	padding-top: 4px;
+}
+
+.board-title{
+	border:none;
+	outline:none;
+	width:500px;
+	height:50px;
+	font-size:20px;
+	font-weight:bold;
+	 
+}
+
+.board-write-container{
+	padding-bottom:4px;
+	display:flex;
+	justify-content: space-between;
+	align-items:center;
+	font-size: 13px;
+}
+
+.board-writer{
+	border:none;
+	outline:none;
+	text-align: left;
+	font-size: 15px;
+	color: steelblue;
+	margin-left:10px;
+	align-items:center;
+}
+
+.board-write-date{
+	border:none;
+	outline:none;
+	float:right;
+	text-align:right;
+	align-items:center;
+	margin-right : 15px;
+
+}
+
+.btn-right{
+	display:flex;
+	margin-right : 15px;
+}
+
+.btn-list{
+	margin-right:5px;
+}
+
+.btn-container{
+	display: flex;
+	justify-content: space-between;
+}
