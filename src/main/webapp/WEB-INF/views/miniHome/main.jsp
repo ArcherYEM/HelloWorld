@@ -33,7 +33,7 @@
 							</div>
 							<div class="profile-dot">---------------------------------</div>
 							<div class="profile-text font-kyobohand">
-								${msg }
+								<c:out value="${msg}" escapeXml="false"/>
 							</div>
 							<div class="profile-history">
 								<a 
@@ -269,3 +269,4 @@
 	
 </body>
 </html>
+

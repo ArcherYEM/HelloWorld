@@ -13,21 +13,43 @@
     <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 </head>
 <body>
-<div class="edit-frame">
-<c:forEach items="${profileHistory}" var="profile">
-	<div class="profile-history">
-		<div class="history-date">
-			${profile.create_date}
-		</div>
-		<div class="history-image">
-			<img src="/../../../../resources/images/download/${profile.image}">
-		</div>
-		<div class="history-msg">
-			${profile.msg}
+<% Boolean loginStatus = (Boolean) request.getAttribute("loginStatus"); %>
+<% if (loginStatus == null || !loginStatus) { %>
+	<div class="edit-frame-success">
+		<div class="history-fail">
+			<div class="fail-text">로그인  후 이용해주세요.</div>
+			<div class="fail-btn">
+				<input type="button" value="확인" onclick="closeWindow()">
+			</div>
 		</div>
 	</div>
-</c:forEach>
+<% } else { %>    
+<div class="edit-frame">
+    <c:if test="${not empty historyMessage}">
+    	<div class="history-fail">
+     		<div class="fail-text">${historyMessage}</div>
+     	</div>
+    </c:if>
+	<c:forEach items="${profileHistory}" var="profile">
+		<div class="profile-history">
+			<div class="history-date">
+				${profile.create_date}
+			</div>
+			<div class="history-image">
+				<img src="/../../../../resources/images/download/${profile.image}">
+			</div>
+			
+			<div class="history-msg">
+				<c:out value="${profile.msg}" escapeXml="false"/>
+			</div>
+		</div>
+	</c:forEach>
 </div>
-
+<% } %>
+<script>
+	function closeWindow(){
+		window.close();
+	}
+</script>
 </body>
 </html>

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,12 +23,20 @@ public class ProfileController {
     private ProfileService profileService;
 
     @PostMapping("/profile/download")
-    public String uploadFile(@RequestParam Map map, @RequestParam("msg") String msg, @RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes, HttpServletRequest req) {
+    public String uploadFile(@RequestParam Map map, @RequestParam("msg") String msg, @RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes, HttpServletRequest req, Model model) {
         try {
         	
         	HttpSession session = req.getSession();
         	Object userInfo = session.getAttribute("userId");
         	Map<String, Object> userMap = (Map<String, Object>) userInfo;
+        	
+        	if(userMap==null) {
+    			model.addAttribute("loginStatus",false);
+    			return "redirect:/mnhProfileEditFail";
+    		} else {
+    			model.addAttribute("loginStatus",true);
+    		}
+        	
         	String userNickname = (String) userMap.get("userNickname");
         	
             profileService.download(file);

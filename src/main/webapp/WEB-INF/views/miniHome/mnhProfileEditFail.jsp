@@ -15,12 +15,18 @@
 <body>
 	<div class="edit-frame-success">
 		<div class="edit-success">
+		<% Boolean loginStatus = (Boolean) request.getAttribute("loginStatus"); %>
+		<% if (loginStatus == null || !loginStatus) { %>
+			<div class="edit-text">로그인  후 이용해주세요.</div>
+		<% } else { %> 
 			<div class="edit-text">업로드에 실패했습니다.</div>
+		<% } %>
 			<div class="confirm-btn">
 				<input type="button" value="확인" onclick="closeWindow()">
 			</div>
 		</div>
 	</div>
+	
 <script>
 	function closeWindow(){
 		window.close();
