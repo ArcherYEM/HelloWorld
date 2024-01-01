@@ -2,8 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper
-	namespace="package com.core.tjoeun.mnHome.main.sql.MainMapper">
+<mapper namespace="com.core.tjoeun.mnHome.setting.sql.SettingMapper">
 
 	<select id="selectSettingUserStorage" parameterType="map"
 		resultType="map">
@@ -19,20 +18,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="userNickname != null">
 			AND userNickname = #{userNickname}
 		</if>
+		<!-- allocation = 1 이면 대표미니미로 설정하는것이며, 그외는 0이다.
 		<if test="category != null">
 			AND category = 'minimi'
-			AND allocation = 1;
+			AND allocation = 1
 		</if>
+		 -->
 	</select>
-	
-	<select id="getContentPath" parameterType="map" resultType="string">
-	    SELECT contentPath
-	    FROM userStorage
-	    WHERE 1=1
-	    <if test="userNickname != null">
-	        AND userNickname = #{userNickname}
-	    </if>
-	</select>
-	
 
 </mapper>
