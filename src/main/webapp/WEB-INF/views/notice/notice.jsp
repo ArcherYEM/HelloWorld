@@ -52,43 +52,44 @@
 		        <col class="col-title">
 		        <col class="col-date">
 		    	</colgroup>
-					<tr class="notice-table-tr">
-						<td><input type="checkbox" class="notice-cbx"></td>
-						<td>1</td>
-						<td class="notice-td-title">싸이월드가 헬로월드로 새롭게 태어납니다</td>
-						<td>2023-12-19</td>
+		    	<c:forEach items="${list}" var="list" varStatus="i">
+		    		<tr class="notice-table-tr">
+						<td><input type="checkbox" class="notice-cbx" form="frm1" name="<c:out value='${i.index}'/>" value="<c:out value='${list.seq}'/>"></td>
+						<td>
+							<c:out value="${list.seq}"/>
+						</td>
+						<td class="notice-td-title">
+							<c:out value="${list.title}"/>
+						</td>
+						<td>
+							<c:out value="${list.date}"/>
+						</td>
 					</tr>
-					<tr class="notice-table-tr">
-						<td><input type="checkbox" class="notice-cbx"></td>
-						<td>2</td>
-						<td class="notice-td-title">취업이 늦어지면 리액트 배워서 써보려고 합니다.</td>
-						<td>2023-12-20</td>
-					</tr>
-					<tr class="notice-table-tr">
-						<td><input type="checkbox" class="notice-cbx"></td>
-						<td>3</td>
-						<td class="notice-td-title">스프링 부트 너무 어려우니 스프링까지만 구현하고자 합니다.</td>
-						<td>2023-12-21</td>
-					</tr>
-					<tr class="notice-table-tr">
-						<td><input type="checkbox" class="notice-cbx"></td>
-						<td>4</td>
-						<td class="notice-td-title">크리스마스에 개발팀 전원 정발산동 에서 코딩합니다.</td>
-						<td>2023-12-22</td>
-					</tr>
-					<tr class="notice-table-tr">
-						<td><input type="checkbox" class="notice-cbx"></td>
-						<td>5</td>
-						<td><a href="<c:url value='/notice/noticeDetail'/>">게시글 보는 주소가 걸려있는 곳 입니다.</a></td>
-						<td>2023-12-22</td>
-					</tr>
+		    	</c:forEach>
+					
 				</table>
 			</div>
 			<div class="btnNoticeGroup">
-				<input type="button" class="btn-notice" id="btnUpdate" value="수정">
-				<input type="button" class="btn-notice" id="btnDelete" value="삭제">
-				<input type="button" class="btn-notice" id="btnWrite" value="등록">
+				<form id="frm1" method="POST" action="/notice/noticeDelete">
+					<input type="button" class="btn-notice" id="btnDelete" value="삭제">
+				
+					<input type="button" class="btn-notice" id="btnWrite" value="등록">
+				</form>
 			</div>
+			
+			<!-- paging -->
+	        <div class="minimi-paging">
+	            <c:forEach var="page" begin="1" end="${totalPage}">
+	                <span class="spanPage" data-page="${page}">
+	                    [${page}]
+	                </span>
+	            </c:forEach>
+	            
+	            <form id="frm2" action="<c:url value='/notice/noticeView'/>" method="get">
+					<input type="hidden" name="page" id="page" />
+				</form>
+		
+	        </div>
 			
 			<div class="bottom-fix">
 				<hr>
@@ -96,9 +97,26 @@
 			</div>
 		</div>
 		
+		<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
 		<script>
+			$(function(){
+				let result = '' + '${msg}';
+				if(result != ""){
+					alert(result);
+				}
+			});
+		
+			document.getElementById('btnDelete').addEventListener('click', function() {
+				/* document.getElementById('frm1').submit(); */
+			});
+			
 			document.getElementById('btnWrite').addEventListener('click', function() {
 				location.href = '/notice/noticeWrite';
+			});
+			
+			$('.spanPage').on('click', function(){
+				$('#page').val($(this).data('page'));
+				$('#frm2').submit();
 			});
 			
 			var titles = document.getElementsByClassName('notice-td-title');
@@ -108,6 +126,7 @@
 			    location.href = '/notice/noticeDetail';
 			  });
 			}
+		
 
 		</script>
 	</body>
