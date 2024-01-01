@@ -1,6 +1,7 @@
 package com.core.tjoeun.mnHome.setting.controller;
 
-import java.util.HashMap;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -61,24 +62,21 @@ public class SettingController {
 	}
 
 	@RequestMapping("/mnHome/mnhMinimiChangeView")
-	public String selectSettingUserStorage(HttpSession session, Model model) {
-		String userNickname = (String) session.getAttribute("userNickname");
-		try {
-			if (userNickname != null) {
-				Map<String, Object> paramMap = new HashMap<>();
-	            paramMap.put("userNickname", userNickname);
-	            
-	            String contentPath = settingService.getContentPath(paramMap);
-	            
-	            model.addAttribute("contentPath", contentPath);
-	            
-	            System.out.println("userNickname : " + userNickname + " / contentPath : " + contentPath);
-			}
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		return "miniHome/mnhMinimiChange";
+	public String selectSettingUserStorage(HttpSession session, Model model) throws SQLException {
+	    String userNickname = (String) session.getAttribute("userNickname");
+
+	    try {
+	        List<Map<String, Object>> userStorageData = settingService.selectSettingUserStorage(userNickname);
+
+	        model.addAttribute("userStorageList", userStorageData);
+	    } catch (SQLException sqle) {
+	        sqle.printStackTrace();
+	        throw sqle;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return "miniHome/mnhMinimiChange";
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.core.tjoeun.mnHome.setting.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -15,14 +16,9 @@ public class SettingDaoImpl implements SettingDao {
     SqlSession sqlSession;
 
     @Override
-    public Map selectSettingUserStorage(Map map) {
+    public List<Map<String, Object>> selectSettingUserStorage(String userNickname) {
         SettingMapper mapper = sqlSession.getMapper(SettingMapper.class);
-        return mapper.selectSettingUserStorage(map);
+        return mapper.selectSettingUserStorage(userNickname);
     }
     
-    @Override
-    public String getContentPath(Map map) throws Exception {
-        SettingMapper mapper = sqlSession.getMapper(SettingMapper.class);
-        return mapper.getContentPath(map);
-    }
 }

@@ -1,5 +1,6 @@
 package com.core.tjoeun.mnHome.setting.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +19,8 @@ public class SettingServiceImpl implements SettingService {
 
     @Override
     @Transactional(readOnly = true)
-    public Map selectSettingUserStorage(Map map) throws Exception {
-        return settingDao.selectSettingUserStorage(map);
+    public List<Map<String, Object>> selectSettingUserStorage(String userNickname) throws Exception {
+        return settingDao.selectSettingUserStorage(userNickname);
     }
     
-    @Override
-    @Transactional(readOnly = true)
-    public String getContentPath(Map map) throws Exception {
-        return settingDao.getContentPath(map);
-    }
 }
