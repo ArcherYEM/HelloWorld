@@ -36,7 +36,6 @@
 </form>
 	
 <script>
-  // 등록파일 미리보기
   var fileInput = document.getElementById('fileInput');
   var previewContainer = document.getElementById('preview-container');
 
@@ -45,35 +44,43 @@
     previewContainer.innerHTML = ''; // 기존 미리보기 삭제
 
     if (file) {
-      var reader = new FileReader();
+      // 파일의 MIME 타입을 확인합니다.
+      var fileType = file.type;
+      if (fileType.match(/^image\//)) {
+        // 파일이 이미지일 때의 처리.
+        var reader = new FileReader();
 
-      reader.onload = function (e) {
-        var newDiv = document.createElement("div");
-        newDiv.className = "preview-container";
-        var newDiv2 = document.createElement("div");
-        newDiv2.className = "image-container";
+        reader.onload = function (e) {
+          // 미리보기 이미지를 생성하고 설정합니다.
+          var newDiv = document.createElement("div");
+          newDiv.className = "preview-container";
+          var newDiv2 = document.createElement("div");
+          newDiv2.className = "image-container";
 
-        var newImg = document.createElement("img");
-        newImg.src = e.target.result;
-        newImg.style.width = "200px";
-        newImg.style.height = "auto";
-        newImg.style.display = "inline-block"; // 이미지를 가운데 정렬하기 위한 스타일
-        newDiv2.style.textAlign = "center"; // 이미지 컨테이너를 가운데 정렬하기 위한 스타일
+          var newImg = document.createElement("img");
+          newImg.src = e.target.result;
+          newImg.style.width = "200px";
+          newImg.style.height = "auto";
+          newImg.style.display = "inline-block"; // 이미지를 가운데 정렬하기 위한 스타일
+          newDiv2.style.textAlign = "center"; // 이미지 컨테이너를 가운데 정렬하기 위한 스타일
 
-        // 파일 이름을 표시하는 텍스트 노드 생성
+          newDiv2.appendChild(newImg);
+          newDiv.appendChild(newDiv2);
 
-        // div 안에 img와 텍스트 노드 추가
-        newDiv2.appendChild(newImg);
-        newDiv.appendChild(newDiv2);
+          // 생성한 div를 preview-container에 추가
+          previewContainer.appendChild(newDiv);
+        };
 
-        // 생성한 div를 preview-container에 추가
-        previewContainer.appendChild(newDiv);
-      };
-
-      reader.readAsDataURL(file); // 파일 읽기 시작
+        reader.readAsDataURL(file); // 파일 읽기 시작
+      } else {
+        // 파일이 이미지가 아닐 때 경고를 표시하고, input 태그를 초기화합니다.
+        alert('이미지 형식의 파일을 업로드해주세요.');
+        fileInput.value = ''; // input 태그 초기화
+      }
     }
   });
 </script>
+
 <script>
 // 자기소개문구 3줄이상 입력방지
   var introductionTextarea = document.getElementById('introduction');
@@ -97,5 +104,6 @@
     	
     })
 </script>
+
 </body>
 </html>

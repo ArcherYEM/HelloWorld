@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,10 +23,13 @@ public class MainController {
 	@Autowired
 	MainService mainService;
 	
+	@Value("${default.image.path}")
+    private String defaultImagePath;
+	
 	@RequestMapping("/mnHome/mainView")
 	public String minihome(Model model, @RequestParam Map map, HttpServletRequest req , HttpSession session) {
 		if(session == null || session.getAttribute("userId") == null) {
-
+			model.addAttribute("image",defaultImagePath);
             return "miniHome/main";
         }
 		
@@ -38,7 +42,8 @@ public class MainController {
 		mainService.getProfile(userNickname);
 		String image = (String) mainService.getProfile(userNickname).get("image");
 		String msg = (String) mainService.getProfile(userNickname).get("msg");
-	
+		msg = msg.replace("\n", "<br>");
+		
 		model.addAttribute("image", image);
 		model.addAttribute("msg", msg);
 		session.setAttribute("userId", userMap);
@@ -58,9 +63,26 @@ public class MainController {
 		
 		session = req.getSession();
 		userMap = (Map) session.getAttribute("userId");
+		if(userMap==null) {
+			model.addAttribute("loginStatus",false);
+			return "miniHome/mnhProfileHistory";
+		} else {
+			model.addAttribute("loginStatus",true);
+		}
+		
 		String userNickname = (String) userMap.get("userNickname");
 		
-		 List<Map> profileHistory = mainService.getProfileHistory(userNickname);
+		List<Map> profileHistory = mainService.getProfileHistory(userNickname);
+		for(Map history : profileHistory) {
+		    String msg = (String) history.get("msg");
+		    if(msg != null) {
+		        msg = msg.replace("\n", "<br>");
+		        history.put("msg", msg);
+		    }
+		}
+		if(profileHistory==null||profileHistory.isEmpty()) {
+			model.addAttribute("historyMessage", "히스토리가 존재하지 않습니다.");			
+		}		
 
 		model.addAttribute("profileHistory", profileHistory);
 		session.setAttribute("userId", userMap);

@@ -103,31 +103,77 @@ body {
 }
 
 .profile-history {
-    margin: 20px auto; /* 상하 여백과 좌우 자동 마진으로 중앙 정렬 */
-    padding: 20px; /* 내부 여백 추가 */
-    border: 1px solid #ddd; /* 테두리 추가 */
-    border-radius: 10px; /* 모서리 둥글게 처리 */
-    background-color: #f9f9f9; /* 배경색 설정 */
-    width: 80%; /* 컨테이너 너비 설정, 필요에 따라 조정 */
-    max-width: 600px; /* 최대 너비 설정 */
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    width: 80%;
+    max-width: 600px;
 }
 
 .history-date, .history-msg {
-    text-align: center; /* 텍스트 중앙 정렬 */
-    margin-bottom: 10px; /* 아래 요소와의 여백 */
-    font-weight: bold; /* 날짜 굵게 설정, 메시지는 필요에 따라 조정 */
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .history-image {
-    display: flex; /* Flexbox를 사용하여 가운데 정렬 */
-    justify-content: center; /* 가로 방향으로 가운데 정렬 */
-    margin-bottom: 10px; /* 이미지와 메시지 사이 여백 */
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
 }
 
 .history-image img {
-    max-width: 100%; /* 이미지가 컨테이너 너비를 초과하지 않도록 설정 */
-    max-height: 300px; /* 이미지 높이 제한 */
-    object-fit: cover; /* 이미지 비율 유지하면서 컨테이너 채우기 */
-    border: 3px solid #ddd; /* 이미지 테두리 추가 */
-    border-radius: 5px; /* 이미지 모서리 둥글게 처리 */
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border: 3px solid #ddd;
+    border-radius: 5px;
 }
+
+.fail-text {
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.fail-btn{
+	margin-top:20px;
+}
+
+.history-fail{
+	height:100%;
+	display:flex;
+	justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loading-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.donut {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #7983ff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
