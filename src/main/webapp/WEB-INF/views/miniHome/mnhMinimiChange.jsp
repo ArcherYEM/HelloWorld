@@ -11,16 +11,19 @@
     <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 </head>
 <body>
-mnhMinimiChange page
 
-<div> 접속계정 : ${sessionScope.userId.userName }</div>
-<p class="1111"><c:out value="${contentPath }"/>미니미 그림</p>
-<%-- 세션에서 값을 가져와서 출력 --%>
-<% Object sessionValue = session.getAttribute("sessionKey"); %>
-세션 값: <%= sessionValue %>
-
-
-
+	mnhMinimiChange page<br>
+	<div style="color:blue">
+	${sessionScope.userId}
+	</div>
+	<br>
+	    <p>${userStorage.userNickname} 님이 보유하신 미니미 입니다.</p>
+	
+	<c:forEach items="${userStorageList}" var="userStorage">
+	    <img src="<c:url value="${userStorage.contentPath }"/>" class="" style="width:100px;"/><br>
+	    <span>이름 : ${userStorage.productName}</span><br>
+	</c:forEach>
+	
 <script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
 
 </body>
