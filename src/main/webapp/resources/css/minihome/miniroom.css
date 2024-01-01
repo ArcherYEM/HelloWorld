@@ -1,0 +1,14 @@
+.miniroom-canvas{
+	width:100%;
+	height:283px;
+	position:relative;
+	background-repeat: no-repeat; /* 이미지 반복 없음 */
+	background-position: center; /* 배경 이미지 중앙 정렬 */
+	background-size: cover; /* 배경 이미지가 요소 전체를 커버하도록 설정 */
+}
+
+.miniroom-minimi{
+	width:100px;
+	height:100px;
+	position:relative;
+}

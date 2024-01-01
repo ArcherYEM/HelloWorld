@@ -1,5 +1,6 @@
 package com.core.tjoeun.mnHome.main.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,6 +48,13 @@ public class MainController {
 		model.addAttribute("image", image);
 		model.addAttribute("msg", msg);
 		session.setAttribute("userId", userMap);
+		
+		List<Map> minimiList = mainService.selectMinimi(userNickname);
+        model.addAttribute("minimiList", minimiList);
+        
+        Map background = mainService.selectBackground(userNickname);
+        model.addAttribute("background", background);
+        
 		return "miniHome/main";
 	}
 	
@@ -54,6 +62,47 @@ public class MainController {
 	public String mnhProfileEdit() {
 		
 		return "miniHome/mnhProfileEdit";
+	}
+	
+	@RequestMapping("/mnHome/miniroomSave")
+	public String miniroomSave(@RequestParam("backgroundName") String backgroundName,
+            @RequestParam Map<String, String> allParams,
+            HttpServletRequest req , HttpSession session) {
+		
+		Map userMap = new HashMap();
+		
+		session = req.getSession();
+		userMap = (Map) session.getAttribute("userId");
+		String userNickname = (String) userMap.get("userNickname");
+		
+		mainService.resetBackground(userNickname);
+		
+		Map<String, Object> params = new HashMap<>();
+	    params.put("userNickname", userNickname);
+	    params.put("backgroundName", backgroundName);
+	    params.put("backgroundPath", "/resources/images/miniroom/"+backgroundName+".png");
+		mainService.upsertBackground(params);    
+	    
+		mainService.resetMinimi(userNickname);
+		
+		List<Map<String,Object>> minimiList = new ArrayList<>();
+		
+		for(int i = 0; allParams.containsKey("minimiName" + i); i++) {			
+			Map<String, Object> minimiData = new HashMap<>();
+			minimiData.put("userNickname",userNickname);
+            minimiData.put("minimiName", allParams.get("minimiName" + i));
+            minimiData.put("minimiPath", "/resources/images/minimi/"+allParams.get("minimiName" + i)+".gif");
+            minimiData.put("minimiLeft", allParams.get("minimiLeft" + i));
+            minimiData.put("minimiTop", allParams.get("minimiTop" + i));
+            
+            minimiList.add(minimiData);
+            mainService.insertMinimi(minimiData);
+		}
+		
+
+		
+		
+		return "miniHome/miniroomSave";
 	}
 	
 	@RequestMapping("/mnHome/miniroomHistoryView")
@@ -91,7 +140,10 @@ public class MainController {
 	}
 	
 	@RequestMapping("/mnHome/miniroomEditView")
-	public String miniroomEdit() {
+	public String miniroomEdit(Model model) {
+		
+		List<Map> minimi = mainService.getMinimi();
+		model.addAttribute("minimi",minimi);
 		
 		return "miniHome/miniroomEdit";
 	}

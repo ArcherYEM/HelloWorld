@@ -9,4 +9,18 @@ public interface MainMapper {
 	public Map getProfile(String userNickname);
 	
 	public List<Map> getProfileHistory(String userNickname);
+	
+	public List<Map> getMinimi();
+	
+	public void resetMinimi(String userNickname);
+	
+	public void insertMinimi(Map<String, Object> minimiData);
+	
+	public void resetBackground(String userNickname);
+	
+	public void upsertBackground(Map<String, Object> params);
+	
+	public List<Map> selectMinimi(String userNickname);
+	
+	public Map selectBackground(String userNickname);
 }

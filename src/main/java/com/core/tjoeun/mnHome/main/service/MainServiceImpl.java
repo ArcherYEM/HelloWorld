@@ -42,6 +42,50 @@ public class MainServiceImpl implements MainService{
 		
 		return mainDao.getProfileHistory(userNickname);
 	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Map> getMinimi() {
+		
+		return mainDao.getMinimi();
+	}
+
+	@Override
+	public void resetMinimi(String userNickname) {
+		
+		mainDao.resetMinimi(userNickname);		
+	}
+
+	@Override
+	public void insertMinimi(Map<String, Object> minimiData) {
+		
+		mainDao.insertMinimi(minimiData);		
+	}
 	
+	@Override
+	public void resetBackground(String userNickname) {
+		
+		mainDao.resetBackground(userNickname);		
+	}
+	
+	@Override
+	public void upsertBackground(Map<String, Object> params) {
+		
+		mainDao.upsertBackground(params);		
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Map> selectMinimi(String userNickname) {
+		
+		return mainDao.selectMinimi(userNickname);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Map selectBackground(String userNickname) {
+		
+		return mainDao.selectBackground(userNickname);
+	}
 	
 }

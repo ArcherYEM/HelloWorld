@@ -39,27 +39,83 @@
 				<div class="minimi-title">
 					미니미				
 				</div>
-			<div class="minimiImg">
-				<img src="../../../../resources/images/minimi/balokIcon.gif">
-   	     		<img src="../../../../resources/images/minimi/blueMushroomIcon.gif">    	     	
-   	     		<img src="../../../../resources/images/minimi/bunnyIcon.gif">
-   	     		<img src="../../../../resources/images/minimi/fairyIcon.gif">
-   	     		<img src="../../../../resources/images/minimi/ticktockIcon.gif">
-   	     		<img src="../../../../resources/images/minimi/stoneBallIcon.gif">
-   	     		<img src="../../../../resources/images/minimi/toyTrojanIcon.gif">
-     	     </div>
-     	     <div class="minimiImg">
-     	     	<img src="../../../../resources/images/minimi/duckyFamilyIcon.gif">
-     	     	<img src="../../../../resources/images/minimi/hornGoblinIcon.gif">
-     	     	<img src="../../../../resources/images/minimi/juniorDarkYetiIcon.gif">
-     	     	<img src="../../../../resources/images/minimi/rupanIcon.gif">
-     	     	<img src="../../../../resources/images/minimi/ribbonPigIcon.gif">
-     	     	<img src="../../../../resources/images/minimi/grupinIcon.gif">
-     	     	<img src="../../../../resources/images/minimi/helicopterIcon.gif">
-     	     </div>
+				<c:forEach var="item" items="${minimi}" varStatus="status">
+				    <c:if test="${status.count % 7 == 1}">
+				        <div class="minimiImg">
+				    </c:if>
+				    
+				    <img src="../../../../${item.contentPath}">
+				
+				    <c:if test="${status.count % 7 == 0 || status.last}">
+				        </div>
+				    </c:if>
+				</c:forEach>
+			</div>
+			<div class="button-section">
+			    <form id="minimiForm" action="/mnHome/miniroomSave" method="post">
+			        <input type="button" class="btn-confirm" value="적용" onclick="confirmEdit()">
+			        <input type="button" class="btn-cancel" value="취소" onclick="cancelEdit()">
+			    </form>
 			</div>
 		</div>
-	</div>
 	<script src="../../../../resources/js/miniroomEditor.js"></script> 
+	<script>
+		function cancelEdit(){
+			window.close();
+		}	
+	
+		function confirmEdit() {
+		    var form = document.getElementById('minimiForm'); // 폼 요소 선택
+
+		 	// 현재 캔버스의 배경 이미지 정보를 가져옵니다.
+		    var backgroundStyle = divCanvas.style.backgroundImage;
+		    var src = backgroundStyle.slice(5, -2); // "url('...')" 형식에서 URL 추출
+
+		    // 파일 이름 추출 (경로와 확장자 제거)
+		    var name = src.split('/').pop().split('.')[0];
+
+		    // 배경 이미지 이름의 hidden 입력 필드 생성 및 설정
+		    var inputName = document.createElement('input');
+		    inputName.type = 'hidden';
+		    inputName.name = 'backgroundName';
+		    inputName.value = name;
+		    form.appendChild(inputName);
+
+		    // 캔버스에 있는 모든 미니미 컨테이너를 찾아서 각각의 정보를 hidden 입력 필드로 추가합니다.
+		    document.querySelectorAll('.minimiContainer').forEach(function(container, index) {
+		        var img = container.querySelector('.minimi');
+		        var left = container.style.left; // 컨테이너에서 left 값 추출
+		        var top = container.style.top; // 컨테이너에서 top 값 추출
+		        var src = img.src;
+		        var name = src.split('/').pop().split('.')[0]; // 파일 이름 추출
+
+		        // 미니미 이름(hidden) 입력 필드 생성 및 설정
+		        var inputName = document.createElement('input');
+		        inputName.type = 'hidden';
+		        inputName.name = 'minimiName' + index;
+		        inputName.value = name;
+		        form.appendChild(inputName);
+
+		        // 미니미 left(hidden) 입력 필드 생성 및 설정
+		        var inputLeft = document.createElement('input');
+		        inputLeft.type = 'hidden';
+		        inputLeft.name = 'minimiLeft' + index;
+		        inputLeft.value = left;
+		        form.appendChild(inputLeft);
+
+		        // 미니미 top(hidden) 입력 필드 생성 및 설정
+		        var inputTop = document.createElement('input');
+		        inputTop.type = 'hidden';
+		        inputTop.name = 'minimiTop' + index;
+		        inputTop.value = top;
+		        form.appendChild(inputTop);
+		    });
+
+		    // 폼을 서버로 전송합니다.
+		    form.submit();
+		}
+
+		
+	</script>
 </body>
 </html>
