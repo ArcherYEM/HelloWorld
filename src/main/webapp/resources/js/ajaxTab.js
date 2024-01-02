@@ -4,6 +4,10 @@ function loadTabContent(tabName) {
         type: "GET",
         dataType: "html",
         success: function (data) {
+			// head 요소에 새로운 meta 태그 추가
+			var newScriptTag = document.createElement('script');
+			
+			
             $('#test').empty();
             var htmlToAdd = '';
             if(tabName === '/mnHome/diaryView'){
@@ -31,7 +35,14 @@ function loadTabContent(tabName) {
                 htmlToAdd += '<link class="board" href="/resources/css/minihome/album.css" rel="stylesheet">';
                 htmlToAdd += '<script type="text/javascript" src="../../../../resources/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>';
                 htmlToAdd += '<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>';
-                htmlToAdd += '<script src="../../../../resources/js/boardWrite.js"></script>';
+                htmlToAdd += '<script type="text/javascript" src="../../../../resources/js/boardWrite.js"></script>';
+           
+           	newScriptTag.src = '../../../../resources/js/boardWrite.js';
+			//newScriptTag.content = '새로운 메타 태그입니다.';
+			document.head.appendChild(newScriptTag);
+           
+           
+           
             }else if(tabName === '/mnHome/visitView'){
                 htmlToAdd += '<link href="/resources/css/minihome/visit.css" rel="stylesheet">';
             }else if(tabName === '/mnHome/settingView'){

@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AlbumController {
 	
-	@RequestMapping(value="/mnHome/album")
+	@RequestMapping(value="/mnHome/albumView")
 	public String albumView() {
 		
 		return "miniHome/album";
 	}
 	
-	@RequestMapping(value="/mnHome/albumWrite")
+	@RequestMapping(value="/mnHome/albumWriteView")
 	public String albumWriteView() {
 		
 		return "miniHome/albumWrite";
