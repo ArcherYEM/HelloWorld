@@ -90,7 +90,7 @@
 								  </div>
 								  <div class="album-container-under">
 								  	<div class="album-under">
-								  		<a href="/mnHome/albumView" class="album-under-left">목록</a>
+								  		<a href="/mnHome/albumView" class="album-under-left" data-albumView="<c:url value='/mnHome/albumView'/>">목록</a>
 								  		<a href="/mnHome/albumView" class="album-under-right">등록</a>
 								  	</div>
 								  </div>
