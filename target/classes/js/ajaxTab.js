@@ -29,10 +29,9 @@ function loadTabContent(tabName) {
             }else if(tabName === '/mnHome/boardWriteView'){
                 htmlToAdd += '<link class="board" href="/resources/css/minihome/board.css" rel="stylesheet">';
                 htmlToAdd += '<link class="board" href="/resources/css/minihome/album.css" rel="stylesheet">';
-                htmlToAdd += '<script src="../../../../resources/js/smartEditor.js"></script>';
                 htmlToAdd += '<script type="text/javascript" src="../../../../resources/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>';
-                htmlToAdd += '<script src="../../../../resources/js/boardWrite.js"></script>';
                 htmlToAdd += '<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>';
+                htmlToAdd += '<script src="../../../../resources/js/boardWrite.js"></script>';
             }else if(tabName === '/mnHome/visitView'){
                 htmlToAdd += '<link href="/resources/css/minihome/visit.css" rel="stylesheet">';
             }else if(tabName === '/mnHome/settingView'){
