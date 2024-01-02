@@ -133,12 +133,18 @@
 									</a>
 								</div>
 								<div class="miniroom-gif-box">
+									<% Boolean loginStatus = (Boolean) request.getAttribute("loginStatus"); %>
+									<% if (loginStatus == null || !loginStatus) { %>
+									<div class="miniroom-canvas" style="background-image:url('/../../../../resources/images/miniroom${background.backgroundPath}')">
+											<img class="miniroom-minimi" src="/../../../../resources/images/minimi${minimiList.minimiPath}" style="left:${minimiList.minimiLeft}; top:${minimiList.minimiTop}"/>
+									</div>
+									<% } else { %>   
 									<div class="miniroom-canvas" style="background-image:url('../../../..${background.backgroundPath}')">
-									
 										<c:forEach var = "minimi" items="${minimiList}">
 											<img class="miniroom-minimi" src="../../../..${minimi.minimiPath}" style="left:${minimi.minimiLeft}; top:${minimi.minimiTop}"/>
 										</c:forEach>
 									</div>
+									<% } %>
 								</div>
 							</div>
 							<br>
