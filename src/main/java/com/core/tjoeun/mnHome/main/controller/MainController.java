@@ -123,9 +123,6 @@ public class MainController {
             mainService.insertMinimi(minimiData);
 		}
 		
-
-		
-		
 		return "miniHome/miniroomSave";
 	}
 	
@@ -164,9 +161,15 @@ public class MainController {
 	}
 	
 	@RequestMapping("/mnHome/miniroomEditView")
-	public String miniroomEdit(Model model) {
+	public String miniroomEdit(HttpServletRequest req, HttpSession session, Model model) {
 		
-		List<Map> minimi = mainService.getMinimi();
+		Map userMap = new HashMap();
+		
+		session = req.getSession();
+		userMap = (Map) session.getAttribute("userId");
+		String userNickname = (String) userMap.get("userNickname");
+		
+		List<Map> minimi = mainService.getMinimi(userNickname);
 		model.addAttribute("minimi",minimi);
 		
 		return "miniHome/miniroomEdit";

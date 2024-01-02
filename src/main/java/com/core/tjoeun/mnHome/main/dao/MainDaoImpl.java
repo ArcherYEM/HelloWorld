@@ -31,10 +31,10 @@ public class MainDaoImpl implements MainDao{
 	}
 
 	@Override
-	public List<Map> getMinimi() {
+	public List<Map> getMinimi(String userNickname) {
 		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
 		
-		return mapper.getMinimi();
+		return mapper.getMinimi(userNickname);
 	}
 
 	@Override
