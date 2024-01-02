@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="../../../../resources/css/minihome/frame.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/setting.css" />
+<link rel="stylesheet" href="../../../../resources/css/minihome/settingSkin.css" />
 <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
 <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 </head>
@@ -27,11 +28,11 @@
 						<div class="box profile-box">
 								<div class="setting-folder-group">
 									<div>
-									  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
-									  <a href="<c:url value='/miniHome/setting'/>"><span class="setting-menu-title">개인정보변경</span></a><br>
+									  <span><img class="setting-skin-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
+									  <a href="<c:url value='/miniHome/setting'/>"><span class="setting-skin-title">개인정보변경</span></a><br>
 									  
-									  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
-									  <span class="setting-menu-title">미니홈피관리</span>
+									  <span><img class="setting-skin-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
+									  <span class="setting-skin-title">미니홈피관리</span>
 									  
 									  <ul class="tree">
 									    <li><a href="<c:url value='/miniHome/settingBgm'/>">BGM설정</a></li>
@@ -40,15 +41,15 @@
 									  </ul>
 									  
 									 
-									  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
-									  <span class="setting-menu-title">아이템/내역관리</span>
+									  <span><img class="setting-skin-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
+									  <span class="setting-skin-title">아이템/내역관리</span>
 									  <ul class="tree">
 									    <li><a href="<c:url value='/miniHome/settingDotoriUse'/>">도토리 사용내역</a></li>
 									    <li><a href="<c:url value='/miniHome/settingDotoriCharge'/>">도토리 충전내역</a></li>
 									  </ul>
 									  
-									  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
-									  <a href="<c:url value='/miniHome/settingFriends'/>"><span class="setting-menu-title">인맥관리</span></a>
+									  <span><img class="setting-skin-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
+									  <a href="<c:url value='/miniHome/settingFriends'/>"><span class="setting-skin-title">인맥관리</span></a>
 									</div>
 									
 								</div>
@@ -75,11 +76,41 @@
 								https://www.helloworld.com/minihome/leejubin
 							</div>
 						</div>
-						<div class="box content-box">
-							스킨 설정 탭 
 						
+						<div class="box content-box">
+							<div class="set-skin-frame">
 							
+								<div class="set-skin-selected">
+									<div class="set-skin-selected-span">
+										<span>적용중인 스킨</span>
+									</div>
+									<div class="set-skin-selected-skin">
+									</div>
+								</div>
+								
+								<div class="set-skin-having">
+									<div class="set-skin-p">
+										<p>보유중인 스킨</p>
+									</div>
+									<div class="set-skin-list">
+										<div class="temp1"></div>
+										<div class="temp2"></div>
+										<div class="temp3"></div>
+										<div class="temp4"></div>
+										<div class="temp5"></div>
+										<div class="temp6"></div>
+									</div>
+								</div>
+								
+								<form action="">
+									<div class="set-skin-btn">
+										<input type="button" class="set-skin-select" value="적용" />
+									</div>
+								</form>
+								
+							</div>
 						</div>
+						
 					</div>
 					
 					<div class="menu-container">
@@ -144,27 +175,6 @@
 	</div>
 	<script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
 	<script src="../../../../resources/js/default.js"></script>
-	<script>
-// 		전체선택 기능
-		var checkboxAll=document.getElementById('checkbox-all');
-	
-		function selectAll() {
-		  var checkboxes = document.querySelectorAll('.td-checkbox input[type="checkbox"]');
-		  var allChecked = checkboxAll.checked;
-
-		  checkboxes.forEach(function(checkbox) {
-		    checkbox.checked = allChecked;
-		  });
-		}
-		
-		var titles = document.getElementsByClassName('td-title');
-
-		for (var i = 0; i < titles.length; i++) {
-		  titles[i].addEventListener('click', function() {
-		    location.href = '/miniHome/boardDetail';
-		  });
-		}
-	</script>
 	
 </body>
 </html>
