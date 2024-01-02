@@ -80,8 +80,10 @@
 	    		/* var content = document.getElementById("smartEditor").value; */
 	    		/* alert(document.getElementById("txtContent").value);  */
 	    		// 값을 불러올 땐 document.get으로 받아오기
+	    		let content = document.getElementById("txtContent").value.replace("\r\n","");
 	    		
-	    		document.getElementById('noticeHiddenContent').value = document.getElementById("txtContent").value;
+	    		document.getElementById('noticeHiddenContent').value = content;
+/* 	    		document.getElementById('noticeHiddenContent').value = document.getElementById("txtContent").value; */
 	    		
 				document.getElementById('noticeUpdate').submit();
 			});
