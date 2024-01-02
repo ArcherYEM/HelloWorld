@@ -64,10 +64,9 @@
 <!--          로그인후 시점 -->
          <div id="divLogin" class="divLogin">
          	<div class="my-title">
-         		내 미니미
         	</div>
          	<div class="" id="divMainMinimi">
-	          	<img class="index-my-minimi" id="mainMinimi" src="<c:url value="/resources/images/PepeIcon.gif"/>">
+	          	<img class="index-my-minimi" id="mainMinimi" src="/../../../..${sessionScope.userMinimi }"/>
         	</div>
     	    <form id="logoutForm" action="<c:url value='/main/member/logout' />" method="post">
 	         	<div class="my-btn">

@@ -33,6 +33,7 @@ public class MainController {
 	@Value("${default.background.path}")
     private String defaultBackground;
 	
+	//메인 홈 (프로필 사진, 프로필 메시지, 미니룸 불러옴)
 	@RequestMapping("/mnHome/mainView")
 	public String minihome(Model model, @RequestParam Map map, HttpServletRequest req , HttpSession session) {
 		
@@ -45,7 +46,7 @@ public class MainController {
 	        background.put("backgroundPath", defaultBackground);
 	        model.addAttribute("background",background);
 	        
-	        // 미니미(아바타)에 대한 기본 설정을 Map에 담아 모델에 추가합니다.
+	        // 미니미에 대한 기본 설정을 Map에 담아 모델에 추가합니다.
 	        Map<String, Object> minimiList = new HashMap<>();
 	        minimiList.put("minimiPath",defaultMinimi);
 	        minimiList.put("minimiLeft", "390");
@@ -85,6 +86,7 @@ public class MainController {
 		return "miniHome/mnhProfileEdit";
 	}
 	
+	//미니룸 설정에서 세팅한 배경 및 미니미 정보를 DB에 저장
 	@RequestMapping("/mnHome/miniroomSave")
 	public String miniroomSave(@RequestParam("backgroundName") String backgroundName,
             @RequestParam Map<String, String> allParams,
@@ -123,6 +125,7 @@ public class MainController {
 		return "miniHome/miniroomEditSuccess";
 	}
 	
+	//프로필 변경 이력(히스토리) 불러옴
 	@RequestMapping("/mnHome/miniroomHistoryView")
 	public String mnhProfileHistory(HttpSession session, HttpServletRequest req, Model model) {
 		
@@ -157,6 +160,7 @@ public class MainController {
 		return "miniHome/mnhProfileHistory";
 	}
 	
+	//
 	@RequestMapping("/mnHome/miniroomEditView")
 	public String miniroomEdit(HttpServletRequest req, HttpSession session, Model model) {
 		

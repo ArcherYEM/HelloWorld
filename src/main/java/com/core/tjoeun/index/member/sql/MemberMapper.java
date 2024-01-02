@@ -11,4 +11,6 @@ public interface MemberMapper {
 	public Map selectUserId(Map map);
 	
 	public int updatePw(Map map);
+	
+	public String selectUserMinimi(String userNickname);
 }

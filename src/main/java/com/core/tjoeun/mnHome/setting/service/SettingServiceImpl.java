@@ -3,6 +3,8 @@ package com.core.tjoeun.mnHome.setting.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.sound.midi.Track;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -27,23 +29,15 @@ public class SettingServiceImpl implements SettingService {
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
 	public void updateAllocationOff(Map map)  throws Exception{
-		int result = settingDao.updateAllocationOff(map);
-		if (result != 1) {
-			throw new Exception();
-		}
+		settingDao.updateAllocationOff(map);
+		
 	}
 
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
 	public void updateAllocationOn(Map minimiMap) throws Exception {
-		int result = settingDao.updateAllocationOn(minimiMap);
-		System.out.println("서비스임플 런");
-		if (result != 1) {
-			System.out.println("서비스임플에서 에러발생");
-			System.out.println(result);
-			throw new Exception();
-		}
-		System.out.println(result);
+		settingDao.updateAllocationOn(minimiMap);
+		
 	}
     
 }

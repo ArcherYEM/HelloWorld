@@ -21,4 +21,6 @@ public interface MemberService {
 	public Map selectPhone(Map map);
 	
 	public void updatePw(Map map) throws Exception;
+	
+	public String selectUserMinimi(String userNickname);
 }

@@ -22,17 +22,15 @@ public class SettingDaoImpl implements SettingDao {
     }
 
 	@Override
-	public int updateAllocationOff(Map map) {
+	public void updateAllocationOff(Map map) {
 		SettingMapper mapper = sqlSession.getMapper(SettingMapper.class);
-		return mapper.updateAllocationOff(map);
+		mapper.updateAllocationOff(map);
 	}
 
 	@Override
-	public int updateAllocationOn(Map minimiMap) {
-		System.out.println("다오 런");
+	public void updateAllocationOn(Map minimiMap) {
 		SettingMapper mapper = sqlSession.getMapper(SettingMapper.class);
-		System.out.println("다오에서 에서 mapper 불렀음");
-		return mapper.updateAllocationOff(minimiMap);
+		mapper.updateAllocationOn(minimiMap);
 	}
     
 }
