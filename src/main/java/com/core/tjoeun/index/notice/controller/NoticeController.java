@@ -2,6 +2,7 @@ package com.core.tjoeun.index.notice.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -64,11 +65,21 @@ public class NoticeController {
 		return "redirect:/notice/noticeView";
 	}
 	
+	
 	@RequestMapping(value="/notice/noticeDetail", method = RequestMethod.GET)
-	public String noticeDetail() {
+	public String noticeDetail(Model model, @RequestParam Map map) {
+		List temp = noticeService.getNoticeList(map);
 		
+		model.addAttribute("list",temp);
+		
+		System.out.println(temp);
+		
+//		return "redirect:/notice/noticeView";
 		return "notice/noticeDetail";
 	}
+	
+	
+	
 	
 	@RequestMapping(value="/notice/noticeDelete", method = RequestMethod.POST)
 	public String noticeDelete(Model model, @RequestParam Map map, RedirectAttributes re) {

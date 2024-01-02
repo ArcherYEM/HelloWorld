@@ -15,6 +15,9 @@
 		<link  href="/resources/css/index/store.css" rel="stylesheet">
 		<link  href="/resources/css/index/notice.css" rel="stylesheet">
 		<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
+		<!-- editor -->
+		<script type="text/javascript" src="../../../../resources/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>
+		<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	</head>
 	<body>
 	
@@ -38,7 +41,8 @@
 			
 			<div class="notice-write-group">
 				<input class="notice-write-title" id="noticeTitle" type="text" placeholder="제목을 입력하세요." form = "frmNotice" name="title">
-				<textarea class="notice-write-content" id="noticeContent" placeholder="내용을 입력하세요." form = "frmNotice" name="content"></textarea>
+				<!-- <textarea class="notice-write-content" id="noticeContent" placeholder="내용을 입력하세요." form = "frmNotice" name="content"></textarea> -->
+				<textarea class="notice-write-content" name="content" id="txtContent" rows="10" cols="100" placeholder="내용을 입력하세요." form = "frmNotice" ></textarea>
 			</div>
 			
 			<form>
@@ -64,13 +68,22 @@
 		<script>
 			document.getElementById('btnNoticeWrite').addEventListener('click', function() {
 				document.getElementById('noticeHiddenTitle').value = document.getElementById('noticeTitle').value;
-				document.getElementById('noticeHiddenContent').value = document.getElementById('noticeContent').value;
+				document.getElementById('noticeHiddenContent').value = document.getElementById('txtContent').value;
 				
 				console.log(document.getElementById('noticeUserNickname').value);
 				document.getElementById('frmNotice').submit();
 			});
 			document.getElementById('btnNoticeView').addEventListener('click', function() {
 				location.href = '/notice/noticeView';
+			});
+			
+			var oEditors=[];
+			
+			nhn.husky.EZCreator.createInIFrame({
+				oAppRef : oEditors,
+				elPlaceHolder : "txtContent",
+				sSkinURI : "../../../../resources/smarteditor2/SmartEditor2Skin.html",
+				fCreator : "createSEditor2"
 			});
 		</script>
 	</body>
