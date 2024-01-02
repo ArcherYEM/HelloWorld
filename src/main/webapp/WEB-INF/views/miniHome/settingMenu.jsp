@@ -82,7 +82,7 @@
 							
 								<div class="set-menu-selected">
 									<div class="set-menu-selected-span">
-										<span>적용중인 메뉴 스킨</span>
+										<span>적용중인 메뉴</span>
 									</div>
 									<div class="set-menu-selected-skin">
 									</div>
@@ -90,7 +90,7 @@
 								
 								<div class="set-menu-having">
 									<div class="set-menu-p">
-										<p>보유중인 메뉴 스킨</p>
+										<p>보유중인 메뉴</p>
 									</div>
 									<div class="set-menu-list">
 										<div class="temp1"></div>
