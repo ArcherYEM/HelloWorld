@@ -51,10 +51,7 @@ public class MainController {
 	        minimiList.put("minimiLeft", "390");
 	        minimiList.put("minimiTop", "163");
 	        model.addAttribute("minimiList", minimiList);
-			
-	        System.out.println(background);
-	        System.out.println(minimiList);
-	        
+	
             return "miniHome/main";
         }
 		model.addAttribute("loginStatus",true);
@@ -123,7 +120,7 @@ public class MainController {
             mainService.insertMinimi(minimiData);
 		}
 		
-		return "miniHome/miniroomSave";
+		return "miniHome/miniroomEditSuccess";
 	}
 	
 	@RequestMapping("/mnHome/miniroomHistoryView")
@@ -167,10 +164,19 @@ public class MainController {
 		
 		session = req.getSession();
 		userMap = (Map) session.getAttribute("userId");
+		
+		if(session == null || session.getAttribute("userId") == null) {
+			model.addAttribute("loginStatus",false);			
+	        
+			return "miniHome/miniroomEdit";
+        }
+
+		
 		String userNickname = (String) userMap.get("userNickname");
 		
 		List<Map> minimi = mainService.getMinimi(userNickname);
 		model.addAttribute("minimi",minimi);
+		model.addAttribute("loginStatus",true);
 		
 		return "miniHome/miniroomEdit";
 	}

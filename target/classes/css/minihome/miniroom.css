@@ -12,3 +12,13 @@
 	height:100px;
 	position:relative;
 }
+
+.miniroom-success{
+	height:100%;
+	display:flex;
+	text-align:center; 
+	justify-content:center;
+	align-items: center;
+	font-weight: bold;
+	flex-direction: column;
+}
