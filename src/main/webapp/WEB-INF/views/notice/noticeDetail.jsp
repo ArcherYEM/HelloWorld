@@ -36,33 +36,15 @@
 				<div class="noticeDetail-content-container">
 					
 					<div class="notice-info-group">
-						<input class="notice-title" type="text" value="1. 첫번째 테스트 공지사항입니다." readonly>
+						<input class="notice-title" type="text" value="${list[0].seq }. ${list[0].title}" readonly>
 						<div class="notice-info">
-								작성자 : admin
+								작성자 : ${list[0].writer }
 							<div class="notice-write-date">
-								2023-12-06 16:58
+								${list[0].date }
 							</div>
 						</div>
 						<div class="notice-info-content">
-							동해물과 백두산이 마르고 닳도록<br>
-							하느님,부처님,예수님,마리아님이 보우하사 우리나라 만세.<br>
-							무궁화 삼천리 화려강산<br>
-							 대한사람 대한으로 길이 보전하세.<br>
-							<br>
-							남산위에 저 소나무 철갑을 두른 듯<br>
-							바람서리 불변함은 우리 기상일세.<br>
-							무궁화 삼천리 화려강산<br>
-							대한사람 대한으로 길이 보전하세.<br>
-							<br>
-							가을 하늘 공활한데 높고 구름 없이<br>
-							밝은 달은 우리 가슴 일편단심일세.<br>
-							무궁화 삼천리 화려강산<br>
-							대한사람 대한으로 길이 보전하세.<br>
-							<br>
-							이 기상과 이 맘으로 충성을 다하여<br>
-							괴로우나 즐거우나 나라 사랑하세.<br>
-							무궁화 삼천리 화려강산<br>
-							대한사람 대한으로 길이 보전하세.<br>
+							${list[0].content }
 						</div>
 					</div>
 				</div>

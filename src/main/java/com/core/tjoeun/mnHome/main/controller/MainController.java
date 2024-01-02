@@ -27,13 +27,37 @@ public class MainController {
 	@Value("${default.image.path}")
     private String defaultImagePath;
 	
+	@Value("${default.minimi.path}")
+    private String defaultMinimi;
+	
+	@Value("${default.background.path}")
+    private String defaultBackground;
+	
 	@RequestMapping("/mnHome/mainView")
 	public String minihome(Model model, @RequestParam Map map, HttpServletRequest req , HttpSession session) {
+		
 		if(session == null || session.getAttribute("userId") == null) {
+			model.addAttribute("loginStatus",false);
 			model.addAttribute("image",defaultImagePath);
+			
+			// 배경에 대한 기본 설정을 Map에 담아 모델에 추가합니다.
+	        Map background = new HashMap();
+	        background.put("backgroundPath", defaultBackground);
+	        model.addAttribute("background",background);
+	        
+	        // 미니미(아바타)에 대한 기본 설정을 Map에 담아 모델에 추가합니다.
+	        Map<String, Object> minimiList = new HashMap<>();
+	        minimiList.put("minimiPath",defaultMinimi);
+	        minimiList.put("minimiLeft", "390");
+	        minimiList.put("minimiTop", "163");
+	        model.addAttribute("minimiList", minimiList);
+			
+	        System.out.println(background);
+	        System.out.println(minimiList);
+	        
             return "miniHome/main";
         }
-		
+		model.addAttribute("loginStatus",true);
 		Map userMap = new HashMap();
 		
 		session = req.getSession();
@@ -165,11 +189,22 @@ public class MainController {
 		return "miniHome/album";
 	}
 	
+   @RequestMapping(value="/mnHome/albumWriteView")
+   public String albumWriteView() {
+      return "miniHome/albumWrite";
+   }
+
+	
 	@RequestMapping("/mnHome/boardView")
 	public String board() {
 		
 		return "miniHome/board";
 	}
+	
+	@RequestMapping(value="/mnHome/boardWriteView")
+	   public String boardWriteView() {
+	      return "miniHome/boardWrite";
+	   }
 	
 	@RequestMapping("/mnHome/visitView")
 	public String visit() {
