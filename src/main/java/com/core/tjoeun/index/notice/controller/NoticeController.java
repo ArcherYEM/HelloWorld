@@ -1,5 +1,6 @@
 package com.core.tjoeun.index.notice.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.core.tjoeun.index.notice.service.NoticeService;
 
@@ -38,7 +40,7 @@ public class NoticeController {
 		
 		if(session == null) {
 			model.addAttribute("msg", "권한이 없습니다.");
-			direction = "notice/notice";
+			direction = "redirect:/notice/noticeView";
 		}else {
 			session = req.getSession();
 		    userMap = (Map) session.getAttribute("userId");
@@ -47,7 +49,7 @@ public class NoticeController {
 		    model.addAttribute("userNickname",userNickname);
 		    direction = "notice/noticeWrite";
 		}
-	    
+		
 		return direction;
 	}
 	
@@ -59,7 +61,7 @@ public class NoticeController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "notice/notice";
+		return "redirect:/notice/noticeView";
 	}
 	
 	@RequestMapping(value="/notice/noticeDetail", method = RequestMethod.GET)
@@ -69,18 +71,31 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value="/notice/noticeDelete", method = RequestMethod.POST)
-	public String noticeDelete(Model model, @RequestParam Map map) {
-		System.out.println(map.size());
-		if(map != null) {
-			
-			for(int i=0; i<map.size(); i++) {
-				System.out.println(map.get(""+i));
+	public String noticeDelete(Model model, @RequestParam Map map, RedirectAttributes re) {
+
+		ArrayList<String> keyList = new ArrayList<String>(map.keySet());
+		ArrayList<String> seq = new ArrayList<String>();
+		
+		
+		if(keyList.size() > 0) {
+			try {
+				for(int i=0; i<keyList.size(); i++) {
+					seq.add(i, (String) map.get(keyList.get(i)));
+				}
+				noticeService.deleteNotice(seq);
+				re.addFlashAttribute("msg", "삭제되었습니다.");
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				re.addFlashAttribute("msg", "잠시 후 다시 시도해주세요.");
 			}
+		}else {
+			re.addFlashAttribute("msg", "삭제할 게시물을 선택해주세요.");
 		}
 		
-		model.addAttribute("msg", "삭제되었습니다.");
 		
-		return "notice/notice";
+		
+		return "redirect:/notice/noticeView";
 	}
 	
 	
