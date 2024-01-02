@@ -68,6 +68,7 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 
 	@Override
+	@Transactional(readOnly = true, propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
 	public long getPage() {
 		
 		long total = (Long)noticeDao.getTotalPage().get("noticeTotal");
@@ -77,6 +78,17 @@ public class NoticeServiceImpl implements NoticeService{
 			page++;
 		}
 		return page;
+	}
+
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
+	public void modifyNotice(Map map) throws Exception {
+		int result = noticeDao.modifyNotice(map);
+		
+		if(result != 1) {
+			throw new Exception();
+		}
+		
 	}
 	
 	

@@ -45,4 +45,11 @@ public class NoticeDaoImpl implements NoticeDao{
 		return mapper.getTotalPage();
 	}
 
+	@Override
+	public int modifyNotice(Map map) {
+		NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+		
+		return mapper.modifyNotice(map);
+	}
+
 }

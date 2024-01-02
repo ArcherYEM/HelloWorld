@@ -48,7 +48,7 @@
 						</div>
 					</div>
 				</div>
-				<form id="frmNotice" method="POST" action="">
+				<form >
 					<div class="btn-container">
 						<div class="btn-left">
 							<input class="nd-btn-list" type="button" id="btnNoticeView" value="목록">					
@@ -59,6 +59,17 @@
 						</div>
 					</div>
 				</form>
+				
+				<form id="noticeModify" method="post" action="/notice/modifyView">
+					<input type="hidden" name="seq" id="hiddenSeq">
+					<input type="hidden" name="title" id="hiddenTitle">
+					<input type="hidden" name="writer" id="hiddenWriter">
+					<input type="hidden" name="date" id="hiddenDate">
+					<input type="hidden" name="content" id="hiddenContent">
+				</form>
+				<form id="deleteNotice" method="post" action="/notice/noticeDelete">
+					<input type="hidden" name="seq" value="${list[0].seq }">
+				</form>
 			</div>
 			<div class="bottom-fix">
 				<hr>
@@ -66,10 +77,32 @@
 			</div>
 				
 		</div>
+		<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
 		<script>
 			document.getElementById('btnNoticeView').addEventListener('click', function() {
 				location.href = '/notice/noticeView';
 			});
+			
+			$('#btnNoticeUpdate').on('click', function(){
+				
+				$('#hiddenSeq').val('${list[0].seq }');
+				$('#hiddenTitle').val('${list[0].title }');
+				$('#hiddenWriter').val('${list[0].writer }');
+				$('#hiddenDate').val('${list[0].date }');
+				$('#hiddenContent').val('${list[0].content }');
+				
+				$('#noticeModify').submit();
+				
+			});
+			
+			$('#btnNoticeDelete').on('click', function(){
+				if(confirm('정말 삭제하시겠습니까?')){
+					$('#deleteNotice').submit();
+				}
+				
+			});
+			
+			
 		</script>
 	</body>
 </html>

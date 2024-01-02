@@ -14,4 +14,6 @@ public interface NoticeDao {
 	public int deleteNotice(ArrayList<String> list);
 	
 	public Map getTotalPage();
+	
+	public int modifyNotice(Map map);
 }
