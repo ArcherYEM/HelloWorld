@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="../../../../resources/css/minihome/frame.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/setting.css" />
+<link rel="stylesheet" href="../../../../resources/css/minihome/settingDotoriU.css" />
 <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
 <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 </head>
@@ -76,8 +77,47 @@
 							</div>
 						</div>
 						<div class="box content-box">
-						도토리 사용내역  탭 
 						
+							<div class="set-dtr-use-frame">
+								<div class="set-dtr-use-title">
+									전체 사용내역
+								</div>
+								<div class="set-dtr-use-list">
+									<div class="set-dtr-use-list-header">
+										<table class="set-dtr-use-list-table">
+											<thead>
+												<tr>
+													<th>카데코리</th>
+													<th>세부항목</th>
+													<th>사용 도토리</th>
+													<th>사용 일시</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>미니미</td>
+													<td>주황 버섯</td>
+													<td>50</td>
+													<td>2023-12-31 09:01</td>
+												</tr>
+												<tr>
+													<td>메뉴</td>
+													<td>빨강</td>
+													<td>100</td>
+													<td>2024-01-01 11:11</td>
+												</tr>
+												<tr>
+													<td>BGM</td>
+													<td>Listen(비욘세)</td>
+													<td>100</td>
+													<td>2024-01-01 03:09</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								
+							</div>
 							
 						</div>
 					</div>
