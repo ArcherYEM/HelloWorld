@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class VisitController {
 	
-	@RequestMapping(value="/miniHome/visit")
+	@RequestMapping(value="/mnHome/visitView")
 	public String visitView() {
 		
 		return "miniHome/visit";

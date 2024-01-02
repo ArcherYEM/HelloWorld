@@ -1,7 +1,19 @@
 
 $(document).ready(function() {
 		
-		// 여러파일 업로드
+		
+
+		var oEditors=[];
+		
+		nhn.husky.EZCreator.createInIFrame({
+			oAppRef : oEditors,
+			elPlaceHolder : "txtContent",
+			sSkinURI : "../../../../resources/smarteditor2/SmartEditor2Skin.html",
+			fCreator : "createSEditor2"
+		});
+});
+
+// 여러파일 업로드
 		function multiFiles(input) {
 			  var previewContainer = document.getElementById('preview-container');
 
@@ -57,13 +69,3 @@ $(document).ready(function() {
 		    }
 		  }
 		}
-
-		var oEditors=[];
-		
-		nhn.husky.EZCreator.createInIFrame({
-			oAppRef : oEditors,
-			elPlaceHolder : "txtContent",
-			sSkinURI : "../../../../resources/smarteditor2/SmartEditor2Skin.html",
-			fCreator : "createSEditor2"
-		});
-});

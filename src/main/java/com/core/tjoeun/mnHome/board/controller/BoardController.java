@@ -19,19 +19,19 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 public class BoardController {
 	
-	@RequestMapping(value="/miniHome/board")
+	@RequestMapping(value="/mnHome/boardView")
 	public String boardView() {
 		
 		return "miniHome/board";
 	}
 	
-	@RequestMapping(value="/miniHome/boardWriteView")
+	@RequestMapping(value="/mnHome/boardWriteView")
 	public String boardWriteView() {
 		
 		return "miniHome/boardWrite";
 	}
 	
-	@RequestMapping(value="/miniHome/boardDetail")
+	@RequestMapping(value="/mnHome/boardDetail")
 	public String boardDetail() {
 		
 		return "miniHome/boardDetail";
