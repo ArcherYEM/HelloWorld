@@ -58,7 +58,7 @@
 						<td>
 							<c:out value="${list.seq}"/>
 						</td>
-						<td class="notice-td-title">
+						<td class="notice-td-title" data-seq="<c:out value='${list.seq}'/>">
 							<c:out value="${list.title}"/>
 						</td>
 						<td>
@@ -88,6 +88,10 @@
 	            <form id="frm2" action="<c:url value='/notice/noticeView'/>" method="get">
 					<input type="hidden" name="page" id="page" />
 				</form>
+				
+	            <form id="frm3" action="<c:url value='/notice/noticeDetail'/>" method="get">
+					<input type="hidden" name="detailSeq" id="detailSeq" />
+				</form>
 		
 	        </div>
 			
@@ -103,6 +107,20 @@
 				let result = '' + '${msg}';
 				if(result != ""){
 					alert(result);
+				}
+				
+				
+				var titles = document.getElementsByClassName('notice-td-title');
+
+				for (var i = 0; i < titles.length; i++) {
+				  titles[i].addEventListener('click', function() {
+					  
+					  /* $('#detailSeq').val($(this).val()); */
+					  
+					  let url = "/notice/noticeDetail?seq=" + $(this).data('seq');
+					  console.log(url);
+				      location.href = url; 
+				  });
 				}
 			});
 		
@@ -124,13 +142,8 @@
 			
 			
 			
-			var titles = document.getElementsByClassName('notice-td-title');
-
-			for (var i = 0; i < titles.length; i++) {
-			  titles[i].addEventListener('click', function() {
-			    location.href = '/notice/noticeDetail';
-			  });
-			}
+			
+			
 		
 
 		</script>
