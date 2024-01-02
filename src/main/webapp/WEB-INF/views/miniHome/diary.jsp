@@ -63,7 +63,7 @@
 					</div>
 					<div class="box content-box">
 						<div class=" album-submit">
-								<input type="button" id="btnUpload" class="btnDiaryWrite" data-diaryWrite="<c:url value='/mnHome/diaryView'/>" value="글쓰기" onclick="location.href='/miniHome/diaryWriteView'">
+								<input type="button" id="btnUpload" class="btnDiaryWrite" data-diaryWrite="<c:url value='/mnHome/diaryWriteView'/>" value="글쓰기">
 						</div>
 								<div class="album-overflow">
 							

@@ -14,7 +14,15 @@ function loadTabContent(tabName) {
                 htmlToAdd += '<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>';                
                 htmlToAdd += '<script type="text/javascript" src="../../../../resources/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>';
                 htmlToAdd += '<script src="../../../../resources/js/datePicker.js"></script>';
-
+            }else if(tabName === '/mnHome/diaryWriteView'){
+            	htmlToAdd += '<link href="/resources/css/minihome/diary.css" rel="stylesheet">';
+                htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/jquery-ui(1.13.2).css">';
+                htmlToAdd += '<script src="https://kit.fontawesome.com/91b557f547.js" crossorigin="anonymous"></script>';
+                htmlToAdd += '<script type="text/javascript" src="../../../../resources/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>';
+                htmlToAdd += '<script src="https://code.jquery.com/jquery-3.6.0.js"></script>';
+                htmlToAdd += '<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>';                
+                htmlToAdd += '<script src="../../../../resources/js/datePicker.js"></script>';
+                htmlToAdd += '<script src="../../../../resources/js/smartEditor.js"></script>';
             }else if(tabName === '/mnHome/albumView'){
                 htmlToAdd += '<link class="album" href="/resources/css/minihome/album.css" rel="stylesheet">';
                 htmlToAdd += '<script src="https://code.jquery.com/jquery-3.6.0.js"></script>';
@@ -49,7 +57,8 @@ $(document).on("click", ".menu-content", function (event) {
 
 $(document).on("click", ".btnDiaryWrite", function (event) {
    event.preventDefault();
-   tabName = $(this).data("diaryWrite");
+   tabName = $(this).data("diarywrite");
+   console.log('TabName:', tabName);
    loadTabContent(tabName); 
 });
 
