@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="../../../../resources/css/minihome/fonts.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/frame.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
+<link rel="stylesheet" href="../../../../resources/css/minihome/miniroom.css" />
 <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
 <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -132,7 +133,12 @@
 									</a>
 								</div>
 								<div class="miniroom-gif-box">
-									<img src="../../../../resources/images/miniroom/aquariumBg.png" />
+									<div class="miniroom-canvas" style="background-image:url('../../../..${background.backgroundPath}')">
+									
+										<c:forEach var = "minimi" items="${minimiList}">
+											<img class="miniroom-minimi" src="../../../..${minimi.minimiPath}" style="left:${minimi.minimiLeft}; top:${minimi.minimiTop}"/>
+										</c:forEach>
+									</div>
 								</div>
 							</div>
 							<br>
