@@ -34,12 +34,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
-	<update id="deleteNotice" parameterType="map">
+	<update id="deleteNotice" parameterType="java.util.List">
 		update 
 			notice
 		set
 			del_yn = 'Y'
-		where seq = #{seq}
+		where seq in
+		<foreach collection="list" item="seq" open="(" close=")" separator=",">
+			#{seq}
+		</foreach>
 	</update>
 	
 	

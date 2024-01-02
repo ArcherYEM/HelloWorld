@@ -78,7 +78,7 @@
 			</div>
 			
 			<!-- paging -->
-	        <div class="minimi-paging">
+	        <div class="notice-paging">
 	            <c:forEach var="page" begin="1" end="${totalPage}">
 	                <span class="spanPage" data-page="${page}">
 	                    [${page}]
@@ -107,8 +107,11 @@
 			});
 		
 			document.getElementById('btnDelete').addEventListener('click', function() {
-				/* document.getElementById('frm1').submit(); */
+				if(confirm('정말 삭제하시겠습니까?')){
+					document.getElementById('frm1').submit();
+				}
 			});
+			
 			
 			document.getElementById('btnWrite').addEventListener('click', function() {
 				location.href = '/notice/noticeWrite';
@@ -118,6 +121,8 @@
 				$('#page').val($(this).data('page'));
 				$('#frm2').submit();
 			});
+			
+			
 			
 			var titles = document.getElementsByClassName('notice-td-title');
 

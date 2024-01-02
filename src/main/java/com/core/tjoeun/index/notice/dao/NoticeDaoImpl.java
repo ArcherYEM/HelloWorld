@@ -1,5 +1,6 @@
 package com.core.tjoeun.index.notice.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,10 +32,10 @@ public class NoticeDaoImpl implements NoticeDao{
 	}
 
 	@Override
-	public int deleteNotice(Map map) {
+	public int deleteNotice(ArrayList<String> list) {
 		NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
 		
-		return mapper.deleteNotice(map);
+		return mapper.deleteNotice(list);
 	}
 
 	@Override
