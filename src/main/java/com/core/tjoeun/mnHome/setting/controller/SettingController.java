@@ -1,9 +1,11 @@
 package com.core.tjoeun.mnHome.setting.controller;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,20 +64,25 @@ public class SettingController {
 	}
 
 	@RequestMapping("/mnHome/mnhMinimiChangeView")
-	public String selectSettingUserStorage(HttpSession session, Model model) throws SQLException {
-	    String userNickname = (String) session.getAttribute("userNickname");
-
+	public String selectSettingUserStorage(HttpSession session, HttpServletRequest req, Model model) throws SQLException {
+		Map userMap = new HashMap();
+		
+		userMap = (Map) session.getAttribute("userId");
+	      String userNickname = (String) userMap.get("userNickname");
+	      
+//	    Map userNickname = (Map) session.getAttribute("userNickname");
+	   System.out.println("userNickname : " +  userNickname);
 	    try {
 	        List<Map<String, Object>> userStorageData = settingService.selectSettingUserStorage(userNickname);
 
 	        model.addAttribute("userStorageList", userStorageData);
+	        System.out.println("userStorageData : " + userStorageData);
 	    } catch (SQLException sqle) {
 	        sqle.printStackTrace();
 	        throw sqle;
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
-
 	    return "miniHome/mnhMinimiChange";
 	}
 
