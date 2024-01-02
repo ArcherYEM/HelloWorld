@@ -24,7 +24,7 @@
 	           <img class="index-header-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
 	         </a>
 	       </div>
-	       <h5 id="userDotori" class="right"></h5>
+	       <h5 id="userDotori" class="right">내 도토리 : ${sessionScope.userDotoriCnt } 개</h5>
 	       <div class="index-header-right">
 	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
 	            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
@@ -204,7 +204,18 @@
     document.getElementById('btnLogout').addEventListener('click', function() {
        location.href = "<c:url value="/index/member/logout" />"
     });
-       
+    
+    window.onload = function() {
+        // 세션값이 있는 경우에만 해당 요소 표시
+        let userDotoriElement = document.getElementById('userDotori');
+        let userDotoriCnt = '<c:out value="${sessionScope.userDotoriCnt}" />' || '';
+
+        if (userDotoriCnt.trim() !== '') {
+            userDotoriElement.style.display = 'block';
+        } else {
+            userDotoriElement.style.display = 'none';
+        }
+    };
 	</script>
    </body>
 </html>
