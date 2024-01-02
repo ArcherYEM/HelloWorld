@@ -7,23 +7,67 @@
 <head>
     <meta charset="UTF-8">
     <title>미니미 설정</title>
+    <link rel="stylesheet" href="../../../../resources/css/minihome/minimiChange.css" />
     <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
     <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 </head>
 <body>
-	<!-- css 는 구현 후 처리예정 -->
-	<div style="color:blue">
-	${sessionScope.userId}
+	
+	<div class="mnm-frame">
+	
+		<form id="mnmForm" action="your_controller_url_here" method="POST">
+            <div class="mnm-change">
+                <c:forEach items="${userStorageList}" var="userStorage">
+                    <div class="mnm-change-group">
+                        <img src="<c:url value="${userStorage.contentPath}"/>" class="mnm-change-img"/>
+                        <p class="mnm-change-p">${userStorage.productName}</p>
+                        <input type="checkbox" class="mnm-ckbox" name="selectedUserStorage" value="${userStorage.productName}" />
+                    </div>
+                </c:forEach>
+            </div>
+            
+            <div class="mnm-change-btn-group">
+                <input type="submit" class="mnm-change-btn-cancle" id="cancel" value="취소" />
+                <input type="submit" class="mnm-change-btn-choice" id="choice" value="적용" />
+            </div>
+        </form>
+		
 	</div>
-	<br>
-	    <p>${userStorage.userNickname} 님이 보유하신 미니미 입니다.</p>
 	
-	<c:forEach items="${userStorageList}" var="userStorage">
-	    <img src="<c:url value="${userStorage.contentPath }"/>" class="" style="width:100px;"/><br>
-	    <span>이름 : ${userStorage.productName}</span><br>
-	</c:forEach>
+	<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
+	<script>
+		// 창닫기
+		document.getElementById("cancel").addEventListener("click", function() {
+		    window.close();
+		});
+	</script>
+	<script>
+	    // mnm-change-group 요소에 대한 클릭 이벤트 리스너 추가
+	    var mnmChangeGroups = document.querySelectorAll(".mnm-change-group");
 	
-<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
+	    mnmChangeGroups.forEach(function(group) {
+	        group.addEventListener("click", function() {
+	            // 현재 클릭한 요소의 체크박스와 border 가져오기
+	            var checkbox = group.querySelector("input[type='checkbox']");
+	            var currentBorder = group.style.border;
+	
+	            // 다른 모든 요소의 체크박스 해제 및 border 초기화
+	            mnmChangeGroups.forEach(function(otherGroup) {
+	                if (otherGroup !== group) {
+	                    var otherCheckbox = otherGroup.querySelector("input[type='checkbox']");
+	                    otherCheckbox.checked = false;
+	                    otherGroup.style.border = "2px solid orange"; // 다른 요소들의 border 설정
+	                    otherGroup.style.borderRadius = "5px"; // 다른 요소들의 border-radius 설정
+	                }
+	            });
+	
+	            // 현재 클릭한 요소의 체크박스 상태 토글 및 border 설정
+	            checkbox.checked = !checkbox.checked;
+	            group.style.border = checkbox.checked ? "2px solid red" : "2px solid orange";
+	            group.style.borderRadius = checkbox.checked ? "5px" : "5px";
+	        });
+	    });
+	</script>
 
 </body>
 </html>
