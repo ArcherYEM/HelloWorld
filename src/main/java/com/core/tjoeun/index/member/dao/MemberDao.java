@@ -11,4 +11,6 @@ public interface MemberDao {
 	public Map selectUserId(Map map);
 	
 	public int updatePw(Map map);
+	
+	public String selectUserMinimi(String userNickname);
 }

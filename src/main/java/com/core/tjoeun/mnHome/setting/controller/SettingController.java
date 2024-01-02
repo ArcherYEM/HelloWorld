@@ -96,23 +96,21 @@ public class SettingController {
 					Map userMap = new HashMap();
 					userMap = (Map) session.getAttribute("userId");
 					String userNickname = (String) userMap.get("userNickname");
-					System.out.println(userNickname);
-					System.out.println(minimiName);
 					
 					Map minimiMap = new HashMap();
 					minimiMap.put("userNickname",userNickname);
-					minimiMap.put("minimiName",minimiName);
-					
-					System.out.println("오프 실행");
+					minimiMap.put("productName",minimiName);
+
 					settingService.updateAllocationOff(userMap);
-					System.out.println("오프종료");
-					System.out.println("온실행");
+					System.out.println("오프");
 					settingService.updateAllocationOn(minimiMap);
+					System.out.println("온");
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 		
-				return "";
+				return "miniHome/mnhMinimiChange";
 	}
 
 }

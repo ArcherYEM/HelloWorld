@@ -36,6 +36,7 @@ public class MemberController {
             loginInfo.put("userPassword", req.get("userPassword"));
 
             Map result = memberService.login(loginInfo);
+            String userNickname;
 
             if (result != null) {
                 // 로그인 성공 시
@@ -45,17 +46,20 @@ public class MemberController {
                 resultMap.put("userEmail", result.get("userEmail"));
                 resultMap.put("userPassword", result.get("userPassword"));
                 resultMap.put("userNickname", result.get("userNickname"));
+                userNickname = (String) result.get("userNickname");
                 resultMap.put("userDotoriCnt", result.get("currentDotori"));
+                String userMinimi = memberService.selectUserMinimi(userNickname);
+                session.setAttribute("userMinimi", userMinimi);
             
                 Cookie userCookie = new Cookie("userEmail", result.get("userEmail").toString());
                 userCookie.setMaxAge(60 * 60 * 24 * 7);
                 userCookie.setPath("/");
                 res.addCookie(userCookie);
-            
+                
             } else {
                 // 로그인 실패 시
                 resultMap.put("resultCode", "0");
-            }
+            } 
         } catch (Exception e) {
             // 예외 발생 시
             resultMap.put("resultCode", "0");

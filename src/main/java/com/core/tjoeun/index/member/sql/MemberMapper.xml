@@ -73,4 +73,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		userEmail = #{userId}
    </update>
    
+   <select id="selectUserMinimi" parameterType="String" resultType="String">
+		select contentPath from userStorage
+		where userNickname = #{userNickname}
+		And allocation = 1;   
+   </select>
+   
 </mapper>

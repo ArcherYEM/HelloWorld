@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			allocation = 1
 	</update>
 
-	<update id="updateAllocationOn" parameterType="Map">
+	<update id="updateAllocationOn" parameterType="map">
 		UPDATE userStorage
 		SET
 			allocation = 1

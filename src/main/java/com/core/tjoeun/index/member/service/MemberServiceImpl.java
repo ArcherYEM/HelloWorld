@@ -109,4 +109,10 @@ public class MemberServiceImpl implements MemberService{
 	    }
 		
 	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public String selectUserMinimi(String userNickname) {
+		return memberDao.selectUserMinimi(userNickname);
+	}
 }

@@ -22,8 +22,11 @@
 		</div>
 	</div>		
 <script>
-	function closeWindow(){
-		window.close();
+	function closeWindow() {
+	    if (window.opener && !window.opener.closed) {
+	        window.opener.location.reload(true);
+	    }
+	    window.close();
 	}
 </script>
 </body>

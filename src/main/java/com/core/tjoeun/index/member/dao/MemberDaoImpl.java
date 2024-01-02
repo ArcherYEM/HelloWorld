@@ -42,4 +42,11 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return mapper.updatePw(map);
 	}
+
+	@Override
+	public String selectUserMinimi(String userNickname) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		
+		return mapper.selectUserMinimi(userNickname);
+	}
 }

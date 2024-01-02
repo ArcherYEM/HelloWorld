@@ -7,7 +7,7 @@ public interface SettingDao {
 
 	List<Map<String, Object>> selectSettingUserStorage(String userNickname);
 	
-	public int updateAllocationOff(Map map);
+	public void updateAllocationOff(Map map);
 	
-	public int updateAllocationOn(Map minimiMap);
+	public void updateAllocationOn(Map minimiMap);
 }
