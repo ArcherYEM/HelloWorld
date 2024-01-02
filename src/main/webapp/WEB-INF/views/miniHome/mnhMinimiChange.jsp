@@ -11,8 +11,7 @@
     <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 </head>
 <body>
-
-	mnhMinimiChange page<br>
+	<!-- css 는 구현 후 처리예정 -->
 	<div style="color:blue">
 	${sessionScope.userId}
 	</div>
