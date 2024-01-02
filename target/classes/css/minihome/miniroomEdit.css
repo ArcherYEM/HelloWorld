@@ -175,3 +175,11 @@ body{
 .minimiImg{
 	width:710px;
 }
+
+.edit-text{
+	text-align:center;
+	justify-content: center;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+}
