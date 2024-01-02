@@ -45,9 +45,9 @@ public class MainServiceImpl implements MainService{
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Map> getMinimi() {
+	public List<Map> getMinimi(String userNickname) {
 		
-		return mainDao.getMinimi();
+		return mainDao.getMinimi(userNickname);
 	}
 
 	@Override

@@ -5,13 +5,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper	namespace="com.core.tjoeun.mnHome.main.sql.MainMapper">
 
 <select id="getProfile" parameterType="String" resultType="map">
-	select 
-		image
-		,msg
-		,create_date
-    from profile
-    where userNickname = #{userNickname}
-    order by create_date desc
+    select 
+        CASE
+            WHEN p1.image = 'noneFile' THEN 
+                (SELECT p2.image FROM profile p2 
+                 WHERE p2.userNickname = p1.userNickname 
+                 AND p2.image != 'noneFile' 
+                 ORDER BY p2.create_date DESC LIMIT 1)
+            ELSE p1.image
+        END AS image,
+        p1.msg
+    from profile p1
+    where p1.userNickname = #{userNickname}
+    order by p1.create_date desc
     limit 1
 </select>
 
@@ -25,10 +31,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     order by create_date desc
 </select>
 
-<select id="getMinimi" resultType="map">
-	select
-		contentPath
-	from store
+<select id="getMinimi" parameterType="String" resultType="map">
+	SELECT contentPath
+	FROM userStorage
+	WHERE userNickname = #{userNickname}
 </select>
 
 <insert id="upsertBackground" parameterType="map">

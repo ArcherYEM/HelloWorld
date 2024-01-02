@@ -10,7 +10,7 @@ public interface MainDao {
 	
 	public List<Map> getProfileHistory(String userNickname);
 	
-	public List<Map> getMinimi();
+	public List<Map> getMinimi(String userNickname);
 	
 	public void resetMinimi(String userNickname);
 	

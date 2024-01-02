@@ -23,7 +23,7 @@ public class ProfileController {
     private ProfileService profileService;
 
     @PostMapping("/profile/download")
-    public String uploadFile(@RequestParam Map map, @RequestParam("msg") String msg, @RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes, HttpServletRequest req, Model model) {
+    public String uploadFile(@RequestParam Map map, @RequestParam("fileStatus") String fileStatus, @RequestParam("msg") String msg, @RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes, HttpServletRequest req, Model model) {
         try {
         	
         	HttpSession session = req.getSession();
@@ -36,12 +36,17 @@ public class ProfileController {
     		} else {
     			model.addAttribute("loginStatus",true);
     		}
-        	
         	String userNickname = (String) userMap.get("userNickname");
         	
-            profileService.download(file);
-            profileService.addProfileHistory(map, userNickname,msg);
-            redirectAttributes.addFlashAttribute("message", "File uploaded successfully: " + file.getOriginalFilename());
+        	if ("noFile".equals(fileStatus)) {
+                // 'noFile' 상태일 때 서비스 메서드 호출
+                profileService.addProfileHistory(map, userNickname, msg, "noFile");
+            } else {
+                // 파일이 있는 경우 파일 처리 후 서비스 메서드 호출
+                profileService.download(file);
+                profileService.addProfileHistory(map, userNickname, msg, "hasFile");
+            }
+        	
             return "redirect:/mnhProfileEditSuccess";
 
         } catch (Exception e) {

@@ -44,16 +44,26 @@ public class ProfileServiceImpl implements ProfileService {
         }
     }
 
-	@Override
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
-	public void addProfileHistory(Map map, String userNickname, String msg) throws Exception {
-	
-		map.put("userNickname", userNickname);
-		map.put("image",filename);
-		map.put("msg",msg);
-		int result = profileDao.addProfileHistory(map);
-		if(result != 1) {
-			throw new Exception();
-		}		
-	}
+    @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
+    public void addProfileHistory(Map map, String userNickname, String msg, String fileStatus) throws Exception {
+        map.put("userNickname", userNickname);
+        map.put("msg", msg);
+
+        if ("noFile".equals(fileStatus)) {
+        	map.put("userNickname", userNickname);
+            map.put("image", "noneFile");
+            map.put("msg",msg);
+        } else {
+        	map.put("userNickname", userNickname);
+    		map.put("image",filename);
+    		map.put("msg",msg);
+        }
+
+        int result = profileDao.addProfileHistory(map);
+        if (result != 1) {
+            throw new Exception();
+        }
+    }
+
 }
