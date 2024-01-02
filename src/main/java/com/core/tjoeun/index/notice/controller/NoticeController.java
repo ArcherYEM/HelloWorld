@@ -82,19 +82,26 @@ public class NoticeController {
 	@RequestMapping(value="/notice/modify", method = RequestMethod.POST)
 	public String modify(@RequestParam Map map, RedirectAttributes re){
 		try {
+			String content = (String) map.get("content");
+			map.replace("content", content.replace("\r\n", ""));
+			
 			noticeService.modifyNotice(map);
-			re.addFlashAttribute("msg", "적용되었습니.");
+			re.addFlashAttribute("msg", "적용되었습니다 .");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/notice/noticeView";
+		return "redirect:/notice/noticeDetail?seq=" + map.get("seq");
 	}
 	
 	
 	@RequestMapping(value="/notice/noticeDetail", method = RequestMethod.GET)
 	public String noticeDetail(Model model, @RequestParam Map map) {
-
-		model.addAttribute("list",noticeService.getNoticeList(map));
+		List tempList = noticeService.getNoticeList(map);
+		
+		String content = ((String) ((Map) tempList.get(0)).get("content")).replace("\r\n", "");
+		
+		
+		model.addAttribute("list",tempList);
 		
 		return "notice/noticeDetail";
 	}

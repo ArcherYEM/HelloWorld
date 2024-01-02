@@ -44,7 +44,7 @@
 							</div>
 						</div>
 						<div class="notice-info-content">
-							${list[0].content }
+							${list[0].content}
 						</div>
 					</div>
 				</div>
@@ -79,17 +79,26 @@
 		</div>
 		<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
 		<script>
+			$(function(){
+				let result = '' + '${msg}';
+				if(result != ""){
+					alert(result);
+				}
+			});
 			document.getElementById('btnNoticeView').addEventListener('click', function() {
 				location.href = '/notice/noticeView';
 			});
 			
 			$('#btnNoticeUpdate').on('click', function(){
 				
+				let content = '${list[0].content}'.replace("\r\n","");
+				
 				$('#hiddenSeq').val('${list[0].seq }');
 				$('#hiddenTitle').val('${list[0].title }');
 				$('#hiddenWriter').val('${list[0].writer }');
 				$('#hiddenDate').val('${list[0].date }');
-				$('#hiddenContent').val('${list[0].content }');
+				$('#hiddenContent').val(content);
+ 				$('#hiddenContent').val('${list[0].content}'); 
 				
 				$('#noticeModify').submit();
 				
