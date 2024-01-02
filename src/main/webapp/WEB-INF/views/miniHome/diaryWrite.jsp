@@ -77,7 +77,7 @@
 							<div class="btn-container">
 								<div class="btn-left"></div>
 								<div class="btn-right">
-									<input class="btn-list" type="button" id="btnBoardView" value="목록">
+									<input class="btn-diarylist" type="button" id="btnBoardView" data-diaryView="<c:url value='/mnHome/diaryView'/>" value="목록">
 									<input class="btn-write" type="button" id="btnBoardWrite" value="글쓰기">
 								</div>
 							</div>
@@ -150,64 +150,6 @@
 </div>
 	<script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
 	<script src="../../../../resources/js/default.js"></script>
-	<script>
-	$.datepicker.setDefaults({
-        dateFormat: 'yymmdd',
-        prevText: '이전 달',
-        nextText: '다음 달',
-        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-        dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-        dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-        showMonthAfterYear: true,
-        yearSuffix: '년'
-    });
-	$( function() {
-	    $( "#datepicker" ).datepicker();
-	  } );
 	
-	function multiFiles(input) {
-		  var previewContainer = document.getElementById('preview-container');
-
-		  if (input && input.length) {
-		    for (var i = 0; i < input.length; i++) {
-		      (function(file) {
-		        var reader = new FileReader();
-		        
-		        reader.onload = function(e) {
-		          var newDiv = document.createElement("div");
-		          newDiv.className = "image-container";
-
-		          var newImg = document.createElement("img");
-		          newImg.src = e.target.result;
-		          newImg.style.width = "280px";
-		          newImg.style.height = "200px";
-
-		          var imageName = document.createTextNode(file.name);
-
-		          newDiv.appendChild(newImg);
-		          newDiv.appendChild(imageName);
-
-		          previewContainer.appendChild(newDiv);
-		        };
-
-		        reader.readAsDataURL(file);
-		      })(input[i]);
-		    }
-		  }
-		}
-
-		
-		var oEditors=[];
-		
-		nhn.husky.EZCreator.createInIFrame({
-			oAppRef : oEditors,
-			elPlaceHolder : "txtContent",
-			sSkinURI : "../../../../resources/smarteditor2/SmartEditor2Skin.html",
-			fCreator : "createSEditor2"
-		});
-	
-	</script>
 </body>
 </html>

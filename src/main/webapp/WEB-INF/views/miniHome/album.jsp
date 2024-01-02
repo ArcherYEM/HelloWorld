@@ -65,7 +65,7 @@
 						
 						<div class="box content-box">
 							<div class=" album-submit">
-								<input type="button" id="btnUpload" value="사진올리기">
+								<input type="button" class="btnAlbumWrite" id="btnUpload" data-albumWrite="<c:url value="/mnHome/albumWriteView" />" value="사진올리기">
 							</div>
 							<div class="album-overflow">
 							
@@ -224,10 +224,6 @@
 	</div>
 	<script src="../../../../resources/js/default.js"></script>
 	<script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
-	<script>
-	  document.getElementById('btnUpload').addEventListener('click', function() {
-	    window.location.href = '/mnHome/albumWrite';
-	  });
-	</script>
+	
 </body>
 </html>

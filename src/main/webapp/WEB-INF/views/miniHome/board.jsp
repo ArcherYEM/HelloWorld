@@ -157,7 +157,7 @@
 							<div class="board-btn">
 								<input type="button" value="이동">
 								<input type="button" value="삭제">
-								<input type="button" value="등록" onclick="location.href='/miniHome/boardWriteView'">
+								<input type="button" class="btnBoardWrite" value="등록" data-boardWrite="<c:url value='/mnHome/boardWriteView'/>">
 							</div>	
 							<div class="board-pages">
 								<span class="board-page">| 1</span>
@@ -239,27 +239,6 @@
 	</div>
 	<script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
 	<script src="../../../../resources/js/default.js"></script>
-	<script>
-// 		전체선택 기능
-		var checkboxAll=document.getElementById('checkbox-all');
-	
-		function selectAll() {
-		  var checkboxes = document.querySelectorAll('.td-checkbox input[type="checkbox"]');
-		  var allChecked = checkboxAll.checked;
-
-		  checkboxes.forEach(function(checkbox) {
-		    checkbox.checked = allChecked;
-		  });
-		}
-		
-		var titles = document.getElementsByClassName('td-title');
-
-		for (var i = 0; i < titles.length; i++) {
-		  titles[i].addEventListener('click', function() {
-		    location.href = '/miniHome/boardDetail';
-		  });
-		}
-	</script>
 	
 </body>
 </html>
