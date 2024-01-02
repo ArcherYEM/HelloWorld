@@ -11,7 +11,7 @@ $(document).ready(function() {
 			sSkinURI : "../../../../resources/smarteditor2/SmartEditor2Skin.html",
 			fCreator : "createSEditor2"
 		});
-});
+}); 
 
 // 여러파일 업로드
 		function multiFiles(input) {

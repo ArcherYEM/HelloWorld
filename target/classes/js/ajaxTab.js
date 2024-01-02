@@ -5,7 +5,7 @@ function loadTabContent(tabName) {
         dataType: "html",
         success: function (data) {
 			// head 요소에 새로운 meta 태그 추가
-			var newScriptTag = document.createElement('script');
+			//var newScriptTag = document.createElement('script');
 			
 			
             $('#test').empty();
@@ -37,9 +37,9 @@ function loadTabContent(tabName) {
                 htmlToAdd += '<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>';
                 htmlToAdd += '<script type="text/javascript" src="../../../../resources/js/boardWrite.js"></script>';
            
-           	newScriptTag.src = '../../../../resources/js/boardWrite.js';
+           	//newScriptTag.src = '../../../../resources/js/boardWrite.js';
 			//newScriptTag.content = '새로운 메타 태그입니다.';
-			document.head.appendChild(newScriptTag);
+			//document.head.appendChild(newScriptTag);
            
            
            
