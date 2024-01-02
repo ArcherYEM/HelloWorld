@@ -154,6 +154,11 @@ public class MainController {
 		return "miniHome/diary";
 	}
 	
+	@RequestMapping(value="/mnHome/diaryWriteView")
+	public String diaryWriteView() {
+		return "miniHome/diaryWrite";
+	}
+	
 	@RequestMapping("/mnHome/albumView")
 	public String album() {
 		
