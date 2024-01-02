@@ -15,22 +15,22 @@
 	
 	<div class="mnm-frame">
 	
-		<form id="mnmForm" action="your_controller_url_here" method="POST">
-            <div class="mnm-change">
-                <c:forEach items="${userStorageList}" var="userStorage">
-                    <div class="mnm-change-group">
-                        <img src="<c:url value="${userStorage.contentPath}"/>" class="mnm-change-img"/>
-                        <p class="mnm-change-p">${userStorage.productName}</p>
-                        <input type="checkbox" class="mnm-ckbox" name="selectedUserStorage" value="${userStorage.productName}" />
-                    </div>
-                </c:forEach>
-            </div>
-            
-            <div class="mnm-change-btn-group">
-                <input type="submit" class="mnm-change-btn-cancle" id="cancel" value="취소" />
-                <input type="submit" class="mnm-change-btn-choice" id="choice" value="적용" />
-            </div>
-        </form>
+		<form id="mnmForm" action="/mnHome/mnhMinimiChangeAction" method="POST">
+		    <div class="mnm-change">
+		        <c:forEach items="${userStorageList}" var="userStorage">
+		            <div class="mnm-change-group">
+		                <img src="<c:url value="${userStorage.contentPath}"/>" class="mnm-change-img"/>
+		                <p class="mnm-change-p">${userStorage.productName}</p>
+		                <input type="checkbox" class="mnm-ckbox" name="selectedUserStorage" value="${userStorage.productName}" />
+		            </div>
+		        </c:forEach>
+		    </div>
+		    
+		    <div class="mnm-change-btn-group">
+		        <input type="button" class="mnm-change-btn-cancle" id="cancel" value="취소" />
+		        <input type="submit" class="mnm-change-btn-choice" id="choice" value="적용" />
+		    </div>
+		</form>
 		
 	</div>
 	
@@ -67,6 +67,34 @@
 	            group.style.borderRadius = checkbox.checked ? "5px" : "5px";
 	        });
 	    });
+	</script>
+	<script>
+		document.getElementById("choice").addEventListener("click", function(event) {
+		    // 선택한 상품 목록을 폼 필드에 추가
+		    var selectedProducts = [];
+		    var checkboxes = document.querySelectorAll(".mnm-ckbox");
+		    checkboxes.forEach(function(checkbox) {
+		        if (checkbox.checked) {
+		            selectedProducts.push(checkbox.value);
+		        }
+		    });
+		    
+		    // 선택한 상품 목록을 숨겨진 필드(hidden field)에 설정
+		    var selectedProductsInput = document.createElement("input");
+		    selectedProductsInput.type = "hidden";
+		    selectedProductsInput.name = "selectedProducts";
+		    selectedProductsInput.value = selectedProducts.join(",");
+		    
+		    // 폼에 숨겨진 필드 추가
+		    var mnmForm = document.getElementById("mnmForm");
+		    mnmForm.appendChild(selectedProductsInput);
+		    
+		    // 폼을 서버로 제출
+		    mnmForm.submit();
+		    
+		    // 기본 동작 중단 (페이지 이동 방지)
+		    event.preventDefault();
+		});
 	</script>
 
 </body>
