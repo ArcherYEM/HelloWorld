@@ -82,16 +82,18 @@
 		});
 		
 		window.onload = function() {
-			
-	        let userDotoriElement = document.getElementById('userDotori');
-	        let userDotoriCnt = '<c:out value="${sessionScope.userDotoriCnt}" />' || '';
+		    // 세션값이 있는 경우에만 해당 요소 표시
+		    let userDotoriElement = document.getElementById('userDotori');
+		    let userDotoriCnt = <c:out value="${sessionScope.userDotoriCnt}" /> || 0;
 
-	        if (userDotoriCnt.trim() !== '') {
-	            userDotoriElement.style.display = 'block';
-	        } else {
-	            userDotoriElement.style.display = 'none';
-	        }
-	    };
+		    userDotoriElement.innerText = '내 도토리 : ' + userDotoriCnt + ' 개';
+
+		    if (userDotoriCnt !== null) {
+		        userDotoriElement.style.display = 'block';
+		    } else {
+		        userDotoriElement.style.display = 'none';
+		    }
+		};
 	</script>
 	
 	</body>
