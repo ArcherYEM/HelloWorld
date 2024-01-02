@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.core.tjoeun.mnHome.setting.service.SettingService;
@@ -87,10 +88,31 @@ public class SettingController {
 	    return "miniHome/mnhMinimiChange";
 	}
 	
-	@RequestMapping("/mnHome/mnhMinimiChangeAction")
-	public String MinimiChange(@RequestParam ("selectedUserStorage") String a ) {
-		System.out.println(a);
-		return "";
+	@RequestMapping(value="/mnHome/mnhMinimiChangeAction", method = RequestMethod.POST)
+	public String MinimiChange(
+			@RequestParam ("selectedUserStorage") String minimiName,HttpSession session, HttpServletRequest req, Model model 
+			) {
+				try {
+					Map userMap = new HashMap();
+					userMap = (Map) session.getAttribute("userId");
+					String userNickname = (String) userMap.get("userNickname");
+					System.out.println(userNickname);
+					System.out.println(minimiName);
+					
+					Map minimiMap = new HashMap();
+					minimiMap.put("userNickname",userNickname);
+					minimiMap.put("minimiName",minimiName);
+					
+					System.out.println("오프 실행");
+					settingService.updateAllocationOff(userMap);
+					System.out.println("오프종료");
+					System.out.println("온실행");
+					settingService.updateAllocationOn(minimiMap);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		
+				return "";
 	}
 
 }

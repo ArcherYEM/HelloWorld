@@ -6,4 +6,8 @@ import java.util.Map;
 public interface SettingDao {
 
 	List<Map<String, Object>> selectSettingUserStorage(String userNickname);
+	
+	public int updateAllocationOff(Map map);
+	
+	public int updateAllocationOn(Map minimiMap);
 }

@@ -6,4 +6,8 @@ import java.util.Map;
 public interface SettingService {
 
 	List<Map<String, Object>> selectSettingUserStorage(String userNickname) throws Exception;
+	
+	public void updateAllocationOff(Map map) throws Exception;
+	
+	public void updateAllocationOn(Map minimiMap) throws Exception;
 }
