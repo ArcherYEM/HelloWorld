@@ -41,6 +41,10 @@ a {
 	text-align: center;
 }
 
+#userDotori {
+	width: 160px;
+}
+
 #divHiUser {
 	height: 60px;
 	background-color: #ff8c1a;

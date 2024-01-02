@@ -24,7 +24,7 @@
 	           <img class="index-header-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
 	         </a>
 	       </div>
-	       <h5 id="userDotori" class="right">내 도토리 : ${sessionScope.userDotoriCnt } 개</h5>
+	       <h5 class="right" id="userDotori">내 도토리 : <span id="userDotoriCnt">${sessionScope.userDotoriCnt}</span>개</h5>
 	       <div class="index-header-right">
 	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
 	            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
@@ -183,6 +183,7 @@
        
        $(function() {
            let userEmail = '<c:out value="${sessionScope.userId.userEmail}" />';
+           let userNickname = '<c:out value="${sessionScope.userId.userNickname}" />';
            let helloMessage = document.getElementById('helloMessage');
            let divHome = document.getElementById('divHome');
            let divLogin = document.getElementById('divLogin');
@@ -191,7 +192,7 @@
                divHome.style.display = 'block';
                divLogin.style.display = 'none';
            } else {
-          	 helloMessage.innerText = '안녕하세요. ' + userEmail + '님!!';
+          	 helloMessage.innerText = '안녕하세요. ' + userNickname + '님!!';
                divHome.style.display = 'none';
                divLogin.style.display = 'block';
            }
@@ -206,14 +207,17 @@
     });
     
     window.onload = function() {
-        // 세션값이 있는 경우에만 해당 요소 표시
         let userDotoriElement = document.getElementById('userDotori');
-        let userDotoriCnt = '<c:out value="${sessionScope.userDotoriCnt}" />' || '';
+        let userDotoriCnt = '${sessionScope.userDotoriCnt}';
 
-        if (userDotoriCnt.trim() !== '') {
-            userDotoriElement.style.display = 'block';
-        } else {
-            userDotoriElement.style.display = 'none';
+        if (userDotoriElement) {
+            if (userDotoriCnt.trim() !== '' && userDotoriCnt !== 'null') {
+                userDotoriElement.innerHTML = '내 도토리 : ' + userDotoriCnt + ' 개';
+                userDotoriElement.style.display = 'block';
+            } else {
+                userDotoriElement.innerHTML = '0 개'; // 또는 다른 기본값
+                userDotoriElement.style.display = 'none';
+            }
         }
     };
 	</script>

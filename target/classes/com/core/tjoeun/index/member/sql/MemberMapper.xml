@@ -33,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    ,user.userGender
 	    ,user.userBirth
 	    ,user.userPhone
-	    ,dotori.currentDotori
+	    ,ifnull(dotori.currentDotori, 0) as currentDotori
 	  from user
 	  left join dotori on user.userNickname = dotori.userNickname
       where 1=1
@@ -47,7 +47,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             and user.userPhone = #{userPhone}
          </if>
          <if test="userNickname != null">
-            and user.userNickname = #{userPhone}
+            and user.userNickname = #{userNickname}
          </if>
       
    </select>
