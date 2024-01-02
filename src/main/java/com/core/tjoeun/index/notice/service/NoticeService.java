@@ -15,6 +15,6 @@ public interface NoticeService {
 	
 	public long getPage();
 	
-	
+	public void modifyNotice(Map map) throws Exception;
 	
 }

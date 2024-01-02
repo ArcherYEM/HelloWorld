@@ -40,9 +40,11 @@
 			</div>
 			
 			<div class="notice-write-group">
-				<input class="notice-write-title" id="noticeTitle" type="text" placeholder="제목을 입력하세요." form = "frmNotice" name="title">
+				<input class="notice-write-title" id="noticeTitle" type="text" value="<c:out value='${title}'/>" form = "frmNotice" name="title">
 				<!-- <textarea class="notice-write-content" id="noticeContent" placeholder="내용을 입력하세요." form = "frmNotice" name="content"></textarea> -->
-				<textarea class="notice-write-content" name="content" id="txtContent" rows="10" cols="100" placeholder="내용을 입력하세요." form = "frmNotice" ></textarea>
+				<textarea class="notice-write-content" name="content" id="txtContent" rows="10" cols="100" form = "frmNotice" >
+					<c:out value='${content}'/>
+				</textarea>
 			</div>
 			
 			<form>
@@ -53,10 +55,10 @@
 			</form>
 			
 			
-			<form id="frmNotice" method="POST" action="/notice/write">
+			<form id="noticeUpdate" method="POST" action="/notice/modify">
 				<input type="hidden" type="text" name="title" id="noticeHiddenTitle" >
 				<input type="hidden" type="text" name="content" id="noticeHiddenContent" >
-				<input type="hidden" type="text" name="userNickname" id="noticeUserNickname" value="<c:out value='${userNickname }'/>">
+				<input type="hidden" type="text" name="seq" id="noticeSeq" value="<c:out value='${seq }'/>">
 			</form>
 			
 			<div class="bottom-fix">
@@ -65,12 +67,14 @@
 			</div>
 				
 			</div>
+			
+		<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>	
 		<script>
 			document.getElementById('btnNoticeWrite').addEventListener('click', function() {
 				document.getElementById('noticeHiddenTitle').value = document.getElementById('noticeTitle').value;
 				/* document.getElementById('noticeHiddenContent').value = document.getElementById('txtContent').value; */
 				
-				console.log(document.getElementById('noticeUserNickname').value);
+				/* console.log(document.getElementById('noticeUserNickname').value); */
 				oEditors.getById["txtContent"].exec("UPDATE_CONTENTS_FIELD", []);  
 	    		//스마트 에디터 값을 텍스트컨텐츠로 전달
 	    		/* var content = document.getElementById("smartEditor").value; */
@@ -79,7 +83,7 @@
 	    		
 	    		document.getElementById('noticeHiddenContent').value = document.getElementById("txtContent").value;
 	    		
-				document.getElementById('frmNotice').submit();
+				document.getElementById('noticeUpdate').submit();
 			});
 			document.getElementById('btnNoticeView').addEventListener('click', function() {
 				location.href = '/notice/noticeView';

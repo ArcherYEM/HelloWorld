@@ -56,6 +56,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and del_yn = 'N'
 	
 	</select>
+	
+	<update id="modifyNotice" parameterType="map">
+		update
+			notice
+		set
+			title = #{title}
+			,content = #{content}
+			,update_date = current_timestamp
+			
+		where
+			seq = #{seq}
+	</update>
 
 
 </mapper>
