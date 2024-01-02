@@ -1,0 +1,271 @@
+@charset "UTF-8";
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.logoATag {
+	width: 20%;
+}
+
+.index-frame {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.index-header-logo {
+	width: 50%;
+	height: auto;
+}
+
+.otherPage-logo {
+	width: 100%;
+}
+
+.IndexPageTab {
+	width: 10%;
+	height: 30%;
+	border-radius: 10px;
+	font-size: 20px;
+	margin: 50px;
+	margin-left: 100px;
+}
+
+.divIndexMain {
+	display: flex;
+	flex-direction: row;
+}
+
+.frmLogin {
+	text-align: center;
+}
+
+#divHiUser {
+	height: 60px;
+	background-color: #ff8c1a;
+	display: flex;
+	align-items: center;
+	word-break: keep-all;
+}
+
+.hello-message {
+	color: white;
+	margin: 20px;
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.divIndexMenu {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.index-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.index-header-left {
+	flex: 40%;
+}
+
+.index-header-right {
+	flex: 60%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.index-header-right a:hover {
+	cursor: pointer;
+	background-color: orange;
+}
+
+.index-a-store {
+	padding: 25px 60px;
+}
+
+.index-a-notice {
+	padding: 25px 40px;
+}
+
+.index-a-mnh {
+	padding: 25px 30px;
+}
+
+.index-a-logout {
+	padding: 25px 40px;
+}
+
+.my-title {
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.index-my-minimi {
+	height: 200px;
+	border: 2px solid orange;
+	border-radius: 5px;
+	padding: 20px;
+	margin-bottom: 30px;
+}
+
+.my-btn {
+	display: flex;
+	justify-content: space-between;
+}
+
+.mainBtn1{
+	flext: 1;
+	margin-left: 210px;
+	width: 100px;
+}
+
+.mainBtn2{
+	flext: 1;
+	margin-right: 210px;
+	width: 100px;
+}
+
+.divdot {
+	text-align: center;
+}
+
+.divLogin {
+	margin: auto 0;
+	padding-top: 3%;
+	width: 50%;
+	height: 80%;
+	text-align: center;
+	display: flex;
+	align-items: center;
+}
+
+.signUpATag {
+	margin-right: 50px;
+}
+
+#divLogin a {
+	text-decoration: none;
+	color: black;
+	margin: 5px;
+}
+
+#frmLogin input {
+	width: 60%;
+	padding: 10px;
+}
+
+#divMainSlide {
+	padding-top: 80px;
+	padding-left: 50px;
+	width: 40%;
+	height: 50%;
+}
+
+#mainSlideImg {
+	padding-left: 50px;
+	padding-top: 50px;
+	width: 110%;
+}
+
+
+/****** main index slideshow css ****/
+* {
+	box-sizing: border-box;
+}
+
+.mySlides {
+	display: none;
+	margin-bottom: 20px;
+}
+
+.mySlides img {
+	vertical-align: middle;
+}
+
+/* Slideshow container */
+.slideshow-container {
+	position: relative;
+	margin: auto;
+}
+
+.slideshow-container img {
+	width: 100%;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+	height: 15px;
+	width: 15px;
+	margin: 0 2px;
+	background-color: #bbb;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+}
+
+.active {
+	background-color: #717171;
+}
+
+.present {
+	color: white;
+}
+
+/* Fading animation */
+.fade {
+	animation-name: fade;
+	animation-duration: 1.5s;
+}
+
+@keyframes fade {
+	from {opacity: 0.4
+}
+
+to {
+	opacity: 1
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+	.text {
+		font-size: 11px
+	}
+}
+
+.right {
+	margin-left: auto;
+}
+
+/* 팀정보 기재공간 위치 고정 */
+.bottom-fix {
+	bottom: 0;
+}
+
+.selected {
+	background-color: lightblue;
+}
+
+.confirm-group {
+	text-align: center;
+}
+
+.divGender {
+	margin-bottom: 4px;
+}
+
+.divPwCheck {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.MatchMessage {
+	font-size: 14px;
+}

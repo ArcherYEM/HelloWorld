@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper	namespace="com.core.tjoeun.mnHome.main.sql.MainMapper">
+
+<select id="getProfile" parameterType="String" resultType="map">
+	select 
+		image
+		,msg
+		,create_date
+    from profile
+    where userNickname = #{userNickname}
+    order by create_date desc
+    limit 1
+</select>
+
+<select id="getProfileHistory" parameterType="String" resultType="map">
+	select 
+		image
+		,msg
+		,create_date
+    from profile
+    where userNickname = #{userNickname}
+    order by create_date desc
+</select>
+
+<select id="getMinimi" resultType="map">
+	select
+		contentPath
+	from store
+</select>
+
+<insert id="upsertBackground" parameterType="map">
+	insert into miniroomBackground
+		(userNickname
+		,backgroundName
+		,backgroundPath)
+	values
+		(#{userNickname}
+		,#{backgroundName}
+		,#{backgroundPath})
+</insert>
+
+<delete id="resetBackground" parameterType="String">
+	delete from miniroomBackground
+	where userNickname = #{userNickname}
+</delete>
+
+<delete id="resetMinimi" parameterType="String">
+	delete from miniroomMinimi
+	where userNickname = #{userNickname}
+</delete>
+
+<insert id="insertMinimi" parameterType="String">
+	insert into miniroomMinimi
+		(userNickname
+		,minimiName
+		,minimiPath
+		,minimiLeft
+		,minimiTop)
+	values 
+		(#{userNickname}
+		,#{minimiName}
+		,#{minimiPath}
+		,#{minimiLeft}
+		,#{minimiTop})
+</insert>
+
+<select id="selectMinimi" parameterType="String" resultType="map">
+	select * from miniroomMinimi
+	where userNickname = #{userNickname}	
+</select>
+
+<select id="selectBackground" parameterType="String" resultType="map">
+	select * from miniroomBackground
+	where userNickname = #{userNickname}	
+</select>
+</mapper>

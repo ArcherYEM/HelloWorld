@@ -80,6 +80,12 @@ public class MainServiceImpl implements MainService{
 		
 		return mainDao.selectMinimi(userNickname);
 	}
+	
+	@Value("${default.minimi.path}")
+    private String defaultMinimi;
+	
+	@Value("${default.background.path}")
+    private String defaultBackground;
 
 	@Override
 	@Transactional(readOnly = true)

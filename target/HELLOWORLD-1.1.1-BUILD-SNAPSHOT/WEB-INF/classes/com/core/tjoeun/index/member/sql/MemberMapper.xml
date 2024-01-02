@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core.tjoeun.index.member.sql.MemberMapper">
+
+   <insert id="insertUserInfo" parameterType="map">
+      insert into user (
+         userEmail
+          ,userPassword
+          ,userName
+          ,userNickname
+          ,userGender
+          ,userBirth
+          ,userPhone
+      ) values (
+         #{userEmail}
+          ,#{userPassword}
+          ,#{userName}
+          ,#{userNickname}
+          ,#{userGender}
+          ,#{userBirth}
+          ,#{userPhone}
+      )   
+   </insert>
+   
+   <select id="selectUserInfo" parameterType="map" resultType="map">
+      select 
+         user.userEmail
+          ,user.userPassword
+          ,user.userName
+          ,user.userNickname
+          ,user.userGender
+          ,user.userBirth
+          ,user.userPhone
+          ,dotori.currentDotori
+      from user, dotori
+      where 1=1
+         <if test="userEmail != null">
+            and user.userEmail = #{userEmail}
+         </if>
+         <if test="userPassword != null">
+            and user.userPassword = #{userPassword}
+         </if>
+         <if test="userPhone != null">
+            and user.userPhone = #{userPhone}
+         </if>
+      
+   </select>
+   
+   <select id="selectUserId" parameterType="map" resultType="map">
+      select 
+         userEmail 
+      from user 
+      where 
+         userName = #{userName} 
+      and userPhone = #{userPhone} 
+      <if test="userId != null">
+      	and userEmail = #{userId}
+      </if>
+   </select>
+   
+   
+   <update id="updatePw" parameterType="map">
+	   	update user
+		set
+		userPassword = #{newPw}
+		where
+		userEmail = #{userId}
+   </update>
+   
+</mapper>

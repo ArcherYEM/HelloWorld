@@ -27,10 +27,30 @@ public class MainController {
 	@Value("${default.image.path}")
     private String defaultImagePath;
 	
+	@Value("${default.minimi.path}")
+    private String defaultMinimi;
+	
+	@Value("${default.background.path}")
+    private String defaultBackground;
+	
 	@RequestMapping("/mnHome/mainView")
 	public String minihome(Model model, @RequestParam Map map, HttpServletRequest req , HttpSession session) {
+		
 		if(session == null || session.getAttribute("userId") == null) {
 			model.addAttribute("image",defaultImagePath);
+			
+			// 배경에 대한 기본 설정을 Map에 담아 모델에 추가합니다.
+	        Map background = new HashMap();
+	        background.put("backgroundPath", defaultBackground);
+	        model.addAttribute("background",background);
+	        
+	        // 미니미(아바타)에 대한 기본 설정을 Map에 담아 모델에 추가합니다.
+	        Map<String, Object> minimiList = new HashMap<>();
+	        minimiList.put("minimiPath",defaultMinimi);
+	        minimiList.put("minimiLeft", "390");
+	        minimiList.put("minimiTop", "163");
+	        model.addAttribute("minimiList", minimiList);
+			
             return "miniHome/main";
         }
 		
@@ -98,9 +118,6 @@ public class MainController {
             minimiList.add(minimiData);
             mainService.insertMinimi(minimiData);
 		}
-		
-
-		
 		
 		return "miniHome/miniroomSave";
 	}
