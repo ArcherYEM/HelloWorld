@@ -16,28 +16,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE 1=1
 		AND userNickname = #{value}
 	</select>
+	
+	<update id="updateAllocationOff" parameterType="String">
+		UPDATE userStorage
+		SET
+			allocation = 0
+		WHERE
+			userNickname = #{userNickname}
+		AND
+			allocation = 1
+	</update>
 
-	<!--
-	<select id="selectSettingUserStorage" parameterType="String" resultType="map">
-		SELECT
-			userNickname,
-			category,
-			productName,
-			contentPath,
-			buy_date,
-			allocation
-		FROM userStorage
-		WHERE 1=1
-		<if test="userNickname != null">
-			AND userNickname = #{value}
-		</if>
-		</if>
-		 allocation = 1 이면 대표미니미로 설정하는것이며, 그외는 0이다.
-		<if test="category != null">
-			AND category = 'minimi'
-			AND allocation = 1
-		</if>
-	</select>
-		 -->
-
+	<update id="updateAllocationOn" parameterType="Map">
+		UPDATE userStorage
+		SET
+			allocation = 1
+		WHERE
+			userNickname = #{userNickname}
+		AND
+			productName = #{productName}
+	</update>
+	
 </mapper>

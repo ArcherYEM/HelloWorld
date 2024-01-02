@@ -7,4 +7,8 @@ public interface SettingMapper {
     
     List<Map<String, Object>> selectSettingUserStorage(String userNickname);
     
+    public int updateAllocationOff(Map map);
+
+    public int updateAllocationOn(Map minimiMap);
+    
 }

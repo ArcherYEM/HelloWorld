@@ -20,5 +20,19 @@ public class SettingDaoImpl implements SettingDao {
         SettingMapper mapper = sqlSession.getMapper(SettingMapper.class);
         return mapper.selectSettingUserStorage(userNickname);
     }
+
+	@Override
+	public int updateAllocationOff(Map map) {
+		SettingMapper mapper = sqlSession.getMapper(SettingMapper.class);
+		return mapper.updateAllocationOff(map);
+	}
+
+	@Override
+	public int updateAllocationOn(Map minimiMap) {
+		System.out.println("다오 런");
+		SettingMapper mapper = sqlSession.getMapper(SettingMapper.class);
+		System.out.println("다오에서 에서 mapper 불렀음");
+		return mapper.updateAllocationOff(minimiMap);
+	}
     
 }
