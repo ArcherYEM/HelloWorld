@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+.set-menu-selected {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-top: 2px dotted gray;
+	border-bottom: 2px dotted gray;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.set-menu-selected-span {
+	flex: 60%;
+	font-size: 18px;
+	font-weight: bold;
+	color: gray;
+	margin-left: 100px;
+}
+
+.set-menu-selected-skin {
+	flex: 40%;
+	border: 1px dotted black;
+	border-radius: 5px;
+	height: 30px;
+	background-color: rgb(42, 140, 168);
+	margin-right: 60px;
+}
+
+.set-menu-having {
+	margin-top: 20px;
+}
+
+.set-menu-p {
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	color: orange;
+}
+
+.set-menu-p p{
+	margin-bottom: 5px;
+}
+
+.set-menu-list {
+	border-top: 2px dotted gray;
+	border-bottom: 2px dotted gray;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	overflow-y: auto;
+	height: 150px;
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.set-menu-list div:hover {
+	cursor: pointer;
+	border: 4px solid orange; 
+}
+
+.temp1,
+.temp2,
+.temp3,
+.temp4,
+.temp5,
+.temp6 {
+  width: calc(33.33% - 10px);
+  height: 30px;
+  margin-bottom: 10px;
+  border: 4px solid white;
+  border-radius: 5px;
+}
+
+.temp1 {
+	background-color: red;
+}
+
+.temp2 {
+	background-color: green;
+}
+
+.temp3 {
+	background-color: black;
+}
+
+.temp4 {
+	background-color: blue;
+}
+
+.temp5 {
+	background-color: yellow;
+}
+
+.temp6 {
+	background-color: purple;
+}
+
+.set-menu-btn {
+	margin-top: 10px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.set-menu-select {
+	border: none;
+	background-color: white;
+	color: orange;
+}
+
+.set-menu-select:hover {
+	border: none;
+	background-color: white;
+	color: orange;
+	font-weight: bold;
+	cursor: pointer;
+}
