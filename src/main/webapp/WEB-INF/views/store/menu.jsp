@@ -8,9 +8,9 @@
 <head>
 <meta charset="UTF-8">
 <title>HelloWorld</title>
-<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
 <link href="/resources/css/index/main.css" rel="stylesheet">
 <link href="/resources/css/index/store.css" rel="stylesheet">
+<link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 </head>
 
 <body>
