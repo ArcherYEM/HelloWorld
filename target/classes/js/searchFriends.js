@@ -33,7 +33,6 @@ function searchUser() {
 		        });
 		     }
 
-
 		// 탭 화면 변경하기
 		function showFriendType(type) {
 		    var friendDiv = document.querySelector('.set-frd-bf-list');
@@ -54,7 +53,6 @@ function searchUser() {
 		        acceptDiv.style.display = 'block';
 		    }
 		}
-
 
 	// 일촌거절 확인
 	function confirmUnfriend() {
@@ -87,7 +85,3 @@ function searchUser() {
 	    }
 	}
 
-	
-	
-	
-	

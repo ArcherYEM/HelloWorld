@@ -7,7 +7,6 @@ function loadTabContent(tabName) {
 			// head 요소에 새로운 meta 태그 추가
 			//var newScriptTag = document.createElement('script');
 			
-			
             $('#test').empty();
             var htmlToAdd = '';
             if(tabName === '/mnHome/diaryView'){
@@ -40,8 +39,6 @@ function loadTabContent(tabName) {
            	//newScriptTag.src = '../../../../resources/js/boardWrite.js';
 			//newScriptTag.content = '새로운 메타 태그입니다.';
 			//document.head.appendChild(newScriptTag);
-           
-           
            
             }else if(tabName === '/mnHome/visitView'){
                 htmlToAdd += '<link href="/resources/css/minihome/visit.css" rel="stylesheet">';

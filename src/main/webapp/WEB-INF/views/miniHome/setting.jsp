@@ -27,7 +27,10 @@
 							<div class="setting-folder-group">
 								<div>
 								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
-								  <a href="<c:url value='/miniHome/setting'/>"><span class="setting-menu-title">개인정보변경</span></a><br>
+								  <a href="<c:url value='/miniHome/setting'/>">
+									  <span class="setting-menu-title">개인정보변경</span>
+								  </a>
+								  <br>
 								  
 								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
 								  <span class="setting-menu-title">미니홈피관리</span>
@@ -95,8 +98,8 @@
 												<div class="set-info-name-left">
 													<span>&#128394;</span> 이름
 												</div>
-												<div class="set-info-name-right">
-													양은모
+												<div class="set-info-name-right" id="set-UserName">
+													${userName }
 												</div>
 												<div class="set-info-name-a">
 													<a 
@@ -108,8 +111,8 @@
 												<div class="set-info-Nickname-left">
 													<span>&#128364;</span>닉네임
 												</div>
-												<div class="set-info-Nickname-right">
-													DevYem
+												<div class="set-info-Nickname-right" id="set-UserNickname">
+													${userNickname }
 												</div>
 												<div class="set-info-Nickname-a">
 													<a 
@@ -121,8 +124,8 @@
 												<div class="set-info-phone-left">
 													<span>&#128382;</span> 연락처
 												</div>
-												<div class="set-info-phone-right">
-													01012340055
+												<div class="set-info-phone-right" id="set-UserPhone">
+													${userPhone }
 												</div>
 												<div class="set-info-phone-a">
 													<a 
@@ -134,8 +137,8 @@
 												<div class="set-info-date-left">
 													<span>&#128464;</span> 가입일
 												</div>
-												<div class="set-info-date-right">
-													2023-12-12
+												<div class="set-info-date-right" id="set-UserDate">
+													${createDate }
 												</div>
 												<div class="set-info-date-a">
 													<a 
@@ -230,6 +233,48 @@
 	        window.open(url, '_blank', settings);
 	    }
 	</script>
+	<script>
+	$(document).on('click', '.setting-menu-title', function() {
+	    myInformation();
+	});
+	
+    function myInformation() {
+        let jsonData = {
+            "userName": userName,
+            "userNickname": userNickname,
+            "userPhone": userPhone,
+            "createDate": createDate
+        };
+
+        $.ajax({
+            method: 'POST',
+            url: "/mnHome/setting",
+            dataType: "json",
+            contentType: 'application/json',
+            data: JSON.stringify(jsonData)
+        }).done(function (json) {
+            console.log(json);
+
+            // ID에 해당하는 요소들을 가져와서 업데이트
+            let userNameElement = document.getElementById('set-UserName');
+            let userNicknameElement = document.getElementById('set-UserNickname');
+            let userPhoneElement = document.getElementById('set-UserPhone');
+            let userDateElement = document.getElementById('set-UserDate');
+
+            if (json.resultCode === '1') {
+                userNameElement.innerText = json.userName;
+                userNicknameElement.innerText = json.userNickname;
+                userPhoneElement.innerText = json.userPhone;
+                userDateElement.innerText = json.createDate;
+            } else {
+                userNameElement.innerText = '데이터 없음';
+                userNicknameElement.innerText = '데이터 없음';
+                userPhoneElement.innerText = '데이터 없음';
+                userDateElement.innerText = '데이터 없음';
+            }
+        });
+    }
+</script>
 
 </body>
 </html>
