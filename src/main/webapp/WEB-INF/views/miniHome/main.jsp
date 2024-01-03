@@ -127,12 +127,16 @@
 								</div>
 							</div>
 							<div class="miniroom">
-								<div>
-									<span class="box-title miniroom-title">Miniroom</span>
-									<a 
-									  class="mnh-Edit" 
-									  onclick="openNewWindowMiniroomEdit()">미니룸 설정
-									</a>
+								<div class="mnr-group">
+									<div class="mnr-title">
+										<span class="box-title miniroom-title">Miniroom</span>
+									</div>
+									<div class="mnr-edit">
+										<a 
+										  class="mnh-Edit" 
+										  onclick="openNewWindowMiniroomEdit()">미니룸 설정
+										</a>
+									</div>
 								</div>
 								<div class="miniroom-gif-box">
 									<% Boolean loginStatus = (Boolean) request.getAttribute("loginStatus"); %>
