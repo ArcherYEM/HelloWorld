@@ -24,6 +24,20 @@ public class MainDaoImpl implements MainDao{
 	}
 	
 	@Override
+	public Map getProfileNoImg(String userNickname) {
+		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
+		
+		return mapper.getProfile(userNickname);
+	}
+	
+	@Override
+	public Map getProfileNoMsg(String userNickname) {
+		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
+		
+		return mapper.getProfile(userNickname);
+	}
+	
+	@Override
 	public List<Map> getProfileHistory(String userNickname) {
 		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
 		

@@ -10,6 +10,10 @@ public interface MainDao {
 	
 	public List<Map> getProfileHistory(String userNickname);
 	
+	public Map getProfileNoImg(String userNickname);
+	
+	public Map getProfileNoMsg(String userNickname);
+	
 	public List<Map> getMinimi(String userNickname);
 	
 	public void resetMinimi(String userNickname);

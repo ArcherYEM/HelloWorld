@@ -61,18 +61,17 @@ public class MainController {
             return "miniHome/main";
         }
 		model.addAttribute("loginStatus",true);
+		//세션을 이용하여 현재 접속해있는 유저의 정보를 가져옵니다.
 		Map userMap = new HashMap();
-		
 		session = req.getSession();
 		userMap = (Map) session.getAttribute("userId");
 		String userNickname = (String) userMap.get("userNickname");
 		String userName = (String) userMap.get("userName");
 		
-		mainService.getProfile(userNickname);
-		String image = (String) mainService.getProfile(userNickname).get("image");
-		String msg = (String) mainService.getProfile(userNickname).get("msg");
+		Map profile = mainService.getProfile(userNickname);
+		String image = (String) profile.get("image");
+		String msg = (String) profile.get("msg");
 		msg = msg.replace("\n", "<br>");
-		// ^^ 쿼리 세번날리는거 수정 필요 
 		
 		Map title = mainService.getHomeTitle(userNickname);
 		if(title != null) {
