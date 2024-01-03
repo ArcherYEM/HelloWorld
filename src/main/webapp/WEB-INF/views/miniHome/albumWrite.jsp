@@ -12,7 +12,6 @@
 		<link rel="stylesheet" href="../../../../resources/css/minihome/frame.css" />
 		<link rel="stylesheet" href="../../../../resources/css/minihome/album.css" />
 		<link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
-		<link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
 		<link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 	</head>
 	<body>

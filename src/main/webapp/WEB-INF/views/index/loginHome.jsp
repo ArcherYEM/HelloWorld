@@ -7,12 +7,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="UTF-8">
+		<link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 		<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
 		<meta http-equiv="Pragma" content="no-cache">
 		<meta http-equiv="Expires" content="0">
-		<meta charset="UTF-8">
 		<title>HelloWorld</title>
-		<link  href="/resources/css/index/main.css" rel="stylesheet">
 	</head>
 	
 	<body>
