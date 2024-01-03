@@ -46,7 +46,7 @@
 								  </ul>
 								  
 								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
-								  <a href="<c:url value='/miniHome/settingFriends'/>"><span class="setting-menu-title">인맥관리</span></a>
+								  <a><span class="setting-menu-title" data-friends="/mnHome/settingFriends">인맥관리</span></a>
 								</div>
 								
 							</div>

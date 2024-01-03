@@ -37,4 +37,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			productName = #{productName}
 	</update>
 	
+	<select id="selectSearchUser" parameterType="map" resultType="map">
+		select
+			userEmail
+			,userName
+		from user
+		where 1=1
+		<if test="userNickname != null">
+			and userNickname = #{userNickname}
+		</if>
+	</select>
 </mapper>

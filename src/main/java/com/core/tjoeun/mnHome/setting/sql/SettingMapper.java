@@ -11,5 +11,5 @@ public interface SettingMapper {
 
     public void updateAllocationOn(Map minimiMap);
     
-    
+    public Map selectSearchUser(Map map);
 }
