@@ -14,8 +14,7 @@
 		<link  href="/resources/css/index/main.css" rel="stylesheet">
 		<link  href="/resources/css/index/store.css" rel="stylesheet">
 		<link  href="/resources/css/index/notice.css" rel="stylesheet">
-		<link rel="icon" href="../../../../resources/images/icon/minihome/favicon.png" type="image/x-icon">
-		<!-- editor -->
+		<link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 		<script type="text/javascript" src="../../../../resources/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>
 		<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	</head>
