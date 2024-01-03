@@ -259,7 +259,7 @@ thead tr:last-child th {
 }
 
 .removeBtn {
-   background: url(/resources/images/icon/minihome/deleteIcon.png);
+   background: url(/resources/images/minihome/deleteIcon.png);
    opacity: 0;
    transition: visibility 0s, opacity 0.5s linear;
    width: 30px;
