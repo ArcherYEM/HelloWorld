@@ -156,25 +156,26 @@
 							<br>
 							<div class="main-cmt">
 								<div class="main-cmt-write">
-									일촌평 <input type="text" class="main-cmt-input">
+									일촌평
+									<input type="text" class="main-cmt-input">
 									<button type="submit" value="확인">확인</button>
 								</div>
 								<div class="main-cmt-content">
 									<ul>
-										<li>GIF Anti-Aliasing 은 안하는게 더 고전적인 느낌을 주는거같아요 <span
-											class="main-cmt-info"><a href="#">(이정은)</a> 2023.12.05</span>
+										<li>AWS 로 DB Server 풀 가동 하시는거죠?
+											<span class="main-cmt-info"> <a href="#">(이정은)</a> 2023.12.25</span>
 										</li>
-										<li>JSP 파일만 30개가 넘는다면서요?ㅋㅋ <span class="main-cmt-info"><a
-												href="#">(채승원)</a> 2023.12.05</span>
+										<li>JSP 파일만 30개가 넘는다면서요?ㅋㅋ 
+											<span class="main-cmt-info"><a href="#">(채승원)</a> 2023.12.15</span>
 										</li>
-										<li>Git 으로 형상관리 하고계시죠? <span class="main-cmt-info"><a
-												href="#">(이진우)</a> 2023.12.05</span>
+										<li>Git 으로 형상관리 하고계시죠? 
+											<span class="main-cmt-info"> <a href="#">(이진우)</a> 2023.12.05</span>
 										</li>
-										<li>AWS 로 DB Server 풀 가동 하시는거죠? <span
-											class="main-cmt-info"><a href="#">(양은모)</a> 2023.12.05</span>
+										<li>400 은 행복입니다. 다된거죠. 500은..하
+											<span class="main-cmt-info"> <a href="#">(양은모)</a> 2023.12.01</span>
 										</li>
-										<li>뭐라고요? 이주빈은 @Bean 을 2주동안 만들어서 이주빈이라고요? <span
-											class="main-cmt-info"><a href="#">(금민재)</a> 2023.12.05</span>
+										<li>뭐라고요? 이주빈은 @Bean 을 2주동안 만들어서 이주빈이라고요? 
+											<span class="main-cmt-info"> <a href="#">(금민재)</a> 2023.11.05</span>
 										</li>
 									</ul>
 								</div>
@@ -252,12 +253,7 @@
 		  var windowSettings = 'width=460, height=570, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50';
 		  openNewWindow('/mnHome/mnhProfileEditView', windowSettings);
 		}
-		
-		function openNewWindow(url, settings) {
-		  window.open(url, '_blank', settings);
-		}
-	</script>
-	<script>
+	
 		// 미니룸 수정창
 		function openNewWindowMiniroomEdit() {
 		  var windowSettings = 'width=800, height=600, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50';
