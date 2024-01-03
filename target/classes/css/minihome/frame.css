@@ -227,6 +227,12 @@ body a{
   border-radius: 3px;
 }
 
+.miniroom {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 .miniroom-title {
   border: 1px solid gray;
   max-width: 100px;
@@ -339,12 +345,6 @@ body a{
 
 .minihome-nIcon {
 	width: 10px;
-}
-
-.miniroom {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
 }
 
 /*별도*/
