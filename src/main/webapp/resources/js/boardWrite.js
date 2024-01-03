@@ -12,9 +12,12 @@ $(document).ready(function() {
 			fCreator : "createSEditor2"
 		});
 		
+
+}); 
+
 		
-		
-// 여러파일 업로드
+
+		// 여러파일 업로드
 		function multiFiles(input) {
 			  var previewContainer = document.getElementById('preview-container');
 
@@ -22,7 +25,6 @@ $(document).ready(function() {
 			    for (var i = 0; i < input.length; i++) {
 			      (function(file) {
 			        var reader = new FileReader();
-			        
 			        reader.onload = function(e) {
 			       	  var newDiv = document.createElement("div");
 					      newDiv.className = "image-container";
@@ -46,14 +48,28 @@ $(document).ready(function() {
 			          newBtn.style.position = "absolute";
 			          newBtn.style.top = "0";
 			          newBtn.style.right = "0";
-			          newBtn.onclick = function() {
-						if(confirm("선택된 사진을 삭제하시겠습니까?")==true){
-							previewContainer.removeChild(newDiv);
-							 removeFile(document.querySelector('.fileUpload'));
-						}else{
-							return false;
-						}
-		          };
+			         newBtn.onclick = function() {
+					    if (confirm("선택된 사진을 삭제하시겠습니까?") == true) {
+					        previewContainer.removeChild(newDiv);
+					
+					        // 파일 인풋에서 해당 파일을 제외하고 다시 설정
+					        var fileInput = document.querySelector('.fileUpload');
+					        var updatedFiles = Array.from(fileInput.files).filter(function (f) {
+					            return f !== file;
+					        });
+					        
+					        // 새로운 FileList 생성
+					        var newFileList = new DataTransfer();
+					        updatedFiles.forEach(function (file) {
+					            newFileList.items.add(file);
+					        });
+								
+					         fileInput.files = newFileList.files;
+					    } else {
+					        return false;
+					    }
+					};
+		          	  
 
 		          // div 안에 img와 텍스트 노드 추가
 		          newDiv.appendChild(newDiv2);
@@ -70,4 +86,4 @@ $(document).ready(function() {
 		    }
 		  }
 		}
-}); 
+		
