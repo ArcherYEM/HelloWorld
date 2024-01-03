@@ -32,6 +32,12 @@ public class SettingController {
 
 		return "miniHome/setting";
 	}
+	
+	@RequestMapping(value = "/miniHome/settingInfoEditView")
+	public String settingInfoEditView() {
+		
+		return "miniHome/settingInfoEdit";
+	}
 
 	@RequestMapping(value = "/miniHome/settingBgm")
 	public String settingBgmView() {
