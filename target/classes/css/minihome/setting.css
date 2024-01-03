@@ -269,3 +269,81 @@
 	border-top : 1px solid darkgrey;
 	margin-top : 20px;
 }
+
+/* setting.jsp */
+.set-line {
+	display: flex;
+	justify-content: center;
+  	align-items: center;
+}
+
+.set-info-group {
+	width: 100%;
+	height: 180px;
+	margin-top: 15px;
+	display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.set-info {
+	width: 90%;
+	height: 150px;
+	border: 2px solid orange;
+	border-radius: 10px;
+}
+
+.set-info-title {
+	font-weight: bold;
+	font-size: 16px;
+	background-color: orange;
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+	text-align: center;
+}
+
+.set-info-db {
+	display: flex;
+	flex-direction: column;
+}
+
+.set-info-db span{
+	margin-right: 15px;
+}
+
+.set-info-name,
+.set-info-Nickname,
+.set-info-phone,
+.set-info-date {
+	padding: 5px 0;
+	font-size: 14px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.set-info-name,
+.set-info-Nickname,
+.set-info-phone{
+	border-bottom: 1px dotted orange;
+}
+
+.set-info-name-left,
+.set-info-Nickname-left,
+.set-info-phone-left,
+.set-info-date-left{
+	font-weight: bold;
+	color: gray;
+	text-align: left;
+	padding-left: 20px;
+	width: 40%;
+}
+
+.set-info-name-right,
+.set-info-Nickname-right,
+.set-info-phone-right,
+.set-info-date-right {
+  width: 60%;
+  font-size: 14px;
+}
+
+

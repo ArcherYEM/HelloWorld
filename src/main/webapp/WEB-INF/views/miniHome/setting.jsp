@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="../../../../resources/css/minihome/setting.css" />
 <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
 <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
-<script src="https://kit.fontawesome.com/91b557f547.js" crossorigin="anonymous"></script> 
 </head>
 <body>
 	<div class="main-frame">
@@ -39,7 +38,6 @@
 								    <li><a href="<c:url value='/miniHome/settingMenu'/>">메뉴탭설정</a></li>
 								    <li><a href="<c:url value='/miniHome/settingSkin'/>">스킨설정</a></li>
 								  </ul>
-								  
 								 
 								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
 								  <span class="setting-menu-title">아이템/내역관리</span>
@@ -76,7 +74,7 @@
 								https://www.helloworld.com/minihome/leejubin
 							</div>
 						</div>
-						<div class="box content-box">
+						<div class="box content-box set-line">
 						
 							<div class="divForTable">
 								<div class="setting-myMinimi">
@@ -87,47 +85,50 @@
 										<a class="setting-myMinimi-change" onclick="MinimiChange()">대표미니미 변경</a>
 									</div>
 								</div>
-								<table class="setting-table-profile">
-									<tr>
-										<th>내 프로필</th>
-									<tr>
-									<tr>
-										<td>
-											<span class="setting-infoIcon"><i class="fa-regular fa-user"></i></span>
-											<span>abc123</span>
-										</td>
-									</tr>
-									<tr>
-										<td class="setting-infoRow">
-											<div class="setting-row-container">
-												<span class="setting-infoIcon"><i class="fa-solid fa-mobile-screen"></i></span>
-												<span>010-1234-1234</span>
-												<button class="setting-btn-right setting-btnModify">수정</button>
+								
+								<div class="set-info-group">
+									<div class="set-info">
+										<div class="set-info-title">
+											프로필
+										</div>
+										<div class="set-info-db">
+											<div class="set-info-name">
+												<div class="set-info-name-left">
+													<span>&#128394;</span> 이름
+												</div>
+												<div class="set-info-name-right">
+													양은모
+												</div>
 											</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="setting-infoRow">
-											<div class="setting-row-container">
-												<span class="setting-infoIcon"><i class="fa-regular fa-envelope"></i></span>
-												<span>abc123@gmail.com</span>
-												<button class="setting-btn-right setting-btnModify">수정</button>
+											<div class="set-info-Nickname">
+												<div class="set-info-Nickname-left">
+													<span>&#128364;</span>닉네임
+												</div>
+												<div class="set-info-Nickname-right">
+													DevYem
+												</div>
+											</div>		
+											<div class="set-info-phone">
+												<div class="set-info-phone-left">
+													<span>&#128382;</span> 연락처
+												</div>
+												<div class="set-info-phone-right">
+													01012340055
+												</div>
 											</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="setting-infoRow">
-											<div class="setting-row-container">
-												<span class="setting-infoIcon"><i class="fa-solid fa-lock"></i></span>
-												<span>비밀번호</span>
-												<button class="setting-btn-right setting-btnModify">수정</button>
+											<div class="set-info-date">
+												<div class="set-info-date-left">
+													<span>&#128464;</span> 가입일
+												</div>
+												<div class="set-info-date-right">
+													2023-12-12
+												</div>
 											</div>
-										</td>
-									</tr>
-								</table>
+										</div>
+									</div>				
+								</div>
 							
 							</div>
-							
 						</div>
 					</div>
 					
@@ -193,27 +194,6 @@
 	</div>
   	<script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
 	<script src="../../../../resources/js/default.js"></script>
-	<script>
-// 		전체선택 기능
-		var checkboxAll=document.getElementById('checkbox-all');
-	
-		function selectAll() {
-		  var checkboxes = document.querySelectorAll('.td-checkbox input[type="checkbox"]');
-		  var allChecked = checkboxAll.checked;
-
-		  checkboxes.forEach(function(checkbox) {
-		    checkbox.checked = allChecked;
-		  });
-		}
-		
-		var titles = document.getElementsByClassName('td-title');
-
-		for (var i = 0; i < titles.length; i++) {
-		  titles[i].addEventListener('click', function() {
-		    location.href = '/miniHome/boardDetail';
-		  });
-		}
-	</script>
 	<script>
 		// 대표 미니미 수정창
 		function MinimiChange() {
