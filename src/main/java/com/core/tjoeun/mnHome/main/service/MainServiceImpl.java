@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.core.tjoeun.mnHome.main.dao.MainDao;
@@ -86,6 +87,33 @@ public class MainServiceImpl implements MainService{
 	public Map selectBackground(String userNickname) {
 		
 		return mainDao.selectBackground(userNickname);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Map getHomeTitle(String userNickname) {
+		
+		return mainDao.selectHomeTitle(userNickname);
+	}
+
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW, rollbackFor = {Exception.class})
+	public void updateHomeTitle(Map map) throws Exception {
+		Map titleExist = mainDao.selectHomeTitle((String) map.get("userNickname"));
+		int result;
+		
+		if(titleExist != null) {
+			result = mainDao.updateHomeTitle(map);
+
+		}else {
+			result = mainDao.insertHomeTitle(map);
+		}
+		
+		if(result != 1) {
+			throw new Exception();
+		}
+		
+		
 	}
 	
 }

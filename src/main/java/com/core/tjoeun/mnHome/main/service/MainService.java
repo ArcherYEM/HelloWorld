@@ -23,4 +23,8 @@ public interface MainService {
 	public List<Map> selectMinimi(String userNickname);
 	
 	public Map selectBackground(String userNickname);
+	
+	public Map getHomeTitle(String userNickname);
+	
+	public void updateHomeTitle(Map map) throws Exception;
 }

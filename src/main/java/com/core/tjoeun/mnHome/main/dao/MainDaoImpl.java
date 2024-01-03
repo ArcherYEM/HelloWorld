@@ -78,4 +78,25 @@ public class MainDaoImpl implements MainDao{
 		
 		return mapper.selectBackground(userNickname);
 	}
+
+	@Override
+	public Map selectHomeTitle(String userNickname) {
+		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
+		
+		return mapper.selectHomeTitle(userNickname);
+	}
+
+	@Override
+	public int insertHomeTitle(Map map) {
+		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
+		
+		return mapper.insertHomeTitle(map);
+	}
+
+	@Override
+	public int updateHomeTitle(Map map) {
+		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
+		
+		return mapper.updateHomeTitle(map);
+	}
 }
