@@ -26,7 +26,7 @@ function searchUser() {
 		           let searchResult = document.getElementById('searchResult');
 
 		           if (json.resultCode === '1') {
-		        	   searchResult.innerText ='이메일 : ' + json.userEmail + ' 이름 : ' + json.userName;
+		        	   searchResult.innerText =json.userName + ' ( ' + json.userEmail + ' )';
 		           } else {
 		        	   searchResult.innerText = '검색결과가 없습니다.';
 		           }
