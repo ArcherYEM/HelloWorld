@@ -77,20 +77,56 @@ public class SettingController {
 		return "miniHome/settingFriends";
 	}
 	
+//	searchFriends , setting 공통메서드
+	public Map common(Map map) {
+	    Map resultMap = new HashMap();
+	    System.out.println("공통메서드 실행");
+	    try {
+	        resultMap = settingService.getSearchUser(map);
+	        resultMap.put("resultCode", "1");
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        resultMap.put("resultCode", "0");
+	    }
+	    System.out.println("공통메서드 종료");
+	    return resultMap;
+	}
+	
+	@RequestMapping(value = "/miniHome/setting", method = RequestMethod.POST)
+	@ResponseBody
+	public Map setting(@RequestBody Map map) {
+		System.out.println("setting 메서드 실행");
+		Map resultMap = common(map);
+		
+		resultMap.put("userName", resultMap.get("name"));
+	    resultMap.put("userNickname", resultMap.get("nickname"));
+	    resultMap.put("userPhone", resultMap.get("phone"));
+	    resultMap.put("createDate", resultMap.get("date"));
+	    System.out.println("setting 메서드 종료");
+	    System.out.println(resultMap);
+	    return resultMap;
+	}
+
 	@RequestMapping(value = "/mnHome/searchFriends", method = RequestMethod.POST)
 	@ResponseBody
 	public Map searchFriends(@RequestBody Map map) {
-		Map resultMap = new HashMap();
-		try {
-			resultMap = settingService.getSearchUser(map);
-			resultMap.put("resultCode", "1");
-		} catch (Exception e) {
-			e.printStackTrace();
-			resultMap.put("resultCode", "0");
-		}
-
-		return resultMap;
+	    return common(map);
 	}
+	
+//	@RequestMapping(value = "/mnHome/searchFriends", method = RequestMethod.POST)
+//	@ResponseBody
+//	public Map searchFriends(@RequestBody Map map) {
+//		Map resultMap = new HashMap();
+//		try {
+//			resultMap = settingService.getSearchUser(map);
+//			resultMap.put("resultCode", "1");
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			resultMap.put("resultCode", "0");
+//		}
+//
+//		return resultMap;
+//	}
 
 	@RequestMapping("/mnHome/mnhMinimiChangeView")
 	public String selectSettingUserStorage(HttpSession session, HttpServletRequest req, Model model) throws SQLException {
@@ -130,9 +166,7 @@ public class SettingController {
 					minimiMap.put("productName",minimiName);
 
 					settingService.updateAllocationOff(userMap);
-					System.out.println("오프");
 					settingService.updateAllocationOn(minimiMap);
-					System.out.println("온");
 					
 					String userMinimi = memberService.selectUserMinimi(userNickname);
 	                session.setAttribute("userMinimi", userMinimi);

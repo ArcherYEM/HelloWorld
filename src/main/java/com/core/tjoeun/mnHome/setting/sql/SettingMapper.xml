@@ -41,6 +41,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select
 			userEmail
 			,userName
+			,userNickname
+			,userPhone
+			,createDate
 		from user
 		where 1=1
 		<if test="userNickname != null">
