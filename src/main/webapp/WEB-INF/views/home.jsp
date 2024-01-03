@@ -66,7 +66,7 @@
          	<div class="my-title">
         	</div>
          	<div class="" id="divMainMinimi">
-	          	<img class="index-my-minimi" id="mainMinimi" src="/../../../..${sessionScope.userMinimi }"/>
+	          	<img class="index-my-minimi" id="mainMinimi" src="<c:url value='${sessionScope.userMinimi}'/>"/>
         	</div>
     	    <form id="logoutForm" action="<c:url value='/main/member/logout' />" method="post">
 	         	<div class="my-btn">
@@ -145,10 +145,12 @@
         	
            let helloMessage = document.getElementById('helloMessage');
            let userDotori = document.getElementById('userDotori');
+           let userMinimiElement = document.getElementById('mainMinimi');
 
            if (json.resultCode === '1') {
               helloMessage.innerText = json.userNickname + '  님 환영합니다.';
               userDotori.innerText = '내 도토리 : ' + json.userDotoriCnt + ' 개';
+              userMinimiElement.src = "<c:url value='" + json.contentPath + "'/>";
               divHome.style.display = 'none';
               divLogin.style.display = 'block';
            } else {

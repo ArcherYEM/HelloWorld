@@ -40,19 +40,22 @@ public class MemberController {
             loginInfo.put("userPassword", req.get("userPassword"));
 
             Map result = memberService.login(loginInfo);
-            String userNickname;
+            String userNickname = "";
 
             if (result != null) {
                 // 로그인 성공 시
                 session.setAttribute("userId", result);
                 session.setAttribute("userDotoriCnt", result.get("currentDotori"));
+
                 resultMap.put("resultCode", "1");
                 resultMap.put("userEmail", result.get("userEmail"));
                 resultMap.put("userPassword", result.get("userPassword"));
                 resultMap.put("userNickname", result.get("userNickname"));
-                userNickname = (String) result.get("userNickname");
                 resultMap.put("userDotoriCnt", result.get("currentDotori"));
+                
+                userNickname = (String) result.get("userNickname");
                 String userMinimi = memberService.selectUserMinimi(userNickname);
+                resultMap.put("contentPath", userMinimi);
                 
                 session.setAttribute("userMinimi", userMinimi);
                 if(userMinimi==null) {
