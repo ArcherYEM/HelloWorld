@@ -24,6 +24,93 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       )   
    </insert>
    
+    <insert id="insertUserDotori" parameterType="String">
+		insert into dotori (
+			userNickname
+		    ,currentDotori
+		) values (
+			#{userNickname}
+		    ,100)
+	</insert>
+   
+	<insert id="insertUserDotoriC" parameterType="String">
+   		insert into dotoriC (
+			userNickname
+    		,dotoriCharge
+    		,dotoriChargeDate
+    	) values (
+			#{userNickname}
+    		,100
+    		,current_timestamp)
+	</insert>
+	
+	<insert id="insertMiniroomBackground" parameterType="String">
+   		insert into miniroomBackground (
+			userNickname
+    		,backgroundName
+    		,backgroundPath
+    	) values (
+			#{userNickname}
+    		,"defaultBg"
+    		,"/resources/images/default/defaultBg.jpg")
+	</insert>
+   
+	<insert id="insertMiniroomMinimi" parameterType="String">
+   		insert into miniroomMinimi (
+			userNickname
+		    ,minimiName
+		    ,minimiPath
+		    ,minimiLeft
+		    ,minimiTop
+    	) values (
+			#{userNickname}
+		    ,"defaultMinimiIcon"
+		    ,"/resources/images/default/defaultMinimiIcon.gif"
+		    ,"390px"
+		    ,"163px")
+	</insert>
+   
+	<insert id="insertMinihomeTitle" parameterType="String">
+   		insert into miniHomeTitle (
+			userNickname
+		    ,title
+		    ,update_date
+	    ) values (
+			#{userNickname}
+		    ,"저의 미니홈에 방문하신것을 환영합니다."
+		    ,current_timestamp)
+	</insert>
+	
+	<insert id="insertUserProfile" parameterType="String">
+   		insert into profile (
+			userNickname
+		    ,image
+		    ,msg
+		    ,create_date
+    	) values (
+			#{userNickname}
+		    ,"defaultProfile.png"
+		    ,"HelloWorld에 가입하신것을 축하드립니다."
+		    ,current_timestamp)
+	</insert>
+	
+	<insert id="insertUserStorage" parameterType="String">
+   		insert into userStorage (
+			userNickname
+		    ,category
+		    ,productName
+		    ,contentPath
+		    ,buy_date
+		    ,allocation
+    	) values (
+			#{userNickname}
+		    ,"minimi"
+		    ,"기본 미니미"
+		    ,"/resources/images/default/defaultMinimiIcon.gif"
+		    ,current_timestamp
+		    ,1)
+	</insert>
+   
    <select id="selectUserInfo" parameterType="map" resultType="map">
       select 
 	     user.userEmail
