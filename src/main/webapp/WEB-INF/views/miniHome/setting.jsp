@@ -99,6 +99,11 @@
 												<div class="set-info-name-right">
 													양은모
 												</div>
+												<div class="set-info-name-a">
+													<a 
+													  onclick="openNewWindowMyProfileEdit()">수정
+													</a>
+												</div>
 											</div>
 											<div class="set-info-Nickname">
 												<div class="set-info-Nickname-left">
@@ -106,6 +111,11 @@
 												</div>
 												<div class="set-info-Nickname-right">
 													DevYem
+												</div>
+												<div class="set-info-Nickname-a">
+													<a 
+													  onclick="openNewWindowMyProfileEdit()">수정
+													</a>
 												</div>
 											</div>		
 											<div class="set-info-phone">
@@ -115,6 +125,11 @@
 												<div class="set-info-phone-right">
 													01012340055
 												</div>
+												<div class="set-info-phone-a">
+													<a 
+													  onclick="openNewWindowMyProfileEdit()">수정
+													</a>
+												</div>
 											</div>
 											<div class="set-info-date">
 												<div class="set-info-date-left">
@@ -122,6 +137,11 @@
 												</div>
 												<div class="set-info-date-right">
 													2023-12-12
+												</div>
+												<div class="set-info-date-a">
+													<a 
+													  onclick="openNewWindowMyProfileEdit()">수정
+													</a>
 												</div>
 											</div>
 										</div>
@@ -195,16 +215,22 @@
   	<script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
 	<script src="../../../../resources/js/default.js"></script>
 	<script>
-		// 대표 미니미 수정창
-		function MinimiChange() {
-		  var windowSettings = 'width=460, height=570, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50';
-		  openNewWindow('/mnHome/mnhMinimiChangeView', windowSettings);
-		}
-		
-		function openNewWindow(url, settings) {
-		  window.open(url, '_blank', settings);
-		}
+	    // 대표 미니미 수정창
+	    function MinimiChange() {
+	        var windowSettings = 'width=460, height=570, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50';
+	        openNewWindow('/mnHome/mnhMinimiChangeView', windowSettings);
+	    }
+	    
+	    // 개인정보 수정창
+	    function openNewWindowMyProfileEdit() {
+	        var windowSettings = 'width=400, height=200, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=300, top=250';
+	        openNewWindow('/mnHome/settingInfoEditView', windowSettings);
+	    }
+	    
+	    function openNewWindow(url, settings) {
+	        window.open(url, '_blank', settings);
+	    }
 	</script>
-	
+
 </body>
 </html>

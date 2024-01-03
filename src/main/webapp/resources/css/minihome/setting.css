@@ -280,15 +280,15 @@
 .set-info-group {
 	width: 100%;
 	height: 180px;
-	margin-top: 15px;
+	margin-top: 5px;
 	display: flex;
-  justify-content: center;
-  align-items: center;
+ 	justify-content: center;
+  	align-items: center;
 }
 
 .set-info {
-	width: 90%;
-	height: 150px;
+	width: 100%;
+	height: 170px;
 	border: 2px solid orange;
 	border-radius: 10px;
 }
@@ -335,15 +335,22 @@
 	color: gray;
 	text-align: left;
 	padding-left: 20px;
-	width: 40%;
+	width: 30%;
 }
 
 .set-info-name-right,
 .set-info-Nickname-right,
 .set-info-phone-right,
 .set-info-date-right {
-  width: 60%;
+  width: 55%;
   font-size: 14px;
+}
+
+.set-info-name-a,
+.set-info-Nickname-a,
+.set-info-phone-a,
+.set-info-date-a {
+	width: 15%;
 }
 
 
