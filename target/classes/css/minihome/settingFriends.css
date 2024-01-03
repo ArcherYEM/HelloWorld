@@ -7,8 +7,8 @@
 .set-frd-search-frame {
 	border-bottom: 1px solid gray;
 	display: grid;
-    grid-template-columns: 1fr 1fr; /* 2개의 열로 나눔 */
-    grid-template-rows: 1fr 1fr; /* 2개의 행으로 나눔 */
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     gap: 10px;
 }
 
