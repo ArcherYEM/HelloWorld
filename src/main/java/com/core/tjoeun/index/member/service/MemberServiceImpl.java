@@ -29,6 +29,21 @@ public class MemberServiceImpl implements MemberService{
    public void signUp(Map map) throws Exception {
      map.put("userPassword", SHA256.encryptSHA256((String) map.get("userPassword")));
       int result = memberDao.insertUserInfo(map);
+      String  userNickname = (String) map.get("userNickname");
+      System.out.println("리턴값:"+result);
+      System.out.println(userNickname);
+      
+      if(result == 1) {
+
+	   		 memberDao.insertUserDotori(userNickname);
+	   		 memberDao.insertUserDotoriC(userNickname);
+	   		 memberDao.insertMiniroomBackground(userNickname);
+	   		 memberDao.insertMiniroomMinimi(userNickname);
+	   		 memberDao.insertMinihomeTitle(userNickname);
+	   		 memberDao.insertUserProfile(userNickname);
+	   		 memberDao.insertUserStorage(userNickname);
+	   		 
+     }
       if (result != 1) {
          throw new Exception();
       }

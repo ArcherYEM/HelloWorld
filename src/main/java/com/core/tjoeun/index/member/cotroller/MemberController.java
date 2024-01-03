@@ -223,7 +223,7 @@ public class MemberController {
     @RequestMapping(value = "/signUpConfirm", method = RequestMethod.POST)
     public String signUpConfirm(@RequestParam Map<String, String> map) throws Exception {
         memberService.signUp(map);
-        return "redirect:/";
+        return "home";
     }
     
     @RequestMapping(value = "/home", method = RequestMethod.GET)

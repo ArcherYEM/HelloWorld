@@ -49,4 +49,60 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return mapper.selectUserMinimi(userNickname);
 	}
+	
+	@Override
+	public int insertUserDotori(String userNickname) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		
+		return mapper.insertUserDotori(userNickname);
+		
+	}
+
+	@Override
+	public int insertUserDotoriC(String userNickname) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		
+		return mapper.insertUserDotoriC(userNickname);
+		
+	}
+
+	@Override
+	public int insertMiniroomBackground(String userNickname) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		
+		return mapper.insertMiniroomBackground(userNickname);
+		
+	}
+
+	@Override
+	public int insertMiniroomMinimi(String userNickname) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		
+		return mapper.insertMiniroomMinimi(userNickname);
+		
+	}
+
+	@Override
+	public int insertMinihomeTitle(String userNickname) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		
+		return mapper.insertMinihomeTitle(userNickname);
+		
+	}
+
+	@Override
+	public int insertUserProfile(String userNickname) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		
+		return mapper.insertUserProfile(userNickname);
+		
+	}
+
+	@Override
+	public int insertUserStorage(String userNickname) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		
+		return mapper.insertUserStorage(userNickname);
+		
+	}
 }
