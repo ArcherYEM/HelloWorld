@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="../../../../resources/css/minihome/frame.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/setting.css" />
-<link rel="stylesheet" href="../../../../resources/css/minihome/settingDotoriU.css" />
+<link rel="stylesheet" href="../../../../resources/css/minihome/settingDotori.css" />
 <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
 <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 </head>
@@ -87,7 +87,7 @@
 										<table class="set-dtr-use-list-table">
 											<thead>
 												<tr>
-													<th>카데코리</th>
+													<th>카테고리</th>
 													<th>세부항목</th>
 													<th>사용 도토리</th>
 													<th>사용 일시</th>

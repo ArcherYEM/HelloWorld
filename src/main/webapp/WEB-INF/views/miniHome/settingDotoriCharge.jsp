@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="../../../../resources/css/minihome/frame.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/setting.css" />
+<link rel="stylesheet" href="../../../../resources/css/minihome/settingDotori.css" />
 <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
 <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 </head>
@@ -76,8 +77,47 @@
 							</div>
 						</div>
 						<div class="box content-box">
-							도토리 충전내역  탭 
 						
+							<div class="set-dtr-use-frame">
+								<div class="set-dtr-use-title">
+									전체 충전내역
+								</div>
+								<div class="set-dtr-use-list">
+									<div class="set-dtr-use-list-header">
+										<table class="set-dtr-use-list-table">
+											<thead>
+												<tr>
+													<th>충전 일시</th>
+													<th>충전 도토리</th>
+													<th>충전 금액</th>
+													<th>결제 방식</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>2023-10-12 15:05</td>
+													<td>100</td>
+													<td>9900</td>
+													<td>모바일</td>
+												</tr>
+												<tr>
+													<td>2023-09-01 17:17</td>
+													<td>10</td>
+													<td>1100</td>
+													<td>무통장 입금</td>
+												</tr>
+												<tr>
+													<td>2021-05-05 05:55</td>
+													<td>300</td>
+													<td>26400</td>
+													<td>신용카드</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								
+							</div>
 							
 						</div>
 					</div>
@@ -144,27 +184,5 @@
 	</div>
 	<script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
 	<script src="../../../../resources/js/default.js"></script>
-	<script>
-// 		전체선택 기능
-		var checkboxAll=document.getElementById('checkbox-all');
-	
-		function selectAll() {
-		  var checkboxes = document.querySelectorAll('.td-checkbox input[type="checkbox"]');
-		  var allChecked = checkboxAll.checked;
-
-		  checkboxes.forEach(function(checkbox) {
-		    checkbox.checked = allChecked;
-		  });
-		}
-		
-		var titles = document.getElementsByClassName('td-title');
-
-		for (var i = 0; i < titles.length; i++) {
-		  titles[i].addEventListener('click', function() {
-		    location.href = '/miniHome/boardDetail';
-		  });
-		}
-	</script>
-	
 </body>
 </html>
