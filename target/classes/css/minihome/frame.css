@@ -242,6 +242,13 @@ body a{
   border-radius: 4px;
 }
 
+.mnh-Edit {
+	font-size: 12px;
+	font-weight: bold;
+	color: orange;
+	text-align: right;
+}
+
 .miniroom-gif-box {
   border: 1px solid #808080;
   flex: 1;
