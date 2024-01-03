@@ -10,4 +10,6 @@ public interface SettingService {
 	public void updateAllocationOff(Map map) throws Exception;
 	
 	public void updateAllocationOn(Map minimiMap) throws Exception;
+
+	public Map getSearchUser(Map map) throws Exception;
 }

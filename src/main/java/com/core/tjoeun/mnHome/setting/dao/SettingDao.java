@@ -10,4 +10,6 @@ public interface SettingDao {
 	public void updateAllocationOff(Map map);
 	
 	public void updateAllocationOn(Map minimiMap);
+	
+	public Map selectSearchUser(Map map);
 }
