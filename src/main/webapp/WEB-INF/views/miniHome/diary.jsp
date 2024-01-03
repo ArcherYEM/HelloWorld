@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="../../../../resources/css/minihome/diary.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/jquery-ui(1.13.2).css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
-<link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
 <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 <script src="https://kit.fontawesome.com/91b557f547.js" crossorigin="anonymous"></script> 
 <!-- date picker  -->

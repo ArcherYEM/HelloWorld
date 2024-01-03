@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title>프로필 수정</title>
     <link rel="stylesheet" href="../../../../resources/css/minihome/mnhProfileEdit.css" />
+    <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 </head>
 <body>
 	<div class="edit-frame-success">
