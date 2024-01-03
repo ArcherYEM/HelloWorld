@@ -82,4 +82,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select * from miniroomBackground
 	where userNickname = #{userNickname}	
 </select>
+
+<select id="selectHomeTitle" parameterType="String" resultType="map">
+	select
+		seq
+		,title
+	from
+		miniHomeTitle
+	where
+	userNickname = #{userNickname}
+
+</select>
+
+<insert id="insertHomeTitle" parameterType="map">
+	insert into miniHomeTitle
+	(
+		userNickname
+	   ,title
+	) values (
+	
+		#{userNickname}
+	   ,#{title}
+	)
+</insert>
+
+<update id="updateHomeTitle" parameterType="map">
+	update miniHomeTitle
+	set
+		title = #{title}
+	   ,update_date = CURRENT_TIMESTAMP
+	where
+		userNickname = #{userNickname}
+
+	
+</update>
+
 </mapper>

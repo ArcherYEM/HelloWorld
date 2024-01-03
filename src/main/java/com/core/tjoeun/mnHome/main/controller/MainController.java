@@ -11,9 +11,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.core.tjoeun.mnHome.main.service.MainService;
 
@@ -61,11 +66,20 @@ public class MainController {
 		session = req.getSession();
 		userMap = (Map) session.getAttribute("userId");
 		String userNickname = (String) userMap.get("userNickname");
+		String userName = (String) userMap.get("userName");
 		
 		mainService.getProfile(userNickname);
 		String image = (String) mainService.getProfile(userNickname).get("image");
 		String msg = (String) mainService.getProfile(userNickname).get("msg");
 		msg = msg.replace("\n", "<br>");
+		// ^^ 쿼리 세번날리는거 수정 필요 
+		
+		Map title = mainService.getHomeTitle(userNickname);
+		if(title != null) {
+			model.addAttribute("title", title.get("title"));
+		}else {
+			model.addAttribute("title", userName + "의 미니홈피입니다.");
+		}
 		
 		model.addAttribute("image", image);
 		model.addAttribute("msg", msg);
@@ -192,5 +206,29 @@ public class MainController {
 		
 		return "miniHome/setting";
 	}
+	
+	
+	@RequestMapping("/mnHome/title22Update")
+	@ResponseBody
+	public Map setTitle(@RequestBody Map map) {
+		Map result = new HashMap<String, String>();
+		
+		System.out.println("확인");
+		try {
+			mainService.updateHomeTitle(map);
+			result.put("msg", "성공");
+			
+		} catch (Exception e) {
+			
+			result.put("msg", "실패");
+			e.printStackTrace();
+			
+		}
+		
+		return result;
+	}
+	
+	
+	
 	
 }

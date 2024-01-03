@@ -23,4 +23,10 @@ public interface MainDao {
 	public List<Map> selectMinimi(String userNickname);
 	
 	public Map selectBackground(String userNickname);
+	
+	public Map selectHomeTitle(String userNickname);
+	
+	public int insertHomeTitle(Map map);
+	
+	public int updateHomeTitle(Map map);
 }

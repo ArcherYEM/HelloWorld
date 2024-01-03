@@ -61,9 +61,12 @@
 					</div>
 					<div class="content-container">
 						<div class="header content-title">
-							<div class="content-title-name">지구 최강 미모 이주빈 입니다</div>
+							 <div id="divHomeTitle" class="content-title-name">${title }</div>
+							 <input id="newTitle" type="hidden" value="${title }">
+							 <input id="hiddenUserNickname" type="hidden" value="${sessionScope.userId.userNickname }">
 							<div>
-								<button class="btn-edit">수정</button>
+								<input type="button" id="btn-title-edit" class="btn-edit" value="수정">
+								<input type="hidden" id="btn-title-save"class="btn-edit" value="저장">
 							</div>
 							<div class="content-title-url">
 								https://www.helloworld.com/minihome/leejubin</div>
