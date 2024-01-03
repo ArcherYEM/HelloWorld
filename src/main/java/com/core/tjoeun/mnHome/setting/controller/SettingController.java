@@ -11,9 +11,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.core.tjoeun.index.member.service.MemberService;
 import com.core.tjoeun.mnHome.setting.service.SettingService;
@@ -62,11 +64,25 @@ public class SettingController {
 
 		return "miniHome/settingDotoriCharge";
 	}
-
-	@RequestMapping(value = "/miniHome/settingFriends")
+	@RequestMapping(value = "/mnHome/settingFriends")
 	public String settingFriendsView() {
-
+		
 		return "miniHome/settingFriends";
+	}
+
+	@RequestMapping(value = "/mnHome/searchFriends")
+	@ResponseBody
+	public Map searchFriends(@RequestBody Map map) {
+		Map resultMap = new HashMap();
+		try {
+			resultMap = settingService.getSearchUser(map);
+			resultMap.put("resultCode", "1");
+		} catch (Exception e) {
+			e.printStackTrace();
+			resultMap.put("resultCode", "0");
+		}
+		
+		return resultMap;
 	}
 
 	@RequestMapping("/mnHome/mnhMinimiChangeView")

@@ -1,9 +1,8 @@
 package com.core.tjoeun.mnHome.setting.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.sound.midi.Track;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +37,19 @@ public class SettingServiceImpl implements SettingService {
 	public void updateAllocationOn(Map minimiMap) throws Exception {
 		settingDao.updateAllocationOn(minimiMap);
 		
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Map getSearchUser(Map map) throws Exception {
+		
+		Map searchMap = new HashMap();
+		searchMap = settingDao.selectSearchUser(map);
+		if (searchMap == null) {
+			throw new Exception();
+		}
+		
+		return searchMap;
 	}
     
 }

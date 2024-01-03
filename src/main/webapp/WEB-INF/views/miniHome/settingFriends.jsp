@@ -87,11 +87,11 @@
 										친구찾기
 									</div>
 									<div class="set-frd-search">
-										<input type="text" class="set-frd-search-input" id="searchInput" onkeyup="search()"placeholder="닉네임을 입력하세요" maxlength="18" autofocus>
-										<input type="button" class="set-frd-search-btn" value="찾기">
+										<input type="text" class="set-frd-search-input" id="searchInput" placeholder="닉네임을 입력하세요" maxlength="18" autofocus>
+										<input type="button" id="btnSearchUser" class="set-frd-search-btn" value="찾기" onclick=searchUser()>
 									</div>
-								<div class="set-frd-search-place">
-									결과값 출력란
+								<div id="searchResult" class="set-frd-search-place">
+									
 								</div>
 							</div>
 							<div class="set-frd-mid">
@@ -328,60 +328,6 @@
 	</div>
 	<script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
 	<script src="../../../../resources/js/default.js"></script>
-	<script>
-		// 탭 화면 변경하기
-		function showFriendType(type) {
-		    var friendDiv = document.querySelector('.set-frd-bf-list');
-		    var requestDiv = document.querySelector('.set-frd-bf-request');
-		    var acceptDiv = document.querySelector('.set-frd-bf-accept');
-		
-		    if (type === 'friend') {
-		        friendDiv.style.display = 'block';
-		        requestDiv.style.display = 'none';
-		        acceptDiv.style.display = 'none';
-		    } else if (type === 'request') {
-		        friendDiv.style.display = 'none';
-		        requestDiv.style.display = 'block';
-		        acceptDiv.style.display = 'none';
-		    } else if (type === 'accept') {
-		        friendDiv.style.display = 'none';
-		        requestDiv.style.display = 'none';
-		        acceptDiv.style.display = 'block';
-		    }
-		}
-	</script>
-	<script>
-	// 일촌거절 확인
-	function confirmUnfriend() {
-	    var confirmResult = confirm("정말로 친구분이랑 절교하시겠습니까?");
-	    
-	    if (confirmResult) {
-	        // 사용자가 확인(OK) 버튼을 클릭한 경우, 일촌을 끊는 작업을 수행합니다.
-	        // 예를 들어, 서버로 일촌 끊기 요청을 보내거나, 특정 URL로 리다이렉션할 수 있습니다.
-	        // 예시: window.location.href = "/unfriendAction"; 
-	    } 
-	}
 	
-	function confirmCancle() {
-	    var confirmResult = confirm("일촌신청을 취소할까요?");
-	    
-	    if (confirmResult) {
-	        // 사용자가 확인(OK) 버튼을 클릭한 경우, 일촌을 끊는 작업을 수행합니다.
-	        // 예를 들어, 서버로 일촌 끊기 요청을 보내거나, 특정 URL로 리다이렉션할 수 있습니다.
-	        // 예시: window.location.href = "/unfriendAction"; 
-	    }
-	}
-	
-	function confirmNope() {
-	    var confirmResult = confirm("일촌신청을 거절할까요?");
-	    
-	    if (confirmResult) {
-	        // 사용자가 확인(OK) 버튼을 클릭한 경우, 일촌을 끊는 작업을 수행합니다.
-	        // 예를 들어, 서버로 일촌 끊기 요청을 보내거나, 특정 URL로 리다이렉션할 수 있습니다.
-	        // 예시: window.location.href = "/unfriendAction"; 
-	    }
-	}
-	
-	</script>
 </body>
 </html>

@@ -47,6 +47,10 @@ function loadTabContent(tabName) {
                 htmlToAdd += '<link href="/resources/css/minihome/visit.css" rel="stylesheet">';
             }else if(tabName === '/mnHome/settingView'){
                 htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
+            }else if(tabName === '/mnHome/settingFriends'){
+                htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
+                htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/settingFriends.css" />';
+                htmlToAdd += '<script type="text/javascript" src="../../../../resources/js/searchFriends.js"></script>';
             }
             
             // Append all the HTML at once.
@@ -107,3 +111,16 @@ $(document).on("click", ".album-under-left", function (event) {
 	console.log('TabName:', tabName);
 	loadTabContent(tabName); 
 });
+
+$(document).on("click", ".setting-menu-title", function (event) {
+	event.preventDefault();
+	tabName = $(this).data("friends");
+	console.log('TabName:', tabName);
+	loadTabContent(tabName); 
+});
+
+
+
+
+
+
