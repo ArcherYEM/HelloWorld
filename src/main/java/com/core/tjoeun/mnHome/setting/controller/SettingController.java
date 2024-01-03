@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.core.tjoeun.index.member.service.MemberService;
 import com.core.tjoeun.mnHome.setting.service.SettingService;
 
 @Controller
@@ -23,6 +24,9 @@ public class SettingController {
 	@Autowired
 	SettingService settingService;
 
+	@Autowired
+	MemberService memberService;
+	
 	@RequestMapping(value = "/miniHome/setting")
 	public String settingView() {
 
@@ -92,6 +96,7 @@ public class SettingController {
 	public String MinimiChange(
 			@RequestParam ("selectedUserStorage") String minimiName,HttpSession session, HttpServletRequest req, Model model 
 			) {
+		
 				try {
 					Map userMap = new HashMap();
 					userMap = (Map) session.getAttribute("userId");
@@ -105,7 +110,9 @@ public class SettingController {
 					System.out.println("오프");
 					settingService.updateAllocationOn(minimiMap);
 					System.out.println("온");
-
+					
+					String userMinimi = memberService.selectUserMinimi(userNickname);
+	                session.setAttribute("userMinimi", userMinimi);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
