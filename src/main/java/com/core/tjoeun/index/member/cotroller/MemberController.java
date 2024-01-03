@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,6 +26,9 @@ public class MemberController {
 
     @Autowired
     MemberService memberService;
+    
+    @Value("${default.user.minimi.path}")
+    private String defaultMinimi;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
@@ -49,7 +53,12 @@ public class MemberController {
                 userNickname = (String) result.get("userNickname");
                 resultMap.put("userDotoriCnt", result.get("currentDotori"));
                 String userMinimi = memberService.selectUserMinimi(userNickname);
+                
                 session.setAttribute("userMinimi", userMinimi);
+                if(userMinimi==null) {
+                	session.setAttribute("userMinimi", defaultMinimi);
+                }                
+                System.out.println(session.getAttribute("userMinimi"));
             
                 Cookie userCookie = new Cookie("userEmail", result.get("userEmail").toString());
                 userCookie.setMaxAge(60 * 60 * 24 * 7);
