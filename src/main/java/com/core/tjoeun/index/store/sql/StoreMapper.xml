@@ -47,12 +47,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    OFFSET #{offset, jdbcType=INTEGER}
    ]]>
 </select>
-	
-<select id="selectStoreCnt" resultType="map" parameterType="map">
-	select 
-		count(*) as totalCnt
-	from store
-</select>
 
 <insert id="insertDotoriC" parameterType="map">
 	insert into dotoriC (
