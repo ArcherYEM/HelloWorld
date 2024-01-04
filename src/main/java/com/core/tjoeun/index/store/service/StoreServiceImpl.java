@@ -38,6 +38,12 @@ public class StoreServiceImpl implements StoreService {
 	}
 	
 	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
+	public int putBgm(Map map) {
+		return storeDao.putBgm(map);
+	}
+	
+	@Override
 	public long selectStoreCnt(Map map) {
 		long totalCnt = (long) storeDao.selectStoreCnt(map).get("totalCnt");
 		long page = (totalCnt / 10);

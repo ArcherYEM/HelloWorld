@@ -9,6 +9,8 @@ public interface StoreService {
 	
 	public List<Map> searchBgm(Map map) throws Exception;
 	
+	public int putBgm(Map map) throws Exception;
+	
 	public long selectStoreCnt(Map map);
 	
 	public List<Map> getStroeMinimiList(Map map);

@@ -55,7 +55,7 @@
 		    </table>
 		</div>
 		<div class="bgmBuy-total font-kyobohand">
-			<span class="bgmBuy-total-left">결제 예정 도토리 수 :</span> 
+			<span class="bgmBuy-total-left">결제 예정 도토리 수 :</span>
 			<c:set var="totalPrice" value="0" />
 			<c:forEach items="${selectedData}" var="bgmItem">
 			    <c:set var="totalPrice" value="${totalPrice + bgmItem.price}" />
@@ -67,17 +67,26 @@
 		        <input type="button" value="취소" onclick="cancelBgmBuy()">
 		    </div>
 		    <div class="bgmBuy-btn-y">
-		        <input type="button" value="구매">
+		        <input type="button" value="구매" onclick="okBuyBgm()">
 		    </div>
 		</div>
 	</div>
+	<form id="buyBgmForm" action="/store/bgmBuyOk" method="POST">
+	    <c:forEach items="${selectedData}" var="bgmItem" varStatus="status">
+	        <input type="hidden" name="bgmTitle[${status.index}]" value="${bgmItem.title}" />
+	        <input type="hidden" name="bgmArtist[${status.index}]" value="${bgmItem.artist}" />
+	        <input type="hidden" name="bgmPrice[${status.index}]" value="${bgmItem.price}" />
+	    </c:forEach>
+	    <input type="submit" value="구매" />
+	</form>
+
+	
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     var selected = [];
-
+    var userNickname = '${sessionScope.userId.userNickname}';
     function openNewWindowBgmBuy() {
-
         var windowSettings = 'width=800, height=600, scrollbars=no, resizable=no, toolbar=no, menubar=no, left=100, top=50';
         var selectedData = JSON.stringify(selected);
         window.open('/store/bgmBuy?selectedData=' + encodeURIComponent(selectedData), '_blank', windowSettings);
@@ -113,8 +122,42 @@
 
         $('#test').html(resultHtml);
     }
-</script>
 
+    function okBuyBgm() {
+        var form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '/store/bgmBuyOk';
+
+        var inputUserNickname = document.createElement('input');
+        inputUserNickname.type = 'hidden';
+        inputUserNickname.name = 'userNickname';
+        inputUserNickname.value = userNickname;
+        form.appendChild(inputUserNickname);
+
+        selected.forEach(function(item, index) {
+            var inputTitle = document.createElement('input');
+            inputTitle.type = 'hidden';
+            inputTitle.name = 'bgmTitle[' + index + ']';
+            inputTitle.value = item.title;
+            form.appendChild(inputTitle);
+
+            var inputArtist = document.createElement('input');
+            inputArtist.type = 'hidden';
+            inputArtist.name = 'bgmArtist[' + index + ']';
+            inputArtist.value = item.artist;
+            form.appendChild(inputArtist);
+
+            var inputPrice = document.createElement('input');
+            inputPrice.type = 'hidden';
+            inputPrice.name = 'bgmPrice[' + index + ']';
+            inputPrice.value = item.bgmPrice;
+            form.appendChild(inputPrice);
+        });
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
 	
 </body>
 </html>

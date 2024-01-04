@@ -57,6 +57,29 @@ public class StoreController {
 		return "/store/dotori";
 	}
 	
+	@RequestMapping(value = "/store/bgmBuyOk")
+	public String bgmByOk(@RequestParam("userNickname") String bgmList, HttpSession session, HttpServletRequest req) {
+		System.out.println("dbg : " + bgmList);
+		
+		Map userMap = new HashMap();
+		
+		session = req.getSession();
+		String userNickname = (String) session.getAttribute("userNickname");
+		
+		Map map = new HashMap();
+		map.put("userNickname", userNickname);
+		map.put("bgmList", bgmList);
+		
+		try {
+			storeService.putBgm(map);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "/store/bgmBuySuccess";
+	}
+	
 	@RequestMapping(value = "/store/dotoriBuy")
 	public String dotoriBuy(@RequestParam("content") String dotoriCharge,HttpSession session, HttpServletRequest req) {
 
