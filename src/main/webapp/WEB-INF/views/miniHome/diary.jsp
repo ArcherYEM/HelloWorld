@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="../../../../resources/css/minihome/jquery-ui(1.13.2).css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
 <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
-<script src="https://kit.fontawesome.com/91b557f547.js" crossorigin="anonymous"></script> 
 <!-- date picker  -->
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -275,45 +274,6 @@
 			</div>
 		</div>
 	</div>
-	
-	<div class="audioPlayerContainer">
-<!-- 		<audio id="audioElement" autoplay></audio> -->
-		<div class="audioPlayingContainer">
-			<div class="audioPlayingDiv">
-				<img id="audioPlayingImg" src="../../../../resources/images/audioPlayer/nowPlaying.png">
-			</div>
-			<div class="audioPlayingMargin">				
-			</div>			
-		    <div class="nowPlaying">
-	    	    <div class="audioTitle" id="songTitle">노래 제목</div>
-	    	</div>
-	    </div>
-    	<div class="audioControlsContainer">
-	    	<div class="audioBtnContainer">
-				<button class="audioBtn" id="audioPrev">
-					<img src="../../../../resources/images/audioPlayer/audioPrev.png">
-				</button>
-				<button class="audioBtn" id="audioPlay">
-					<img src="../../../../resources/images/audioPlayer/audioPlay.png">
-				</button>
-				<button class="audioBtn" id="audioPause">
-					<img src="../../../../resources/images/audioPlayer/audioPause.png">
-				</button>
-				<button class="audioBtn" id="audioNext">
-					<img src="../../../../resources/images/audioPlayer/audioNext.png">
-				</button>
-			</div>
-			<div class="audioVolumeContainer">
-				<button id="audioVolumeBtn">
-					<img src="../../../../resources/images/audioPlayer/audioVolume.png" style="margin-right:5px;">
-				</button>
-				<input type="range" id="audioVolumeControl" min="0" max="100" value="50" step="1">
-			</div>
-		</div>
-	</div>
 </div>
-	<script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
-	<script src="../../../../resources/js/default.js"></script>
-	
 </body>
 </html>
