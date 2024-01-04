@@ -23,4 +23,6 @@ public interface MemberService {
 	public void updatePw(Map map) throws Exception;
 	
 	public String selectUserMinimi(String userNickname);
+	
+	public String getUserName(String userNickname);
 }

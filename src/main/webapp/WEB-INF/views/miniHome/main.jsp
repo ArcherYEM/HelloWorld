@@ -46,7 +46,8 @@
 								</a>
 							</div>
 							<div class="profile-dot">---------------------------------</div>
-							<div class="profile-username font-kyobohand"> ${sessionScope.userId.userName }&#128698;</div>
+							<div class="profile-username font-kyobohand"> ${userName }&#128698;</div>
+<%-- 							<div class="profile-username font-kyobohand"> ${sessionScope.userId.userName }&#128698;</div> --%>
 							<div class="profile-dropDown">
 								<select>
 									<option value="" disabled selected hidden="">파도타기</option>
@@ -62,7 +63,7 @@
 						<div class="header content-title">
 							 <div id="divHomeTitle" class="content-title-name">${title }</div>
 							 <input id="newTitle" class="content-title-name"  type="hidden" value="${title }">
-							 <input id="hiddenUserNickname" type="hidden" value="${sessionScope.userId.userNickname }">
+							 <input id="hiddenUserNickname" type="hidden" value="${userNickname }">
 							<div>
 								<input type="button" id="btn-title-edit" class="btn-edit" value="수정">
 								<input type="hidden" id="btn-title-save"class="btn-edit" value="저장">
@@ -138,7 +139,7 @@
 										</a>
 									</div>
 								</div>
-								<div class="miniroom-gif-box">
+								<%-- <div class="miniroom-gif-box">
 									<% Boolean loginStatus = (Boolean) request.getAttribute("loginStatus"); %>
 									<% if (loginStatus == null || !loginStatus) { %>
 									<div class="miniroom-canvas" style="background-image:url('/../../../../resources/images/miniroom${background.backgroundPath}')">
@@ -151,6 +152,14 @@
 										</c:forEach>
 									</div>
 									<% } %>
+								</div> --%>
+								
+								<div class="miniroom-gif-box">
+									<div class="miniroom-canvas" style="background-image:url('../../../..${background.backgroundPath}')">
+										<c:forEach var = "minimi" items="${minimiList}">
+											<img class="miniroom-minimi" src="../../../..${minimi.minimiPath}" style="left:${minimi.minimiLeft}; top:${minimi.minimiTop}"/>
+										</c:forEach>
+									</div>
 								</div>
 							</div>
 							<br>
@@ -185,21 +194,21 @@
 					
 					<div class="menu-container">
 					    <div class="menu-content-clicked">
-					        <a href="<c:url value='/mnHome/mainView'/>">홈</a>
+					        <a href="<c:url value='/mnHome/mainView/${userNickname }'/>">홈</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/diaryView'/>">
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/diaryView/${userNickname }'/>">
 					        <a href="#">다이어리</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/albumView'/>">
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/albumView/${userNickname }'/>">
 					        <a href="#">사진첩</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/boardView'/>">
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/boardView/${userNickname }'/>">
 					        <a href="#">게시판</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/visitView'/>">
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>">
 					        <a href="#">방명록</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView'/>">
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>">
 					        <a href="#">관리</a>
 					    </div>
 					</div>
@@ -261,9 +270,9 @@
 		}
 		
 		function openNewWindowMiniroomHistory() {
-			  var windowSettings = 'width=800, height=600, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50';
-			  openNewWindow('/mnHome/miniroomHistoryView', windowSettings);
-			}
+		  var windowSettings = 'width=800, height=600, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50';
+		  openNewWindow('/mnHome/miniroomHistoryView', windowSettings);
+		}
 		
 		function openNewWindow(url, settings) {
 		  window.open(url, '_blank', settings);

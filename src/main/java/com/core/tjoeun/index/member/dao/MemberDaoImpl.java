@@ -105,4 +105,11 @@ public class MemberDaoImpl implements MemberDao {
 		return mapper.insertUserStorage(userNickname);
 		
 	}
+
+	@Override
+	public String selectUserName(String userNickname) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		
+		return mapper.selectUserName(userNickname);
+	}
 }
