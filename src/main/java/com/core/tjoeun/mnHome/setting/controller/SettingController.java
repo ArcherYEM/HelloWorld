@@ -46,7 +46,7 @@ public class SettingController {
 
 		return "miniHome/settingBgm";
 	}
-
+	
 	@RequestMapping(value = "/mnHome/settingMenu")
 	public String settingMenuView() {
 

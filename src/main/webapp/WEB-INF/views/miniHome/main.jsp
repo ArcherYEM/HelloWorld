@@ -261,9 +261,9 @@
 		}
 		
 		function openNewWindowMiniroomHistory() {
-			  var windowSettings = 'width=800, height=600, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50';
-			  openNewWindow('/mnHome/miniroomHistoryView', windowSettings);
-			}
+		  var windowSettings = 'width=800, height=600, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50';
+		  openNewWindow('/mnHome/miniroomHistoryView', windowSettings);
+		}
 		
 		function openNewWindow(url, settings) {
 		  window.open(url, '_blank', settings);
