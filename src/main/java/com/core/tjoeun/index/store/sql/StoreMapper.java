@@ -12,4 +12,12 @@ public interface StoreMapper {
 	public List<Map> getStroeMinimiList(Map map);
 	
 	public Map selectStoreCnt(Map map);
+	
+	public int insertDotoriC(Map map);
+	
+	public String selectDotori(String userNickname);
+	
+	public int insertDotori(Map map);
+	
+	public int updateDotori(Map map);
 }

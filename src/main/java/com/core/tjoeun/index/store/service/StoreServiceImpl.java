@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.core.tjoeun.index.store.dao.StoreDao;
@@ -57,6 +58,31 @@ public class StoreServiceImpl implements StoreService {
 	        minimiMap.put("offset", 10 * (iPage - 1));
 	    }
 	    return storeDao.getStroeMinimiList(minimiMap);
+	}
+
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
+	public int insertDotoriC(Map map) {
+		return storeDao.insertDotoriC(map);
+	}
+	
+	@Override
+	@Transactional(readOnly= true)
+	public String selectDotori(String userNickname) {
+		
+		return storeDao.selectDotori(userNickname);
+	}
+
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
+	public int insertDotori(Map map) {
+		return storeDao.insertDotori(map);
+	}
+	
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
+	public int updateDotori(Map map) {
+		return storeDao.updateDotori(map);
 	}
 	
 }
