@@ -42,6 +42,7 @@ function loadTabContent(tabName) {
            
             }else if(tabName === '/mnHome/visitView'){
                 htmlToAdd += '<link href="/resources/css/minihome/visit.css" rel="stylesheet">';
+                htmlToAdd += '<script type="text/javascript" src="../../../../resources/js/visit.js"></script>';
             }else if(tabName === '/mnHome/settingView'){
                 htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
             }else if(tabName === '/mnHome/settingFriends'){
