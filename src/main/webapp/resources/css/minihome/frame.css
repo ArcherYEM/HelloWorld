@@ -139,8 +139,9 @@ body a{
 }
 
 .profile-username {
-  flex: 1;
+  /* flex: 1; */
   color: #0f1b5c;
+  margin-bottom :5px;
 }
 
 .profile-dot {
@@ -401,3 +402,8 @@ body a{
   border: 0px solid gray;
 }
 
+#newtitle{
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size : 15px;
+}
