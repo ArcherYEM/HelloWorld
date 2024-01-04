@@ -87,6 +87,10 @@
 	
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+function reloadParentWindow() {
+    location.reload();
+}
+
 //검색 기능
 function search(){
 	$('#content').val($('#searchInput').val());

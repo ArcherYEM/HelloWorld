@@ -35,12 +35,12 @@
 			</span>
 		</div>
 		<div class="bgmBuy-list-group">
-		    <table>
+		    <table class="bgmBuy-list-table">
 		        <thead>
 		            <tr>
-		                <th>제목</th>
-		                <th>아티스트</th>
-		                <th>가격</th>
+		                <th class="bgmBuy-data-title">제목</th>
+		                <th class="bgmBuy-data-artist">아티스트</th>
+		                <th class="bgmBuy-data-price">가격</th>
 		            </tr>
 		        </thead>
 		        <tbody>
@@ -53,6 +53,14 @@
 		            </c:forEach>
 		        </tbody>
 		    </table>
+		</div>
+		<div class="bgmBuy-total font-kyobohand">
+			<span class="bgmBuy-total-left">결제 예정 도토리 수 :</span> 
+			<c:set var="totalPrice" value="0" />
+			<c:forEach items="${selectedData}" var="bgmItem">
+			    <c:set var="totalPrice" value="${totalPrice + bgmItem.price}" />
+			</c:forEach>
+			<span class="bgmBuy-total-right">${totalPrice}</span>
 		</div>
 		<div class="bgmBuy-btn-group">
 		    <div class="bgmBuy-btn-n">
@@ -69,7 +77,6 @@
     var selected = [];
 
     function openNewWindowBgmBuy() {
-        // ... (이전 코드와 동일)
 
         var windowSettings = 'width=800, height=600, scrollbars=no, resizable=no, toolbar=no, menubar=no, left=100, top=50';
         var selectedData = JSON.stringify(selected);
@@ -82,11 +89,12 @@
             selected.splice(indexToRemove, 1);
         });
 
-        // 각 선택 항목을 제거한 후, 선택 항목을 다시 화면에 렌더링
         renderSelectedItems();
-
-        // 창 닫기
         window.close();
+        
+        if (window.opener && !window.opener.closed) {
+            window.opener.reloadParentWindow();
+        }
     }
 
     function renderSelectedItems() {
