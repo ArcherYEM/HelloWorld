@@ -41,47 +41,48 @@
 		
 		<div class="products">
 			<h3>도토리 상품 목록입니다.</h3>
-			<button id="btnOrder" onclick='orderOpen()'>newWindow</button>
 			<div class="product_list">
 				<a href="#" class="product">
-	                <img src="<c:url value="/resources/images/store/dotoriBuy10.png" />" width="225">
+					<input type="radio" name="productSelect" class="product-radio" value=10 checked="checked" />				
+	                <img src="<c:url value="/resources/images/store/dotoriBuy10.png" />">
 	                <div class="product-name">
 	                   	&#8361; 1,100
 	                </div>
 	            </a>
 				
 				<a href="#" class="product">
-	                <img src="<c:url value="/resources/images/store/dotoriBuy30.png" />" width="225">
+					<input type="radio" name="productSelect" value=30 class="product-radio" />
+	                <img src="<c:url value="/resources/images/store/dotoriBuy30.png" />">
 	                <div class="product-name">
 	                   	&#8361; 3,300
-	                </div>
-	                
+	                </div>	                
 	            </a>
 				
 				<a href="#" class="product">
-	                <img src="<c:url value="/resources/images/store/dotoriBuy50.png" />" width="225">
+	                <input type="radio" name="productSelect" value=50 class="product-radio" />
+	                <img src="<c:url value="/resources/images/store/dotoriBuy50.png" />">
 	                <div class="product-name">
-	                   	&#8361; 5,500
-	                </div>
-	                
+	                   	&#8361; 5,200
+	                </div>	                
 	            </a>
 				
 				<a href="#" class="product">
-	                <img src="<c:url value="/resources/images/store/dotoriBuy100.png" />" width="225">
+	                <input type="radio" name="productSelect" value=100 class="product-radio" />
+	                <img src="<c:url value="/resources/images/store/dotoriBuy100.png" />">
 	                <div class="product-name">
 	                   	&#8361; 9,900
-	                </div>
-	                
+	                </div>	                
 	            </a>
 				
 				<a href="#" class="product">
-	                <img src="<c:url value="/resources/images/store/dotoriBuy300.png" />" width="225">
+	                <input type="radio" name="productSelect" value=300 class="product-radio" />
+	                <img src="<c:url value="/resources/images/store/dotoriBuy300.png" />">
 	                <div class="product-name">
-	                   	&#8361; 26.400
-	                </div>
-	                
+	                   	&#8361; 29,000
+	                </div>	                
 	            </a>
 			</div>
+			<button id="btnOrder" onclick='orderOpen()'>구입</button>
 		</div>
 	</div>
 	
@@ -96,13 +97,46 @@
         } else {
             userDotoriElement.style.display = 'none';
         }
+/* ========================================================================================================== */
+        const products = document.querySelectorAll('.product');
+        products.forEach(function(product) {
+            product.addEventListener('click', function(event) {
+                event.preventDefault(); // 기본 앵커 동작 방지
+
+                // 다른 모든 .product 객체들의 테두리 스타일을 초기화
+                products.forEach(p => {
+                    p.style.border = ""; // 테두리 스타일 초기화
+                    p.querySelector('.product-radio').checked = false; // 라디오 버튼 선택 해제
+                });
+
+                // 클릭된 객체에만 테두리 스타일 적용
+                this.style.border = "2px solid red";
+
+                // 클릭된 객체의 라디오 버튼을 선택
+                this.querySelector('.product-radio').checked = true;
+            });
+        });
     };
     
-    function orderOpen(){
-    	window.open("/store/orderView", '_blank', 'width=500,height=600');
-    };
-    
-    
+    function orderOpen() {
+        // 같은 이름을 가진 모든 라디오 버튼을 가져옵니다.
+        var radioButtons = document.querySelectorAll('input[name="productSelect"]');
+
+        // 선택된 라디오 버튼을 찾습니다.
+        var selectedButton = Array.from(radioButtons).find(radio => radio.checked);
+
+        // 선택된 라디오 버튼의 값을 확인합니다.
+        if (selectedButton) {
+            // 선택된 라디오 버튼의 값(여기서는 상품의 고유 식별자나 이름일 수 있음)을 쿼리 문자열로 포함하여 URL을 구성합니다.
+            var orderUrl = "/store/orderView?selectedProduct=" + encodeURIComponent(selectedButton.value);
+            
+            // 구성된 URL과 함께 새 창을 엽니다.
+            window.open(orderUrl, '_blank', 'width=500,height=500');
+        } else {
+            // 선택된 라디오 버튼이 없다면 사용자에게 알립니다.
+            alert("상품을 선택해주세요.");
+        }
+    }
 	</script>
 	</body>
 </html>

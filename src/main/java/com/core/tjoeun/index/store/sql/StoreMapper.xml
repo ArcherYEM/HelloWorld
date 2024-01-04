@@ -48,11 +48,42 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     ]]>
 </select>
 	
-	
-	<select id="selectStoreCnt" resultType="map" parameterType="map">
-		select 
-			count(*) as totalCnt
-		from store
-	</select>
+<select id="selectStoreCnt" resultType="map" parameterType="map">
+	select 
+		count(*) as totalCnt
+	from store
+</select>
+
+<insert id="insertDotoriC" parameterType="map">
+	insert into dotoriC (
+		userNickname
+		,dotoriCharge
+		,dotoriChargeDate
+	) values (
+		#{userNickname}
+		,#{dotoriCharge}
+		,current_timestamp) 
+</insert>
+
+<select id="selectDotori" parameterType="String" resultType="String">
+	select userNickname 
+	from dotori 
+	where userNickname = #{userNickname};
+</select>
+
+<insert id="insertDotori" parameterType="map">
+	insert into dotori (
+		userNickname
+		,currentDotori
+	) values (
+		#{userNickname}
+		,#{dotoriCharge}
+	)
+</insert>
+
+<update id="updateDotori" parameterType="map">
+	update dotori 
+	set currentDotori = currentDotori + #{dotoriCharge} where userNickname = #{userNickname};
+</update>
 
 </mapper>
