@@ -69,10 +69,10 @@
 						<div class="visit-frame-write">
 							<img class ="visit-minimi"
 								src="../../../../${sessionScope.userMinimi}" />
-							<input type="text" />
+							<input type="text" id="visit-comment-insert" />
 						</div>
 						<div class="visit-frame-btn">
-							<input type="button" value="등록" />
+							<input type="button" value="등록" id="visit-comment-btn" onclick="insertComment()" />
 						</div>
 					</div>
 					<div class="visit-line">
@@ -198,7 +198,8 @@
 	
 	function openNewWindow(url, settings) {
 	  window.open(url, '_blank', settings);
-	}
+	}	
+	
 </script>
 </body>
 </html>
