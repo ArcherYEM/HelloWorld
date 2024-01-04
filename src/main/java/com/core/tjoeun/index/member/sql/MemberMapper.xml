@@ -112,18 +112,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
    
    <select id="selectUserInfo" parameterType="map" resultType="map">
-      select 
-	     user.userEmail
-	    ,user.userPassword
-	    ,user.userName
-	    ,user.userNickname
-	    ,user.userGender
-	    ,user.userBirth
-	    ,user.userPhone
-	    ,ifnull(dotori.currentDotori, 0) as currentDotori
-	  from user
-	  left join dotori on user.userNickname = dotori.userNickname
-      where 1=1
+       SELECT 
+         user.userEmail
+        ,user.userPassword
+        ,user.userName
+        ,user.userNickname
+        ,user.userGender
+        ,user.userBirth
+        ,user.userPhone
+        ,DATE_FORMAT(user.createDate, '%Y.%m.%d') AS createDate
+        ,IFNULL(dotori.currentDotori, 0) AS currentDotori
+    FROM user
+    LEFT JOIN dotori ON user.userNickname = dotori.userNickname
+    WHERE 1=1
          <if test="userEmail != null">
             and user.userEmail = #{userEmail}
          </if>
