@@ -17,7 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.core.tjoeun.index.store.service.BgmItem;
 import com.core.tjoeun.index.store.service.StoreService;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.core.tjoeun.util.CartItem;
 import com.core.tjoeun.util.ShoppingCart;
 
@@ -78,6 +82,23 @@ public class StoreController {
 		}
 		return resultMap;
 	}
+	
+	@RequestMapping(value = "/store/bgmBuy")
+	public String bgmBuy(Model model, @RequestParam(value = "selectedData", required = false) String selectedData) {
+	    if (selectedData != null) {
+	        ObjectMapper objectMapper = new ObjectMapper();
+	        try {
+	            List<BgmItem> selectedList = objectMapper.readValue(selectedData, new TypeReference<List<BgmItem>>() {});
+	            
+	            model.addAttribute("selectedData", selectedList);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return "/store/bgmBuy";
+	}
+
 	
 	@RequestMapping(value = "/store/minimiView", method= {RequestMethod.GET, RequestMethod.POST})
 	public String selectStoreList(Model model, @RequestParam(defaultValue = "1") int page) throws Exception {
