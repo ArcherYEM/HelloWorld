@@ -68,7 +68,7 @@
 					<div class="visit-frame">
 						<div class="visit-frame-write">
 							<img class ="visit-minimi"
-								src="../../../../resources/images/minimi/zombiIcon.gif" />
+								src="../../../../${sessionScope.userMinimi}" />
 							<input type="text" />
 						</div>
 						<div class="visit-frame-btn">
