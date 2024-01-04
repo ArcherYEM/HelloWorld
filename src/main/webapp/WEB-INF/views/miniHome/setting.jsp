@@ -55,7 +55,7 @@
 								</div>
 							</div>
 							<div class="setting-devide-dot">---------------------------------</div>
-							<div class="font-kyobohand setting-profile-username">이주빈&#128698;</div>
+							<div class="font-kyobohand setting-profile-username">${sessionScope.userId.userName }&#128698;</div>
 							<div class="profile-dropDown">
 								<select>
 									<option value="" disabled selected hidden="">파도타기</option>
@@ -69,10 +69,15 @@
 					</div>
 					<div class="content-container">
 						<div class="header content-title">
-							<div class="content-title-name">지구 최강 미모 이주빈 입니다</div>
-							<div>
-								<button class="btn-edit">수정</button>
-							</div>
+							<div id="divHomeTitle" class="content-title-name">${title }</div>
+							 <input id="newTitle" class="content-title-name"  type="hidden" value="${title }">
+							 <input id="hiddenUserNickname" type="hidden" value="${userNickname }">
+							 <c:if test="${sessionScope.userId.userNickname eq userNickname }">
+									<div>
+										<input type="button" id="btn-title-edit" class="btn-edit" value="수정">
+										<input type="hidden" id="btn-title-save"class="btn-edit" value="저장">
+									</div>
+							</c:if>
 							<div class="content-title-url">
 								https://www.helloworld.com/minihome/leejubin
 							</div>

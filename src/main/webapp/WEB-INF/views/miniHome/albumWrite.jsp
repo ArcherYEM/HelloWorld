@@ -56,10 +56,12 @@
 							 <div id="divHomeTitle" class="content-title-name">${title }</div>
 							 <input id="newTitle" class="content-title-name"  type="hidden" value="${title }">
 							 <input id="hiddenUserNickname" type="hidden" value="${userNickname }">
-							<div>
-								<input type="button" id="btn-title-edit" class="btn-edit" value="수정">
-								<input type="hidden" id="btn-title-save"class="btn-edit" value="저장">
-							</div>
+							 <c:if test="${sessionScope.userId.userNickname eq userNickname }">
+								<div>
+									<input type="button" id="btn-title-edit" class="btn-edit" value="수정">
+									<input type="hidden" id="btn-title-save"class="btn-edit" value="저장">
+								</div>
+							 </c:if>
 							<div class="content-title-url">
 								https://www.helloworld.com/minihome/leejubin</div>
 						</div>
@@ -118,9 +120,12 @@
 					    <div class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>">
 					        <a href="#">방명록</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>">
-					        <a href="#">관리</a>
-					    </div>
+					    <c:if test="${sessionScope.userId.userNickname eq userNickname }">
+						    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>">
+						        <a href="#">관리</a>
+						    </div>		
+						</c:if>
+					    
 					</div>
 					
 				</div>

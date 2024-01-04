@@ -56,18 +56,23 @@
 							 <div id="divHomeTitle" class="content-title-name">${title }</div>
 							 <input id="newTitle" class="content-title-name"  type="hidden" value="${title }">
 							 <input id="hiddenUserNickname" type="hidden" value="${userNickname }">
-							<div>
-								<input type="button" id="btn-title-edit" class="btn-edit" value="수정">
-								<input type="hidden" id="btn-title-save"class="btn-edit" value="저장">
-							</div>
+							 <c:if test="${sessionScope.userId.userNickname eq userNickname }">
+									<div>
+										<input type="button" id="btn-title-edit" class="btn-edit" value="수정">
+										<input type="hidden" id="btn-title-save"class="btn-edit" value="저장">
+									</div>
+							 </c:if>
+							
 							<div class="content-title-url">
 								https://www.helloworld.com/minihome/leejubin</div>
 						</div>
 						
 						<div class="box content-box">
+						<c:if test="${sessionScope.userId.userNickname eq userNickname }">
 							<div class=" album-submit">
 								<input type="button" class="btnAlbumWrite" id="btnUpload" data-albumWrite="<c:url value="/mnHome/albumWriteView" />" value="사진올리기">
 							</div>
+						</c:if>
 							<div class="album-overflow">
 							
 								<div class="album-container3">
@@ -107,9 +112,11 @@
 								  <div class="album-container-under">
 								  	<div class="album-under">
 								  		<a href="#" class="album-under-left">스크랩하기</a>
-								  		<a href="#" class="album-under-right">이동</a>
-								  		<a href="#" class="album-under-right">수정</a>
-								  		<a href="#" class="album-under-right">삭제</a>
+								  		<c:if test="${sessionScope.userId.userNickname eq userNickname }">
+									  		<a href="#" class="album-under-right">이동</a>
+									  		<a href="#" class="album-under-right">수정</a>
+									  		<a href="#" class="album-under-right">삭제</a>
+								  		</c:if>
 								  	</div>
 								  </div>
 							  </div>
@@ -139,21 +146,25 @@
 										</div>
 										<div class="album-public">
 									  	<div class="album-dropDown">
+									  	<c:if test="${sessionScope.userId.userNickname eq userNickname }">
 									  		<span>공개설정 :</span>
 												<select>
 													<option value="" disabled selected hidden="">전체공개</option>
 													<option value="temp1">비공개</option>
 													<option value="temp2">전체공개</option>
 												</select>
-											</div>
+									  	</c:if>
+										</div>
 									  </div>
 									</div>
 									<div class="album-container-under">
 								  	<div class="album-under">
 								  		<a href="#" class="album-under-left">스크랩하기</a>
-								  		<a href="#" class="album-under-right">이동</a>
-								  		<a href="#" class="album-under-right">수정</a>
-								  		<a href="#" class="album-under-right">삭제</a>
+								  		<c:if test="${sessionScope.userId.userNickname eq userNickname }">
+									  		<a href="#" class="album-under-right">이동</a>
+									  		<a href="#" class="album-under-right">수정</a>
+									  		<a href="#" class="album-under-right">삭제</a>
+								  		</c:if>
 								  	</div>
 								  </div>
 							  </div>
@@ -178,9 +189,11 @@
 					    <div class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>">
 					        <a href="#">방명록</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>">
-					        <a href="#">관리</a>
-					    </div>
+					    <c:if test="${sessionScope.userId.userNickname eq userNickname }">
+						    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>">
+						        <a href="#">관리</a>
+						    </div>		
+						</c:if>
 					</div>
 					
 				</div>

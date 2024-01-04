@@ -57,19 +57,19 @@ function loadTabContent(tabName) {
             }else if(tabName === '/mnHome/settingBgm' || tabName.indexOf('/mnHome/settingBgm') != -1){
                 htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
           
-            }else if(tabName === '/mnHome/settingMenu'){
+            }else if(tabName === '/mnHome/settingMenu'|| tabName.indexOf('/mnHome/settingBgm') != -1){
 	        	htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
 	        	htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/settingMenu.css" />';
 	      
-	        }else if(tabName === '/mnHome/settingSkin'){
+	        }else if(tabName === '/mnHome/settingSkin'|| tabName.indexOf('/mnHome/settingBgm') != -1){
 	        	htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
 	        	htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/settingSkin.css" />';
 	      
-	        }else if(tabName === '/mnHome/settingDotoriUse'){
+	        }else if(tabName === '/mnHome/settingDotoriUse'|| tabName.indexOf('/mnHome/settingBgm') != -1){
 	        	htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
 	        	htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/settingDotori.css" />';
 	      
-	        }else if(tabName === '/mnHome/settingDotoriCharge'){
+	        }else if(tabName === '/mnHome/settingDotoriCharge'|| tabName.indexOf('/mnHome/settingBgm') != -1){
 	        	htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
 	        	htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/settingDotori.css" />';
 	        }
