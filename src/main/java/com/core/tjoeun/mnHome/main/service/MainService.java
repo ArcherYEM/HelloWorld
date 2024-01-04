@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.ui.Model;
+
 public interface MainService {
 
 	public Map getProfile(String userNickname);
@@ -27,4 +29,6 @@ public interface MainService {
 	public Map getHomeTitle(String userNickname);
 	
 	public void updateHomeTitle(Map map) throws Exception;
+	
+	public Map getUserInfo(String userNickname);
 }

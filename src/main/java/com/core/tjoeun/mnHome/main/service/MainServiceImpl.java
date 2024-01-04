@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 
+import com.core.tjoeun.index.member.service.MemberService;
 import com.core.tjoeun.mnHome.main.dao.MainDao;
 
 @Service
@@ -19,6 +21,10 @@ public class MainServiceImpl implements MainService{
 
 	@Autowired
 	MainDao mainDao;
+	
+	@Autowired
+	MemberService memberService;
+	
 
 	@Value("${default.image.path}")
     private String defaultImagePath;
@@ -118,6 +124,24 @@ public class MainServiceImpl implements MainService{
 		}
 		
 		
+	}
+
+	@Override
+	public Map getUserInfo(String userNickname) {
+		Map map = new HashMap();
+		
+		//홈피 주인 이름 가져오기 
+		String userName = memberService.getUserName(userNickname);
+		map.put("userName", userName);
+		
+		//Home Title
+		Map title = getHomeTitle(userNickname);
+		if(title != null) {
+			map.put("title", title.get("title"));
+		}else {
+			map.put("title", userName + "의 미니홈피입니다.");
+		}
+		return map;
 	}
 	
 }
