@@ -36,10 +36,12 @@
 								<c:out value="${msg}" escapeXml="false"/>
 							</div>
 							<div class="profile-history">
-								<a 
-								  class="profile-edit" 
-								  onclick="openNewWindowMinihomeProfileEdit()">Edit
-								</a>
+								<c:if test="${sessionScope.userId.userNickname eq userNickname }">
+									<a 
+									  class="profile-edit" 
+									  onclick="openNewWindowMinihomeProfileEdit()">Edit
+									</a>
+								</c:if>
 								<a
 								  class="profile-hs"
 								  onclick="openNewWindowMiniroomHistory()">History								
@@ -64,10 +66,16 @@
 							 <div id="divHomeTitle" class="content-title-name">${title }</div>
 							 <input id="newTitle" class="content-title-name"  type="hidden" value="${title }">
 							 <input id="hiddenUserNickname" type="hidden" value="${userNickname }">
-							<div>
+							 <c:if test="${sessionScope.userId.userNickname eq userNickname }">
+									<div>
+										<input type="button" id="btn-title-edit" class="btn-edit" value="수정">
+										<input type="hidden" id="btn-title-save"class="btn-edit" value="저장">
+									</div>
+							</c:if>
+							<!-- <div>
 								<input type="button" id="btn-title-edit" class="btn-edit" value="수정">
 								<input type="hidden" id="btn-title-save"class="btn-edit" value="저장">
-							</div>
+							</div> -->
 							<div class="content-title-url">
 								https://www.helloworld.com/minihome/leejubin</div>
 						</div>
@@ -133,10 +141,16 @@
 										<span class="box-title miniroom-title">Miniroom</span>
 									</div>
 									<div class="mnr-edit">
-										<a 
+									<c:if test="${sessionScope.userId.userNickname eq userNickname }">
+											<a 
+											  class="mnh-Edit" 
+											  onclick="openNewWindowMiniroomEdit()">미니룸 설정
+											</a>
+									</c:if>
+										<!-- <a 
 										  class="mnh-Edit" 
 										  onclick="openNewWindowMiniroomEdit()">미니룸 설정
-										</a>
+										</a> -->
 									</div>
 								</div>
 								<%-- <div class="miniroom-gif-box">
@@ -208,9 +222,12 @@
 					    <div class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>">
 					        <a href="#">방명록</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>">
-					        <a href="#">관리</a>
-					    </div>
+					    <c:if test="${sessionScope.userId.userNickname eq userNickname }">
+						    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>">
+						        <a href="#">관리</a>
+						    </div>		
+						</c:if>
+					    
 					</div>
 					
 				</div>

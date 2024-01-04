@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.core.tjoeun.index.member.service.MemberService;
+import com.core.tjoeun.mnHome.main.service.MainService;
 import com.core.tjoeun.mnHome.setting.service.SettingService;
 
 @Controller
@@ -29,50 +31,88 @@ public class SettingController {
 	@Autowired
 	MemberService memberService;
 	
-	@RequestMapping(value = "/miniHome/setting")
-	public String settingView() {
+	@Autowired
+	MainService mainService;
+	
+	
+	
+	@RequestMapping(value = "/mnHome/settingView/{userNickname}")
+	public String settingView(@PathVariable String userNickname, Model model) {
+		
+		Map map = mainService.getUserInfo(userNickname);
+		model.addAttribute("userName", map.get("userName"));
+		model.addAttribute("title", map.get("title"));
 
 		return "miniHome/setting";
 	}
 	
-	@RequestMapping(value = "/miniHome/settingInfoEditView")
-	public String settingInfoEditView() {
+	@RequestMapping(value = "/mnHome/settingInfoEditView/{userNickname}")
+	public String settingInfoEditView(@PathVariable String userNickname, Model model) {
+		
+		Map map = mainService.getUserInfo(userNickname);
+		model.addAttribute("userName", map.get("userName"));
+		model.addAttribute("title", map.get("title"));
 		
 		return "miniHome/settingInfoEdit";
 	}
 
-	@RequestMapping(value = "/mnHome/settingBgm")
-	public String settingBgmView() {
+	@RequestMapping(value = "/mnHome/settingBgm/{userNickname}")
+	public String settingBgmView(@PathVariable String userNickname, Model model) {
+		
+		Map map = mainService.getUserInfo(userNickname);
+		model.addAttribute("userName", map.get("userName"));
+		model.addAttribute("title", map.get("title"));
 
 		return "miniHome/settingBgm";
 	}
-	
-	@RequestMapping(value = "/mnHome/settingMenu")
-	public String settingMenuView() {
+
+
+	@RequestMapping(value = "/mnHome/settingMenu/{userNickname}")
+	public String settingMenuView(@PathVariable String userNickname, Model model) {
+		
+		Map map = mainService.getUserInfo(userNickname);
+		model.addAttribute("userName", map.get("userName"));
+		model.addAttribute("title", map.get("title"));
 
 		return "miniHome/settingMenu";
 	}
 
-	@RequestMapping(value = "/mnHome/settingSkin")
-	public String settingSkinView() {
+	@RequestMapping(value = "/mnHome/settingSkin/{userNickname}")
+	public String settingSkinView(@PathVariable String userNickname, Model model) {
+		
+		Map map = mainService.getUserInfo(userNickname);
+		model.addAttribute("userName", map.get("userName"));
+		model.addAttribute("title", map.get("title"));
 
 		return "miniHome/settingSkin";
 	}
 
-	@RequestMapping(value = "/mnHome/settingDotoriUse")
-	public String settingDotoriUseView() {
+	@RequestMapping(value = "/mnHome/settingDotoriUse/{userNickname}")
+	public String settingDotoriUseView(@PathVariable String userNickname, Model model) {
+		
+		Map map = mainService.getUserInfo(userNickname);
+		model.addAttribute("userName", map.get("userName"));
+		model.addAttribute("title", map.get("title"));
 
 		return "miniHome/settingDotoriUse";
 	}
 
-	@RequestMapping(value = "/mnHome/settingDotoriCharge")
-	public String settingDotoriChargeView() {
+	@RequestMapping(value = "/mnHome/settingDotoriCharge/{userNickname}")
+	public String settingDotoriChargeView(@PathVariable String userNickname, Model model) {
+		
+		Map map = mainService.getUserInfo(userNickname);
+		model.addAttribute("userName", map.get("userName"));
+		model.addAttribute("title", map.get("title"));
 
 		return "miniHome/settingDotoriCharge";
 	}
 	
-	@RequestMapping(value = "/mnHome/settingFriends")
-	public String settingFriends() {
+	@RequestMapping(value = "/mnHome/settingFriends/{userNickname}")
+	public String settingFriends(@PathVariable String userNickname, Model model) {
+		
+		Map map = mainService.getUserInfo(userNickname);
+		model.addAttribute("userName", map.get("userName"));
+		model.addAttribute("title", map.get("title"));
 		
 		return "miniHome/settingFriends";
 	}

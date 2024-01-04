@@ -28,7 +28,7 @@ $('#btn-title-save').on('click', function(){
 	console.log(newTitle, userNickname);
 	
 	$.ajax({
-		url: "/mnHome/title22Update"
+		url: "/mnHome/titleUpdate"
 		,type: "POST"
 		, dataType : "json"
 		, data: JSON.stringify(jsonData)
