@@ -44,43 +44,105 @@
 	        
 	        <!-- minimi select -->
 	        <div class="productList">
-	            <c:forEach var="minimi" items="${minimi}" varStatus="seq">
-	                <div class="product">
-	                    <div>
-	                        <img src="<c:url value="${minimi.contentPath}"/>" class="store-minimi-img"/>
-	                    </div>
-	                    <div class="product-name">
-	                        <c:out value="${minimi.productName}"/>
-	                    </div>
-	                    <div class="product-price">
-	                        <c:out value="${minimi.productPrice}"/>
-	                    </div>
-	                </div>
-	            </c:forEach>
-	        </div>
+			    <c:forEach var="minimi" items="${minimi}" varStatus="seq">
+			        <div class="product" data-product-id="${minimi.productId}"
+			             data-product-name="${minimi.productName}" data-product-price="${minimi.productPrice}">
+			            <div>
+			                <img src="<c:url value="${minimi.contentPath}"/>" class="store-minimi-img"/>
+			            </div>
+			            <div class="product-name">
+			                <c:out value="${minimi.productName}"/>
+			            </div>
+			            <div class="product-price">
+			                <c:out value="${minimi.productPrice}"/>
+			            </div>
+			        </div>
+			    </c:forEach>
+			</div>
+			
+			<div class="cart-widget">
+			  <h2>장바구니</h2>
+			  <ul id="cart-list"></ul>
+			</div>
 	        <!-- paging -->
 	        <div class="minimi-paging">
 	            <c:forEach var="page" begin="1" end="${totalPage}">
-	                <span class="spanPage" data-page="${page}">
-	                    [${page}]
-	                </span>
+	                <span class="spanPage" data-page="${page}" onclick="loadPage(${page})">
+					    [${page}]
+					</span>
 	            </c:forEach>
-	            
-	            <form id="frm1" action="<c:url value='/store/minimiView'/>" method="post">
-					<input type="hidden" name="page" id="page" />
-				</form>
-		
 	        </div>
+	        <form id="frm1" action="/store/minimiView" method="GET">
+			    <input type="hidden" id="page" name="page" value="1">
+			</form>
 	    </div>
 	</div>
 	
 	<script src="../../../../resources/js/jquery-3.7.1.min.js"></script>
 	<script>
-		$('.spanPage').on('click', function(){
-			$('#page').val($(this).data('page'));
-			$('#frm1').submit();
-		});
-		
+	
+		function loadPage(page) {
+	        $('#page').val(page);
+	        $('#frm1').submit();
+	    }
+	
+	    $(document).ready(function () {
+	        loadCart(); // 페이지 로드 시에 장바구니 데이터 로드
+	
+	        $('.spanPage').on('click', function(){
+	            loadPage($(this).data('page'));
+	        });
+	
+	        $('.product').on('click', function () {
+	            const productId = $(this).data('product-id');
+	            const productName = $(this).data('product-name');
+	            const productPrice = $(this).data('product-price');
+	
+	            addToCart(productId, productName, productPrice);
+	        });
+	
+	        function addToCart(id, name, price) {
+	            $.ajax({
+	                type: 'POST',
+	                url: "/store/addToCart",
+	                contentType: 'application/json',
+	                data: JSON.stringify({ id: id, name: name, price: price }),
+	                success: function () {
+	                    loadCart(); // 장바구니에 상품 추가 후 다시 로드
+	                },
+	                error: function () {
+	                    console.error('Ajax request failed');
+	                }
+	            });
+	        }
+	
+	        function loadCart() {
+	            $.ajax({
+	                type: 'GET',
+	                url: "/store/loadCart",
+	                success: function (data) {
+	                    // 서버에서 받은 데이터를 처리하여 페이지 갱신
+	                    // 예시: 장바구니 리스트 갱신
+	                    updateCart(data);
+	                },
+	                error: function () {
+	                    console.error('Ajax request failed');
+	                }
+	            });
+	        }
+	
+	        function updateCart(cartItems) {
+	            const cartList = $('#cart-list');
+	            cartList.empty(); // 기존 장바구니 비우기
+	
+	            // 새로운 장바구니 데이터로 리스트 업데이트
+	            cartItems.forEach(function(item) {
+	                const cartItem = document.createElement('li');
+	                cartItem.textContent = item.name + ' - ₩' + item.price;
+	                cartList.append(cartItem);
+	            });
+	        }
+	    });
 	</script>
 	
 	</body>

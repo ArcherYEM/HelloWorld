@@ -52,13 +52,16 @@
 				</div>
 				<div class="content-container">
 					<div class="header content-title">
-						<div class="content-title-name">지구 최강 미모 이주빈 입니다</div>
-						<div>
-							<button class="btn-edit">수정</button>
+							 <div id="divHomeTitle" class="content-title-name">${title }</div>
+							 <input id="newTitle" class="content-title-name"  type="hidden" value="${title }">
+							 <input id="hiddenUserNickname" type="hidden" value="${userNickname }">
+							<div>
+								<input type="button" id="btn-title-edit" class="btn-edit" value="수정">
+								<input type="hidden" id="btn-title-save"class="btn-edit" value="저장">
+							</div>
+							<div class="content-title-url">
+								https://www.helloworld.com/minihome/leejubin</div>
 						</div>
-						<div class="content-title-url">
-							https://www.helloworld.com/minihome/leejubin</div>
-					</div>
 					<div class="box content-box">
 						<div class=" album-submit">
 								<input type="button" id="btnUpload" class="btnDiaryWrite" data-diaryWrite="<c:url value='/mnHome/diaryWriteView'/>" value="글쓰기">
@@ -252,24 +255,24 @@
 				
 				<div class="menu-container">
 					    <div class="menu-content-clicked">
-					        <a href="<c:url value='/mnHome/mainView'/>">홈</a>
+					        <a href="<c:url value='/mnHome/mainView/${userNickname }'/>">홈</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/diaryView'/>">
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/diaryView/${userNickname }'/>">
 					        <a href="#">다이어리</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/albumView'/>">
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/albumView/${userNickname }'/>">
 					        <a href="#">사진첩</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/boardView'/>">
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/boardView/${userNickname }'/>">
 					        <a href="#">게시판</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/visitView'/>">
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>">
 					        <a href="#">방명록</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView'/>">
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>">
 					        <a href="#">관리</a>
 					    </div>
-				</div>
+					</div>
 				
 			</div>
 		</div>

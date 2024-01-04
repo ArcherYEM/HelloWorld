@@ -14,12 +14,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.core.tjoeun.index.member.service.MemberService;
 import com.core.tjoeun.mnHome.main.service.MainService;
 
 
@@ -28,6 +30,9 @@ public class MainController {
 	
 	@Autowired
 	MainService mainService;
+	
+	@Autowired
+	MemberService memberService;
 	
 	@Value("${default.image.path}")
     private String defaultImagePath;
@@ -73,16 +78,21 @@ public class MainController {
 		String msg = (String) profile.get("msg");
 		msg = msg.replace("\n", "<br>");
 		
+		model.addAttribute("image", image);
+		model.addAttribute("msg", msg);
+		session.setAttribute("userId", userMap);
+		
+		//홈피 주인 이름 가져오기 
+		//String userName = memberService.getUserName(userNickname);
+		model.addAttribute("userName", userName);
+		model.addAttribute("userNickname", userNickname);
+		
 		Map title = mainService.getHomeTitle(userNickname);
 		if(title != null) {
 			model.addAttribute("title", title.get("title"));
 		}else {
 			model.addAttribute("title", userName + "의 미니홈피입니다.");
 		}
-		
-		model.addAttribute("image", image);
-		model.addAttribute("msg", msg);
-		session.setAttribute("userId", userMap);
 		
 		List<Map> minimiList = mainService.selectMinimi(userNickname);
         model.addAttribute("minimiList", minimiList);
@@ -92,6 +102,42 @@ public class MainController {
         
 		return "miniHome/main";
 	}
+	
+	@RequestMapping("/mnHome/mainView/{userNickname}")
+	public String mainView(@PathVariable String userNickname, Model model) {
+	    
+		//프로필 정보 가져오기
+		Map profile = mainService.getProfile(userNickname);
+		String image = (String) profile.get("image");
+		String msg = (String) profile.get("msg");
+		msg = msg.replace("\n", "<br>");
+		model.addAttribute("image", image);
+		model.addAttribute("msg", msg);
+		
+		
+		//홈피 주인 이름 가져오기 
+		String userName = memberService.getUserName(userNickname);
+		model.addAttribute("userName", userName);
+		
+		//Home Title
+		Map title = mainService.getHomeTitle(userNickname);
+		if(title != null) {
+			model.addAttribute("title", title.get("title"));
+		}else {
+			model.addAttribute("title", userName + "의 미니홈피입니다.");
+		}
+		
+		//miniroom
+		List<Map> minimiList = mainService.selectMinimi(userNickname);
+        model.addAttribute("minimiList", minimiList);
+        
+        Map background = mainService.selectBackground(userNickname);
+        model.addAttribute("background", background);
+		
+		
+		return "miniHome/main";
+	}
+
 	
 	@RequestMapping("/mnHome/mnhProfileEditView")
 	public String mnhProfileEdit() {
