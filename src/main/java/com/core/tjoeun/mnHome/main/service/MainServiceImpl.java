@@ -33,17 +33,12 @@ public class MainServiceImpl implements MainService{
 	 	System.out.println("테스트:"+profile);
 	 
 	 	if(image.equals("noneFile")&&(!msg.equals("")||(msg!=null))) {
-	 		Map profile1 = new HashMap();
-	 		profile1 =mainDao.getProfileNoImg(userNickname);
-	 		System.out.println("프로필:"+profile1);
-	 		
+	 		profile = mainDao.getProfileNoImg(userNickname);
 	 	}
-	 	else if(!image.equals("noneFile")&&((msg.equals(""))||(msg==null))) {
-	 		profile =mainDao.getProfileNoMsg(userNickname);
-	 		System.out.println("프로필:"+profile);
-	 	}
-	 
-	 return profile;	 
+	 	else if(!image.equals("noneFile")&&((msg.equals(""))||(msg==null))) {	 		
+	 		profile = mainDao.getProfileNoMsg(userNickname); 
+	 	} 
+	 	return profile;
 	}
 
 	@Override

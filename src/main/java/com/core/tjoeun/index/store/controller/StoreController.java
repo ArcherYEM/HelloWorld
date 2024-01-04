@@ -86,6 +86,11 @@ public class StoreController {
 	    return "/store/minimi";
 	}
 
+	@RequestMapping(value = "/store/orderView")
+	public String orderView() {
+
+		return "/store/order";
+	}
 
 	
 }

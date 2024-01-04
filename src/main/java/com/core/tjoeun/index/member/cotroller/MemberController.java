@@ -46,6 +46,7 @@ public class MemberController {
                 // 로그인 성공 시
                 session.setAttribute("userId", result);
                 session.setAttribute("userDotoriCnt", result.get("currentDotori"));
+                System.out.println("가보자"+result);
 
                 resultMap.put("resultCode", "1");
                 resultMap.put("userEmail", result.get("userEmail"));
@@ -53,7 +54,8 @@ public class MemberController {
                 resultMap.put("userNickname", result.get("userNickname"));
                 resultMap.put("userDotoriCnt", result.get("currentDotori"));
                 
-                userNickname = (String) result.get("userNickname");
+                userNickname = (String
+                ) result.get("userNickname");
                 String userMinimi = memberService.selectUserMinimi(userNickname);
                 resultMap.put("contentPath", userMinimi);
                 
@@ -61,7 +63,6 @@ public class MemberController {
                 if(userMinimi==null) {
                 	session.setAttribute("userMinimi", defaultMinimi);
                 }                
-                System.out.println(session.getAttribute("userMinimi"));
             
                 Cookie userCookie = new Cookie("userEmail", result.get("userEmail").toString());
                 userCookie.setMaxAge(60 * 60 * 24 * 7);

@@ -10,7 +10,7 @@
 .miniroom-minimi{
 	width:100px;
 	height:100px;
-	position:relative;
+	position:absolute;
 }
 
 .miniroom-success{

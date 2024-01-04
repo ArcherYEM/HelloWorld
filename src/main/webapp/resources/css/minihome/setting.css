@@ -104,7 +104,17 @@
 .setting-myMinimi-view {
 	width: 100%;
 	height: 120px;
-	border:1px solid red;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.settting-myMinimi-circle{
+	width: 100px;  /* 원의 지름 */
+    height: 100px; /* 원의 지름 */
+    border-radius: 50%; /* 원형 모양 만들기 */
+    object-fit: cover; /* 이미지가 요소를 꽉 채우도록 함 */
+    overflow: hidden; /* 이미지가 원형 밖으로 나가지 않도록 함 */
 }
 
 .setting-myMinimi-Edit {

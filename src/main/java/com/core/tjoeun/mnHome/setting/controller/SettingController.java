@@ -174,7 +174,7 @@ public class SettingController {
 					e.printStackTrace();
 				}
 		
-				return "miniHome/mnhMinimiChange";
+				return "miniHome/mnhMinimiChangeSuccess";
 	}
 
 }
