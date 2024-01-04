@@ -4,62 +4,71 @@ function loadTabContent(tabName) {
         type: "GET",
         dataType: "html",
         success: function (data) {
-			// head 요소에 새로운 meta 태그 추가
-			//var newScriptTag = document.createElement('script');
+			
 			
             $('#test').empty();
             var htmlToAdd = '';
-            if(tabName === '/mnHome/diaryView'){
+            if(tabName === '/mnHome/diaryView' || tabName.indexOf('/mnHome/diaryView') != -1){
                 htmlToAdd += '<link href="/resources/css/minihome/diary.css" rel="stylesheet">';
                 htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/jquery-ui(1.13.2).css">';
                 htmlToAdd += '<script src="https://kit.fontawesome.com/91b557f547.js" crossorigin="anonymous"></script>';
                 htmlToAdd += '<script src="../../../../resources/js/datePicker.js"></script>';
-            }else if(tabName === '/mnHome/diaryWriteView'){
+            
+            }else if(tabName === '/mnHome/diaryWriteView' || tabName.indexOf('/mnHome/diaryWriteView') != -1){
             	htmlToAdd += '<link href="/resources/css/minihome/diary.css" rel="stylesheet">';
                 htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/jquery-ui(1.13.2).css">';
                 htmlToAdd += '<script src="https://kit.fontawesome.com/91b557f547.js" crossorigin="anonymous"></script>';
                 htmlToAdd += '<script src="../../../../resources/js/smartEditor.js"></script>';
                 htmlToAdd += '<script type="text/javascript" src="../../../../resources/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>';
                 htmlToAdd += '<script src="../../../../resources/js/datePicker.js"></script>';
-            }else if(tabName === '/mnHome/albumView'){
+            
+            }else if(tabName === '/mnHome/albumView' || tabName.indexOf('/mnHome/albumView') != -1){
                 htmlToAdd += '<link class="album" href="/resources/css/minihome/album.css" rel="stylesheet">';
-            }else if(tabName === '/mnHome/albumWriteView'){
+            
+            }else if(tabName === '/mnHome/albumWriteView' || tabName.indexOf('/mnHome/albumWriteView') != -1){
                 htmlToAdd += '<link class="album" href="/resources/css/minihome/album.css" rel="stylesheet">';
-            }else if(tabName === '/mnHome/boardView'){
+            
+            }else if(tabName === '/mnHome/boardView' || tabName.indexOf('/mnHome/boardView') != -1){
                 htmlToAdd += '<link class="board" href="/resources/css/minihome/board.css" rel="stylesheet">';
                 htmlToAdd += '<link class="board" href="/resources/css/minihome/album.css" rel="stylesheet">';
                 htmlToAdd += '<script src="../../../../resources/js/board.js"></script>';
-            }else if(tabName === '/mnHome/boardWriteView'){
+            
+            }else if(tabName === '/mnHome/boardWriteView' || tabName.indexOf('/mnHome/boardWriteView') != -1){
                 htmlToAdd += '<link class="board" href="/resources/css/minihome/board.css" rel="stylesheet">';
                 htmlToAdd += '<link class="board" href="/resources/css/minihome/album.css" rel="stylesheet">';
                 htmlToAdd += '<script type="text/javascript" src="../../../../resources/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>';
                 htmlToAdd += '<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>';
                 htmlToAdd += '<script type="text/javascript" src="../../../../resources/js/boardWrite.js"></script>';
            
-           	//newScriptTag.src = '../../../../resources/js/boardWrite.js';
-			//newScriptTag.content = '새로운 메타 태그입니다.';
-			//document.head.appendChild(newScriptTag);
+           	
            
-            }else if(tabName === '/mnHome/visitView'){
+            }else if(tabName === '/mnHome/visitView' || tabName.indexOf('/mnHome/visitView') != -1){
                 htmlToAdd += '<link href="/resources/css/minihome/visit.css" rel="stylesheet">';
                 htmlToAdd += '<script type="text/javascript" src="../../../../resources/js/visit.js"></script>';
-            }else if(tabName === '/mnHome/settingView'){
+           
+            }else if(tabName === '/mnHome/settingView' || tabName.indexOf('/mnHome/settingView') != -1){
                 htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
-            }else if(tabName === '/mnHome/settingFriends'){
+           
+            }else if(tabName === '/mnHome/settingFriends' || tabName.indexOf('/mnHome/settingFriends') != -1){
                 htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
                 htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/settingFriends.css" />';
                 htmlToAdd += '<script type="text/javascript" src="../../../../resources/js/searchFriends.js"></script>';
-            }else if(tabName === '/mnHome/settingBgm'){
+           
+            }else if(tabName === '/mnHome/settingBgm' || tabName.indexOf('/mnHome/settingBgm') != -1){
                 htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
+          
             }else if(tabName === '/mnHome/settingMenu'){
 	        	htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
 	        	htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/settingMenu.css" />';
+	      
 	        }else if(tabName === '/mnHome/settingSkin'){
 	        	htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
 	        	htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/settingSkin.css" />';
+	      
 	        }else if(tabName === '/mnHome/settingDotoriUse'){
 	        	htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
 	        	htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/settingDotori.css" />';
+	      
 	        }else if(tabName === '/mnHome/settingDotoriCharge'){
 	        	htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
 	        	htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/settingDotori.css" />';

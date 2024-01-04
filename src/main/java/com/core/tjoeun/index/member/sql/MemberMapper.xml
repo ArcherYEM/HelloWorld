@@ -167,4 +167,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		And allocation = 1;   
    </select>
    
+   <select id="selectUserName" parameterType="String" resultType="String">
+   		select 
+        	userName 
+        from 
+        	user 
+        where 
+          	userNickname = #{userNickname} 
+   </select>
+   
 </mapper>

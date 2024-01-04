@@ -6,33 +6,76 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.codec.binary.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.core.tjoeun.index.member.service.MemberService;
+import com.core.tjoeun.mnHome.main.service.MainService;
 
 @Controller
 public class BoardController {
 	
-	@RequestMapping(value="/mnHome/boardView")
-	public String boardView() {
+	@Autowired
+	MemberService memberService;
+	
+	@Autowired
+	MainService mainService;
+	
+//	@RequestMapping(value="/mnHome/boardView")
+//	public String boardView() {
+//		
+//		return "miniHome/board";
+//	}
+//	
+//	@RequestMapping(value="/mnHome/boardWriteView")
+//	public String boardWriteView() {
+//		
+//		return "miniHome/boardWrite";
+//	}
+//	
+//	@RequestMapping(value="/mnHome/boardDetail")
+//	public String boardDetail() {
+//		
+//		return "miniHome/boardDetail";
+//	}
+	
+	@RequestMapping(value="/mnHome/boardView/{userNickname}")
+	public String boardView(@PathVariable String userNickname, Model model) {
+		
+		Map map = mainService.getUserInfo(userNickname);
+		model.addAttribute("userName", map.get("userName"));
+		model.addAttribute("title", map.get("title"));
 		
 		return "miniHome/board";
 	}
 	
-	@RequestMapping(value="/mnHome/boardWriteView")
-	public String boardWriteView() {
+	@RequestMapping(value="/mnHome/boardWriteView/{userNickname}")
+	public String boardWriteView(@PathVariable String userNickname, Model model) {
+		
+		Map map = mainService.getUserInfo(userNickname);
+		model.addAttribute("userName", map.get("userName"));
+		model.addAttribute("title", map.get("title"));
 		
 		return "miniHome/boardWrite";
 	}
 	
-	@RequestMapping(value="/mnHome/boardDetail")
-	public String boardDetail() {
+	@RequestMapping(value="/mnHome/boardDetail/{userNickname}")
+	public String boardDetail(@PathVariable String userNickname, Model model) {
+		
+		Map map = mainService.getUserInfo(userNickname);
+		model.addAttribute("userName", map.get("userName"));
+		model.addAttribute("title", map.get("title"));
 		
 		return "miniHome/boardDetail";
 	}
