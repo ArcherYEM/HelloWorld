@@ -62,7 +62,7 @@
 					<div class="content-container">
 						<div class="header content-title">
 							 <div id="divHomeTitle" class="content-title-name">${title }</div>
-							 <input id="newTitle" type="hidden" value="${title }">
+							 <input id="newTitle" class="content-title-name"  type="hidden" value="${title }">
 							 <input id="hiddenUserNickname" type="hidden" value="${sessionScope.userId.userNickname }">
 							<div>
 								<input type="button" id="btn-title-edit" class="btn-edit" value="수정">
