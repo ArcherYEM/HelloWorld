@@ -40,7 +40,7 @@
 									</div>
 								</div>
 								<div class="album-dot">---------------------------------</div>
-								<div class="font-kyobohand album-profile-username">이주빈&#128698;</div>
+								<div class="font-kyobohand album-profile-username"> ${sessionScope.userId.userName }&#128698;</div>
 								<div class="profile-dropDown">
 									<select>
 										<option value="" disabled selected hidden="">파도타기</option>

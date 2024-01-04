@@ -25,8 +25,8 @@
 					</div>
 					<div class="box profile-box">
 						<div class="profile-image">
-							<img class="profile-image-img"
-								src="../../../../resources/images/profile.jpg" alt="프로필 이미지" />
+							<c:set var="imagePath" value="/resources/images/${image}" />
+							<img class="profile-image-img" src="/../../../../resources/images/download/${image}" alt="프로필 이미지" />
 						</div>
 						<div class="profile-dot">---------------------------------</div>
 						<div class="profile-text font-kyobohand">
@@ -41,7 +41,7 @@
 							<a href="#" class="profile-hs">History</a>
 						</div>
 						<div class="profile-dot">---------------------------------</div>
-						<div class="profile-username font-kyobohand">이주빈&#128698;</div>
+						<div class="profile-username font-kyobohand"> ${sessionScope.userId.userName }&#128698;</div>
 						<div class="profile-dropDown">
 							<select>
 								<option value="" disabled selected hidden="">파도타기</option>
