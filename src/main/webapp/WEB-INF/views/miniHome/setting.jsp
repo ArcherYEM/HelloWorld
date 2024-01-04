@@ -81,7 +81,7 @@
 							<div class="divForTable">
 								<div class="setting-myMinimi">
 									<div class="setting-myMinimi-view">
-										미니미화면
+										 <img src="../../../../${sessionScope.userMinimi}" class="settting-myMinimi-circle">
 									</div>
 									<div class="setting-myMinimi-Edit">
 										<a class="setting-myMinimi-change" onclick="MinimiChange()">대표미니미 변경</a>
@@ -99,7 +99,7 @@
 													<span>&#128394;</span> 이름
 												</div>
 												<div class="set-info-name-right" id="set-UserName">
-													${userName }
+													${sessionScope.userId.userName }
 												</div>
 												<div class="set-info-name-a">
 													<a 
@@ -112,7 +112,7 @@
 													<span>&#128364;</span>닉네임
 												</div>
 												<div class="set-info-Nickname-right" id="set-UserNickname">
-													${userNickname }
+													${sessionScope.userId.userNickname }
 												</div>
 												<div class="set-info-Nickname-a">
 													<a 
@@ -125,7 +125,7 @@
 													<span>&#128382;</span> 연락처
 												</div>
 												<div class="set-info-phone-right" id="set-UserPhone">
-													${userPhone }
+													${sessionScope.userId.userPhone }
 												</div>
 												<div class="set-info-phone-a">
 													<a 
@@ -138,7 +138,7 @@
 													<span>&#128464;</span> 가입일
 												</div>
 												<div class="set-info-date-right" id="set-UserDate">
-													${createDate }
+													${sessionScope.userId.createDate }
 												</div>
 												<div class="set-info-date-a">
 													<a 
