@@ -27,11 +27,11 @@
 						<div class="box profile-box">
 								<div class="setting-folder-group">
 									<div>
-									  <span><img class="setting-skin-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
-									  <a href="<c:url value='/miniHome/setting'/>"><span class="setting-skin-title">개인정보변경</span></a><br>
+									  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
+									  <a href="<c:url value='/miniHome/setting'/>"><span class="setting-menu-title">개인정보변경</span></a><br>
 									  
-									  <span><img class="setting-skin-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
-									  <span class="setting-skin-title">미니홈피관리</span>
+									  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
+									  <span class="setting-menu-title">미니홈피관리</span>
 									  
 									  <ul class="tree">
 									    <li><a href="<c:url value='/miniHome/settingBgm'/>">BGM설정</a></li>
@@ -40,15 +40,15 @@
 									  </ul>
 									  
 									 
-									  <span><img class="setting-skin-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
-									  <span class="setting-skin-title">아이템/내역관리</span>
+									  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
+									  <span class="setting-menu-title">아이템/내역관리</span>
 									  <ul class="tree">
 									    <li><a href="<c:url value='/miniHome/settingDotoriUse'/>">도토리 사용내역</a></li>
 									    <li><a href="<c:url value='/miniHome/settingDotoriCharge'/>">도토리 충전내역</a></li>
 									  </ul>
 									  
-									  <span><img class="setting-skin-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
-									  <a href="<c:url value='/miniHome/settingFriends'/>"><span class="setting-skin-title">인맥관리</span></a>
+									  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
+									  <a href="<c:url value='/miniHome/settingFriends'/>"><span class="setting-menu-title">인맥관리</span></a>
 									</div>
 									
 								</div>
