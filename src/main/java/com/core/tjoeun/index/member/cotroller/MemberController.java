@@ -46,7 +46,6 @@ public class MemberController {
                 // 로그인 성공 시
                 session.setAttribute("userId", result);
                 session.setAttribute("userDotoriCnt", result.get("currentDotori"));
-                System.out.println("가보자"+result);
 
                 resultMap.put("resultCode", "1");
                 resultMap.put("userEmail", result.get("userEmail"));

@@ -48,7 +48,7 @@
 			</div>
 			
 			<div class="bgm-list-group bgm-grid">
-				<div><input type="checkbox"></div>
+				<div><input type="checkbox" id="selectAllCheckbox"></div>
 				<div>순번</div>
 				<div>제목</div>
 				<div>아티스트</div>
@@ -58,8 +58,8 @@
 			
 			<div id="test">
 <%-- 			<c:forEach var="bgm" items="${bgmInfo}" varStatus="seq">
-				<div class="bgm-list bgm-grid" id="ajaxTable">
-					<div><input type="checkbox"></div>
+				<div class="bgm-list bgm-grid" id="ajaxTable bgm-list">
+					<div><input type="checkbox" id="checkbox${i}></div>
 					<div><c:out value="${seq.count }"/></div>
 					<div><c:out value="${bgm.title }"/></div>
 					<div><c:out value="${bgm.artist }"/></div>
@@ -70,7 +70,7 @@
 			</div>
 			
 			<div class="bgm-buy">
-				<input type="button" value="구매">
+				<input type="button" value="구매" onclick="openNewWindowBgmBuy()">
 			</div>
 			
 		</div>
@@ -86,60 +86,11 @@
 	</form>
 	
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <script>
-// 검색창 글자수 제한기능
-    $(document).ready(function() {
-        $(".bgm-search-input").on("input", function() {
-            var maxLength = 18;
-            if ($(this).val().length > maxLength) {
-                $(this).val($(this).val().substring(0, maxLength));
-                alert("입력 글자수를 초과하였습니다.");
-            }
-        });
-    });
-</script>
+function reloadParentWindow() {
+    location.reload();
+}
 
-<script>
-// 전체선택 기능
-    $(document).ready(function() {
-        var $selectAllCheckbox = $(".bgm-list-group input[type='checkbox']");
-        var $listCheckboxes = $(".bgm-list input[type='checkbox']");
-        
-        $selectAllCheckbox.on("change", function() {
-            var isChecked = $(this).prop("checked");
-            
-            $listCheckboxes.prop("checked", isChecked);
-        });
-    });
-    
-    window.onload = function() {
-    	
-        let userDotoriElement = document.getElementById('userDotori');
-        let userDotoriCnt = '<c:out value="${sessionScope.userDotoriCnt}" />' || '';
-
-        if (userDotoriCnt.trim() !== '') {
-            userDotoriElement.style.display = 'block';
-        } else {
-            userDotoriElement.style.display = 'none';
-        }
-    };
-</script>
-
-<script>
-// 리스트 div 단위 체크박스 선택/해제기능
-    $(document).ready(function() {
-        $(".bgm-list").on("click", function(e) {
-            if ($(e.target).is(":checkbox")) {
-                return;
-            }
-            
-            var $checkbox = $(this).find("input[type='checkbox']");
-            $checkbox.prop("checked", !$checkbox.prop("checked"));
-        });
-    });
-</script>
-<script>
 //검색 기능
 function search(){
 	$('#content').val($('#searchInput').val());
@@ -153,15 +104,28 @@ function search(){
 			if(msg.data.length>0){
             $.each(msg.data, function(i, item) {
             	resultHtml += '<div class="bgm-list bgm-grid" id="ajaxTable">';
-                resultHtml += '<div><input type="checkbox"></div>';
+                resultHtml += '<div><input type="checkbox" id="checkbox' + i + '"></div>';
                 resultHtml += '<div>' + (i + 1) + '</div>';
                 resultHtml += '<div>' + item.title + '</div>';
                 resultHtml += '<div>' + item.artist + '</div>';
                 resultHtml += '<div>' + item.runningTime + '</div>';
                 resultHtml += '<div>' + item.bgmPrice + '</div>';
-                resultHtml += '<link href="/resources/css/index/test.css" rel="stylesheet">';
                 resultHtml += '</div>';
                 $('#test').html(resultHtml);
+            });
+            $(document).ready(function() {
+                $('.bgm-list.bgm-grid').click(function() {
+                    $(this).find('input[type="checkbox"]').prop('checked', function(i, checked) {
+                        return !checked;
+                    });
+                });
+            });
+            $('#selectAllCheckbox').on('change', function () {
+                var isChecked = $(this).prop('checked');
+                for (var i = 0; i < msg.data.length; i++) {
+                    $('#checkbox' + i).prop('checked', isChecked);
+                }
+                console.log("전체선택");
             });
 		} else {
 			 resultHtml += '<div>';
@@ -182,6 +146,30 @@ $('#searchBtn').on('click',function(){
 $(document).ready(function() {
 	search();
 });
+</script>
+<script>
+	var selected = [];
+	
+	function openNewWindowBgmBuy() {
+		$('.bgm-list.bgm-grid').each(function() {
+		    if ($(this).find('input[type="checkbox"]').prop('checked')) {
+		      var title = $(this).find('div:eq(2)').text();
+		      var artist = $(this).find('div:eq(3)').text();
+		      var price = $(this).find('div:eq(5)').text();
+		      
+		      var selectedItem = {
+		        title: title,
+		        artist: artist,
+		        price: price
+		      };
+
+		      selected.push(selectedItem);
+		    }
+		  });
+		var windowSettings = 'width=800, height=600, scrollbars=no, resizable=no, toolbar=no, menubar=no, left=100, top=50';
+		var selectedData = JSON.stringify(selected);
+		window.open('/store/bgmBuy?selectedData=' + encodeURIComponent(selectedData), '_blank', windowSettings);
+	}
 </script>
 
 </body>

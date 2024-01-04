@@ -12,5 +12,13 @@ public interface StoreService {
 	public long selectStoreCnt(Map map);
 	
 	public List<Map> getStroeMinimiList(Map map);
+	
+	public int insertDotoriC(Map map);
+	
+	public String selectDotori(String userNickname);
+	
+	public int insertDotori(Map map);
+	
+	public int updateDotori(Map map);
 
 }
