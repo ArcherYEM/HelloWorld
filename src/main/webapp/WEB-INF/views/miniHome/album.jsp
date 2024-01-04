@@ -70,7 +70,7 @@
 						<div class="box content-box">
 						<c:if test="${sessionScope.userId.userNickname eq userNickname }">
 							<div class=" album-submit">
-								<input type="button" class="btnAlbumWrite" id="btnUpload" data-albumWrite="<c:url value="/mnHome/albumWriteView" />" value="사진올리기">
+								<input type="button" class="btnAlbumWrite" id="btnUpload" data-albumWrite="<c:url value="/mnHome/albumWriteView/${userNickname} }" />" value="사진올리기">
 							</div>
 						</c:if>
 							<div class="album-overflow">
@@ -100,13 +100,15 @@
 									  </div>
 									  <div class="album-public">
 									  	<div class="album-dropDown">
+									  	<c:if test="${sessionScope.userId.userNickname eq userNickname }">
 									  		<span>공개설정 :</span>
 												<select>
 													<option value="" disabled selected hidden="">전체공개</option>
 													<option value="temp1">비공개</option>
 													<option value="temp2">전체공개</option>
 												</select>
-											</div>
+										</c:if>
+										</div>
 									  </div>
 								  </div>
 								  <div class="album-container-under">

@@ -18,33 +18,11 @@ public class DiaryController {
 	@Autowired
 	MainService mainService;
 			
-	@RequestMapping("/mnHome/diaryView")
-	public String diary(Model model) {
-		
-		return "miniHome/diary";
-	}
-	
-	@RequestMapping(value="/mnHome/diaryWriteView")
-	public String diaryWrite() {
-		
-				
-		return "miniHome/diaryWrite";
-	}
 	
 	
 	@RequestMapping("/mnHome/diaryView/{userNickname}")
 	public String diaryView(@PathVariable String userNickname, Model model) {
-//		//홈피 주인 이름 가져오기 
-//		String userName = memberService.getUserName(userNickname);
-//		model.addAttribute("userName", userName);
-//				
-//		//Home Title
-//		Map title = mainService.getHomeTitle(userNickname);
-//		if(title != null) {
-//			model.addAttribute("title", title.get("title"));
-//		}else {
-//			model.addAttribute("title", userName + "의 미니홈피입니다.");
-//		}
+
 		
 		Map map = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", map.get("userName"));

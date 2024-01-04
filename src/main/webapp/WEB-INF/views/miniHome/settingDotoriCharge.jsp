@@ -30,33 +30,33 @@
 								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
 								  <span class="setting-menu-title">개인정보</span>
 								  <ul class="tree">
-									<li><a><span class="setting-menu-title" id="spanSetting" data-setting="/mnHome/settingView">개인정보변경</span></a></li>
+									<li><a><span class="setting-menu-title" id="spanSetting" data-setting="/mnHome/settingView/${userNickname }">개인정보변경</span></a></li>
 								  </ul>
 								  
 								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
 								  <span class="setting-menu-title">미니홈피관리</span>
 								  <ul class="tree">
-								    <li><a><span class="setting-menu-title" id="spanSettingBgm" data-bgm="/mnHome/settingBgm">BGM설정</span></a></li>
-								    <li><a><span class="setting-menu-title" id="spanSettingMenu" data-menu="/mnHome/settingMenu">메뉴탭설정</span></a></li>
-								    <li><a><span class="setting-menu-title" id="spanSettingSkin" data-skin="/mnHome/settingSkin">스킨설정</span></a></li>
+								    <li><a><span class="setting-menu-title" id="spanSettingBgm" data-bgm="/mnHome/settingBgm/${userNickname }">BGM설정</span></a></li>
+								    <li><a><span class="setting-menu-title" id="spanSettingMenu" data-menu="/mnHome/settingMenu/${userNickname }">메뉴탭설정</span></a></li>
+								    <li><a><span class="setting-menu-title" id="spanSettingSkin" data-skin="/mnHome/settingSkin/${userNickname }">스킨설정</span></a></li>
 								  </ul>
 								 
 								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
 								  <span class="setting-menu-title">아이템/내역관리</span>
 								  <ul class="tree">
-									<li><a><span class="setting-menu-title" id="spanSettingDotoriU" data-dotoriU="/mnHome/settingDotoriUse">도토리 사용내역</span></a></li>
-									<li><a><span class="setting-menu-title" id="spanSettingDotoriC" data-dotoriC="/mnHome/settingDotoriCharge">도토리 구매내역</span></a></li>
+									<li><a><span class="setting-menu-title" id="spanSettingDotoriU" data-dotoriU="/mnHome/settingDotoriUse/${userNickname }">도토리 사용내역</span></a></li>
+									<li><a><span class="setting-menu-title" id="spanSettingDotoriC" data-dotoriC="/mnHome/settingDotoriCharge/${userNickname }">도토리 구매내역</span></a></li>
 								  </ul>
 								  
 								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
 								  <span class="setting-menu-title">인맥관리</span>
 								  <ul class="tree">
-									<li><a><span class="setting-menu-title" id="spanSettingFriends" data-friends="/mnHome/settingFriends">일촌현황</span></a></li>
+									<li><a><span class="setting-menu-title" id="spanSettingFriends" data-friends="/mnHome/settingFriends/${userNickname }">일촌현황</span></a></li>
 								  </ul>
 								</div>
 							</div>
 								<div class="devide-dot">---------------------------------</div>
-								<div class="font-kyobohand setting-profile-username">이주빈&#128698;</div>
+								<div class="font-kyobohand setting-profile-username">${sessionScope.userId.userName }&#128698;</div>
 								<div class="profile-dropDown">
 									<select>
 										<option value="" disabled selected hidden="">파도타기</option>
@@ -70,10 +70,15 @@
 					</div>
 					<div class="content-container">
 						<div class="header content-title">
-							<div class="content-title-name">지구 최강 미모 이주빈 입니다</div>
-							<div>
-								<button class="btn-edit">수정</button>
-							</div>
+							<div id="divHomeTitle" class="content-title-name">${title }</div>
+							 <input id="newTitle" class="content-title-name"  type="hidden" value="${title }">
+							 <input id="hiddenUserNickname" type="hidden" value="${userNickname }">
+							 <c:if test="${sessionScope.userId.userNickname eq userNickname }">
+									<div>
+										<input type="button" id="btn-title-edit" class="btn-edit" value="수정">
+										<input type="hidden" id="btn-title-save"class="btn-edit" value="저장">
+									</div>
+							</c:if>
 							<div class="content-title-url">
 								https://www.helloworld.com/minihome/leejubin
 							</div>
@@ -126,21 +131,21 @@
 					
 					<div class="menu-container">
 					    <div class="menu-content-clicked">
-					        <a href="<c:url value='/mnHome/mainView'/>">홈</a>
+					        <a href="<c:url value='/mnHome/mainView/${userNickname }'/>">홈</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/diaryView'/>">
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/diaryView/${userNickname }'/>">
 					        <a href="#">다이어리</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/albumView'/>">
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/albumView/${userNickname }'/>">
 					        <a href="#">사진첩</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/boardView'/>">
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/boardView/${userNickname }'/>">
 					        <a href="#">게시판</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/visitView'/>">
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>">
 					        <a href="#">방명록</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView'/>">
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>">
 					        <a href="#">관리</a>
 					    </div>
 					</div>

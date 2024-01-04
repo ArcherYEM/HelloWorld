@@ -86,7 +86,7 @@
 								<input type="file" multiple="multiple" onchange="multiFiles(this.files)" class="fileUpload">
 							</div>
 							<div class="btn-right">
-								<input class="btn-boardlist" type="button" id="btnBoardView" data-boardView="<c:url value='/mnHome/boardView'/>" value="목록">
+								<input class="btn-boardlist" type="button" id="btnBoardView" data-boardView="<c:url value='/mnHome/boardView/${userNickname}'/>" value="목록">
 								<input class="btn-write" type="button" id="btnBoardWrite" value="등록">
 							</div>
 						</div>

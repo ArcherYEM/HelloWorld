@@ -163,7 +163,7 @@
 								<c:if test="${sessionScope.userId.userNickname eq userNickname }">
 									<input type="button" value="이동">
 									<input type="button" value="삭제">
-									<input type="button" class="btnBoardWrite" value="등록" data-boardWrite="<c:url value='/mnHome/boardWriteView'/>">
+									<input type="button" class="btnBoardWrite" value="등록" data-boardWrite="<c:url value='/mnHome/boardWriteView/${userNickname}'/>">
 								</c:if>
 							</div>	
 							<div class="board-pages">

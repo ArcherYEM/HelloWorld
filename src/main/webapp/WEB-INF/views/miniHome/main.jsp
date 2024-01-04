@@ -223,7 +223,7 @@
 					        <a href="#">방명록</a>
 					    </div>
 					    <c:if test="${sessionScope.userId.userNickname eq userNickname }">
-						    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView'/>">
+						    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>">
 						        <a href="#">관리</a>
 						    </div>		
 						</c:if>
