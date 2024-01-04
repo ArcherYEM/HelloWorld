@@ -53,6 +53,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select 
 			count(*) as totalCnt
 		from store
+		where 1=1
+		<if test="category != null">
+			and category = #{category}
+		</if>
 	</select>
 
 </mapper>
