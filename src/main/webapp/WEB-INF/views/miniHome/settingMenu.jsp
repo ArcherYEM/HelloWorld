@@ -27,30 +27,33 @@
 						<div class="box profile-box">
 							<div class="setting-folder-group">
 								<div>
-									<span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
-									<a href="<c:url value='/miniHome/setting'/>"><span class="setting-menu-title">개인정보변경</span></a><br>
-									
-									<span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
-									<span class="setting-menu-title">미니홈피관리</span>
-									
-									<ul class="tree">
-										<li><a href="<c:url value='/miniHome/settingBgm'/>">BGM설정</a></li>
-										<li><a href="<c:url value='/miniHome/settingMenu'/>">메뉴탭설정</a></li>
-										<li><a href="<c:url value='/miniHome/settingSkin'/>">스킨설정</a></li>
-									</ul>
-									
-									
-									<span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
-									<span class="setting-menu-title">아이템/내역관리</span>
-									<ul class="tree">
-										<li><a href="<c:url value='/miniHome/settingDotoriUse'/>">도토리 사용내역</a></li>
-										<li><a href="<c:url value='/miniHome/settingDotoriCharge'/>">도토리 충전내역</a></li>
-									</ul>
-									
-									<span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
-									<a href="<c:url value='/miniHome/settingFriends'/>"><span class="setting-menu-title">인맥관리</span></a>
+								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
+								  <span class="setting-menu-title">개인정보</span>
+								  <ul class="tree">
+									<li><a><span class="setting-menu-title" id="spanSetting" data-setting="/mnHome/settingView">개인정보변경</span></a></li>
+								  </ul>
+								  
+								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
+								  <span class="setting-menu-title">미니홈피관리</span>
+								  <ul class="tree">
+								    <li><a><span class="setting-menu-title" id="spanSettingBgm" data-bgm="/mnHome/settingBgm">BGM설정</span></a></li>
+								    <li><a><span class="setting-menu-title" id="spanSettingMenu" data-menu="/mnHome/settingMenu">메뉴탭설정</span></a></li>
+								    <li><a><span class="setting-menu-title" id="spanSettingSkin" data-skin="/mnHome/settingSkin">스킨설정</span></a></li>
+								  </ul>
+								 
+								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
+								  <span class="setting-menu-title">아이템/내역관리</span>
+								  <ul class="tree">
+									<li><a><span class="setting-menu-title" id="spanSettingDotoriU" data-dotoriU="/mnHome/settingDotoriUse">도토리 사용내역</span></a></li>
+									<li><a><span class="setting-menu-title" id="spanSettingDotoriC" data-dotoriC="/mnHome/settingDotoriCharge">도토리 구매내역</span></a></li>
+								  </ul>
+								  
+								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
+								  <span class="setting-menu-title">인맥관리</span>
+								  <ul class="tree">
+									<li><a><span class="setting-menu-title" id="spanSettingFriends" data-friends="/mnHome/settingFriends">일촌현황</span></a></li>
+								  </ul>
 								</div>
-								
 							</div>
 								<div class="devide-dot">---------------------------------</div>
 								<div class="font-kyobohand setting-profile-username">이주빈&#128698;</div>

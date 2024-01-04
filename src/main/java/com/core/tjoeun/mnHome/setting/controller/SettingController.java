@@ -41,31 +41,31 @@ public class SettingController {
 		return "miniHome/settingInfoEdit";
 	}
 
-	@RequestMapping(value = "/miniHome/settingBgm")
+	@RequestMapping(value = "/mnHome/settingBgm")
 	public String settingBgmView() {
 
 		return "miniHome/settingBgm";
 	}
 
-	@RequestMapping(value = "/miniHome/settingMenu")
+	@RequestMapping(value = "/mnHome/settingMenu")
 	public String settingMenuView() {
 
 		return "miniHome/settingMenu";
 	}
 
-	@RequestMapping(value = "/miniHome/settingSkin")
+	@RequestMapping(value = "/mnHome/settingSkin")
 	public String settingSkinView() {
 
 		return "miniHome/settingSkin";
 	}
 
-	@RequestMapping(value = "/miniHome/settingDotoriUse")
+	@RequestMapping(value = "/mnHome/settingDotoriUse")
 	public String settingDotoriUseView() {
 
 		return "miniHome/settingDotoriUse";
 	}
 
-	@RequestMapping(value = "/miniHome/settingDotoriCharge")
+	@RequestMapping(value = "/mnHome/settingDotoriCharge")
 	public String settingDotoriChargeView() {
 
 		return "miniHome/settingDotoriCharge";

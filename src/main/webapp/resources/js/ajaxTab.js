@@ -48,7 +48,22 @@ function loadTabContent(tabName) {
                 htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
                 htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/settingFriends.css" />';
                 htmlToAdd += '<script type="text/javascript" src="../../../../resources/js/searchFriends.js"></script>';
-            }
+            }else if(tabName === '/mnHome/settingBgm'){
+                htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
+            }else if(tabName === '/mnHome/settingMenu'){
+	        	htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
+	        	htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/settingMenu.css" />';
+	        }else if(tabName === '/mnHome/settingSkin'){
+	        	htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
+	        	htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/settingSkin.css" />';
+	        }else if(tabName === '/mnHome/settingDotoriUse'){
+	        	htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
+	        	htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/settingDotori.css" />';
+	        }else if(tabName === '/mnHome/settingDotoriCharge'){
+	        	htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
+	        	htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/settingDotori.css" />';
+	        }
+            
             
             // Append all the HTML at once.
             $('#test').html(htmlToAdd);
@@ -109,9 +124,51 @@ $(document).on("click", ".album-under-left", function (event) {
 	loadTabContent(tabName); 
 });
 
-$(document).on("click", ".setting-menu-title", function (event) {
+$(document).on("click", "#spanSetting", function (event) {
+	event.preventDefault();
+	tabName = $(this).data("setting");
+	console.log('TabName:', tabName);
+	loadTabContent(tabName); 
+});
+
+$(document).on("click", "#spanSettingFriends", function (event) {
 	event.preventDefault();
 	tabName = $(this).data("friends");
+	console.log('TabName:', tabName);
+	loadTabContent(tabName); 
+});
+
+$(document).on("click", "#spanSettingBgm", function (event) {
+	event.preventDefault();
+	tabName = $(this).data("bgm");
+	console.log('TabName:', tabName);
+	loadTabContent(tabName); 
+});
+
+$(document).on("click", "#spanSettingMenu", function (event) {
+	event.preventDefault();
+	tabName = $(this).data("menu");
+	console.log('TabName:', tabName);
+	loadTabContent(tabName); 
+});
+
+$(document).on("click", "#spanSettingSkin", function (event) {
+	event.preventDefault();
+	tabName = $(this).data("skin");
+	console.log('TabName:', tabName);
+	loadTabContent(tabName); 
+});
+
+$(document).on("click", "#spanSettingDotoriU", function (event) {
+	event.preventDefault();
+	tabName = $(this).data("dotoriu");
+	console.log('TabName:', tabName);
+	loadTabContent(tabName); 
+});
+
+$(document).on("click", "#spanSettingDotoriC", function (event) {
+	event.preventDefault();
+	tabName = $(this).data("dotoric");
 	console.log('TabName:', tabName);
 	loadTabContent(tabName); 
 });
