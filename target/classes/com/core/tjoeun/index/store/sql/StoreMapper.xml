@@ -34,6 +34,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</if>
 </select>
 
+<insert id="putBgm" parameterType="map">
+	INSERT INTO userBgm(
+		userNickname
+		,title
+		,artist
+		,runningTime
+		,contentPath
+	) values (
+		#{userNickname}
+		,#{title}
+		,#{artist}
+		,#{runningTime}
+		,#{contentPath}
+	)
+</insert>
+
 <select id="getStroeMinimiList" resultType="map" parameterType="map">
    <![CDATA[
    SELECT

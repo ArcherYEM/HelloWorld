@@ -26,6 +26,12 @@ public class StoreDaoImpl implements StoreDao {
 		StoreMapper mapper = sqlSession.getMapper(StoreMapper.class);
 		return mapper.searchBgm(map);
 	}
+	
+	@Override
+	public int putBgm(Map map) {
+		StoreMapper mapper = sqlSession.getMapper(StoreMapper.class);
+		return mapper.putBgm(map);
+	}
 		
 	@Override
 	public List<Map> getStroeMinimiList(Map map) {
@@ -62,6 +68,5 @@ public class StoreDaoImpl implements StoreDao {
 		StoreMapper mapper = sqlSession.getMapper(StoreMapper.class);
 		return mapper.updateDotori(map);
 	}
-
 
 }

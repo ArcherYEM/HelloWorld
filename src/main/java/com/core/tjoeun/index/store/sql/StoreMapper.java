@@ -8,6 +8,8 @@ public interface StoreMapper {
 	public List<Map> getBgmList(Map map);
 	
 	public List<Map> searchBgm(Map map);
+	
+	public int putBgm(Map map);
 
 	public List<Map> getStroeMinimiList(Map map);
 	
