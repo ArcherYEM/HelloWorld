@@ -30,18 +30,20 @@
 						</div>
 						<div class="profile-dot">---------------------------------</div>
 						<div class="profile-text font-kyobohand">
-							안녕하세요 이주빈 입니다.<br />
-							미모최강 풀스택 개발자 입니다.
+								<c:out value="${msg}" escapeXml="false"/>
 						</div>
 						<div class="profile-history">
 							<a 
 							  class="profile-edit" 
 							  onclick="openNewWindowMinihomeProfileEdit()">Edit
 							</a>
-							<a href="#" class="profile-hs">History</a>
+							<a
+								class="profile-hs"
+								onclick="openNewWindowMiniroomHistory()">History								
+							</a>
 						</div>
 						<div class="profile-dot">---------------------------------</div>
-						<div class="profile-username font-kyobohand"> ${sessionScope.userId.userName }&#128698;</div>
+						<div class="profile-username font-kyobohand"> ${userName }&#128698;</div>
 						<div class="profile-dropDown">
 							<select>
 								<option value="" disabled selected hidden="">파도타기</option>
@@ -55,13 +57,15 @@
 				</div>
 				<div class="content-container">
 					<div class="header content-title">
-						<div class="content-title-name">지구 최강 미모 이주빈 입니다</div>
-						<div>
-							<button class="btn-edit">수정</button>
-						</div>
-						<div class="content-title-url">
-							https://www.helloworld.com/minihome/leejubin
-						</div>
+							 <div id="divHomeTitle" class="content-title-name"><c:out value="${title }"/></div>
+							 <input id="newTitle" class="content-title-name"  type="hidden" value="${title }">
+							 <input id="hiddenUserNickname" type="hidden" value="${userNickname }">
+							<div>
+								<input type="button" id="btn-title-edit" class="btn-edit" value="수정">
+								<input type="hidden" id="btn-title-save"class="btn-edit" value="저장">
+							</div>
+							<div class="content-title-url">
+								https://www.helloworld.com/minihome/leejubin</div>
 					</div>
 					<div class="box content-box">
 					
@@ -129,29 +133,33 @@
 				
 				<div class="menu-container">
 					    <div class="menu-content-clicked">
-					        <a href="<c:url value='/mnHome/mainView'/>">홈</a>
+					        <a href="<c:url value='/mnHome/mainView/${userNickname }'/>">홈</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/diaryView'/>">
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/diaryView/${userNickname }'/>">
 					        <a href="#">다이어리</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/albumView'/>">
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/albumView/${userNickname }'/>">
 					        <a href="#">사진첩</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/boardView'/>">
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/boardView/${userNickname }'/>">
 					        <a href="#">게시판</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/visitView'/>">
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>">
 					        <a href="#">방명록</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView'/>">
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>">
 					        <a href="#">관리</a>
 					    </div>
-				</div>
+					</div>
 				
 			</div>
 		</div>
 	</div>
 </div>
+<form id="frmComment" action="" method="post">
+	<input type="hidden" name="content" id="content">
+</form>
+
 <script>
 	// 미니홈피 프로필 수정창
 	function openNewWindowMinihomeProfileEdit() {
