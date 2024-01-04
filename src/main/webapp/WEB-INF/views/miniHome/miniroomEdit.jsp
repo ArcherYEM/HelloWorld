@@ -46,13 +46,11 @@
 					    <c:if test="${status.count % 7 == 1}">
 					        <div class="minimiImg">
 					    </c:if>
-					    
 					    <img src="../../../../${item.contentPath}">
-					
 					    <c:if test="${status.count % 7 == 0 || status.last}">
-					        </div>
 					    </c:if>
 					</c:forEach>
+			        </div>
 				</div>
 				<div class="button-section">
 				    <form id="minimiForm" action="/mnHome/miniroomSave" method="post">

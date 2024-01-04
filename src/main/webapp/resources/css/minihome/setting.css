@@ -25,7 +25,6 @@
 	height: 20px;
 }
 
-
 /*좌측 리스트 */
 .tree,
 .tree ul {
@@ -112,6 +111,9 @@
 .settting-myMinimi-circle{
 	width: 100px;  /* 원의 지름 */
     height: 100px; /* 원의 지름 */
+    background-color: ivory;
+    padding: 10px;
+    border: 3px dotted orange;
     border-radius: 50%; /* 원형 모양 만들기 */
     object-fit: cover; /* 이미지가 요소를 꽉 채우도록 함 */
     overflow: hidden; /* 이미지가 원형 밖으로 나가지 않도록 함 */
