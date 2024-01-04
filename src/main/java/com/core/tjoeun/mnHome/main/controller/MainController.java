@@ -246,14 +246,7 @@ public class MainController {
 
 
 	
-	@RequestMapping("/mnHome/settingView")
-	public String setting() {
-		
-		return "miniHome/setting";
-	}
-	
-	
-	@RequestMapping("/mnHome/title22Update")
+	@RequestMapping("/mnHome/titleUpdate")
 	@ResponseBody
 	public Map setTitle(@RequestBody Map map) {
 		Map result = new HashMap<String, String>();
