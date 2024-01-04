@@ -25,7 +25,31 @@
 		  </div>
 		  <div class="store-edit-container-under">
 		  	<div class="store-edit-introduce">
-		  		<div>도토리 충전</div>
+		  		
+		  		<div>주문 내역</div>
+		  		<div>
+		  			<div> <input type="checkbox"> </div>
+			  		<div>번호</div>
+			  		<div>상품 사진</div>
+			  		<div>상품명</div>
+			  		<div>가격</div>
+			  		<div>삭제</div>
+		  		</div>
+		  		
+		  		<div>
+		  			<div> <input type="checkbox"> </div>
+			  		<div>1</div>
+			  		<div> <img src="<c:url value="/resources/images/store/dotoriBuy10.png" />"> </div>
+			  		<div>도토리 10개</div>
+			  		<div>1100원</div>
+			  		<div><img src="<c:url value="/resources/images/minihome/removeIcon.png" />"> </div>
+		  		</div>
+		  		
+		  		
+		  		
+		  		<div>총 결제 예상 금액</div>
+		  		
+		  		
 		  		
 		  	</div>
 		  </div>
