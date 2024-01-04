@@ -41,6 +41,7 @@
 		
 		<div class="products">
 			<h3>도토리 상품 목록입니다.</h3>
+			<button id="btnOrder" onclick='orderOpen()'>newWindow</button>
 			<div class="product_list">
 				<a href="#" class="product">
 	                <img src="<c:url value="/resources/images/store/dotoriBuy10.png" />" width="225">
@@ -96,6 +97,12 @@
             userDotoriElement.style.display = 'none';
         }
     };
+    
+    function orderOpen(){
+    	window.open("/store/orderView", '_blank', 'width=500,height=600');
+    };
+    
+    
 	</script>
 	</body>
 </html>

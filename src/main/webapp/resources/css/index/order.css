@@ -1,0 +1,58 @@
+body {
+	background-color: orange;
+}
+
+.store-edit-frame {
+	background-color: white;
+  width: 100%;
+  height: 90%;
+  border: 3px dotted orange;
+  border-radius: 15px;
+  margin: 0 auto;
+  margin-top: 35px;
+  overflow-y: auto;
+}
+
+.store-edit-pad{
+	width: 80%;
+	margin: 0 auto;
+}
+
+.store-edit-file{
+	margin-top: 25px;
+	margin-bottom: 10px;
+}
+
+
+
+.store-file-preview{
+	width: 100%;
+	margin: 0 auto;
+}
+
+.store-edit-container-under{
+	margin-top: 10px;
+}
+
+.store-edit-introduce textarea{
+	width: 100%;
+	height: 100px;
+	border-radius: 5px;
+	resize: none;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 10px;
+}
+
+.store-edit-btn {
+	margin: 20 35;
+	text-align: center;
+}
+
+.store-edit-btn input {
+	font-weight: bold;
+	margin: 0 15px;
+	padding: 5 20;
+}
+
+
