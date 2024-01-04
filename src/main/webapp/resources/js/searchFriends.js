@@ -13,7 +13,7 @@ function searchUser() {
 		        let jsonData = {
 		           "userNickname": userNickname
 		        };
-				console.log(searchInput);
+				console.log(userNickname);
 		        $.ajax({
 		           method: 'POST',
 		           url: "/mnHome/searchFriends",
