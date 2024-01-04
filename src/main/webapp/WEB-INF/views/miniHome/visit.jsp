@@ -152,6 +152,10 @@
 		</div>
 	</div>
 </div>
+<form id="frmComment" action="" method="post">
+	<input type="hidden" name="content" id="content">
+</form>
+
 <script>
 	// 미니홈피 프로필 수정창
 	function openNewWindowMinihomeProfileEdit() {
