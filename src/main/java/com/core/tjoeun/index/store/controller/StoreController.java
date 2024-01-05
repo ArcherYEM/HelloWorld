@@ -118,6 +118,7 @@ public class StoreController {
 			userMap = (Map) session.getAttribute("userId");
 			String userNickname = (String) userMap.get("userNickname");
 			
+			System.out.println(map);
 			List<Map> bgm = storeService.getBgmList(map);
 			model.addAttribute("bgmInfo", bgm);
 			model.addAttribute("dotori",storeService.getMyDotori(userNickname));
@@ -161,17 +162,17 @@ public class StoreController {
 	
 
 	@RequestMapping(value = "/store/bgmBuyOk")
-	public String bgmByOk(@RequestParam("userNickname") String bgmList, HttpSession session, HttpServletRequest req) {
-		System.out.println("dbg : " + bgmList);
+	public String bgmByOk(@RequestParam Map<String, String> allParams, HttpSession session, HttpServletRequest req, Map map) {
+		System.out.println("dbg : " + map);
 		
 		Map userMap = new HashMap();
-		
+
 		session = req.getSession();
 		String userNickname = (String) session.getAttribute("userNickname");
 		
-		Map map = new HashMap();
-		map.put("userNickname", userNickname);
-		map.put("bgmList", bgmList);
+		Map map2 = new HashMap();
+		map2.put("userNickname", userNickname);
+		map2.put("bgmList", map);
 		
 		try {
 			storeService.putBgm(map);

@@ -44,13 +44,14 @@
 		            </tr>
 		        </thead>
 		        <tbody>
-		            <c:forEach items="${selectedData}" var="bgmItem">
-		                <tr>
-		                    <td>${bgmItem.title}</td>
-		                    <td>${bgmItem.artist}</td>
-		                    <td>${bgmItem.price}</td>
-		                </tr>
-		            </c:forEach>
+		            <c:forEach items="${selectedData}" var="bgmItem" varStatus="status">
+					    <tr id="row${status.index}">
+					        <td><input type="checkbox" id="checkbox${status.index}"></td>
+					        <td>${bgmItem.title}</td>
+					        <td>${bgmItem.artist}</td>
+					        <td>${bgmItem.price}</td>
+					    </tr>
+					</c:forEach>
 		        </tbody>
 		    </table>
 		</div>
@@ -71,11 +72,14 @@
 		    </div>
 		</div>
 	</div>
-
+	<form action = "/store/bgmBuyOk" method="post" id="frmTest">
+		
+	</form> 
+	
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    var selected = [];
     var userNickname = '${sessionScope.userId.userNickname}';
+    
     function openNewWindowBgmBuy() {
         var windowSettings = 'width=800, height=600, scrollbars=no, resizable=no, toolbar=no, menubar=no, left=100, top=50';
         var selectedData = JSON.stringify(selected);
@@ -100,6 +104,7 @@
         var resultHtml = '';
 
         $.each(selected, function (i, item) {
+        	console.log(selected);
             resultHtml += '<div class="bgm-list bgm-grid" id="ajaxTable">';
             resultHtml += '<div><input type="checkbox" id="checkbox' + i + '"></div>';
             resultHtml += '<div>' + (i + 1) + '</div>';
@@ -114,9 +119,8 @@
     }
 
     function okBuyBgm() {
-        var form = document.createElement('form');
-        form.method = 'POST';
-        form.action = '/store/bgmBuyOk';
+        var form = document.getElementById("frmTest");
+        var selected = [];
 
         var inputUserNickname = document.createElement('input');
         inputUserNickname.type = 'hidden';
@@ -124,34 +128,24 @@
         inputUserNickname.value = userNickname;
         form.appendChild(inputUserNickname);
         
-        var inputBgmList = document.createElement('input');
+/*         var inputBgmList = document.createElement('input');
         inputBgmList.type = 'hidden';
         inputBgmList.name = 'bgmList';
         inputBgmList.value = JSON.stringify(selected);
-        form.appendChild(inputBgmList);
+        form.appendChild(inputBgmList); */
+        $('input[type="checkbox"]').each(function(index) {
+            if ($(this).is(':checked')) {
+                var rowId = '#row' + index; // 행의 ID
+                var title = $(rowId).find('td:nth-child(2)').text(); // 두 번째 열: 제목
+                var artist = $(rowId).find('td:nth-child(3)').text(); // 세 번째 열: 아티스트
+                var price = $(rowId).find('td:nth-child(4)').text(); // 네 번째 열: 가격
 
-        selected.forEach(function(item, index) {
-            var inputTitle = document.createElement('input');
-            inputTitle.type = 'hidden';
-            inputTitle.name = 'bgmList[' + index + '].title';
-            inputTitle.value = item.title;
-            form.appendChild(inputTitle);
-
-            var inputArtist = document.createElement('input');
-            inputArtist.type = 'hidden';
-            inputArtist.name = 'bgmList[' + index + '].artist';
-            inputArtist.value = item.artist;
-            form.appendChild(inputArtist);
-
-            var inputPrice = document.createElement('input');
-            inputPrice.type = 'hidden';
-            inputPrice.name = 'bgmList[' + index + '].price';
-            inputPrice.value = item.bgmPrice;
-            form.appendChild(inputPrice);
+                selected.push({title: title, artist: artist, price: price}); // 배열에 추가
+            }
         });
 
         document.body.appendChild(form);
-        form.submit();
+        //form.submit();
     }
 </script>
 	

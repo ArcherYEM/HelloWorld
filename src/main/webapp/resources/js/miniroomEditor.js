@@ -56,7 +56,7 @@ function confirmEdit() {
     });
 
     // 폼을 서버로 전송합니다.
-    form.submit();
+    //form.submit();
 }
 
 var divCanvas = document.getElementById('div-canvas');
