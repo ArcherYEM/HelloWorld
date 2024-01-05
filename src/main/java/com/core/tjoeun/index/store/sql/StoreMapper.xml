@@ -4,59 +4,107 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core.tjoeun.index.store.sql.StoreMapper">
 	
-	<select id="getBgmList" resultType="map" parameterType="map">
-		select 
-			seq
-		    ,title
-		    ,artist
-		    ,runningTime
-		    ,bgmPrice
-		from bgm
-		where 1 = 1
-		<if test="null != content and '' != content">
-			and title like concat('%',#{content},'%')
-			or artist like concat('%',#{content},'%')
-		</if>
-	</select>
-	
-	<select id="searchBgm" resultType="map" parameterType="map">
-		select 
-			seq
-		    ,title
-		    ,artist
-		    ,runningTime
-		    ,bgmPrice
-		from bgm
-		where 1 = 1
-		<if test="null != content and '' != content">
-			and title like concat('%',#{content},'%')
-			or artist like concat('%',#{content},'%')
-		</if>
-	</select>
-	
-	<select id="getStroeMinimiList" resultType="map" parameterType="map">
-    <![CDATA[
-    SELECT
-        seq,
-        category,
-        productName,
-        contentPath,
-        productPrice
-    FROM store
-    LIMIT #{limit, jdbcType=INTEGER} 
-    OFFSET #{offset, jdbcType=INTEGER}
-    ]]>
+<select id="getBgmList" resultType="map" parameterType="map">
+	select 
+		seq
+	    ,title
+	    ,artist
+	    ,runningTime
+	    ,bgmPrice
+	from bgm
+	where 1 = 1
+	<if test="null != content and '' != content">
+		and title like concat('%',#{content},'%')
+		or artist like concat('%',#{content},'%')
+	</if>
 </select>
-	
-	
-	<select id="selectStoreCnt" resultType="map" parameterType="map">
-		select 
-			count(*) as totalCnt
-		from store
-		where 1=1
-		<if test="category != null">
-			and category = #{category}
-		</if>
-	</select>
+
+<select id="searchBgm" resultType="map" parameterType="map">
+	select 
+		seq
+	    ,title
+	    ,artist
+	    ,runningTime
+	    ,bgmPrice
+	from bgm
+	where 1 = 1
+	<if test="null != content and '' != content">
+		and title like concat('%',#{content},'%')
+		or artist like concat('%',#{content},'%')
+	</if>
+</select>
+
+<insert id="putBgm" parameterType="map">
+	INSERT INTO userBgm(
+		userNickname
+		,title
+		,artist
+		,runningTime
+		,contentPath
+	) values (
+		#{userNickname}
+		,#{title}
+		,#{artist}
+		,#{runningTime}
+		,#{contentPath}
+	)
+</insert>
+
+<select id="getStroeMinimiList" resultType="map" parameterType="map">
+   <![CDATA[
+   SELECT
+       seq,
+       category,
+       productName,
+       contentPath,
+       productPrice
+   FROM store
+   LIMIT #{limit, jdbcType=INTEGER} 
+   OFFSET #{offset, jdbcType=INTEGER}
+   ]]>
+</select>
+
+<insert id="insertDotoriC" parameterType="map">
+	insert into dotoriC (
+		userNickname
+		,dotoriCharge
+		,dotoriChargeDate
+	) values (
+		#{userNickname}
+		,#{dotoriCharge}
+		,current_timestamp) 
+</insert>
+
+<select id="selectDotori" parameterType="String" resultType="String">
+	select userNickname 
+	from dotori 
+	where userNickname = #{userNickname};
+</select>
+
+<insert id="insertDotori" parameterType="map">
+	insert into dotori (
+		userNickname
+		,currentDotori
+	) values (
+		#{userNickname}
+		,#{dotoriCharge}
+	)
+</insert>
+
+<update id="updateDotori" parameterType="map">
+	update dotori 
+	set currentDotori = currentDotori + #{dotoriCharge} where userNickname = #{userNickname};
+</update>
+
+<select id="selectStoreCnt" resultType="map" parameterType="map">
+	select 
+		count(*) as totalCnt
+	from store
+	where 1=1
+	<if test="category != null">
+		and category = #{category}
+	</if>
+</select>
+
 
 </mapper>

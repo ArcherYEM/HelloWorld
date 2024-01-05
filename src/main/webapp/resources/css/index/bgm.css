@@ -132,6 +132,51 @@
 	overflow-y: auto;
 }
 
+.bgmBuy-list-table {
+	width: 100%;
+	padding-left: 15px;
+}
+
+.bgmBuy-list-table th,
+.bgmBuy-list-table td {
+	text-align: left;
+}
+
+.bgmBuy-list-table th {
+	margin-bottom: 15px;
+}
+
+.bgmBuy-list-table td {
+	font-size: 12px;
+}
+
+.bgmBuy-data-title,
+.bgmBuy-data-artist {
+	width: 40%;
+}
+
+.bgmBuy-data-price {
+	width: 20%;
+}
+
+.bgmBuy-total {
+	display: flex;
+	justify-content: flex-end;
+	text-align: center;
+}
+
+.bgmBuy-totla-left {
+	backgraound-color: yellow
+}
+
+.bgmBuy-total-right {
+	color: red;
+	font-size: 16px;
+	font-weight: bold;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
 .bgmBuy-btn-group {
 	display: flex;
 	justify-content: space-between;

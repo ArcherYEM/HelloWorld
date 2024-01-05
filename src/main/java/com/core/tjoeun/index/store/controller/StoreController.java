@@ -3,9 +3,8 @@ package com.core.tjoeun.index.store.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.core.tjoeun.index.store.service.BgmItem;
 import com.core.tjoeun.index.store.service.StoreService;
 import com.core.tjoeun.util.CartItem;
@@ -57,6 +55,57 @@ public class StoreController {
 	public String dotori() {
 
 		return "/store/dotori";
+	}
+	
+	@RequestMapping(value = "/store/bgmBuyOk")
+	public String bgmByOk(@RequestParam("userNickname") String bgmList, HttpSession session, HttpServletRequest req) {
+		System.out.println("dbg : " + bgmList);
+		
+		Map userMap = new HashMap();
+		
+		session = req.getSession();
+		String userNickname = (String) session.getAttribute("userNickname");
+		
+		Map map = new HashMap();
+		map.put("userNickname", userNickname);
+		map.put("bgmList", bgmList);
+		
+		try {
+			storeService.putBgm(map);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "/store/bgmBuySuccess";
+	}
+	
+	@RequestMapping(value = "/store/dotoriBuy")
+	public String dotoriBuy(@RequestParam("content") String dotoriCharge,HttpSession session, HttpServletRequest req) {
+
+		System.out.println("테스트:"+dotoriCharge);
+		
+		Map userMap = new HashMap();
+		
+		session = req.getSession();
+		userMap = (Map) session.getAttribute("userId");
+		String userNickname = (String) userMap.get("userNickname");
+		Map map = new HashMap();
+		map.put("userNickname",userNickname);
+		map.put("dotoriCharge", dotoriCharge);
+		
+		storeService.insertDotoriC(map);
+
+		String result = storeService.selectDotori(userNickname);
+		System.out.println(result);		
+
+		if(result==null) {
+			storeService.insertDotori(map);
+		} else {
+			storeService.updateDotori(map);
+		}
+
+		return "/store/dotoriBuySuccess";
 	}
 
 	@RequestMapping(value = "/store/bgmView")

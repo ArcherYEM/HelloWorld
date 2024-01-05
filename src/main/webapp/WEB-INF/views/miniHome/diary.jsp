@@ -55,16 +55,20 @@
 							 <div id="divHomeTitle" class="content-title-name">${title }</div>
 							 <input id="newTitle" class="content-title-name"  type="hidden" value="${title }">
 							 <input id="hiddenUserNickname" type="hidden" value="${userNickname }">
-							<div>
-								<input type="button" id="btn-title-edit" class="btn-edit" value="수정">
-								<input type="hidden" id="btn-title-save"class="btn-edit" value="저장">
-							</div>
+							 <c:if test="${sessionScope.userId.userNickname eq userNickname }">
+								<div>
+									<input type="button" id="btn-title-edit" class="btn-edit" value="수정">
+									<input type="hidden" id="btn-title-save"class="btn-edit" value="저장">
+								</div>
+							 </c:if>
 							<div class="content-title-url">
 								https://www.helloworld.com/minihome/leejubin</div>
 						</div>
 					<div class="box content-box">
 						<div class=" album-submit">
-								<input type="button" id="btnUpload" class="btnDiaryWrite" data-diaryWrite="<c:url value='/mnHome/diaryWriteView'/>" value="글쓰기">
+							<c:if test="${sessionScope.userId.userNickname eq userNickname }">
+								<input type="button" id="btnUpload" class="btnDiaryWrite" data-diaryWrite="<c:url value='/mnHome/diaryWriteView/${userNickname}'/>" value="글쓰기">
+							</c:if>
 						</div>
 								<div class="album-overflow">
 							
@@ -94,23 +98,25 @@
 											두렵진 않을 거야<br>
 										  </div>
 									  </div>
-									  <div class="album-public">
-									  	<div class="album-dropDown ">
-									  		<span>공개설정 :</span>
-												<select>
-													<option value="" disabled selected hidden="">전체공개</option>
-													<option value="temp1">비공개</option>
-													<option value="temp2">전체공개</option>
-												</select>
-												
-												
-										</div>
-										<div class="album-under">
-									  		<a href="#" class="album-under-right">이동</a>
-									  		<a href="#" class="album-under-right">수정</a>
-									  		<a href="#" class="album-under-right">삭제</a>
-									  	</div>
-									  </div>
+									  <c:if test="${sessionScope.userId.userNickname eq userNickname }">
+										  <div class="album-public">
+										  	<div class="album-dropDown ">
+										  		<span>공개설정 :</span>
+													<select>
+														<option value="" disabled selected hidden="">전체공개</option>
+														<option value="temp1">비공개</option>
+														<option value="temp2">전체공개</option>
+													</select>
+													
+													
+											</div>
+											<div class="album-under">
+										  		<a href="#" class="album-under-right">이동</a>
+										  		<a href="#" class="album-under-right">수정</a>
+										  		<a href="#" class="album-under-right">삭제</a>
+										  	</div>
+										  </div>
+									  </c:if>
 								  </div>
 								  
 								  <div class="board-comment-write">
@@ -269,9 +275,11 @@
 					    <div class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>">
 					        <a href="#">방명록</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>">
-					        <a href="#">관리</a>
-					    </div>
+					    <c:if test="${sessionScope.userId.userNickname eq userNickname }">
+						    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>">
+						        <a href="#">관리</a>
+						    </div>
+					    </c:if>
 					</div>
 				
 			</div>
