@@ -1,10 +1,14 @@
 package com.core.tjoeun.index.store.controller;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,17 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.core.tjoeun.index.store.service.BgmItem;
 import com.core.tjoeun.index.store.service.StoreService;
 import com.core.tjoeun.util.CartItem;
 import com.core.tjoeun.util.ShoppingCart;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.core.tjoeun.util.CartItem;
-import com.core.tjoeun.util.ShoppingCart;
 
 @Controller
 public class StoreController {
@@ -55,29 +55,6 @@ public class StoreController {
 	public String dotori() {
 
 		return "/store/dotori";
-	}
-	
-	@RequestMapping(value = "/store/bgmBuyOk")
-	public String bgmByOk(@RequestParam("userNickname") String bgmList, HttpSession session, HttpServletRequest req) {
-		System.out.println("dbg : " + bgmList);
-		
-		Map userMap = new HashMap();
-		
-		session = req.getSession();
-		String userNickname = (String) session.getAttribute("userNickname");
-		
-		Map map = new HashMap();
-		map.put("userNickname", userNickname);
-		map.put("bgmList", bgmList);
-		
-		try {
-			storeService.putBgm(map);
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		return "/store/bgmBuySuccess";
 	}
 	
 	@RequestMapping(value = "/store/dotoriBuy")
@@ -137,6 +114,7 @@ public class StoreController {
 	
 	@RequestMapping(value = "/store/bgmBuy")
 	public String bgmBuy(Model model, @RequestParam(value = "selectedData", required = false) String selectedData) {
+		System.out.println("선택된 곡들 : " + selectedData);
 	    if (selectedData != null) {
 	        ObjectMapper objectMapper = new ObjectMapper();
 	        try {
@@ -147,10 +125,32 @@ public class StoreController {
 	            e.printStackTrace();
 	        }
 	    }
-
 	    return "/store/bgmBuy";
 	}
+	
 
+	@RequestMapping(value = "/store/bgmBuyOk")
+	public String bgmByOk(@RequestParam("userNickname") String bgmList, HttpSession session, HttpServletRequest req) {
+		System.out.println("dbg : " + bgmList);
+		
+		Map userMap = new HashMap();
+		
+		session = req.getSession();
+		String userNickname = (String) session.getAttribute("userNickname");
+		
+		Map map = new HashMap();
+		map.put("userNickname", userNickname);
+		map.put("bgmList", bgmList);
+		
+		try {
+			storeService.putBgm(map);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "/store/bgmBuySuccess";
+	}
 	
 	@RequestMapping(value = "/store/minimiView", method= {RequestMethod.GET, RequestMethod.POST})
 	public String selectStoreList(Model model, @RequestParam(defaultValue = "1") int page) throws Exception {
