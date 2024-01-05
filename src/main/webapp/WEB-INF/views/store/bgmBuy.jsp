@@ -71,16 +71,6 @@
 		    </div>
 		</div>
 	</div>
-	<form id="buyBgmForm" action="/store/bgmBuyOk" method="POST">
-	    <c:forEach items="${selectedData}" var="bgmItem" varStatus="status">
-	        <input type="hidden" name="bgmTitle[${status.index}]" value="${bgmItem.title}" />
-	        <input type="hidden" name="bgmArtist[${status.index}]" value="${bgmItem.artist}" />
-	        <input type="hidden" name="bgmPrice[${status.index}]" value="${bgmItem.price}" />
-	    </c:forEach>
-	    <input type="submit" value="구매" />
-	</form>
-
-	
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -133,23 +123,29 @@
         inputUserNickname.name = 'userNickname';
         inputUserNickname.value = userNickname;
         form.appendChild(inputUserNickname);
+        
+        var inputBgmList = document.createElement('input');
+        inputBgmList.type = 'hidden';
+        inputBgmList.name = 'bgmList';
+        inputBgmList.value = JSON.stringify(selected);
+        form.appendChild(inputBgmList);
 
         selected.forEach(function(item, index) {
             var inputTitle = document.createElement('input');
             inputTitle.type = 'hidden';
-            inputTitle.name = 'bgmTitle[' + index + ']';
+            inputTitle.name = 'bgmList[' + index + '].title';
             inputTitle.value = item.title;
             form.appendChild(inputTitle);
 
             var inputArtist = document.createElement('input');
             inputArtist.type = 'hidden';
-            inputArtist.name = 'bgmArtist[' + index + ']';
+            inputArtist.name = 'bgmList[' + index + '].artist';
             inputArtist.value = item.artist;
             form.appendChild(inputArtist);
 
             var inputPrice = document.createElement('input');
             inputPrice.type = 'hidden';
-            inputPrice.name = 'bgmPrice[' + index + ']';
+            inputPrice.name = 'bgmList[' + index + '].price';
             inputPrice.value = item.bgmPrice;
             form.appendChild(inputPrice);
         });
