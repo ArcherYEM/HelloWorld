@@ -14,10 +14,57 @@ $(document).ready(function() {
 		
 		var titles = document.getElementsByClassName('td-title');
 
-		for (var i = 0; i < titles.length; i++) {
+	/*	for (var i = 0; i < titles.length; i++) {
 		  titles[i].addEventListener('click', function() {
-		    location.href = '/miniHome/boardDetail';
+		    console.log(titles[0].getAttribute('data-userNickname'));
+		    let link = '/mnHome/boardDetail/' + titles[0].getAttribute('data-userNickname');
+		    location.href = link;
 		  });
-		}
+		}*/
 		
+});
+
+
+// 상단 미니홈피 타이틀 
+$('#btn-title-edit').on('click', function(){
+	document.getElementById('divHomeTitle').style.display = 'none';
+	document.getElementById('newTitle').type = 'text';
+	document.getElementById('btn-title-edit').type = 'hidden';
+	document.getElementById('btn-title-save').type = 'button';
+});
+
+$('#btn-title-save').on('click', function(){
+	let newTitle = document.getElementById('newTitle').value;
+	let userNickname = document.getElementById('hiddenUserNickname').value;
+	
+	let jsonData = { 
+				"title" : newTitle 
+				,"userNickname" : userNickname
+				};
+				
+	console.log(newTitle, userNickname);
+	
+	$.ajax({
+		url: "/mnHome/titleUpdate"
+		,type: "POST"
+		, dataType : "json"
+		, data: JSON.stringify(jsonData)
+		, contentType: "application/json"
+		, success : function(data){
+		
+			document.getElementById('divHomeTitle').innerText = newTitle;
+			document.getElementById('newTitle').value = newTitle;
+		
+		}, error : function(error){
+			console.log("Error loading tab: " + error);
+			alert('잠시 후 다시 시도해주세요.');
+			document.getElementById('newTitle').value = document.getElementById('divHomeTitle').value;
+		}
+	});
+	
+	document.getElementById('divHomeTitle').style.display = 'block';
+	document.getElementById('newTitle').type = 'hidden';
+	document.getElementById('btn-title-edit').type = 'button';
+	document.getElementById('btn-title-save').type = 'hidden';
+	
 });

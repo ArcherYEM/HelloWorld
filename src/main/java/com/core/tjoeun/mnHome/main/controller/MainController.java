@@ -108,6 +108,9 @@ public class MainController {
 	    
 		//프로필 정보 가져오기
 		Map profile = mainService.getProfile(userNickname);
+		if(null == profile) {
+			return "/home";
+		}
 		String image = (String) profile.get("image");
 		String msg = (String) profile.get("msg");
 		msg = msg.replace("\n", "<br>");

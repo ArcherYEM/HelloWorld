@@ -31,7 +31,7 @@ function loadTabContent(tabName) {
             }else if(tabName === '/mnHome/boardView' || tabName.indexOf('/mnHome/boardView') != -1){
                 htmlToAdd += '<link class="board" href="/resources/css/minihome/board.css" rel="stylesheet">';
                 htmlToAdd += '<link class="board" href="/resources/css/minihome/album.css" rel="stylesheet">';
-                htmlToAdd += '<script src="../../../../resources/js/board.js"></script>';
+                htmlToAdd += '<script type="text/javascript" src="../../../../resources/js/board.js"></script>';
             
             }else if(tabName === '/mnHome/boardWriteView' || tabName.indexOf('/mnHome/boardWriteView') != -1){
                 htmlToAdd += '<link class="board" href="/resources/css/minihome/board.css" rel="stylesheet">';
@@ -40,7 +40,11 @@ function loadTabContent(tabName) {
                 htmlToAdd += '<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>';
                 htmlToAdd += '<script type="text/javascript" src="../../../../resources/js/boardWrite.js"></script>';
            
-           	
+           }else if(tabName === '/mnHome/boardDetail' || tabName.indexOf('/mnHome/boardDetail') != -1){
+                htmlToAdd += '<link class="board" href="/resources/css/minihome/board.css" rel="stylesheet">';
+                htmlToAdd += '<link class="board" href="/resources/css/minihome/album.css" rel="stylesheet">';
+                htmlToAdd += '<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>';
+
            
             }else if(tabName === '/mnHome/visitView' || tabName.indexOf('/mnHome/visitView') != -1){
                 htmlToAdd += '<link href="/resources/css/minihome/visit.css" rel="stylesheet">';
@@ -116,6 +120,13 @@ $(document).on("click", ".btnBoardWrite", function (event) {
 $(document).on("click", ".btn-boardlist", function (event) {
 	event.preventDefault();
 	tabName = $(this).data("boardview");
+	console.log('TabName:', tabName);
+	loadTabContent(tabName); 
+});
+
+$(document).on("click", ".td-title", function (event) {
+	event.preventDefault();
+	tabName = $(this).data("boarddetail");
 	console.log('TabName:', tabName);
 	loadTabContent(tabName); 
 });
