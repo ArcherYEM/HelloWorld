@@ -20,7 +20,7 @@
 	  
 	  <div class="grid-item">
 	  	<div id="divUserInfo">
-				<img class="index-header-logo otherPage-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+				<img class="findId-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
 				<div class="findId-title">
 			  	비밀번호 변경
 			  </div>
@@ -95,7 +95,7 @@
 	    }
 	}
 	
-	$('btnCancle').on('click',function(){
+	$('#btnCancle').on('click',function(){
 		location.href = "<c:url value='/index/member/home'/>";
 	});
 	</script>

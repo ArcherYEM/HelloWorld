@@ -91,5 +91,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</if>
 </select>
 
+<select id="getMyDotori" parameterType="String" resultType="int">
+	select currentDotori 
+	from dotori 
+	where userNickname = #{userNickname};
+</select>
 
 </mapper>

@@ -81,5 +81,11 @@ public class StoreServiceImpl implements StoreService {
 	public int updateDotori(Map map) {
 		return storeDao.updateDotori(map);
 	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public int getMyDotori(String userNickname) {
+		return storeDao.getMyDotori(userNickname);
+	}
 	
 }
