@@ -176,3 +176,10 @@
 	cursor: pointer;
 	font-weight: bold;
 }
+
+.friend-home-Img {
+	width: 10px;
+	height: auto;
+	margin-top: 1px;
+	margin-left: 5px;
+}

@@ -18,5 +18,9 @@ public class ShoppingCart {
     public void addToCart(CartItem item) {
         cartItems.add(item);
     }
+    
+    public void clearCart() {
+        this.cartItems.clear();
+    }
 	
 }
