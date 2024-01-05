@@ -30,7 +30,7 @@
 	       </div>
       </div>
 		<div id="divHiUser">
-			<a class="storeAtag" href="/store/minimiView">미니미</a>
+			<a class="storeAtag" href="/store/minimiView">메뉴</a>
 			<a class="storeAtag" href="/store/skinView">스킨</a>
 			<a class="storeAtag present" href="/store/menuView">메뉴</a>
 			<a class="storeAtag" href="/store/dotoriView">도토리</a>
@@ -39,69 +39,70 @@
 		<div class="products">
 			<h3>메뉴 상품 목록입니다.</h3>
 			<div class="product_list">
-				<a href="#" class="product">
-					<div class="divProduct" style="background-color: black;">
+				<a class="product" data-product-cate="메뉴" data-product-name="검정" data-product-price="50">
+					<div class="divProduct" style="background-color: black;" >
 						<h5></h5>
 					</div>
 					<div class="product-name">검정</div>
 					<div class="product-price">도토리10개</div>
 				</a>
-				<a href="#" class="product">
+				<a class="product" data-product-cate="메뉴" data-product-name="빨강" data-product-price="50">
 					<div class="divProduct" style="background-color: red;">
 						<h5></h5>
 					</div>
 					<div class="product-name">빨강</div>
 					<div class="product-price">도토리10개</div>
 				</a>
-				<a href="#" class="product">
+				<a class="product" data-product-cate="메뉴" data-product-name="노랑" data-product-price="50">
 					<div class="divProduct" style="background-color: yellow;">
 						<h5></h5>
 					</div>
 					<div class="product-name">노랑</div>
 					<div class="product-price">도토리10개</div>
 				</a>
-				<a href="#" class="product">
+				<a class="product" data-product-cate="메뉴" data-product-name="초록" data-product-price="50">
 					<div class="divProduct" style="background-color: green;">
 						<h5></h5>
 					</div>
 					<div class="product-name">초록</div>
 					<div class="product-price">도토리10개</div>
 				</a>
-				<a href="#" class="product">
+				<a class="product" data-product-cate="메뉴" data-product-name="회색" data-product-price="50">
 					<div class="divProduct" style="background-color: grey;">
 						<h5></h5>
 					</div>
 					<div class="product-name">회색</div>
 					<div class="product-price">도토리10개</div>
-				</a> <a href="#" class="product">
+				</a> 
+				<a class="product" data-product-cate="메뉴" data-product-name="라임" data-product-price="50">
 					<div class="divProduct" style="background-color: lime;">
 						<h5></h5>
 					</div>
 					<div class="product-name">라임</div>
 					<div class="product-price">도토리10개</div>
 				</a>
-				<a href="#" class="product">
+				<a class="product" data-product-cate="메뉴" data-product-name="하양" data-product-price="50">
 					<div class="divProduct" style="background-color: white;">
 						<h5></h5>
 					</div>
 					<div class="product-name">하양</div>
 					<div class="product-price">도토리10개</div>
 				</a>
-				<a href="#" class="product">
+				<a class="product" data-product-cate="메뉴" data-product-name="보라" data-product-price="50">
 					<div class="divProduct" style="background-color: purple;">
 						<h5></h5>
 					</div>
 					<div class="product-name">보라</div>
 					<div class="product-price">도토리10개</div>
 				</a>
-				<a href="#" class="product">
+				<a class="product" data-product-cate="메뉴" data-product-name="파랑" data-product-price="50">
 					<div class="divProduct" style="background-color: blue;">
 						<h5></h5>
 					</div>
 					<div class="product-name">파랑</div>
 					<div class="product-price">도토리10개</div>
 				</a>
-				<a href="#" class="product">
+				<a class="product" data-product-cate="메뉴" data-product-name="네이비" data-product-price="50">
 					<div class="divProduct" style="background-color: navy;">
 						<h5></h5>
 					</div>
@@ -109,9 +110,15 @@
 					<div class="product-price">도토리10개</div>
 				</a>
 			</div>
+			
+			<div class="cart-widget">
+			  <h2>장바구니</h2>
+			  <ul id="cart-list"></ul>
+			</div>
 		</div>
 	</div>
 	
+	<script src="../../../../resources/js/jquery-3.7.1.min.js"></script>
 	<script>
 		window.onload = function() {
 		    	
@@ -124,6 +131,65 @@
 		            userDotoriElement.style.display = 'none';
 		        }
 		    };
+		    
+		    $(document).ready(function () {
+		        loadCart(); // 페이지 로드 시에 장바구니 데이터 로드
+		
+		        $('.spanPage').on('click', function(){
+		            loadPage($(this).data('page'));
+		        });
+		
+		        $('.product').on('click', function () {
+		            const productCate = $(this).data('product-cate');
+		            const productName = $(this).data('product-name');
+		            const productPrice = $(this).data('product-price');
+					
+		            console.log(productCate);
+		            addToCart(productCate, productName, productPrice);
+		        });
+		
+		        function addToCart(cate, name, price) {
+		            $.ajax({
+		                type: 'POST',
+		                url: "/store/addToCart",
+		                contentType: 'application/json',
+		                data: JSON.stringify({ cate: cate, name: name, price: price }),
+		                success: function () {
+		                    loadCart(); // 장바구니에 상품 추가 후 다시 로드
+		                },
+		                error: function () {
+		                    console.error('Ajax request failed');
+		                }
+		            });
+		        }
+		
+		        function loadCart() {
+		            $.ajax({
+		                type: 'GET',
+		                url: "/store/loadCart",
+		                success: function (data) {
+		                    // 서버에서 받은 데이터를 처리하여 페이지 갱신
+		                    // 예시: 장바구니 리스트 갱신
+		                    updateCart(data);
+		                },
+		                error: function () {
+		                    console.error('Ajax request failed');
+		                }
+		            });
+		        }
+		
+		        function updateCart(cartItems) {
+		            const cartList = $('#cart-list');
+		            cartList.empty(); // 기존 장바구니 비우기
+		
+		            // 새로운 장바구니 데이터로 리스트 업데이트
+		            cartItems.forEach(function(item) {
+		                const cartItem = document.createElement('li');
+		                cartItem.textContent =item.cate + ' : ' +  item.name + ' - ₩' + item.price;
+		                cartList.append(cartItem);
+		            });
+		        }
+		    });
 	</script>
 </body>
 </html>

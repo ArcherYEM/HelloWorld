@@ -45,7 +45,7 @@
 	        <!-- minimi select -->
 	        <div class="productList">
 			    <c:forEach var="minimi" items="${minimi}" varStatus="seq">
-			        <div class="product" data-product-id="${minimi.productId}"
+			        <div class="product" data-product-cate="미니미"
 			             data-product-name="${minimi.productName}" data-product-price="${minimi.productPrice}">
 			            <div>
 			                <img src="<c:url value="${minimi.contentPath}"/>" class="store-minimi-img"/>
@@ -94,19 +94,20 @@
 	        });
 	
 	        $('.product').on('click', function () {
-	            const productId = $(this).data('product-id');
+	            const productCate = $(this).data('product-cate');
 	            const productName = $(this).data('product-name');
 	            const productPrice = $(this).data('product-price');
-	
-	            addToCart(productId, productName, productPrice);
+				
+	            console.log(productCate);
+	            addToCart(productCate, productName, productPrice);
 	        });
 	
-	        function addToCart(id, name, price) {
+	        function addToCart(cate, name, price) {
 	            $.ajax({
 	                type: 'POST',
 	                url: "/store/addToCart",
 	                contentType: 'application/json',
-	                data: JSON.stringify({ id: id, name: name, price: price }),
+	                data: JSON.stringify({ cate: cate, name: name, price: price }),
 	                success: function () {
 	                    loadCart(); // 장바구니에 상품 추가 후 다시 로드
 	                },
@@ -138,7 +139,7 @@
 	            // 새로운 장바구니 데이터로 리스트 업데이트
 	            cartItems.forEach(function(item) {
 	                const cartItem = document.createElement('li');
-	                cartItem.textContent = item.name + ' - ₩' + item.price;
+	                cartItem.textContent =item.cate + ' : ' +  item.name + ' - ₩' + item.price;
 	                cartList.append(cartItem);
 	            });
 	        }
