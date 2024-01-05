@@ -70,7 +70,7 @@
 						<div class="box content-box">
 						<c:if test="${sessionScope.userId.userNickname eq userNickname }">
 							<div class=" album-submit">
-								<input type="button" class="btnAlbumWrite" id="btnUpload" data-albumWrite="<c:url value="/mnHome/albumWriteView/${userNickname} }" />" value="사진올리기">
+								<input type="button" class="btnAlbumWrite" id="btnUpload" data-albumWrite="<c:url value="/mnHome/albumWriteView/${userNickname}" />" value="사진올리기">
 							</div>
 						</c:if>
 							<div class="album-overflow">

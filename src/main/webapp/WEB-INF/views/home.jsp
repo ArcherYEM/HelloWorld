@@ -107,7 +107,7 @@
 	<div class="bottom-fix">
 		<hr>
 		<h1>team core</h1>
-		<a href="/mnHome/mainView" target="_blank" style="width:1200px; height:720px;">미니홈피 가기</a>
+		<!-- <a href="/mnHome/mainView" target="_blank" style="width:1200px; height:720px;">미니홈피 가기</a> -->
             <!-- ★★★추후 새창으로 변환 예정★★★ -->
 <!--      <button id="targetElement" 
                onclick="window.open('/helloworld/minihome/main'
@@ -200,7 +200,7 @@
        });
     
     document.getElementById('btnGoMinihome').addEventListener('click', function() {
-       location.href = "<c:url value="/mnHome/mainView" />"
+       location.href = "<c:url value="/mnHome/mainView/${sessionScope.userId.userNickname}" />"
     });
     
     document.getElementById('btnLogout').addEventListener('click', function() {
