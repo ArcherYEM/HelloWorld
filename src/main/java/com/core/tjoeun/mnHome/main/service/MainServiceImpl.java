@@ -33,17 +33,21 @@ public class MainServiceImpl implements MainService{
 	@Transactional(readOnly = true)
 	public Map getProfile(String userNickname) {
 	 Map profile = mainDao.getProfile(userNickname);
-	 String image = (String) profile.get("image");
-	 String msg = (String) profile.get("msg");
 	 
-	 	System.out.println("테스트:"+profile);
-	 
-	 	if(image.equals("noneFile")&&(!msg.equals("")||(msg!=null))) {
-	 		profile = mainDao.getProfileNoImg(userNickname);
-	 	}
-	 	else if(!image.equals("noneFile")&&((msg.equals(""))||(msg==null))) {	 		
-	 		profile = mainDao.getProfileNoMsg(userNickname); 
-	 	} 
+	 if(null != profile) {
+		
+		 String image = (String) profile.get("image");
+		 String msg = (String) profile.get("msg");
+		 
+		 System.out.println("테스트:"+profile);
+		 
+		 if(image.equals("noneFile")&&(!msg.equals("")||(msg!=null))) {
+			 profile = mainDao.getProfileNoImg(userNickname);
+		 }
+		 else if(!image.equals("noneFile")&&((msg.equals(""))||(msg==null))) {	 		
+			 profile = mainDao.getProfileNoMsg(userNickname); 
+		 } 
+	 }
 	 	return profile;
 	}
 

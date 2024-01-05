@@ -67,7 +67,10 @@
 		        <input type="button" value="취소" onclick="cancelBgmBuy()">
 		    </div>
 		    <div class="bgmBuy-btn-y">
-		        <input type="button" value="구매" onclick="okBuyBgm()">
+			    <form id="bgmBuyForm" action="/store/bgmBuyOk" method="post">
+			        <input type="button" value="구매" onclick="sendSelectedDataToController()">
+			        <input type="hidden" name="selectedData" id="selectedDataField">
+			    </form>
 		    </div>
 		</div>
 	</div>
@@ -76,10 +79,20 @@
 <script>
     var selected = [];
     var userNickname = '${sessionScope.userId.userNickname}';
+    var selectedData = [
+        <c:forEach items="${selectedData}" var="bgmItem" varStatus="loop">
+            {
+                title: "${bgmItem.title}",
+                artist: "${bgmItem.artist}",
+                price: "${bgmItem.price}"
+            }<c:if test="${!loop.last}">,</c:if>
+        </c:forEach>
+    ];
+
     function openNewWindowBgmBuy() {
         var windowSettings = 'width=800, height=600, scrollbars=no, resizable=no, toolbar=no, menubar=no, left=100, top=50';
-        var selectedData = JSON.stringify(selected);
-        window.open('/store/bgmBuy?selectedData=' + encodeURIComponent(selectedData), '_blank', windowSettings);
+        var selectedDataString = JSON.stringify(selectedData);
+        window.open('/store/bgmBuy?selectedData=' + encodeURIComponent(selectedDataString), '_blank', windowSettings);
     }
 
     function cancelBgmBuy() {
@@ -112,48 +125,15 @@
 
         $('#test').html(resultHtml);
     }
-
-    function okBuyBgm() {
-        var form = document.createElement('form');
-        form.method = 'POST';
-        form.action = '/store/bgmBuyOk';
-
-        var inputUserNickname = document.createElement('input');
-        inputUserNickname.type = 'hidden';
-        inputUserNickname.name = 'userNickname';
-        inputUserNickname.value = userNickname;
-        form.appendChild(inputUserNickname);
-        
-        var inputBgmList = document.createElement('input');
-        inputBgmList.type = 'hidden';
-        inputBgmList.name = 'bgmList';
-        inputBgmList.value = JSON.stringify(selected);
-        form.appendChild(inputBgmList);
-
-        selected.forEach(function(item, index) {
-            var inputTitle = document.createElement('input');
-            inputTitle.type = 'hidden';
-            inputTitle.name = 'bgmList[' + index + '].title';
-            inputTitle.value = item.title;
-            form.appendChild(inputTitle);
-
-            var inputArtist = document.createElement('input');
-            inputArtist.type = 'hidden';
-            inputArtist.name = 'bgmList[' + index + '].artist';
-            inputArtist.value = item.artist;
-            form.appendChild(inputArtist);
-
-            var inputPrice = document.createElement('input');
-            inputPrice.type = 'hidden';
-            inputPrice.name = 'bgmList[' + index + '].price';
-            inputPrice.value = item.bgmPrice;
-            form.appendChild(inputPrice);
-        });
-
-        document.body.appendChild(form);
-        form.submit();
+    
+    // form을 제출하는 함수
+    function sendSelectedDataToController() {
+        var selectedDataString = JSON.stringify(selectedData);
+        document.getElementById("selectedDataField").value = selectedDataString;
+        document.getElementById("bgmBuyForm").submit(); // 폼을 서버로 전송
     }
 </script>
+
 	
 </body>
 </html>
