@@ -161,24 +161,8 @@ public class StoreController {
 	
 
 	@RequestMapping(value = "/store/bgmBuyOk")
-	public String bgmByOk(@RequestParam("userNickname") String bgmList, HttpSession session, HttpServletRequest req) {
-		System.out.println("dbg : " + bgmList);
-		
-		Map userMap = new HashMap();
-		
-		session = req.getSession();
-		String userNickname = (String) session.getAttribute("userNickname");
-		
-		Map map = new HashMap();
-		map.put("userNickname", userNickname);
-		map.put("bgmList", bgmList);
-		
-		try {
-			storeService.putBgm(map);
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+	public String bgmByOk(@RequestParam("selectedData") String selectedData, HttpSession session, HttpServletRequest req) {
+		System.out.println("dbg selectedData : " + selectedData);
 		
 		return "/store/bgmBuySuccess";
 	}
