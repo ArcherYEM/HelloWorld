@@ -62,9 +62,13 @@
 				
 				<div class="cart-widget">
 				  <h2>장바구니</h2>
-				  <ul id="cart-list"></ul>
-				  <input type="button" class="btnCart" id="btnCartBuy" value="구매">
-				  <input type="button" class="btnCart" id="btnCartClear" value="비우기">
+				  <div class="cart-list-over">
+				  	<ul id="cart-list"></ul>
+				  </div>
+				  <div class="cart-list-under">
+					  <input type="button" class="btnCart" id="btnCartBuy" value="구매">
+					  <input type="button" class="btnCart" id="btnCartClear" value="비우기">
+				  </div>
 				</div>
 			</div>
 	        <!-- paging -->
@@ -85,10 +89,31 @@
 	<script>
 	
 		document.getElementById('btnCartClear').addEventListener('click',function() {
-			const cartList = $('#cart-list');
-			cartList.empty();
+			clearCart();
 		});
-	
+
+		function clearCart() {
+		    $.ajax({
+		        type: 'POST',
+		        url: "/store/clearCart",
+		        contentType: 'application/json',
+		        success: function () {
+		            const cartList = $('#cart-list');
+		            cartList.empty();
+		            scrollToBottom();
+		            
+		        },
+		        error: function () {
+		            console.error('Clear cart failed');
+		        }
+		    });
+		}
+		
+		function scrollToBottom() {
+		    const cartList = document.querySelector('.cart-list-over');
+		    cartList.scrollTop = cartList.scrollHeight;
+		}
+		
 		function loadPage(page) {
 	        $('#page').val(page);
 	        $('#frm1').submit();

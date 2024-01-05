@@ -235,5 +235,10 @@ public class StoreController {
         return shoppingCart;	
     }
 	
-	
+    @PostMapping("/store/clearCart")
+    @ResponseBody
+    public void clearCart(HttpSession session) {
+        ShoppingCart shoppingCart = getOrCreateShoppingCart(session);
+        shoppingCart.clearCart();
+    }
 }
