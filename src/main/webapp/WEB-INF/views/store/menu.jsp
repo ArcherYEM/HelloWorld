@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>HelloWorld</title>
 <link href="/resources/css/index/main.css" rel="stylesheet">
-<link href="/resources/css/index/store.css" rel="stylesheet">
+<link href="/resources/css/index/storeMMS.css" rel="stylesheet">
 <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 </head>
 
@@ -21,7 +21,7 @@
 	           <img class="index-header-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
 	         </a>
 	       </div>
-				<h5 id="userDotori" class="right">내 도토리 : <span id="userDotoriCnt">${sessionScope.userDotoriCnt}</span> 개</h5>
+				<h5 id="userDotori" class="right">내 도토리 : <span id="userDotoriCnt">${dotori}</span> 개</h5>
 	       <div class="index-header-right">
 	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
 	            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
@@ -30,7 +30,7 @@
 	       </div>
       </div>
 		<div id="divHiUser">
-			<a class="storeAtag" href="/store/minimiView">메뉴</a>
+			<a class="storeAtag" href="/store/minimiView">미니미</a>
 			<a class="storeAtag" href="/store/skinView">스킨</a>
 			<a class="storeAtag present" href="/store/menuView">메뉴</a>
 			<a class="storeAtag" href="/store/dotoriView">도토리</a>
@@ -38,77 +38,79 @@
 		</div>
 		<div class="products">
 			<h3>메뉴 상품 목록입니다.</h3>
-			<div class="product_list">
-				<a class="product" data-product-cate="메뉴" data-product-name="검정" data-product-price="50">
-					<div class="divProduct" style="background-color: black;" >
-						<h5></h5>
-					</div>
-					<div class="product-name">검정</div>
-					<div class="product-price">도토리10개</div>
-				</a>
-				<a class="product" data-product-cate="메뉴" data-product-name="빨강" data-product-price="50">
-					<div class="divProduct" style="background-color: red;">
-						<h5></h5>
-					</div>
-					<div class="product-name">빨강</div>
-					<div class="product-price">도토리10개</div>
-				</a>
-				<a class="product" data-product-cate="메뉴" data-product-name="노랑" data-product-price="50">
-					<div class="divProduct" style="background-color: yellow;">
-						<h5></h5>
-					</div>
-					<div class="product-name">노랑</div>
-					<div class="product-price">도토리10개</div>
-				</a>
-				<a class="product" data-product-cate="메뉴" data-product-name="초록" data-product-price="50">
-					<div class="divProduct" style="background-color: green;">
-						<h5></h5>
-					</div>
-					<div class="product-name">초록</div>
-					<div class="product-price">도토리10개</div>
-				</a>
-				<a class="product" data-product-cate="메뉴" data-product-name="회색" data-product-price="50">
-					<div class="divProduct" style="background-color: grey;">
-						<h5></h5>
-					</div>
-					<div class="product-name">회색</div>
-					<div class="product-price">도토리10개</div>
-				</a> 
-				<a class="product" data-product-cate="메뉴" data-product-name="라임" data-product-price="50">
-					<div class="divProduct" style="background-color: lime;">
-						<h5></h5>
-					</div>
-					<div class="product-name">라임</div>
-					<div class="product-price">도토리10개</div>
-				</a>
-				<a class="product" data-product-cate="메뉴" data-product-name="하양" data-product-price="50">
-					<div class="divProduct" style="background-color: white;">
-						<h5></h5>
-					</div>
-					<div class="product-name">하양</div>
-					<div class="product-price">도토리10개</div>
-				</a>
-				<a class="product" data-product-cate="메뉴" data-product-name="보라" data-product-price="50">
-					<div class="divProduct" style="background-color: purple;">
-						<h5></h5>
-					</div>
-					<div class="product-name">보라</div>
-					<div class="product-price">도토리10개</div>
-				</a>
-				<a class="product" data-product-cate="메뉴" data-product-name="파랑" data-product-price="50">
-					<div class="divProduct" style="background-color: blue;">
-						<h5></h5>
-					</div>
-					<div class="product-name">파랑</div>
-					<div class="product-price">도토리10개</div>
-				</a>
-				<a class="product" data-product-cate="메뉴" data-product-name="네이비" data-product-price="50">
-					<div class="divProduct" style="background-color: navy;">
-						<h5></h5>
-					</div>
-					<div class="product-name">네이비</div>
-					<div class="product-price">도토리10개</div>
-				</a>
+			<div class="content-container">
+				<div class="productList">
+					<a class="product" data-product-cate="메뉴" data-product-name="검정" data-product-price="50">
+						<div class="divProduct" style="background-color: black;" >
+							<h5></h5>
+						</div>
+						<div class="product-name">검정</div>
+						<div class="product-price">도토리10개</div>
+					</a>
+					<a class="product" data-product-cate="메뉴" data-product-name="빨강" data-product-price="50">
+						<div class="divProduct" style="background-color: red;">
+							<h5></h5>
+						</div>
+						<div class="product-name">빨강</div>
+						<div class="product-price">도토리10개</div>
+					</a>
+					<a class="product" data-product-cate="메뉴" data-product-name="노랑" data-product-price="50">
+						<div class="divProduct" style="background-color: yellow;">
+							<h5></h5>
+						</div>
+						<div class="product-name">노랑</div>
+						<div class="product-price">도토리10개</div>
+					</a>
+					<a class="product" data-product-cate="메뉴" data-product-name="초록" data-product-price="50">
+						<div class="divProduct" style="background-color: green;">
+							<h5></h5>
+						</div>
+						<div class="product-name">초록</div>
+						<div class="product-price">도토리10개</div>
+					</a>
+					<a class="product" data-product-cate="메뉴" data-product-name="회색" data-product-price="50">
+						<div class="divProduct" style="background-color: grey;">
+							<h5></h5>
+						</div>
+						<div class="product-name">회색</div>
+						<div class="product-price">도토리10개</div>
+					</a> 
+					<a class="product" data-product-cate="메뉴" data-product-name="라임" data-product-price="50">
+						<div class="divProduct" style="background-color: lime;">
+							<h5></h5>
+						</div>
+						<div class="product-name">라임</div>
+						<div class="product-price">도토리10개</div>
+					</a>
+					<a class="product" data-product-cate="메뉴" data-product-name="하양" data-product-price="50">
+						<div class="divProduct" style="background-color: white;">
+							<h5></h5>
+						</div>
+						<div class="product-name">하양</div>
+						<div class="product-price">도토리10개</div>
+					</a>
+					<a class="product" data-product-cate="메뉴" data-product-name="보라" data-product-price="50">
+						<div class="divProduct" style="background-color: purple;">
+							<h5></h5>
+						</div>
+						<div class="product-name">보라</div>
+						<div class="product-price">도토리10개</div>
+					</a>
+					<a class="product" data-product-cate="메뉴" data-product-name="파랑" data-product-price="50">
+						<div class="divProduct" style="background-color: blue;">
+							<h5></h5>
+						</div>
+						<div class="product-name">파랑</div>
+						<div class="product-price">도토리10개</div>
+					</a>
+					<a class="product" data-product-cate="메뉴" data-product-name="네이비" data-product-price="50">
+						<div class="divProduct" style="background-color: navy;">
+							<h5></h5>
+						</div>
+						<div class="product-name">네이비</div>
+						<div class="product-price">도토리10개</div>
+					</a>
+				</div>
 			</div>
 			
 			<div class="cart-widget">
@@ -123,7 +125,7 @@
 		window.onload = function() {
 		    	
 		        let userDotoriElement = document.getElementById('userDotori');
-		        let userDotoriCnt = '<c:out value="${sessionScope.userDotoriCnt}" />' || '';
+		        let userDotoriCnt = '<c:out value="${dotori}" />' || '';
 		
 		        if (userDotoriCnt.trim() !== '') {
 		            userDotoriElement.style.display = 'block';

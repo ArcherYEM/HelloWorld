@@ -63,4 +63,10 @@ public class StoreDaoImpl implements StoreDao {
 		return mapper.updateDotori(map);
 	}
 
+	@Override
+	public int getMyDotori(String userNickname) {
+		StoreMapper mapper = sqlSession.getMapper(StoreMapper.class);
+		return mapper.getMyDotori(userNickname);
+	}
+
 }

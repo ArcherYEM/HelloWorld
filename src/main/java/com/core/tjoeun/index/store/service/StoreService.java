@@ -20,5 +20,7 @@ public interface StoreService {
 	public int insertDotori(Map map);
 	
 	public int updateDotori(Map map);
+	
+	public int getMyDotori(String userNickname);
 
 }
