@@ -63,6 +63,8 @@
 				<div class="cart-widget">
 				  <h2>장바구니</h2>
 				  <ul id="cart-list"></ul>
+				  <input type="button" class="btnCart" id="btnCartBuy" value="구매">
+				  <input type="button" class="btnCart" id="btnCartClear" value="비우기">
 				</div>
 			</div>
 	        <!-- paging -->
@@ -81,6 +83,11 @@
 	
 	<script src="../../../../resources/js/jquery-3.7.1.min.js"></script>
 	<script>
+	
+		document.getElementById('btnCartClear').addEventListener('click',function() {
+			const cartList = $('#cart-list');
+			cartList.empty();
+		});
 	
 		function loadPage(page) {
 	        $('#page').val(page);
