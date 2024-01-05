@@ -1,15 +1,15 @@
 package com.core.tjoeun.index.store.controller;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,12 +32,6 @@ public class StoreController {
 
 	@Autowired
 	StoreService storeService;
-
-//	@RequestMapping(value = "/store/minimiView")
-//	public String minimi() {
-//		
-//		return "store/minimi";
-//	}
 
 	@RequestMapping(value = "/store/skinView")
 	public String skin(HttpSession session, HttpServletRequest req, Model model) {
@@ -162,12 +156,82 @@ public class StoreController {
 	}
 	
 
-	@RequestMapping(value = "/store/bgmBuyOk")
-	public String bgmByOk(@RequestParam("selectedData") String selectedData, HttpSession session, HttpServletRequest req) {
-		System.out.println("dbg selectedData : " + selectedData);
-		
-		return "/store/bgmBuySuccess";
+	@RequestMapping(value = "/store/bgmBuyOk", method = RequestMethod.POST)
+	public String bgmBuyOk(@RequestParam(value = "selectedData", required = false) String selectedData
+			, HttpSession session, HttpServletRequest req , Model model) {
+        System.out.println("dbg selectedData : " + selectedData);
+        
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            List<Map<String, String>> bgmList = objectMapper.readValue(selectedData, new TypeReference<List<Map<String, String>>>(){});
+            
+            // 선택한 곡들의 title 과 artist 를 저장하는 map
+            Map<String, Object> bgmForMap = new HashMap<>();
+            
+            // service 에서 select 된 title, artist, contentPath, runningTime 을 저장하는 map 리스트
+            List<Map<String, Object>> totalMap = new ArrayList<>();
+            
+            Map userMap = new HashMap();
+            session = req.getSession();
+			userMap = (Map) session.getAttribute("userId");
+			String userNickname = (String) userMap.get("userNickname");
+            
+
+            for (int i = 0; i < bgmList.size(); i++) {
+                Map<String, String> bgmItem = bgmList.get(i);
+                
+                String title = bgmItem.get("title");
+                String artist = bgmItem.get("artist");
+                
+                System.out.println("title : " + title);
+                System.out.println("artist : " + artist);
+                
+                bgmForMap.put("title", title);
+                bgmForMap.put("artist", artist);
+                
+                // storeService.getBgmList(bgmForMap) 호출하여 결과를 반환
+                List<?> resultList = storeService.getBgmList(bgmForMap);
+                
+                // 결과를 totalMap에 추가
+                if (resultList != null && !resultList.isEmpty()) {
+                	totalMap.addAll((List<Map<String, Object>>) resultList);
+                }
+                
+                System.out.println("bgmForMap : " + bgmForMap);
+            }
+            
+            // totalMap에 필요한 정보가 저장됨
+            for (Map<String, Object> resultMap : totalMap) {
+                String titleDb = (String) resultMap.get("title");
+                String artistDb = (String) resultMap.get("artist");
+                String runningTimeDb = (String) resultMap.get("runningTime");
+                String contentPathDb = (String) resultMap.get("contentPath");
+                
+                System.out.println("titleDb : " + titleDb);
+                System.out.println("artistDb : " + artistDb);
+                System.out.println("runningTimeDb : " + runningTimeDb);
+                System.out.println("contentPathDb : " + contentPathDb);
+                
+                System.out.println("resultMap : " + resultMap);
+                
+                resultMap.put("userNickname", userNickname);
+                
+                storeService.putBgm(resultMap);
+                System.out.println("totalMap : " + totalMap);
+//                결과값
+//                totalMap : [{contentPath=/resources/sounds/tiara-boPeepBoPeep.mp3, bgmPrice=10, artist=티아라
+//                		, runningTime=03:45, title=Bo Peep Bo Peep, seq=11}
+//                , {contentPath=/resources/sounds/dongbangsinki-risingSun.map, bgmPrice=10, artist=동방신기
+//                		, runningTime=04:40, title=라이징 썬, seq=13}]
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+	    return "/store/bgmBuySuccess";
 	}
+
 	
 	@RequestMapping(value = "/store/minimiView", method= {RequestMethod.GET, RequestMethod.POST})
 	public String selectStoreList(HttpSession session, HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int page) throws Exception {

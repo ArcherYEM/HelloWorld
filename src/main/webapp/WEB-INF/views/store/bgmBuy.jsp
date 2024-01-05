@@ -46,7 +46,6 @@
 		        <tbody>
 		            <c:forEach items="${selectedData}" var="bgmItem" varStatus="status">
 					    <tr id="row${status.index}">
-					        <td><input type="checkbox" id="checkbox${status.index}"></td>
 					        <td>${bgmItem.title}</td>
 					        <td>${bgmItem.artist}</td>
 					        <td>${bgmItem.price}</td>
@@ -63,111 +62,73 @@
 			</c:forEach>
 			<span class="bgmBuy-total-right">${totalPrice}</span>
 		</div>
+		
 		<div class="bgmBuy-btn-group">
 		    <div class="bgmBuy-btn-n">
 		        <input type="button" value="취소" onclick="cancelBgmBuy()">
 		    </div>
 		    <div class="bgmBuy-btn-y">
-			    <form id="bgmBuyForm" action="/store/bgmBuyOk" method="post">
-			        <input type="button" value="구매" onclick="sendSelectedDataToController()">
-			        <input type="hidden" name="selectedData" id="selectedDataField">
-			    </form>
+		        <form id="bgmBuyForm" action="/store/bgmBuyOk" method="post">
+		            <input type="button" value="구매" onclick="sendSelectedDataToController()">
+		            <input type="hidden" name="selectedData" id="selectedDataField">
+		        </form>
 		    </div>
 		</div>
-	</div>
-	<form action = "/store/bgmBuyOk" method="post" id="frmTest">
 		
-	</form> 
+	</div>
 	
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    var userNickname = '${sessionScope.userId.userNickname}';
+var selected = [];
+var userNickname = '${sessionScope.userId.userNickname}';
 
-    var selectedData = [
-        <c:forEach items="${selectedData}" var="bgmItem" varStatus="loop">
-            {
-                title: "${bgmItem.title}",
-                artist: "${bgmItem.artist}",
-                price: "${bgmItem.price}"
-            }<c:if test="${!loop.last}">,</c:if>
-        </c:forEach>
-    ];
+<c:forEach items="${selectedData}" var="bgmItem">
+	var title = '<c:out value="${bgmItem.title}" />';
+	var artist = '<c:out value="${bgmItem.artist}" />';
+	var price = '<c:out value="${bgmItem.price}" />';
+selected.push({ title: title, artist: artist, price: price });
+</c:forEach>
 
-    function openNewWindowBgmBuy() {
-        var windowSettings = 'width=800, height=600, scrollbars=no, resizable=no, toolbar=no, menubar=no, left=100, top=50';
-        var selectedDataString = JSON.stringify(selectedData);
-        window.open('/store/bgmBuy?selectedData=' + encodeURIComponent(selectedDataString), '_blank', windowSettings);
+function openNewWindowBgmBuy() {
+    var windowSettings = 'width=800, height=600, scrollbars=no, resizable=no, toolbar=no, menubar=no, left=100, top=50';
+    window.open('/store/bgmBuy', '_blank', windowSettings);
+}
+
+function cancelBgmBuy() {
+    renderSelectedItems();
+    window.close();
+    
+    if (window.opener && !window.opener.closed) {
+        window.opener.reloadParentWindow();
     }
+}
 
-    function cancelBgmBuy() {
-        $('.bgm-list.bgm-grid input[type="checkbox"]:checked').each(function () {
-            var indexToRemove = $(this).closest('.bgm-list.bgm-grid').index();
-            selected.splice(indexToRemove, 1);
-        });
+function renderSelectedItems() {
+    var resultHtml = '';
 
-        renderSelectedItems();
-        window.close();
-        
-        if (window.opener && !window.opener.closed) {
-            window.opener.reloadParentWindow();
-        }
-    }
+    $.each(selected, function (i, item) {
+        resultHtml += '<div class="bgm-list bgm-grid" id="ajaxTable">';
+        resultHtml += '<div>' + (i + 1) + '</div>';
+        resultHtml += '<div>' + item.title + '</div>';
+        resultHtml += '<div>' + item.artist + '</div>';
+        resultHtml += '<div>' + item.runningTime + '</div>';
+        resultHtml += '<div>' + item.bgmPrice + '</div>';
+        resultHtml += '</div>';
+    });
 
-    function renderSelectedItems() {
-        var resultHtml = '';
+    $('#test').html(resultHtml);
+}
 
-        $.each(selected, function (i, item) {
-        	console.log(selected);
-            resultHtml += '<div class="bgm-list bgm-grid" id="ajaxTable">';
-            resultHtml += '<div><input type="checkbox" id="checkbox' + i + '"></div>';
-            resultHtml += '<div>' + (i + 1) + '</div>';
-            resultHtml += '<div>' + item.title + '</div>';
-            resultHtml += '<div>' + item.artist + '</div>';
-            resultHtml += '<div>' + item.runningTime + '</div>';
-            resultHtml += '<div>' + item.bgmPrice + '</div>';
-            resultHtml += '</div>';
-        });
+// form 전송
+function sendSelectedDataToController() {
+    var form = document.getElementById("bgmBuyForm");
 
-        $('#test').html(resultHtml);
-    }
+    var selectedDataField = document.getElementById("selectedDataField");
+    selectedDataField.value = JSON.stringify(selected);
 
-    function okBuyBgm() {
-        var form = document.getElementById("frmTest");
-        var selected = [];
+    form.submit();
+}
 
-        var inputUserNickname = document.createElement('input');
-        inputUserNickname.type = 'hidden';
-        inputUserNickname.name = 'userNickname';
-        inputUserNickname.value = userNickname;
-        form.appendChild(inputUserNickname);
-        
-/*         var inputBgmList = document.createElement('input');
-        inputBgmList.type = 'hidden';
-        inputBgmList.name = 'bgmList';
-        inputBgmList.value = JSON.stringify(selected);
-        form.appendChild(inputBgmList); */
-        $('input[type="checkbox"]').each(function(index) {
-            if ($(this).is(':checked')) {
-                var rowId = '#row' + index; // 행의 ID
-                var title = $(rowId).find('td:nth-child(2)').text(); // 두 번째 열: 제목
-                var artist = $(rowId).find('td:nth-child(3)').text(); // 세 번째 열: 아티스트
-                var price = $(rowId).find('td:nth-child(4)').text(); // 네 번째 열: 가격
-
-                selected.push({title: title, artist: artist, price: price}); // 배열에 추가
-            }
-        });
-
-        document.body.appendChild(form);
-        //form.submit();
-
-    // form을 제출하는 함수
-    function sendSelectedDataToController() {
-        var selectedDataString = JSON.stringify(selectedData);
-        document.getElementById("selectedDataField").value = selectedDataString;
-        document.getElementById("bgmBuyForm").submit(); // 폼을 서버로 전송
-    }
 </script>
-
-	
 </body>
 </html>
