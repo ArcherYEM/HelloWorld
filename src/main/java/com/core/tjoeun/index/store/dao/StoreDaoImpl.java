@@ -20,12 +20,6 @@ public class StoreDaoImpl implements StoreDao {
 		StoreMapper mapper = sqlSession.getMapper(StoreMapper.class);
 		return mapper.getBgmList(map);
 	}
-
-	@Override
-	public List<Map> searchBgm(Map map) {
-		StoreMapper mapper = sqlSession.getMapper(StoreMapper.class);
-		return mapper.searchBgm(map);
-	}
 	
 	@Override
 	public int putBgm(Map map) {

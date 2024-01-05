@@ -126,7 +126,6 @@ public class StoreController {
 		Map resultMap = new HashMap();
 
 		try {
-			storeService.searchBgm(map);
 			resultMap.put("result", "success");
 			resultMap.put("data", storeService.getBgmList(map));
 		} catch (Exception e) {

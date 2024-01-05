@@ -19,21 +19,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</if>
 </select>
 
-<select id="searchBgm" resultType="map" parameterType="map">
-	select 
-		seq
-	    ,title
-	    ,artist
-	    ,runningTime
-	    ,bgmPrice
-	from bgm
-	where 1 = 1
-	<if test="null != content and '' != content">
-		and title like concat('%',#{content},'%')
-		or artist like concat('%',#{content},'%')
-	</if>
-</select>
-
 <insert id="putBgm" parameterType="map">
 	INSERT INTO userBgm(
 		userNickname
