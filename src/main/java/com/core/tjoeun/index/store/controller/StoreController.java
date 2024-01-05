@@ -1,14 +1,13 @@
 package com.core.tjoeun.index.store.controller;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -163,9 +162,34 @@ public class StoreController {
 	
 
 	@RequestMapping(value = "/store/bgmBuyOk")
-	public String bgmByOk(@RequestParam("selectedData") String selectedData, HttpSession session, HttpServletRequest req) {
+	public String bgmByOk(@RequestParam("selectedData") String selectedData, HttpSession session, HttpServletRequest req, Map map, Model model) {
 		System.out.println("dbg selectedData : " + selectedData);
 		
+		Map bgmMap = new HashMap();
+		
+		String[] selectedDataParts = selectedData.split(",");
+		if (selectedDataParts.length >= 2) {
+			String title = selectedDataParts[0];
+			String artist = selectedDataParts[1];
+			
+			System.out.println("dbg title : " + title);
+			System.out.println("dbg artist : " + artist);
+			
+			bgmMap.put("title", title);
+			bgmMap.put("artist", artist);
+			System.out.println("dbg bgmMap : " + bgmMap);
+		} else {
+			System.out.println("dbg selectedDataParts.length : " + selectedDataParts.length);
+			System.out.println("selectedDataParts : " + selectedDataParts);
+		}
+		// select
+		try {
+			List<Map> bgm = storeService.getBgmList(bgmMap);
+			System.out.println("dbg bgm : " + bgm);
+		// insert
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return "/store/bgmBuySuccess";
 	}
 	
