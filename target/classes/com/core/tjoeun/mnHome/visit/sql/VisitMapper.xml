@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core.tjoeun.mnHome.visit.sql.VisitMapper">
+
+<insert id="insertVisitComment" parameterType="map">
+	insert into visit (
+		userNickname
+		,targetNickname
+		,content
+		,create_date
+		,update_date
+		) values (
+		#{userNickname}
+		,#{targetNickname}
+		,#{content}
+		,current_timestamp
+		,current_timestamp)
+</insert>
+
+<select id="selectVisitComment" parameterType="String" resultType="map">
+	SELECT 
+	    v.userNickname,
+	    v.targetNickname,
+	    v.content,
+	    v.create_date,
+	    DATE_FORMAT(v.update_date, '%Y.%m.%d %H:%i') as update_date,
+	    us.contentPath,
+	    u.userName
+	FROM 
+	    visit v
+	INNER JOIN 
+	    userStorage us ON v.userNickname = us.userNickname 
+	INNER JOIN 
+	    user u ON us.userNickname = u.userNickname
+	WHERE 
+	    v.targetNickname = #{targetNickname}
+	    AND us.allocation = 1;
+
+</select>
+
+<update id="updateVisitComment" parameterType="map">
+	UPDATE visit 
+		SET content = #{newContent}, 
+    	update_date = current_timestamp 
+	WHERE userNickname = #{userNickname} 
+  		AND targetNickname = #{targetNickname} 
+  		AND content = #{originalContent}	
+</update>
+
+<delete id="deleteVisitComment" parameterType="map">
+	delete from visit 
+	where userNickname = #{userNickname} 
+	and targetNickname = #{targetNickname} 
+	and content = #{content}
+</delete>
+
+</mapper>

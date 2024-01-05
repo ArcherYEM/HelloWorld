@@ -83,54 +83,36 @@
 							<input type="button" value="등록" id="visit-comment-btn" onclick="insertComment()" />
 						</div>
 					</div>
-					<div class="visit-line">
-						<table>
-							<tr>
-								<td>No. 405</td>
-								<td>양은모
-									<img src="../../../../resources/images/minihome/homeIcon.png" class="visit-line-tbImg">
-								</td>
-								<td>2023-12-21 21:01</td>
-								<td>비밀로하기</td>
-								<td>수정</td>
-								<td>삭제</td>
-							</tr>
-						</table>
-					</div>
-					<div class="visit-frame-write view-margin">
-						<img class ="visit-minimi"
-								src="../../../../resources/images/minimi/soulTeddyIcon.gif" />
-						<div class="visit-view">
-	    				<div class="visit-view-inner">
-	     					이건 버그 맞아요<br>
-	        			변명말고 고치세요 당장.
-	    				</div>
-						</div>						
-					</div>
-					<div class="visit-line">
-						<table>
-							<tr>
-								<td>No. 404</td>
-								<td>이진우
-									<img src="../../../../resources/images/minihome/homeIcon.png" class="visit-line-tbImg">
-								</td>
-								<td>2023-12-20 21:17</td>
-								<td>비밀로하기</td>
-								<td>수정</td>
-								<td>삭제</td>
-							</tr>
-						</table>
-					</div>
-					<div class="visit-frame-write">
-						<img class ="visit-minimi"
-								src="../../../../resources/images/minimi/Nova_2Icon.gif" />
-						<div class="visit-view">
-	    				<div class="visit-view-inner">
-	     					이거 버그 아니에요<br>
-	        			이건 그저 특징 이란말이에요
-	    				</div>
-						</div>						
-					</div>
+					
+					<c:forEach var = "visit" items="${visit}" varStatus="status">
+						<div id="visit-${status.index}" data-userNickname="${visit.userNickname}">
+							<div class="visit-line">
+								<table>
+									<tr>
+										<td>No. ${status.index+1}</td>
+										<td>${visit.userName}
+											<img src="../../../../resources/images/minihome/homeIcon.png" class="visit-line-tbImg">
+										</td>
+										<td>${visit.update_date }</td>
+										<td>비밀로하기</td>
+										<td class="modify-button" onclick="btnModify(this)">수정</td>
+										<td onclick="btnDelete(this)">삭제</td>
+									</tr>
+								</table>
+							</div>
+							<div class="visit-frame-write view-margin">
+								<img class ="visit-minimi"
+										src="../../../..${visit.contentPath }" />
+								<div class="visit-view">
+			    				<input type="text" readonly class="visit-view-inner" value="${visit.content }" data-original-content="${visit.content}">
+	
+								</div>						
+							</div>
+						</div>
+					</c:forEach>
+					
+					
+
 					
 					</div>
 				</div>
@@ -157,14 +139,14 @@
 						    </div>
 					    </c:if>
 					</div>
-				
+				<input type = "hidden" value="${sessionScope.userId.userNickname}" id="userNickname">
+				<input type = "hidden" value="${userNickname}" id="targetNickname">				
 			</div>
 		</div>
 	</div>
 </div>
-<form id="frmComment" action="" method="post">
-	<input type="hidden" name="content" id="content">
-</form>
+
+
 
 <script>
 	// 미니홈피 프로필 수정창
@@ -175,8 +157,7 @@
 	
 	function openNewWindow(url, settings) {
 	  window.open(url, '_blank', settings);
-	}	
-	
+	}		
 </script>
 </body>
 </html>

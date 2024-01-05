@@ -79,12 +79,23 @@ body a {
 .visit-view-inner {
 	display: table-cell;
 	vertical-align: middle;
-	text-align: left;
+	text-align: center;
+	font-weight:bold;
 	font-size: 12px;
 	padding-left: 5px;
+	border: 1px solid black;
+	border-radius: 5px;
 }
 
 /* 임시효과 */
 .visit-line-tbImg:hover {
 	cursor: pointer;
+}
+
+#visit-comment-insert{
+	font-weight:bold;
+	font-size:12px;
+	border: 1px solid black;
+	border-radius: 5px;
+	text-align: center;
 }
