@@ -1,10 +1,14 @@
 package com.core.tjoeun.index.store.controller;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,17 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.core.tjoeun.index.store.service.BgmItem;
 import com.core.tjoeun.index.store.service.StoreService;
 import com.core.tjoeun.util.CartItem;
 import com.core.tjoeun.util.ShoppingCart;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.core.tjoeun.util.CartItem;
-import com.core.tjoeun.util.ShoppingCart;
 
 @Controller
 public class StoreController {
@@ -40,44 +40,45 @@ public class StoreController {
 //	}
 
 	@RequestMapping(value = "/store/skinView")
-	public String skin() {
+	public String skin(HttpSession session, HttpServletRequest req, Model model) {
 
+		Map userMap = new HashMap();
+		
+		session = req.getSession();
+		userMap = (Map) session.getAttribute("userId");
+		String userNickname = (String) userMap.get("userNickname");
+
+		model.addAttribute("dotori",storeService.getMyDotori(userNickname));
+		
 		return "/store/skin";
 	}
 
 	@RequestMapping(value = "/store/menuView")
-	public String menu() {
+	public String menu(HttpSession session, HttpServletRequest req, Model model) {
+		
+		Map userMap = new HashMap();
+		
+		session = req.getSession();
+		userMap = (Map) session.getAttribute("userId");
+		String userNickname = (String) userMap.get("userNickname");
+
+		model.addAttribute("dotori",storeService.getMyDotori(userNickname));
 
 		return "/store/menu";
 	}
 
 	@RequestMapping(value = "/store/dotoriView")
-	public String dotori() {
-
-		return "/store/dotori";
-	}
-	
-	@RequestMapping(value = "/store/bgmBuyOk")
-	public String bgmByOk(@RequestParam("userNickname") String bgmList, HttpSession session, HttpServletRequest req) {
-		System.out.println("dbg : " + bgmList);
+	public String dotori(HttpSession session, HttpServletRequest req, Model model) {
 		
 		Map userMap = new HashMap();
 		
 		session = req.getSession();
-		String userNickname = (String) session.getAttribute("userNickname");
-		
-		Map map = new HashMap();
-		map.put("userNickname", userNickname);
-		map.put("bgmList", bgmList);
-		
-		try {
-			storeService.putBgm(map);
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		return "/store/bgmBuySuccess";
+		userMap = (Map) session.getAttribute("userId");
+		String userNickname = (String) userMap.get("userNickname");
+
+		model.addAttribute("dotori",storeService.getMyDotori(userNickname));
+
+		return "/store/dotori";
 	}
 	
 	@RequestMapping(value = "/store/dotoriBuy")
@@ -109,10 +110,17 @@ public class StoreController {
 	}
 
 	@RequestMapping(value = "/store/bgmView")
-	public String getBgmList(Model model, @RequestParam Map map) {
+	public String getBgmList(HttpSession session, HttpServletRequest req, Model model, @RequestParam Map map) {
 		try {
+			Map userMap = new HashMap();
+			
+			session = req.getSession();
+			userMap = (Map) session.getAttribute("userId");
+			String userNickname = (String) userMap.get("userNickname");
+			
 			List<Map> bgm = storeService.getBgmList(map);
 			model.addAttribute("bgmInfo", bgm);
+			model.addAttribute("dotori",storeService.getMyDotori(userNickname));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -137,6 +145,7 @@ public class StoreController {
 	
 	@RequestMapping(value = "/store/bgmBuy")
 	public String bgmBuy(Model model, @RequestParam(value = "selectedData", required = false) String selectedData) {
+		System.out.println("선택된 곡들 : " + selectedData);
 	    if (selectedData != null) {
 	        ObjectMapper objectMapper = new ObjectMapper();
 	        try {
@@ -147,20 +156,50 @@ public class StoreController {
 	            e.printStackTrace();
 	        }
 	    }
-
 	    return "/store/bgmBuy";
 	}
+	
 
+	@RequestMapping(value = "/store/bgmBuyOk")
+	public String bgmByOk(@RequestParam("userNickname") String bgmList, HttpSession session, HttpServletRequest req) {
+		System.out.println("dbg : " + bgmList);
+		
+		Map userMap = new HashMap();
+		
+		session = req.getSession();
+		String userNickname = (String) session.getAttribute("userNickname");
+		
+		Map map = new HashMap();
+		map.put("userNickname", userNickname);
+		map.put("bgmList", bgmList);
+		
+		try {
+			storeService.putBgm(map);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "/store/bgmBuySuccess";
+	}
 	
 	@RequestMapping(value = "/store/minimiView", method= {RequestMethod.GET, RequestMethod.POST})
-	public String selectStoreList(Model model, @RequestParam(defaultValue = "1") int page) throws Exception {
+	public String selectStoreList(HttpSession session, HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int page) throws Exception {
 	    try {
+	    	
+			Map userMap = new HashMap();
+			
+			session = req.getSession();
+			userMap = (Map) session.getAttribute("userId");
+			String userNickname = (String) userMap.get("userNickname");
+			
 	        Map minimiMap = new HashMap();
 	        minimiMap.put("page", String.valueOf(page));
 	        minimiMap.put("category", "minimi");
 	        List<Map> minimi = storeService.getStroeMinimiList(minimiMap);
 	        model.addAttribute("minimi", minimi);
 	        model.addAttribute("totalPage", storeService.selectStoreCnt(minimiMap));
+	        model.addAttribute("dotori",storeService.getMyDotori(userNickname));
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }

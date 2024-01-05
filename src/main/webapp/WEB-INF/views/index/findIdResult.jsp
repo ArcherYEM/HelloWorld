@@ -30,7 +30,7 @@
 					<p class="p-userEmail"><c:out value="${findId }"/></p>
 					<div class="after-link">
 		               <a href="<c:url value='/'/>">로그인</a> / 
-		               <a href="<c:url value='/index/member/findPw'/>">비밀번호 찾기</a>
+		               <a href="/index/member/findPwView">비밀번호 찾기</a>
 		            </div>
 					
 				</div>

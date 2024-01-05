@@ -34,3 +34,10 @@ body{
 	margin: 0 20px;
 	padding: 5px 20px;
 }
+
+.findId-logo{
+	display: inline-block;
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom:20px;
+}

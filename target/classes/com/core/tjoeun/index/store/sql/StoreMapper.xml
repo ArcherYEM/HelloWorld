@@ -17,6 +17,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and title like concat('%',#{content},'%')
 		or artist like concat('%',#{content},'%')
 	</if>
+	<if test="null != bgmList and '' != bgmList">
+		and title = #{title}
+		and artist = #{artist}
+	</if>
 </select>
 
 <insert id="putBgm" parameterType="map">
@@ -91,5 +95,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</if>
 </select>
 
+<select id="getMyDotori" parameterType="String" resultType="int">
+	select currentDotori 
+	from dotori 
+	where userNickname = #{userNickname};
+</select>
 
 </mapper>
