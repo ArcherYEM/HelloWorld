@@ -11,6 +11,8 @@
 <link href="/resources/css/index/main.css" rel="stylesheet">
 <link href="/resources/css/index/storeMMS.css" rel="stylesheet">
 <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
+<script src="../../../../resources/js/jquery-3.7.1.min.js"></script>
+<script src="<c:url value="/resources/js/storeCart.js" />"></script>
 </head>
 
 <body>
@@ -114,12 +116,21 @@
 				
 				<div class="cart-widget">
 				  <h2>장바구니</h2>
-				  <div class="cart-list-over">
-				  	<ul id="cart-list"></ul>
-				  </div>
+				    <div class="cart-list-over">
+				        <table id="cart-list">
+				            <thead>
+				                <tr>
+				                    <th>카테고리</th>
+				                    <th>상품명</th>
+				                    <th>가격</th>
+				                </tr>
+				            </thead>
+				            <tbody></tbody>
+				        </table>
+				    </div>
 				  <div class="cart-list-under">
-					  <input type="button" class="btnCart" id="btnCartBuy" value="구매">
 					  <input type="button" class="btnCart" id="btnCartClear" value="비우기">
+					  <input type="button" class="btnCart" id="btnCartBuy" value="구매">
 				  </div>
 				</div>
 			</div>
@@ -127,98 +138,10 @@
 		</div>
 	</div>
 	
-	<script src="../../../../resources/js/jquery-3.7.1.min.js"></script>
 	<script>
-	
 		document.getElementById('btnCartClear').addEventListener('click',function() {
 			clearCart();
 		});
-	
-		function clearCart() {
-		    $.ajax({
-		        type: 'POST',
-		        url: "/store/clearCart",
-		        contentType: 'application/json',
-		        success: function () {
-		            const cartList = $('#cart-list');
-		            cartList.empty();
-		        },
-		        error: function () {
-		            console.error('Clear cart failed');
-		        }
-		    });
-		}	
-	
-		window.onload = function() {
-		    	
-		        let userDotoriElement = document.getElementById('userDotori');
-		        let userDotoriCnt = '<c:out value="${dotori}" />' || '';
-		
-		        if (userDotoriCnt.trim() !== '') {
-		            userDotoriElement.style.display = 'block';
-		        } else {
-		            userDotoriElement.style.display = 'none';
-		        }
-		    };
-		    
-		    $(document).ready(function () {
-		        loadCart(); // 페이지 로드 시에 장바구니 데이터 로드
-		
-		        $('.spanPage').on('click', function(){
-		            loadPage($(this).data('page'));
-		        });
-		
-		        $('.divOneProduct').on('click', function () {
-		            const productCate = $(this).data('product-cate');
-		            const productName = $(this).data('product-name');
-		            const productPrice = $(this).data('product-price');
-					
-		            console.log(productCate);
-		            addToCart(productCate, productName, productPrice);
-		        });
-		
-		        function addToCart(cate, name, price) {
-		            $.ajax({
-		                type: 'POST',
-		                url: "/store/addToCart",
-		                contentType: 'application/json',
-		                data: JSON.stringify({ cate: cate, name: name, price: price }),
-		                success: function () {
-		                    loadCart(); // 장바구니에 상품 추가 후 다시 로드
-		                },
-		                error: function () {
-		                    console.error('Ajax request failed');
-		                }
-		            });
-		        }
-		
-		        function loadCart() {
-		            $.ajax({
-		                type: 'GET',
-		                url: "/store/loadCart",
-		                success: function (data) {
-		                    // 서버에서 받은 데이터를 처리하여 페이지 갱신
-		                    // 예시: 장바구니 리스트 갱신
-		                    updateCart(data);
-		                },
-		                error: function () {
-		                    console.error('Ajax request failed');
-		                }
-		            });
-		        }
-		
-		        function updateCart(cartItems) {
-		            const cartList = $('#cart-list');
-		            cartList.empty(); // 기존 장바구니 비우기
-		
-		            // 새로운 장바구니 데이터로 리스트 업데이트
-		            cartItems.forEach(function(item) {
-		                const cartItem = document.createElement('li');
-		                cartItem.textContent =item.cate + ' : ' +  item.name + ' - ₩' + item.price;
-		                cartList.append(cartItem);
-		            });
-		        }
-		    });
 	</script>
 </body>
 </html>
