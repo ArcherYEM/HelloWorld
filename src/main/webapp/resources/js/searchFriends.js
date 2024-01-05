@@ -22,11 +22,15 @@ function searchUser() {
 		           data: JSON.stringify(jsonData)
 		        }).done(function (json) {
 		        	console.log(json);
-
+		        	let homeImage = document.createElement("img");
+		        	homeImage.src = "../../../../resources/images/minihome/homeIcon.png";
+		        	homeImage.setAttribute("class", "friend-home-Img");
+		        	
 		           let searchResult = document.getElementById('searchResult');
 
 		           if (json.resultCode === '1') {
-		        	   searchResult.innerText =json.userName + ' ( ' + json.userEmail + ' )';
+		        	   searchResult.innerText =json.userName;
+		        	   searchResult.appendChild(homeImage);
 		           } else {
 		        	   searchResult.innerText = '검색결과가 없습니다.';
 		           }
