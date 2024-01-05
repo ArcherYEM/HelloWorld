@@ -118,6 +118,7 @@ public class StoreController {
 			userMap = (Map) session.getAttribute("userId");
 			String userNickname = (String) userMap.get("userNickname");
 			
+			System.out.println(map);
 			List<Map> bgm = storeService.getBgmList(map);
 			model.addAttribute("bgmInfo", bgm);
 			model.addAttribute("dotori",storeService.getMyDotori(userNickname));
