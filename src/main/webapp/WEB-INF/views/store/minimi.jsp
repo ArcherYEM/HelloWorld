@@ -10,7 +10,7 @@
 	    <meta charset="UTF-8">
 	    <title>HelloWorld</title>
 	    <link href="/resources/css/index/main.css" rel="stylesheet">
-	    <link href="/resources/css/index/store.css" rel="stylesheet">
+	    <link href="/resources/css/index/storeMMS.css" rel="stylesheet">
 	    <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 	</head>
 	
@@ -41,28 +41,29 @@
 	
 	    <div class="products">
 	        <h3>미니미 상품 목록입니다.</h3>
-	        
-	        <!-- minimi select -->
-	        <div class="productList">
-			    <c:forEach var="minimi" items="${minimi}" varStatus="seq">
-			        <div class="product" data-product-cate="미니미"
-			             data-product-name="${minimi.productName}" data-product-price="${minimi.productPrice}">
-			            <div>
-			                <img src="<c:url value="${minimi.contentPath}"/>" class="store-minimi-img"/>
-			            </div>
-			            <div class="product-name">
-			                <c:out value="${minimi.productName}"/>
-			            </div>
-			            <div class="product-price">
-			                <c:out value="${minimi.productPrice}"/>
-			            </div>
-			        </div>
-			    </c:forEach>
-			</div>
-			
-			<div class="cart-widget">
-			  <h2>장바구니</h2>
-			  <ul id="cart-list"></ul>
+	        <div class="content-container">
+		        <!-- minimi select -->
+		        <div class="productList">
+				    <c:forEach var="minimi" items="${minimi}" varStatus="seq">
+				        <div class="product" data-product-cate="미니미"
+				             data-product-name="${minimi.productName}" data-product-price="${minimi.productPrice}">
+				            <div>
+				                <img src="<c:url value="${minimi.contentPath}"/>" class="store-minimi-img"/>
+				            </div>
+				            <div class="product-name">
+				                <c:out value="${minimi.productName}"/>
+				            </div>
+				            <div class="product-price">
+				                <c:out value="${minimi.productPrice}"/>
+				            </div>
+				        </div>
+				    </c:forEach>
+				</div>
+				
+				<div class="cart-widget">
+				  <h2>장바구니</h2>
+				  <ul id="cart-list"></ul>
+				</div>
 			</div>
 	        <!-- paging -->
 	        <div class="minimi-paging">
