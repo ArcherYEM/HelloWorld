@@ -46,7 +46,6 @@
 		        <tbody>
 		            <c:forEach items="${selectedData}" var="bgmItem" varStatus="status">
 					    <tr id="row${status.index}">
-					        <td><input type="checkbox" id="checkbox${status.index}"></td>
 					        <td>${bgmItem.title}</td>
 					        <td>${bgmItem.artist}</td>
 					        <td>${bgmItem.price}</td>
@@ -81,8 +80,8 @@
 	
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+    var selected = [];
     var userNickname = '${sessionScope.userId.userNickname}';
-
     var selectedData = [
         <c:forEach items="${selectedData}" var="bgmItem" varStatus="loop">
             {
@@ -117,7 +116,6 @@
         var resultHtml = '';
 
         $.each(selected, function (i, item) {
-        	console.log(selected);
             resultHtml += '<div class="bgm-list bgm-grid" id="ajaxTable">';
             resultHtml += '<div><input type="checkbox" id="checkbox' + i + '"></div>';
             resultHtml += '<div>' + (i + 1) + '</div>';
@@ -130,41 +128,12 @@
 
         $('#test').html(resultHtml);
     }
-
-    function okBuyBgm() {
-        var form = document.getElementById("frmTest");
-        var selected = [];
-
-        var inputUserNickname = document.createElement('input');
-        inputUserNickname.type = 'hidden';
-        inputUserNickname.name = 'userNickname';
-        inputUserNickname.value = userNickname;
-        form.appendChild(inputUserNickname);
-        
-/*         var inputBgmList = document.createElement('input');
-        inputBgmList.type = 'hidden';
-        inputBgmList.name = 'bgmList';
-        inputBgmList.value = JSON.stringify(selected);
-        form.appendChild(inputBgmList); */
-        $('input[type="checkbox"]').each(function(index) {
-            if ($(this).is(':checked')) {
-                var rowId = '#row' + index; // 행의 ID
-                var title = $(rowId).find('td:nth-child(2)').text(); // 두 번째 열: 제목
-                var artist = $(rowId).find('td:nth-child(3)').text(); // 세 번째 열: 아티스트
-                var price = $(rowId).find('td:nth-child(4)').text(); // 네 번째 열: 가격
-
-                selected.push({title: title, artist: artist, price: price}); // 배열에 추가
-            }
-        });
-
-        document.body.appendChild(form);
-        //form.submit();
-
+    
     // form을 제출하는 함수
     function sendSelectedDataToController() {
         var selectedDataString = JSON.stringify(selectedData);
         document.getElementById("selectedDataField").value = selectedDataString;
-        document.getElementById("bgmBuyForm").submit(); // 폼을 서버로 전송
+        document.getElementById("bgmBuyForm").submit();
     }
 </script>
 
