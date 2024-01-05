@@ -40,19 +40,43 @@ public class StoreController {
 //	}
 
 	@RequestMapping(value = "/store/skinView")
-	public String skin() {
+	public String skin(HttpSession session, HttpServletRequest req, Model model) {
 
+		Map userMap = new HashMap();
+		
+		session = req.getSession();
+		userMap = (Map) session.getAttribute("userId");
+		String userNickname = (String) userMap.get("userNickname");
+
+		model.addAttribute("dotori",storeService.getMyDotori(userNickname));
+		
 		return "/store/skin";
 	}
 
 	@RequestMapping(value = "/store/menuView")
-	public String menu() {
+	public String menu(HttpSession session, HttpServletRequest req, Model model) {
+		
+		Map userMap = new HashMap();
+		
+		session = req.getSession();
+		userMap = (Map) session.getAttribute("userId");
+		String userNickname = (String) userMap.get("userNickname");
+
+		model.addAttribute("dotori",storeService.getMyDotori(userNickname));
 
 		return "/store/menu";
 	}
 
 	@RequestMapping(value = "/store/dotoriView")
-	public String dotori() {
+	public String dotori(HttpSession session, HttpServletRequest req, Model model) {
+		
+		Map userMap = new HashMap();
+		
+		session = req.getSession();
+		userMap = (Map) session.getAttribute("userId");
+		String userNickname = (String) userMap.get("userNickname");
+
+		model.addAttribute("dotori",storeService.getMyDotori(userNickname));
 
 		return "/store/dotori";
 	}
@@ -109,10 +133,17 @@ public class StoreController {
 	}
 
 	@RequestMapping(value = "/store/bgmView")
-	public String getBgmList(Model model, @RequestParam Map map) {
+	public String getBgmList(HttpSession session, HttpServletRequest req, Model model, @RequestParam Map map) {
 		try {
+			Map userMap = new HashMap();
+			
+			session = req.getSession();
+			userMap = (Map) session.getAttribute("userId");
+			String userNickname = (String) userMap.get("userNickname");
+			
 			List<Map> bgm = storeService.getBgmList(map);
 			model.addAttribute("bgmInfo", bgm);
+			model.addAttribute("dotori",storeService.getMyDotori(userNickname));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -153,14 +184,22 @@ public class StoreController {
 
 	
 	@RequestMapping(value = "/store/minimiView", method= {RequestMethod.GET, RequestMethod.POST})
-	public String selectStoreList(Model model, @RequestParam(defaultValue = "1") int page) throws Exception {
+	public String selectStoreList(HttpSession session, HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int page) throws Exception {
 	    try {
+	    	
+			Map userMap = new HashMap();
+			
+			session = req.getSession();
+			userMap = (Map) session.getAttribute("userId");
+			String userNickname = (String) userMap.get("userNickname");
+			
 	        Map minimiMap = new HashMap();
 	        minimiMap.put("page", String.valueOf(page));
 	        minimiMap.put("category", "minimi");
 	        List<Map> minimi = storeService.getStroeMinimiList(minimiMap);
 	        model.addAttribute("minimi", minimi);
 	        model.addAttribute("totalPage", storeService.selectStoreCnt(minimiMap));
+	        model.addAttribute("dotori",storeService.getMyDotori(userNickname));
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
