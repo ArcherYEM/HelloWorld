@@ -62,78 +62,73 @@
 			</c:forEach>
 			<span class="bgmBuy-total-right">${totalPrice}</span>
 		</div>
+		
 		<div class="bgmBuy-btn-group">
 		    <div class="bgmBuy-btn-n">
 		        <input type="button" value="취소" onclick="cancelBgmBuy()">
 		    </div>
 		    <div class="bgmBuy-btn-y">
-			    <form id="bgmBuyForm" action="/store/bgmBuyOk" method="post">
-			        <input type="button" value="구매" onclick="sendSelectedDataToController()">
-			        <input type="hidden" name="selectedData" id="selectedDataField">
-			    </form>
+		        <form id="bgmBuyForm" action="/store/bgmBuyOk" method="post">
+		            <input type="button" value="구매" onclick="sendSelectedDataToController()">
+		            <input type="hidden" name="selectedData" id="selectedDataField">
+		        </form>
 		    </div>
 		</div>
+		
 	</div>
 	
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    var selected = [];
-    var userNickname = '${sessionScope.userId.userNickname}';
-    var selectedData = [
-        <c:forEach items="${selectedData}" var="bgmItem" varStatus="loop">
-            {
-                title: "${bgmItem.title}",
-                artist: "${bgmItem.artist}",
-                price: "${bgmItem.price}"
-            }<c:if test="${!loop.last}">,</c:if>
-        </c:forEach>
-    ];
+var selected = [];
+var userNickname = '${sessionScope.userId.userNickname}';
 
-    function openNewWindowBgmBuy() {
-        var windowSettings = 'width=800, height=600, scrollbars=no, resizable=no, toolbar=no, menubar=no, left=100, top=50';
-        var selectedDataString = JSON.stringify(selectedData);
-        window.open('/store/bgmBuy?selectedData=' + encodeURIComponent(selectedDataString), '_blank', windowSettings);
-    }
+<c:forEach items="${selectedData}" var="bgmItem">
+	var title = '<c:out value="${bgmItem.title}" />';
+	var artist = '<c:out value="${bgmItem.artist}" />';
+	var price = '<c:out value="${bgmItem.price}" />';
+selected.push({ title: title, artist: artist, price: price });
+</c:forEach>
 
-    function cancelBgmBuy() {
-        $('.bgm-list.bgm-grid input[type="checkbox"]:checked').each(function () {
-            var indexToRemove = $(this).closest('.bgm-list.bgm-grid').index();
-            selected.splice(indexToRemove, 1);
-        });
+function openNewWindowBgmBuy() {
+    var windowSettings = 'width=800, height=600, scrollbars=no, resizable=no, toolbar=no, menubar=no, left=100, top=50';
+    window.open('/store/bgmBuy', '_blank', windowSettings);
+}
 
-        renderSelectedItems();
-        window.close();
-        
-        if (window.opener && !window.opener.closed) {
-            window.opener.reloadParentWindow();
-        }
-    }
-
-    function renderSelectedItems() {
-        var resultHtml = '';
-
-        $.each(selected, function (i, item) {
-            resultHtml += '<div class="bgm-list bgm-grid" id="ajaxTable">';
-            resultHtml += '<div><input type="checkbox" id="checkbox' + i + '"></div>';
-            resultHtml += '<div>' + (i + 1) + '</div>';
-            resultHtml += '<div>' + item.title + '</div>';
-            resultHtml += '<div>' + item.artist + '</div>';
-            resultHtml += '<div>' + item.runningTime + '</div>';
-            resultHtml += '<div>' + item.bgmPrice + '</div>';
-            resultHtml += '</div>';
-        });
-
-        $('#test').html(resultHtml);
-    }
+function cancelBgmBuy() {
+    renderSelectedItems();
+    window.close();
     
-    // form을 제출하는 함수
-    function sendSelectedDataToController() {
-        var selectedDataString = JSON.stringify(selectedData);
-        document.getElementById("selectedDataField").value = selectedDataString;
-        document.getElementById("bgmBuyForm").submit();
+    if (window.opener && !window.opener.closed) {
+        window.opener.reloadParentWindow();
     }
-</script>
+}
 
-	
+function renderSelectedItems() {
+    var resultHtml = '';
+
+    $.each(selected, function (i, item) {
+        resultHtml += '<div class="bgm-list bgm-grid" id="ajaxTable">';
+        resultHtml += '<div>' + (i + 1) + '</div>';
+        resultHtml += '<div>' + item.title + '</div>';
+        resultHtml += '<div>' + item.artist + '</div>';
+        resultHtml += '<div>' + item.runningTime + '</div>';
+        resultHtml += '<div>' + item.bgmPrice + '</div>';
+        resultHtml += '</div>';
+    });
+
+    $('#test').html(resultHtml);
+}
+
+// form 전송
+function sendSelectedDataToController() {
+    var form = document.getElementById("bgmBuyForm");
+
+    var selectedDataField = document.getElementById("selectedDataField");
+    selectedDataField.value = JSON.stringify(selected);
+
+    form.submit();
+}
+
+</script>
 </body>
 </html>

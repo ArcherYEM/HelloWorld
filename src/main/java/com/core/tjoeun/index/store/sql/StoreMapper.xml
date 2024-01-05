@@ -18,10 +18,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and title like concat('%',#{content},'%')
 		or artist like concat('%',#{content},'%')
 	</if>
-	<if test="title != null">
+	<if test="title != null and title != '' and artist != null and artist != ''">
 		and title = #{title}
-	</if>
-	<if test="artist != null">
 		and artist = #{artist}
 	</if>
 </select>
