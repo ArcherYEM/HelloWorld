@@ -43,10 +43,10 @@ public class AlbumController {
 	
 	@RequestMapping(value="/mnHome/albumWriteView/{userNickname}")
 	public String albumWriteView(@PathVariable String userNickname, Model model) {
+		
 		Map map = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", map.get("userName"));
 		model.addAttribute("title", map.get("title"));
-		
 		return "miniHome/albumWrite";
 	}
 }

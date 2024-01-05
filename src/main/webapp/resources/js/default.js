@@ -9,14 +9,15 @@ window.onresize = function() {
 };
 
 // 상단 미니홈피 타이틀 
-$('#btn-title-edit').on('click', function(){
-	document.getElementById('divHomeTitle').style.display = 'none';
+
+$(document).on('click', '#btn-title-edit', function() {
+    document.getElementById('divHomeTitle').style.display = 'none';
 	document.getElementById('newTitle').type = 'text';
 	document.getElementById('btn-title-edit').type = 'hidden';
 	document.getElementById('btn-title-save').type = 'button';
 });
 
-$('#btn-title-save').on('click', function(){
+$(document).on('click', '#btn-title-save', function() {
 	let newTitle = document.getElementById('newTitle').value;
 	let userNickname = document.getElementById('hiddenUserNickname').value;
 	
@@ -49,8 +50,11 @@ $('#btn-title-save').on('click', function(){
 	document.getElementById('newTitle').type = 'hidden';
 	document.getElementById('btn-title-edit').type = 'button';
 	document.getElementById('btn-title-save').type = 'hidden';
-	
 });
+
+
+
+
 
 	
 // 오디오 관련 스크립트
