@@ -110,6 +110,7 @@ function search(){
                 resultHtml += '<div>' + item.artist + '</div>';
                 resultHtml += '<div>' + item.runningTime + '</div>';
                 resultHtml += '<div>' + item.bgmPrice + '</div>';
+                resultHtml += '<div style="display:none">' + item.contentPath+ '</div>';
                 resultHtml += '</div>';
                 $('#test').html(resultHtml);
             });

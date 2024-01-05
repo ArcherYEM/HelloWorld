@@ -11,6 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    ,artist
 	    ,runningTime
 	    ,bgmPrice
+	    ,contentPath
 	from bgm
 	where 1 = 1
 	<if test="null != content and '' != content">
