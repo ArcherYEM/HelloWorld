@@ -122,6 +122,7 @@ public class StoreController {
 			List<Map> bgm = storeService.getBgmList(map);
 			model.addAttribute("bgmInfo", bgm);
 			model.addAttribute("dotori",storeService.getMyDotori(userNickname));
+			System.out.println("dbg : " + storeService.getBgmList(userMap));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
