@@ -106,9 +106,6 @@ public class NoticeController {
 		return "notice/noticeDetail";
 	}
 	
-	
-	
-	
 	@RequestMapping(value="/notice/noticeDelete", method = RequestMethod.POST)
 	public String noticeDelete(Model model, @RequestParam Map map, RedirectAttributes re) {
 
@@ -132,10 +129,13 @@ public class NoticeController {
 			re.addFlashAttribute("msg", "삭제할 게시물을 선택해주세요.");
 		}
 		
-		
-		
 		return "redirect:/notice/noticeView";
 	}
 	
+	@RequestMapping(value="/error", method = RequestMethod.GET)
+	public String error() {
+		
+		return "index/error";
+	}
 	
 }

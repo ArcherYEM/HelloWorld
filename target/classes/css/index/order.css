@@ -183,3 +183,14 @@ input:hover{
 	text-align: center;
 	justify-content: center;
 }
+
+.failMessage {
+    white-space: normal; /* 텍스트 줄바꿈을 허용 */
+    display: block; /* 블록 레벨 요소로 변경 */
+}
+
+.redAndBold {
+    color: red; /* 붉은색 텍스트 색상 */
+    font-weight: bold; /* 굵게 표시 */
+}
+
