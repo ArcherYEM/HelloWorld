@@ -1,62 +1,33 @@
-function insertComment(){
-	$(document).ready(function() {
-		
-	let userNickname = $("#userNickname").val();
-	let targetNickname = $("#targetNickname").val();
+function insertComment() {
+    let userNickname = $("#userNickname").val();
+    let targetNickname = $("#targetNickname").val();
 
-	if(userNickname == targetNickname){
-		alert("자신의 방명록에는 글을 작성할 수 없습니다.");
+    if(userNickname === targetNickname){
+        alert("자신의 방명록에는 글을 작성할 수 없습니다.");
         return;
-	}
-	
-	let commentValue = $('#visit-comment-insert').val();
+    }
 
-	let jsonData = {
-		"content" : commentValue,
-		"userNickname" : userNickname,
-		"targetNickname" : targetNickname
-	};
-	
-	$.ajax({
-		method:'POST',
-		url: "/mnHome/visitComment",
-		contentType: 'application/json',
-		data: JSON.stringify(jsonData)
-	}).done(function (json){
-		if(json.result=="Success"){
-			$('#visit-comment-insert').val('');
+    let commentValue = $('#visit-comment-insert').val();
 
-            var newCommentHtml = `
-                <div id="visit-new" data-userNickname="${userNickname}">
-                    <div class="visit-line">
-                        <table>
-                            <tr>
-                                <td>No. New</td>
-                                <td>${userNickname}
-                                    <img src="../../../../resources/images/minihome/homeIcon.png" class="visit-line-tbImg">
-                                </td>
-                                <td>방금 전</td>
-                                <td>비밀로하기</td>
-                                <td class="modify-button" onclick="btnModify(this)">수정</td>
-                                <td onclick="btnDelete(this)">삭제</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="visit-frame-write view-margin">
-                        <img class ="visit-minimi" src="../../../../resources/images/minihome/defaultImage.png" />
-                        <div class="visit-view">
-                            <input type="text" readonly class="visit-view-inner" value="${commentValue}" data-original-content="${commentValue}">
-                        </div>                      
-                    </div>
-                </div>
-            `;
+    let jsonData = {
+        "content" : commentValue,
+        "userNickname" : userNickname,
+        "targetNickname" : targetNickname
+    };
 
-            $('#visitContainer').prepend(newCommentHtml);
-		}else if(json.result=="false"){
-			alert("댓글 작성에 실패했습니다. 다시 시도해주세요.");
-		}
-	})
-	});
+    $.ajax({
+        method: 'POST',
+        url: "/mnHome/visitComment",
+        contentType: 'application/json',
+        data: JSON.stringify(jsonData)
+    }).done(function(json) {
+        if(json.result === "Success"){
+            $('#visit-comment-insert').val('');
+            $('#menu-visit').trigger('click');
+        } else if(json.result === "false"){
+            alert("댓글 작성에 실패했습니다. 다시 시도해주세요.");
+        }
+    });
 }
 
 function btnModify(clickedElement) {
