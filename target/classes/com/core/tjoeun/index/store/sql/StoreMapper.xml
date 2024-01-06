@@ -83,7 +83,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <update id="updateDotori" parameterType="map">
 	update dotori 
-	set currentDotori = currentDotori + #{dotoriCharge} where userNickname = #{userNickname};
+	set 
+	currentDotori = currentDotori + #{dotoriCharge} 
+	where 
+		userNickname = #{userNickname};
+</update>
+
+<update id="deductDotori" parameterType="map">
+	update dotori
+	set
+	currentDotori = #{amount}
+	where 
+		userNickname = #{userNickname};
 </update>
 
 <select id="selectStoreCnt" resultType="map" parameterType="map">

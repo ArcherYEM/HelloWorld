@@ -25,4 +25,5 @@ public interface MemberService {
 	public String selectUserMinimi(String userNickname);
 	
 	public String getUserName(String userNickname);
+	
 }

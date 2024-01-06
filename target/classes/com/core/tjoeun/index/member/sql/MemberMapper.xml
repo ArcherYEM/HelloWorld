@@ -32,7 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			#{userNickname}
 		    ,100)
 	</insert>
-   
+	
 	<insert id="insertUserDotoriC" parameterType="String">
    		insert into dotoriC (
 			userNickname
