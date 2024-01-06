@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+.error-frame {
+    height: 94vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-content {
+    text-align: center;
+}
+
+.error-section1,
+.error-section2,
+.error-section3 {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.error-core {
+	font-size: 18px;
+	font-weight: bold;
+	color: blue;
+	margin-right: 10px;
+}
+
+.error-section3 {
+	width: 200px;
+	height: 40px;
+	border: 2px solid red;
+	background-color: black;
+	color: white;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
