@@ -95,8 +95,10 @@
 										</td>
 										<td>${visit.update_date }</td>
 										<td>비밀로하기</td>
-										<td class="modify-button" onclick="btnModify(this)">수정</td>
-										<td onclick="btnDelete(this)">삭제</td>
+										<c:if test="${sessionScope.userNickname==visit.userNickname}">
+											<td onclick="btnModify(this)">수정</td>
+											<td onclick="btnDelete(this)">삭제</td>
+										</c:if>
 									</tr>
 								</table>
 							</div>
@@ -130,7 +132,7 @@
 					    <div class="menu-content" data-tab="<c:url value='/mnHome/boardView/${userNickname }'/>">
 					        <a href="#">게시판</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>">
+					    <div id="menu-visit" class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>">
 					        <a href="#">방명록</a>
 					    </div>
 					    <c:if test="${sessionScope.userId.userNickname eq userNickname }">
