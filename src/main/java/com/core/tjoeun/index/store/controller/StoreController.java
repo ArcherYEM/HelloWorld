@@ -157,8 +157,10 @@ public class StoreController {
 	
 
 	@RequestMapping(value = "/store/bgmBuyOk", method = RequestMethod.POST)
-	public String bgmBuyOk(@RequestParam(value = "selectedData", required = false) String selectedData
-			, HttpSession session, HttpServletRequest req , Model model) {
+	public String bgmBuyOk(@RequestParam(value = "selectedData", required = false) String selectedData,
+            @RequestParam(value = "totalPrice", required = false) int totalPrice,
+            HttpSession session, HttpServletRequest req, Model model) {
+		
         System.out.println("dbg selectedData : " + selectedData);
         
         try {
@@ -176,7 +178,6 @@ public class StoreController {
 			userMap = (Map) session.getAttribute("userId");
 			String userNickname = (String) userMap.get("userNickname");
             
-
             for (int i = 0; i < bgmList.size(); i++) {
                 Map<String, String> bgmItem = bgmList.get(i);
                 
@@ -200,38 +201,44 @@ public class StoreController {
                 System.out.println("bgmForMap : " + bgmForMap);
             }
             
-            // totalMap에 필요한 정보가 저장됨
-            for (Map<String, Object> resultMap : totalMap) {
-                String titleDb = (String) resultMap.get("title");
-                String artistDb = (String) resultMap.get("artist");
-                String runningTimeDb = (String) resultMap.get("runningTime");
-                String contentPathDb = (String) resultMap.get("contentPath");
-                
-                System.out.println("titleDb : " + titleDb);
-                System.out.println("artistDb : " + artistDb);
-                System.out.println("runningTimeDb : " + runningTimeDb);
-                System.out.println("contentPathDb : " + contentPathDb);
-                
-                System.out.println("resultMap : " + resultMap);
-                
-                resultMap.put("userNickname", userNickname);
-                
-                storeService.putBgm(resultMap);
-                System.out.println("totalMap : " + totalMap);
-//                결과값
-//                totalMap : [{contentPath=/resources/sounds/tiara-boPeepBoPeep.mp3, bgmPrice=10, artist=티아라
-//                		, runningTime=03:45, title=Bo Peep Bo Peep, seq=11}
-//                , {contentPath=/resources/sounds/dongbangsinki-risingSun.map, bgmPrice=10, artist=동방신기
-//                		, runningTime=04:40, title=라이징 썬, seq=13}]
-            }
+            // 현재 보유도토리와 결제 도토리 값 비교
+            int myDtr = storeService.getMyDotori(userNickname);
+            System.out.println("myDtr : " + myDtr);
+            System.out.println("totalPrice : " + totalPrice);
             
+            int amount = 0;
+            amount = myDtr - totalPrice;
+            System.out.println("amount : " + amount);
+            
+            if (amount >= 0) {
+	            // totalMap에 필요한 정보가 저장됨
+	            for (Map<String, Object> resultMap : totalMap) {
+	                String titleDb = (String) resultMap.get("title");
+	                String artistDb = (String) resultMap.get("artist");
+	                String runningTimeDb = (String) resultMap.get("runningTime");
+	                String contentPathDb = (String) resultMap.get("contentPath");
+	                
+	                System.out.println("titleDb : " + titleDb);
+	                System.out.println("artistDb : " + artistDb);
+	                System.out.println("runningTimeDb : " + runningTimeDb);
+	                System.out.println("contentPathDb : " + contentPathDb);
+	                
+	                System.out.println("resultMap : " + resultMap);
+	                
+	                resultMap.put("userNickname", userNickname);
+	                
+	                storeService.putBgm(resultMap);
+	                System.out.println("totalMap : " + totalMap);
+	            } // for문 괄호
+	            return "/store/bgmBuySuccess";
+            } else {
+            	return "/store/bgmBuyFail";
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-	    return "/store/bgmBuySuccess";
+        return "/error";
 	}
-
 	
 	@RequestMapping(value = "/store/minimiView", method= {RequestMethod.GET, RequestMethod.POST})
 	public String selectStoreList(HttpSession session, HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int page) throws Exception {

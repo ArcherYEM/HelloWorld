@@ -71,6 +71,7 @@
 		        <form id="bgmBuyForm" action="/store/bgmBuyOk" method="post">
 		            <input type="button" value="구매" onclick="sendSelectedDataToController()">
 		            <input type="hidden" name="selectedData" id="selectedDataField">
+		            <input type="hidden" name="totalPrice" value="${totalPrice}">
 		        </form>
 		    </div>
 		</div>
