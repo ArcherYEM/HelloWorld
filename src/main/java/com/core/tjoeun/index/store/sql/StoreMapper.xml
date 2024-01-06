@@ -40,7 +40,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	)
 </insert>
 
-<select id="getStroeMinimiList" resultType="map" parameterType="map">
+<select id="getStoreBgmList" resultType="map" parameterType="map">
+   <![CDATA[
+   SELECT 
+		seq
+	    ,title
+	    ,artist
+	    ,runningTime
+	    ,bgmPrice
+	    ,contentPath
+	FROM bgm
+	WHERE 1 = 1
+	<if test="null != content and '' != content">
+		AND title like concat('%',#{content},'%')
+		OR artist like concat('%',#{content},'%')
+	</if>
+	<if test="title != null and title != '' and artist != null and artist != ''">
+		AND title = #{title}
+		AND artist = #{artist}
+	</if>
+   LIMIT #{limit, jdbcType=INTEGER} 
+   OFFSET #{offset, jdbcType=INTEGER}
+   ]]>
+</select>
+
+<select id="getStoreMinimiList" resultType="map" parameterType="map">
    <![CDATA[
    SELECT
        seq,

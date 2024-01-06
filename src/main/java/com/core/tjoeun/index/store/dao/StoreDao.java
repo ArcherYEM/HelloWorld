@@ -9,7 +9,7 @@ public interface StoreDao {
 	
 	public int putBgm(Map map);
 	
-	public List<Map> getStroeMinimiList(Map map);
+	public List<Map> getStoreMinimiList(Map map);
 	
 	public Map selectStoreCnt(Map map);
 	
