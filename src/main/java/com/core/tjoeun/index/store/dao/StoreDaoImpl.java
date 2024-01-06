@@ -28,9 +28,9 @@ public class StoreDaoImpl implements StoreDao {
 	}
 		
 	@Override
-	public List<Map> getStroeMinimiList(Map map) {
+	public List<Map> getStoreMinimiList(Map map) {
 		StoreMapper mapper = sqlSession.getMapper(StoreMapper.class);
-		return mapper.getStroeMinimiList(map);
+		return mapper.getStoreMinimiList(map);
 	}
 
 	@Override

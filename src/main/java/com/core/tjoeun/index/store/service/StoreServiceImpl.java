@@ -46,7 +46,7 @@ public class StoreServiceImpl implements StoreService {
 	}
 	
 	@Override
-	public List<Map> getStroeMinimiList(Map map) {
+	public List<Map> getStoreMinimiList(Map map) {
 	    Map minimiMap = new HashMap();
 	    Object pageObj = map.get("page");
 	    if (pageObj != null && !pageObj.toString().isEmpty()) {
@@ -54,7 +54,7 @@ public class StoreServiceImpl implements StoreService {
 	        minimiMap.put("limit", 10);
 	        minimiMap.put("offset", 10 * (iPage - 1));
 	    }
-	    return storeDao.getStroeMinimiList(minimiMap);
+	    return storeDao.getStoreMinimiList(minimiMap);
 	}
 
 	@Override

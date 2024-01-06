@@ -11,7 +11,7 @@ public interface StoreService {
 	
 	public long selectStoreCnt(Map map);
 	
-	public List<Map> getStroeMinimiList(Map map);
+	public List<Map> getStoreMinimiList(Map map);
 	
 	public int insertDotoriC(Map map);
 	

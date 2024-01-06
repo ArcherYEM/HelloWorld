@@ -260,7 +260,7 @@ public class StoreController {
 	        Map minimiMap = new HashMap();
 	        minimiMap.put("page", String.valueOf(page));
 	        minimiMap.put("category", "minimi");
-	        List<Map> minimi = storeService.getStroeMinimiList(minimiMap);
+	        List<Map> minimi = storeService.getStoreMinimiList(minimiMap);
 	        model.addAttribute("minimi", minimi);
 	        model.addAttribute("totalPage", storeService.selectStoreCnt(minimiMap));
 	        model.addAttribute("dotori",storeService.getMyDotori(userNickname));
