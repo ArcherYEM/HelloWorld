@@ -21,5 +21,7 @@ public interface StoreDao {
 	
 	public int updateDotori(Map map);
 	
+	public int deductDotori(Map map);
+	
 	public int getMyDotori(String userNickname);
 }

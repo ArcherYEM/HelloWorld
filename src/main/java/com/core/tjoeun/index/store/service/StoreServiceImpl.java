@@ -87,5 +87,12 @@ public class StoreServiceImpl implements StoreService {
 	public int getMyDotori(String userNickname) {
 		return storeDao.getMyDotori(userNickname);
 	}
+
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
+	public int deductDotori(Map map) {
+		
+		return storeDao.deductDotori(map);
+	}
 	
 }

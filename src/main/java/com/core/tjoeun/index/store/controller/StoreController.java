@@ -163,76 +163,83 @@ public class StoreController {
 		
         System.out.println("dbg selectedData : " + selectedData);
         
+        Map userMap = new HashMap();
+        session = req.getSession();
+		userMap = (Map) session.getAttribute("userId");
+		String userNickname = (String) userMap.get("userNickname");
+        
         try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            List<Map<String, String>> bgmList = objectMapper.readValue(selectedData, new TypeReference<List<Map<String, String>>>(){});
-            
-            // 선택한 곡들의 title 과 artist 를 저장하는 map
-            Map<String, Object> bgmForMap = new HashMap<>();
-            
-            // service 에서 select 된 title, artist, contentPath, runningTime 을 저장하는 map 리스트
-            List<Map<String, Object>> totalMap = new ArrayList<>();
-            
-            Map userMap = new HashMap();
-            session = req.getSession();
-			userMap = (Map) session.getAttribute("userId");
-			String userNickname = (String) userMap.get("userNickname");
-            
-            for (int i = 0; i < bgmList.size(); i++) {
-                Map<String, String> bgmItem = bgmList.get(i);
-                
-                String title = bgmItem.get("title");
-                String artist = bgmItem.get("artist");
-                
-                System.out.println("title : " + title);
-                System.out.println("artist : " + artist);
-                
-                bgmForMap.put("title", title);
-                bgmForMap.put("artist", artist);
-                
-                // storeService.getBgmList(bgmForMap) 호출하여 결과를 반환
-                List<?> resultList = storeService.getBgmList(bgmForMap);
-                
-                // 결과를 totalMap에 추가
-                if (resultList != null && !resultList.isEmpty()) {
-                	totalMap.addAll((List<Map<String, Object>>) resultList);
-                }
-                
-                System.out.println("bgmForMap : " + bgmForMap);
-            }
-            
-            // 현재 보유도토리와 결제 도토리 값 비교
-            int myDtr = storeService.getMyDotori(userNickname);
-            System.out.println("myDtr : " + myDtr);
-            System.out.println("totalPrice : " + totalPrice);
-            
-            int amount = 0;
-            amount = myDtr - totalPrice;
-            System.out.println("amount : " + amount);
-            
-            if (amount >= 0) {
-	            // totalMap에 필요한 정보가 저장됨
-	            for (Map<String, Object> resultMap : totalMap) {
-	                String titleDb = (String) resultMap.get("title");
-	                String artistDb = (String) resultMap.get("artist");
-	                String runningTimeDb = (String) resultMap.get("runningTime");
-	                String contentPathDb = (String) resultMap.get("contentPath");
+	         // 현재 보유도토리와 결제 도토리 값 비교
+	            int myDtr = storeService.getMyDotori(userNickname);
+	            System.out.println("myDtr : " + myDtr);
+	            System.out.println("totalPrice : " + totalPrice);
+	            
+	            int amount = 0;
+	            amount = myDtr - totalPrice;
+	            System.out.println("amount : " + amount);
+	            if (amount < 0) {
+	            	return "/store/bgmBuyFail";
+	            } else {
+	            	ObjectMapper objectMapper = new ObjectMapper();
+	                List<Map<String, String>> bgmList = objectMapper.readValue(selectedData, new TypeReference<List<Map<String, String>>>(){});
 	                
-	                System.out.println("titleDb : " + titleDb);
-	                System.out.println("artistDb : " + artistDb);
-	                System.out.println("runningTimeDb : " + runningTimeDb);
-	                System.out.println("contentPathDb : " + contentPathDb);
+	                // 선택한 곡들의 title 과 artist 를 저장하는 map
+	                Map<String, Object> bgmForMap = new HashMap<>();
 	                
-	                System.out.println("resultMap : " + resultMap);
+	                // service 에서 select 된 title, artist, contentPath, runningTime 을 저장하는 map 리스트
+	                List<Map<String, Object>> totalMap = new ArrayList<>();
 	                
-	                resultMap.put("userNickname", userNickname);
+	                for (int i = 0; i < bgmList.size(); i++) {
+	                    Map<String, String> bgmItem = bgmList.get(i);
+	                    
+	                    String title = bgmItem.get("title");
+	                    String artist = bgmItem.get("artist");
+	                    
+	                    System.out.println("title : " + title);
+	                    System.out.println("artist : " + artist);
+	                    
+	                    bgmForMap.put("title", title);
+	                    bgmForMap.put("artist", artist);
+	                    
+	                    // storeService.getBgmList(bgmForMap) 호출하여 결과를 반환
+	                    List<?> resultList = storeService.getBgmList(bgmForMap);
+	                    
+	                    // 결과를 totalMap에 추가
+	                    if (resultList != null && !resultList.isEmpty()) {
+	                    	totalMap.addAll((List<Map<String, Object>>) resultList);
+	                    }
+	                    
+	                    System.out.println("bgmForMap : " + bgmForMap);
+	                }
 	                
-	                storeService.putBgm(resultMap);
-	                System.out.println("totalMap : " + totalMap);
-	            } // for문 괄호
-	            return "/store/bgmBuySuccess";
-            } else {
-            	return "/store/bgmBuyFail";
+    	            // totalMap에 필요한 정보가 저장됨
+    	            for (Map<String, Object> resultMap : totalMap) {
+    	                String titleDb = (String) resultMap.get("title");
+    	                String artistDb = (String) resultMap.get("artist");
+    	                String runningTimeDb = (String) resultMap.get("runningTime");
+    	                String contentPathDb = (String) resultMap.get("contentPath");
+    	                
+    	                System.out.println("titleDb : " + titleDb);
+    	                System.out.println("artistDb : " + artistDb);
+    	                System.out.println("runningTimeDb : " + runningTimeDb);
+    	                System.out.println("contentPathDb : " + contentPathDb);
+    	                
+    	                System.out.println("resultMap : " + resultMap);
+    	                
+    	                resultMap.put("userNickname", userNickname);
+    	                
+    	                storeService.putBgm(resultMap);
+    	                System.out.println("totalMap : " + totalMap);
+    	            } // for문 괄호
+    	            
+    	            // 도토리차감
+    	            Map updateMap = new HashMap();
+    	            updateMap.put("userNickname", userNickname);
+    	            updateMap.put("amount", amount);
+    	            storeService.deductDotori(updateMap);
+    	            System.out.println("myDtr : " + myDtr);
+    	            
+    	            return "/store/bgmBuySuccess";
             }
         } catch (Exception e) {
             e.printStackTrace();

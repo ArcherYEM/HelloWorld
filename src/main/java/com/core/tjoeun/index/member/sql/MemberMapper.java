@@ -15,7 +15,7 @@ public interface MemberMapper {
 	public String selectUserMinimi(String userNickname);
 	
 	public int insertUserDotori(String userNickname);
-
+	
 	public int insertUserDotoriC(String userNickname);
 	
 	public int insertMiniroomBackground(String userNickname);
