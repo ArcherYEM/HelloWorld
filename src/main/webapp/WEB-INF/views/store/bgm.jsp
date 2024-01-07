@@ -26,9 +26,9 @@
 	       <div class="index-header-right">
 	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
 	            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
-	            <a href="<c:url value="/helloworld/minihome/main" />" class="index-a-mnh">내 미니홈피</a>
-				<a href="<c:url value="/" />" class="index-a-logout">로그아웃</a>
-	       </div>
+	            <a href="<c:url value='/mnHome/mainView' />" class="index-a-mnh">내 미니홈피</a>
+	            <a href="<c:url value="/index/member/logout" />" class="index-a-logout">로그아웃</a>
+	        </div>
       </div>
 
 		<div id="divHiUser">
