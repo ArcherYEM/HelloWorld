@@ -42,7 +42,8 @@ a {
 }
 
 #userDotori {
-	width: 160px;
+  margin: 0; /* 기본 마진 제거 */
+  flex-shrink: 0; /* 도토리가 표시되면 크기를 줄이지 않도록 설정 */
 }
 
 #divHiUser {
@@ -58,6 +59,7 @@ a {
 	margin: 20px;
 	font-size: 25px;
 	font-weight: bold;
+	flex: 1; /* 추가 */
 }
 
 .divIndexMenu {
@@ -125,13 +127,13 @@ a {
 }
 
 .mainBtn1{
-	flext: 1;
+	flex: 1;
 	margin-left: 210px;
 	width: 100px;
 }
 
 .mainBtn2{
-	flext: 1;
+	flex: 1;
 	margin-right: 210px;
 	width: 100px;
 }
