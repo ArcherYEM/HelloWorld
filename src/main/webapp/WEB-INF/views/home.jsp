@@ -79,17 +79,29 @@
 
          <div id="divMainSlide">
             <div class="slideshow-container">
-   
+            	<div class="btnContainer">
+            		<div class="btnLeft">
+						<a class="btnClick" onclick="moveSlide(-1)">&#10094;</a>
+					</div>
+					<div class="btnRight">
+						<a class="btnClick" onclick="moveSlide(1)">&#10095;</a>
+					</div>
+   				</div>
                <div class="mySlides fade">
                  <img src="<c:url value="/resources/images/mainSlideImg1.jpg"/>" >
                </div>
                
                <div class="mySlides fade">
-                 <img src="<c:url value="/resources/images/sildeImg1.png"/>" >
+                 <img src="<c:url value="/resources/images/slideImg1.png"/>" >
                </div>
+               <div class="mySlides fade">
+                 <img src="<c:url value="/resources/images/slideImg2.png"/>" >
+               </div>
+
                <div class="divdot">
-                 <span class="dot"></span> 
-                 <span class="dot"></span> 
+				<span class="dot" data-slide-to="1" onclick="currentSlide(1)"></span>
+				<span class="dot" data-slide-to="2" onclick="currentSlide(2)"></span>
+				<span class="dot" data-slide-to="3" onclick="currentSlide(3)"></span>
                     <!-- <span class="dot"></span>  -->
                </div>
                <%-- <div class="mySlides fade">
@@ -162,25 +174,44 @@
         });
      }
        
-       let slideIndex = 0;
-       showSlides();
- 
-       function showSlides() {
-         let i;
-         let slides = document.getElementsByClassName("mySlides");
-         let dots = document.getElementsByClassName("dot");
-         for (i = 0; i < slides.length; i++) {
-           slides[i].style.display = "none";  
-         }
-         slideIndex++;
-         if (slideIndex > slides.length) {slideIndex = 1}    
-         for (i = 0; i < dots.length; i++) {
-           dots[i].className = dots[i].className.replace(" active", "");
-         }
-         slides[slideIndex-1].style.display = "block";  
-         dots[slideIndex-1].className += " active";
-         setTimeout(showSlides, 2000); // Change image every 2 seconds
-       }
+     let slideIndex = 1;
+     showSlides(slideIndex);
+
+     function moveSlide(n) {
+         showSlides(slideIndex += n);
+     }
+     
+     function currentSlide(n) {
+    	    showSlides(slideIndex = n);
+    	}
+     function showSlides(n) {
+    	    let slides = document.getElementsByClassName("mySlides");
+    	    let dots = document.getElementsByClassName("dot");
+
+    	    if (n > slides.length) {slideIndex = 1}
+    	    if (n < 1) {slideIndex = slides.length}
+    	    
+    	    // 모든 슬라이드를 비활성화하고, 화면 왼쪽으로 이동
+    	    for (let i = 0; i < slides.length; i++) {
+    	        slides[i].style.transform = "translateX(-100%)";
+    	        slides[i].style.zIndex = 0;  // z-index를 초기화
+    	    }
+
+    	    // 현재 슬라이드를 활성화하고, 화면 중앙으로 이동
+    	    slides[slideIndex-1].style.transform = "translateX(0)";
+    	    slides[slideIndex-1].style.zIndex = 1;  // 현재 슬라이드를 최상위로
+
+    	    // dots 업데이트
+    	    for (let i = 0; i < dots.length; i++) {
+    	        dots[i].className = dots[i].className.replace(" active", "");
+    	    }
+    	    dots[slideIndex-1].className += " active";
+    	}
+
+     // 자동 슬라이드 쇼
+     setInterval(function() {
+         moveSlide(1);
+     }, 5000); // Change image every 2 seconds
        
        $(function() {
            let userEmail = '<c:out value="${sessionScope.userId.userEmail}" />';
@@ -221,6 +252,7 @@
             }
         }
     };
+
 	</script>
    </body>
 </html>
