@@ -29,7 +29,14 @@
 					<input type="password" id="userPassword" placeholder="새 비밀번호를 입력하세요." class="widthFull" oninput="checkPasswordMatch()"><br>
 			  </div>
 				<div class="find-tag">
-					<label for="userPassword2">비밀번호 확인</label><span id="passwordMatchMessage"></span><br>
+					<div class="pw-group">
+						<div class="pw-left">
+							<label for="userPassword2">비밀번호 확인</label>
+						</div>
+						<div class="pw-right">
+							<span id="passwordMatchMessage"></span>
+						</div>
+					</div>
 					<input type="password" id="userPassword2" placeholder="" class="widthFull" oninput="checkPasswordMatch()">
 				</div>
 				
