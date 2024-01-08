@@ -24,4 +24,6 @@ public interface StoreDao {
 	public int deductDotori(Map map);
 	
 	public int getMyDotori(String userNickname);
+	
+	public int insertBuyCart(Map map);
 }

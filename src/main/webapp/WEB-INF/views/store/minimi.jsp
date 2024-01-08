@@ -47,7 +47,7 @@
 		        <!-- minimi select -->
 		        <div class="productList">
 				    <c:forEach var="minimi" items="${minimi}" varStatus="seq">
-				        <div class="product" data-product-cate="미니미" data-table-cate="minimi" data-contentPath="${minimi.contentPath}"
+				        <div class="product" data-product-cate="미니미" data-product-table-cate="minimi" data-product-contentPath="${minimi.contentPath}"
 				             data-product-name="${minimi.productName}" data-product-price="${minimi.productPrice}">
 				            <div>
 				                <img src="<c:url value="${minimi.contentPath}"/>" class="store-minimi-img"/>
@@ -96,10 +96,38 @@
 	    </div>
 	</div>
 	
+	<div>
+		<form id="frmBuyCart" method="post" action="<c:url value="/store/buyCart" />">
+		    <input type="hidden" id="userNickname" name="userNickname" value="${sessionScope.userId.userNickname}">
+		    <input type="hidden" id="category" name="category" value="${sessionScope.tableCate}">
+		    <input type="hidden" id="productName" name="productName" value="${sessionScope.contentPath}">
+		    <input type="hidden" id="contentPath" name="contentPath" value="${sessionScope.name}">
+		</form>
+	</div>
 	
 	<script>
 		document.getElementById('btnCartClear').addEventListener('click',function() {
 			clearCart();
+		});
+		
+		document.getElementById('btnCartBuy').addEventListener('click', function() {
+			$('#frmBuyCart').submit();
+			
+		});
+		
+		$('#frmBuyCart').submit(function(event) {
+		    // 이벤트 기본 동작(폼 제출)을 막음
+		    event.preventDefault();
+		    
+		    // 폼을 동기적으로 제출하고, 서버 응답을 받아 처리
+		    var result = confirm('정말로 구매하시겠습니까?');
+		    if (result) {
+		        // 사용자가 확인을 눌렀을 때 서버로 폼을 제출하고, 서버 응답에 따라 처리
+		        this.submit();
+		    } else {
+		        // 사용자가 취소를 눌렀을 때의 처리
+		        alert('구매가 취소되었습니다.');
+		    }
 		});
 	</script>
 	</body>

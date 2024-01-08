@@ -75,4 +75,9 @@ public class StoreDaoImpl implements StoreDao {
 		return mapper.deductDotori(map);
 	}
 
+	@Override
+	public int insertBuyCart(Map map) {
+		StoreMapper mapper = sqlSession.getMapper(StoreMapper.class);
+		return mapper.insertBuyCart(map);
+	}
 }

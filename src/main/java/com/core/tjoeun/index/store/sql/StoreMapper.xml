@@ -137,4 +137,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where userNickname = #{userNickname};
 </select>
 
+<insert	id="insertBuyCart" parameterType="map">
+	insert into userStorage (
+		userNickname
+        ,category
+        ,productName
+        ,contentPath
+	) values (
+		#{userNickname}
+	    ,#{category}
+	    ,#{productName}
+	    ,#{contentPath}
+	)
+</insert>
 </mapper>
