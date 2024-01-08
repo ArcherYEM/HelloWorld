@@ -23,7 +23,6 @@ public class DiaryController {
 	@RequestMapping("/mnHome/diaryView/{userNickname}")
 	public String diaryView(@PathVariable String userNickname, Model model) {
 
-		
 		Map map = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", map.get("userName"));
 		model.addAttribute("title", map.get("title"));

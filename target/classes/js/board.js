@@ -13,15 +13,6 @@ $(document).ready(function() {
 		}
 		
 		var titles = document.getElementsByClassName('td-title');
-
-	/*	for (var i = 0; i < titles.length; i++) {
-		  titles[i].addEventListener('click', function() {
-		    console.log(titles[0].getAttribute('data-userNickname'));
-		    let link = '/mnHome/boardDetail/' + titles[0].getAttribute('data-userNickname');
-		    location.href = link;
-		  });
-		}*/
-		
 });
 
 

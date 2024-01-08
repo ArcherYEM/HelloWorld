@@ -32,26 +32,15 @@ public class BoardController {
 	@Autowired
 	MainService mainService;
 	
-//	@RequestMapping(value="/mnHome/boardView")
-//	public String boardView() {
-//		
-//		return "miniHome/board";
-//	}
-//	
-//	@RequestMapping(value="/mnHome/boardWriteView")
-//	public String boardWriteView() {
-//		
-//		return "miniHome/boardWrite";
-//	}
-//	
-//	@RequestMapping(value="/mnHome/boardDetail")
-//	public String boardDetail() {
-//		
-//		return "miniHome/boardDetail";
-//	}
-	
 	@RequestMapping(value="/mnHome/boardView/{userNickname}")
 	public String boardView(@PathVariable String userNickname, Model model) {
+		
+		Map profile = mainService.getProfile(userNickname);
+		String image = (String) profile.get("image");
+		String msg = (String) profile.get("msg");
+		msg = msg.replace("\n", "<br>");
+		model.addAttribute("image", image);
+		model.addAttribute("msg", msg);
 		
 		Map map = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", map.get("userName"));
