@@ -289,9 +289,6 @@ public class StoreController {
         ShoppingCart shoppingCart = getOrCreateShoppingCart(session);
         shoppingCart.addToCart(item);
         
-        session.setAttribute("tableCate", item.getTableCate());
-        session.setAttribute("contentPath", item.getContentPath());
-        session.setAttribute("name", item.getName());
         session.setAttribute("cart", shoppingCart);
     }
 
@@ -313,22 +310,78 @@ public class StoreController {
         session.setAttribute("cart", shoppingCart);
     }
     
-    @RequestMapping(value="/store/buyCart", method = RequestMethod.POST)
-    public String buyCart(@RequestParam Map map, Model model, HttpSession session) {
+    @PostMapping("/store/updateDotoriCount")
+    @ResponseBody
+    public int updateDotoriCount(HttpSession session) {
+        Map resultMap = new HashMap();
+        resultMap.put("userNickname", session.getAttribute("userNickname"));
+        updateCartDotoriCount(session);
+        Object currentDotoriObj = session.getAttribute("userDotoriCnt");
+        Object userBuyCartObj = session.getAttribute("userBuyCart");
+        int result = 0;
+
+        try {
+            Long currentDotori = (currentDotoriObj instanceof Long) ? (Long) currentDotoriObj : null;
+            Integer userBuyCart = (userBuyCartObj instanceof Integer) ? (Integer) userBuyCartObj : null;
+
+            if (currentDotori != null && userBuyCart != null) {
+                result = currentDotori.intValue() - userBuyCart;
+
+                // 장바구니 도토리 개수를 업데이트
+                resultMap.put("currentDotori", result);
+
+                int afterBuy = storeService.updateBuyCartDotoriCnt(resultMap);
+                return afterBuy == 1 ? 1 : 0;
+            } else {
+                // 적절한 처리를 수행하거나 예외를 던지는 등의 방법으로 오류를 처리합니다.
+                return 0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            // 적절한 오류 처리
+            return 0;
+        }
+    }
+    
+    private void updateCartDotoriCount(HttpSession session) {
+        ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+        
+        // 총 도토리 개수를 가져와서 세션에 저장
+        int totalDotoriCount = cart.getTotalDotoriCount();
+        session.setAttribute("userBuyCart", totalDotoriCount);
+    }
+    
+    @PostMapping("/store/buyCart")
+    @ResponseBody
+    public int buyCart(HttpSession session) {
+    	Map buyCartMap = new HashMap();
     	int result = 0;
     	try {
-    		
-			result = storeService.buyCart(map);
-			if(result == 1) {
-				model.addAttribute("resultCode", "1");
-			} else {
-				model.addAttribute("resultCode", "0");
-			}
+    		ShoppingCart shoppingCart = getOrCreateShoppingCart(session);
+            List<CartItem> cartItems = shoppingCart.getCartItems();
+            
+            for (CartItem cartItem : cartItems) {
+                // cartItem에서 필요한 정보를 추출하여 DB에 저장하거나 처리하는 작업 수행
+                String userNickname = (String) session.getAttribute("userNickname");
+                String tableCate = cartItem.getTableCate();
+                String name = cartItem.getName();
+                String contentPath = cartItem.getContentPath();
+                
+                // 여기서 해당 정보를 이용하여 DB에 저장하거나 처리하는 로직을 작성
+                buyCartMap.put("userNickname", userNickname);
+                buyCartMap.put("category", tableCate);
+                buyCartMap.put("productName", name);
+                buyCartMap.put("contentPath", contentPath);
+                
+                result = storeService.buyCart(buyCartMap);
+            }
+
+            return result == 1 ? 1 : 0;
+            
 		} catch (Exception e) {
 			e.printStackTrace();
+			return 0;
 		}
-    	
-    	
-    	return "/store/minimiView";
     }
+       
 }

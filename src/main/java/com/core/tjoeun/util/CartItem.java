@@ -7,16 +7,28 @@ public class CartItem {
     private String name;
     private int price; // 또는 필요에 따라 다른 데이터 타입 사용
 
+    private int dotoriCount;
     public CartItem() {
+    	this.dotoriCount = 0;
     }
 
-    public CartItem(String cate, String tableCate, String contentPath, 
-    				String name, int price) {
+    public CartItem(String cate, String tableCate, String name,
+    				String contentPath, int price) {
         this.cate = cate;
         this.tableCate = tableCate;
+        this.name = name;
         this.contentPath = contentPath;
-    	this.name = name;
         this.price = price;
+    }
+    
+    public CartItem(String cate, String tableCate, String name,
+    		String contentPath, int price, int dotoriCount) {
+    	this.cate = cate;
+    	this.tableCate = tableCate;
+    	this.name = name;
+    	this.contentPath = contentPath;
+    	this.price = price;
+    	this.setDotoriCount(dotoriCount);
     }
 
     public String getCate() {
@@ -57,6 +69,14 @@ public class CartItem {
     public void setPrice(int price) {
         this.price = price;
     }
+
+	public int getDotoriCount() {
+		return dotoriCount;
+	}
+
+	public void setDotoriCount(int dotoriCount) {
+		this.dotoriCount = dotoriCount;
+	}
 
 	
 }
