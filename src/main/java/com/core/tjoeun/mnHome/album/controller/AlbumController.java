@@ -20,20 +20,16 @@ public class AlbumController {
 	@Autowired
 	MainService mainService;
 	
-//	@RequestMapping(value="/mnHome/albumView")
-//	public String albumView() {
-//		
-//		return "miniHome/album";
-//	}
-//	
-//	@RequestMapping(value="/mnHome/albumWriteView")
-//	public String albumWriteView() {
-//		
-//		return "miniHome/albumWrite";
-//	}
-	
 	@RequestMapping(value="/mnHome/albumView/{userNickname}")
 	public String albumView(@PathVariable String userNickname, Model model) {
+		
+		Map profile = mainService.getProfile(userNickname);
+		String image = (String) profile.get("image");
+		String msg = (String) profile.get("msg");
+		msg = msg.replace("\n", "<br>");
+		model.addAttribute("image", image);
+		model.addAttribute("msg", msg);
+		
 		Map map = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", map.get("userName"));
 		model.addAttribute("title", map.get("title"));

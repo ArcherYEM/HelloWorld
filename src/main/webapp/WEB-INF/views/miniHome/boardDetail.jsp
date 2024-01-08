@@ -143,27 +143,27 @@
 				</div>
 				
 				<div class="menu-container">
-					    <div class="menu-content-clicked">
-					        <a href="<c:url value='/mnHome/mainView/${userNickname }'/>">홈</a>
-					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/diaryView/${userNickname }'/>">
-					        <a href="#">다이어리</a>
-					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/albumView/${userNickname }'/>">
-					        <a href="#">사진첩</a>
-					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/boardView/${userNickname }'/>">
-					        <a href="#">게시판</a>
-					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>">
-					        <a href="#">방명록</a>
-					    </div>
-					    <c:if test="${sessionScope.userId.userNickname eq userNickname }">
-						    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>">
-						        <a href="#">관리</a>
-						    </div>		
-						</c:if>
-					</div>
+				    <div class="menu-content" data-tab="<c:url value='/mnHome/mainView/${userNickname }'/>">
+				        <a href="#">홈</a>
+				    </div>
+				    <div class="menu-content" data-tab="<c:url value='/mnHome/diaryView/${userNickname }'/>">
+				        <a href="#">다이어리</a>
+				    </div>
+				    <div class="menu-content" data-tab="<c:url value='/mnHome/albumView/${userNickname }'/>">
+				        <a href="#">사진첩</a>
+				    </div>
+				    <div class="menu-content" data-tab="<c:url value='/mnHome/boardView/${userNickname }'/>">
+				        <a href="#">게시판</a>
+				    </div>
+				    <div class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>">
+				        <a href="#">방명록</a>
+				    </div>
+				    <c:if test="${sessionScope.userId.userNickname eq userNickname }">
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>">
+					        <a href="#">관리</a>
+					    </div>		
+					</c:if>
+				</div>
 				
 			</div>
 		</div>

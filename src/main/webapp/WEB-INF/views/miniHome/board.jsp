@@ -25,32 +25,38 @@
 							TODAY&nbsp;<span class="today-span">404</span>&nbsp;| TOTAL 500
 						</div>
 						<div class="box profile-box">
-								<div class="album-folder-group">
-									<div class="album-folder">
-										<img src="/resources/images/minihome/openFolderIcon.png">
-										<a href="#">전체보기</a>
-									</div>
-									<div class="album-folder">
-										<img src="/resources/images/minihome/closeFolderIcon.png">
-										<a href="#">일상생활</a>
-									</div>
-									<div class="album-folder">
-										<img src="/resources/images/minihome/closeFolderIcon.png">
-										<a href="#">개발 이야기</a>
-									</div>
-								</div>
-								<div class="album-dot">---------------------------------</div>
-								<div class="font-kyobohand album-profile-username"> ${userName }&#128698;</div>
-								<div class="profile-dropDown">
-									<select>
-										<option value="" disabled selected hidden="">파도타기</option>
-										<option value="temp1">이정은(jungeun@gmail.com)</option>
-										<option value="temp2">이진우(junwoo@naver.com)</option>
-										<option value="temp3">채승원(seungwon@daum.net)</option>
-										<option value="temp4">양은모(eunmo@nate.com)</option>
-									</select>
-								</div>
+							<div class="profile-image">
+								<c:set var="imagePath" value="/resources/images/${image}" />
+								<img class="profile-image-img" src="/../../../../resources/images/download/${image}" alt="프로필 이미지" />
 							</div>
+							<div class="profile-dot">---------------------------------</div>
+							<div class="profile-text font-kyobohand">
+								<c:out value="${msg}" escapeXml="false"/>
+							</div>
+							<div class="profile-history">
+								<c:if test="${sessionScope.userId.userNickname eq userNickname }">
+									<a 
+									  class="profile-edit" 
+									  onclick="openNewWindowMinihomeProfileEdit()">Edit
+									</a>
+								</c:if>
+								<a
+									class="profile-hs"
+									onclick="openNewWindowMiniroomHistory()">History								
+								</a>
+							</div>
+							<div class="profile-dot">---------------------------------</div>
+							<div class="profile-username font-kyobohand"> ${userName }&#128698;</div>
+							<div class="profile-dropDown">
+								<select>
+									<option value="" disabled selected hidden="">파도타기</option>
+									<option value="temp1">이정은(jungeun@gmail.com)</option>
+									<option value="temp2">이진우(junwoo@naver.com)</option>
+									<option value="temp3">채승원(seungwon@daum.net)</option>
+									<option value="temp4">양은모(eunmo@nate.com)</option>
+								</select>
+							</div>
+						</div>
 					</div>
 					<div class="content-container">
 						<div class="header content-title">

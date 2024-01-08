@@ -45,7 +45,6 @@ function loadTabContent(tabName) {
                 htmlToAdd += '<link class="board" href="/resources/css/minihome/album.css" rel="stylesheet">';
 //                htmlToAdd += '<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>';
 
-           
             }else if(tabName === '/mnHome/visitView' || tabName.indexOf('/mnHome/visitView') != -1){
                 htmlToAdd += '<link href="/resources/css/minihome/visit.css" rel="stylesheet">';
                 htmlToAdd += '<script type="text/javascript" src="../../../../resources/js/visit.js"></script>';
@@ -76,6 +75,8 @@ function loadTabContent(tabName) {
 	        }else if(tabName === '/mnHome/settingDotoriCharge'|| tabName.indexOf('/mnHome/settingDotoriCharge') != -1){
 	        	htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
 	        	htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/settingDotori.css" />';
+	        
+	        }else if(tabName === '/mnHome/mainView'|| tabName.indexOf('/mnHome/mainView') != -1){
 	        }
             
             // Append all the HTML at once.
