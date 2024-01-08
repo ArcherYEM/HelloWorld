@@ -170,28 +170,31 @@ a {
 	border: 1px solid gray;
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;
-	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 	align-items: center;
 }
 
 .login-profile-minimi,
-.login-profile-info {
+.login-profile-information {
 	flex: 1;
 }
 
+.login-profile-minimi {
+}
+
 .index-my-minimi {
-	height: 200px;
+	width: 80%;
+	height: auto;
 	border: 2px solid orange;
 	border-radius: 5px;
-	padding: 20px;
-	margin: 15px 10px;
+	padding: 15px;
+	margin-top: 25px;
+	margin-bottom: 20px;
 }
 
 .login-profile-info {
 	text-align: left;
-	margin-left: 25px;
-    text-align: left;
 }
 
 .login-profile-section1,
@@ -209,6 +212,41 @@ a {
 .login-profile-info-3,
 .login-profile-info-4 {
 	color: orange;
+}
+
+.my-btn {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+}
+
+.mainBtn1 {
+	margin-left: 5px;
+	padding: 5px 18px;
+}
+
+.mainBtn2 {
+	margin-right: 30px;
+	padding: 5px 26px;
+}
+
+.mainBtn1,
+.mainBtn2 {
+	border: 2px solid white;
+	border-radius: 5px;
+	color: orange;
+	background-color: white;
+	font-weight: bold;
+}
+
+.mainBtn1:hover,
+.mainBtn2:hover {
+	cursor: pointer;
+	border: 2px solid orange;
+	border-radius: 5px;
+	color: white;
+	background-color: orange;
+	font-weight: bold;
 }
 
 .signUpATag {
