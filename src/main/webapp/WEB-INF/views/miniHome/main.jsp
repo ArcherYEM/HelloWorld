@@ -48,7 +48,14 @@
 								</a>
 							</div>
 							<div class="profile-dot">---------------------------------</div>
-							<div class="profile-username font-kyobohand"> ${userName }&#128698;</div>
+							<div class="profile-username font-kyobohand popup" onclick="popupFunction()"> 
+								<div class="popuptext" id="myPopup" onclick="requestFriendship('${userNickname}')"> 
+									일촌신청 
+									<input type="hidden" id="requestUser" name="requestUser" value="${sessionScope.userId.userNickname}">
+									<input type="hidden" id="responseUser" name="responseUser" value="${userNickname}">
+								</div>
+								${userName }&#128698;
+							</div>
 <%-- 							<div class="profile-username font-kyobohand"> ${sessionScope.userId.userName }&#128698;</div> --%>
 							<div class="profile-dropDown">
 								<select>
@@ -235,7 +242,7 @@
 		</div>
 		
 		<div class="audioPlayerContainer">
-			<!-- <audio id="audioElement" autoplay></audio> -->
+<!-- 			<audio id="audioElement" autoplay></audio> -->
 			<div class="audioPlayingContainer">
 				<div class="audioPlayingDiv">
 					<img id="audioPlayingImg" src="../../../../resources/images/audioPlayer/nowPlaying.png">
