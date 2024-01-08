@@ -29,7 +29,6 @@ public class NoticeServiceImpl implements NoticeService{
 		if( 1 != result) {
 			throw new Exception();
 		}
-		
 	}
 
 	@Override
@@ -52,7 +51,6 @@ public class NoticeServiceImpl implements NoticeService{
 		}
 		
 		return noticeDao.selectNotice(map);
-
 	
 	}
 
@@ -64,7 +62,6 @@ public class NoticeServiceImpl implements NoticeService{
 		if(result != list.size()) {
 			throw new Exception();
 		}
-		
 	}
 
 	@Override
@@ -91,6 +88,4 @@ public class NoticeServiceImpl implements NoticeService{
 		
 	}
 	
-	
-
 }

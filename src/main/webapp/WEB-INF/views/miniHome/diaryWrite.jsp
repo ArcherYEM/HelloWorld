@@ -65,9 +65,11 @@
 								<div class="btn-left">
 									<input class="btn-diarylist" type="button" id="btnBoardView" data-diaryView="<c:url value='/mnHome/diaryView/${userNickname}'/>" value="목록">
 								</div>
-								<div class="btn-right">
-									<input class="btn-write" type="button" id="btnBoardWrite" value="글쓰기">
-								</div>
+								<form>
+									<div class="btn-right">
+										<input class="btn-write" type="button" id="btnBoardWrite" value="글쓰기">
+									</div>
+								</form>
 							</div>
 							<div id="preview-container"></div>
 						</div>

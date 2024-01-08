@@ -65,7 +65,6 @@ $(document).ready(function() {
 					    }
 					};
 		          	  
-
 		          // div 안에 img와 텍스트 노드 추가
 		          newDiv.appendChild(newDiv2);
 		          newDiv.appendChild(newBtn);

@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface DiaryService {
 	
-	public int insertDiary(Map map);
+	public void insertDiary(Map map) throws Exception;
 
 	public List<HashMap> selectDiary(Map map);
 	
