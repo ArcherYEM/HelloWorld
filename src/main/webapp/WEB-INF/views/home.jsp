@@ -68,7 +68,7 @@
 			<div class="login-frame">
 				<div class="login-top">
 					<div class="login-top-left">
-						<c:out value='${sessionScope.userId.userNickname}'/>
+						<span id="userNickname"><c:out value='${sessionScope.userId.userNickname}'/></span>
 					</div>
 					<div class="login-top-right">
 						<span class="login-top-right-imz">&#127752;</span>일촌 ON <span class="login-top-right-bfCnt">10</span>

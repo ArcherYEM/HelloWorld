@@ -33,20 +33,6 @@
 							<div id="datepicker" style="width:80%"></div>
 						</div>
 						<div class="profile-dot">---------------------------------</div>
-						<div class="album-folder-group">
-								<div class="album-folder">
-									<img src="/resources/images/minihome/openFolderIcon.png">
-									<a href="#" class="folder-name">전체보기</a>
-								</div>
-								<div class="album-folder">
-									<img src="/resources/images/minihome/closeFolderIcon.png">
-									<a href="#" class="folder-name">일상생활</a>
-								</div>
-								<div class="album-folder">
-									<img src="/resources/images/minihome/closeFolderIcon.png">
-									<a href="#" class="folder-name">개발 이야기</a>
-								</div>
-						</div>
 						
 					</div>
 				</div>
@@ -73,13 +59,13 @@
 								<span class="board-writer">  이정은(작성자)</span>
 								<span class="board-write-date">2023.12.26 14:21</span>						
 							</div>
-							<textarea name="content" id="txtContent" rows="10" cols="100" style="width:500px; height:180px; min-width:500px; display:none;"></textarea><br>
-							<br>
-	
+ 							<!--인라인 스타일 외 적용불가하여 불가피하게 인라인css 적용 -->
+							<textarea name="content" id="txtContent" rows="10" cols="100" style="width:500px; height:180px; min-width:500px; display:none;"></textarea>
 							<div class="btn-container">
-								<div class="btn-left"></div>
-								<div class="btn-right">
+								<div class="btn-left">
 									<input class="btn-diarylist" type="button" id="btnBoardView" data-diaryView="<c:url value='/mnHome/diaryView/${userNickname}'/>" value="목록">
+								</div>
+								<div class="btn-right">
 									<input class="btn-write" type="button" id="btnBoardWrite" value="글쓰기">
 								</div>
 							</div>

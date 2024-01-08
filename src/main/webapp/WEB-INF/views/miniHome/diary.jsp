@@ -32,22 +32,6 @@
 							<div id="datepicker" style="width:80%"></div>
 						</div>
 						<div class="profile-dot">---------------------------------</div>
-						<div class="album-folder-group">
-								<div class="album-folder">
-									<img src="/resources/images/minihome/openFolderIcon.png">
-									<a href="#" class="folder-name">전체보기</a>
-								</div>
-								<div class="album-folder">
-									<img src="/resources/images/minihome/closeFolderIcon.png">
-									<a href="#" class="folder-name">일상생활</a>
-								</div>
-								<div class="album-folder">
-									<img src="/resources/images/minihome/closeFolderIcon.png">
-									<a href="#" class="folder-name">개발 이야기</a>
-								</div>
-						</div>
-						
-						
 					</div>
 				</div>
 				<div class="content-container">
