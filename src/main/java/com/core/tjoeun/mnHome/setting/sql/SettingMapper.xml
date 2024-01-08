@@ -57,7 +57,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		( userNickname
 		, friendNickname
 		, del_yn
-		, status
+		, fStatus
 		) values (
 			#{requestUser}
 			,#{responseUser}
