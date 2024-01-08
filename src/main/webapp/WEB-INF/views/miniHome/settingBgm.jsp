@@ -29,28 +29,28 @@
 								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
 								  <span class="setting-menu-title">개인정보</span>
 								  <ul class="tree">
-									<li><a><span class="setting-menu-title" id="spanSetting" data-setting="/mnHome/settingView/${userNickname }">개인정보변경</span></a></li>
+									<li><a><span class="setting-menu-list" id="spanSetting" data-setting="/mnHome/settingView/${userNickname }">개인정보변경</span></a></li>
 								  </ul>
 								  
 								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
 								  <span class="setting-menu-title">미니홈피관리</span>
 								  <ul class="tree">
-								    <li><a><span class="setting-menu-title" id="spanSettingBgm" data-bgm="/mnHome/settingBgm/${userNickname }">BGM설정</span></a></li>
-								    <li><a><span class="setting-menu-title" id="spanSettingMenu" data-menu="/mnHome/settingMenu/${userNickname }">메뉴탭설정</span></a></li>
-								    <li><a><span class="setting-menu-title" id="spanSettingSkin" data-skin="/mnHome/settingSkin/${userNickname }">스킨설정</span></a></li>
+								    <li><a><span class="setting-menu-list" id="spanSettingBgm" data-bgm="/mnHome/settingBgm/${userNickname }">BGM설정</span></a></li>
+								    <li><a><span class="setting-menu-list" id="spanSettingMenu" data-menu="/mnHome/settingMenu/${userNickname }">메뉴탭설정</span></a></li>
+								    <li><a><span class="setting-menu-list" id="spanSettingSkin" data-skin="/mnHome/settingSkin/${userNickname }">스킨설정</span></a></li>
 								  </ul>
 								 
 								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
 								  <span class="setting-menu-title">아이템/내역관리</span>
 								  <ul class="tree">
-									<li><a><span class="setting-menu-title" id="spanSettingDotoriU" data-dotoriU="/mnHome/settingDotoriUse/${userNickname }">도토리 사용내역</span></a></li>
-									<li><a><span class="setting-menu-title" id="spanSettingDotoriC" data-dotoriC="/mnHome/settingDotoriCharge/${userNickname }">도토리 구매내역</span></a></li>
+									<li><a><span class="setting-menu-list" id="spanSettingDotoriU" data-dotoriU="/mnHome/settingDotoriUse/${userNickname }">도토리 사용내역</span></a></li>
+									<li><a><span class="setting-menu-list" id="spanSettingDotoriC" data-dotoriC="/mnHome/settingDotoriCharge/${userNickname }">도토리 구매내역</span></a></li>
 								  </ul>
 								  
 								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
 								  <span class="setting-menu-title">인맥관리</span>
 								  <ul class="tree">
-									<li><a><span class="setting-menu-title" id="spanSettingFriends" data-friends="/mnHome/settingFriends/${userNickname }">일촌현황</span></a></li>
+									<li><a><span class="setting-menu-list" id="spanSettingFriends" data-friends="/mnHome/settingFriends/${userNickname }">일촌현황</span></a></li>
 								  </ul>
 								</div>
 							</div>
@@ -242,8 +242,8 @@
 					</div>
 					
 					<div class="menu-container">
-					    <div class="menu-content-clicked">
-					        <a href="<c:url value='/mnHome/mainView/${userNickname }'/>">홈</a>
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/mainView/${userNickname }'/>">
+					        <a href="#">홈</a>
 					    </div>
 					    <div class="menu-content" data-tab="<c:url value='/mnHome/diaryView/${userNickname }'/>">
 					        <a href="#">다이어리</a>
@@ -257,9 +257,11 @@
 					    <div class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>">
 					        <a href="#">방명록</a>
 					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>">
-					        <a href="#">관리</a>
-					    </div>
+					    <c:if test="${sessionScope.userId.userNickname eq userNickname }">
+						    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>">
+						        <a href="#">관리</a>
+						    </div>		
+						</c:if>
 					</div>
 					
 				</div>

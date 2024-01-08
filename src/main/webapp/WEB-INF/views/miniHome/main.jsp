@@ -79,12 +79,9 @@
 										<input type="hidden" id="btn-title-save"class="btn-edit" value="저장">
 									</div>
 							</c:if>
-							<!-- <div>
-								<input type="button" id="btn-title-edit" class="btn-edit" value="수정">
-								<input type="hidden" id="btn-title-save"class="btn-edit" value="저장">
-							</div> -->
 							<div class="content-title-url">
-								https://www.helloworld.com/minihome/leejubin</div>
+								https://www.helloworld.com/minihome/leejubin
+							</div>
 						</div>
 						<div class="box content-box">
 							<div class="box-title">
@@ -214,8 +211,8 @@
 					</div>
 					
 					<div class="menu-container">
-					    <div class="menu-content-clicked">
-					        <a href="<c:url value='/mnHome/mainView/${userNickname }'/>">홈</a>
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/mainView/${userNickname }'/>">
+					        <a href="#">홈</a>
 					    </div>
 					    <div class="menu-content" data-tab="<c:url value='/mnHome/diaryView/${userNickname }'/>">
 					        <a href="#">다이어리</a>
@@ -234,7 +231,6 @@
 						        <a href="#">관리</a>
 						    </div>		
 						</c:if>
-					    
 					</div>
 					
 				</div>

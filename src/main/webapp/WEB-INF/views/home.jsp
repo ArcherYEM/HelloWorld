@@ -68,38 +68,47 @@
 			<div class="login-frame">
 				<div class="login-top">
 					<div class="login-top-left">
-						<c:out value='${sessionScope.userId.userNickname}'/>
+						<span id="userNickname"><c:out value='${sessionScope.userId.userNickname}'/></span>
 					</div>
 					<div class="login-top-right">
 						<span class="login-top-right-imz">&#127752;</span>일촌 ON <span class="login-top-right-bfCnt">10</span>
 					</div>
 				</div>
 				<div class="login-profile-frame">
+				
 					<div class="login-profile-minimi" id="divMainMinimi">
 						<img class="index-my-minimi" id="mainMinimi" src="<c:url value='${sessionScope.userMinimi}'/>"/>
 					</div>
-					<div class="login-profile-info">
-						<div class="login-profile-section1">
-							<span>&#128233;</span>
-							<span>쪽지</span>
-							<span class="login-profile-info-1">8</span>
+					
+					<div class="login-profile-information">
+						<div class="login-profile-info">
+							<div class="login-profile-section1">
+								<span>&#128233;</span>
+								<span>쪽지</span>
+								<span class="login-profile-info-1">8</span>
+							</div>
+							<div class="login-profile-section2">
+								<span>&#128099;</span>
+								<span>오늘방문자</span>
+								<span class="login-profile-info-2">11</span>
+							</div>
+							<div class="login-profile-section3">
+								<span>&#128203;</span>
+								<span>새게시물</span>
+								<span class="login-profile-info-3">0</span>
+							</div>
+							<div class="login-profile-section4">
+								<span>&#128149;</span>
+								<span>일촌신청</span>
+								<span class="login-profile-info-4">1</span>
+							</div>
 						</div>
-						<div class="login-profile-section2">
-							<span>&#128099;</span>
-							<span>오늘방문자</span>
-							<span class="login-profile-info-2">11</span>
-						</div>
-						<div class="login-profile-section3">
-							<span>&#128203;</span>
-							<span>새게시물</span>
-							<span class="login-profile-info-3">0</span>
-						</div>
-						<div class="login-profile-section4">
-							<span>&#128149;</span>
-							<span>일촌신청</span>
-							<span class="login-profile-info-4">1</span>
-						</div>
-					</div>
+						<div class="my-btn">
+				    	    <input type="button" class="mainBtn1" id="btnGoMinihome" value="내 미니홈피">
+				        	<input type="button" class="mainBtn2" id="btnLogout" value="로그아웃">
+				        </div>
+			        </div>
+			        
 				</div>
 			</div>
 		</div>
@@ -283,7 +292,7 @@
            linkLogout.style.display = 'block';
            divHome.style.display = 'none';
            divLogin.style.display = 'block';
-           helloMessage.innerText = '안녕하세요. ' + '<c:out value="${sessionScope.userId.userNickname}" />' + '님!!';
+           helloMessage.innerText = '<c:out value="${sessionScope.userId.userNickname}" />' + ' 님 환영합니다.';
            document.getElementById('indexDotoriImg').style.display = 'inline-block';
         
         } else {
@@ -291,7 +300,7 @@
             linkLogout.style.display = 'none';
            divHome.style.display = 'block';
            divLogin.style.display = 'none';
-           helloMessage.innerText = '안녕하세요. HelloWorld에 오신 걸 환영합니다.';
+           helloMessage.innerText = 'HelloWorld에 오신 걸 환영합니다.';
            document.getElementById('indexDotoriImg').style.display = 'none';
         }
 

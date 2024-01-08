@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core.tjoeun.mnHome.diary.sql.DiaryMapper">
+
+	<insert id="insertDiary" parameterType="map">
+		insert into diary(
+			userNickname,
+			title,
+			content,
+			hits,
+			del_yn,
+			openScope
+		 ) values (
+			#{userNickname}
+		    ,#{title}
+		    ,#{content}
+		    ,0
+		    ,'n'
+		    ,#{openScope}
+	     )
+	</insert>
+	
+	<select id="selectDiary" resultType="map">
+		select
+			  seq
+			, writer
+			, title
+			, content
+			, substring(create_date,1,10) as date
+		from 
+			notice
+		where
+			del_yn != 'Y'
+		<if test="seq != null">
+			and seq = #{seq}
+		</if>
+	</select>
+	
+	<update id="deleteDiary" parameterType="java.util.List">
+		update 
+			notice
+		set
+			del_yn = 'Y'
+		where seq in
+		<foreach collection="list" item="seq" open="(" close=")" separator=",">
+			#{seq}
+		</foreach>
+	</update>
+	
+	<update id="modifyDiary" parameterType="map">
+		update
+			notice
+		set
+			title = #{title}
+			,content = #{content}
+			,update_date = current_timestamp
+			
+		where
+			seq = #{seq}
+	</update>
+
+</mapper>

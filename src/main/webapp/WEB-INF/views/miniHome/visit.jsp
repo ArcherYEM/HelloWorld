@@ -159,8 +159,6 @@
 	</div>
 </div>
 
-
-
 <script>
 	// 미니홈피 프로필 수정창
 	function openNewWindowMinihomeProfileEdit() {

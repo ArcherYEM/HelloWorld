@@ -32,22 +32,6 @@
 							<div id="datepicker" style="width:80%"></div>
 						</div>
 						<div class="profile-dot">---------------------------------</div>
-						<div class="album-folder-group">
-								<div class="album-folder">
-									<img src="/resources/images/minihome/openFolderIcon.png">
-									<a href="#" class="folder-name">전체보기</a>
-								</div>
-								<div class="album-folder">
-									<img src="/resources/images/minihome/closeFolderIcon.png">
-									<a href="#" class="folder-name">일상생활</a>
-								</div>
-								<div class="album-folder">
-									<img src="/resources/images/minihome/closeFolderIcon.png">
-									<a href="#" class="folder-name">개발 이야기</a>
-								</div>
-						</div>
-						
-						
 					</div>
 				</div>
 				<div class="content-container">
@@ -260,28 +244,28 @@
 				</div>
 				
 				<div class="menu-container">
-					    <div class="menu-content-clicked">
-					        <a href="<c:url value='/mnHome/mainView/${userNickname }'/>">홈</a>
-					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/diaryView/${userNickname }'/>">
-					        <a href="#">다이어리</a>
-					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/albumView/${userNickname }'/>">
-					        <a href="#">사진첩</a>
-					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/boardView/${userNickname }'/>">
-					        <a href="#">게시판</a>
-					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>">
-					        <a href="#">방명록</a>
-					    </div>
-					    <c:if test="${sessionScope.userId.userNickname eq userNickname }">
-						    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>">
-						        <a href="#">관리</a>
-						    </div>
-					    </c:if>
-					</div>
-				
+				    <div class="menu-content" data-tab="<c:url value='/mnHome/mainView/${userNickname }'/>">
+				        <a href="#">홈</a>
+				    </div>
+				    <div class="menu-content" data-tab="<c:url value='/mnHome/diaryView/${userNickname }'/>">
+				        <a href="#">다이어리</a>
+				    </div>
+				    <div class="menu-content" data-tab="<c:url value='/mnHome/albumView/${userNickname }'/>">
+				        <a href="#">사진첩</a>
+				    </div>
+				    <div class="menu-content" data-tab="<c:url value='/mnHome/boardView/${userNickname }'/>">
+				        <a href="#">게시판</a>
+				    </div>
+				    <div class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>">
+				        <a href="#">방명록</a>
+				    </div>
+				    <c:if test="${sessionScope.userId.userNickname eq userNickname }">
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>">
+					        <a href="#">관리</a>
+					    </div>		
+					</c:if>
+				</div>
+			
 			</div>
 		</div>
 	</div>

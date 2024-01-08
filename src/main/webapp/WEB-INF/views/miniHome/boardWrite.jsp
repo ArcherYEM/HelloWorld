@@ -26,23 +26,29 @@
 					<div class="header profile-title font-neo">
 						TODAY&nbsp;<span class="today-span">404</span>&nbsp;| TOTAL 500
 					</div>
-					<div class="box profile-box">
-							<div class="album-folder-group">
-								<div class="album-folder">
-									<img src="/resources/images/minihome/openFolderIcon.png">
-									<a href="#">전체보기</a>
-								</div>
-								<div class="album-folder">
-									<img src="/resources/images/minihome/closeFolderIcon.png">
-									<a href="#">일상생활</a>
-								</div>
-								<div class="album-folder">
-									<img src="/resources/images/minihome/closeFolderIcon.png">
-									<a href="#">개발 이야기</a>
-								</div>
+						<div class="box profile-box">
+							<div class="profile-image">
+								<c:set var="imagePath" value="/resources/images/${image}" />
+								<img class="profile-image-img" src="/../../../../resources/images/download/${image}" alt="프로필 이미지" />
 							</div>
-							<div class="album-dot">---------------------------------</div>
-							<div class="font-kyobohand album-profile-username"> ${userName }&#128698;</div>
+							<div class="profile-dot">---------------------------------</div>
+							<div class="profile-text font-kyobohand">
+								<c:out value="${msg}" escapeXml="false"/>
+							</div>
+							<div class="profile-history">
+								<c:if test="${sessionScope.userId.userNickname eq userNickname }">
+									<a 
+									  class="profile-edit" 
+									  onclick="openNewWindowMinihomeProfileEdit()">Edit
+									</a>
+								</c:if>
+								<a
+									class="profile-hs"
+									onclick="openNewWindowMiniroomHistory()">History								
+								</a>
+							</div>
+							<div class="profile-dot">---------------------------------</div>
+							<div class="profile-username font-kyobohand"> ${userName }&#128698;</div>
 							<div class="profile-dropDown">
 								<select>
 									<option value="" disabled selected hidden="">파도타기</option>
@@ -97,27 +103,27 @@
 				</div>
 				
 				<div class="menu-container">
-					    <div class="menu-content-clicked">
-					        <a href="<c:url value='/mnHome/mainView/${userNickname }'/>">홈</a>
-					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/diaryView/${userNickname }'/>">
-					        <a href="#">다이어리</a>
-					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/albumView/${userNickname }'/>">
-					        <a href="#">사진첩</a>
-					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/boardView/${userNickname }'/>">
-					        <a href="#">게시판</a>
-					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>">
-					        <a href="#">방명록</a>
-					    </div>
-					    <c:if test="${sessionScope.userId.userNickname eq userNickname }">
-						    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>">
-						        <a href="#">관리</a>
-						    </div>
-					    </c:if>
-					</div>
+				    <div class="menu-content" data-tab="<c:url value='/mnHome/mainView/${userNickname }'/>">
+				        <a href="#">홈</a>
+				    </div>
+				    <div class="menu-content" data-tab="<c:url value='/mnHome/diaryView/${userNickname }'/>">
+				        <a href="#">다이어리</a>
+				    </div>
+				    <div class="menu-content" data-tab="<c:url value='/mnHome/albumView/${userNickname }'/>">
+				        <a href="#">사진첩</a>
+				    </div>
+				    <div class="menu-content" data-tab="<c:url value='/mnHome/boardView/${userNickname }'/>">
+				        <a href="#">게시판</a>
+				    </div>
+				    <div class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>">
+				        <a href="#">방명록</a>
+				    </div>
+				    <c:if test="${sessionScope.userId.userNickname eq userNickname }">
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>">
+					        <a href="#">관리</a>
+					    </div>		
+					</c:if>
+				</div>
 				
 			</div>
 		</div>

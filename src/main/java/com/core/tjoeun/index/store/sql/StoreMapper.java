@@ -26,4 +26,6 @@ public interface StoreMapper {
 	public int deductDotori(Map map);
 	
 	public int getMyDotori(String userNickname);
+	
+	public int insertBuyCart(Map map);
 }

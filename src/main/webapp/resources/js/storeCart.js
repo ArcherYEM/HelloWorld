@@ -63,6 +63,8 @@
 	        
 	        $('.divOneProduct').on('click', function () {
 	            const productCate = $(this).data('product-cate');
+	            const productTableCate = $(this).data('product-table-cate');
+	            const productContentPath = $(this).data('product-contentpath');
 	            const productName = $(this).data('product-name');
 	            const productPrice = $(this).data('product-price');
 				
@@ -72,19 +74,22 @@
 	        
 	        $('.product').on('click', function () {
 	            const productCate = $(this).data('product-cate');
+	            const productTableCate = $(this).data('product-table-cate');
+	            const productContentPath = $(this).data('product-contentpath');
 	            const productName = $(this).data('product-name');
 	            const productPrice = $(this).data('product-price');
 				
-	            console.log(productCate);
-	            addToCart(productCate, productName, productPrice);
+	            console.log(productCate, productTableCate, productContentPath, productName, productPrice);
+	            addToCart(productCate, productTableCate, productContentPath, productName, productPrice);
 	        });
 	
-	        function addToCart(cate, name, price) {
+	        function addToCart(cate, tablecate, contentPath, name, price) {
 	            $.ajax({
 	                type: 'POST',
 	                url: "/store/addToCart",
 	                contentType: 'application/json',
-	                data: JSON.stringify({ cate: cate, name: name, price: price }),
+	                data: JSON.stringify({ cate: cate, tablecate: tablecate, contentPath: contentPath,
+	                					name: name, price: price }),
 	                success: function () {
 	                    loadCart(); // 장바구니에 상품 추가 후 다시 로드
 	                },
