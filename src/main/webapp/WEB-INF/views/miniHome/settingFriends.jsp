@@ -166,8 +166,9 @@
 										            <td>userNickname</td>
 										            <td>${fReq.createDate}</td>
 										            <td>
-										            	<input type="button" class="set-frd-bf-tb-input" value="수락"/>
-										            	<input type="button" class="set-frd-bf-tb-input" value="거절" onclick="confirmUnfriend()"/>
+										            	<input type="hidden" value="${fReq.seq}" id="fSeq">
+										            	<input type="button" class="set-frd-bf-tb-input" value="수락" onclick="accept()"/>
+										            	<input type="button" class="set-frd-bf-tb-input" value="거절" onclick="confirmNope()"/>
 										            </td>
 									        	</tr>
 											</c:forEach>
@@ -176,26 +177,35 @@
 									</div>
 									<div class="set-frd-bf-accept">
 										<table class="set-frd-bf-table">
-									        
-									       <c:forEach items="${fRes}" var="fRes">
-												<tr>
-													<c:if test="${fRes.userNickname  eq userNickname}">
+											<c:forEach items="${fRes}" var="fRes">
+													<tr>
+														<c:if test="${fRes.userNickname  eq userNickname}">
+												            <td>
+												            	${fRes.friendNickname}
+												            </td>
+											            </c:if>
+											            <c:if test="${fRes.userNickname  ne userNickname}">
+												            <td>
+												            	${userNickname}
+												            </td>
+											            </c:if>
+											            <td>userNickname</td>
+											            <td>${fRes.createDate}</td>
 											            <td>
-											            	${fRes.friendNickname}
+											            	<input type="button" class="set-frd-bf-tb-input" value="취소" onclick="confirmCancle()"/>
 											            </td>
-										            </c:if>
-										            <c:if test="${fRes.userNickname  ne userNickname}">
-											            <td>
-											            	${userNickname}
-											            </td>
-										            </c:if>
-										            <td>userNickname</td>
-										            <td>${fRes.createDate}</td>
-										            <td>
-										            	<input type="button" class="set-frd-bf-tb-input" value="신청취소"/>
-										            </td>
-									        	</tr>
+										        	</tr>
 											</c:forEach>
+									        
+									        <tr>
+									            <td>이효리</td>
+									            <td>2효2</td>
+									            <td>2007-10-31</td>
+									            <td>
+									            	<input type="button" class="set-frd-bf-tb-input" value="방문하기"/>
+									            	<input type="button" class="set-frd-bf-tb-input" value="거절하기" />
+									            </td>
+									        </tr>
 									        
 									    </table>
 									</div>
