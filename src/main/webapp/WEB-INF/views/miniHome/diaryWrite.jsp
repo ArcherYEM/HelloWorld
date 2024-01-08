@@ -56,8 +56,7 @@
 								<input type="text" placeholder="제목을 입력하세요" class="board-title" maxlength="30">
 							</div>
 							<div class="board-write-container">
-								<span class="board-writer">  이정은(작성자)</span>
-								<span class="board-write-date">2023.12.26 14:21</span>						
+								<span class="board-writer">  ${userName }(작성자)</span>
 							</div>
  							<!--인라인 스타일 외 적용불가하여 불가피하게 인라인css 적용 -->
 							<textarea name="content" id="txtContent" rows="10" cols="100" style="width:500px; height:180px; min-width:500px; display:none;"></textarea>
@@ -69,6 +68,11 @@
 									<div class="btn-right">
 										<input class="btn-write" type="button" id="btnBoardWrite" value="글쓰기">
 									</div>
+								</form>
+								<form id="frmDiary" method="POST" action="/mnHome/diaryAdd">
+									<input type="hidden" type="text" name="title" id="diaryHiddenTitle">
+									<input type="hidden" type="text" name="content" id="diaryHiddenContent">
+									<input type="hidden" type="text" name="userNickname" id="diaryHiddenUserNickname" value="<c:out value='${userNickname }'/>">
 								</form>
 							</div>
 							<div id="preview-container"></div>
@@ -104,5 +108,30 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	document.getElementById('btnBoardWrite').addEventListener('click', function() {
+		document.getElementById('diaryHiddenTitle').value = document.getElementById('diaryTitle').value;
+		
+		console.log(document.getElementById('diaryUserNickname').value);
+		oEditors.getById["txtContent"].exec("UPDATE_CONTENTS_FIELD", []);  
+   		
+   		let content = document.getElementById("txtContent").value.replace("\r\n","");
+   		
+   		document.getElementById('diaryHiddenContent').value = content;
+   		
+		document.getElementById('frmDiary').submit();
+	});
+	
+	var oEditors=[];
+	
+	nhn.husky.EZCreator.createInIFrame({
+		oAppRef : oEditors,
+		elPlaceHolder : "txtContent",
+		sSkinURI : "../../../../resources/smarteditor2/SmartEditor2Skin.html",
+		fCreator : "createSEditor2"
+	});
+</script>
+
 </body>
 </html>

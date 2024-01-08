@@ -7,9 +7,11 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.core.tjoeun.mnHome.diary.sql.DiaryMapper;
 
+@Repository
 public class DiaryImpl implements DiaryDao {
 	
 	@Autowired
