@@ -47,7 +47,7 @@
 		        <!-- minimi select -->
 		        <div class="productList">
 				    <c:forEach var="minimi" items="${minimi}" varStatus="seq">
-				        <div class="product" data-product-cate="미니미"
+				        <div class="product" data-product-cate="미니미" data-table-cate="minimi" data-contentPath="${minimi.contentPath}"
 				             data-product-name="${minimi.productName}" data-product-price="${minimi.productPrice}">
 				            <div>
 				                <img src="<c:url value="${minimi.contentPath}"/>" class="store-minimi-img"/>
