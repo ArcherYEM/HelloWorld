@@ -254,7 +254,6 @@ public class MainController {
 	public Map setTitle(@RequestBody Map map) {
 		Map result = new HashMap<String, String>();
 		
-		System.out.println("확인");
 		try {
 			mainService.updateHomeTitle(map);
 			result.put("msg", "성공");

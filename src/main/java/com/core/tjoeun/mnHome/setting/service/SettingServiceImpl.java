@@ -51,5 +51,23 @@ public class SettingServiceImpl implements SettingService {
 
 		return searchMap;
 	}
+
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
+	public void insertFriendRequest(Map map) throws Exception {
+		
+		int result = settingDao.insertFriendRequest(map);
+		
+		if(result != 1) {
+			throw new Exception();
+		}
+		
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<HashMap> selectFriends(Map map) {
+		return settingDao.selectFriends(map);
+	}
     
 }

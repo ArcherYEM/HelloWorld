@@ -51,9 +51,46 @@ $(document).on('click', '#btn-title-save', function() {
 	document.getElementById('btn-title-edit').type = 'button';
 	document.getElementById('btn-title-save').type = 'hidden';
 });
+// 상단 타이틀 끝 
 
 
 
+
+//일촌신청 
+
+
+// When the user clicks on div, open the popup
+function popupFunction() {
+	var popup = document.getElementById("myPopup");
+	popup.classList.toggle("show");
+}
+
+function requestFriendship(userNickname){
+	if(confirm(userNickname + "님께 일촌신청을 보내겠습니까?")){
+		let requestUser = document.getElementById('requestUser').value;
+		let responseUser = document.getElementById('responseUser').value;
+		console.log(requestUser);
+		let jsonData = { 
+						"requestUser" : requestUser 
+						,"responseUser" : responseUser
+						};
+	
+			$.ajax({
+			url: "/mnHome/friendRequest"
+			,type: "POST"
+			, dataType : "json"
+			, data: JSON.stringify(jsonData)
+			, contentType: "application/json"
+			, success : function(data){
+				alert("일촌신청을 보냈습니다.");
+			
+			}, error : function(error){
+				console.log("Error loading tab: " + error);
+				alert('잠시 후 다시 시도해주세요.');
+			}
+			});
+	}
+}
 
 
 	

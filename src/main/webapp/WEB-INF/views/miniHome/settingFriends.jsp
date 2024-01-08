@@ -97,20 +97,20 @@
 										<input type="text" class="set-frd-search-input" id="searchInput" placeholder="닉네임을 입력하세요" maxlength="18" autofocus>
 										<input type="button" id="btnSearchUser" class="set-frd-search-btn" value="찾기" onclick=searchUser()>
 									</div>
-								<div id="searchResult" class="set-frd-search-place">
-									
+								<div id="searchResult" class="set-frd-search-place popup">
+								  
 								</div>
 							</div>
 							<div class="set-frd-mid">
 								<div class="set-frd-mid-btn">
 								    <div class="set-frd-mid-bf">
-								        <input type="button" class="set-frd-mid-bf-ipt" value="일촌친구" onclick="showFriendType('friend');">
+								        <input type="button" class="set-frd-mid-bf-ipt" value="나의일촌" onclick="showFriendType('friend');">
 								    </div>
 								    <div class="set-frd-mid-request">
-								        <input type="button" class="set-frd-mid-req-ipt" value="요청대기" onclick="showFriendType('request');">
+								        <input type="button" class="set-frd-mid-req-ipt" value="받은신청" onclick="showFriendType('request');">
 								    </div>
 								    <div class="set-frd-mid-accept">
-								        <input type="button" class="set-frd-act-bf-ipt" value="수락대기" onclick="showFriendType('accept');">
+								        <input type="button" class="set-frd-act-bf-ipt" value="신청목록" onclick="showFriendType('accept');">
 								    </div>
 								    <div class="set-frd-mid-search">
 								    	<input type="text" class="set-frd-mid-input" placeholder="닉네임을 입력하세요" />
@@ -121,91 +121,57 @@
 								<div class="set-frd-mid-bg">
 									<div class="set-frd-bf-list">
 										<table class="set-frd-bf-table">
-									        <tr>
-									            <td>강동원</td>
-									            <td>동0</td>
-									            <td>2008-05-01</td>
-									            <td>
-									            	<input type="button" class="set-frd-bf-tb-input" value="방문하기"/>
-									            	<input type="button" class="set-frd-bf-tb-input" value="일촌끊기" onclick="confirmUnfriend()"/>
-									            </td>
-									        </tr>
-									        <tr>
-									            <td>김태희</td>
-									            <td>대Hee</td>
-									            <td>2010-10-10</td>
-									            <td>
-									            	<input type="button" class="set-frd-bf-tb-input" value="방문하기"/>
-									            	<input type="button" class="set-frd-bf-tb-input" value="일촌끊기" onclick="confirmUnfriend()"/>
-									            </td>
-									        </tr>
-									        <tr>
-									            <td>문근영</td>
-									            <td>달근0</td>
-									            <td>2010-09-09</td>
-									            <td>
-									            	<input type="button" class="set-frd-bf-tb-input" value="방문하기"/>
-									            	<input type="button" class="set-frd-bf-tb-input" value="일촌끊기" onclick="confirmUnfriend()"/>
-									            </td>
-									        </tr>
-									        <tr>
-									            <td>양은모</td>
-									            <td>Devyem</td>
-									            <td>2023-08-30</td>
-									            <td>
-									            	<input type="button" class="set-frd-bf-tb-input" value="방문하기"/>
-									            	<input type="button" class="set-frd-bf-tb-input" value="일촌끊기" onclick="confirmUnfriend()"/>
-									            </td>
-									        </tr>
-									        <tr>
-									            <td>유승호</td>
-									            <td>너는승호다</td>
-									            <td>2011-11-11</td>
-									            <td>
-									            	<input type="button" class="set-frd-bf-tb-input" value="방문하기"/>
-									            	<input type="button" class="set-frd-bf-tb-input" value="일촌끊기" onclick="confirmUnfriend()"/>
-									            </td>
-									        </tr>
-									        <tr>
-									            <td>이정은</td>
-									            <td>리정</td>
-									            <td>2024-01-01</td>
-									            <td>
-									            	<input type="button" class="set-frd-bf-tb-input" value="방문하기"/>
-									            	<input type="button" class="set-frd-bf-tb-input" value="일촌끊기" onclick="confirmUnfriend()"/>
-									            </td>
-									        </tr>
-									        <tr>
-									            <td>이진우</td>
-									            <td>지누짱</td>
-									            <td>2023-10-30</td>
-									            <td>
-									            	<input type="button" class="set-frd-bf-tb-input" value="방문하기"/>
-									            	<input type="button" class="set-frd-bf-tb-input" value="일촌끊기" onclick="confirmUnfriend()"/>
-									            </td>
-									        </tr>
-									        <tr>
-									            <td>장나라</td>
-									            <td>LongCountry</td>
-									            <td>2006-06-01</td>
-									            <td>
-									            	<input type="button" class="set-frd-bf-tb-input" value="방문하기"/>
-									            	<input type="button" class="set-frd-bf-tb-input" value="일촌끊기" onclick="confirmUnfriend()"/>
-									            </td>
-									        </tr>
-									        <tr>
-									            <td>채승원</td>
-									            <td>채피티</td>
-									            <td>2013-01-09</td>
-									            <td>
-									            	<input type="button" class="set-frd-bf-tb-input" value="방문하기"/>
-									            	<input type="button" class="set-frd-bf-tb-input" value="일촌끊기" onclick="confirmUnfriend()"/>
-									            </td>
-									        </tr>
+											<c:if test="${fn:length(bf)  < 1} ">
+												아직 일촌이 없습니다. 
+											</c:if>
+											<c:forEach items="${bf}" var="bf">
+												<tr>
+													<c:if test="${bf.userNickname  eq userNickname}">
+											            <td>
+											            	${friendNickname}
+											            </td>
+										            </c:if>
+										            <c:if test="${bf.userNickname  ne userNickname}">
+											            <td>
+											            	${userNickname}
+											            </td>
+										            </c:if>
+										            <td>userNickname</td>
+										            <td>${bf.createDate}</td>
+										            <td>
+										            	<input type="button" class="set-frd-bf-tb-input" value="방문하기"/>
+										            	<input type="button" class="set-frd-bf-tb-input" value="일촌끊기" onclick="confirmUnfriend()"/>
+										            </td>
+									        	</tr>
+											</c:forEach>
+									        
+									        
 									    </table>
 									</div>
 									<div class="set-frd-bf-request">
 										<table class="set-frd-bf-table">
+											
+											<c:forEach items="${fReq}" var="fReq">
+												<tr>
+													<c:if test="${fReq.userNickname  eq userNickname}">
+											            <td>
+											            	${fReq.friendNickname}
+											            </td>
+										            </c:if>
+										            <c:if test="${fReq.userNickname  ne userNickname}">
+											            <td>
+											            	${userNickname}
+											            </td>
+										            </c:if>
+										            <td>userNickname</td>
+										            <td>${fReq.createDate}</td>
+										            <td>
+										            	<input type="button" class="set-frd-bf-tb-input" value="방문하기"/>
+										            	<input type="button" class="set-frd-bf-tb-input" value="일촌끊기" onclick="confirmUnfriend()"/>
+										            </td>
+									        	</tr>
+											</c:forEach>
+									        
 									        <tr>
 									            <td>민경훈</td>
 									            <td>민무늬토기</td>
@@ -215,28 +181,12 @@
 									            	<input type="button" class="set-frd-bf-tb-input" value="취소하기" onclick="confirmCancle()"/>
 									            </td>
 									        </tr>
-									        <tr>
-									            <td>이영애</td>
-									            <td>20love</td>
-									            <td>2006-02-01</td>
-									            <td>
-									            	<input type="button" class="set-frd-bf-tb-input" value="방문하기"/>
-									            	<input type="button" class="set-frd-bf-tb-input" value="취소하기" onclick="confirmCancle()"/>
-									            </td>
-									        </tr>
-									        <tr>
-									            <td>김범수</td>
-									            <td>KBS방송국</td>
-									            <td>2013-11-09</td>
-									            <td>
-									            	<input type="button" class="set-frd-bf-tb-input" value="방문하기"/>
-									            	<input type="button" class="set-frd-bf-tb-input" value="취소끊기" onclick="confirmCancle()"/>
-									            </td>
-									        </tr>
+									        
 									    </table>
 									</div>
 									<div class="set-frd-bf-accept">
 										<table class="set-frd-bf-table">
+									        
 									        <tr>
 									            <td>이효리</td>
 									            <td>2효2</td>
@@ -246,24 +196,7 @@
 									            	<input type="button" class="set-frd-bf-tb-input" value="거절하기" onclick="confirmNope()"/>
 									            </td>
 									        </tr>
-									        <tr>
-									            <td>김건모</td>
-									            <td>김이마른모자</td>
-									            <td>2006-04-01</td>
-									            <td>
-									            	<input type="button" class="set-frd-bf-tb-input" value="방문하기"/>
-									            	<input type="button" class="set-frd-bf-tb-input" value="거절하기" onclick="confirmNope()"/>
-									            </td>
-									        </tr>
-									        <tr>
-									            <td>손담비</td>
-									            <td>토요일밤은일요일새벽</td>
-									            <td>2013-11-19</td>
-									            <td>
-									            	<input type="button" class="set-frd-bf-tb-input" value="방문하기"/>
-									            	<input type="button" class="set-frd-bf-tb-input" value="거절하기" onclick="confirmNope()"/>
-									            </td>
-									        </tr>
+									        
 									    </table>
 									</div>
 								</div>
