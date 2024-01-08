@@ -52,6 +52,13 @@ public class BoardController {
 	@RequestMapping(value="/mnHome/boardWriteView/{userNickname}")
 	public String boardWriteView(@PathVariable String userNickname, Model model) {
 		
+		Map profile = mainService.getProfile(userNickname);
+		String image = (String) profile.get("image");
+		String msg = (String) profile.get("msg");
+		msg = msg.replace("\n", "<br>");
+		model.addAttribute("image", image);
+		model.addAttribute("msg", msg);
+		
 		Map map = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", map.get("userName"));
 		model.addAttribute("title", map.get("title"));
@@ -61,6 +68,13 @@ public class BoardController {
 	
 	@RequestMapping(value="/mnHome/boardDetail/{userNickname}")
 	public String boardDetail(@PathVariable String userNickname, Model model) {
+		
+		Map profile = mainService.getProfile(userNickname);
+		String image = (String) profile.get("image");
+		String msg = (String) profile.get("msg");
+		msg = msg.replace("\n", "<br>");
+		model.addAttribute("image", image);
+		model.addAttribute("msg", msg);
 		
 		Map map = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", map.get("userName"));
