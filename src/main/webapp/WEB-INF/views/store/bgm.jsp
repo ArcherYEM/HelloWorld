@@ -39,7 +39,6 @@
 			<a class="storeAtag present" href="/store/bgmView">bgm</a>
 		</div>
 	
-	
 		<div class="bgm-frame">
 		
 			<div class="bgm-search-group">
@@ -57,16 +56,7 @@
 			</div>
 			
 			<div id="test">
-<%-- 			<c:forEach var="bgm" items="${bgmInfo}" varStatus="seq">
-				<div class="bgm-list bgm-grid" id="ajaxTable bgm-list">
-					<div><input type="checkbox" id="checkbox${i}></div>
-					<div><c:out value="${seq.count }"/></div>
-					<div><c:out value="${bgm.title }"/></div>
-					<div><c:out value="${bgm.artist }"/></div>
-					<div><c:out value="${bgm.runningTime }"/></div>
-					<div><c:out value="${bgm.bgmPrice }"/></div>
-				</div>
-			</c:forEach> --%>
+<!-- 				Ajax 로 Bgm List 뿌려주는 공간 -->
 			</div>
 			
 			<div class="bgm-buy">
@@ -113,13 +103,7 @@ function search(){
                 resultHtml += '</div>';
                 $('#test').html(resultHtml);
             });
-            $(document).ready(function() {
-                $('.bgm-list.bgm-grid').click(function() {
-                    $(this).find('input[type="checkbox"]').prop('checked', function(i, checked) {
-                        return !checked;
-                    });
-                });
-            });
+            
             $('#selectAllCheckbox').on('change', function () {
                 var isChecked = $(this).prop('checked');
                 for (var i = 0; i < msg.data.length; i++) {
@@ -127,6 +111,18 @@ function search(){
                 }
                 console.log("전체선택");
             });
+            
+            $(document).ready(function() {
+                $('.bgm-list.bgm-grid').on('click', function() {
+                    var checkbox = $(this).find('input[type="checkbox"]');
+                    checkbox.prop('checked', !checkbox.prop('checked'));
+                    console.log("클릭");
+
+                }).find('input[type="checkbox"]').on('click', function(e) {
+                    e.stopPropagation(); // 부모 요소의 클릭 이벤트 전파 막기
+                });
+            });
+
 		} else {
 			 resultHtml += '<div>';
              resultHtml += '<div style="text-align:center;">검색 결과가 없습니다.</div>';
