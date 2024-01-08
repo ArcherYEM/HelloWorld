@@ -5,14 +5,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.core.tjoeun.mnHome.diary.sql.DiaryMapper">
 
 	<insert id="insertDiary" parameterType="map">
-		insert into notice(
-			writer
-		    ,title
-		    ,content
+		insert into diary(
+			userNickname,
+			title,
+			content,
+			hits,
+			del_yn,
+			openScope
 		 ) values (
 			#{userNickname}
 		    ,#{title}
 		    ,#{content}
+		    ,0
+		    ,'n'
+		    ,#{openScope}
 	     )
 	</insert>
 	
