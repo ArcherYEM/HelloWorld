@@ -16,10 +16,9 @@
 }
 
 .storeAtag {
-   text-decoration: none;
-   color: black;
-   margin-left: 120px;
-   margin-right: 120px;
+    text-decoration: none;
+    color: black;
+    padding: 15px 50px;
 }
 
 .products {
