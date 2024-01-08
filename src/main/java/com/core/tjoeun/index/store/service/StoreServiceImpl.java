@@ -108,5 +108,19 @@ public class StoreServiceImpl implements StoreService {
 			throw new Exception();
 		}
 	}
-	
+
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
+	public int updateBuyCartDotoriCnt(Map map) throws Exception {
+		int result = storeDao.updateBuyCartDotoriCnt(map);
+		
+		if (result == 1) {
+			return result;
+		} else {
+			result = 0;
+			throw new Exception();
+		}
+		 
+	}
+
 }

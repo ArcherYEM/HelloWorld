@@ -78,7 +78,7 @@
 				    </div>
 				  <div class="cart-list-under">
 					  <input type="button" class="btnCart" id="btnCartClear" value="비우기">
-					  <input type="button" class="btnCart" id="btnCartBuy" value="구매">
+					  <input type="button" class="btnCart" id="btnCartBuy" value="구매" onclick="buyCart()">
 				  </div>
 				</div>
 			</div>
@@ -96,39 +96,12 @@
 	    </div>
 	</div>
 	
-	<div>
-		<form id="frmBuyCart" method="post" action="<c:url value="/store/buyCart" />">
-		    <input type="hidden" id="userNickname" name="userNickname" value="${sessionScope.userId.userNickname}">
-		    <input type="hidden" id="category" name="category" value="${sessionScope.tableCate}">
-		    <input type="hidden" id="productName" name="productName" value="${sessionScope.contentPath}">
-		    <input type="hidden" id="contentPath" name="contentPath" value="${sessionScope.name}">
-		</form>
-	</div>
 	
 	<script>
 		document.getElementById('btnCartClear').addEventListener('click',function() {
 			clearCart();
 		});
 		
-		document.getElementById('btnCartBuy').addEventListener('click', function() {
-			$('#frmBuyCart').submit();
-			
-		});
-		
-		$('#frmBuyCart').submit(function(event) {
-		    // 이벤트 기본 동작(폼 제출)을 막음
-		    event.preventDefault();
-		    
-		    // 폼을 동기적으로 제출하고, 서버 응답을 받아 처리
-		    var result = confirm('정말로 구매하시겠습니까?');
-		    if (result) {
-		        // 사용자가 확인을 눌렀을 때 서버로 폼을 제출하고, 서버 응답에 따라 처리
-		        this.submit();
-		    } else {
-		        // 사용자가 취소를 눌렀을 때의 처리
-		        alert('구매가 취소되었습니다.');
-		    }
-		});
 	</script>
 	</body>
 </html>

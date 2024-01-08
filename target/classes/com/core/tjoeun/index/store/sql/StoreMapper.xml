@@ -150,4 +150,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    ,#{contentPath}
 	)
 </insert>
+
+<update id="updateBuyCartDotoriCnt" parameterType="map">
+	update dotori
+	set
+	currentDotori = #{currentDotori}
+	where 1=1
+	<if test="userNickname != null">
+		and userNickname = #{userNickname}
+	</if>
+</update>
 </mapper>
