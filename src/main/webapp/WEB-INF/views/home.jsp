@@ -71,7 +71,7 @@
 						<c:out value='${sessionScope.userId.userNickname}'/>
 					</div>
 					<div class="login-top-right">
-						일촌 ON <span class="login-top-right-bfCnt">10</span>
+						<span class="login-top-right-imz">&#127752;</span>일촌 ON <span class="login-top-right-bfCnt">10</span>
 					</div>
 				</div>
 				<div class="login-profile-frame">
@@ -79,14 +79,26 @@
 						<img class="index-my-minimi" id="mainMinimi" src="<c:url value='${sessionScope.userMinimi}'/>"/>
 					</div>
 					<div class="login-profile-info">
-						<span>쪽지</span>
-						<span class="login-profile-info-1">8</span>
-						<span>오늘방문자</span>
-						<span class="login-profile-info-2">11</span>
-						<span>새게시물</span>
-						<span class="login-profile-info-3">0</span>
-						<span>일촌신청</span>
-						<span class="login-profile-info-4">1</span>
+						<div class="login-profile-section1">
+							<span>&#128233;</span>
+							<span>쪽지</span>
+							<span class="login-profile-info-1">8</span>
+						</div>
+						<div class="login-profile-section2">
+							<span>&#128099;</span>
+							<span>오늘방문자</span>
+							<span class="login-profile-info-2">11</span>
+						</div>
+						<div class="login-profile-section3">
+							<span>&#128203;</span>
+							<span>새게시물</span>
+							<span class="login-profile-info-3">0</span>
+						</div>
+						<div class="login-profile-section4">
+							<span>&#128149;</span>
+							<span>일촌신청</span>
+							<span class="login-profile-info-4">1</span>
+						</div>
 					</div>
 				</div>
 			</div>

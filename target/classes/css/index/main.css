@@ -136,6 +136,7 @@ a {
 	margin: 0 auto;
 	width: 80%;
 	height: 100%;
+	font-weight: bold;
 }
 
 .login-top {
@@ -153,8 +154,11 @@ a {
 	flex: 1;
 }
 
+.login-top-right-imz {
+	margin-right: 15px;
+}
+
 .login-top-right-bfCnt {
-	font-weight: bold;
 	font-size: 18px;
 	color: orange;
 	margin-left: 10px;
@@ -168,6 +172,7 @@ a {
 	border-bottom-left-radius: 5px;
 	padding-top: 10px;
 	padding-bottom: 10px;
+	align-items: center;
 }
 
 .login-profile-minimi,
@@ -185,8 +190,18 @@ a {
 
 .login-profile-info {
 	text-align: left;
-	margin-left: 20px;
-	display: flex;
+	margin-left: 25px;
+    text-align: left;
+}
+
+.login-profile-section1,
+.login-profile-section2,
+.login-profile-section3,
+.login-profile-section4 {
+	width: 100%;
+	display: grid;
+    grid-template-columns: 20% 50% 30%;
+    margin: 10px 0;
 }
 
 .login-profile-info-1,
@@ -194,7 +209,6 @@ a {
 .login-profile-info-3,
 .login-profile-info-4 {
 	color: orange;
-	font-weight: bold;
 }
 
 .signUpATag {
