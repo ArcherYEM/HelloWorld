@@ -105,8 +105,8 @@
 					</div>
 					
 					<div class="menu-container">
-					    <div class="menu-content-clicked">
-					        <a href="<c:url value='/mnHome/mainView/${userNickname }'/>">홈</a>
+					    <div class="menu-content" data-tab="<c:url value='/mnHome/mainView/${userNickname }'/>">
+					        <a href="#">홈</a>
 					    </div>
 					    <div class="menu-content" data-tab="<c:url value='/mnHome/diaryView/${userNickname }'/>">
 					        <a href="#">다이어리</a>
@@ -125,7 +125,6 @@
 						        <a href="#">관리</a>
 						    </div>		
 						</c:if>
-					    
 					</div>
 					
 				</div>

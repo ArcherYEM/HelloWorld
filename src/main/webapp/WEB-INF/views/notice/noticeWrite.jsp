@@ -4,8 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -19,7 +17,6 @@
 		<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	</head>
 	<body>
-	
 		<div class="index-frame">
 		
 			<div class="divIndexMenu index-header">
@@ -40,7 +37,6 @@
 			
 			<div class="notice-write-group">
 				<input class="notice-write-title" id="noticeTitle" type="text" placeholder="제목을 입력하세요." form = "frmNotice" name="title">
-				<!-- <textarea class="notice-write-content" id="noticeContent" placeholder="내용을 입력하세요." form = "frmNotice" name="content"></textarea> -->
 				<textarea class="notice-write-content" name="content" id="txtContent" rows="10" cols="100" placeholder="내용을 입력하세요." form = "frmNotice" ></textarea>
 			</div>
 			
@@ -50,7 +46,6 @@
 					<input class="nw-btn-write" type="button" id="btnNoticeWrite" value="작성">
 				</div>
 			</form>
-			
 			
 			<form id="frmNotice" method="POST" action="/notice/write">
 				<input type="hidden" type="text" name="title" id="noticeHiddenTitle" >
@@ -76,7 +71,6 @@
 	    		/* alert(document.getElementById("txtContent").value);  */
 	    		// 값을 불러올 땐 document.get으로 받아오기
 	    		let content = document.getElementById("txtContent").value.replace("\r\n","");
-	    		
 	    		
 	    		document.getElementById('noticeHiddenContent').value = content;
 	    		
