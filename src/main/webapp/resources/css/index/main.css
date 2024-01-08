@@ -114,31 +114,6 @@ a {
 	padding: 25px 40px;
 }
 
-.my-title {
-	font-weight: bold;
-	margin-bottom: 10px;
-}
-
-.index-my-minimi {
-	height: 200px;
-	border: 2px solid orange;
-	border-radius: 5px;
-	padding: 20px;
-	margin-bottom: 30px;
-}
-
-.my-btn {
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-}
-
-.mainBtn1,
-.mainBtn2 {
-	flex: 1;
-	width: 40%;
-}
-
 .divdot {
 	 position: absolute;
     bottom: 10px; /* 슬라이드 하단에 위치 */
@@ -155,6 +130,85 @@ a {
 	text-align: center;
 	display: flex;
 	align-items: center;
+}
+
+.login-frame {
+	margin: 0 auto;
+	width: 80%;
+	height: 100%;
+	font-weight: bold;
+}
+
+.login-top {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	display: flex;
+	justify-content: space-between;
+	border: 1px solid gray;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.login-top-left,
+.login-top-right {
+	flex: 1;
+}
+
+.login-top-right-imz {
+	margin-right: 15px;
+}
+
+.login-top-right-bfCnt {
+	font-size: 18px;
+	color: orange;
+	margin-left: 10px;
+}
+
+.login-profile-frame {
+	display: flex;
+	justify-content: space-between;
+	border: 1px solid gray;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	align-items: center;
+}
+
+.login-profile-minimi,
+.login-profile-info {
+	flex: 1;
+}
+
+.index-my-minimi {
+	height: 200px;
+	border: 2px solid orange;
+	border-radius: 5px;
+	padding: 20px;
+	margin: 15px 10px;
+}
+
+.login-profile-info {
+	text-align: left;
+	margin-left: 25px;
+    text-align: left;
+}
+
+.login-profile-section1,
+.login-profile-section2,
+.login-profile-section3,
+.login-profile-section4 {
+	width: 100%;
+	display: grid;
+    grid-template-columns: 20% 50% 30%;
+    margin: 10px 0;
+}
+
+.login-profile-info-1,
+.login-profile-info-2,
+.login-profile-info-3,
+.login-profile-info-4 {
+	color: orange;
 }
 
 .signUpATag {

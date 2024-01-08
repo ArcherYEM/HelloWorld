@@ -1,6 +1,7 @@
 package com.core.tjoeun.mnHome.setting.controller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -113,9 +114,63 @@ public class SettingController {
 		Map map = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", map.get("userName"));
 		model.addAttribute("title", map.get("title"));
+		Map nameMap = new HashMap();
+		nameMap.put("userNickname", userNickname);
+		//일촌 목록 가져오기 
+		List<HashMap> fList = new ArrayList<>(settingService.selectFriends(nameMap));
+		if(fList != null && fList.size()>0) {
+			List<Map> bf = new ArrayList<Map>();
+			List<Map> fReq = new ArrayList<Map>();
+			List<Map> fRes = new ArrayList<Map>();
+			System.out.println("list size :" + fList.size());
+			for(Map fmap :fList) {
+				System.out.println(fmap.get("userNickname"));
+				System.out.println((int)fmap.get("fStatus"));
+				
+				if( (fmap.get("userNickname")==userNickname && (int)fmap.get("fStatus") == 1 ) ||
+					(fmap.get("friendNickname")==userNickname && (int)fmap.get("fStatus") == 1) ){
+					System.out.println("1");
+					bf.add(fmap);
+				}else if((fmap.get("userNickname").equals(userNickname) && Integer.parseInt(fmap.get("fStatus").toString())  == 0 )) {
+					System.out.println("2");
+					fReq.add(fmap);
+				}else if((fmap.get("friendNickname").equals(userNickname) && Integer.parseInt(fmap.get("fStatus").toString())  == 0 )) {
+					System.out.println("3");
+					fRes.add(fmap);
+				}
+				
+			}
+			
+			model.addAttribute("bf", bf);
+			model.addAttribute("fReq", fReq);
+			model.addAttribute("fRes", fRes);
+			System.out.println("bf :" + bf.size() + "| fReq :" + fReq.size() + "| fRes :" + fRes.size());
+		}else {
+			model.addAttribute("bf", 0);
+			model.addAttribute("fReq", 0);
+			model.addAttribute("fRes", 0);
+		}
+		
 		
 		return "miniHome/settingFriends";
 	}
+	
+	@RequestMapping(value = "/mnHome/friendRequest")
+	@ResponseBody
+	public Map requestFriendship( @RequestBody Map map) {
+		
+		Map result = new HashMap<String, String>();
+		try {
+			settingService.insertFriendRequest(map);
+			result.put("msg", "성공");
+		} catch (Exception e) {
+			result.put("msg", "실패");
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
 	
 //	searchFriends , setting 공통메서드
 	public Map common(Map map) {
