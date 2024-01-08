@@ -124,26 +124,34 @@
 										<c:if test="${empty bf}">
 											 <span>아직 일촌이 없습니다.</span> 
 										</c:if>
-										<c:if test = " ${not empty bf}">										
+										<c:if test = "${not empty bf}">										
 											<table class="set-frd-bf-table">
+												<tr>
+													<td>신청번호</td>
+													<td>이름</td>
+													<td>닉네임</td>
+													<td>신청일</td>
+													<td></td>
+												</tr>
+												
 												<c:forEach items="${bf}" var="bf">
 													<tr>
+														<td>${bf.seq}</td>
 														<c:if test="${bf.userNickname  eq userNickname}">
-															<td>${bf.seq}</td>
 												            <td>
-												            	${friendNickname}
+												            	${bf.friendNickname}
 												            </td>
 											            </c:if>
 											            <c:if test="${bf.userNickname  ne userNickname}">
 												            <td>
-												            	${userNickname}
+												            	${bf.userNickname}
 												            </td>
 											            </c:if>
 											            <td>userNickname</td>
 											            <td>${bf.createDate}</td>
 											            <td>
 											            	<input type="button" class="set-frd-bf-tb-input" value="방문하기"/>
-											            	<input type="button" class="set-frd-bf-tb-input" value="일촌끊기" onclick="confirmUnfriend()"/>
+											            	<input type="button" class="set-frd-bf-tb-input" value="일촌끊기" data-seq="${bf.seq}" id="unfriend"/>
 											            </td>
 										        	</tr>
 												</c:forEach>
@@ -156,6 +164,13 @@
 										</c:if>
 										<c:if test = "${not empty fRes}">
 											<table class="set-frd-bf-table">
+												<tr>
+													<td>신청번호</td>
+													<td>이름</td>
+													<td>닉네임</td>
+													<td>신청일</td>
+													<td></td>
+												</tr>
 												
 												 <c:forEach items="${fRes}" var="fRes">
 													<tr>
@@ -174,8 +189,8 @@
 											            <td>${fRes.createDate}</td>
 											            <td>
 											            	<input type="hidden" value="${fRes.seq}" id="fSeq">
-											            	<input type="button" class="set-frd-bf-tb-input" value="수락" onclick="accept()"/>
-											            	<input type="button" class="set-frd-bf-tb-input" value="거절" onclick="confirmNope()"/>
+											            	<input type="button" class="set-frd-bf-tb-input" value="수락" data-seq="${fRes.seq}" id="accept"/>
+											            	<input type="button" class="set-frd-bf-tb-input" value="거절" data-seq="${fRes.seq}" id="reject"/>
 											            </td>
 										        	</tr>
 												</c:forEach> 
@@ -188,6 +203,13 @@
 										</c:if>
 										<c:if test = "${not empty fReq}">
 											<table class="set-frd-bf-table">
+												<tr>
+													<td>신청번호</td>
+													<td>이름</td>
+													<td>닉네임</td>
+													<td>신청일</td>
+													<td></td>
+												</tr>
 												<c:forEach items="${fReq}" var="fReq">
 														<tr>
 															<td>${fReq.seq}</td>
@@ -198,14 +220,14 @@
 												            </c:if>
 												            <c:if test="${fReq.userNickname  ne userNickname}">
 													            <td>
-													            	${userNickname}
+													            	${fReq.userNickname}
 													            </td>
 												            </c:if>
 												            <td>userNickname</td>
 												            <td>${fReq.createDate}</td>
 												            <td>
 												            	<input type="hidden" value="${fReq.seq}" id="fSeq">
-												            	<input type="button" class="set-frd-bf-tb-input" value="취소" onclick="confirmCancle()"/>
+												            	<input type="button" class="set-frd-bf-tb-input" data-seq="${fReq.seq}" value="취소" id="cancle"/>
 												            </td>
 											        	</tr>
 												</c:forEach>
