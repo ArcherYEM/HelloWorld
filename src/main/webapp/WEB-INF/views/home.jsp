@@ -24,10 +24,12 @@
 	           <img class="index-header-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
 	         </a>
 	       </div>
-	       <h5 class="right" id="userDotori">내 도토리 : <span id="userDotoriCnt">${dotori}</span>개</h5>
 	       <div class="index-header-right">
+		       <h5 class="right" id="userDotori"><img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"><span id="userDotoriCnt">${dotori}</span>개</h5>
 	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
 	            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
+	            <a id="linkMnh" href="<c:url value='/mnHome/mainView/${sessionScope.userId.userNickname }' />" class="index-a-mnh">내 미니홈피</a>
+   				<a id="linkLogout" href="<c:url value='/index/member/logout' />" class="index-a-logout">로그아웃</a>
 	       </div>
       </div>
       
@@ -163,6 +165,8 @@
               helloMessage.innerText = json.userNickname + '  님 환영합니다.';
               userDotori.innerText = '내 도토리 : ' + json.userDotoriCnt + ' 개';
               userMinimiElement.src = "<c:url value='" + json.contentPath + "'/>";
+              document.getElementById('linkMnh').style.display = 'block';
+              document.getElementById('linkLogout').style.display = 'block';
               divHome.style.display = 'none';
               divLogin.style.display = 'block';
            } else {
@@ -238,21 +242,48 @@
        location.href = "<c:url value="/index/member/logout" />"
     });
     
-    window.onload = function() {
+    function showUserInfo() {
+        let userEmail = '<c:out value="${sessionScope.userId.userEmail}" />';
+        let linkMnh = document.getElementById('linkMnh');
+        let linkLogout = document.getElementById('linkLogout');
         let userDotoriElement = document.getElementById('userDotori');
         let userDotoriCnt = '${dotori}';
+        let helloMessage = document.getElementById('helloMessage');
+        let divHome = document.getElementById('divHome');
+        let divLogin = document.getElementById('divLogin');
+
+        if (userEmail !== '') {
+           linkMnh.style.display = 'block';
+           linkLogout.style.display = 'block';
+           divHome.style.display = 'none';
+           divLogin.style.display = 'block';
+           helloMessage.innerText = '안녕하세요. ' + '<c:out value="${sessionScope.userId.userNickname}" />' + '님!!';
+           document.getElementById('indexDotoriImg').style.display = 'inline-block';
+        
+        } else {
+        	linkMnh.style.display = 'none';
+            linkLogout.style.display = 'none';
+           divHome.style.display = 'block';
+           divLogin.style.display = 'none';
+           helloMessage.innerText = '안녕하세요. HelloWorld에 오신 걸 환영합니다.';
+           document.getElementById('indexDotoriImg').style.display = 'none';
+        }
 
         if (userDotoriElement) {
-            if (userDotoriCnt.trim() !== '' && userDotoriCnt !== 'null') {
-                userDotoriElement.innerHTML = '내 도토리 : ' + userDotoriCnt + ' 개';
-                userDotoriElement.style.display = 'block';
-            } else {
-                userDotoriElement.innerHTML = '0 개'; // 또는 다른 기본값
-                userDotoriElement.style.display = 'none';
-            }
+           if (userDotoriCnt.trim() !== '' && userDotoriCnt !== 'null') {
+        	   userDotoriElement.innerHTML = '<img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"> ' + userDotoriCnt + ' 개';
+              userDotoriElement.style.display = 'block';
+           } else {
+        	   userDotoriElement.innerHTML = '<img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"> 0 개';
+              userDotoriElement.style.display = 'none';
+           }
         }
-    };
+     }
 
+    window.onload = function () {
+        showUserInfo();
+     };
+    
 	</script>
    </body>
 </html>
