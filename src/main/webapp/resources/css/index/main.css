@@ -41,6 +41,11 @@ a {
 	text-align: center;
 }
 
+#indexDotoriImg {
+	width: 15px;
+	height: 15px;
+}
+
 #userDotori {
   margin: 0; /* 기본 마진 제거 */
   flex-shrink: 0; /* 도토리가 표시되면 크기를 줄이지 않도록 설정 */
