@@ -118,15 +118,15 @@ public class SettingController {
 		nameMap.put("userNickname", userNickname);
 		//일촌 목록 가져오기 
 		List<HashMap> fList = new ArrayList<>(settingService.selectFriends(nameMap));
+		List<Map> bf = new ArrayList<Map>();
+		List<Map> fReq = new ArrayList<Map>();
+		List<Map> fRes = new ArrayList<Map>();
+		
 		if(fList != null && fList.size()>0) {
-			List<Map> bf = new ArrayList<Map>();
-			List<Map> fReq = new ArrayList<Map>();
-			List<Map> fRes = new ArrayList<Map>();
+			
 			
 			for(Map fmap :fList) {
-				if( (fmap.get("userNickname")==userNickname && (int)fmap.get("fStatus") == 1 ) ||
-					(fmap.get("friendNickname")==userNickname && (int)fmap.get("fStatus") == 1) ){
-					
+				if( (int)fmap.get("fStatus") == 1 ){
 					bf.add(fmap);
 				}else if((fmap.get("userNickname").equals(userNickname) && Integer.parseInt(fmap.get("fStatus").toString())  == 0 )) {
 					
@@ -137,15 +137,12 @@ public class SettingController {
 				}
 			}
 			
-			model.addAttribute("bf", bf);
-			model.addAttribute("fReq", fReq);
-			model.addAttribute("fRes", fRes);
-			//System.out.println("bf :" + bf.size() + "| fReq :" + fReq.size() + "| fRes :" + fRes.size());
-		}else {
-			model.addAttribute("bf", 0);
-			model.addAttribute("fReq", 0);
-			model.addAttribute("fRes", 0);
+			
+			System.out.println("bf :" + bf.size() + "| fReq :" + fReq.size() + "| fRes :" + fRes.size());
 		}
+		model.addAttribute("bf", bf);
+		model.addAttribute("fReq", fReq);
+		model.addAttribute("fRes", fRes);
 		
 		
 		return "miniHome/settingFriends";
