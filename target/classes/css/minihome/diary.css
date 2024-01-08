@@ -295,7 +295,6 @@
 	text-align:right;
 	align-items:center;
 	margin-right : 15px;
-
 }
 
 .btn-right{
@@ -310,4 +309,5 @@
 .btn-container{
 	display: flex;
 	justify-content: space-between;
+	margin-top: 20px;
 }
