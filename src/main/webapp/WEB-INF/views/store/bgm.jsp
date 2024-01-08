@@ -22,11 +22,11 @@
 	           <img class="index-header-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
 	         </a>
 	       </div>
-				<h5 id="userDotori" class="right">내 도토리 : <span id="userDotoriCnt">${dotori}</span> 개</h5>
 	       <div class="index-header-right">
+				<h5 class="right" id="userDotori"><img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"><span id="userDotoriCnt">${dotori}</span>개</h5>
 	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
 	            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
-	            <a href="<c:url value='/mnHome/mainView' />" class="index-a-mnh">내 미니홈피</a>
+	            <a href="<c:url value='/mnHome/mainView/${sessionScope.userId.userNickname }' />" class="index-a-mnh">내 미니홈피</a>
 	            <a href="<c:url value="/index/member/logout" />" class="index-a-logout">로그아웃</a>
 	        </div>
       </div>
@@ -38,7 +38,6 @@
 			<a class="storeAtag" href="/store/dotoriView">도토리</a>
 			<a class="storeAtag present" href="/store/bgmView">bgm</a>
 		</div>
-	
 	
 		<div class="bgm-frame">
 		
@@ -57,16 +56,7 @@
 			</div>
 			
 			<div id="test">
-<%-- 			<c:forEach var="bgm" items="${bgmInfo}" varStatus="seq">
-				<div class="bgm-list bgm-grid" id="ajaxTable bgm-list">
-					<div><input type="checkbox" id="checkbox${i}></div>
-					<div><c:out value="${seq.count }"/></div>
-					<div><c:out value="${bgm.title }"/></div>
-					<div><c:out value="${bgm.artist }"/></div>
-					<div><c:out value="${bgm.runningTime }"/></div>
-					<div><c:out value="${bgm.bgmPrice }"/></div>
-				</div>
-			</c:forEach> --%>
+<!-- 				Ajax 로 Bgm List 뿌려주는 공간 -->
 			</div>
 			
 			<div class="bgm-buy">
@@ -113,13 +103,7 @@ function search(){
                 resultHtml += '</div>';
                 $('#test').html(resultHtml);
             });
-            $(document).ready(function() {
-                $('.bgm-list.bgm-grid').click(function() {
-                    $(this).find('input[type="checkbox"]').prop('checked', function(i, checked) {
-                        return !checked;
-                    });
-                });
-            });
+            
             $('#selectAllCheckbox').on('change', function () {
                 var isChecked = $(this).prop('checked');
                 for (var i = 0; i < msg.data.length; i++) {
@@ -127,6 +111,18 @@ function search(){
                 }
                 console.log("전체선택");
             });
+            
+            $(document).ready(function() {
+                $('.bgm-list.bgm-grid').on('click', function() {
+                    var checkbox = $(this).find('input[type="checkbox"]');
+                    checkbox.prop('checked', !checkbox.prop('checked'));
+                    console.log("클릭");
+
+                }).find('input[type="checkbox"]').on('click', function(e) {
+                    e.stopPropagation(); // 부모 요소의 클릭 이벤트 전파 막기
+                });
+            });
+
 		} else {
 			 resultHtml += '<div>';
              resultHtml += '<div style="text-align:center;">검색 결과가 없습니다.</div>';

@@ -24,11 +24,11 @@
 	                <img class="index-header-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
 	            </a>
 	        </div>
-	        <h5 id="userDotori" class="right">내 도토리 : <span id="userDotoriCnt">${dotori}</span> 개</h5>
 	        <div class="index-header-right">
+	        	<h5 class="right" id="userDotori"><img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"><span id="userDotoriCnt">${dotori}</span>개</h5>
 	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
 	            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
-	            <a href="<c:url value='/mnHome/mainView' />" class="index-a-mnh">내 미니홈피</a>
+	            <a href="<c:url value='/mnHome/mainView/${sessionScope.userId.userNickname }' />" class="index-a-mnh">내 미니홈피</a>
 	            <a href="<c:url value="/index/member/logout" />" class="index-a-logout">로그아웃</a>
 	        </div>
 	    </div>
@@ -47,7 +47,7 @@
 		        <!-- minimi select -->
 		        <div class="productList">
 				    <c:forEach var="minimi" items="${minimi}" varStatus="seq">
-				        <div class="product" data-product-cate="미니미"
+				        <div class="product" data-product-cate="미니미" data-table-cate="minimi" data-contentPath="${minimi.contentPath}"
 				             data-product-name="${minimi.productName}" data-product-price="${minimi.productPrice}">
 				            <div>
 				                <img src="<c:url value="${minimi.contentPath}"/>" class="store-minimi-img"/>
