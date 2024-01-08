@@ -74,11 +74,15 @@
 					<div class="box content-box">
 					
 					<div class="visit-frame">
-						<div class="visit-frame-write">
+						<div class="visit-frame-write view-margin">
 							<img class ="visit-minimi"
-								src="../../../../${sessionScope.userMinimi}" />
-							<input type="text" id="visit-comment-insert" />
+									src="../../../../${sessionScope.userMinimi}" />
+							<div class="visit-write-text" contenteditable="true">
+		    				<textarea id="visit-comment-insert" class="visit-view-inner" oninput="countCharacters()"></textarea>
+													
+							</div>						
 						</div>
+						<div id="char-count">0/5000</div>
 						<div class="visit-frame-btn">
 							<input type="button" value="등록" id="visit-comment-btn" onclick="insertComment()" />
 						</div>
