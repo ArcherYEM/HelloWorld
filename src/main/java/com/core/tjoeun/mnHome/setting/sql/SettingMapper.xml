@@ -74,7 +74,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, userNickname
 			, friendNickname
 			, fStatus
-			, createDate
+			, substring(createDate,1,10) as createDate
 		from friends
 		where (userNickname = #{userNickname} or friendNickname = #{userNickname})
 		and del_yn = 'N'
