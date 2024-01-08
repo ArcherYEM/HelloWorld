@@ -21,16 +21,39 @@ function searchUser() {
 		           contentType: 'application/json',
 		           data: JSON.stringify(jsonData)
 		        }).done(function (json) {
-		        	console.log(json);
-		        	let homeImage = document.createElement("img");
-		        	homeImage.src = "../../../../resources/images/minihome/homeIcon.png";
-		        	homeImage.setAttribute("class", "friend-home-Img");
-		        	
-		           let searchResult = document.getElementById('searchResult');
-
 		           if (json.resultCode === '1') {
-		        	   searchResult.innerText =json.userName;
-		        	   searchResult.appendChild(homeImage);
+			        	// 친구 미니홈피 주소 태그 
+			        	let homeLink = document.createElement("a");
+			        	homeLink.href = "/mnHome/mainView/" + userNickname;
+			        	homeLink.innerText= "방문하기";
+			        	
+			        
+			        	// 미니홈 아이콘 태그 
+			        	let homeImage = document.createElement("img");
+			        	homeImage.src = "../../../../resources/images/minihome/homeIcon.png";
+			        	homeImage.setAttribute("class", "friend-home-Img");
+			        	homeImage.setAttribute("id", "friend-home-popup");
+			        	homeImage.addEventListener("click", popupFunction);
+			        	
+			        	//popup tag
+			        	let popup = document.createElement("div");
+			        	popup.setAttribute("class", "popuptext");
+			        	popup.setAttribute("id", "myPopup");
+			        	
+			        	
+			        	//결과값 출력 div 
+			            let searchResult = document.getElementById('searchResult');
+
+						
+						//tag 주입 
+					
+						 popup.appendChild(homeLink);
+			           	 searchResult.appendChild(popup);
+			           	 searchResult.appendChild(homeImage);
+			           	 
+			        	 // 텍스트 추가
+						 searchResult.appendChild(document.createTextNode(json.userName + '(' + json.userEmail + ')'));
+		        	   
 		           } else {
 		        	   searchResult.innerText = '검색결과가 없습니다.';
 		           }
@@ -87,5 +110,11 @@ function searchUser() {
 	        // 예를 들어, 서버로 일촌 끊기 요청을 보내거나, 특정 URL로 리다이렉션할 수 있습니다.
 	        // 예시: window.location.href = "/unfriendAction"; 
 	    }
+	}
+	
+	// When the user clicks on div, open the popup
+	function popupFunction() {
+	  var popup = document.getElementById("myPopup");
+	  popup.classList.toggle("show");
 	}
 

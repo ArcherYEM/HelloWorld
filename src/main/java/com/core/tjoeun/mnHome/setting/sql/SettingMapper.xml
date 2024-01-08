@@ -50,4 +50,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			and userNickname = #{userNickname}
 		</if>
 	</select>
+	
+	<!--0은 대기 1은 승인 -1은 거절   -->
+	<insert id="insertFriendRequest" parameterType="map">
+		insert into friends
+		( userNickname
+		, friendNickname
+		, del_yn
+		, status
+		) values (
+			#{requestUser}
+			,#{responseUser}
+			,'N'
+			,0
+		)
+	
+	</insert>
+	
+	
+	<select id="selectFriends" parameterType="map" resultType="map">
+		select 
+			seq
+			, userNickname
+			, friendNickname
+			, fStatus
+			, substring(createDate,1,10) as createDate
+		from friends
+		where (userNickname = #{userNickname} or friendNickname = #{userNickname})
+		and del_yn = 'N'
+	</select>
+	
+	
 </mapper>

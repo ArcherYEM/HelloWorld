@@ -1,5 +1,6 @@
 package com.core.tjoeun.mnHome.setting.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -37,6 +38,18 @@ public class SettingDaoImpl implements SettingDao {
 	public Map selectSearchUser(Map map) {
 		SettingMapper mapper = sqlSession.getMapper(SettingMapper.class);
 		return mapper.selectSearchUser(map);
+	}
+
+	@Override
+	public int insertFriendRequest(Map map) {
+		SettingMapper mapper = sqlSession.getMapper(SettingMapper.class);
+		return mapper.insertFriendRequest(map);
+	}
+
+	@Override
+	public List<HashMap> selectFriends(Map map) {
+		SettingMapper mapper = sqlSession.getMapper(SettingMapper.class);
+		return mapper.selectFriends(map);
 	}
     
 }
