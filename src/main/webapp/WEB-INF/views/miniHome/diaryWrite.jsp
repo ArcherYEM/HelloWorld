@@ -53,13 +53,13 @@
 					<div class="box content-box">
 						<div class="board-overflow">
 							<div class="board-title-container">
-								<input type="text" placeholder="제목을 입력하세요" class="board-title" maxlength="30">
+								<input type="text" placeholder="제목을 입력하세요" class="board-title" maxlength="30" id="diaryTitle">
 							</div>
 							<div class="board-write-container">
 								<span class="board-writer">  ${userName }(작성자)</span>
 							</div>
  							<!--인라인 스타일 외 적용불가하여 불가피하게 인라인css 적용 -->
-							<textarea name="content" id="txtContent" rows="10" cols="100" style="width:500px; height:180px; min-width:500px; display:none;"></textarea>
+							<textarea name="content" id="txtContent" rows="10" cols="100" form="frmDiary" style="width:500px; height:180px; min-width:500px; display:none;"></textarea>
 							<div class="btn-container">
 								<div class="btn-left">
 									<input class="btn-diarylist" type="button" id="btnBoardView" data-diaryView="<c:url value='/mnHome/diaryView/${userNickname}'/>" value="목록">
@@ -111,6 +111,7 @@
 
 <script>
 	document.getElementById('btnBoardWrite').addEventListener('click', function() {
+		console.log("버튼 클릭됨");
 		document.getElementById('diaryHiddenTitle').value = document.getElementById('diaryTitle').value;
 		
 		console.log(document.getElementById('diaryUserNickname').value);
