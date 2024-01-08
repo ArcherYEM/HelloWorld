@@ -124,14 +124,18 @@ public class SettingController {
 			List<Map> fRes = new ArrayList<Map>();
 			System.out.println("list size :" + fList.size());
 			for(Map fmap :fList) {
-				if( (fmap.get("userNickname")==userNickname && (int)fmap.get("status") == 1 ) ||
-					(fmap.get("friendNickname")==userNickname && (int)fmap.get("status") == 1) ){
-					System.out.println();
+				System.out.println(fmap.get("userNickname"));
+				System.out.println((int)fmap.get("fStatus"));
+				
+				if( (fmap.get("userNickname")==userNickname && (int)fmap.get("fStatus") == 1 ) ||
+					(fmap.get("friendNickname")==userNickname && (int)fmap.get("fStatus") == 1) ){
+					System.out.println("1");
 					bf.add(fmap);
-				}else if((fmap.get("userNickname")==userNickname && (int)fmap.get("status") == 0 )) {
+				}else if((fmap.get("userNickname").equals(userNickname) && Integer.parseInt(fmap.get("fStatus").toString())  == 0 )) {
+					System.out.println("2");
 					fReq.add(fmap);
-				}else if((fmap.get("friendNickname")==userNickname && (int)fmap.get("status") == 0 )) {
-					
+				}else if((fmap.get("friendNickname").equals(userNickname) && Integer.parseInt(fmap.get("fStatus").toString())  == 0 )) {
+					System.out.println("3");
 					fRes.add(fmap);
 				}
 				
