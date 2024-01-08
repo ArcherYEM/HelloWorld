@@ -17,8 +17,6 @@ public class DiaryController {
 	
 	@Autowired
 	MainService mainService;
-			
-	
 	
 	@RequestMapping("/mnHome/diaryView/{userNickname}")
 	public String diaryView(@PathVariable String userNickname, Model model) {
@@ -39,10 +37,5 @@ public class DiaryController {
 				
 		return "miniHome/diaryWrite";
 	}
-	
-	
-	
-	
-	
 
 }
