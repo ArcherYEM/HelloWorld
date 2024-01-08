@@ -30,28 +30,28 @@
 								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
 								  <span class="setting-menu-title">개인정보</span>
 								  <ul class="tree">
-									<li><a><span class="setting-menu-title" id="spanSetting" data-setting="/mnHome/settingView/${userNickname }">개인정보변경</span></a></li>
+									<li><a><span class="setting-menu-list" id="spanSetting" data-setting="/mnHome/settingView/${userNickname }">개인정보변경</span></a></li>
 								  </ul>
 								  
 								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
 								  <span class="setting-menu-title">미니홈피관리</span>
 								  <ul class="tree">
-								    <li><a><span class="setting-menu-title" id="spanSettingBgm" data-bgm="/mnHome/settingBgm/${userNickname }">BGM설정</span></a></li>
-								    <li><a><span class="setting-menu-title" id="spanSettingMenu" data-menu="/mnHome/settingMenu/${userNickname }">메뉴탭설정</span></a></li>
-								    <li><a><span class="setting-menu-title" id="spanSettingSkin" data-skin="/mnHome/settingSkin/${userNickname }">스킨설정</span></a></li>
+								    <li><a><span class="setting-menu-list" id="spanSettingBgm" data-bgm="/mnHome/settingBgm/${userNickname }">BGM설정</span></a></li>
+								    <li><a><span class="setting-menu-list" id="spanSettingMenu" data-menu="/mnHome/settingMenu/${userNickname }">메뉴탭설정</span></a></li>
+								    <li><a><span class="setting-menu-list" id="spanSettingSkin" data-skin="/mnHome/settingSkin/${userNickname }">스킨설정</span></a></li>
 								  </ul>
 								 
 								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
 								  <span class="setting-menu-title">아이템/내역관리</span>
 								  <ul class="tree">
-									<li><a><span class="setting-menu-title" id="spanSettingDotoriU" data-dotoriU="/mnHome/settingDotoriUse/${userNickname }">도토리 사용내역</span></a></li>
-									<li><a><span class="setting-menu-title" id="spanSettingDotoriC" data-dotoriC="/mnHome/settingDotoriCharge/${userNickname }">도토리 구매내역</span></a></li>
+									<li><a><span class="setting-menu-list" id="spanSettingDotoriU" data-dotoriU="/mnHome/settingDotoriUse/${userNickname }">도토리 사용내역</span></a></li>
+									<li><a><span class="setting-menu-list" id="spanSettingDotoriC" data-dotoriC="/mnHome/settingDotoriCharge/${userNickname }">도토리 구매내역</span></a></li>
 								  </ul>
 								  
 								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
 								  <span class="setting-menu-title">인맥관리</span>
 								  <ul class="tree">
-									<li><a><span class="setting-menu-title" id="spanSettingFriends" data-friends="/mnHome/settingFriends/${userNickname }">일촌현황</span></a></li>
+									<li><a><span class="setting-menu-list" id="spanSettingFriends" data-friends="/mnHome/settingFriends/${userNickname }">일촌현황</span></a></li>
 								  </ul>
 								</div>
 							</div>
@@ -114,71 +114,52 @@
 								    </div>
 								    <div class="set-frd-mid-search">
 								    	<input type="text" class="set-frd-mid-input" placeholder="닉네임을 입력하세요" />
+								    	
 										<input type="button" value="찾기">
 									</div>
 								</div>
 							
 								<div class="set-frd-mid-bg">
 									<div class="set-frd-bf-list">
-										<table class="set-frd-bf-table">
-											<c:if test="${fn:length(bf)  < 1} ">
-												아직 일촌이 없습니다. 
-											</c:if>
-											<c:forEach items="${bf}" var="bf">
-												<tr>
-													<c:if test="${bf.userNickname  eq userNickname}">
+										<c:if test="${empty bf}">
+											 <span>아직 일촌이 없습니다.</span> 
+										</c:if>
+										<c:if test = " ${not empty bf}">										
+											<table class="set-frd-bf-table">
+												<c:forEach items="${bf}" var="bf">
+													<tr>
+														<c:if test="${bf.userNickname  eq userNickname}">
+															<td>${bf.seq}</td>
+												            <td>
+												            	${friendNickname}
+												            </td>
+											            </c:if>
+											            <c:if test="${bf.userNickname  ne userNickname}">
+												            <td>
+												            	${userNickname}
+												            </td>
+											            </c:if>
+											            <td>userNickname</td>
+											            <td>${bf.createDate}</td>
 											            <td>
-											            	${friendNickname}
+											            	<input type="button" class="set-frd-bf-tb-input" value="방문하기"/>
+											            	<input type="button" class="set-frd-bf-tb-input" value="일촌끊기" onclick="confirmUnfriend()"/>
 											            </td>
-										            </c:if>
-										            <c:if test="${bf.userNickname  ne userNickname}">
-											            <td>
-											            	${userNickname}
-											            </td>
-										            </c:if>
-										            <td>userNickname</td>
-										            <td>${bf.createDate}</td>
-										            <td>
-										            	<input type="button" class="set-frd-bf-tb-input" value="방문하기"/>
-										            	<input type="button" class="set-frd-bf-tb-input" value="일촌끊기" onclick="confirmUnfriend()"/>
-										            </td>
-									        	</tr>
-											</c:forEach>
-									        
-									        
-									    </table>
+										        	</tr>
+												</c:forEach>
+										    </table>
+										</c:if>
 									</div>
 									<div class="set-frd-bf-request">
-										<table class="set-frd-bf-table">
-											
-											<c:forEach items="${fReq}" var="fReq">
-												<tr>
-													<c:if test="${fReq.userNickname  eq userNickname}">
-											            <td>
-											            	${fReq.friendNickname}
-											            </td>
-										            </c:if>
-										            <c:if test="${fReq.userNickname  ne userNickname}">
-											            <td>
-											            	${userNickname}
-											            </td>
-										            </c:if>
-										            <td>userNickname</td>
-										            <td>${fReq.createDate}</td>
-										            <td>
-										            	<input type="hidden" value="${fReq.seq}" id="fSeq">
-										            	<input type="button" class="set-frd-bf-tb-input" value="수락" onclick="accept()"/>
-										            	<input type="button" class="set-frd-bf-tb-input" value="거절" onclick="confirmNope()"/>
-										            </td>
-									        	</tr>
-											</c:forEach>
-									        
-									    </table>
-									</div>
-									<div class="set-frd-bf-accept">
-										<table class="set-frd-bf-table">
-											<c:forEach items="${fRes}" var="fRes">
+										<c:if test="${empty fRes}">
+											 <span>앗! 아직 일촌 신청이 안왔어요.</span> 
+										</c:if>
+										<c:if test = "${not empty fRes}">
+											<table class="set-frd-bf-table">
+												
+												 <c:forEach items="${fRes}" var="fRes">
 													<tr>
+														<td>${fRes.seq}</td>
 														<c:if test="${fRes.userNickname  eq userNickname}">
 												            <td>
 												            	${fRes.friendNickname}
@@ -186,28 +167,52 @@
 											            </c:if>
 											            <c:if test="${fRes.userNickname  ne userNickname}">
 												            <td>
-												            	${userNickname}
+												            	${fRes.userNickname}
 												            </td>
 											            </c:if>
 											            <td>userNickname</td>
 											            <td>${fRes.createDate}</td>
 											            <td>
-											            	<input type="button" class="set-frd-bf-tb-input" value="취소" onclick="confirmCancle()"/>
+											            	<input type="hidden" value="${fRes.seq}" id="fSeq">
+											            	<input type="button" class="set-frd-bf-tb-input" value="수락" onclick="accept()"/>
+											            	<input type="button" class="set-frd-bf-tb-input" value="거절" onclick="confirmNope()"/>
 											            </td>
 										        	</tr>
-											</c:forEach>
-									        
-									        <tr>
-									            <td>이효리</td>
-									            <td>2효2</td>
-									            <td>2007-10-31</td>
-									            <td>
-									            	<input type="button" class="set-frd-bf-tb-input" value="방문하기"/>
-									            	<input type="button" class="set-frd-bf-tb-input" value="거절하기" />
-									            </td>
-									        </tr>
-									        
-									    </table>
+												</c:forEach> 
+										    </table>
+										</c:if>
+									</div> 
+									<div class="set-frd-bf-accept">
+										<c:if test="${empty fReq}">
+											 <span>일촌 신청 목록이 없습니다.</span> 
+										</c:if>
+										<c:if test = "${not empty fReq}">
+											<table class="set-frd-bf-table">
+												<c:forEach items="${fReq}" var="fReq">
+														<tr>
+															<td>${fReq.seq}</td>
+															<c:if test="${fReq.userNickname  eq userNickname}">
+													            <td>
+													            	${fReq.friendNickname}
+													            </td>
+												            </c:if>
+												            <c:if test="${fReq.userNickname  ne userNickname}">
+													            <td>
+													            	${userNickname}
+													            </td>
+												            </c:if>
+												            <td>userNickname</td>
+												            <td>${fReq.createDate}</td>
+												            <td>
+												            	<input type="hidden" value="${fReq.seq}" id="fSeq">
+												            	<input type="button" class="set-frd-bf-tb-input" value="취소" onclick="confirmCancle()"/>
+												            </td>
+											        	</tr>
+												</c:forEach>
+										        
+										        
+										    </table>
+										</c:if>
 									</div>
 								</div>
 							</div>
