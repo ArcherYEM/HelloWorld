@@ -111,13 +111,20 @@
 										src="../../../..${visit.contentPath }" />
 								<div class="visit-view">
 			    				<input type="text" readonly class="visit-view-inner" value="${visit.content }" data-original-content="${visit.content}">
-	
 								</div>						
 							</div>
 						</div>
 					</c:forEach>
 					
-					
+					<div>
+						<c:forEach var="page" begin="1" end="${totalPage}">
+							<span class="spanPage" data-page="${page}" onclick="btnPage(${page})">[${page}]</span>
+						</c:forEach>
+					</div>
+
+					<form id="frmPage" action="/mnHome/visitView" method="GET">
+						<input type="hidden" id="page" name="page" value="1">
+					</form>
 					
 					
 					</div>

@@ -9,6 +9,8 @@ public interface VisitMapper {
 	
 	public List<Map> selectVisitComment(String targetNickname);
 	
+	public int selectVisitCommentCnt(String targetNickname);
+	
 	public int updateVisitComment(Map map);
 	
 	public int deleteVisitComment(Map map);

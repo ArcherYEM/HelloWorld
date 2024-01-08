@@ -1,3 +1,31 @@
+function btnPage(page) {
+	alert(page);
+    var userNickname = $('#hiddenUserNickname').val();
+
+    var url = "/mnHome/visitView/" + userNickname + "?page=" + page;
+
+    $.ajax({
+        url: url,
+        type: 'GET',
+        success: function(response) {
+            // 성공 시 페이지의 내용을 업데이트합니다.
+            // 'response'는 서버로부터 받은 새로운 페이지 내용입니다.
+            // 여기서는 예시로 '#content'라는 ID를 가진 요소에 내용을 삽입합니다.
+            $('#content').html(response);
+
+            // 페이지 이동 후 추가적으로 필요한 스크립트나 UI 업데이트를 수행할 수 있습니다.
+        },
+        error: function(error) {
+            // 에러 처리
+            console.log('Error:', error);
+        }
+    });
+}
+
+function btnPage(){
+	alert('hi');
+}
+	
 function insertComment() {
     let userNickname = $("#userNickname").val();
     let targetNickname = $("#targetNickname").val();
