@@ -113,3 +113,37 @@ function btnDelete(clickedElement) {
     });
 }
 
+function countBytes(str) {
+    var byteLength = 0;
+    for (var i = 0; i < str.length; i++) {
+        var charCode = str.charCodeAt(i);
+        if (charCode < 0x0080) {
+            byteLength += 1; // 1바이트 문자
+        } else if (charCode < 0x0800) {
+            byteLength += 2; // 2바이트 문자
+        } else {
+            byteLength += 3; // 3바이트 문자 (한글 포함)
+        }
+    }
+    return byteLength;
+}
+
+function countCharacters() {
+    var textInput = document.getElementById('visit-comment-insert').value;
+    var byteCount = countBytes(textInput);
+    
+    // 입력 가능한 최대 바이트 수
+    var maxBytes = 5000; // VARCHAR(5000)에 해당
+
+    // 바이트 수를 초과하지 않도록 제한
+    while (byteCount > maxBytes) {
+        // 바이트 수가 최대치를 초과하면 마지막 문자 제거
+        textInput = textInput.slice(0, -1);
+        byteCount = countBytes(textInput);
+    }
+    // 수정된 텍스트를 다시 설정
+    document.getElementById('visit-comment-insert').value = textInput;
+    
+    // 현재 바이트 수를 표시
+    document.getElementById('char-count').innerText = byteCount + '/' + maxBytes;
+}
