@@ -228,7 +228,7 @@
                divHome.style.display = 'block';
                divLogin.style.display = 'none';
            } else {
-          	 helloMessage.innerText = '안녕하세요. ' + userNickname + '님!!';
+          	 helloMessage.innerText = userNickname + ' 님 반갑습니다';
                divHome.style.display = 'none';
                divLogin.style.display = 'block';
            }

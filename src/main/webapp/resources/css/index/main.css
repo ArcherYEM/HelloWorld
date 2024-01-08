@@ -128,20 +128,15 @@ a {
 }
 
 .my-btn {
+	width: 100%;
 	display: flex;
 	justify-content: space-between;
 }
 
-.mainBtn1{
+.mainBtn1,
+.mainBtn2 {
 	flex: 1;
-	margin-left: 210px;
-	width: 100px;
-}
-
-.mainBtn2{
-	flex: 1;
-	margin-right: 210px;
-	width: 100px;
+	width: 40%;
 }
 
 .divdot {

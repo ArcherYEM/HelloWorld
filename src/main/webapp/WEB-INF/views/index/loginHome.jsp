@@ -14,9 +14,7 @@
 		<meta http-equiv="Expires" content="0">
 		<title>HelloWorld</title>
 	</head>
-	
 	<body>
-		
 		<div style="display:flex; flex-direction: row;">
 			<span>
 				<img id="loginLogo" src="<c:url value="/resources/images/helloworldIconFull.png"/>">
@@ -63,12 +61,9 @@
 		<div id="divTeamInfo">
 			<h1 style="margin-left: 50px">team core</h1>
 		</div>
-		
-		
 	</body>
 	
 	<script>
-	
 	    function openMinihome() {
 	        window.open('/mnHome/mainView', 'window_name', 'width=1200, height=750, location=no, status=no, scrollbars=yes');
 	    }
