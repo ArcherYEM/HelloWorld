@@ -65,7 +65,8 @@
     vertical-align: top;
 }
 
-.cart-widget {    
+.cart-widget {  
+	position: relative;
     top: 50%;
     right: 0;
     text-align: center;
@@ -75,6 +76,12 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 20%;
     max-height: 345px;
+    font-size: 12.5px;
+}
+
+#cart-list {
+    width: 100%;
+    table-layout: fixed;
 }
 
 .cart-list-over {
@@ -82,12 +89,18 @@
 	overflow-y: auto;
 }
 .cart-list-under {
+	position: absolute;
+    bottom: 0;
+    width: 100%;
 	margin-top: 10px;
+	text-align: center;
 }
 
 #cart-list th {
     text-align: center;
-    padding: 20px;
+    padding: 5px;
+    width: 33.33%;
+    box-sizing: border-box;
 }
 
 .store-minimi-img {
@@ -120,8 +133,17 @@
 }
 
 .btnCart {
-	margin-left: 5px;
-	margin-right: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    background-color: #ccc;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btnCart:hover {
+    background-color: #ddd;
 }
 
 #dotoriIcon {
