@@ -80,5 +80,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and del_yn = 'N'
 	</select>
 	
+	<update id="updateStatus" parameterType="map">
+		update
+			friends
+		set 
+			<if test="fStatus != null">
+			fStatus = #{fStatus}
+			</if>
+			<if test="del != null">
+			del_yn =  #{del}
+			</if>
+			
+		where
+			seq = #{seq}
+	</update>
+	
 	
 </mapper>

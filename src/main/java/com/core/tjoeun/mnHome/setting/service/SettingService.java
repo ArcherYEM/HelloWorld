@@ -17,4 +17,6 @@ public interface SettingService {
 	public void insertFriendRequest(Map map) throws Exception;
 	
 	public List<HashMap> selectFriends(Map map);
+	
+	public void updateFriends(Map map) throws Exception;
 }
