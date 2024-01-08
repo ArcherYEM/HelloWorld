@@ -37,13 +37,13 @@ function loadTabContent(tabName) {
                 htmlToAdd += '<link class="board" href="/resources/css/minihome/board.css" rel="stylesheet">';
                 htmlToAdd += '<link class="board" href="/resources/css/minihome/album.css" rel="stylesheet">';
                 htmlToAdd += '<script type="text/javascript" src="../../../../resources/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>';
-                htmlToAdd += '<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>';
+//                htmlToAdd += '<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>';
                 htmlToAdd += '<script type="text/javascript" src="../../../../resources/js/boardWrite.js"></script>';
            
            }else if(tabName === '/mnHome/boardDetail' || tabName.indexOf('/mnHome/boardDetail') != -1){
                 htmlToAdd += '<link class="board" href="/resources/css/minihome/board.css" rel="stylesheet">';
                 htmlToAdd += '<link class="board" href="/resources/css/minihome/album.css" rel="stylesheet">';
-                htmlToAdd += '<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>';
+//                htmlToAdd += '<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>';
 
            
             }else if(tabName === '/mnHome/visitView' || tabName.indexOf('/mnHome/visitView') != -1){
@@ -77,7 +77,6 @@ function loadTabContent(tabName) {
 	        	htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
 	        	htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/settingDotori.css" />';
 	        }
-            
             
             // Append all the HTML at once.
             $('#test').html(htmlToAdd);
