@@ -94,5 +94,19 @@ public class StoreServiceImpl implements StoreService {
 		
 		return storeDao.deductDotori(map);
 	}
+
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
+	public int buyCart(Map map) throws Exception {
+		int result = 0;
+		result = storeDao.insertBuyCart(map);
+		
+		if(result == 1) {
+			return result;
+		} else {
+			result = 0;
+			throw new Exception();
+		}
+	}
 	
 }

@@ -288,6 +288,11 @@ public class StoreController {
     public void addToCart(@RequestBody CartItem item, HttpSession session) {
         ShoppingCart shoppingCart = getOrCreateShoppingCart(session);
         shoppingCart.addToCart(item);
+        
+        session.setAttribute("tableCate", item.getTableCate());
+        session.setAttribute("contentPath", item.getContentPath());
+        session.setAttribute("name", item.getName());
+        session.setAttribute("cart", shoppingCart);
     }
 
     private ShoppingCart getOrCreateShoppingCart(HttpSession session) {
@@ -304,5 +309,26 @@ public class StoreController {
     public void clearCart(HttpSession session) {
         ShoppingCart shoppingCart = getOrCreateShoppingCart(session);
         shoppingCart.clearCart();
+        
+        session.setAttribute("cart", shoppingCart);
+    }
+    
+    @RequestMapping(value="/store/buyCart", method = RequestMethod.POST)
+    public String buyCart(@RequestParam Map map, Model model, HttpSession session) {
+    	int result = 0;
+    	try {
+    		
+			result = storeService.buyCart(map);
+			if(result == 1) {
+				model.addAttribute("resultCode", "1");
+			} else {
+				model.addAttribute("resultCode", "0");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	
+    	
+    	return "/store/minimiView";
     }
 }
