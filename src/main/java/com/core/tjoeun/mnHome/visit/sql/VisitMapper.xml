@@ -39,6 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    AND us.allocation = 1
 	ORDER BY
 		v.update_date DESC
+	LIMIT 5 OFFSET 0		
 
 </select>
 
