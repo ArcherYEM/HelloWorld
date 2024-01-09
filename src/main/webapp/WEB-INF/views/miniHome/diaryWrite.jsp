@@ -48,7 +48,8 @@
 								</div>
 							 </c:if>
 							<div class="content-title-url">
-								https://www.helloworld.com/minihome/leejubin</div>
+								https://www.helloworld.com/minihome/leejubin
+							</div>
 						</div>
 					<div class="box content-box">
 						<div class="board-overflow">
@@ -59,21 +60,14 @@
 								<span class="board-writer">  ${userName }(작성자)</span>
 							</div>
  							<!--인라인 스타일 외 적용불가하여 불가피하게 인라인css 적용 -->
-							<textarea name="content" id="txtContent" rows="10" cols="100" form="frmDiary" style="width:500px; height:180px; min-width:500px; display:none;"></textarea>
+							<textarea placeholder="test" name="content" id="txtContent" rows="10" cols="100" form="frmDiary" style="width:500px; height:180px; min-width:500px; display:none;"></textarea>
 							<div class="btn-container">
 								<div class="btn-left">
 									<input class="btn-diarylist" type="button" id="btnBoardView" data-diaryView="<c:url value='/mnHome/diaryView/${userNickname}'/>" value="목록">
 								</div>
-								<form>
-									<div class="btn-right">
-										<input class="btn-write" type="button" id="btnBoardWrite" value="글쓰기">
-									</div>
-								</form>
-								<form id="frmDiary" method="POST" action="/mnHome/diaryAdd">
-									<input type="hidden" type="text" name="title" id="diaryHiddenTitle">
-									<input type="hidden" type="text" name="content" id="diaryHiddenContent">
-									<input type="hidden" type="text" name="userNickname" id="diaryHiddenUserNickname" value="<c:out value='${userNickname }'/>">
-								</form>
+								<div class="btn-right">
+									<input class="btn-write" type="button" id="btnBoardWrite" value="글쓰기" onclick="addDiary()">
+								</div>
 							</div>
 							<div id="preview-container"></div>
 						</div>
