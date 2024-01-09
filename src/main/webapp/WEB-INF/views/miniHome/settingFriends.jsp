@@ -113,9 +113,9 @@
 								        <input type="button" class="set-frd-act-bf-ipt" value="신청목록" onclick="showFriendType('accept');">
 								    </div>
 								    <div class="set-frd-mid-search">
-								    	<input type="text" class="set-frd-mid-input" placeholder="닉네임을 입력하세요" />
+								    	<input type="text" class="set-frd-mid-input" placeholder="닉네임을 입력하세요" id="searchBfName"/>
 								    	
-										<input type="button" value="찾기">
+										<input type="button" value="찾기" id="searchBf">
 									</div>
 								</div>
 							
