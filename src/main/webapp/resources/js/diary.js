@@ -2,13 +2,34 @@ function addDiary() {
     let userNickname = $("#hiddenUserNickname").val();
     let title = $("#diaryTitle").val();
 
-    // SmartEditor의 내용을 갱신
+    // SmartEditor의 내용을 갱신.
     oEditors.getById["txtContent"].exec("UPDATE_CONTENTS_FIELD", []);  
 
     // txtContent의 값을 가져와서 개행 문자를 제거
     let content = document.getElementById("txtContent").value.replace("\r\n", "");
-    
     console.log(content);
+    
+    let jsonData = {
+        "content" : content,
+        "userNickname" : userNickname,
+        "title" : title
+    };
+    console.log(jsonData);
+    
+    $.ajax({
+        method: 'POST',
+        url: "/mnHome/diaryAdd",
+        contentType: 'application/json',
+        data: JSON.stringify(jsonData)
+    }).done(function(json) {
+        if(json.resultCode === '1' ){
+        	 alert("성공메세지");
+        	 console.log(json);
+        } else if(json.resultCode === "0"){
+            alert("다이어리 작성에 실패했습니다. 다시 시도해주세요.");
+        }
+    });
+    
 }
 
 // 페이지 로드 시 SmartEditor 초기화

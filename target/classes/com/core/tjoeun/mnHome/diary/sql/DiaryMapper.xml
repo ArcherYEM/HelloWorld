@@ -9,14 +9,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			userNickname,
 			title,
 			content,
-			hits,
 			del_yn,
 			openScope
 		 ) values (
 			#{userNickname}
 		    ,#{title}
 		    ,#{content}
-		    ,0
 		    ,'n'
 		    ,#{openScope}
 	     )

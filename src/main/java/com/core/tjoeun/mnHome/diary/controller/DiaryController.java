@@ -1,16 +1,14 @@
 package com.core.tjoeun.mnHome.diary.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.core.tjoeun.mnHome.diary.service.DiaryService;
@@ -46,11 +44,18 @@ public class DiaryController {
 	
 	@RequestMapping(value="/mnHome/diaryAdd", method = RequestMethod.POST)
 	@ResponseBody
-	public Map diaryAdd(@RequestParam Map map) throws Exception {
+	public Map diaryAdd(@RequestBody  Map map) throws Exception {
 			System.out.println("add 실행");
 			System.out.println("map : " + map);
+			map.put("openScope",1);
 			Map resultMap = diaryService.insertDiary(map);
-		return resultMap;
+			if(resultMap != null) {
+				resultMap.put("resultCode", "1");
+				return resultMap;
+			} else {
+				resultMap.put("resultCode", "0");
+				return resultMap;
+			}
 	}
 
 }
