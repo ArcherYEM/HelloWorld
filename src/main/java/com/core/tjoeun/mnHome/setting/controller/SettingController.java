@@ -121,9 +121,9 @@ public class SettingController {
 		Map nameMap = new HashMap();
 		nameMap.put("userNickname", userNickname);
 		
-		
+		String name = null;
 		if(friendName.isPresent()) {
-			String name = friendName.get();
+			name = friendName.get();
 			nameMap.put("name", name);
 			System.out.println(userNickname + " | " + name);
 		}
@@ -148,12 +148,12 @@ public class SettingController {
 				}
 			}
 			
-			
 			System.out.println("bf :" + bf.size() + "| fReq :" + fReq.size() + "| fRes :" + fRes.size());
 		}
 		model.addAttribute("bf", bf);
 		model.addAttribute("fReq", fReq);
 		model.addAttribute("fRes", fRes);
+		model.addAttribute("fName",name);
 		
 		
 		return "miniHome/settingFriends";

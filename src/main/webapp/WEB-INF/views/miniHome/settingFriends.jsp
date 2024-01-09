@@ -113,8 +113,14 @@
 								        <input type="button" class="set-frd-act-bf-ipt" value="신청목록" onclick="showFriendType('accept');">
 								    </div>
 								    <div class="set-frd-mid-search">
-								    	<input type="text" class="set-frd-mid-input" placeholder="닉네임을 입력하세요" id="searchBfName"/>
-								    	
+								    	<c:if test="${not empty fName}">
+										  <c:set var="searchName" value="${fName}" scope="session" />
+										</c:if>
+										<c:if test="${empty fName}">
+										  <c:set var="searchName" value="" scope="session" />
+										</c:if>
+										
+								    	<input type="text" class="set-frd-mid-input" placeholder="닉네임을 입력하세요" id="searchBfName" value="${searchName}"/>
 										<input type="button" value="찾기" id="searchBf">
 									</div>
 								</div>
@@ -135,22 +141,21 @@
 												</tr>
 												
 												<c:forEach items="${bf}" var="bf">
-													<tr>
-														<td>${bf.seq}</td>
 														<c:if test="${bf.userNickname  eq userNickname}">
-												            <td>
-												            	${bf.friendNickname}
-												            </td>
+															<c:set var="bfNickname" value="${bf.friendNickname}" scope="session" />
 											            </c:if>
 											            <c:if test="${bf.userNickname  ne userNickname}">
-												            <td>
-												            	${bf.userNickname}
-												            </td>
+											            	<c:set var="bfNickname" value="${bf.userNickname}" scope="session" />
 											            </c:if>
+											            
+													<tr>
+														<td>${bf.seq}</td>
+														
+											            <td>${bfNickname}</td>
 											            <td>userNickname</td>
 											            <td>${bf.createDate}</td>
 											            <td>
-											            	<input type="button" class="set-frd-bf-tb-input" value="방문하기"/>
+											            	<input type="button" class="set-frd-bf-tb-input" value="방문하기" onclick="window.location.href='/mnHome/mainView/${bfNickname}'"/>
 											            	<input type="button" class="set-frd-bf-tb-input" value="일촌끊기" data-seq="${bf.seq}" id="unfriend"/>
 											            </td>
 										        	</tr>
@@ -173,18 +178,16 @@
 												</tr>
 												
 												 <c:forEach items="${fRes}" var="fRes">
-													<tr>
-														<td>${fRes.seq}</td>
-														<c:if test="${fRes.userNickname  eq userNickname}">
-												            <td>
-												            	${fRes.friendNickname}
-												            </td>
+												 		<c:if test="${fRes.userNickname  eq userNickname}">
+															<c:set var="fResNickname" value="${fRes.friendNickname}" scope="session" />
 											            </c:if>
 											            <c:if test="${fRes.userNickname  ne userNickname}">
-												            <td>
-												            	${fRes.userNickname}
-												            </td>
+											            	<c:set var="fResNickname" value="${fRes.userNickname}" scope="session" />
 											            </c:if>
+													<tr>
+														<td>${fRes.seq}</td>
+														
+											            <td>${fResNickname}</td>
 											            <td>userNickname</td>
 											            <td>${fRes.createDate}</td>
 											            <td>
@@ -211,18 +214,16 @@
 													<td></td>
 												</tr>
 												<c:forEach items="${fReq}" var="fReq">
+														<c:if test="${fReq.userNickname  eq userNickname}">
+															<c:set var="fReqNickname" value="${fReq.friendNickname}" scope="session" />
+											            </c:if>
+											            <c:if test="${fReq.userNickname  ne userNickname}">
+											            	<c:set var="fReqNickname" value="${fReq.userNickname}" scope="session" />
+											            </c:if>
 														<tr>
 															<td>${fReq.seq}</td>
-															<c:if test="${fReq.userNickname  eq userNickname}">
-													            <td>
-													            	${fReq.friendNickname}
-													            </td>
-												            </c:if>
-												            <c:if test="${fReq.userNickname  ne userNickname}">
-													            <td>
-													            	${fReq.userNickname}
-													            </td>
-												            </c:if>
+															
+												            <td>${fReqNickname}</td>
 												            <td>userNickname</td>
 												            <td>${fReq.createDate}</td>
 												            <td>
@@ -231,7 +232,6 @@
 												            </td>
 											        	</tr>
 												</c:forEach>
-										        
 										        
 										    </table>
 										</c:if>

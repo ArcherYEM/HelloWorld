@@ -22,10 +22,18 @@ function searchUser() {
 		           data: JSON.stringify(jsonData)
 		        }).done(function (json) {
 		           if (json.resultCode === '1') {
+		           		//검색 결과 
+		           		let result = json.userName + '(' + json.userEmail + ')' ;
+		           		
 			        	// 친구 미니홈피 주소 태그 
 			        	let homeLink = document.createElement("a");
 			        	homeLink.href = "/mnHome/mainView/" + userNickname;
 			        	homeLink.innerText= "방문하기";
+			        	
+			        	//popup tag
+			        	let popup = document.createElement("div");
+			        	popup.setAttribute("class", "popuptext");
+			        	popup.setAttribute("id", "myPopup");
 			        	
 			        
 			        	// 미니홈 아이콘 태그 
@@ -33,26 +41,28 @@ function searchUser() {
 			        	homeImage.src = "../../../../resources/images/minihome/homeIcon.png";
 			        	homeImage.setAttribute("class", "friend-home-Img");
 			        	homeImage.setAttribute("id", "friend-home-popup");
-			        	homeImage.addEventListener("click", popupFunction);
+			        	//homeImage.addEventListener("click", popupFunction);
 			        	
-			        	//popup tag
-			        	let popup = document.createElement("div");
-			        	popup.setAttribute("class", "popuptext");
-			        	popup.setAttribute("id", "myPopup");
-			        	
+			        	//결과 text담을 div 
+			        	let resultContainer = document.createElement("div");
+			        	resultContainer.setAttribute("class", "popup");
+			        	resultContainer.setAttribute("id", "resultContainer");
+			        	resultContainer.addEventListener("click", popupFunction);
 			        	
 			        	//결과값 출력 div 
 			            let searchResult = document.getElementById('searchResult');
 						searchResult.innerHTML = ''; //값 초기화
 						
 						//tag 주입 
-					
+						 resultContainer.appendChild(homeImage);
+						 resultContainer.appendChild(document.createTextNode(result));
+						 
 						 popup.appendChild(homeLink);
 			           	 searchResult.appendChild(popup);
-			           	 searchResult.appendChild(homeImage);
+			           	 searchResult.appendChild(resultContainer);
 			           	 
 			        	 // 텍스트 추가
-						 searchResult.appendChild(document.createTextNode(json.userName + '(' + json.userEmail + ')'));
+						// searchResult.appendChild(document.createTextNode(json.userName + '(' + json.userEmail + ')'));
 		        	   
 		           } else {
 		        	   searchResult.innerText = '검색결과가 없습니다.';
@@ -186,7 +196,14 @@ function popupFunction() {
 	 popup.classList.toggle("show");
 }
 	
-
+// Close the popup when clicking outside of it
+$(document).on('click', function(event) {
+  var popup = document.getElementById("myPopup");
+  var popupContainer = document.querySelector('.popup');
+  if (!popupContainer.contains(event.target)) {
+    popup.classList.remove("show");
+  }
+});
 
 	
 

@@ -407,7 +407,7 @@ body a{
 
 
 /* Popup container - can be anything you want */
-.popup {
+.mainpopup {
   position: relative;
   display: inline-block;
   cursor: pointer;
@@ -418,23 +418,23 @@ body a{
 }
 
 /* The actual popup */
-.popup .popuptext {
+.mainpopup .mainpopuptext {
   visibility: hidden;
-  width: 160px;
-  background-color: #555;
-  color: #fff;
+  width: 60px;
+  background-color: white;
+  color: black;
   text-align: center;
-  border-radius: 6px;
-  padding: 8px 0;
+  padding: 6px 0;
   position: absolute;
   z-index: 1;
-  bottom: 125%;
+  bottom: 70%;
   left: 50%;
   margin-left: -80px;
+  border : 1px solid grey;
 }
 
 /* Popup arrow */
-.popup .popuptext::after {
+.mainpopup .mainpopuptext::after {
   content: "";
   position: absolute;
   top: 100%;
@@ -446,7 +446,7 @@ body a{
 }
 
 /* Toggle this class - hide and show the popup */
-.popup .show {
+.mainpopup .show {
   visibility: visible;
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
