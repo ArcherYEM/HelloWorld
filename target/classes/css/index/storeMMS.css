@@ -107,8 +107,17 @@
 	width: 70%;
 	height: 70%;
 	padding: 15px;
-	border: 1px solid orange;
+	border: 2px solid orange;
 	border-radius: 5px;
+}
+
+.store-minimi-img:hover {
+	cursor: pointer;
+	width: 70%;
+	height: 70%;
+	padding: 15px;
+	border: 2px solid red;
+	border-radius: 5px; 
 }
 
 .product-name {
