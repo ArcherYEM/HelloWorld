@@ -40,10 +40,13 @@
 									  onclick="openNewWindowMinihomeProfileEdit()">Edit
 									</a>
 								</c:if>
-								<a
-									class="profile-hs"
-									onclick="openNewWindowMiniroomHistory()">History								
-								</a>
+								<form action="/mnHome/miniroomHistoryView" method="POST" id="frmHistory" target="miniroomWindow">
+		                        	<input type="hidden" name="targetNickname" id="targetNickname" value=${userNickname }>
+		                        </form>
+		                        <a
+		                          class="profile-hs"
+		                          onclick="openNewWindowMiniroomHistory()">History                        
+		                        </a>
 							</div>
 							<div class="profile-dot">---------------------------------</div>
 							<div class="profile-username font-kyobohand"> ${userName }&#128698;</div>
