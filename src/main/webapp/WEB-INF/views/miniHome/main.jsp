@@ -17,6 +17,7 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </head>
 <body>
+	<div class="bgSkin">${black }</div>
 	<div id="test"></div>
 	<div class="main-frame">
 		<div class="bookcover">
@@ -273,7 +274,7 @@
 			</div>
 		</div>
 	</div>
-	
+	<div id="testUnder"></div>
 	<script src="../../../../resources/js/default.js"></script>
 	<script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
 	<script>
@@ -308,6 +309,10 @@
 		function openNewWindow(url, settings) {
 		  window.open(url, '_blank', settings);
 		}
+	</script>
+	<script>
+	  var bgColor = "${bgSkin}";
+	  document.body.style.backgroundColor = bgColor;
 	</script>
 	
 </body>
