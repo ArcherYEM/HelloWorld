@@ -51,15 +51,18 @@
 		        $.ajax({
 		            type: 'POST',
 		            url: '/store/buyCart',
-		            success: function(rsult) {
+		            success: function(result) {
 		            	console.log(result);
 		            	if(result == 1) {
 		            		alert('상품 구매에 성공하였습니다.');
 
 		            		updateDotoriCount();
 		            		clearCart();
+		            	} else if (result == 2){
+		            		alert('로그인 후 이용해주세요..');
+		            		clearCart();
 		            	} else {
-		            		alert('상품 구매에 실패하였습니다. 다시 시도해주세요.');
+		            		alert('상품 구매에 실패했습니다. 다시 시도해주세요.')
 		            	}
 		            },
 		            error: function(error) {

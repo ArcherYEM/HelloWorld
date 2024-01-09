@@ -36,13 +36,7 @@ public class StoreController {
 	@RequestMapping(value = "/store/skinView")
 	public String skin(HttpSession session, HttpServletRequest req, Model model) {
 
-		Map userMap = new HashMap();
-		
-		session = req.getSession();
-		userMap = (Map) session.getAttribute("userId");
-		String userNickname = (String) userMap.get("userNickname");
-
-		model.addAttribute("dotori",storeService.getMyDotori(userNickname));
+		model.addAttribute("dotori", session.getAttribute("userDotoriCnt"));
 		
 		return "/store/skin";
 	}
@@ -50,13 +44,7 @@ public class StoreController {
 	@RequestMapping(value = "/store/menuView")
 	public String menu(HttpSession session, HttpServletRequest req, Model model) {
 		
-		Map userMap = new HashMap();
-		
-		session = req.getSession();
-		userMap = (Map) session.getAttribute("userId");
-		String userNickname = (String) userMap.get("userNickname");
-
-		model.addAttribute("dotori",storeService.getMyDotori(userNickname));
+		model.addAttribute("dotori", session.getAttribute("userDotoriCnt"));
 
 		return "/store/menu";
 	}
@@ -251,11 +239,6 @@ public class StoreController {
 	public String selectStoreList(HttpSession session, HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int page) throws Exception {
 	    try {
 	    	
-			Map userMap = new HashMap();
-			
-			session = req.getSession();
-			userMap = (Map) session.getAttribute("userId");
-			String userNickname = (String) userMap.get("userNickname");
 			
 	        Map minimiMap = new HashMap();
 	        minimiMap.put("page", String.valueOf(page));
@@ -263,7 +246,7 @@ public class StoreController {
 	        List<Map> minimi = storeService.getStoreMinimiList(minimiMap);
 	        model.addAttribute("minimi", minimi);
 	        model.addAttribute("totalPage", storeService.selectStoreCnt(minimiMap));
-	        model.addAttribute("dotori",storeService.getMyDotori(userNickname));
+	        model.addAttribute("dotori", session.getAttribute("userDotoriCnt"));
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
@@ -364,29 +347,34 @@ public class StoreController {
     	try {
     		ShoppingCart shoppingCart = getOrCreateShoppingCart(session);
             List<CartItem> cartItems = shoppingCart.getCartItems();
+            String userNickname = (String) session.getAttribute("userNickname");
             
-            for (CartItem cartItem : cartItems) {
-                // cartItem에서 필요한 정보를 추출하여 DB에 저장하거나 처리하는 작업 수행
-                String userNickname = (String) session.getAttribute("userNickname");
-                String tableCate = cartItem.getTableCate();
-                String name = cartItem.getName();
-                String contentPath = cartItem.getContentPath();
-                
-                // 여기서 해당 정보를 이용하여 DB에 저장하거나 처리하는 로직을 작성
-                buyCartMap.put("userNickname", userNickname);
-                buyCartMap.put("category", tableCate);
-                buyCartMap.put("productName", name);
-                buyCartMap.put("contentPath", contentPath);
-                
-                result = storeService.buyCart(buyCartMap);
+            if(userNickname != null) {
+            	buyCartMap.put("userNickname", userNickname);
+            	for (CartItem cartItem : cartItems) {
+            		// cartItem에서 필요한 정보를 추출하여 DB에 저장하거나 처리하는 작업 수행
+            		String tableCate = cartItem.getTableCate();
+            		String name = cartItem.getName();
+            		String contentPath = cartItem.getContentPath();
+            		
+            		// 여기서 해당 정보를 이용하여 DB에 저장하거나 처리하는 로직을 작성
+            		buyCartMap.put("category", tableCate);
+            		buyCartMap.put("productName", name);
+            		buyCartMap.put("contentPath", contentPath);
+            		
+            		result = storeService.buyCart(buyCartMap);
+            	}
+            	return result == 1 ? 1 : 0;
+            } else if(userNickname == null){
+            	result = 2;
+            	return result;
             }
-
-            return result == 1 ? 1 : 0;
             
 		} catch (Exception e) {
 			e.printStackTrace();
-			return 0;
+			return result;
 		}
+    	return result;
     }
        
 }
