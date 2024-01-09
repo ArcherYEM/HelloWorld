@@ -22,12 +22,13 @@ public class DiaryServiceImpl implements DiaryService {
 	
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
-	public void insertDiary(Map map) throws Exception {
+	public Map insertDiary(Map map) throws Exception {
 		int result = diaryDao.insertDiary(map);
 		
 		if (1 != result) {
 			throw new Exception();
 		}
+		return map;
 	}
 
 	@Override
