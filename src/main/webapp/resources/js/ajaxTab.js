@@ -19,9 +19,8 @@ function loadTabContent(tabName) {
             	htmlToAdd += '<link href="/resources/css/minihome/diary.css" rel="stylesheet">';
                 htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/jquery-ui(1.13.2).css">';
                 htmlToAdd += '<script src="https://kit.fontawesome.com/91b557f547.js" crossorigin="anonymous"></script>';
-                htmlToAdd += '<script src="../../../../resources/js/datePicker.js"></script>';
-                htmlToAdd += '<script src="../../../../resources/js/smartEditor.js"></script>';
                 htmlToAdd += '<script type="text/javascript" src="../../../../resources/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>';
+                htmlToAdd += '<script src="../../../../resources/js/datePicker.js"></script>';
                 under += '<script src="../../../../resources/js/diary.js"></script>';
             
             }else if(tabName === '/mnHome/albumView' || tabName.indexOf('/mnHome/albumView') != -1){
