@@ -2,7 +2,7 @@ function addDiary() {
     let userNickname = $("#hiddenUserNickname").val();
     let title = $("#diaryTitle").val();
 
-    // SmartEditor의 내용을 갱신
+    // SmartEditor의 내용을 갱신.
     oEditors.getById["txtContent"].exec("UPDATE_CONTENTS_FIELD", []);  
 
     // txtContent의 값을 가져와서 개행 문자를 제거
@@ -14,8 +14,8 @@ function addDiary() {
         "userNickname" : userNickname,
         "title" : title
     };
-    console.log (jsonData);
     
+    console.log (jsonData);
     $.ajax({
         method: 'POST',
         url: "/mnHome/diaryAdd",
