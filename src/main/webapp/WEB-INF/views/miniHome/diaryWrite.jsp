@@ -108,31 +108,5 @@
 		</div>
 	</div>
 </div>
-
-<script>
-	document.getElementById('btnBoardWrite').addEventListener('click', function() {
-		console.log("버튼 클릭됨");
-		document.getElementById('diaryHiddenTitle').value = document.getElementById('diaryTitle').value;
-		
-		console.log(document.getElementById('diaryUserNickname').value);
-		oEditors.getById["txtContent"].exec("UPDATE_CONTENTS_FIELD", []);  
-   		
-   		let content = document.getElementById("txtContent").value.replace("\r\n","");
-   		
-   		document.getElementById('diaryHiddenContent').value = content;
-   		
-		document.getElementById('frmDiary').submit();
-	});
-	
-	var oEditors=[];
-	
-	nhn.husky.EZCreator.createInIFrame({
-		oAppRef : oEditors,
-		elPlaceHolder : "txtContent",
-		sSkinURI : "../../../../resources/smarteditor2/SmartEditor2Skin.html",
-		fCreator : "createSEditor2"
-	});
-</script>
-
 </body>
 </html>

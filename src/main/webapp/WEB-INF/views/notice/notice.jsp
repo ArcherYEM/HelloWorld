@@ -141,13 +141,6 @@
 				$('#page').val($(this).data('page'));
 				$('#frm2').submit();
 			});
-			
-			
-			
-			
-			
-		
-
 		</script>
 	</body>
 </html>

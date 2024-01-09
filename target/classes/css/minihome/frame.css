@@ -1,18 +1,12 @@
 body {
-  background-color: #4f5797;
-  background-image: url("#");
-  background-size: 100px;
-
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  font-size: 16px;
-
-  font-family: "Noto Sans KR", sans-serif;
-
-  overflow-y: auto;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	font-size: 16px;
+	font-family: "Noto Sans KR", sans-serif;
+	overflow-y: auto;
 }
 
 /*임시 효과*/

@@ -5,8 +5,9 @@ function loadTabContent(tabName) {
         dataType: "html",
         success: function (data) {
 			
-			
+        	$('#testUnder').empty();
             $('#test').empty();
+            var under='';
             var htmlToAdd = '';
             if(tabName === '/mnHome/diaryView' || tabName.indexOf('/mnHome/diaryView') != -1){
                 htmlToAdd += '<link href="/resources/css/minihome/diary.css" rel="stylesheet">';
@@ -21,6 +22,7 @@ function loadTabContent(tabName) {
                 htmlToAdd += '<script src="../../../../resources/js/smartEditor.js"></script>';
                 htmlToAdd += '<script type="text/javascript" src="../../../../resources/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>';
                 htmlToAdd += '<script src="../../../../resources/js/datePicker.js"></script>';
+                under += '<script src="../../../../resources/js/diary.js"></script>';
             
             }else if(tabName === '/mnHome/albumView' || tabName.indexOf('/mnHome/albumView') != -1){
                 htmlToAdd += '<link class="album" href="/resources/css/minihome/album.css" rel="stylesheet">';
@@ -81,8 +83,13 @@ function loadTabContent(tabName) {
             
             // Append all the HTML at once.
             $('#test').html(htmlToAdd);
+            $('#testUnder').html(under);
             
             $(".bookcover").html($(data).find(".bookcover").html());
+            
+            // editor 초기화
+            initializeEditor();
+            
         },
         error: function (error) {
             console.log("Error loading tab: " + error);
