@@ -48,17 +48,17 @@
 		        <div class="productList">
 				    <c:forEach var="minimi" items="${minimi}" varStatus="seq">
 				        <div class="product" data-product-cate="미니미" data-product-table-cate="minimi" data-product-contentPath="${minimi.contentPath}"
-				             data-product-name="${minimi.productName}" data-product-price="${minimi.productPrice}">
-				            <div>
-				                <img src="<c:url value="${minimi.contentPath}"/>" class="store-minimi-img"/>
-				            </div>
-				            <div class="product-name">
-				                <c:out value="${minimi.productName}"/>
-				            </div>
-				            <div class="product-price">
-				                <c:out value="${minimi.productPrice}"/>
-				            </div>
-				        </div>
+						     data-product-name="${minimi.productName}" data-product-price="${minimi.productPrice}">
+						    <div class="image-container">
+						        <img src="<c:url value="${minimi.contentPath}"/>" class="store-minimi-img"/>
+						    </div>
+						    <div class="product-name">
+						        <c:out value="${minimi.productName}"/>
+						    </div>
+						    <div class="product-price">
+						        <c:out value="${minimi.productPrice}"/>
+						    </div>
+						</div>
 				    </c:forEach>
 				</div>
 				
@@ -95,13 +95,30 @@
 			</form>
 	    </div>
 	</div>
-	
-	
 	<script>
 		document.getElementById('btnCartClear').addEventListener('click',function() {
 			clearCart();
 		});
-		
+	</script>
+	<script>
+	document.querySelectorAll('.image-container').forEach(function(container) {
+	    container.querySelector('.store-minimi-img').addEventListener('click', function() {
+	        enlargeAndFadeOut(this);
+	    });
+	});
+
+	function enlargeAndFadeOut(image) {
+	    image.style.transform = 'scale(1.5)';
+	    image.style.opacity = '0';
+
+	    image.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
+
+	    image.addEventListener('transitionend', function() {
+	        image.style.transform = 'scale(1)';
+	        image.style.opacity = '1';
+	        image.style.transition = 'none';
+	    });
+	}
 	</script>
 	</body>
 </html>
