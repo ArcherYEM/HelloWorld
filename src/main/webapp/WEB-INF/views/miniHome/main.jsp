@@ -43,6 +43,9 @@
                              onclick="openNewWindowMinihomeProfileEdit()">Edit
                            </a>
                         </c:if>
+                        <form action="/mnHome/miniroomHistoryView" method="POST" id="frmHistory" target="miniroomWindow">
+                        	<input type="hidden" name="targetNickname" id="targetNickname" value=${userNickname }>
+                        </form>
                         <a
                           class="profile-hs"
                           onclick="openNewWindowMiniroomHistory()">History                        
@@ -50,11 +53,15 @@
                      </div>
                      <div class="profile-dot">---------------------------------</div>
                      <div class="profile-username font-kyobohand popup" onclick="popupFunction()"> 
-                        <div class="popuptext" id="myPopup" onclick="requestFriendship('${userNickname}')"> 
-                           일촌신청 
-                           <input type="hidden" id="requestUser" name="requestUser" value="${sessionScope.userId.userNickname}">
-                           <input type="hidden" id="responseUser" name="responseUser" value="${userNickname}">
-                        </div>
+						<c:if test="${sessionScope.userId.userNickname == userNickname}">
+							</c:if>
+							<c:if test="${sessionScope.userId.userNickname != userNickname}">
+							    <div class="popuptext" id="myPopup" onclick="requestFriendship('${userNickname}')"> 
+							        일촌신청 
+							        <input type="hidden" id="requestUser" name="requestUser" value="${sessionScope.userId.userNickname}">
+							        <input type="hidden" id="responseUser" name="responseUser" value="${userNickname}">
+							    </div>
+							</c:if>
                         ${userName }&#128698;
                      </div>
 <%--                      <div class="profile-username font-kyobohand"> ${sessionScope.userId.userName }&#128698;</div> --%>
@@ -280,7 +287,7 @@
    <script>
       // 미니홈피 프로필 수정창
       function openNewWindowMinihomeProfileEdit() {
-        var windowSettings = 'width=460, height=570, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50';
+       var windowSettings = 'width=460, height=570, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50';
         openNewWindow('/mnHome/mnhProfileEditView', windowSettings);
       }
    
@@ -291,8 +298,8 @@
       }
       
       function openNewWindowMiniroomHistory() {
-        var windowSettings = 'width=800, height=600, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50';
-        openNewWindow('/mnHome/miniroomHistoryView', windowSettings);
+		window.open('', 'miniroomWindow', 'width=800, height=600, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50');
+		document.getElementById("frmHistory").submit();
       }
       
       function openNewWindow(url, settings) {

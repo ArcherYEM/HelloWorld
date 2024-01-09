@@ -189,10 +189,10 @@ public class MainController {
 	
 	//프로필 변경 이력(히스토리) 불러옴
 	@RequestMapping("/mnHome/miniroomHistoryView")
-	public String mnhProfileHistory(HttpSession session, HttpServletRequest req, Model model) {
+	public String mnhProfileHistory(HttpSession session, HttpServletRequest req, Model model, @RequestParam("targetNickname") String targetNickname) {
 		
 		Map userMap = new HashMap();
-		
+		System.out.println("테스트"+targetNickname);
 		session = req.getSession();
 		userMap = (Map) session.getAttribute("userId");
 		if(userMap==null) {
@@ -204,7 +204,7 @@ public class MainController {
 		
 		String userNickname = (String) userMap.get("userNickname");
 		
-		List<Map> profileHistory = mainService.getProfileHistory(userNickname);
+		List<Map> profileHistory = mainService.getProfileHistory(targetNickname);
 		for(Map history : profileHistory) {
 		    String msg = (String) history.get("msg");
 		    if(msg != null) {
