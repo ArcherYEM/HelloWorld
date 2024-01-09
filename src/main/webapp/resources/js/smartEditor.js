@@ -32,7 +32,6 @@ $(document).ready(function() {
 	
 		
 		var oEditors=[];
-		
 		nhn.husky.EZCreator.createInIFrame({
 			oAppRef : oEditors,
 			elPlaceHolder : "txtContent",
