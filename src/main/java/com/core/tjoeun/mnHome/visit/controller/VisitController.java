@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.core.tjoeun.mnHome.main.service.MainService;
@@ -25,7 +26,7 @@ public class VisitController {
 	VisitService visitService;
 	
 	@RequestMapping(value="/mnHome/visitView/{userNickname}")
-	public String visitView(@PathVariable String userNickname, Model model) {
+	public String visitView(@PathVariable String userNickname, Model model, @RequestParam(required = false) Integer page) {
 		//프로필 정보 가져오기
 		Map profile = mainService.getProfile(userNickname);
 		String image = (String) profile.get("image");
@@ -39,9 +40,30 @@ public class VisitController {
 		model.addAttribute("title", map.get("title"));
 		
 		//방명록 내용 가져오기
-		List<Map> resultList = visitService.selectVisitComment(userNickname);
+		if(page == null) {
+			page = 1;
+		}
+		int totalCnt = visitService.selectCnt(userNickname);
+		int totalPage = totalCnt/5;
+		if(0 < totalCnt % 5) {
+			totalPage++;
+		}
+		int offset = (page-1)*5;
+		
+		Map paramMap = new HashMap();
+		paramMap.put("offset", offset);
+		paramMap.put("targetNickname", userNickname);
+		
+		List<Map> resultList = visitService.selectVisitComment(paramMap);
+		for(int i = 0; i < resultList.size(); i++) {
+			Map map2 = resultList.get(i);
+			map2.put("number", ((page-1)*5+(i+1)));
+		}
+		
 		System.out.println("테스트"+resultList);
+		System.out.println("토탈페이지"+totalPage);
 		model.addAttribute("visit",resultList);
+		model.addAttribute("totalPage",totalPage);
 		
 		return "miniHome/visit";
 	}

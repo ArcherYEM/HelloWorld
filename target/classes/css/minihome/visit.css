@@ -108,6 +108,7 @@ body a {
 	padding-left: 5px;
 	border: 1px solid black;
 	border-radius: 5px;
+	outline:none;
 }
 
 /* 임시효과 */
@@ -127,5 +128,10 @@ body a {
     padding-top: calc(65px - 6px); /* 커서를 수직 중앙에 위치시키기 위해 상단 패딩 조정 */
     padding-bottom: calc(65px - 6px); /* 커서를 수직 중앙에 위치시키기 위해 하단 패딩 조정 */
     padding-left: 5px; /* 텍스트와 왼쪽 테두리 간의 간격 */
-    overflow-y: hidden; /* 내용이 많아질 경우 스크롤바 표시 */
+    overflow-y: auto; /* 내용이 많아질 경우 스크롤바 표시 */
+}
+
+.page-container{
+	display: flex;
+	justify-content: center;
 }

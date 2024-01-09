@@ -1,3 +1,23 @@
+function btnPage(page) {
+    var targetNickname = $('#targetNickname').val();
+    var url = "/mnHome/visitView/" + targetNickname + "?page=" + page;
+
+    $.ajax({
+        url: url,
+        type: 'GET',
+        success: function(response) {
+            // 전체 HTML 문서를 서버의 응답으로 교체
+            document.documentElement.innerHTML = response;
+        },
+        error: function(error) {
+            // 에러 처리
+            console.log('Error:', error);
+        }
+    });
+}
+
+
+	
 function insertComment() {
     let userNickname = $("#userNickname").val();
     let targetNickname = $("#targetNickname").val();
