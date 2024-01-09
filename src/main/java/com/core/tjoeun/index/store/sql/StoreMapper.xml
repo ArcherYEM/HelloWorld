@@ -160,4 +160,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and userNickname = #{userNickname}
 	</if>
 </update>
+
+<select id="getCartItemDuplicateCount" resultType="int" parameterType="map">
+    SELECT COUNT(*) FROM userStorage
+    WHERE userNickname = #{userNickname}
+    AND category = #{category}
+    AND productName = #{productName}
+    AND contentPath = #{contentPath}
+</select>
 </mapper>

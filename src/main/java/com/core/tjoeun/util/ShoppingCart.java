@@ -17,6 +17,7 @@ public class ShoppingCart {
 
     public void addToCart(CartItem item) {
         cartItems.add(item);
+        System.out.println(item.getName());
     }
     
     public void clearCart() {
@@ -24,9 +25,14 @@ public class ShoppingCart {
     }
 	
     public int getTotalDotoriCount() {
+        if (cartItems == null) {
+            System.out.println("cartItems is null");
+            return 0;
+        }
+
         int totalDotoriCount = 0;
         for (CartItem item : cartItems) {
-            totalDotoriCount += (int) item.getPrice();
+            totalDotoriCount += item.getPrice();
         }
         return totalDotoriCount;
     }

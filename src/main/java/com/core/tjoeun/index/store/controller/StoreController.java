@@ -286,6 +286,7 @@ public class StoreController {
         
         session.setAttribute("cart", shoppingCart);
     }
+
     
     @PostMapping("/store/updateDotoriCount")
     @ResponseBody
@@ -296,17 +297,18 @@ public class StoreController {
         Object currentDotoriObj = session.getAttribute("userDotoriCnt");
         Object userBuyCartObj = session.getAttribute("userBuyCart");
         int result = 0;
-
+        
         try {
             Long currentDotori = (currentDotoriObj instanceof Long) ? (Long) currentDotoriObj : null;
             Integer userBuyCart = (userBuyCartObj instanceof Integer) ? (Integer) userBuyCartObj : null;
-
+            
+            
             if (currentDotori != null && userBuyCart != null) {
                 result = currentDotori.intValue() - userBuyCart;
 
                 // 장바구니 도토리 개수를 업데이트
-                resultMap.put("currentDotori", result);
                 session.setAttribute("userDotoriCnt", result);
+                resultMap.put("currentDotori", result);
                 int afterBuy = storeService.updateBuyCartDotoriCnt(resultMap);
                 if(afterBuy == 1) {
                 	return result;
@@ -335,40 +337,44 @@ public class StoreController {
     
     @PostMapping("/store/buyCart")
     @ResponseBody
-    public int buyCart(HttpSession session) {
-    	Map buyCartMap = new HashMap();
-    	int result = 0;
-    	try {
-    		ShoppingCart shoppingCart = getOrCreateShoppingCart(session);
+    public Map<String, Object> buyCart(HttpSession session) {
+        Map<String, Object> result = new HashMap<>();
+        try {
+            ShoppingCart shoppingCart = getOrCreateShoppingCart(session);
             List<CartItem> cartItems = shoppingCart.getCartItems();
             String userNickname = (String) session.getAttribute("userNickname");
-            
-            if(userNickname != null) {
-            	buyCartMap.put("userNickname", userNickname);
-            	for (CartItem cartItem : cartItems) {
-            		// cartItem에서 필요한 정보를 추출하여 DB에 저장하거나 처리하는 작업 수행
-            		String tableCate = cartItem.getTableCate();
-            		String name = cartItem.getName();
-            		String contentPath = cartItem.getContentPath();
-            		
-            		// 여기서 해당 정보를 이용하여 DB에 저장하거나 처리하는 로직을 작성
-            		buyCartMap.put("category", tableCate);
-            		buyCartMap.put("productName", name);
-            		buyCartMap.put("contentPath", contentPath);
-            		
-            		result = storeService.buyCart(buyCartMap);
-            	}
-            	return result == 1 ? 1 : 0;
-            } else if(userNickname == null){
-            	result = 2;
-            	return result;
+
+            if (userNickname != null) {
+                if (!storeService.hasDuplicateCartItem(cartItems, userNickname)) {
+                    // 중복된 상품이 없으면 구매 로직 수행
+                    int buyResult = storeService.buyCart(cartItems, userNickname);
+
+                    if (buyResult == 1) {
+                        // 구매 성공
+                        // 장바구니 비우기
+                        session.setAttribute("cart", shoppingCart);
+
+                        result.put("success", true);
+                        result.put("message", "상품 구매가 완료되었습니다.");
+                    } else {
+                        // 구매 실패
+                        result.put("success", false);
+                        result.put("message", "상품 구매에 실패했습니다. 다시 시도해주세요.");
+                    }
+                } else {
+                    result.put("success", false);
+                    result.put("message", "장바구니에 중복된 상품이 있습니다.");
+                }
+            } else {
+                result.put("success", false);
+                result.put("message", "로그인 후 이용해주세요.");
             }
-            
-		} catch (Exception e) {
-			e.printStackTrace();
-			return result;
-		}
-    	return result;
+        } catch (Exception e) {
+            result.put("success", false);
+            result.put("message", "구매 중 오류가 발생했습니다.");
+            e.printStackTrace();
+        }
+        return result;
     }
        
 }

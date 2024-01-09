@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.core.tjoeun.index.store.dao.StoreDao;
+import com.core.tjoeun.util.CartItem;
 
 @Service
 @EnableTransactionManagement
@@ -97,16 +98,22 @@ public class StoreServiceImpl implements StoreService {
 
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
-	public int buyCart(Map map) throws Exception {
-		int result = 0;
-		result = storeDao.insertBuyCart(map);
-		
-		if(result == 1) {
-			return result;
-		} else {
-			result = 0;
-			throw new Exception();
-		}
+	public int buyCart(List<CartItem> cartItems, String userNickname) throws Exception {
+	    int result = 0;
+	    for (CartItem cartItem : cartItems) {
+	        Map<String, Object> buyCartMap = new HashMap<>();
+	        buyCartMap.put("userNickname", userNickname);
+	        buyCartMap.put("category", cartItem.getTableCate());
+	        buyCartMap.put("productName", cartItem.getName());
+	        buyCartMap.put("contentPath", cartItem.getContentPath());
+
+	        result = storeDao.insertBuyCart(buyCartMap);
+
+	        if (result != 1) {
+	            throw new Exception(); // 롤백을 위한 예외 처리
+	        }
+	    }
+	    return result;
 	}
 
 	@Override
@@ -121,6 +128,29 @@ public class StoreServiceImpl implements StoreService {
 			throw new Exception();
 		}
 		 
+	}
+	
+	@Override
+	public boolean hasDuplicateCartItem(List<CartItem> cartItems, String userNickname) {
+	    try {
+	        for (CartItem cartItem : cartItems) {
+	            Map<String, Object> cartItemMap = new HashMap<>();
+	            cartItemMap.put("userNickname", userNickname);
+	            cartItemMap.put("category", cartItem.getTableCate());
+	            cartItemMap.put("productName", cartItem.getName());
+	            cartItemMap.put("contentPath", cartItem.getContentPath());
+
+	            int count = storeDao.getCartItemDuplicateCount(cartItemMap);
+
+	            if (count > 0) {
+	                return true;
+	            }
+	        }
+	        return false;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return true; // 중복 체크 실패 시 중복으로 처리
+	    }
 	}
 
 }
