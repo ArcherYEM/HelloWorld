@@ -67,6 +67,7 @@ public class SettingServiceImpl implements SettingService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<HashMap> selectFriends(Map map) {
+		System.out.println("service");
 		return settingDao.selectFriends(map);
 	}
 

@@ -48,6 +48,7 @@ public class SettingDaoImpl implements SettingDao {
 
 	@Override
 	public List<HashMap> selectFriends(Map map) {
+		System.out.println("dao");
 		SettingMapper mapper = sqlSession.getMapper(SettingMapper.class);
 		return mapper.selectFriends(map);
 	}

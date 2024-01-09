@@ -60,83 +60,29 @@ function searchUser() {
 		        });
 		     }
 
-		// 탭 화면 변경하기
-		function showFriendType(type) {
-		    var friendDiv = document.querySelector('.set-frd-bf-list');
-		    var requestDiv = document.querySelector('.set-frd-bf-request');
-		    var acceptDiv = document.querySelector('.set-frd-bf-accept');
+	// 탭 화면 변경하기
+	function showFriendType(type) {
+		 var friendDiv = document.querySelector('.set-frd-bf-list');
+		 var requestDiv = document.querySelector('.set-frd-bf-request');
+		 var acceptDiv = document.querySelector('.set-frd-bf-accept');
 
-		    if (type === 'friend') {
-		        friendDiv.style.display = 'block';
-		        requestDiv.style.display = 'none';
-		        acceptDiv.style.display = 'none';
-		    } else if (type === 'request') {
-		        friendDiv.style.display = 'none';
-		        requestDiv.style.display = 'block';
-		        acceptDiv.style.display = 'none';
-		    } else if (type === 'accept') {
-		        friendDiv.style.display = 'none';
-		        requestDiv.style.display = 'none';
-		        acceptDiv.style.display = 'block';
-		    }
-		}
-
-	// 일촌거절 확인
-	function confirmUnfriend() {
-	    var confirmResult = confirm("정말로 친구분이랑 절교하시겠습니까?");
-
-	    if (confirmResult) {
-	        // 사용자가 확인(OK) 버튼을 클릭한 경우, 일촌을 끊는 작업을 수행합니다.
-	        // 예를 들어, 서버로 일촌 끊기 요청을 보내거나, 특정 URL로 리다이렉션할 수 있습니다.
-	        // 예시: window.location.href = "/unfriendAction"; 
-	    } 
-	}
-
-	function confirmCancle() {
-	    var confirmResult = confirm("일촌신청을 취소할까요?");
-
-	    if (confirmResult) {
-	        // 사용자가 확인(OK) 버튼을 클릭한 경우, 일촌을 끊는 작업을 수행합니다.
-	        // 예를 들어, 서버로 일촌 끊기 요청을 보내거나, 특정 URL로 리다이렉션할 수 있습니다.
-	        // 예시: window.location.href = "/unfriendAction"; 
+		 if (type === 'friend') {
+		     friendDiv.style.display = 'block';
+		     requestDiv.style.display = 'none';
+		     acceptDiv.style.display = 'none';
+		 } else if (type === 'request') {
+		     friendDiv.style.display = 'none';
+		     requestDiv.style.display = 'block';
+		     acceptDiv.style.display = 'none';
+		 } else if (type === 'accept') {
+		     friendDiv.style.display = 'none';
+		     requestDiv.style.display = 'none';
+		     acceptDiv.style.display = 'block';
 	    }
 	}
 
-	function confirmNope() {
-	    var confirmResult = confirm("일촌신청을 거절할까요?");
 
-	    if (confirmResult) {
-	        // 사용자가 확인(OK) 버튼을 클릭한 경우, 일촌을 끊는 작업을 수행합니다.
-	        // 예를 들어, 서버로 일촌 끊기 요청을 보내거나, 특정 URL로 리다이렉션할 수 있습니다.
-	        // 예시: window.location.href = "/unfriendAction"; 
-	    }
-	}
-	
-	function accept(seq){
-		if(confirm("일촌신청을 수락하시겠습니까?")){
-		let fSeq = document.getElementById('fSeq').value;
-		console.log(fSeq);
-		let jsonData = { 
-						"seq" : fSeq 
-						,"fStatus" : 1
-						};
-	
-			$.ajax({
-			url: "/mnHome/friendRequest"
-			,type: "POST"
-			, dataType : "json"
-			, data: JSON.stringify(jsonData)
-			, contentType: "application/json"
-			, success : function(data){
-				alert("일촌신청을 수락했습니다.");
-			
-			}, error : function(error){
-				console.log("Error : " + error);
-				alert('잠시 후 다시 시도해주세요.');
-			}
-			});
-		}
-	}
+
 	
 $(document).on('click', '#accept', function() {
 	if(confirm("일촌신청을 수락하시겠습니까?")){
@@ -221,12 +167,26 @@ $(document).on('click', '#cancle', function() {
 		}
 		
 });
+
+$(document).on('click', '#searchBf', function() {
 	
-	// When the user clicks on div, open the popup
-	function popupFunction() {
-	  var popup = document.getElementById("myPopup");
-	  popup.classList.toggle("show");
-	}
+	let name = document.getElementById('searchBfName').value;
+	let userNickname = document.getElementById('hiddenUserNickname').value;
+	let url = "/mnHome/settingFriends/" + userNickname + "/" + name;
+	console.log(url);
+	loadTabContent(url);
 	
+});
+	
+	
+	
+// When the user clicks on div, open the popup
+function popupFunction() {
+	 var popup = document.getElementById("myPopup");
+	 popup.classList.toggle("show");
+}
+	
+
+
 	
 
