@@ -5,6 +5,8 @@ import java.util.Map;
 
 public interface StoreDao {
 
+	public int getBgmAll();
+	
 	public List<Map> getBgmList(Map map);
 	
 	public int putBgm(Map map);

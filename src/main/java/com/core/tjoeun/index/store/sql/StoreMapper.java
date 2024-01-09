@@ -5,6 +5,8 @@ import java.util.Map;
 
 public interface StoreMapper {
 
+	public int getBgmAll();
+	
 	public List<Map> getBgmList(Map map);
 	
 	public List<Map> searchBgm(Map map);
