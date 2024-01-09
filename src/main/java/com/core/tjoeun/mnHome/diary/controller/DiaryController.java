@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.core.tjoeun.mnHome.diary.service.DiaryService;
 import com.core.tjoeun.mnHome.main.service.MainService;
@@ -44,14 +45,12 @@ public class DiaryController {
 	}
 	
 	@RequestMapping(value="/mnHome/diaryAdd", method = RequestMethod.POST)
-	public String diaryAdd(@RequestParam Map map) {
-		try {
+	@ResponseBody
+	public Map diaryAdd(@RequestParam Map map) throws Exception {
 			System.out.println("add 실행");
-			diaryService.insertDiary(map);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "miniHome/diary";
+			System.out.println("map : " + map);
+			Map resultMap = diaryService.insertDiary(map);
+		return resultMap;
 	}
 
 }
