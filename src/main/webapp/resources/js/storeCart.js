@@ -45,34 +45,31 @@
         }
 		
         function buyCart() {
-		    var result = confirm('정말로 구매하시겠습니까?');
-		    
-		    if (result) {
-		        $.ajax({
-		            type: 'POST',
-		            url: '/store/buyCart',
-		            success: function(result) {
-		            	console.log(result);
-		            	if(result == 1) {
-		            		alert('상품 구매에 성공하였습니다.');
-
-		            		updateDotoriCount();
-		            		clearCart();
-		            	} else if (result == 2){
-		            		alert('로그인 후 이용해주세요..');
-		            		clearCart();
-		            	} else {
-		            		alert('상품 구매에 실패했습니다. 다시 시도해주세요.')
-		            	}
-		            },
-		            error: function(error) {
-		                console.error(error);
-		            }
-		        });
-		    } else {
-		        alert('구매가 취소되었습니다.');
-		    }
-		}
+            var result = confirm('정말로 구매하시겠습니까?');
+            
+            if (result) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/store/buyCart',
+                    success: function(msg) {
+                        console.log(msg);
+                        if (msg.success) {
+                            alert(msg.message);
+                            updateDotoriCount();
+                            
+                        } else {
+                            alert(msg.message);
+                            clearCart();
+                        }
+                    },
+                    error: function(error) {
+                        console.error(error);
+                    }
+                });
+            } else {
+                alert('구매가 취소되었습니다.');
+            }
+        }
         
         function updateDotoriCount() {
             // 여기에서 서버에서 현재 사용자의 도토리 개수를 가져와서 화면에 업데이트하는 로직을 추가합니다.
@@ -128,11 +125,11 @@
 	            const productName = $(this).data('product-name');
 	            const productPrice = $(this).data('product-price');
 				
-	            console.log(productCate, productTableCate, productContentPath, productName, productPrice);
-	            addToCart(productCate, productTableCate, productContentPath, productName, productPrice);
+	            console.log(productCate, productTableCate, productName, productContentPath, productPrice);
+	            addToCart(productCate, productTableCate,  productName, productContentPath, productPrice);
 	        });
 	
-	        function addToCart(cate, tableCate, contentPath, name, price) {
+	        function addToCart(cate, tableCate, name, contentPath, price) {
 	            $.ajax({
 	                type: 'POST',
 	                url: "/store/addToCart",

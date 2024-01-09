@@ -32,4 +32,6 @@ public interface StoreMapper {
 	public int insertBuyCart(Map map);
 	
 	public int updateBuyCartDotoriCnt(Map map);
+	
+	public int getCartItemDuplicateCount(Map map);
 }
