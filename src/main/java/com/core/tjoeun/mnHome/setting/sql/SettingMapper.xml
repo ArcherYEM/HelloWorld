@@ -81,4 +81,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
+	<update id="updateStatus" parameterType="map">
+		update
+			friends
+		set 
+			<if test="fStatus != null">
+			fStatus = #{fStatus}
+			</if>
+			<if test="del != null">
+			del_yn =  #{del}
+			</if>
+			
+		where
+			seq = #{seq}
+	</update>
+	
+	<select id="searchFriend" parameterType="map">
+		select
+			seq
+			, userNickname
+			, friendNickname
+			, fStatus
+			, substring(createDate,1,10) as createDate
+		from friends
+		where 
+			(userNickname = #{userNickname} or friendNickname = #{userNickname})
+			<if test="fStatus != null">
+				and fStatus = #{fStatus}
+			</if>
+	</select>
+	
+	
 </mapper>

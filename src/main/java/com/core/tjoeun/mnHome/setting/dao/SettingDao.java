@@ -17,4 +17,6 @@ public interface SettingDao {
 	public int insertFriendRequest(Map map);
 	 
 	public List<HashMap> selectFriends(Map map);
+	
+	public int updateStatus(Map map);
 }

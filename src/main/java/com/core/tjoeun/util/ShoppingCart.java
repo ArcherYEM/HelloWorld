@@ -23,4 +23,11 @@ public class ShoppingCart {
         this.cartItems.clear();
     }
 	
+    public int getTotalDotoriCount() {
+        int totalDotoriCount = 0;
+        for (CartItem item : cartItems) {
+            totalDotoriCount += (int) item.getPrice();
+        }
+        return totalDotoriCount;
+    }
 }

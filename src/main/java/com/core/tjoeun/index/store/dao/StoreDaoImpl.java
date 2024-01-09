@@ -80,4 +80,10 @@ public class StoreDaoImpl implements StoreDao {
 		StoreMapper mapper = sqlSession.getMapper(StoreMapper.class);
 		return mapper.insertBuyCart(map);
 	}
+
+	@Override
+	public int updateBuyCartDotoriCnt(Map map) {
+		StoreMapper mapper = sqlSession.getMapper(StoreMapper.class);
+		return mapper.updateBuyCartDotoriCnt(map);
+	}
 }

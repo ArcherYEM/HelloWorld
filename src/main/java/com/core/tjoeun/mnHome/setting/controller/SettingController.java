@@ -264,5 +264,70 @@ public class SettingController {
 		
 				return "miniHome/mnhMinimiChangeSuccess";
 	}
+	
+	
+	@RequestMapping(value = "/mnHome/acceptFriends")
+	@ResponseBody
+	public Map acceptFriendship(@RequestBody Map map) {
+		
+		Map result = new HashMap<String, String>();
+		try {
+			settingService.updateFriends(map);
+			result.put("msg", "성공");
+		} catch (Exception e) {
+			result.put("msg", "실패");
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	@RequestMapping(value = "/mnHome/rejectFriends")
+	@ResponseBody
+	public Map rejectFriendship(@RequestBody Map map) {
+		
+		Map result = new HashMap<String, String>();
+		try {
+			settingService.updateFriends(map);
+			result.put("msg", "성공");
+		} catch (Exception e) {
+			result.put("msg", "실패");
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	@RequestMapping(value = "/mnHome/cancleFriends")
+	@ResponseBody
+	public Map cancleFriendship(@RequestBody Map map) {
+		
+		Map result = new HashMap<String, String>();
+		try {
+			settingService.updateFriends(map);
+			result.put("msg", "성공");
+		} catch (Exception e) {
+			result.put("msg", "실패");
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	@RequestMapping(value = "/mnHome/getFriends")
+	@ResponseBody
+	public Map getFriendship(@RequestBody Map map) {
+		
+		Map result = new HashMap<String, String>();
+		try {
+			settingService.updateFriends(map);
+			result.put("msg", "성공");
+		} catch (Exception e) {
+			result.put("msg", "실패");
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 
 }

@@ -28,4 +28,6 @@ public interface StoreMapper {
 	public int getMyDotori(String userNickname);
 	
 	public int insertBuyCart(Map map);
+	
+	public int updateBuyCartDotoriCnt(Map map);
 }

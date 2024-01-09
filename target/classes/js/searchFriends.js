@@ -43,7 +43,7 @@ function searchUser() {
 			        	
 			        	//결과값 출력 div 
 			            let searchResult = document.getElementById('searchResult');
-
+						searchResult.innerHTML = ''; //값 초기화
 						
 						//tag 주입 
 					
@@ -112,13 +112,13 @@ function searchUser() {
 	    }
 	}
 	
-	function accept(userNickname, seq){
-		if(confirm(userNickname + "님의 일촌신청을 수락하시겠습니까?")){
+	function accept(seq){
+		if(confirm("일촌신청을 수락하시겠습니까?")){
 		let fSeq = document.getElementById('fSeq').value;
 		console.log(fSeq);
 		let jsonData = { 
-						"requestUser" : requestUser 
-						,"responseUser" : responseUser
+						"seq" : fSeq 
+						,"fStatus" : 1
 						};
 	
 			$.ajax({
@@ -128,19 +128,105 @@ function searchUser() {
 			, data: JSON.stringify(jsonData)
 			, contentType: "application/json"
 			, success : function(data){
-				alert("일촌신청을 보냈습니다.");
+				alert("일촌신청을 수락했습니다.");
 			
 			}, error : function(error){
-				console.log("Error loading tab: " + error);
+				console.log("Error : " + error);
 				alert('잠시 후 다시 시도해주세요.');
 			}
 			});
 		}
 	}
 	
+$(document).on('click', '#accept', function() {
+	if(confirm("일촌신청을 수락하시겠습니까?")){
+		let fSeq = $(this).data('seq');
+		console.log(fSeq);
+		
+		let jsonData = { 
+						"seq" : fSeq 
+						,"fStatus" : 1
+						};
+	
+			$.ajax({
+			url: "/mnHome/acceptFriends"
+			,type: "POST"
+			, dataType : "json"
+			, data: JSON.stringify(jsonData)
+			, contentType: "application/json"
+			, success : function(data){
+				alert("일촌신청을 수락했습니다.");
+			
+			}, error : function(error){
+				console.log("Error : " + error);
+				alert('잠시 후 다시 시도해주세요.');
+			}
+			});
+		}
+		
+});
+
+$(document).on('click', '#reject', function() {
+	if(confirm("일촌신청을 거절하시겠습니까?")){
+		let fSeq = $(this).data('seq');
+		console.log(fSeq);
+		
+		let jsonData = { 
+						"seq" : fSeq 
+						,"fStatus" : -1
+						};
+	
+			$.ajax({
+			url: "/mnHome/rejectFriends"
+			,type: "POST"
+			, dataType : "json"
+			, data: JSON.stringify(jsonData)
+			, contentType: "application/json"
+			, success : function(data){
+				alert("일촌신청을 거절했습니다.");
+			
+			}, error : function(error){
+				console.log("Error : " + error);
+				alert('잠시 후 다시 시도해주세요.');
+			}
+			});
+		}
+		
+});
+
+$(document).on('click', '#cancle', function() {
+	if(confirm("일촌신청을 취소하시겠습니까?")){
+		let fSeq = $(this).data('seq');
+		console.log(fSeq);
+		
+		let jsonData = { 
+						"seq" : fSeq 
+						,"del" : 'Y'
+						};
+	
+			$.ajax({
+			url: "/mnHome/cancleFriends"
+			,type: "POST"
+			, dataType : "json"
+			, data: JSON.stringify(jsonData)
+			, contentType: "application/json"
+			, success : function(data){
+				alert("일촌신청을 취소했습니다.");
+			
+			}, error : function(error){
+				console.log("Error : " + error);
+				alert('잠시 후 다시 시도해주세요.');
+			}
+			});
+		}
+		
+});
+	
 	// When the user clicks on div, open the popup
 	function popupFunction() {
 	  var popup = document.getElementById("myPopup");
 	  popup.classList.toggle("show");
 	}
+	
+	
 

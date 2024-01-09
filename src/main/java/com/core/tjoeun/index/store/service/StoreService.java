@@ -26,5 +26,7 @@ public interface StoreService {
 	public int getMyDotori(String userNickname);
 	
 	public int buyCart(Map map) throws Exception;
+	
+	public int updateBuyCartDotoriCnt(Map map) throws Exception;
 
 }
