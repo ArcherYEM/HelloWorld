@@ -153,6 +153,19 @@
 		</div>
 		
 		<script>
+		
+			window.onload = function() {
+				
+		        let userDotoriElement = document.getElementById('userDotori');
+		        let userDotoriCnt = '<c:out value="${dotori}" />' || '';
+		
+		        if (userDotoriCnt.trim() !== '') {
+		            userDotoriElement.style.display = 'block';
+		        } else {
+		            userDotoriElement.style.display = 'none';
+		        }
+			}
+		
 			document.getElementById('btnCartClear').addEventListener('click',function() {
 				clearCart();
 			});

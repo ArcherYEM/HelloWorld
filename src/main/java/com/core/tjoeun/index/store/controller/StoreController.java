@@ -51,14 +51,8 @@ public class StoreController {
 
 	@RequestMapping(value = "/store/dotoriView")
 	public String dotori(HttpSession session, HttpServletRequest req, Model model) {
-		
-		Map userMap = new HashMap();
-		
-		session = req.getSession();
-		userMap = (Map) session.getAttribute("userId");
-		String userNickname = (String) userMap.get("userNickname");
 
-		model.addAttribute("dotori",storeService.getMyDotori(userNickname));
+		model.addAttribute("dotori", session.getAttribute("userDotoriCnt"));
 
 		return "/store/dotori";
 	}

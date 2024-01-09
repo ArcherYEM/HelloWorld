@@ -16,8 +16,6 @@ function btnPage(page) {
     });
 }
 
-
-	
 function insertComment() {
     let userNickname = $("#userNickname").val();
     let targetNickname = $("#targetNickname").val();

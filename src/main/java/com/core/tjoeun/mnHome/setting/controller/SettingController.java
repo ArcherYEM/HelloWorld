@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -108,14 +110,24 @@ public class SettingController {
 		return "miniHome/settingDotoriCharge";
 	}
 	
-	@RequestMapping(value = "/mnHome/settingFriends/{userNickname}")
-	public String settingFriends(@PathVariable String userNickname, Model model) {
+	@RequestMapping(value = {"/mnHome/settingFriends/{userNickname}", "/mnHome/settingFriends/{userNickname}/{friendName}"})
+	public String settingFriends(@PathVariable String userNickname
+								,@PathVariable Optional<String> friendName, Model model) {
 		
 		Map map = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", map.get("userName"));
 		model.addAttribute("title", map.get("title"));
+		
 		Map nameMap = new HashMap();
 		nameMap.put("userNickname", userNickname);
+		
+		
+		if(friendName.isPresent()) {
+			String name = friendName.get();
+			nameMap.put("name", name);
+			System.out.println(userNickname + " | " + name);
+		}
+		
 		//일촌 목록 가져오기 
 		List<HashMap> fList = new ArrayList<>(settingService.selectFriends(nameMap));
 		List<Map> bf = new ArrayList<Map>();
@@ -123,7 +135,6 @@ public class SettingController {
 		List<Map> fRes = new ArrayList<Map>();
 		
 		if(fList != null && fList.size()>0) {
-			
 			
 			for(Map fmap :fList) {
 				if( (int)fmap.get("fStatus") == 1 ){
