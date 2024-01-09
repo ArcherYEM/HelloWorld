@@ -19,7 +19,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		,current_timestamp)
 </insert>
 
-<select id="selectVisitComment" parameterType="String" resultType="map">
+<select id="selectCnt" parameterType="String" resultType="int">
+	select
+	count(*) 
+	from visit 
+	where targetNickname = #{targetNickname}
+</select>
+
+<select id="selectVisitComment" parameterType="map" resultType="map">
 	SELECT 
 	    v.userNickname,
 	    v.targetNickname,
@@ -39,6 +46,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    AND us.allocation = 1
 	ORDER BY
 		v.update_date DESC
+	LIMIT 5 OFFSET #{offset}
 
 </select>
 

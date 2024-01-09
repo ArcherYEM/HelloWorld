@@ -26,9 +26,15 @@ public class VisitServiceImpl implements VisitService {
 	}
 
 	@Override
-	public List<Map> selectVisitComment(String targetNickname) {
+	public int selectCnt(String targetNickname) {
 		
-		return visitDao.selectVisitComment(targetNickname);
+		return visitDao.selectCnt(targetNickname);
+	}
+
+	@Override
+	public List<Map> selectVisitComment(Map paramMap) {
+		
+		return visitDao.selectVisitComment(paramMap);
 	}
 	
 	@Override

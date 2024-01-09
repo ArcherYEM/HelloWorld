@@ -87,13 +87,13 @@
 							<input type="button" value="등록" id="visit-comment-btn" onclick="insertComment()" />
 						</div>
 					</div>
-					
+								
 					<c:forEach var = "visit" items="${visit}" varStatus="status">
 						<div id="visit-${status.index}" data-userNickname="${visit.userNickname}">
 							<div class="visit-line">
 								<table>
 									<tr>
-										<td>No. ${status.index+1}</td>
+										<td>No. ${visit.number}</td>
 										<td>${visit.userName}
 											<img src="../../../../resources/images/minihome/homeIcon.png" class="visit-line-tbImg">
 										</td>
@@ -116,16 +116,11 @@
 						</div>
 					</c:forEach>
 					
-					<div>
+					<div class="page-container">
 						<c:forEach var="page" begin="1" end="${totalPage}">
 							<span class="spanPage" data-page="${page}" onclick="btnPage(${page})">[${page}]</span>
 						</c:forEach>
 					</div>
-
-					<form id="frmPage" action="/mnHome/visitView" method="GET">
-						<input type="hidden" id="page" name="page" value="1">
-					</form>
-					
 					
 					</div>
 				</div>

@@ -24,10 +24,17 @@ public class VisitDaoImpl implements VisitDao {
 	}
 
 	@Override
-	public List<Map> selectVisitComment(String targetNickname) {
+	public int selectCnt(String targetNickname) {
 		VisitMapper mapper = sqlSession.getMapper(VisitMapper.class);
 		
-		return mapper.selectVisitComment(targetNickname);
+		return mapper.selectCnt(targetNickname);
+	}
+
+	@Override
+	public List<Map> selectVisitComment(Map paramMap) {
+		VisitMapper mapper = sqlSession.getMapper(VisitMapper.class);
+		
+		return mapper.selectVisitComment(paramMap);
 	}
 	
 	@Override
