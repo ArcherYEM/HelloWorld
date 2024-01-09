@@ -69,7 +69,7 @@ function requestFriendship(userNickname){
 	if(confirm(userNickname + "님께 일촌신청을 보내겠습니까?")){
 		let requestUser = document.getElementById('requestUser').value;
 		let responseUser = document.getElementById('responseUser').value;
-		console.log(requestUser);
+
 		let jsonData = { 
 						"requestUser" : requestUser 
 						,"responseUser" : responseUser
@@ -82,7 +82,12 @@ function requestFriendship(userNickname){
 			, data: JSON.stringify(jsonData)
 			, contentType: "application/json"
 			, success : function(data){
-				alert("일촌신청을 보냈습니다.");
+				console.log(data.msg);
+				if(data.code == "1"){
+					alert("일촌신청을 보냈습니다.");
+				}else if(data.code =="-1"){
+					alert("이미 신청 내역이 있습니다.");
+				}
 			
 			}, error : function(error){
 				console.log("Error loading tab: " + error);

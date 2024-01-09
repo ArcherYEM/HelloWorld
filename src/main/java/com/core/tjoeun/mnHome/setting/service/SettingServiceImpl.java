@@ -54,13 +54,30 @@ public class SettingServiceImpl implements SettingService {
 
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
-	public void insertFriendRequest(Map map) throws Exception {
+	public int insertFriendRequest(Map map) throws Exception {
+		int isSuccess = 0;
 		
-		int result = settingDao.insertFriendRequest(map);
+		//기존 신청 내역 확인 
+		Map checkMap = new HashMap();
+		checkMap.put("checkFriend", 1);
+		checkMap.put("userNickname", map.get("requestUser"));
+		checkMap.put("name", map.get("responseUser"));
 		
-		if(result != 1) {
-			throw new Exception();
+		List<HashMap> check =  settingDao.selectFriends(checkMap);
+		
+		if(check.isEmpty()){
+			int result = settingDao.insertFriendRequest(map);
+			
+			if(result != 1) {
+				throw new Exception();
+			}else {
+				isSuccess = 1;
+			}
+		}else {
+			isSuccess = -1;  // 신청 내역 있음.
 		}
+		
+		return isSuccess;
 		
 	}
 

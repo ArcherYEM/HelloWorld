@@ -82,6 +82,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			and (userNickname like concat('%',#{name},'%') 
 				or friendNickname like concat('%',#{name},'%'))
 		</if>
+		<if test="checkFriend = 1">
+			and fStatus != -1
+		</if>
 	</select>
 	
 	
