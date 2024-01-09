@@ -18,6 +18,13 @@ public class StoreServiceImpl implements StoreService {
 
 	@Autowired
 	StoreDao storeDao;
+	
+	@Override
+	@Transactional(readOnly = true)
+	public int getBgmAll() {
+		return storeDao.getBgmAll();
+	}
+	
 
 	@Override
 	@Transactional(readOnly= false)

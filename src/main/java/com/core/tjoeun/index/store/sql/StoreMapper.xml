@@ -3,7 +3,13 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core.tjoeun.index.store.sql.StoreMapper">
-	
+
+<select id="getBgmAll" resultType="int">
+	select
+	count(*)
+	from bgm
+</select>
+
 <select id="getBgmList" resultType="map" parameterType="map">
 	select 
 		seq

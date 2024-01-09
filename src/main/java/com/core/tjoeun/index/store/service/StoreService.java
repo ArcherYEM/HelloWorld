@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 public interface StoreService {
+	
+	public int getBgmAll();
 
 	public List<Map> getBgmList(Map map) throws Exception;
 		
