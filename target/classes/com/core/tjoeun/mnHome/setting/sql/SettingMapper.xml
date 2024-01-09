@@ -80,6 +80,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and del_yn = 'N'
 	</select>
 	
+	
 	<update id="updateStatus" parameterType="map">
 		update
 			friends
@@ -94,6 +95,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where
 			seq = #{seq}
 	</update>
+	
+	<select id="searchFriend" parameterType="map">
+		select
+			seq
+			, userNickname
+			, friendNickname
+			, fStatus
+			, substring(createDate,1,10) as createDate
+		from friends
+		where 
+			(userNickname = #{userNickname} or friendNickname = #{userNickname})
+			<if test="fStatus != null">
+				and fStatus = #{fStatus}
+			</if>
+	</select>
 	
 	
 </mapper>
