@@ -165,8 +165,12 @@ public class SettingController {
 		
 		Map result = new HashMap<String, String>();
 		try {
-			settingService.insertFriendRequest(map);
-			result.put("msg", "성공");
+			int isSuccess = settingService.insertFriendRequest(map);
+			if(isSuccess == 1) {
+				result.put("code", "1");
+			}else if(isSuccess == -1) {
+				result.put("code", "-1");
+			}
 		} catch (Exception e) {
 			result.put("msg", "실패");
 			e.printStackTrace();
