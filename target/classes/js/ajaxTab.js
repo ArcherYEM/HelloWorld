@@ -87,9 +87,6 @@ function loadTabContent(tabName) {
             
             $(".bookcover").html($(data).find(".bookcover").html());
             
-            // editor 초기화
-            initializeEditor();
-            
         },
         error: function (error) {
             console.log("Error loading tab: " + error);
