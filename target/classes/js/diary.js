@@ -25,6 +25,7 @@ function addDiary() {
         if(json.resultCode === '1' ){
         	 alert("성공메세지");
         	 console.log(json);
+        	 document.getElementById("btnBoardView").click();
         } else if(json.resultCode === "0"){
             alert("다이어리 작성에 실패했습니다. 다시 시도해주세요.");
         }
