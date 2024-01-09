@@ -204,6 +204,7 @@
               document.getElementById('linkLogout').style.display = 'block';
               divHome.style.display = 'none';
               divLogin.style.display = 'block';
+              location.reload();
            } else {
               alert('아이디와 비밀번호를 다시 확인해 주세요.');
               helloMessage.innerText = '안녕하세요. HelloWorld에 오신 걸 환영합니다.';
