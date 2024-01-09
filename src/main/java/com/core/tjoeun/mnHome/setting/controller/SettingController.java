@@ -313,5 +313,21 @@ public class SettingController {
 		
 		return result;
 	}
+	
+	@RequestMapping(value = "/mnHome/getFriends")
+	@ResponseBody
+	public Map getFriendship(@RequestBody Map map) {
+		
+		Map result = new HashMap<String, String>();
+		try {
+			settingService.updateFriends(map);
+			result.put("msg", "성공");
+		} catch (Exception e) {
+			result.put("msg", "실패");
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 
 }
