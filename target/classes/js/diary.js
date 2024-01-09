@@ -14,17 +14,18 @@ function addDiary() {
         "userNickname" : userNickname,
         "title" : title
     };
+    console.log(jsonData);
     
-    console.log (jsonData);
     $.ajax({
         method: 'POST',
         url: "/mnHome/diaryAdd",
         contentType: 'application/json',
         data: JSON.stringify(jsonData)
     }).done(function(json) {
-        if(json.result === "Success"){
+        if(json.resultCode === '1' ){
         	 alert("성공메세지");
-        } else if(json.result === "false"){
+        	 console.log(json);
+        } else if(json.resultCode === "0"){
             alert("다이어리 작성에 실패했습니다. 다시 시도해주세요.");
         }
     });
