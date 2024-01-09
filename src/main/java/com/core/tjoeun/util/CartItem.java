@@ -28,7 +28,7 @@ public class CartItem {
     	this.name = name;
     	this.contentPath = contentPath;
     	this.price = price;
-    	this.setDotoriCount(dotoriCount);
+    	this.dotoriCount = (dotoriCount);
     }
 
     public String getCate() {
