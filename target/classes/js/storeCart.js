@@ -57,6 +57,7 @@
 		            		alert('상품 구매에 성공하였습니다.');
 
 		            		updateDotoriCount();
+		            		clearCart();
 		            	} else {
 		            		alert('상품 구매에 실패하였습니다. 다시 시도해주세요.');
 		            	}
@@ -78,9 +79,10 @@
                 url: '/store/updateDotoriCount',
                 data: JSON.stringify(),
                 success: function (result) {
-                	if(result == 1){
-                		console.log('도토리 개수 업데이트 성공');
-                	}
+                	if (result !== undefined) {
+                        console.log('도토리 개수 업데이트 성공');
+                        $('#userDotoriCnt').text(result);
+                    }
                 },
                 error: function (error) {
                     console.error('도토리 개수 업데이트 실패');

@@ -329,17 +329,22 @@ public class StoreController {
 
                 // 장바구니 도토리 개수를 업데이트
                 resultMap.put("currentDotori", result);
-
+                session.setAttribute("userDotoriCnt", result);
                 int afterBuy = storeService.updateBuyCartDotoriCnt(resultMap);
-                return afterBuy == 1 ? 1 : 0;
+                if(afterBuy == 1) {
+                	return result;
+                } else {
+                	throw new Exception();
+                }
+                
             } else {
                 // 적절한 처리를 수행하거나 예외를 던지는 등의 방법으로 오류를 처리합니다.
-                return 0;
+            	throw new Exception();
             }
         } catch (Exception e) {
             e.printStackTrace();
             // 적절한 오류 처리
-            return 0;
+            return result;
         }
     }
     
