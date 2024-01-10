@@ -180,4 +180,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	AND f.fStatus = 1 AND f.del_yn = 'n';
 </select>
 
+<select id="mainSkin" parameterType="map" resultType="map">
+	SELECT 
+		category
+		,productName
+		,userNickname
+	FROM
+		userStorage
+	WHERE 1=1
+		AND userNickname = #{userNickanem}
+		AND category = #{category}
+		AND allocation = '1'
+</select>
+
 </mapper>

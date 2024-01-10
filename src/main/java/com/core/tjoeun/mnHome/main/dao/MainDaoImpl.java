@@ -134,4 +134,10 @@ public class MainDaoImpl implements MainDao{
 		
 		return mapper.getMyFriends(userNickname);
 	}
+
+	@Override
+	public Map mainSkin(Map map) {
+		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
+		return mapper.mainSkin(map);
+	}
 }

@@ -36,8 +36,8 @@ function logClick() {
     
 }
 
-//클릭된 요소의 데이터를 ajax 로 전송하는 함수
-$(document).on("click", ".apply-button", function (event) {
+// ajax 로 데이터 전송
+$(document).one("click", ".apply-button", function (event) {
     event.preventDefault();
 
     console.log('보낸 사용자 닉네임:', userNickname);
@@ -51,19 +51,18 @@ $(document).on("click", ".apply-button", function (event) {
 
     // Ajax 요청 보내기
     $.ajax({
-    	method: 'POST',
+        method: 'POST',
         url: '/mnHome/skinChoice',
         contentType: 'application/json',
         data: JSON.stringify(jsonData),
     }).done(function(json) {
         if(json.resultCode === '1' ){
-       	 alert("성공메세지");
-       	 console.log(json);
-       	 document.getElementById("spanSettingSkin").click();
-       } else if(json.resultCode === "0"){
-           alert("스킨 적용에 실패했습니다. 다시 시도해주세요.");
-       }
+            alert("선택하신 스킨을 적용하였습니다.");
+            console.log(json);
+            document.getElementById("spanSettingSkin").click();
+        } else if(json.resultCode === "0"){
+            alert("스킨 적용에 실패했습니다. 다시 시도해주세요.");
+        }
    });
 });
-
 

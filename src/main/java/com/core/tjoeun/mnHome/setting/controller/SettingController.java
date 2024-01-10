@@ -108,6 +108,7 @@ public class SettingController {
 		    List<Map<String, Object>> skinMap = settingService.selectSkinMenu(putMap);
 			model.addAttribute("skinMap", skinMap);
 			System.out.println("skinMap : " + skinMap);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -152,6 +153,13 @@ public class SettingController {
 			if (userSkin != null && !userSkin.isEmpty()) {
 			    Map<String, Object> skinMap2 = userSkin.get(0);
 			    System.out.println("★ skinMap2 : " + skinMap2);
+			    
+			    if(skinMap2 != null) {
+			    	skinMap2.put("resultCode", "1");
+				} else {
+					skinMap2.put("resultCode", "0");
+				}
+			    
 			    return skinMap2;
 			} else {
 			    return new HashMap<>();

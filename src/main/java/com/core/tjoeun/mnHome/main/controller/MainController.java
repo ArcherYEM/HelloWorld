@@ -100,6 +100,14 @@ public class MainController {
         Map background = mainService.selectBackground(userNickname);
         model.addAttribute("background", background);
         
+        title.put("category", "skin");
+        System.out.println("★ title : " + title);
+        Map mainSkin = mainService.mainSkin(title);
+        System.out.println("★ mainSkin : " + mainSkin);
+        model.addAttribute("bgSkin", mainSkin.get("productName"));
+        model.addAttribute("bgSkin", mainSkin.get("category"));
+        model.addAttribute("bgSkin", mainSkin.get("userNickname"));
+        System.out.println("★ model : " + model);
 		return "miniHome/main";
 	}
 	

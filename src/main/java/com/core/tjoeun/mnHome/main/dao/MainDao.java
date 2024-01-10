@@ -39,4 +39,6 @@ public interface MainDao {
 	public Map selectNewTab(String userNickname);
 	
 	public List<Map> getMyFriends(String userNickname);
+	
+	public Map mainSkin(Map map);
 }
