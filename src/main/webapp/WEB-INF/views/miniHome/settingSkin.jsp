@@ -117,6 +117,8 @@
 										           <c:when test="${skinItem.productName == 'purple'}">purple</c:when>
 										           <c:when test="${skinItem.productName == 'white'}">white</c:when>
 										           <c:when test="${skinItem.productName == 'green'}">green</c:when>
+										           <c:when test="${skinItem.productName == 'green'}">gray</c:when>
+										           <c:when test="${skinItem.productName == 'green'}">navy</c:when>
 										           <c:otherwise>기본-색상</c:otherwise>
 										       </c:choose>
 										       ;">
