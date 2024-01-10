@@ -1,5 +1,6 @@
 package com.core.tjoeun.mnHome.board.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +36,13 @@ public class BoardDaoImpl implements BoardDao{
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		
 		return mapper.getBoardPage(map);
+	}
+
+	@Override
+	public int deleteBoard(ArrayList<String> list) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		
+		return mapper.deleteBoard(list);
 	}
 
 }

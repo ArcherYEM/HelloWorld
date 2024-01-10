@@ -208,9 +208,37 @@
 
 .albumWirte-file{
 	margin-left: 15px;
-	margin-top: 5px;
-	border: 1px solid gray;
-	border-radius: 2px;
+	margin-bottom: 5px;
+/* 	border: 1px solid gray;
+	border-radius: 2px; */
 	width: 90%;
-	height: 80px;
+/* 	height: 80px; */
+}
+
+.image-container{
+	margin-top:10px;
+	text-align:center;
+	border:1px solid black;
+	border-radius:5px;
+	
+}
+
+.image-container:hover .removeBtn{
+	visibility: visible;
+	opacity: 1;	
+}
+
+.name-container{
+	text-align:center;
+}
+
+.removeBtn {
+   background: url(/resources/images/minihome/deleteIcon.png);
+   opacity: 0;
+   transition: visibility 0s, opacity 0.5s linear;
+   width: 30px;
+   height: 28px;
+   text-align: center;
+   border: none;
+   margin: 0 auto;
 }

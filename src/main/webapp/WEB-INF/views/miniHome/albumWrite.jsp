@@ -75,9 +75,13 @@
 											<div class="album-title albumWrite-title">
 												<input type="text" placeholder="제목을 입력하세요">
 											</div>
+											
+										   <div id="preview-container"></div>
+										   
 										  <div class="album-content albumWrite-content">
+										  	<input type="file" class="albumWirte-file fileupload" multiple="multiple" onchange="multiFiles(this.files)">
+										  	<div id="preview-container"></div>
 										  	<textarea placeholder="내용을 입력하세요"></textarea>
-										  	<input type="file" class="albumWirte-file">
 										  </div>
 									  </div>
 									  <div class="album-public">
@@ -98,6 +102,8 @@
 								  	</div>
 								  </div>
 							  </div>
+							  
+							  
 							  
 						  </div>
 						</div>
