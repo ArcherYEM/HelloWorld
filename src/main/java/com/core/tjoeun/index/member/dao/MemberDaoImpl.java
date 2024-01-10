@@ -112,4 +112,11 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return mapper.selectUserName(userNickname);
 	}
+
+	@Override
+	public int selectRequest(String userNickname) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		
+		return mapper.selectRequest(userNickname);
+	}
 }

@@ -127,4 +127,11 @@ public class MainDaoImpl implements MainDao{
 		
 		return mapper.selectNewTab(userNickname);
 	}
+
+	@Override
+	public List<Map> getMyFriends(String userNickname) {
+		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
+		
+		return mapper.getMyFriends(userNickname);
+	}
 }

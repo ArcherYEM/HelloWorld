@@ -37,4 +37,6 @@ public interface MainDao {
 	public Map selectAllTab(String userNickname);
 	
 	public Map selectNewTab(String userNickname);
+	
+	public List<Map> getMyFriends(String userNickname);
 }

@@ -165,4 +165,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	     	AND TIMESTAMPDIFF(HOUR, update_date, NOW()) <= 24) AS VisitCount
 	     ]]>
 </select>
+
+<select id="getMyFriends" parameterType="String" resultType="map">
+	SELECT 
+	    CASE 
+	        WHEN f.userNickname = #{userNickname} THEN f.friendNickname
+	        WHEN f.friendNickname = #{userNickname} THEN f.userNickname
+	    END AS Name,
+	    u.userEmail
+	FROM friends AS f
+	JOIN user AS u ON (f.userNickname = #{userNickname} AND f.friendNickname = u.userNickname) 
+	                OR (f.friendNickname = #{userNickname} AND f.userNickname = u.userNickname)
+	WHERE (#{userNickname} = f.userNickname OR #{userNickname} = f.friendNickname) 
+	AND f.fStatus = 1 AND f.del_yn = 'n';
+</select>
+
 </mapper>

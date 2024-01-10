@@ -143,8 +143,11 @@ public class MainController {
         
         //다이어리, 앨범, 게시판, 방명록 최근 24개 개수 가져오기
         Map newMap = mainService.selectNewTab(userNickname);
-        System.out.println("!테스트"+newMap);
         model.addAttribute("newCount",newMap);
+        
+        //접속중인 유저의 친구 전부 가져오기
+        List<Map> friendMap = mainService.getMyFriends(userNickname);
+        model.addAttribute("friend", friendMap);
 		
 		return "miniHome/main";
 	}
@@ -200,7 +203,6 @@ public class MainController {
 	public String mnhProfileHistory(HttpSession session, HttpServletRequest req, Model model, @RequestParam("targetNickname") String targetNickname) {
 		
 		Map userMap = new HashMap();
-		System.out.println("테스트"+targetNickname);
 		session = req.getSession();
 		userMap = (Map) session.getAttribute("userId");
 		if(userMap==null) {

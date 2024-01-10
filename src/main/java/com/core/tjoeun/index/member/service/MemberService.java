@@ -26,4 +26,6 @@ public interface MemberService {
 	
 	public String getUserName(String userNickname);
 	
+	public int selectRequest(String userNickname);
+	
 }

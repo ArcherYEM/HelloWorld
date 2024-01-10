@@ -65,14 +65,14 @@
                         ${userName }&#128698;
                      </div>
 <%--                      <div class="profile-username font-kyobohand"> ${sessionScope.userId.userName }&#128698;</div> --%>
+
                      <div class="profile-dropDown">
-                        <select>
+						<select id="friendSelect" onchange="redirectToMainView()">
                            <option value="" disabled selected hidden="">파도타기</option>
-                           <option value="temp1">이정은(jungeun@gmail.com)</option>
-                           <option value="temp2">이진우(junwoo@naver.com)</option>
-                           <option value="temp3">채승원(seungwon@daum.net)</option>
-                           <option value="temp4">양은모(eunmo@nate.com)</option>
-                        </select>
+						    <c:forEach var="friend" items="${friend}" varStatus="status">
+						        <option value="${friend.Name}">${friend.Name}(${friend.userEmail})</option>
+						    </c:forEach>
+						</select>
                      </div>
                   </div>
                </div>
@@ -331,6 +331,16 @@
    <script>
      var bgColor = "${bgSkin}";
      document.body.style.backgroundColor = bgColor;
+   </script>
+   <script>
+	   function redirectToMainView() {
+	       var selectElement = document.getElementById("friendSelect");
+	       var selectedValue = selectElement.options[selectElement.selectedIndex].value;
+	       if (selectedValue) {
+	           var url = "/mnHome/mainView/" + selectedValue;
+	           window.location.href = url;
+	       }
+	   }
    </script>
    
 </body>
