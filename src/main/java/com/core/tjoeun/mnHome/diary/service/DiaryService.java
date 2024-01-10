@@ -9,7 +9,7 @@ public interface DiaryService {
 	
 	public Map insertDiary(Map map) throws Exception;
 
-	public Map selectDiary(Map map);
+	public List<Map> selectDiary(Map map);
 	
 	public int deleteDiary(ArrayList<String> list);
 	

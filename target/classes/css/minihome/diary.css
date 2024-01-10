@@ -117,6 +117,23 @@
 	border-bottom: 1px dotted lightgray;
 }
 
+.album-db-group {
+	border: 1px solid gray;
+	border-radius: 5px;
+}
+
+.album-date {
+	text-align: right;
+	font-size: 12px;
+	color: purple;
+}
+
+.album-content {
+	overflow-y: auto;
+	min-height: 200px;
+	padding: 10px;
+}
+
 .album-public{
 	color: gray;
 	font-size: 12px;
@@ -214,7 +231,7 @@
 }
 
 .board-comment-container {
-	
+	margin-bottom: 40px;
 }
 
 .board-comment{
