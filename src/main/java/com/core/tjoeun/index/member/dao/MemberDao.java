@@ -29,4 +29,6 @@ public interface MemberDao {
 	public int insertUserStorage(String userNickname);
 	
 	public String selectUserName(String userNickname);
+	
+	public int selectRequest(String userNickname);
 }

@@ -136,4 +136,10 @@ public class MemberServiceImpl implements MemberService{
 	public String getUserName(String userNickname) {
 		return memberDao.selectUserName(userNickname);
 	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public int selectRequest(String userNickname) {
+		return memberDao.selectRequest(userNickname);
+	}
 }

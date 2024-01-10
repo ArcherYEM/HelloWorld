@@ -1,3 +1,4 @@
+
 package com.core.tjoeun.mnHome.main.service;
 
 import java.util.HashMap;
@@ -163,6 +164,13 @@ public class MainServiceImpl implements MainService{
 	public Map selectNewTab(String userNickname) {
 		
 		return mainDao.selectNewTab(userNickname);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Map> getMyFriends(String userNickname) {
+		
+		return mainDao.getMyFriends(userNickname);
 	}
 	
 }
