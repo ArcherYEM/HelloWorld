@@ -100,25 +100,15 @@
 													<th>결제 방식</th>
 												</tr>
 											</thead>
-											<tbody>
+											<tbody>																						
+											<c:forEach var = "dotori" items="${dotoriCharge }">
 												<tr>
-													<td>2023-10-12 15:05</td>
-													<td>100</td>
-													<td>9900</td>
-													<td>모바일</td>
+													<td>${dotori.formattedDotoriChargeDate }</td>
+													<td>${dotori.dotoriCharge }</td>
+													<td>${dotori.dotoriPrice }</td>
+													<td>${dotori.dotoriChargeMethod }</td>
 												</tr>
-												<tr>
-													<td>2023-09-01 17:17</td>
-													<td>10</td>
-													<td>1100</td>
-													<td>무통장 입금</td>
-												</tr>
-												<tr>
-													<td>2021-05-05 05:55</td>
-													<td>300</td>
-													<td>26400</td>
-													<td>신용카드</td>
-												</tr>
+											</c:forEach>	
 											</tbody>
 										</table>
 									</div>

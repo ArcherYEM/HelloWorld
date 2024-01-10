@@ -20,5 +20,9 @@ public interface SettingMapper {
     
     public int updateStatus(Map map);
     
+    public List<Map> selectDotoriUse(String userNickname);
+    
+    public List<Map> selectDotoriCharge(String userNickname);
+
     public List<Map<String, Object>> selectSkinMenu(Map map);
 }

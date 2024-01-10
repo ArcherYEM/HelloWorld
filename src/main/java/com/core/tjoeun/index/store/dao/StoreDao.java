@@ -32,4 +32,6 @@ public interface StoreDao {
 	public int updateBuyCartDotoriCnt(Map map);
 	
 	public int getCartItemDuplicateCount(Map map);
+	
+	public int insertDotoriUse(Map map);
 }
