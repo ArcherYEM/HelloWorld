@@ -160,7 +160,6 @@ public class SettingController {
 	    return "miniHome/settingDotoriUse";
 	}
 
-
 	@RequestMapping(value = "/mnHome/settingDotoriCharge/{userNickname}")
 	public String settingDotoriChargeView(@PathVariable String userNickname, Model model) {
 	    List<Map> dotoriMap = settingService.selectDotoriCharge(userNickname);
