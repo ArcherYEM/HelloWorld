@@ -57,6 +57,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	SELECT contentPath
 	FROM userStorage
 	WHERE userNickname = #{userNickname}
+	AND category = "minimi"
 </select>
 
 <insert id="upsertBackground" parameterType="map">
