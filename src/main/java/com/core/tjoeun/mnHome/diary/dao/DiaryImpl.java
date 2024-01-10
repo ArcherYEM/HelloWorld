@@ -25,9 +25,10 @@ public class DiaryImpl implements DiaryDao {
 	}
 
 	@Override
-	public List<HashMap> selectDiary(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+	public Map selectDiary(Map map) {
+		DiaryMapper mapper = sqlSession.getMapper(DiaryMapper.class);
+		
+		return mapper.selectDiary(map);
 	}
 
 	@Override
