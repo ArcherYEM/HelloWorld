@@ -32,9 +32,9 @@ public class DiaryServiceImpl implements DiaryService {
 	}
 
 	@Override
-	public List<HashMap> selectDiary(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+	public Map selectDiary(Map map) {
+		
+		return diaryDao.selectDiary(map);
 	}
 
 	@Override

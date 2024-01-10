@@ -9,7 +9,7 @@ public interface DiaryMapper {
 	
 	public int insertDiary(Map map);
 
-	public List<HashMap> selectDiary(Map map);
+	public Map selectDiary(Map map);
 	
 	public int deleteDiary(ArrayList<String> list);
 	

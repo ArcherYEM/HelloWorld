@@ -27,7 +27,12 @@ public class DiaryController {
 	public String diaryView(@PathVariable String userNickname, Model model) {
 		Map userMap = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", userMap.get("userName"));
+		model.addAttribute("userNickname", userMap.get("userNickname"));
 		model.addAttribute("title", userMap.get("title"));
+		System.out.println("userMap : " + userMap);
+		System.out.println("map 시작");
+		Map map = diaryService.selectDiary(userMap); //여기문제임
+		System.out.println("map : " + map);
 		
 		return "miniHome/diary";
 	}
