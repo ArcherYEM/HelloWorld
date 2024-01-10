@@ -98,5 +98,17 @@ public class SettingServiceImpl implements SettingService {
 		}
 		
 	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Map> selectDotoriUse(String userNickname) {
+		return settingDao.selectDotoriUse(userNickname);
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Map> selectDotoriCharge(String userNickname) {
+		return settingDao.selectDotoriCharge(userNickname);
+	}
     
 }

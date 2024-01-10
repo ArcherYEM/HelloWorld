@@ -19,4 +19,8 @@ public interface SettingDao {
 	public List<HashMap> selectFriends(Map map);
 	
 	public int updateStatus(Map map);
+	
+	public List<Map> selectDotoriUse(String userNickname);
+	
+	public List<Map> selectDotoriCharge(String userNickname);
 }

@@ -89,10 +89,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		userNickname
 		,dotoriCharge
 		,dotoriChargeDate
+		,dotoriChargeMethod
+		,dotoriPrice
 	) values (
 		#{userNickname}
 		,#{dotoriCharge}
-		,current_timestamp) 
+		,current_timestamp
+		,#{dotoriMethod} 
+		,#{dotoriPrice})
 </insert>
 
 <select id="selectDotori" parameterType="String" resultType="String">
@@ -174,4 +178,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     AND productName = #{productName}
     AND contentPath = #{contentPath}
 </select>
+
+<insert id="insertDotoriUse" parameterType="map">
+	insert into dotoriU (
+		userNickname
+		,dotoriUse
+		,dotoriUseFor
+		,dotoriUseDate
+		) values (
+		#{userNickname}
+		,#{dotoriUse}
+		,#{dotoriUseFor}
+		,current_timestamp()
+		)
+</insert>
 </mapper>

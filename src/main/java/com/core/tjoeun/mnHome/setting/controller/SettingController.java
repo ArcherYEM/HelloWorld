@@ -92,20 +92,35 @@ public class SettingController {
 
 	@RequestMapping(value = "/mnHome/settingDotoriUse/{userNickname}")
 	public String settingDotoriUseView(@PathVariable String userNickname, Model model) {
-		
-		Map map = mainService.getUserInfo(userNickname);
-		model.addAttribute("userName", map.get("userName"));
-		model.addAttribute("title", map.get("title"));
+	    List<Map> dotoriMap = settingService.selectDotoriUse(userNickname);
 
-		return "miniHome/settingDotoriUse";
+	    for (Map map : dotoriMap) {
+	        String dotoriUseFor = (String) map.get("dotoriUseFor");
+	        // "구매-"를 기준으로 문자열을 분할합니다.
+	        String[] parts = dotoriUseFor.split("구매-");
+	        if (parts.length == 2) {
+	            map.put("category", parts[0].trim()); // "미니미" 등의 카테고리
+	            map.put("detail", parts[1].trim()); // "스타픽시" 등의 상세 내용
+	        }
+	    }
+
+	    Map userInfoMap = mainService.getUserInfo(userNickname);
+	    model.addAttribute("userName", userInfoMap.get("userName"));
+	    model.addAttribute("title", userInfoMap.get("title"));
+	    model.addAttribute("dotoriUse", dotoriMap);
+
+	    return "miniHome/settingDotoriUse";
 	}
+
 
 	@RequestMapping(value = "/mnHome/settingDotoriCharge/{userNickname}")
 	public String settingDotoriChargeView(@PathVariable String userNickname, Model model) {
-		
+	    List<Map> dotoriMap = settingService.selectDotoriCharge(userNickname);
+
 		Map map = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", map.get("userName"));
 		model.addAttribute("title", map.get("title"));
+		model.addAttribute("dotoriCharge", dotoriMap);		
 
 		return "miniHome/settingDotoriCharge";
 	}

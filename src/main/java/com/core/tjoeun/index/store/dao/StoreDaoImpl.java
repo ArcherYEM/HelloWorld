@@ -98,4 +98,10 @@ public class StoreDaoImpl implements StoreDao {
 		StoreMapper mapper = sqlSession.getMapper(StoreMapper.class);
 		return mapper.getCartItemDuplicateCount(map);
 	}
+	
+	@Override
+	public int insertDotoriUse(Map map) {
+		StoreMapper mapper = sqlSession.getMapper(StoreMapper.class);
+		return mapper.insertDotoriUse(map);
+	}
 }

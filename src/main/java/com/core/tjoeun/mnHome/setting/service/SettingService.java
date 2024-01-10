@@ -19,4 +19,8 @@ public interface SettingService {
 	public List<HashMap> selectFriends(Map map);
 	
 	public void updateFriends(Map map) throws Exception;
+	
+	public List<Map> selectDotoriUse(String userNickname);
+	
+	public List<Map> selectDotoriCharge(String userNickname);
 }
