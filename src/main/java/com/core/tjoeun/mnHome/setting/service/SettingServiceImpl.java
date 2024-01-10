@@ -98,5 +98,10 @@ public class SettingServiceImpl implements SettingService {
 		}
 		
 	}
+
+	@Override
+	public List<Map<String, Object>> selectSkinMenu(Map map) {
+		return settingDao.selectSkinMenu(map);
+	}
     
 }

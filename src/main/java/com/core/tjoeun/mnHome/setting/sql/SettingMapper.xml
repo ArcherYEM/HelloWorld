@@ -17,6 +17,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		AND userNickname = #{value}
 	</select>
 	
+	<select id="selectSkinMenu" parameterType="map" resultType="map">
+		SELECT
+			userNickname,
+			category,
+			productName,
+			contentPath,
+			buy_date,
+			allocation
+		FROM userStorage
+		WHERE 1=1
+		<if test="userNickname != null">
+			AND userNickname = #{userNickname}
+		</if>
+		<if test="category != null">
+	        <choose>
+	            <when test="category == 'skin' or category == 'menu'">
+	                AND (category = 'skin' OR category = 'menu')
+	            </when>
+	        </choose>
+	    </if>
+	</select>
+	
 	<update id="updateAllocationOff" parameterType="String">
 		UPDATE userStorage
 		SET
@@ -64,7 +86,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			,'N'
 			,0
 		)
-	
 	</insert>
 	
 	
@@ -98,7 +119,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="del != null">
 			del_yn =  #{del}
 			</if>
-			
 		where
 			seq = #{seq}
 	</update>

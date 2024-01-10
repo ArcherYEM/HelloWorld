@@ -36,7 +36,7 @@ public class DiaryController {
 		if (!diaryList.isEmpty()) {
 	        model.addAttribute("diaryList", diaryList);
 	    }
-		System.out.println("map : " + diaryList);
+		System.out.println("인덱스확인 : " + diaryList.get(0));
 		
 		return "miniHome/diary";
 	}

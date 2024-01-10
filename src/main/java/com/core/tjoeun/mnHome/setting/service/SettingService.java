@@ -19,4 +19,6 @@ public interface SettingService {
 	public List<HashMap> selectFriends(Map map);
 	
 	public void updateFriends(Map map) throws Exception;
+	
+	public List<Map<String, Object>> selectSkinMenu(Map map);
 }
