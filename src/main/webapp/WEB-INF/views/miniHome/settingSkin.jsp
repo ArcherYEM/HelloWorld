@@ -96,16 +96,34 @@
 								</div>
 								
 								<div class="set-skin-having">
-									<div class="set-skin-p">
-										<p>보유중인 스킨</p>
-									</div>
-									<div class="set-skin-list">
-										<div class="temp1"></div>
-										<div class="temp2"></div>
-										<div class="temp3"></div>
-										<div class="temp4"></div>
-										<div class="temp5"></div>
-										<div class="temp6"></div>
+								    <div class="set-skin-p">
+								        <p>보유중인 스킨</p>
+								    </div>
+								    <div class="set-skin-list">
+										<c:forEach var="skinItem" items="${skinMap}">
+									   		<div class="skin-item-group">
+										   <div class="skin-item-color" style="
+										       width: 100px;
+										       height: 30px;
+										       margin-bottom: 10px;
+										       border: 3px solid black;
+										       border-radius: 5px;
+										       background-color: 
+										       <c:choose>
+										           <c:when test="${skinItem.productName == 'red'}">red</c:when>
+										           <c:when test="${skinItem.productName == 'yellow'}">yellow</c:when>
+										           <c:when test="${skinItem.productName == 'black'}">black</c:when>
+										           <c:when test="${skinItem.productName == 'blue'}">blue</c:when>
+										           <c:when test="${skinItem.productName == 'purple'}">purple</c:when>
+										           <c:when test="${skinItem.productName == 'white'}">white</c:when>
+										           <c:otherwise>기본-색상</c:otherwise>
+										       </c:choose>
+										       ;">
+										   </div>
+										   <div class="skin-item-name">${skinItem.productName}</div>
+										   </div>
+										</c:forEach>
+
 									</div>
 								</div>
 								
@@ -147,5 +165,6 @@
 			</div>
 		</div>
 	</div>
+	
 </body>
 </html>
