@@ -196,3 +196,10 @@ $(document).on("click", "#spanSettingDotoriC", function (event) {
    console.log('TabName:', tabName);
    loadTabContent(tabName); 
 });
+
+$(document).on("click", ".board-page", function (event) {
+   event.preventDefault();
+   tabName = $(this).data("page");
+   console.log('TabName:', tabName);
+   loadTabContent(tabName); 
+});

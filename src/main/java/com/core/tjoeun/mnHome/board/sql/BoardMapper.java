@@ -9,4 +9,6 @@ public interface BoardMapper {
 	public int insertBoard(Map map);
 	
 	public List<HashMap> selectBoardList(Map map);
+	
+	public Map getBoardPage(Map map);
 }
