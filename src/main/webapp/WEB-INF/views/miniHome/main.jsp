@@ -52,11 +52,11 @@
                         </a>
                      </div>
                      <div class="profile-dot">---------------------------------</div>
-                     <div class="profile-username font-kyobohand popup" onclick="popupFunction()"> 
+                     <div class="profile-username font-kyobohand mainpopup" onclick="popupFunction()"> 
 						<c:if test="${sessionScope.userId.userNickname == userNickname}">
 							</c:if>
 							<c:if test="${sessionScope.userId.userNickname != userNickname}">
-							    <div class="popuptext" id="myPopup" onclick="requestFriendship('${userNickname}')"> 
+							    <div class="mainpopuptext" id="myPopup" onclick="requestFriendship('${userNickname}')"> 
 							        일촌신청 
 							        <input type="hidden" id="requestUser" name="requestUser" value="${sessionScope.userId.userNickname}">
 							        <input type="hidden" id="responseUser" name="responseUser" value="${userNickname}">

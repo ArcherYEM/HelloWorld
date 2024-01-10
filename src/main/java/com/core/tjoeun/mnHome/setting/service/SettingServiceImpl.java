@@ -98,7 +98,7 @@ public class SettingServiceImpl implements SettingService {
 		}
 		
 	}
-	
+
 	@Override
 	@Transactional(readOnly = true)
 	public List<Map> selectDotoriUse(String userNickname) {
@@ -109,6 +109,11 @@ public class SettingServiceImpl implements SettingService {
 	@Transactional(readOnly = true)
 	public List<Map> selectDotoriCharge(String userNickname) {
 		return settingDao.selectDotoriCharge(userNickname);
+	}
+	
+	@Override
+	public List<Map<String, Object>> selectSkinMenu(Map map) {
+		return settingDao.selectSkinMenu(map);
 	}
     
 }

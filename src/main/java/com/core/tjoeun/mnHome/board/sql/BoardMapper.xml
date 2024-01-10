@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core.tjoeun.mnHome.board.sql.BoardMapper">
+
+<insert id="insertBoard" parameterType="map">
+	insert into board(
+		userNickname
+		, title
+		, content
+	) values(
+		#{userNickname}
+		, #{title}
+		, #{content}
+	)
+	
+</insert>
+
+<select id="selectBoardList" parameterType="map" resultType="map">
+	SELECT 
+		  seq
+		, userNickname
+		, title
+		, content
+		, imagePath
+		, hits
+		, create_date
+		, update_date
+		, del_yn
+		, openScope
+	From board
+	where del_yn = 'N'
+	and openScope = 1
+	and userNickname = #{userNickname}
+	<if test="seq != null">
+	and	seq = #{seq}
+	</if>
+	order by seq desc
+</select>
+
+</mapper>

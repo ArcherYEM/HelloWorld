@@ -23,4 +23,6 @@ public interface SettingService {
 	public List<Map> selectDotoriUse(String userNickname);
 	
 	public List<Map> selectDotoriCharge(String userNickname);
+
+	public List<Map<String, Object>> selectSkinMenu(Map map);
 }

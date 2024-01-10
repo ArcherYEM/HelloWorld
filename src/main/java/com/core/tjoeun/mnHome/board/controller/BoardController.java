@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -17,10 +19,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.core.tjoeun.index.member.service.MemberService;
+import com.core.tjoeun.mnHome.board.service.BoardService;
 import com.core.tjoeun.mnHome.main.service.MainService;
 
 @Controller
@@ -31,6 +37,9 @@ public class BoardController {
 	
 	@Autowired
 	MainService mainService;
+	
+	@Autowired
+	BoardService boardService;
 	
 	@RequestMapping(value="/mnHome/boardView/{userNickname}")
 	public String boardView(@PathVariable String userNickname, Model model) {
@@ -46,8 +55,13 @@ public class BoardController {
 		model.addAttribute("userName", map.get("userName"));
 		model.addAttribute("title", map.get("title"));
 		
+		Map selectMap = new HashMap();
+		selectMap.put("userNickname", userNickname);
+		model.addAttribute("list",boardService.getBoardList(selectMap));
+		
 		return "miniHome/board";
 	}
+	
 	
 	@RequestMapping(value="/mnHome/boardWriteView/{userNickname}")
 	public String boardWriteView(@PathVariable String userNickname, Model model) {
@@ -66,8 +80,23 @@ public class BoardController {
 		return "miniHome/boardWrite";
 	}
 	
-	@RequestMapping(value="/mnHome/boardDetail/{userNickname}")
-	public String boardDetail(@PathVariable String userNickname, Model model) {
+	@RequestMapping(value="/mnHome/boardWrite")
+	@ResponseBody
+	public Map boardWrite(@RequestBody Map map) {
+		Map result = new HashMap<String, String>();
+		try {
+			boardService.writeBoard(map);
+			result.put("resultCode", "1");
+		} catch (Exception e) {
+			result.put("resultCode", "0");
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	@RequestMapping(value="/mnHome/boardDetail/{userNickname}/{seq}")
+	public String boardDetail(@PathVariable String userNickname, @PathVariable String seq, Model model) {
 		
 		Map profile = mainService.getProfile(userNickname);
 		String image = (String) profile.get("image");
@@ -80,8 +109,15 @@ public class BoardController {
 		model.addAttribute("userName", map.get("userName"));
 		model.addAttribute("title", map.get("title"));
 		
+		
+		Map selectMap = new HashMap();
+		selectMap.put("userNickname", userNickname);
+		selectMap.put("seq", seq);
+		model.addAttribute("list",boardService.getBoardList(selectMap));
+		
 		return "miniHome/boardDetail";
 	}
+	
 	
 	@RequestMapping(value="smarteditorMultiImageUpload")
 	public void smarteditorMultiImageUpload(HttpServletRequest request, HttpServletResponse response){
