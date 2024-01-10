@@ -47,53 +47,29 @@
 	border-bottom: 2px dotted gray;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	overflow-y: auto;
-	height: 150px;
+/* 	overflow-y: auto; */
+	height: 200px;
 	display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-.set-skin-list div:hover {
+.skin-item-group {
+	height: 80px;
+	align-items: center;
+	text-align: center;
+}
+
+.skin-item-group:hover {
 	cursor: pointer;
-	border: 4px solid orange; 
+	border: 3px solid orange; 
+	border-radius: 5px;
+	font-weight: bold;
 }
 
-.temp1,
-.temp2,
-.temp3,
-.temp4,
-.temp5,
-.temp6 {
-  width: calc(33.33% - 10px);
-  height: 30px;
-  margin-bottom: 10px;
-  border: 4px solid white;
-  border-radius: 5px;
-}
-
-.temp1 {
-	background-color: red;
-}
-
-.temp2 {
-	background-color: green;
-}
-
-.temp3 {
-	background-color: black;
-}
-
-.temp4 {
-	background-color: blue;
-}
-
-.temp5 {
-	background-color: yellow;
-}
-
-.temp6 {
-	background-color: purple;
+.skin-item-name {
+	color: gray;
+	font-size: 12px;
 }
 
 .set-skin-btn {

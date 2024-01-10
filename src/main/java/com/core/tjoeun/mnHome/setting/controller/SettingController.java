@@ -94,11 +94,11 @@ public class SettingController {
 		
 		try {
 			List<Map<String, Object>> skinMap = settingService.selectSkinMenu(putMap);
+			model.addAttribute("skinMap", skinMap);
 			System.out.println("skinMap : " + skinMap);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return "miniHome/settingSkin";
 	}
 
