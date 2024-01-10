@@ -78,11 +78,11 @@
 					
 					<div class="board-overflow">
 						<div class="board-title-container">
-							<input type="text" placeholder="     제목을 입력하세요" class="board-title" maxlength="30">
+							<input type="text" placeholder=" 제목을 입력하세요" class="board-title" maxlength="30">
 						</div>
 						<div class="board-write-container">
-							<span class="board-writer">  채승원(작성자)</span>
-							<span class="board-write-date">2023.12.10 14:21</span>						
+							<span class="board-writer"> ${userName }(작성자)</span>
+							<span class="board-write-date"><fmt:formatDate value="<%=new java.util.Date()%>" pattern="yyyy-MM-dd" /></span>						
 						</div>
 						<textarea name="content" id="txtContent" rows="10" cols="100" style="width:500px; height:180px; min-width:500px; display:none;"></textarea><br>
 						<br>
@@ -93,7 +93,7 @@
 							</div>
 							<div class="btn-right">
 								<input class="btn-boardlist" type="button" id="btnBoardView" data-boardView="<c:url value='/mnHome/boardView/${userNickname}'/>" value="목록">
-								<input class="btn-write" type="button" id="btnBoardWrite" value="등록">
+								<input class="btn-write" type="button" id="btnBoardWrite" value="등록" onclick="writeBoard()">
 							</div>
 						</div>
 						<div id="preview-container"></div>

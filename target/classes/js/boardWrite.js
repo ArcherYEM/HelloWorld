@@ -1,16 +1,19 @@
 
-$(document).ready(function() {
-		
-		var oEditors=[];
-		
-		nhn.husky.EZCreator.createInIFrame({
-			oAppRef : oEditors,
-			elPlaceHolder : "txtContent",
-			sSkinURI : "../../../../resources/smarteditor2/SmartEditor2Skin.html",
-			fCreator : "createSEditor2"
-		});
 
-}); 
+		
+// 페이지 로드 시 SmartEditor 초기화
+var oEditors = [];
+
+$(document).ready(function() {
+    nhn.husky.EZCreator.createInIFrame({
+        oAppRef: oEditors,
+        elPlaceHolder: "txtContent",
+        sSkinURI: "../../../../resources/smarteditor2/SmartEditor2Skin.html",
+        fCreator: "createSEditor2"
+    });
+});
+
+
 		
 		// 여러파일 업로드
 		function multiFiles(input) {
@@ -80,4 +83,39 @@ $(document).ready(function() {
 		    }
 		  }
 		}
+		
+function writeBoard() {
+    let userNickname = $("#hiddenUserNickname").val();
+    let title = $(".board-title").val();
+
+    // SmartEditor의 내용을 갱신.
+    oEditors.getById["txtContent"].exec("UPDATE_CONTENTS_FIELD", []);  
+
+    // txtContent의 값을 가져와서 개행 문자를 제거
+    let content = document.getElementById("txtContent").value.replace("\r\n", "");
+    console.log(content);
+    
+    let jsonData = {
+        "content" : content,
+        "userNickname" : userNickname,
+        "title" : title
+    };
+    console.log(jsonData);
+    
+    $.ajax({
+        method: 'POST',
+        url: "/mnHome/boardWrite",
+        contentType: 'application/json',
+        data: JSON.stringify(jsonData)
+    }).done(function(json) {
+        if(json.resultCode === '1' ){
+        	 alert("저장되었습니다.");
+        	 console.log(json);
+        	 document.getElementById("btnBoardView").click();
+        } else if(json.resultCode === "0"){
+            alert("잠시 후 다시 시도해주세요.");
+        }
+    });
+    
+}
 		
