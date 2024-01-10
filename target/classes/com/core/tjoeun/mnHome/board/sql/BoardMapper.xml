@@ -17,4 +17,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 </insert>
 
+<select id="selectBoardList" parameterType="map" resultType="map">
+	SELECT 
+		  seq
+		, userNickname
+		, title
+		, content
+		, imagePath
+		, hits
+		, create_date
+		, update_date
+		, del_yn
+		, openScope
+	From board
+	where del_yn = 'N'
+	and openScope = 1
+	and userNickname = #{userNickname}
+	<if test="seq != null">
+	and	seq = #{seq}
+	</if>
+	order by seq desc
+</select>
+
 </mapper>

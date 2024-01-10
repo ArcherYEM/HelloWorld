@@ -7,6 +7,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -54,8 +55,13 @@ public class BoardController {
 		model.addAttribute("userName", map.get("userName"));
 		model.addAttribute("title", map.get("title"));
 		
+		Map selectMap = new HashMap();
+		selectMap.put("userNickname", userNickname);
+		model.addAttribute("list",boardService.getBoardList(selectMap));
+		
 		return "miniHome/board";
 	}
+	
 	
 	@RequestMapping(value="/mnHome/boardWriteView/{userNickname}")
 	public String boardWriteView(@PathVariable String userNickname, Model model) {
@@ -89,8 +95,8 @@ public class BoardController {
 		return result;
 	}
 	
-	@RequestMapping(value="/mnHome/boardDetail/{userNickname}")
-	public String boardDetail(@PathVariable String userNickname, Model model) {
+	@RequestMapping(value="/mnHome/boardDetail/{userNickname}/{seq}")
+	public String boardDetail(@PathVariable String userNickname, @PathVariable String seq, Model model) {
 		
 		Map profile = mainService.getProfile(userNickname);
 		String image = (String) profile.get("image");
@@ -103,8 +109,15 @@ public class BoardController {
 		model.addAttribute("userName", map.get("userName"));
 		model.addAttribute("title", map.get("title"));
 		
+		
+		Map selectMap = new HashMap();
+		selectMap.put("userNickname", userNickname);
+		selectMap.put("seq", seq);
+		model.addAttribute("list",boardService.getBoardList(selectMap));
+		
 		return "miniHome/boardDetail";
 	}
+	
 	
 	@RequestMapping(value="smarteditorMultiImageUpload")
 	public void smarteditorMultiImageUpload(HttpServletRequest request, HttpServletResponse response){
