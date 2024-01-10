@@ -83,7 +83,7 @@
 									<tr>
 										<th class="th-checkbox">
 											<c:if test="${sessionScope.userId.userNickname eq userNickname }">
-												<input type="checkbox" id="checkbox-all" onclick="selectAll()">
+												<input type="checkbox" id="checkbox-all">
 											</c:if>
 										</th>
 										<th class="th-title">제목</th>
@@ -95,7 +95,7 @@
 									<c:if test="${list ne null}">
 										<c:forEach items="${list}" var="list" varStatus="i">
 											<tr>
-												<td class="td-checkbox"><input type="checkbox"></input></td>
+												<td class="td-checkbox"><input type="checkbox" class="boardCheck" name="boardDel" value="${list.seq}"></input></td>
 												<td class="td-title" data-boarddetail="/mnHome/boardDetail/${list.userNickname}/${list.seq}">${list.title}<img src="../../../../resources/images/minihome/newIcon.png" class="newIcon"></td>
 												<td class="td-writer">${list.userNickname}</td>
 												<td class="td-view">${list.hits}</td>
@@ -107,8 +107,8 @@
 							</table>	
 							<div class="board-btn">
 								<c:if test="${sessionScope.userId.userNickname eq userNickname }">
-									<input type="button" value="이동">
-									<input type="button" value="삭제">
+									<!-- <input type="button" value="이동"> -->
+									<input type="button" id="btnBoardDelete" value="삭제" data-boardDelete="<c:url value='/mnHome/boardDelete'/>">
 									<input type="button" class="btnBoardWrite" value="등록" data-boardWrite="<c:url value='/mnHome/boardWriteView/${userNickname}'/>">
 								</c:if>
 							</div>	

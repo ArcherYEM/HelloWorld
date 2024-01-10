@@ -1,5 +1,6 @@
 package com.core.tjoeun.mnHome.board.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,6 +62,14 @@ public class BoardServiceImpl implements BoardService{
 			page++;
 		}
 		return page;
+	}
+
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
+	public void deleteBoard(ArrayList<String> list) {
+		
+		boardDao.deleteBoard(list);
+		
 	}
 	
 	
