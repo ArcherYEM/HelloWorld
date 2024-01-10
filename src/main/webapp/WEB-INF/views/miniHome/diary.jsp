@@ -58,12 +58,15 @@
 							
 								<div class="album-container3">
 									<div class="album-container2">
-										<div class="album-container1">
+										<div class="diary-container1">
 											<c:forEach items="${diaryList}" var="diary">
 												<div class="album-db-group">
-												    <div class="album-title">${diary.title}</div>
-												    <div class="album-date">${diary.update_date}</div>
-												    <div class="album-content">${diary.content}</div>
+												    <div class="diary-title">${diary.title}</div>
+												    <div class="diary-date-right">
+											            <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${diary.update_date}" var="formattedDate" />
+											            ${formattedDate}
+											        </div>
+												    <div class="diary-content">${diary.content}</div>
 											    </div>
 												<c:if test="${sessionScope.userId.userNickname eq userNickname }">
 													<div class="album-public">

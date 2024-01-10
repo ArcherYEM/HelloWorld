@@ -135,8 +135,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	   ,update_date = CURRENT_TIMESTAMP
 	where
 		userNickname = #{userNickname}
-
-	
 </update>
 
 </mapper>

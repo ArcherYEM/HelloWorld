@@ -83,10 +83,22 @@ public class SettingController {
 	@RequestMapping(value = "/mnHome/settingSkin/{userNickname}")
 	public String settingSkinView(@PathVariable String userNickname, Model model) {
 		
-		Map map = mainService.getUserInfo(userNickname);
-		model.addAttribute("userName", map.get("userName"));
-		model.addAttribute("title", map.get("title"));
-
+		Map userMap = mainService.getUserInfo(userNickname);
+		model.addAttribute("userName", userMap.get("userName"));
+		model.addAttribute("title", userMap.get("title"));
+		
+		Map putMap = new HashMap();
+		putMap.put("userNickname", userMap.get("userNickname"));
+		putMap.put("category", "skin");
+		System.out.println("putMap : " + putMap);
+		
+		try {
+			List<Map<String, Object>> skinMap = settingService.selectSkinMenu(putMap);
+			System.out.println("skinMap : " + skinMap);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return "miniHome/settingSkin";
 	}
 
@@ -216,29 +228,13 @@ public class SettingController {
 	    return common(map);
 	}
 	
-//	@RequestMapping(value = "/mnHome/searchFriends", method = RequestMethod.POST)
-//	@ResponseBody
-//	public Map searchFriends(@RequestBody Map map) {
-//		Map resultMap = new HashMap();
-//		try {
-//			resultMap = settingService.getSearchUser(map);
-//			resultMap.put("resultCode", "1");
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			resultMap.put("resultCode", "0");
-//		}
-//
-//		return resultMap;
-//	}
-
 	@RequestMapping("/mnHome/mnhMinimiChangeView")
 	public String selectSettingUserStorage(HttpSession session, HttpServletRequest req, Model model) throws SQLException {
 		Map userMap = new HashMap();
 		
 		userMap = (Map) session.getAttribute("userId");
-	      String userNickname = (String) userMap.get("userNickname");
+	    String userNickname = (String) userMap.get("userNickname");
 	      
-//	    Map userNickname = (Map) session.getAttribute("userNickname");
 	   System.out.println("userNickname : " +  userNickname);
 	    try {
 	        List<Map<String, Object>> userStorageData = settingService.selectSettingUserStorage(userNickname);
@@ -344,5 +340,5 @@ public class SettingController {
 		
 		return result;
 	}
-
+	
 }

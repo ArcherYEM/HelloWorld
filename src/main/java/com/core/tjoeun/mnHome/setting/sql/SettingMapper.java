@@ -19,4 +19,6 @@ public interface SettingMapper {
     public List<HashMap> selectFriends(Map map);
     
     public int updateStatus(Map map);
+    
+    public List<Map<String, Object>> selectSkinMenu(Map map);
 }
