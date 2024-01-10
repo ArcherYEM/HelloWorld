@@ -61,11 +61,11 @@
 	  		<div class="payMethodContainer">
 	  			<div class="payMethods">
 					<select id="mySelect" class="simple-select">
-	  					<option value="giftCard">문화상품권</option>
-	  					<option value="mobilePone">휴대폰</option>
-	  					<option value="kakakoPay">카카오페이</option>
-	  					<option value="creditCard">신용/체크카드</option>
-	  					<option value="accountDeposit">무통장 입금</option>
+	  					<option value="문화상품권">문화상품권</option>
+	  					<option value="휴대폰">휴대폰</option>
+	  					<option value="카카오페이">카카오페이</option>
+	  					<option value="신용/체크카드">신용/체크카드</option>
+	  					<option value="무통장 입금">무통장 입금</option>
 	  				</select>
 	  			</div>
 	  		</div>
@@ -80,6 +80,8 @@
 
 <form id="frmPurchase" action="<c:url value='/store/dotoriBuy'/>" method="post">
 	<input type="hidden" name="content" id="content" value="">
+	<input type="hidden" name="method" id="method" value="">
+	<input type="hidden" name="price" id="price" value="">
 </form>
 
 <script>
@@ -151,8 +153,10 @@ var selectedProduct;
 function btnPurchase(){
 	var content = selectedProduct;
 	document.getElementById("content").value = content;
-
-	
+	var method = document.getElementById("mySelect").value;
+	document.getElementById("method").value = method;
+	var price = document.getElementById("buyDotoriPrice").textContent;
+	document.getElementById("price").value = price;
 	document.getElementById("frmPurchase").submit();
 }
 	

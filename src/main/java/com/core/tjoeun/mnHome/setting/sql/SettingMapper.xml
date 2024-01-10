@@ -123,5 +123,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			seq = #{seq}
 	</update>
 	
+	<select id="selectDotoriUse" parameterType="String" resultType="map">
+		SELECT *,
+		       DATE_FORMAT(dotoriUseDate, '%Y.%m.%d %H:%i') as formattedDotoriUseDate
+		FROM dotoriU 
+		WHERE userNickname = #{userNickname}
+		ORDER BY dotoriUseDate DESC
+	</select>	
+	
+	<select id="selectDotoriCharge" parameterType="String" resultType="map">
+		SELECT *,
+		       DATE_FORMAT(dotoriChargeDate, '%Y.%m.%d %H:%i') as formattedDotoriChargeDate
+		FROM dotoriC 
+		WHERE userNickname = #{userNickname}
+		ORDER BY dotoriChargeDate DESC;
+	</select>
 	
 </mapper>

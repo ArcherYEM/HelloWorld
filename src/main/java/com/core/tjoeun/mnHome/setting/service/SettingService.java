@@ -20,5 +20,9 @@ public interface SettingService {
 	
 	public void updateFriends(Map map) throws Exception;
 	
+	public List<Map> selectDotoriUse(String userNickname);
+	
+	public List<Map> selectDotoriCharge(String userNickname);
+
 	public List<Map<String, Object>> selectSkinMenu(Map map);
 }

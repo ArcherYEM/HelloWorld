@@ -39,6 +39,13 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
 	public int putBgm(Map map) {
+		//도토리 사용내역
+		Map dotoriMap = new HashMap();
+		System.out.println("!테스트"+map);
+		dotoriMap.put("userNickname", map.get("userNickname"));
+		dotoriMap.put("dotoriUse", map.get("bgmPrice"));
+		dotoriMap.put("dotoriUseFor", ("bgm 구매-"+map.get("title")));
+		storeDao.insertDotoriUse(dotoriMap);		
 		return storeDao.putBgm(map);
 	}
 	
@@ -107,12 +114,30 @@ public class StoreServiceImpl implements StoreService {
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
 	public int buyCart(List<CartItem> cartItems, String userNickname) throws Exception {
 	    int result = 0;
+	    
 	    for (CartItem cartItem : cartItems) {
 	        Map<String, Object> buyCartMap = new HashMap<>();
 	        buyCartMap.put("userNickname", userNickname);
 	        buyCartMap.put("category", cartItem.getTableCate());
 	        buyCartMap.put("productName", cartItem.getName());
 	        buyCartMap.put("contentPath", cartItem.getContentPath());
+	        
+	        System.out.println("!테스트"+cartItem.getName());
+	        
+	        //도토리 사용내역//
+	        Map map = new HashMap();
+	        map.put("userNickname", userNickname);
+	        if(cartItem.getTableCate().equals("minimi")) {
+		        map.put("dotoriUse", 50);	        
+		        map.put("dotoriUseFor", ("미니미 구매-"+cartItem.getName()));
+	        }else if(cartItem.getTableCate().equals("skin")) {
+	        	map.put("dotoriUse", 10);	        
+		        map.put("dotoriUseFor", ("스킨 구매-"+cartItem.getName()));
+	        }else if(cartItem.getTableCate().equals("menu")) {
+	        	map.put("dotoriUse", 10);	        
+		        map.put("dotoriUseFor", ("메뉴 구매-"+cartItem.getName()));
+	        }
+	        storeDao.insertDotoriUse(map);
 
 	        result = storeDao.insertBuyCart(buyCartMap);
 

@@ -101,24 +101,14 @@
 												</tr>
 											</thead>
 											<tbody>
+											<c:forEach var = "dotori" items="${dotoriUse }">
 												<tr>
-													<td>미니미</td>
-													<td>주황 버섯</td>
-													<td>50</td>
-													<td>2023-12-31 09:01</td>
+													<td>${dotori.category }</td>
+													<td>${dotori.detail }</td>
+													<td>${dotori.dotoriUse }</td>
+													<td>${dotori.formattedDotoriUseDate }</td>
 												</tr>
-												<tr>
-													<td>메뉴</td>
-													<td>빨강</td>
-													<td>100</td>
-													<td>2024-01-01 11:11</td>
-												</tr>
-												<tr>
-													<td>BGM</td>
-													<td>Listen(비욘세)</td>
-													<td>100</td>
-													<td>2024-01-01 03:09</td>
-												</tr>
+											</c:forEach>												
 											</tbody>
 										</table>
 									</div>

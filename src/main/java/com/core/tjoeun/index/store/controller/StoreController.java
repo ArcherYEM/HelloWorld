@@ -35,32 +35,38 @@ public class StoreController {
 
 	@RequestMapping(value = "/store/skinView")
 	public String skin(HttpSession session, HttpServletRequest req, Model model) {
-
-		model.addAttribute("dotori", session.getAttribute("userDotoriCnt"));
+		String userNickname = (String) session.getAttribute("userNickname");
+		int dotori = storeService.getMyDotori(userNickname);
+		
+		model.addAttribute("dotori", dotori);
 		
 		return "/store/skin";
 	}
 
 	@RequestMapping(value = "/store/menuView")
 	public String menu(HttpSession session, HttpServletRequest req, Model model) {
+		String userNickname = (String) session.getAttribute("userNickname");
+		int dotori = storeService.getMyDotori(userNickname);
 		
-		model.addAttribute("dotori", session.getAttribute("userDotoriCnt"));
+		model.addAttribute("dotori", dotori);
 
 		return "/store/menu";
 	}
 
 	@RequestMapping(value = "/store/dotoriView")
 	public String dotori(HttpSession session, HttpServletRequest req, Model model) {
-
-		model.addAttribute("dotori", session.getAttribute("userDotoriCnt"));
+		String userNickname = (String) session.getAttribute("userNickname");
+		int dotori = storeService.getMyDotori(userNickname);
+		
+		model.addAttribute("dotori", dotori);
 
 		return "/store/dotori";
 	}
 	
 	@RequestMapping(value = "/store/dotoriBuy")
-	public String dotoriBuy(@RequestParam("content") String dotoriCharge,HttpSession session, HttpServletRequest req) {
+	public String dotoriBuy(@RequestParam("content") String dotoriCharge, @RequestParam("method") String dotoriMethod, @RequestParam("price") String dotoriPrice, HttpSession session, HttpServletRequest req) {
 
-		System.out.println("테스트:"+dotoriCharge);
+		System.out.println("테스트:"+dotoriMethod);
 		
 		Map userMap = new HashMap();
 		
@@ -70,11 +76,12 @@ public class StoreController {
 		Map map = new HashMap();
 		map.put("userNickname",userNickname);
 		map.put("dotoriCharge", dotoriCharge);
+		map.put("dotoriMethod", dotoriMethod);
+		map.put("dotoriPrice", dotoriPrice);
 		
 		storeService.insertDotoriC(map);
 
-		String result = storeService.selectDotori(userNickname);
-		System.out.println(result);		
+		String result = storeService.selectDotori(userNickname);	
 
 		if(result==null) {
 			storeService.insertDotori(map);
@@ -232,7 +239,8 @@ public class StoreController {
 	@RequestMapping(value = "/store/minimiView", method= {RequestMethod.GET, RequestMethod.POST})
 	public String selectStoreList(HttpSession session, HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int page) throws Exception {
 	    try {
-	    	
+			String userNickname = (String) session.getAttribute("userNickname");
+			int dotori = storeService.getMyDotori(userNickname);
 			
 	        Map minimiMap = new HashMap();
 	        minimiMap.put("page", String.valueOf(page));
@@ -240,7 +248,7 @@ public class StoreController {
 	        List<Map> minimi = storeService.getStoreMinimiList(minimiMap);
 	        model.addAttribute("minimi", minimi);
 	        model.addAttribute("totalPage", storeService.selectStoreCnt(minimiMap));
-	        model.addAttribute("dotori", session.getAttribute("userDotoriCnt"));
+	        model.addAttribute("dotori", dotori);
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
