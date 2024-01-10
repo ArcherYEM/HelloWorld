@@ -17,7 +17,28 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </head>
 <body>
-   <div class="bgSkin">${black }</div>
+
+<!-- 적용시킬예정    -->
+   <div class="skin-item-color" id="skin-item-color-select" 
+		data-user-nickname="${skinItem.userNickname}"
+		data-category="${bgSkin.category}"
+		data-product-name="${bgSkin.productName}"
+		style="
+	       background-color: 
+			<c:choose>
+               <c:when test="${bgSkin.productName == 'red'}">red</c:when>
+               <c:when test="${bgSkin.productName == 'yellow'}">yellow</c:when>
+               <c:when test="${bgSkin.productName == 'black'}">black</c:when>
+               <c:when test="${bgSkin.productName == 'blue'}">blue</c:when>
+               <c:when test="${bgSkin.productName == 'purple'}">purple</c:when>
+               <c:when test="${bgSkin.productName == 'white'}">white</c:when>
+               <c:when test="${bgSkin.productName == 'green'}">green</c:when>
+               <c:when test="${bgSkin.productName == 'lime'}">lime</c:when>
+               <c:when test="${bgSkin.productName == 'gray'}">gray</c:when>
+           </c:choose>;
+	       " >
+	       </div>
+   
    <div id="test"></div>
    <div class="main-frame">
       <div class="bookcover">

@@ -92,7 +92,27 @@
 									<div class="set-skin-selected-span">
 										<span>적용중인 스킨</span>
 									</div>
-									<div class="set-skin-selected-skin">
+									<div class="set-skin-selected-skin" id="skin-item-color-select"
+									     style="width: 90px;
+									            height: 40px;
+									            margin-bottom: 10px;
+									            border: 5px solid black;
+									            border-radius: 5px;
+									            background-color:
+								            <c:forEach var="onSkin" items="${onSkin}">
+  												 <c:choose>
+										        <c:when test="${onSkin.productName == 'red'}">red</c:when>
+										        <c:when test="${onSkin.productName == 'yellow'}">yellow</c:when>
+										        <c:when test="${onSkin.productName == 'black'}">black</c:when>
+										        <c:when test="${onSkin.productName == 'blue'}">blue</c:when>
+										        <c:when test="${onSkin.productName == 'purple'}">purple</c:when>
+										        <c:when test="${onSkin.productName == 'white'}">white</c:when>
+										        <c:when test="${onSkin.productName == 'green'}">green</c:when>
+										        <c:when test="${onSkin.productName == 'lime'}">lime</c:when>
+										        <c:when test="${onSkin.productName == 'gray'}">gray</c:when>
+										        <c:otherwise>orange</c:otherwise>
+										    </c:choose>
+										</c:forEach>;">
 									</div>
 								</div>
 								
@@ -139,7 +159,7 @@
 										<input type="hidden" name="selectedProductName" id="selectedProductName" class="set-skin-select" />
 										<input type="hidden" name="selectedCategory" id="selectedCategory" class="set-skin-select"/>
 										<input type="hidden" name="nickname" id="nickname" class="set-skin-select"/>
-										<input type="submit" class="set-skin-select" value="적용" />
+										<input type="submit" class="set-skin-select apply-button" value="적용" />
 									</div>
 								</form>
 								

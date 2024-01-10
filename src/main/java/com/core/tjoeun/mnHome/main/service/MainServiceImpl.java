@@ -172,5 +172,11 @@ public class MainServiceImpl implements MainService{
 		
 		return mainDao.getMyFriends(userNickname);
 	}
+
+	@Override
+	public Map mainSkin(Map map) {
+		
+		return mainDao.mainSkin(map);
+	}
 	
 }
