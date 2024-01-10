@@ -87,7 +87,9 @@
 							<div class="divForTable">
 								<div class="setting-myMinimi">
 									<div class="setting-myMinimi-view">
-										 <img src="../../../../${sessionScope.userMinimi}" class="settting-myMinimi-circle">
+										<div class="set-mnm-circle-frame">
+											 <img src="../../../../${sessionScope.userMinimi}" class="settting-myMinimi-circle">
+										 </div>
 									</div>
 									<div class="setting-myMinimi-Edit">
 										<a class="setting-myMinimi-change" onclick="MinimiChange()">대표미니미 변경</a>
