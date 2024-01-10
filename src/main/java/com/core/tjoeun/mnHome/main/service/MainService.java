@@ -31,4 +31,8 @@ public interface MainService {
 	public void updateHomeTitle(Map map) throws Exception;
 	
 	public Map getUserInfo(String userNickname);
+	
+	public Map selectAllTab(String userNickname);
+	
+	public Map selectNewTab(String userNickname);
 }

@@ -138,4 +138,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		userNickname = #{userNickname}
 </update>
 
+<select id="selectAllTab" parameterType="String" resultType="map">
+	SELECT 
+	    (SELECT COUNT(*) FROM diary WHERE userNickname = #{userNickname}) AS DiaryCount,	    
+	    (SELECT COUNT(*) FROM board WHERE userNickname = #{userNickname}) AS BoardCount,
+	    (SELECT COUNT(*) FROM visit WHERE targetNickname = #{userNickname}) AS VisitCount
+</select>
+
+<select id="selectNewTab" parameterType="String" resultType="map">
+	SELECT 
+	    (SELECT COUNT(*) FROM diary 
+	     WHERE userNickname = #{userNickname}
+	     <![CDATA[ 
+	     	AND TIMESTAMPDIFF(HOUR, update_date, NOW()) <= 24) AS DiaryCount,
+	     ]]>
+	
+	    (SELECT COUNT(*) FROM board 
+	     WHERE userNickname = #{userNickname}
+	     <![CDATA[ 
+	     	AND TIMESTAMPDIFF(HOUR, update_date, NOW()) <= 24) AS BoardCount,
+		]]>
+		
+	    (SELECT COUNT(*) FROM visit 
+	     WHERE targetNickname = #{userNickname}
+	      <![CDATA[
+	     	AND TIMESTAMPDIFF(HOUR, update_date, NOW()) <= 24) AS VisitCount
+	     ]]>
+</select>
 </mapper>

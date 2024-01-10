@@ -113,4 +113,18 @@ public class MainDaoImpl implements MainDao{
 		
 		return mapper.updateHomeTitle(map);
 	}
+	
+	@Override
+	public Map selectAllTab(String userNickname) {
+		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
+		
+		return mapper.selectAllTab(userNickname);
+	}
+	
+	@Override
+	public Map selectNewTab(String userNickname) {
+		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
+		
+		return mapper.selectNewTab(userNickname);
+	}
 }
