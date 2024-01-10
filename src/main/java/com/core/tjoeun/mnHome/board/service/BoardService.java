@@ -9,4 +9,6 @@ public interface BoardService {
 	public void writeBoard(Map map) throws Exception;
 	
 	public List<HashMap> getBoardList(Map map);
+	
+	public Long getBoardPage(Map map);
 }

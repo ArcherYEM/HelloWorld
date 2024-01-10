@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,8 +42,8 @@ public class BoardController {
 	@Autowired
 	BoardService boardService;
 	
-	@RequestMapping(value="/mnHome/boardView/{userNickname}")
-	public String boardView(@PathVariable String userNickname, Model model) {
+	@RequestMapping(value={"/mnHome/boardView/{userNickname}","/mnHome/boardView/{userNickname}/{page}"})
+	public String boardView(@PathVariable String userNickname, @PathVariable Optional<String> page, Model model) {
 		
 		Map profile = mainService.getProfile(userNickname);
 		String image = (String) profile.get("image");
@@ -57,7 +58,11 @@ public class BoardController {
 		
 		Map selectMap = new HashMap();
 		selectMap.put("userNickname", userNickname);
+		if(page.isPresent()) {
+			selectMap.put("page", page.get());			
+		}
 		model.addAttribute("list",boardService.getBoardList(selectMap));
+		model.addAttribute("totalPage", boardService.getBoardPage(selectMap));
 		
 		return "miniHome/board";
 	}

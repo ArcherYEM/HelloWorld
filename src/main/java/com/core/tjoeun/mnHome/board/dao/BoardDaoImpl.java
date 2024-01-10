@@ -30,4 +30,11 @@ public class BoardDaoImpl implements BoardDao{
 		return mapper.selectBoardList(map);
 	}
 
+	@Override
+	public Map getBoardPage(Map map) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		
+		return mapper.getBoardPage(map);
+	}
+
 }

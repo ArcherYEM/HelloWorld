@@ -37,6 +37,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	and	seq = #{seq}
 	</if>
 	order by seq desc
+	limit #{limit}
+	offset #{offset}
+</select>
+
+<select id="getBoardPage" parameterType="map" resultType="map">
+		SELECT count(*) as boardTotal
+		FROM board
+		where 1 = 1
+		and del_yn = 'N'
+		and openScope = 1
+		and userNickname = #{userNickname}
 </select>
 
 </mapper>

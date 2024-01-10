@@ -33,6 +33,7 @@ thead tr:last-child th {
 .th-title{
 	width: 300px;
 	height: 25px;
+
 }
 
 .th-writer{
@@ -53,6 +54,7 @@ thead tr:last-child th {
 .td-title{
 	padding-left: 10px;
 	font-size: 15px;
+	cursor: pointer;
 }
 
 .td-writer{

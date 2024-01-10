@@ -73,7 +73,7 @@
 								</div>
 							 </c:if>
 							<div class="content-title-url">
-								https://www.helloworld.com/minihome/leejubin</div>
+								https://www.helloworld.com/minihome/${userNickname }</div>
 						</div>
 						<div class="box content-box">
 						
@@ -96,7 +96,7 @@
 										<c:forEach items="${list}" var="list" varStatus="i">
 											<tr>
 												<td class="td-checkbox"><input type="checkbox"></input></td>
-												<td class="td-title" data-boardDetail="/mnHome/boardDetail/${userNickname}/${list.seq}">${list.title}<img src="../../../../resources/images/minihome/newIcon.png" class="newIcon"></td>
+												<td class="td-title" data-boarddetail="/mnHome/boardDetail/${list.userNickname}/${list.seq}">${list.title}<img src="../../../../resources/images/minihome/newIcon.png" class="newIcon"></td>
 												<td class="td-writer">${list.userNickname}</td>
 												<td class="td-view">${list.hits}</td>
 											</tr>
@@ -112,19 +112,15 @@
 									<input type="button" class="btnBoardWrite" value="등록" data-boardWrite="<c:url value='/mnHome/boardWriteView/${userNickname}'/>">
 								</c:if>
 							</div>	
-							<div class="board-pages">
-								<span class="board-page">| 1</span>
-								<span class="board-page">| 2</span>
-								<span class="board-page">| 3</span>
-								<span class="board-page">| 4</span>
-								<span class="board-page">| 5</span>
-								<span class="board-page">| 6</span>
-								<span class="board-page">| 7</span>
-								<span class="board-page">| 8</span>
-								<span class="board-page">| 9</span>
-								<span class="board-page">| 10</span>
-								<span class="board-page">| >></span>
-							</div>			
+							
+							<!-- paging -->
+					        <div class="board-pages">
+					            <c:forEach var="page" begin="1" end="${totalPage}">
+						             <span class="board-page" data-page="/mnHome/boardView/${userNickname }/${page}">
+						                  | ${page}
+						             </span>
+					            </c:forEach>
+					        </div>	
 						</div>
 							
 						</div>

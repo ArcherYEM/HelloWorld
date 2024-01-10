@@ -87,7 +87,7 @@
 						${list.get(0).content}
 					</div>
 					<div class="board-detail-right">
-						<button id="btnBoardView">목록</button>
+						<button class="btn-boardlist" id="btnBoardView" data-boardView="<c:url value='/mnHome/boardView/${userNickname}'/>">목록</button>
 						<c:if test="${sessionScope.userId.userNickname eq userNickname }">
 							<button id="btnBoardUpdate">수정</button>
 						</c:if>
