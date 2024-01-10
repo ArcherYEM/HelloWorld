@@ -15,6 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM userStorage
 		WHERE 1=1
 		AND userNickname = #{value}
+		AND category = "minimi"
 	</select>
 	
 	<select id="selectSkinMenu" parameterType="map" resultType="map">
