@@ -40,14 +40,52 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    </if>
 	</select>
 	
+	<select id="allocationOnSkinMenu" parameterType="map" resultType="map">
+		SELECT
+			userNickname,
+			category,
+			productName,
+			contentPath,
+			buy_date,
+			allocation
+		FROM userStorage
+		WHERE 1=1
+		<if test="userNickname != null">
+			AND userNickname = #{userNickname}
+		</if>
+		<if test="category != null">
+	        <choose>
+	            <when test="category == 'skin' or category == 'menu'">
+	                AND (category = 'skin' OR category = 'menu')
+	            </when>
+	        </choose>
+	    </if>
+	    <if test="allocation != null">
+	    	AND
+	    		allocation = 1;
+	    </if>
+	</select>
+	
 	<update id="updateAllocationOff" parameterType="String">
-		UPDATE userStorage
-		SET
-			allocation = 0
-		WHERE
-			userNickname = #{userNickname}
-		AND
-			allocation = 1
+	    UPDATE userStorage
+	    SET
+	        allocation = 0
+	    WHERE
+	        userNickname = #{userNickname}
+	    <if test="category == 'minimi'">
+	        AND
+	        category = 'minimi'
+	    </if>
+	    <if test="category == 'skin'">
+	        AND
+	        category = 'skin'
+	    </if>
+	    <if test="category == 'menu'">
+	        AND
+	        category = 'menu'
+	    </if>
+	    AND
+	  	  allocation = 1
 	</update>
 
 	<update id="updateAllocationOn" parameterType="map">
@@ -56,6 +94,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			allocation = 1
 		WHERE
 			userNickname = #{userNickname}
+		<if test="category == 'minimi'">
+	        AND
+	    	    category = 'minimi'
+	    </if>
+	    <if test="category == 'skin'">
+	        AND
+	        category = 'skin'
+	    </if>
+	    <if test="category == 'menu'">
+	        AND
+	        category = 'menu'
+	    </if>
 		AND
 			productName = #{productName}
 	</update>

@@ -102,11 +102,10 @@
 								    <div class="set-skin-list">
 										<c:forEach var="skinItem" items="${skinMap}">
 									   		<div class="skin-item-group">
-										   <div class="skin-item-color" style="
-										       width: 100px;
-										       height: 30px;
+										   <div class="skin-item-color" id="skin-item-color-select" style="
+										       width: 90px;
+										       height: 40px;
 										       margin-bottom: 10px;
-										       border: 3px solid black;
 										       border-radius: 5px;
 										       background-color: 
 										       <c:choose>
@@ -125,13 +124,12 @@
 										   <div class="skin-item-name">${skinItem.productName}</div>
 										   </div>
 										</c:forEach>
-
 									</div>
 								</div>
 								
-								<form action="">
+								<form action="/mnHome/settingDotoriUse/{userNickname}">
 									<div class="set-skin-btn">
-										<input type="button" class="set-skin-select" value="적용" />
+										<input type="submit" class="set-skin-select" value="적용" />
 									</div>
 								</form>
 								
