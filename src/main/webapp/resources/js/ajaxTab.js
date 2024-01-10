@@ -28,6 +28,7 @@ function loadTabContent(tabName) {
             
             }else if(tabName === '/mnHome/albumWriteView' || tabName.indexOf('/mnHome/albumWriteView') != -1){
                 htmlToAdd += '<link class="album" href="/resources/css/minihome/album.css" rel="stylesheet">';
+                htmlToAdd += '<script type="text/javascript" src="../../../../resources/js/album.js"></script>';
             
             }else if(tabName === '/mnHome/boardView' || tabName.indexOf('/mnHome/boardView') != -1){
                 htmlToAdd += '<link class="board" href="/resources/css/minihome/board.css" rel="stylesheet">';
