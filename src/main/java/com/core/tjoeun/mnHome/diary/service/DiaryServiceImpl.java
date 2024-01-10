@@ -1,7 +1,6 @@
 package com.core.tjoeun.mnHome.diary.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,7 +31,7 @@ public class DiaryServiceImpl implements DiaryService {
 	}
 
 	@Override
-	public Map selectDiary(Map map) {
+	public List<Map> selectDiary(Map map) {
 		
 		return diaryDao.selectDiary(map);
 	}

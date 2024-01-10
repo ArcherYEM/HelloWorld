@@ -59,57 +59,54 @@
 								<div class="album-container3">
 									<div class="album-container2">
 										<div class="album-container1">
-											<div class="album-date">
-												${diary.update_date }
-											</div>
-									    	<div class="album-title">
-												${diary.title }
-									    	</div>
-											<div class="album-content">
-												${diary.content }
-										  	</div>
-										</div>
-										<c:if test="${sessionScope.userId.userNickname eq userNickname }">
-											<div class="album-public">
-											 	<div class="album-dropDown ">
-											 		<span>공개설정 :</span>
-													<select>
-														<option value="" disabled selected hidden="">전체공개</option>
-														<option value="temp1">비공개</option>
-														<option value="temp2">전체공개</option>
-													</select>
+											<c:forEach items="${diaryList}" var="diary">
+												<div class="album-db-group">
+												    <div class="album-title">${diary.title}</div>
+												    <div class="album-date">${diary.update_date}</div>
+												    <div class="album-content">${diary.content}</div>
+											    </div>
+												<c:if test="${sessionScope.userId.userNickname eq userNickname }">
+													<div class="album-public">
+													 	<div class="album-dropDown ">
+													 		<span>공개설정 :</span>
+															<select>
+																<option value="" disabled selected hidden="">전체공개</option>
+																<option value="temp1">비공개</option>
+																<option value="temp2">전체공개</option>
+															</select>
+														</div>
+														<div class="album-under">
+													 		<a href="#" class="album-under-right">이동</a>
+													 		<a href="#" class="album-under-right">수정</a>
+													 		<a href="#" class="album-under-right">삭제</a>
+													 	</div>
+													</div>
+												</c:if>
+												<div class="board-comment-write">
+													<span>
+														댓글
+													</span>
+													<input type="text" class="comment-content-write">
+													<input type="button" value="확인">
 												</div>
-												<div class="album-under">
-											 		<a href="#" class="album-under-right">이동</a>
-											 		<a href="#" class="album-under-right">수정</a>
-											 		<a href="#" class="album-under-right">삭제</a>
-											 	</div>
-											</div>
-										</c:if>
+												<div class="board-comment-container">
+													<div class="board-comment">
+														<span class="board-comment-writer">
+				<!-- 										댓글 작성자명 -->
+														</span>
+														<span class="board-comment-content">
+				<!-- 										댓글내용 -->
+														</span>
+														<span class="board-comment-date">
+				<!-- 										댓글 작성 일시 -->
+														</span>
+														<i class="fa-regular fa-rectangle-xmark icon-color btn-cmt-del"></i>
+													</div>
+												</div>
+										</c:forEach>
+										</div>
 								  </div>
-								  
-								  <div class="board-comment-write">
-									<span>
-										댓글
-									</span>
-									<input type="text" class="comment-content-write">
-									<input type="button" value="확인">
-								</div>
-								<div class="board-comment-container">
-									<div class="board-comment">
-										<span class="board-comment-writer">
-<!-- 										댓글 작성자명 -->
-										</span>
-										<span class="board-comment-content">
-<!-- 										댓글내용 -->
-										</span>
-										<span class="board-comment-date">
-<!-- 										댓글 작성 일시 -->
-										</span>
-										<i class="fa-regular fa-rectangle-xmark icon-color btn-cmt-del"></i>
-									</div>
 
-								</div>
 							  </div>
 							  
 						  </div>

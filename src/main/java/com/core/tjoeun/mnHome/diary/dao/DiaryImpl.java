@@ -25,7 +25,7 @@ public class DiaryImpl implements DiaryDao {
 	}
 
 	@Override
-	public Map selectDiary(Map map) {
+	public List<Map> selectDiary(Map map) {
 		DiaryMapper mapper = sqlSession.getMapper(DiaryMapper.class);
 		
 		return mapper.selectDiary(map);

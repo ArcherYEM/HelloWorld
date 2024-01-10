@@ -1,5 +1,6 @@
 package com.core.tjoeun.mnHome.diary.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,11 @@ public class DiaryController {
 		model.addAttribute("title", userMap.get("title"));
 		System.out.println("userMap : " + userMap);
 		System.out.println("map 시작");
-		Map map = diaryService.selectDiary(userMap); //여기문제임
-		System.out.println("map : " + map);
+		List<Map> diaryList = diaryService.selectDiary(userMap);
+		if (!diaryList.isEmpty()) {
+	        model.addAttribute("diaryList", diaryList);
+	    }
+		System.out.println("map : " + diaryList);
 		
 		return "miniHome/diary";
 	}
