@@ -1,3 +1,7 @@
+var userNickname;
+var category;
+var productName;
+
 // 클릭된 요소의 스타일을 변경하는 함수
 function logClick() {
     console.log('클릭');
@@ -17,20 +21,49 @@ function logClick() {
     clickedItem.style.borderRadius = '5px';
     
  // 클릭된 요소에서 데이터 추출
-    var userNickname = clickedItem.getAttribute('data-user-nickname');
-    var category = clickedItem.getAttribute('data-category');
-    var productName = clickedItem.getAttribute('data-product-name');
+    userNickname = clickedItem.getAttribute('data-user-nickname');
+    category = clickedItem.getAttribute('data-category');
+    productName = clickedItem.getAttribute('data-product-name');
 
     // 값을 콘솔에 출력
-    console.log('사용자 닉네임:', userNickname);
-    console.log('카테고리:', category);
-    console.log('상품 이름:', productName);
+    console.log('선택한 사용자 닉네임:', userNickname);
+    console.log('선택한 카테고리:', category);
+    console.log('선택한 상품 이름:', productName);
     
     document.getElementById('selectedProductName').value = productName;
-    alert(document.getElementById('selectedProductName').value);
     document.getElementById('selectedCategory').value = category;
     document.getElementById('nickname').value = userNickname;
+    
 }
 
+//클릭된 요소의 데이터를 ajax 로 전송하는 함수
+$(document).on("click", ".apply-button", function (event) {
+    event.preventDefault();
+
+    console.log('보낸 사용자 닉네임:', userNickname);
+    console.log('보낸 카테고리:', category);
+    console.log('보낸 상품 이름:', productName);
+
+    // JSON 데이터 생성
+    var jsonData = {
+        selectedProductName: productName 
+    };
+
+    // Ajax 요청 보내기
+    $.ajax({
+    	method: 'POST',
+        url: '/mnHome/skinChoice',
+        contentType: 'application/json',
+        data: JSON.stringify(jsonData),
+    }).done(function(json) {
+        if(json.resultCode === '1' ){
+       	 alert("성공메세지");
+       	 console.log(json);
+       	 document.getElementById("spanSettingSkin").click();
+       } else if(json.resultCode === "0"){
+           alert("스킨 적용에 실패했습니다. 다시 시도해주세요.");
+       }
+   });
+});
 
 
