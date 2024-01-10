@@ -1,5 +1,7 @@
 package com.core.tjoeun.mnHome.board.service;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,13 @@ public class BoardServiceImpl implements BoardService{
 		if(result != 1) {
 			throw new Exception();
 		}
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<HashMap> getBoardList(Map map) {
+		
+		return boardDao.selectBoardList(map);
 	}
 
 }

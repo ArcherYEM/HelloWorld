@@ -1,5 +1,7 @@
 package com.core.tjoeun.mnHome.board.dao;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -19,6 +21,13 @@ public class BoardDaoImpl implements BoardDao{
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		
 		return mapper.insertBoard(map);
+	}
+
+	@Override
+	public List<HashMap> selectBoardList(Map map) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		
+		return mapper.selectBoardList(map);
 	}
 
 }
