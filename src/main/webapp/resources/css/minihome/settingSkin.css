@@ -55,21 +55,21 @@
 }
 
 .skin-item-group {
-	height: 80px;
 	align-items: center;
 	text-align: center;
 }
 
 .skin-item-group:hover {
 	cursor: pointer;
-	border: 3px solid orange; 
-	border-radius: 5px;
-	font-weight: bold;
+}
+
+.skin-item-color {
+	height: 50px;
+	width: 100px;
 }
 
 .skin-item-name {
-	color: gray;
-	font-size: 12px;
+	display: none;
 }
 
 .set-skin-btn {
