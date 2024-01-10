@@ -5,13 +5,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.core.tjoeun.mnHome.diary.sql.DiaryMapper">
 
 	<insert id="insertDiary" parameterType="map">
-		insert into diary(
-			userNickname,
-			title,
-			content,
-			del_yn,
-			openScope
-		 ) values (
+		INSERT INTO diary(
+			userNickname
+			,title
+			,content
+			,del_yn
+			,openScope
+		 ) VALUES (
 			#{userNickname}
 		    ,#{title}
 		    ,#{content}
@@ -20,19 +20,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	     )
 	</insert>
 	
-	<select id="selectDiary" resultType="map">
-		select
-			  seq
-			, writer
-			, title
-			, content
-			, substring(create_date,1,10) as date
-		from 
-			notice
-		where
-			del_yn != 'Y'
-		<if test="seq != null">
-			and seq = #{seq}
+	<select id="selectDiary" resultType="map" parameterType="map">
+		SELECT
+			userNickname
+			,title
+			,content
+			,update_date
+			,del_yn
+			,openScope
+		FROM 
+			diary
+		WHERE
+			1=1
+		<if test="del_yn != null">
+			AND del_yn = #{del_yn}
+		</if>
+		<if test="openScope != null">
+<!-- 			추후에는 #{openScope} 로 바꿔서 경우 처리해야함 -->
+			AND openScope = #{openScope}
+		</if>
+		<if test="userNickname != null">
+			AND userNickname = #{userNickname} 
 		</if>
 	</select>
 	

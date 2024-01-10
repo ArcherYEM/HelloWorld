@@ -133,10 +133,13 @@ public class MainServiceImpl implements MainService{
 	@Override
 	public Map getUserInfo(String userNickname) {
 		Map map = new HashMap();
+		map.put("userNickname", userNickname);
 		
 		//홈피 주인 이름 가져오기 
 		String userName = memberService.getUserName(userNickname);
 		map.put("userName", userName);
+		map.put("del_yn", "n");
+		map.put("openScope", 1);
 		
 		//Home Title
 		Map title = getHomeTitle(userNickname);
