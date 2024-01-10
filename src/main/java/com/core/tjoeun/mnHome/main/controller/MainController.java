@@ -137,6 +137,14 @@ public class MainController {
         Map background = mainService.selectBackground(userNickname);
         model.addAttribute("background", background);
 		
+        //다이어리, 앨범, 게시판, 방명록 전체 개수 가져오기
+        Map countMap = mainService.selectAllTab(userNickname);
+        model.addAttribute("count",countMap);
+        
+        //다이어리, 앨범, 게시판, 방명록 최근 24개 개수 가져오기
+        Map newMap = mainService.selectNewTab(userNickname);
+        System.out.println("!테스트"+newMap);
+        model.addAttribute("newCount",newMap);
 		
 		return "miniHome/main";
 	}

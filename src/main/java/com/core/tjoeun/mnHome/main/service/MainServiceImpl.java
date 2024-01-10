@@ -151,4 +151,18 @@ public class MainServiceImpl implements MainService{
 		return map;
 	}
 	
+	@Override
+	@Transactional(readOnly = true)
+	public Map selectAllTab(String userNickname) {
+		
+		return mainDao.selectAllTab(userNickname);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Map selectNewTab(String userNickname) {
+		
+		return mainDao.selectNewTab(userNickname);
+	}
+	
 }

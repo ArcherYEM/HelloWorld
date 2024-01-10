@@ -33,4 +33,8 @@ public interface MainMapper {
 	public int insertHomeTitle(Map map);
 	
 	public int updateHomeTitle(Map map);
+	
+	public Map selectAllTab(String userNickname);
+
+	public Map selectNewTab(String userNickname);
 }
