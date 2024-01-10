@@ -76,5 +76,11 @@ public class SettingDaoImpl implements SettingDao {
 		SettingMapper mapper = sqlSession.getMapper(SettingMapper.class);
 		return mapper.selectSkinMenu(map);
 	}
+
+	@Override
+	public List<Map<String, Object>> allocationOnSkinMenu(Map map) {
+		SettingMapper mapper = sqlSession.getMapper(SettingMapper.class);
+		return mapper.allocationOnSkinMenu(map);
+	}
     
 }

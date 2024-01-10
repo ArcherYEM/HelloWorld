@@ -25,4 +25,6 @@ public interface SettingDao {
 	public List<Map> selectDotoriCharge(String userNickname);
 
 	public List<Map<String, Object>> selectSkinMenu(Map map);
+	
+	public List<Map<String, Object>> allocationOnSkinMenu(Map map);
 }
