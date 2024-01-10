@@ -50,4 +50,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and userNickname = #{userNickname}
 </select>
 
+<update id="deleteBoard" parameterType="java.util.List">
+	update
+		board
+	set
+		del_yn = 'Y'
+	where seq in
+	<foreach collection="list" item="seq" open="(" close=")" separator=",">
+			#{seq}
+	</foreach>
+</update>
+
+
 </mapper>

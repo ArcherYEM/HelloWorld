@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -121,6 +122,22 @@ public class BoardController {
 		model.addAttribute("list",boardService.getBoardList(selectMap));
 		
 		return "miniHome/boardDetail";
+	}
+	
+	@RequestMapping(value="/mnHome/boardDelete")
+	@ResponseBody
+	public Map boardDelete(@RequestBody ArrayList<String> seq) {
+		Map result = new HashMap<String, String>();
+		
+		try {
+			boardService.deleteBoard(seq);
+			result.put("resultCode", "1");
+		} catch (Exception e) {
+			result.put("resultCode", "0");
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 	
 	

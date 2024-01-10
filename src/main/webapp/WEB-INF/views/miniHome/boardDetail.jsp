@@ -88,9 +88,9 @@
 					</div>
 					<div class="board-detail-right">
 						<button class="btn-boardlist" id="btnBoardView" data-boardView="<c:url value='/mnHome/boardView/${userNickname}'/>">목록</button>
-						<c:if test="${sessionScope.userId.userNickname eq userNickname }">
+						<%-- <c:if test="${sessionScope.userId.userNickname eq userNickname }">
 							<button id="btnBoardUpdate">수정</button>
-						</c:if>
+						</c:if> --%>
 					</div>
 					<div class="board-comment-write">
 						<span>
