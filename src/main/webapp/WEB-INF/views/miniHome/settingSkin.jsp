@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/setting.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/settingSkin.css" />
+<script type="text/javascript" src="../../../../resources/js/settingSkin.js"></script>
 <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 </head>
 <body>
@@ -101,25 +102,31 @@
 								    </div>
 								    <div class="set-skin-list">
 										<c:forEach var="skinItem" items="${skinMap}">
-									   		<div class="skin-item-group">
-										   <div class="skin-item-color" id="skin-item-color-select" style="
-										       width: 90px;
-										       height: 40px;
-										       margin-bottom: 10px;
-										       border-radius: 5px;
-										       background-color: 
-										       <c:choose>
-										           <c:when test="${skinItem.productName == 'red'}">red</c:when>
-										           <c:when test="${skinItem.productName == 'yellow'}">yellow</c:when>
-										           <c:when test="${skinItem.productName == 'black'}">black</c:when>
-										           <c:when test="${skinItem.productName == 'blue'}">blue</c:when>
-										           <c:when test="${skinItem.productName == 'purple'}">purple</c:when>
-										           <c:when test="${skinItem.productName == 'white'}">white</c:when>
-										           <c:when test="${skinItem.productName == 'green'}">green</c:when>
-										           <c:when test="${skinItem.productName == 'green'}">gray</c:when>
-										           <c:when test="${skinItem.productName == 'green'}">navy</c:when>
-										       </c:choose>
-										       ;">
+											<div class="skin-item-group" id="skin-item-group-select">
+												<div class="skin-item-color" id="skin-item-color-select" 
+												data-user-nickname="${skinItem.userNickname}"
+												data-category="${skinItem.category}"
+												data-product-name="${skinItem.productName}"
+												onclick="logClick()" 
+												style="
+											       width: 90px;
+											       height: 40px;
+											       margin-bottom: 10px;
+											       border: 5px solid black;
+	    										   border-radius: 5px;	
+											       background-color: 
+													<c:choose>
+						                                <c:when test="${skinItem.productName == 'red'}">red</c:when>
+						                                <c:when test="${skinItem.productName == 'yellow'}">yellow</c:when>
+						                                <c:when test="${skinItem.productName == 'black'}">black</c:when>
+						                                <c:when test="${skinItem.productName == 'blue'}">blue</c:when>
+						                                <c:when test="${skinItem.productName == 'purple'}">purple</c:when>
+						                                <c:when test="${skinItem.productName == 'white'}">white</c:when>
+						                                <c:when test="${skinItem.productName == 'green'}">green</c:when>
+						                                <c:when test="${skinItem.productName == 'lime'}">lime</c:when>
+						                                <c:when test="${skinItem.productName == 'gray'}">gray</c:when>
+						                            </c:choose>;
+											       " >
 										   </div>
 										   <div class="skin-item-name">${skinItem.productName}</div>
 										   </div>
@@ -127,8 +134,11 @@
 									</div>
 								</div>
 								
-								<form action="/mnHome/settingDotoriUse/{userNickname}">
+								<form action="/mnHome/settingSkin/skinChoice" >
 									<div class="set-skin-btn">
+										<input type="hidden" name="selectedProductName" id="selectedProductName" class="set-skin-select" />
+										<input type="hidden" name="selectedCategory" id="selectedCategory" class="set-skin-select"/>
+										<input type="hidden" name="nickname" id="nickname" class="set-skin-select"/>
 										<input type="submit" class="set-skin-select" value="적용" />
 									</div>
 								</form>

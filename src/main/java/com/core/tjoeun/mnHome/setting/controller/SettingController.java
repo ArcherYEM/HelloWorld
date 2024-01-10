@@ -103,18 +103,22 @@ public class SettingController {
 	
 	@RequestMapping(value="/mnHome/settingSkin/skinChoice")
 	public String skinChoice(HttpSession session, Model model,
-			@RequestParam("selectedSkin") String mySkin) {
+			@RequestParam("selectedProductName") String selectedProductName
+			) {
+		System.out.println("mySkin : " + selectedProductName);
+		
 		Map userMap = new HashMap();
 		userMap = (Map)session.getAttribute("userId");
 		String userNickname = (String)userMap.get("userNickname");
 		
-		System.out.println("userNickname : " + userNickname);
+		System.out.println("★ userNickname : " + userNickname);
 		
 		try {
 			Map skinMap = new HashMap();
 			skinMap.put("userNickname", userNickname);
-			skinMap.put("productName", mySkin);
+			skinMap.put("productName", selectedProductName);
 			skinMap.put("category", "skin");
+			System.out.println("★ sknMap : " + skinMap);
 			
 			settingService.updateAllocationOff(skinMap);
 			settingService.updateAllocationOn(skinMap);
@@ -122,16 +126,16 @@ public class SettingController {
 			Map putMap = new HashMap();
 			putMap.put("userNickname", userMap.get("userNickname"));
 			putMap.put("category", "skin");
-			System.out.println("putMap : " + putMap);
+			System.out.println("★ putMap : " + putMap);
 			
 			List<Map<String, Object>> userSkin = settingService.allocationOnSkinMenu(putMap);
-			model.addAttribute("skinMap", skinMap);
-			System.out.println("skinMap : " + skinMap);
+			model.addAttribute("skinMap", userSkin);
+			System.out.println("★ skinMap : " + userSkin);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return "miniHome/settingSkin";
+		return "miniHome/settingSkin/{userNickname}";
 	}
 
 	@RequestMapping(value = "/mnHome/settingDotoriUse/{userNickname}")
@@ -323,7 +327,6 @@ public class SettingController {
 		
 				return "miniHome/mnhMinimiChangeSuccess";
 	}
-	
 	
 	@RequestMapping(value = "/mnHome/acceptFriends")
 	@ResponseBody
