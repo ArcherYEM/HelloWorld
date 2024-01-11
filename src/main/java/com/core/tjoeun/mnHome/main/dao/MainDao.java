@@ -1,6 +1,5 @@
 package com.core.tjoeun.mnHome.main.dao;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -41,4 +40,6 @@ public interface MainDao {
 	public List<Map> getMyFriends(String userNickname);
 	
 	public Map mainSkin(Map map);
+	
+	public Map mainMenu(Map map);
 }
