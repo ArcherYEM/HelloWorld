@@ -1,5 +1,6 @@
 package com.core.tjoeun.mnHome.album.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -38,6 +39,27 @@ public class AlbumController {
         //접속중인 유저의 친구 전부 가져오기
         List<Map> friendMap = mainService.getMyFriends(userNickname);
         model.addAttribute("friend", friendMap);
+        
+     // menu color 적용하기
+        Map callMenu = new HashMap();
+        callMenu.put("category", "menu");
+        callMenu.put("userNickname", userNickname);
+        System.out.println("### callMenu : " + callMenu);
+        
+        try {
+        	Map mainMenu = mainService.mainMenu(callMenu);
+        	System.out.println("### mainMenu : " + mainMenu);
+        	
+        	model.addAttribute("menuProductName", mainMenu.get("productName"));
+	        model.addAttribute("menuCategory", mainMenu.get("category"));
+	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
+	        System.out.println("### menu model : " + model);
+	        
+        } catch (NullPointerException n) {
+	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
+	        	model.addAttribute("menuCategory", "menu");
+	        	n.printStackTrace();
+        }
 		
 		return "miniHome/album";
 	}
@@ -52,6 +74,27 @@ public class AlbumController {
         //접속중인 유저의 친구 전부 가져오기
         List<Map> friendMap = mainService.getMyFriends(userNickname);
         model.addAttribute("friend", friendMap);
+        
+     // menu color 적용하기
+        Map callMenu = new HashMap();
+        callMenu.put("category", "menu");
+        callMenu.put("userNickname", userNickname);
+        System.out.println("### callMenu : " + callMenu);
+        
+        try {
+        	Map mainMenu = mainService.mainMenu(callMenu);
+        	System.out.println("### mainMenu : " + mainMenu);
+        	
+        	model.addAttribute("menuProductName", mainMenu.get("productName"));
+	        model.addAttribute("menuCategory", mainMenu.get("category"));
+	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
+	        System.out.println("### menu model : " + model);
+	        
+        } catch (NullPointerException n) {
+	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
+	        	model.addAttribute("menuCategory", "menu");
+	        	n.printStackTrace();
+        }
         
 		return "miniHome/albumWrite";
 	}
