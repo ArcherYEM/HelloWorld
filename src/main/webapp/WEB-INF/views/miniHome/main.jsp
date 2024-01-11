@@ -33,6 +33,8 @@
                <c:when test="${bgProductName == 'green'}">green</c:when>
                <c:when test="${bgProductName == 'lime'}">lime</c:when>
                <c:when test="${bgProductName == 'grey'}">gray</c:when>
+               <c:when test="${bgProductName == 'navy'}">navy</c:when>
+               <c:when test="${bgProductName == 'rgb(42, 140, 168)'}">rgb(42, 140, 168)</c:when>
            </c:choose>
            ;
 	       " >

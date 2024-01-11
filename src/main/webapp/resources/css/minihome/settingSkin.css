@@ -4,14 +4,13 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	border-top: 2px dotted gray;
-	border-bottom: 2px dotted gray;
+	border-bottom: 1px solid gray;
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
 
 .set-skin-selected-span {
-	flex: 60%;
+	flex: 1;
 	font-size: 18px;
 	font-weight: bold;
 	color: gray;
@@ -19,14 +18,16 @@
 }
 
 .set-skin-having {
-	margin-top: 40px;
+	margin-top: 20px;
 }
 
 .set-skin-p {
 	text-align: center;
-	font-size: 14px;
+	font-size: 18px;
 	font-weight: bold;
 	color: orange;
+	margin-right: 210px;
+	margin-top: 20px;
 }
 
 .set-skin-p p{
@@ -34,11 +35,11 @@
 }
 
 .set-skin-list {
-	border-top: 2px dotted gray;
-	border-bottom: 2px dotted gray;
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
 	padding: 10px 5px;
 	overflow-y: auto;
-	height: 200px;
+	height: 150px;
 	display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

@@ -92,10 +92,12 @@
 										<span>적용중인 스킨</span>
 									</div>
 									<div class="set-skin-selected-skin" id="skin-item-color-select"
-									     style="width: 90px;
-									            height: 40px;
+									     style="
+									     		width: 200px;
+									            height: 30px;
 									            margin-bottom: 10px;
-									            border: 5px solid black;
+									            margin-right: 5px;
+									            border: 2px solid black;
 									            border-radius: 5px;
 									            background-color:
 								            <c:forEach var="onSkin" items="${onSkin}">
@@ -108,8 +110,8 @@
 										        <c:when test="${onSkin.productName == 'white'}">white</c:when>
 										        <c:when test="${onSkin.productName == 'green'}">green</c:when>
 										        <c:when test="${onSkin.productName == 'lime'}">lime</c:when>
-										        <c:when test="${onSkin.productName == 'grey'}">gray</c:when>
-										        <c:otherwise>orange</c:otherwise>
+										        <c:when test="${onSkin.productName == 'navy'}">navy</c:when>
+										        <c:when test="${onSkin.productName == 'rgb(42, 140, 168)'}">rgb(42, 140, 168)</c:when>
 										    </c:choose>
 										</c:forEach>;">
 									</div>
@@ -128,10 +130,11 @@
 												data-product-name="${skinItem.productName}"
 												onclick="logClick()" 
 												style="
-											       width: 90px;
-											       height: 40px;
+											       width: 200px;
+											       height: 30px;
 											       margin-bottom: 10px;
-											       border: 5px solid black;
+											       margin-left: 20px;
+											       border: 2px solid black;
 	    										   border-radius: 5px;	
 											       background-color: 
 													<c:choose>
@@ -144,6 +147,8 @@
 						                                <c:when test="${skinItem.productName == 'green'}">green</c:when>
 						                                <c:when test="${skinItem.productName == 'lime'}">lime</c:when>
 						                                <c:when test="${skinItem.productName == 'grey'}">gray</c:when>
+						                                <c:when test="${skinItem.productName == 'navy'}">navy</c:when>
+						                                <c:when test="${skinItem.productName == 'rgb(42, 140, 168)'}">rgb(42, 140, 168)</c:when>
 						                            </c:choose>;
 											       " >
 										   </div>
