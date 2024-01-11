@@ -159,13 +159,20 @@ public class MainController {
         System.out.println("### userNickname : " + userNickname);
         System.out.println("### callSkin : " + callSkin);
         
-        Map mainSkin = mainService.mainSkin(callSkin);
-        System.out.println("### mainSkin : " + mainSkin);
+        try {
+	        Map mainSkin = mainService.mainSkin(callSkin);
+	        System.out.println("### mainSkin : " + mainSkin);
         
-        model.addAttribute("bgProductName", mainSkin.get("productName"));
-        model.addAttribute("bgCategory", mainSkin.get("category"));
-        model.addAttribute("bgUserNickname", mainSkin.get("userNickname"));
-        System.out.println("### model : " + model);
+	        model.addAttribute("bgProductName", mainSkin.get("productName"));
+	        model.addAttribute("bgCategory", mainSkin.get("category"));
+	        model.addAttribute("bgUserNickname", mainSkin.get("userNickname"));
+	        System.out.println("### model : " + model);
+	        
+        } catch (NullPointerException n) {
+	        	model.addAttribute("bgProductName", "rgb(42, 140, 168)");
+	        	model.addAttribute("bgCategory", "skin");
+	        	n.printStackTrace();
+        }
 		
 		return "miniHome/main";
 	}

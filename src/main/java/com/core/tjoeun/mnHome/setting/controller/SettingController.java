@@ -84,15 +84,91 @@ public class SettingController {
 	@RequestMapping(value = "/mnHome/settingMenu/{userNickname}")
 	public String settingMenuView(@PathVariable String userNickname, Model model) {
 		
-		Map map = mainService.getUserInfo(userNickname);
-		model.addAttribute("userName", map.get("userName"));
-		model.addAttribute("title", map.get("title"));
-
-        //접속중인 유저의 친구 전부 가져오기
-        List<Map> friendMap = mainService.getMyFriends(userNickname);
-        model.addAttribute("friend", friendMap);
+		Map userMap = mainService.getUserInfo(userNickname);
+		model.addAttribute("userName", userMap.get("userName"));
+		model.addAttribute("title", userMap.get("title"));
 		
+		Map putMap = new HashMap();
+		putMap.put("userNickname", userMap.get("userNickname"));
+		putMap.put("category", "menu");
+		System.out.println("###putMap : " + putMap);
+		
+		try {
+			List<Map<String, Object>> onMenu = settingService.allocationOnSkinMenu(putMap);
+			List<String> productNames = new ArrayList<>();
+			
+			for (Map<String, Object> menu : onMenu) {
+				String productName = (String)menu.get("productName");
+				productNames.add(productName);
+			}
+			
+			System.out.println("### onMenu : " + onMenu);
+			
+			model.addAttribute("onMenu", onMenu);
+			model.addAttribute("productNames", productNames);
+			
+			List<Map<String, Object>> menuMap = settingService.selectSkinMenu(putMap);
+			model.addAttribute("menuMap", menuMap);
+			System.out.println("### menuMap : " + menuMap);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		return "miniHome/settingMenu";
+	}
+	
+	@RequestMapping(value = "/mnHome/menuChoice", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> menuChoice(@RequestBody Map<String, String> requestData, HttpSession session, Model model) {
+	    String selectedProductName = requestData.get("selectedProductName");
+		System.out.println("### myMenu : " + selectedProductName);
+		
+		Map userMap = new HashMap();
+		userMap = (Map)session.getAttribute("userId");
+		String userNickname = (String)userMap.get("userNickname");
+		
+		System.out.println("★ userNickname : " + userNickname);
+		
+		Map menuMap = new HashMap();
+		menuMap.put("userNickname", userNickname);
+		menuMap.put("productName", selectedProductName);
+		menuMap.put("category", "menu");
+		System.out.println("### menuMap : " + menuMap);
+		
+		try {
+			settingService.updateAllocationOff(menuMap);
+			settingService.updateAllocationOn(menuMap);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		Map putMap = new HashMap();
+		putMap.put("userNickname", userMap.get("userNickname"));
+		putMap.put("category", "menu");
+		System.out.println("### menu putMap : " + putMap);
+		
+		List<Map<String, Object>> userMenu = settingService.allocationOnSkinMenu(putMap);
+		System.out.println("### userMenu : " + userMenu);
+		
+		model.addAttribute("menuMap", userMenu);
+		System.out.println("### model : " + model);
+		
+		if (userMenu != null && !userMenu.isEmpty() ) {
+			Map<String, Object> menuMap2 = userMenu.get(0);
+			System.out.println("### menuMap2 : " + menuMap2);
+			
+			if (menuMap2 != null) {
+				menuMap2.put("resultCode", "1");
+			} else {
+				menuMap2.put("resultCode","0");
+			}
+			
+			return menuMap2;
+		} else {
+		
+			return new HashMap<>();
+		}
 	}
 
 	@RequestMapping(value = "/mnHome/settingSkin/{userNickname}")
@@ -105,11 +181,7 @@ public class SettingController {
 		Map putMap = new HashMap();
 		putMap.put("userNickname", userMap.get("userNickname"));
 		putMap.put("category", "skin");
-		System.out.println("putMap : " + putMap);
-		
-        //접속중인 유저의 친구 전부 가져오기
-        List<Map> friendMap = mainService.getMyFriends(userNickname);
-        model.addAttribute("friend", friendMap);
+		System.out.println("### Skin putMap : " + putMap);
 		
 		try {
 		    List<Map<String, Object>> onSkin = settingService.allocationOnSkinMenu(putMap);
@@ -127,7 +199,7 @@ public class SettingController {
 
 		    List<Map<String, Object>> skinMap = settingService.selectSkinMenu(putMap);
 			model.addAttribute("skinMap", skinMap);
-			System.out.println("skinMap : " + skinMap);
+			System.out.println("###skinMap : " + skinMap);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -144,7 +216,6 @@ public class SettingController {
 		Map userMap = new HashMap();
 		userMap = (Map)session.getAttribute("userId");
 		String userNickname = (String)userMap.get("userNickname");
-		
 		System.out.println("★ userNickname : " + userNickname);
 		
 			Map skinMap = new HashMap();
@@ -169,7 +240,6 @@ public class SettingController {
 			System.out.println("★userSkin : " + userSkin);
 			model.addAttribute("skinMap", userSkin);
 			System.out.println("★ model : " + model);
-			System.out.println("★ userSkin : " + userSkin);
 			if (userSkin != null && !userSkin.isEmpty()) {
 			    Map<String, Object> skinMap2 = userSkin.get(0);
 			    System.out.println("★ skinMap2 : " + skinMap2);

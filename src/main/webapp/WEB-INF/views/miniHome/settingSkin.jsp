@@ -153,19 +153,19 @@
 											       " >
 										   </div>
 										   <div class="skin-item-name">${skinItem.productName}</div>
-										   </div>
-										</c:forEach>
-									</div>
+									   </div>
+									</c:forEach>
 								</div>
+							</div>
 								
-								<form action="/mnHome/settingSkin/skinChoice" >
-									<div class="set-skin-btn">
-										<input type="hidden" name="selectedProductName" id="selectedProductName" class="set-skin-select" />
-										<input type="hidden" name="selectedCategory" id="selectedCategory" class="set-skin-select"/>
-										<input type="hidden" name="nickname" id="nickname" class="set-skin-select"/>
-										<input type="submit" class="set-skin-select apply-button" value="적용" />
-									</div>
-								</form>
+							<form action="/mnHome/settingSkin/skinChoice" >
+								<div class="set-skin-btn">
+									<input type="hidden" name="selectedProductName" id="selectedProductName" class="set-skin-select" />
+									<input type="hidden" name="selectedCategory" id="selectedCategory" class="set-skin-select"/>
+									<input type="hidden" name="nickname" id="nickname" class="set-skin-select"/>
+									<input type="submit" class="set-skin-select apply-button" value="적용" />
+								</div>
+							</form>
 								
 							</div>
 						</div>
