@@ -66,3 +66,45 @@
 		    }
 		  }
 		}
+		
+		
+		
+function writeAlbum(){
+		let userNickname = $("#hiddenUserNickname").val();
+		let link = '/mnHome/albumWrite/' + userNickname;
+		
+		let formData = new FormData();
+		let inputFile = $("input[name='albumFile']");
+		let files = inputFile[0].files;
+		
+		for(let i = 0; i < files.length; i++){
+			formData.append("uploadFile", files[i]);
+		}
+		console.log(files);
+		
+		let albumData = {
+			title : $("#albumTitle").val()
+			, content : $("#albumContent").val()
+		}
+		
+		formData.append("contents", new Blob([JSON.stringify(albumData)],{type : "application/json"} ));
+		
+		$.ajax({
+			url : link
+			,processData : false
+			,contentType :false
+			,data : formData
+			,type : "POST"
+			, success :function(json){
+				if(json.resultCode === '1' ){
+		        	 alert("저장되었습니다.");
+		        	 document.getElementById("albumView").click();
+		        } else if(json.resultCode === "0"){
+		            alert("잠시 후 다시 시도해주세요.");
+		        }
+			}
+			
+		})
+		
+		
+	}		
