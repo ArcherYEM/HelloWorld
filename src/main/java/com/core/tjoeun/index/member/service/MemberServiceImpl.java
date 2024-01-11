@@ -43,6 +43,7 @@ public class MemberServiceImpl implements MemberService{
 	   		 memberDao.insertUserProfile(userNickname);
 	   		 memberDao.insertUserStorage(userNickname);
 	   		 
+	   		 
      }
       if (result != 1) {
          throw new Exception();
