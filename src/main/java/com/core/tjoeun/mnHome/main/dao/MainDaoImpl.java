@@ -1,6 +1,5 @@
 package com.core.tjoeun.mnHome.main.dao;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -145,5 +144,10 @@ public class MainDaoImpl implements MainDao{
 	public int insertFriendCmt(Map map) {
 		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
 		return mapper.insertFriendCmt(map);
+	}
+	@Override
+	public Map mainMenu(Map map) {
+		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
+		return mapper.mainMenu(map);
 	}
 }

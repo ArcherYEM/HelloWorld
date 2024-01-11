@@ -1,10 +1,7 @@
 package com.core.tjoeun.mnHome.main.service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.springframework.ui.Model;
 
 public interface MainService {
 
@@ -41,4 +38,6 @@ public interface MainService {
 	public Map mainSkin(Map map);
 	
 	public int insertFriendCmt(Map map) throws Exception;
+	public Map mainMenu(Map map);
+	
 }

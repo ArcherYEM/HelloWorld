@@ -55,7 +55,7 @@
 								</div>
 							</div>
 							<div class="setting-devide-dot">---------------------------------</div>
-							<div class="font-kyobohand setting-profile-username">${sessionScope.userId.userName }&#128698;</div>
+							<div class="font-kyobohand setting-profile-username">${userName }&#128698;</div>
 							<div class="profile-dropDown">
 								<select id="friendSelect" onchange="redirectToMainView()">
 		                           <option value="" disabled selected hidden="">파도타기</option>
@@ -94,7 +94,8 @@
 										<a class="setting-myMinimi-change" onclick="MinimiChange()">대표미니미 변경</a>
 									</div>
 								</div>
-								
+								<input type="hidden" id="userNickname" value=${userNickname }>
+								<input type="hidden" id="userEmail" value=${sessionScope.userEmail }>
 								<div class="set-info-group">
 									<div class="set-info">
 										<div class="set-info-title">
@@ -105,39 +106,27 @@
 												<div class="set-info-name-left">
 													<span>&#128394;</span> 이름
 												</div>
-												<div class="set-info-name-right" id="set-UserName">
-													${sessionScope.userId.userName }
-												</div>
-												<div class="set-info-name-a">
-													<a 
-													  onclick="openNewWindowMyProfileEdit()">수정
-													</a>
+												<textarea class="textInfo" id="set-UserName" readonly>${userName}</textarea>
+												<div class="set-info-name-a" onclick="changeName()">
+													수정
 												</div>
 											</div>
 											<div class="set-info-Nickname">
 												<div class="set-info-Nickname-left">
 													<span>&#128364;</span>닉네임
 												</div>
-												<div class="set-info-Nickname-right" id="set-UserNickname">
-													${sessionScope.userId.userNickname }
-												</div>
-												<div class="set-info-Nickname-a">
-													<a 
-													  onclick="openNewWindowMyProfileEdit()">수정
-													</a>
+												<textarea class="textInfo" id="set-UserNickname" readonly>${userNickname }</textarea>
+												<div class="set-info-Nickname-a" onclick ="changeNickname()">
+													수정
 												</div>
 											</div>		
 											<div class="set-info-phone">
 												<div class="set-info-phone-left">
 													<span>&#128382;</span> 연락처
 												</div>
-												<div class="set-info-phone-right" id="set-UserPhone">
-													${sessionScope.userId.userPhone }
-												</div>
-												<div class="set-info-phone-a">
-													<a 
-													  onclick="openNewWindowMyProfileEdit()">수정
-													</a>
+												<textarea class="textInfo" id="set-UserPhone" readonly>${sessionScope.userId.userPhone }</textarea>
+												<div class="set-info-phone-a" onclick="changeNumber()">
+													수정
 												</div>
 											</div>
 											<div class="set-info-date">
@@ -162,27 +151,221 @@
 					</div>
 					
 					<div class="menu-container">
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/mainView/${userNickname }'/>">
-					        <a href="#">홈</a>
-					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/diaryView/${userNickname }'/>">
-					        <a href="#">다이어리</a>
-					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/albumView/${userNickname }'/>">
-					        <a href="#">사진첩</a>
-					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/boardView/${userNickname }'/>">
-					        <a href="#">게시판</a>
-					    </div>
-					    <div class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>">
-					        <a href="#">방명록</a>
-					    </div>
-					    <c:if test="${sessionScope.userId.userNickname eq userNickname }">
-						    <div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>">
-						        <a href="#">관리</a>
-						    </div>		
-						</c:if>
+               
+					<div class="menu-content" data-tab="<c:url value='/mnHome/mainView/${userNickname }'/>"
+						style=" background-color: 
+								<c:choose>
+									<c:when test="${menuProductName == 'red' }">red</c:when>
+									<c:when test="${menuProductName == 'yellow' }">yellow</c:when>
+									<c:when test="${menuProductName == 'black' }">black</c:when>
+									<c:when test="${menuProductName == 'blue' }">blue</c:when>
+									<c:when test="${menuProductName == 'purple' }">purple</c:when>
+									<c:when test="${menuProductName == 'white' }">white</c:when>
+									<c:when test="${menuProductName == 'green' }">green</c:when>
+									<c:when test="${menuProductName == 'lime' }">lime</c:when>
+									<c:when test="${menuProductName == 'grey' }">grey</c:when>
+									<c:when test="${menuProductName == 'navy' }">navy</c:when>
+									<c:when test="${menuProductName == 'rgb(42, 140, 168)' }">rgb(42, 140, 168)</c:when>
+								</c:choose>
+					">
+						<span class="menu-content-span"
+						style=" color: 
+								<c:choose>
+									<c:when test="${menuProductName == 'red' }">lightgreen</c:when>
+									<c:when test="${menuProductName == 'yellow' }">navy</c:when>
+									<c:when test="${menuProductName == 'black' }">white</c:when>
+									<c:when test="${menuProductName == 'blue' }">orange</c:when>
+									<c:when test="${menuProductName == 'purple' }">lightgreen</c:when>
+									<c:when test="${menuProductName == 'white' }">black</c:when>
+									<c:when test="${menuProductName == 'green' }">red</c:when>
+									<c:when test="${menuProductName == 'lime' }">pink</c:when>
+									<c:when test="${menuProductName == 'grey' }">brown</c:when>
+									<c:when test="${menuProductName == 'navy' }">yellow</c:when>
+									<c:when test="${menuProductName == 'rgb(42, 140, 168)' }">white</c:when>
+								</c:choose>
+					">
+						홈
+					</span>
 					</div>
+					<div class="menu-content" data-tab="<c:url value='/mnHome/diaryView/${userNickname }'/>"
+					style=" background-color: 
+								<c:choose>
+									<c:when test="${menuProductName == 'red' }">red</c:when>
+									<c:when test="${menuProductName == 'yellow' }">yellow</c:when>
+									<c:when test="${menuProductName == 'black' }">black</c:when>
+									<c:when test="${menuProductName == 'blue' }">blue</c:when>
+									<c:when test="${menuProductName == 'purple' }">purple</c:when>
+									<c:when test="${menuProductName == 'white' }">white</c:when>
+									<c:when test="${menuProductName == 'green' }">green</c:when>
+									<c:when test="${menuProductName == 'lime' }">lime</c:when>
+									<c:when test="${menuProductName == 'grey' }">grey</c:when>
+									<c:when test="${menuProductName == 'navy' }">navy</c:when>
+									<c:when test="${menuProductName == 'rgb(42, 140, 168)' }">rgb(42, 140, 168)</c:when>
+								</c:choose>
+					">
+						<span class="menu-content-span"
+						style=" color: 
+								<c:choose>
+									<c:when test="${menuProductName == 'red' }">lightgreen</c:when>
+									<c:when test="${menuProductName == 'yellow' }">navy</c:when>
+									<c:when test="${menuProductName == 'black' }">white</c:when>
+									<c:when test="${menuProductName == 'blue' }">orange</c:when>
+									<c:when test="${menuProductName == 'purple' }">lightgreen</c:when>
+									<c:when test="${menuProductName == 'white' }">black</c:when>
+									<c:when test="${menuProductName == 'green' }">red</c:when>
+									<c:when test="${menuProductName == 'lime' }">pink</c:when>
+									<c:when test="${menuProductName == 'grey' }">brown</c:when>
+									<c:when test="${menuProductName == 'navy' }">yellow</c:when>
+									<c:when test="${menuProductName == 'rgb(42, 140, 168)' }">white</c:when>
+								</c:choose>
+					">
+						다이어리
+					</span>
+					</div>
+					<div class="menu-content" data-tab="<c:url value='/mnHome/albumView/${userNickname }'/>"
+					style=" background-color: 
+								<c:choose>
+									<c:when test="${menuProductName == 'red' }">red</c:when>
+									<c:when test="${menuProductName == 'yellow' }">yellow</c:when>
+									<c:when test="${menuProductName == 'black' }">black</c:when>
+									<c:when test="${menuProductName == 'blue' }">blue</c:when>
+									<c:when test="${menuProductName == 'purple' }">purple</c:when>
+									<c:when test="${menuProductName == 'white' }">white</c:when>
+									<c:when test="${menuProductName == 'green' }">green</c:when>
+									<c:when test="${menuProductName == 'lime' }">lime</c:when>
+									<c:when test="${menuProductName == 'grey' }">grey</c:when>
+									<c:when test="${menuProductName == 'navy' }">navy</c:when>
+									<c:when test="${menuProductName == 'rgb(42, 140, 168)' }">rgb(42, 140, 168)</c:when>
+								</c:choose>
+					">
+						<span class="menu-content-span"
+						style=" color: 
+								<c:choose>
+									<c:when test="${menuProductName == 'red' }">lightgreen</c:when>
+									<c:when test="${menuProductName == 'yellow' }">navy</c:when>
+									<c:when test="${menuProductName == 'black' }">white</c:when>
+									<c:when test="${menuProductName == 'blue' }">orange</c:when>
+									<c:when test="${menuProductName == 'purple' }">lightgreen</c:when>
+									<c:when test="${menuProductName == 'white' }">black</c:when>
+									<c:when test="${menuProductName == 'green' }">red</c:when>
+									<c:when test="${menuProductName == 'lime' }">pink</c:when>
+									<c:when test="${menuProductName == 'grey' }">brown</c:when>
+									<c:when test="${menuProductName == 'navy' }">yellow</c:when>
+									<c:when test="${menuProductName == 'rgb(42, 140, 168)' }">white</c:when>
+								</c:choose>
+					">
+						사진첩
+					</span>
+					</div>
+					<div class="menu-content" data-tab="<c:url value='/mnHome/boardView/${userNickname }'/>"
+					style=" background-color: 
+								<c:choose>
+									<c:when test="${menuProductName == 'red' }">red</c:when>
+									<c:when test="${menuProductName == 'yellow' }">yellow</c:when>
+									<c:when test="${menuProductName == 'black' }">black</c:when>
+									<c:when test="${menuProductName == 'blue' }">blue</c:when>
+									<c:when test="${menuProductName == 'purple' }">purple</c:when>
+									<c:when test="${menuProductName == 'white' }">white</c:when>
+									<c:when test="${menuProductName == 'green' }">green</c:when>
+									<c:when test="${menuProductName == 'lime' }">lime</c:when>
+									<c:when test="${menuProductName == 'grey' }">grey</c:when>
+									<c:when test="${menuProductName == 'navy' }">navy</c:when>
+									<c:when test="${menuProductName == 'rgb(42, 140, 168)' }">rgb(42, 140, 168)</c:when>
+								</c:choose>
+					">
+						<span class="menu-content-span"
+						style=" color: 
+								<c:choose>
+									<c:when test="${menuProductName == 'red' }">lightgreen</c:when>
+									<c:when test="${menuProductName == 'yellow' }">navy</c:when>
+									<c:when test="${menuProductName == 'black' }">white</c:when>
+									<c:when test="${menuProductName == 'blue' }">orange</c:when>
+									<c:when test="${menuProductName == 'purple' }">lightgreen</c:when>
+									<c:when test="${menuProductName == 'white' }">black</c:when>
+									<c:when test="${menuProductName == 'green' }">red</c:when>
+									<c:when test="${menuProductName == 'lime' }">pink</c:when>
+									<c:when test="${menuProductName == 'grey' }">brown</c:when>
+									<c:when test="${menuProductName == 'navy' }">yellow</c:when>
+									<c:when test="${menuProductName == 'rgb(42, 140, 168)' }">white</c:when>
+								</c:choose>
+					">
+						게시판
+					</span>
+					</div>
+					<div class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>"
+					style=" background-color: 
+								<c:choose>
+									<c:when test="${menuProductName == 'red' }">red</c:when>
+									<c:when test="${menuProductName == 'yellow' }">yellow</c:when>
+									<c:when test="${menuProductName == 'black' }">black</c:when>
+									<c:when test="${menuProductName == 'blue' }">blue</c:when>
+									<c:when test="${menuProductName == 'purple' }">purple</c:when>
+									<c:when test="${menuProductName == 'white' }">white</c:when>
+									<c:when test="${menuProductName == 'green' }">green</c:when>
+									<c:when test="${menuProductName == 'lime' }">lime</c:when>
+									<c:when test="${menuProductName == 'grey' }">grey</c:when>
+									<c:when test="${menuProductName == 'navy' }">navy</c:when>
+									<c:when test="${menuProductName == 'rgb(42, 140, 168)' }">rgb(42, 140, 168)</c:when>
+								</c:choose>
+					">
+						<span class="menu-content-span"
+						style=" color: 
+								<c:choose>
+									<c:when test="${menuProductName == 'red' }">lightgreen</c:when>
+									<c:when test="${menuProductName == 'yellow' }">navy</c:when>
+									<c:when test="${menuProductName == 'black' }">white</c:when>
+									<c:when test="${menuProductName == 'blue' }">orange</c:when>
+									<c:when test="${menuProductName == 'purple' }">lightgreen</c:when>
+									<c:when test="${menuProductName == 'white' }">black</c:when>
+									<c:when test="${menuProductName == 'green' }">red</c:when>
+									<c:when test="${menuProductName == 'lime' }">pink</c:when>
+									<c:when test="${menuProductName == 'grey' }">brown</c:when>
+									<c:when test="${menuProductName == 'navy' }">yellow</c:when>
+									<c:when test="${menuProductName == 'rgb(42, 140, 168)' }">white</c:when>
+								</c:choose>
+					">
+						방명록
+					</span>
+					</div>
+					<c:if test="${sessionScope.userId.userNickname eq userNickname }">
+						<div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>"
+						style=" background-color: 
+								<c:choose>
+									<c:when test="${menuProductName == 'red' }">red</c:when>
+									<c:when test="${menuProductName == 'yellow' }">yellow</c:when>
+									<c:when test="${menuProductName == 'black' }">black</c:when>
+									<c:when test="${menuProductName == 'blue' }">blue</c:when>
+									<c:when test="${menuProductName == 'purple' }">purple</c:when>
+									<c:when test="${menuProductName == 'white' }">white</c:when>
+									<c:when test="${menuProductName == 'green' }">green</c:when>
+									<c:when test="${menuProductName == 'lime' }">lime</c:when>
+									<c:when test="${menuProductName == 'grey' }">grey</c:when>
+									<c:when test="${menuProductName == 'navy' }">navy</c:when>
+									<c:when test="${menuProductName == 'rgb(42, 140, 168)' }">rgb(42, 140, 168)</c:when>
+								</c:choose>
+					">
+							<span class="menu-content-span"
+							style=" color: 
+								<c:choose>
+									<c:when test="${menuProductName == 'red' }">lightgreen</c:when>
+									<c:when test="${menuProductName == 'yellow' }">navy</c:when>
+									<c:when test="${menuProductName == 'black' }">white</c:when>
+									<c:when test="${menuProductName == 'blue' }">orange</c:when>
+									<c:when test="${menuProductName == 'purple' }">lightgreen</c:when>
+									<c:when test="${menuProductName == 'white' }">black</c:when>
+									<c:when test="${menuProductName == 'green' }">red</c:when>
+									<c:when test="${menuProductName == 'lime' }">pink</c:when>
+									<c:when test="${menuProductName == 'grey' }">brown</c:when>
+									<c:when test="${menuProductName == 'navy' }">yellow</c:when>
+									<c:when test="${menuProductName == 'rgb(42, 140, 168)' }">white</c:when>
+								</c:choose>
+					">
+						관리
+					</span>
+						</div>      
+					</c:if>
+                  
+               </div>
 					
 				</div>
 			</div>

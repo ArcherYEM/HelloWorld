@@ -203,4 +203,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ORDER BY dotoriChargeDate DESC;
 	</select>
 	
+	<update id="changeName" parameterType="map">
+		update user set 
+		userName = #{changedName}
+		where userName = #{originalName}
+		and userNickname = #{userNickname}
+	</update>
+
+	<update id="changeNickname" parameterType="map">
+		update user set 
+		userNickname = #{changedNickname}
+		where userNickname = #{originalNickname}
+		and userEmail = #{userEmail}
+	</update>
+	
+	<update id="changeNumber" parameterType="map">
+		update user set 
+		userPhone = #{changedNumber}
+		where userPhone = #{originalNumber}
+		and userNickname = #{userNickname}
+	</update>	
 </mapper>

@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 
 import com.core.tjoeun.index.member.service.MemberService;
 import com.core.tjoeun.mnHome.main.dao.MainDao;
@@ -188,6 +187,12 @@ public class MainServiceImpl implements MainService{
 		} else {
 			return result;
 		}
+	}
+	
+	@Override
+	public Map mainMenu(Map map) {
+		
+		return mainDao.mainMenu(map);
 	}
 	
 }

@@ -43,11 +43,33 @@ public class SettingController {
 		
 		Map map = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", map.get("userName"));
+		model.addAttribute("userNickname", userNickname);
 		model.addAttribute("title", map.get("title"));
 		
         //접속중인 유저의 친구 전부 가져오기
         List<Map> friendMap = mainService.getMyFriends(userNickname);
         model.addAttribute("friend", friendMap);
+        
+     // menu color 적용하기
+        Map callMenu = new HashMap();
+        callMenu.put("category", "menu");
+        callMenu.put("userNickname", userNickname);
+        System.out.println("### callMenu : " + callMenu);
+        
+        try {
+        	Map mainMenu = mainService.mainMenu(callMenu);
+        	System.out.println("### mainMenu : " + mainMenu);
+        	
+        	model.addAttribute("menuProductName", mainMenu.get("productName"));
+	        model.addAttribute("menuCategory", mainMenu.get("category"));
+	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
+	        System.out.println("### menu model : " + model);
+	        
+        } catch (NullPointerException n) {
+	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
+	        	model.addAttribute("menuCategory", "menu");
+	        	n.printStackTrace();
+        }
 
 		return "miniHome/setting";
 	}
@@ -76,6 +98,27 @@ public class SettingController {
         //접속중인 유저의 친구 전부 가져오기
         List<Map> friendMap = mainService.getMyFriends(userNickname);
         model.addAttribute("friend", friendMap);
+        
+     // menu color 적용하기
+        Map callMenu = new HashMap();
+        callMenu.put("category", "menu");
+        callMenu.put("userNickname", userNickname);
+        System.out.println("### callMenu : " + callMenu);
+        
+        try {
+        	Map mainMenu = mainService.mainMenu(callMenu);
+        	System.out.println("### mainMenu : " + mainMenu);
+        	
+        	model.addAttribute("menuProductName", mainMenu.get("productName"));
+	        model.addAttribute("menuCategory", mainMenu.get("category"));
+	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
+	        System.out.println("### menu model : " + model);
+	        
+        } catch (NullPointerException n) {
+	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
+	        	model.addAttribute("menuCategory", "menu");
+	        	n.printStackTrace();
+        }
 		
 		return "miniHome/settingBgm";
 	}
@@ -114,7 +157,28 @@ public class SettingController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
+		// menu color 적용하기
+        Map callMenu = new HashMap();
+        callMenu.put("category", "menu");
+        callMenu.put("userNickname", userNickname);
+        System.out.println("### callMenu : " + callMenu);
+        
+        try {
+        	Map mainMenu = mainService.mainMenu(callMenu);
+        	System.out.println("### mainMenu : " + mainMenu);
+        	
+        	model.addAttribute("menuProductName", mainMenu.get("productName"));
+	        model.addAttribute("menuCategory", mainMenu.get("category"));
+	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
+	        System.out.println("### menu model : " + model);
+	        
+        } catch (NullPointerException n) {
+	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
+	        	model.addAttribute("menuCategory", "menu");
+	        	n.printStackTrace();
+        }
+		
 		return "miniHome/settingMenu";
 	}
 	
@@ -201,6 +265,27 @@ public class SettingController {
 			model.addAttribute("skinMap", skinMap);
 			System.out.println("###skinMap : " + skinMap);
 			
+			// menu color 적용하기
+	        Map callMenu = new HashMap();
+	        callMenu.put("category", "menu");
+	        callMenu.put("userNickname", userNickname);
+	        System.out.println("### callMenu : " + callMenu);
+	        
+	        try {
+	        	Map mainMenu = mainService.mainMenu(callMenu);
+	        	System.out.println("### mainMenu : " + mainMenu);
+	        	
+	        	model.addAttribute("menuProductName", mainMenu.get("productName"));
+		        model.addAttribute("menuCategory", mainMenu.get("category"));
+		        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
+		        System.out.println("### menu model : " + model);
+		        
+	        } catch (NullPointerException n) {
+		        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
+		        	model.addAttribute("menuCategory", "menu");
+		        	n.printStackTrace();
+	        }
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -279,6 +364,27 @@ public class SettingController {
         //접속중인 유저의 친구 전부 가져오기
         List<Map> friendMap = mainService.getMyFriends(userNickname);
         model.addAttribute("friend", friendMap);
+        
+     // menu color 적용하기
+        Map callMenu = new HashMap();
+        callMenu.put("category", "menu");
+        callMenu.put("userNickname", userNickname);
+        System.out.println("### callMenu : " + callMenu);
+        
+        try {
+        	Map mainMenu = mainService.mainMenu(callMenu);
+        	System.out.println("### mainMenu : " + mainMenu);
+        	
+        	model.addAttribute("menuProductName", mainMenu.get("productName"));
+	        model.addAttribute("menuCategory", mainMenu.get("category"));
+	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
+	        System.out.println("### menu model : " + model);
+	        
+        } catch (NullPointerException n) {
+	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
+	        	model.addAttribute("menuCategory", "menu");
+	        	n.printStackTrace();
+        }
 
 	    return "miniHome/settingDotoriUse";
 	}
@@ -295,6 +401,27 @@ public class SettingController {
         //접속중인 유저의 친구 전부 가져오기
         List<Map> friendMap = mainService.getMyFriends(userNickname);
         model.addAttribute("friend", friendMap);
+        
+     // menu color 적용하기
+        Map callMenu = new HashMap();
+        callMenu.put("category", "menu");
+        callMenu.put("userNickname", userNickname);
+        System.out.println("### callMenu : " + callMenu);
+        
+        try {
+        	Map mainMenu = mainService.mainMenu(callMenu);
+        	System.out.println("### mainMenu : " + mainMenu);
+        	
+        	model.addAttribute("menuProductName", mainMenu.get("productName"));
+	        model.addAttribute("menuCategory", mainMenu.get("category"));
+	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
+	        System.out.println("### menu model : " + model);
+	        
+        } catch (NullPointerException n) {
+	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
+	        	model.addAttribute("menuCategory", "menu");
+	        	n.printStackTrace();
+        }
 
 		return "miniHome/settingDotoriCharge";
 	}
@@ -348,6 +475,26 @@ public class SettingController {
 		model.addAttribute("fRes", fRes);
 		model.addAttribute("fName",name);
 		
+		// menu color 적용하기
+        Map callMenu = new HashMap();
+        callMenu.put("category", "menu");
+        callMenu.put("userNickname", userNickname);
+        System.out.println("### callMenu : " + callMenu);
+        
+        try {
+        	Map mainMenu = mainService.mainMenu(callMenu);
+        	System.out.println("### mainMenu : " + mainMenu);
+        	
+        	model.addAttribute("menuProductName", mainMenu.get("productName"));
+	        model.addAttribute("menuCategory", mainMenu.get("category"));
+	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
+	        System.out.println("### menu model : " + model);
+	        
+        } catch (NullPointerException n) {
+	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
+	        	model.addAttribute("menuCategory", "menu");
+	        	n.printStackTrace();
+        }
 		
 		return "miniHome/settingFriends";
 	}
@@ -521,5 +668,50 @@ public class SettingController {
 		
 		return result;
 	}
+	@RequestMapping(value = "/mnHome/changeName", method = RequestMethod.POST)
+	@ResponseBody
+	public int changeName(@RequestBody Map<String, String> requestData) {
+		
+		int result = 0;
+		try {
+			result = settingService.changeName(requestData);
+		} catch (Exception e) {
+			System.out.println("에러가 발생했습니다");
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
+	@RequestMapping(value = "/mnHome/changeNickname", method = RequestMethod.POST)
+	@ResponseBody
+	public int changeNickname(@RequestBody Map<String, String> requestData) {
+		
+		int result = 0;
+		try {
+			result = settingService.changeNickname(requestData);
+		} catch (Exception e) {
+			String error = e.getMessage();
+			if(e.getMessage().contains("Duplicate")) {
+				result=3;
+			}
+		}
+		return result;
+	}
+
+	@RequestMapping(value = "/mnHome/changeNumber", method = RequestMethod.POST)
+	@ResponseBody
+	public int changeNumber(@RequestBody Map<String, String> requestData) {
+		System.out.println(requestData);
+		
+		int result = 0;
+		try {
+			result = settingService.changeNumber(requestData);
+		} catch (Exception e) {
+			String error = e.getMessage();
+			if(e.getMessage().contains("Duplicate")) {
+				result=3;
+			}
+		}
+		return result;
+	}
 }
