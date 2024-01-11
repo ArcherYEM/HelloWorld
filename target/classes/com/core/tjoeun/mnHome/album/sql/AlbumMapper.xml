@@ -21,4 +21,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 </insert>
 
+<select id="selectAlbum" parameterType="Map" resultType="map">
+	Select 
+		seq
+		, userNickname
+		, title
+		, content
+		, imagePath
+		, hits
+		, create_date
+	From album
+	where del_yn != 'Y'
+	and userNickname = #{userNickname}
+	order by seq desc
+</select>
+
 </mapper>
