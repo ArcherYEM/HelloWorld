@@ -149,10 +149,6 @@ public class MainController {
         model.addAttribute("friend", friendMap);
         
      // background color 적용하기
-        Map backgroundMap = mainService.selectBackground(userNickname);
-        model.addAttribute("background", backgroundMap);
-        System.out.println("### background : " + backgroundMap);
-        
         Map callSkin = new HashMap();
         callSkin.put("category", "skin");
         callSkin.put("userNickname", userNickname);
@@ -173,7 +169,28 @@ public class MainController {
 	        	model.addAttribute("bgCategory", "skin");
 	        	n.printStackTrace();
         }
-		
+        
+        // menu color 적용하기
+        Map callMenu = new HashMap();
+        callMenu.put("category", "menu");
+        callMenu.put("userNickname", userNickname);
+        System.out.println("### callMenu : " + callMenu);
+        
+        try {
+        	Map mainMenu = mainService.mainMenu(callMenu);
+        	System.out.println("### mainMenu : " + mainMenu);
+        	
+        	model.addAttribute("menuProductName", mainMenu.get("productName"));
+	        model.addAttribute("menuCategory", mainMenu.get("category"));
+	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
+	        System.out.println("### menu model : " + model);
+	        
+        } catch (NullPointerException n) {
+	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
+	        	model.addAttribute("menuCategory", "menu");
+	        	n.printStackTrace();
+        }
+        	
 		return "miniHome/main";
 	}
 

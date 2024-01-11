@@ -1,10 +1,7 @@
 package com.core.tjoeun.mnHome.main.service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.springframework.ui.Model;
 
 public interface MainService {
 
@@ -39,5 +36,7 @@ public interface MainService {
 	public List<Map> getMyFriends(String userNickname);
 	
 	public Map mainSkin(Map map);
+	
+	public Map mainMenu(Map map);
 	
 }
