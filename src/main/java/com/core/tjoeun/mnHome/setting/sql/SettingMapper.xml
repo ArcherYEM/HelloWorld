@@ -223,4 +223,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where userPhone = #{originalNumber}
 		and userNickname = #{userNickname}
 	</update>	
+	
+	<select id="selectMyBgm" resultType="map" parameterType="map">
+		SELECT 
+			userNickname
+			, title
+			, artist
+			, runningTime
+			, contentPath
+			,allocation
+		FROM
+			userBgm
+		WHERE 1=1
+		<if test="userNickname != null">
+			AND userNickname = #{userNickname}
+		</if>
+		<if test="allocation == 1">
+			AND allocation = 1
+		</if>
+	</select>
+	
 </mapper>

@@ -33,4 +33,6 @@ public interface SettingMapper {
     public int changeNickname (Map map);
     
     public int changeNumber (Map map);
+    
+    public List<Map> selectMyBgm(Map map);
 }

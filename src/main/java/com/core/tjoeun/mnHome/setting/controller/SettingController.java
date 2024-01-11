@@ -94,7 +94,25 @@ public class SettingController {
 		Map map = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", map.get("userName"));
 		model.addAttribute("title", map.get("title"));
-
+		
+		Map inputMap= new HashMap();
+		inputMap.put("userNickname", userNickname);
+		System.out.println("### inputMap : " + inputMap);
+		
+		String title = "";
+		String artist = "";
+		String runningTime = "";
+		String contentPath = "";
+		int allocation = 0;
+		
+		List<Map> bgmMap = settingService.selectMyBgm(inputMap);
+		model.addAttribute("title",title);
+		model.addAttribute("artist",artist);
+		model.addAttribute("runningTime",runningTime);
+		model.addAttribute("contentPath",contentPath);
+		model.addAttribute("allocation",allocation);
+		System.out.println("### bgmMap : " + bgmMap);
+		
         //접속중인 유저의 친구 전부 가져오기
         List<Map> friendMap = mainService.getMyFriends(userNickname);
         model.addAttribute("friend", friendMap);
@@ -107,12 +125,10 @@ public class SettingController {
         
         try {
         	Map mainMenu = mainService.mainMenu(callMenu);
-        	System.out.println("### mainMenu : " + mainMenu);
         	
         	model.addAttribute("menuProductName", mainMenu.get("productName"));
 	        model.addAttribute("menuCategory", mainMenu.get("category"));
 	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
-	        System.out.println("### menu model : " + model);
 	        
         } catch (NullPointerException n) {
 	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
@@ -120,7 +136,8 @@ public class SettingController {
 	        	n.printStackTrace();
         }
 		
-		return "miniHome/settingBgm";
+//		return "miniHome/settingBgm";
+        return "miniHome/test";
 	}
 
 
@@ -134,7 +151,6 @@ public class SettingController {
 		Map putMap = new HashMap();
 		putMap.put("userNickname", userMap.get("userNickname"));
 		putMap.put("category", "menu");
-		System.out.println("###putMap : " + putMap);
 		
 		try {
 			List<Map<String, Object>> onMenu = settingService.allocationOnSkinMenu(putMap);
@@ -145,14 +161,11 @@ public class SettingController {
 				productNames.add(productName);
 			}
 			
-			System.out.println("### onMenu : " + onMenu);
-			
 			model.addAttribute("onMenu", onMenu);
 			model.addAttribute("productNames", productNames);
 			
 			List<Map<String, Object>> menuMap = settingService.selectSkinMenu(putMap);
 			model.addAttribute("menuMap", menuMap);
-			System.out.println("### menuMap : " + menuMap);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -162,16 +175,13 @@ public class SettingController {
         Map callMenu = new HashMap();
         callMenu.put("category", "menu");
         callMenu.put("userNickname", userNickname);
-        System.out.println("### callMenu : " + callMenu);
         
         try {
         	Map mainMenu = mainService.mainMenu(callMenu);
-        	System.out.println("### mainMenu : " + mainMenu);
         	
         	model.addAttribute("menuProductName", mainMenu.get("productName"));
 	        model.addAttribute("menuCategory", mainMenu.get("category"));
 	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
-	        System.out.println("### menu model : " + model);
 	        
         } catch (NullPointerException n) {
 	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
@@ -198,7 +208,6 @@ public class SettingController {
 		menuMap.put("userNickname", userNickname);
 		menuMap.put("productName", selectedProductName);
 		menuMap.put("category", "menu");
-		System.out.println("### menuMap : " + menuMap);
 		
 		try {
 			settingService.updateAllocationOff(menuMap);
@@ -210,17 +219,13 @@ public class SettingController {
 		Map putMap = new HashMap();
 		putMap.put("userNickname", userMap.get("userNickname"));
 		putMap.put("category", "menu");
-		System.out.println("### menu putMap : " + putMap);
 		
 		List<Map<String, Object>> userMenu = settingService.allocationOnSkinMenu(putMap);
-		System.out.println("### userMenu : " + userMenu);
 		
 		model.addAttribute("menuMap", userMenu);
-		System.out.println("### model : " + model);
 		
 		if (userMenu != null && !userMenu.isEmpty() ) {
 			Map<String, Object> menuMap2 = userMenu.get(0);
-			System.out.println("### menuMap2 : " + menuMap2);
 			
 			if (menuMap2 != null) {
 				menuMap2.put("resultCode", "1");
@@ -256,29 +261,23 @@ public class SettingController {
 		        productNames.add(productName); 
 		    }
 		    
-		    System.out.println("★onSkin : " + onSkin);
-
 		    model.addAttribute("onSkin", onSkin);
 		    model.addAttribute("productNames", productNames); 
 
 		    List<Map<String, Object>> skinMap = settingService.selectSkinMenu(putMap);
 			model.addAttribute("skinMap", skinMap);
-			System.out.println("###skinMap : " + skinMap);
 			
 			// menu color 적용하기
 	        Map callMenu = new HashMap();
 	        callMenu.put("category", "menu");
 	        callMenu.put("userNickname", userNickname);
-	        System.out.println("### callMenu : " + callMenu);
 	        
 	        try {
 	        	Map mainMenu = mainService.mainMenu(callMenu);
-	        	System.out.println("### mainMenu : " + mainMenu);
 	        	
 	        	model.addAttribute("menuProductName", mainMenu.get("productName"));
 		        model.addAttribute("menuCategory", mainMenu.get("category"));
 		        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
-		        System.out.println("### menu model : " + model);
 		        
 	        } catch (NullPointerException n) {
 		        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
@@ -369,7 +368,6 @@ public class SettingController {
         Map callMenu = new HashMap();
         callMenu.put("category", "menu");
         callMenu.put("userNickname", userNickname);
-        System.out.println("### callMenu : " + callMenu);
         
         try {
         	Map mainMenu = mainService.mainMenu(callMenu);
@@ -378,7 +376,6 @@ public class SettingController {
         	model.addAttribute("menuProductName", mainMenu.get("productName"));
 	        model.addAttribute("menuCategory", mainMenu.get("category"));
 	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
-	        System.out.println("### menu model : " + model);
 	        
         } catch (NullPointerException n) {
 	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
@@ -410,12 +407,10 @@ public class SettingController {
         
         try {
         	Map mainMenu = mainService.mainMenu(callMenu);
-        	System.out.println("### mainMenu : " + mainMenu);
         	
         	model.addAttribute("menuProductName", mainMenu.get("productName"));
 	        model.addAttribute("menuCategory", mainMenu.get("category"));
 	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
-	        System.out.println("### menu model : " + model);
 	        
         } catch (NullPointerException n) {
 	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
@@ -479,16 +474,13 @@ public class SettingController {
         Map callMenu = new HashMap();
         callMenu.put("category", "menu");
         callMenu.put("userNickname", userNickname);
-        System.out.println("### callMenu : " + callMenu);
         
         try {
         	Map mainMenu = mainService.mainMenu(callMenu);
-        	System.out.println("### mainMenu : " + mainMenu);
         	
         	model.addAttribute("menuProductName", mainMenu.get("productName"));
 	        model.addAttribute("menuCategory", mainMenu.get("category"));
 	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
-	        System.out.println("### menu model : " + model);
 	        
         } catch (NullPointerException n) {
 	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
@@ -518,7 +510,6 @@ public class SettingController {
 		
 		return result;
 	}
-	
 	
 //	searchFriends , setting 공통메서드
 	public Map common(Map map) {

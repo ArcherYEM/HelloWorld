@@ -7,11 +7,21 @@
 <html lang="ko" style="resizable:no">
 <head>
 <meta charset="UTF-8">
-<title>개인정보 수정</title>
-<link rel="stylesheet" href="../../../../resources/css/minihome/fonts.css" />
+<title>TEST</title>
 <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 </head>
 <body>
-	테스트
+	<h2>테스트 목적의 page 입니다</h2>
+	
+	<%-- Loop through bgmMap and display the data --%>
+<c:forEach items="${bgmMap}" var="bgm">
+    <p>Title: ${bgm.title}</p>
+    <p>Artist: ${bgm.artist}</p>
+    <p>Running Time: ${bgm.runningTime}</p>
+    <p>Content Path: ${bgm.contentPath}</p>
+    <!-- Add more fields as needed -->
+</c:forEach>
+	
+	
 </body>
 </html>
