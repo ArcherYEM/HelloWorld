@@ -154,4 +154,18 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return mapper.loginOffStatus(userNickname);
 	}
+	
+	@Override
+	public int insertUserStorageSkin(String userNickname) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		
+		return mapper.insertUserStorageSkin(userNickname);
+	}
+	
+	@Override
+	public int insertUserStorageMenu(String userNickname) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		
+		return mapper.insertUserStorageMenu(userNickname);
+	}
 }

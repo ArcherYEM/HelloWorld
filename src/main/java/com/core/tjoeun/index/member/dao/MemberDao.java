@@ -42,4 +42,8 @@ public interface MemberDao {
 
 	public int selectOnFriendCnt(String userNickname);
 	
+	public int insertUserStorageSkin(String userNickname);
+	
+	public int insertUserStorageMenu(String userNickname);
+	
 }
