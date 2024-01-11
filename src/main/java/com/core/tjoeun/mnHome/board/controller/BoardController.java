@@ -65,6 +65,10 @@ public class BoardController {
 		model.addAttribute("list",boardService.getBoardList(selectMap));
 		model.addAttribute("totalPage", boardService.getBoardPage(selectMap));
 		
+        //접속중인 유저의 친구 전부 가져오기
+        List<Map> friendMap = mainService.getMyFriends(userNickname);
+        model.addAttribute("friend", friendMap);
+		
 		return "miniHome/board";
 	}
 	
@@ -82,6 +86,10 @@ public class BoardController {
 		Map map = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", map.get("userName"));
 		model.addAttribute("title", map.get("title"));
+		
+        //접속중인 유저의 친구 전부 가져오기
+        List<Map> friendMap = mainService.getMyFriends(userNickname);
+        model.addAttribute("friend", friendMap);
 		
 		return "miniHome/boardWrite";
 	}
@@ -120,6 +128,10 @@ public class BoardController {
 		selectMap.put("userNickname", userNickname);
 		selectMap.put("seq", seq);
 		model.addAttribute("list",boardService.getBoardList(selectMap));
+		
+        //접속중인 유저의 친구 전부 가져오기
+        List<Map> friendMap = mainService.getMyFriends(userNickname);
+        model.addAttribute("friend", friendMap);
 		
 		return "miniHome/boardDetail";
 	}

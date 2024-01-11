@@ -36,9 +36,12 @@ public class StoreController {
 	@RequestMapping(value = "/store/skinView")
 	public String skin(HttpSession session, HttpServletRequest req, Model model) {
 		String userNickname = (String) session.getAttribute("userNickname");
-		int dotori = storeService.getMyDotori(userNickname);
-		
-		model.addAttribute("dotori", dotori);
+		if (userNickname != null ) {
+			int dotori = storeService.getMyDotori(userNickname);
+			model.addAttribute("dotori", dotori);
+		} else {
+			model.addAttribute("dotori", "");
+		}
 		
 		return "/store/skin";
 	}
@@ -46,20 +49,24 @@ public class StoreController {
 	@RequestMapping(value = "/store/menuView")
 	public String menu(HttpSession session, HttpServletRequest req, Model model) {
 		String userNickname = (String) session.getAttribute("userNickname");
-		int dotori = storeService.getMyDotori(userNickname);
-		
-		model.addAttribute("dotori", dotori);
-
+		if (userNickname != null ) {
+			int dotori = storeService.getMyDotori(userNickname);
+			model.addAttribute("dotori", dotori);
+		} else {
+			model.addAttribute("dotori", "");
+		}
 		return "/store/menu";
 	}
 
 	@RequestMapping(value = "/store/dotoriView")
 	public String dotori(HttpSession session, HttpServletRequest req, Model model) {
 		String userNickname = (String) session.getAttribute("userNickname");
-		int dotori = storeService.getMyDotori(userNickname);
-		
-		model.addAttribute("dotori", dotori);
-
+		if (userNickname != null ) {
+			int dotori = storeService.getMyDotori(userNickname);
+			model.addAttribute("dotori", dotori);
+		} else {
+			model.addAttribute("dotori", "");
+		}
 		return "/store/dotori";
 	}
 	
@@ -239,16 +246,20 @@ public class StoreController {
 	@RequestMapping(value = "/store/minimiView", method= {RequestMethod.GET, RequestMethod.POST})
 	public String selectStoreList(HttpSession session, HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int page) throws Exception {
 	    try {
-			String userNickname = (String) session.getAttribute("userNickname");
-			int dotori = storeService.getMyDotori(userNickname);
+	    	Map minimiMap = new HashMap();
+	    	minimiMap.put("page", String.valueOf(page));
+	    	minimiMap.put("category", "minimi");
+	    	List<Map> minimi = storeService.getStoreMinimiList(minimiMap);
+	    	model.addAttribute("minimi", minimi);
+	    	model.addAttribute("totalPage", storeService.selectStoreCnt(minimiMap));
 			
-	        Map minimiMap = new HashMap();
-	        minimiMap.put("page", String.valueOf(page));
-	        minimiMap.put("category", "minimi");
-	        List<Map> minimi = storeService.getStoreMinimiList(minimiMap);
-	        model.addAttribute("minimi", minimi);
-	        model.addAttribute("totalPage", storeService.selectStoreCnt(minimiMap));
-	        model.addAttribute("dotori", dotori);
+	    	String userNickname = (String) session.getAttribute("userNickname");
+			if (userNickname != null ) {
+				int dotori = storeService.getMyDotori(userNickname);
+				model.addAttribute("dotori", dotori);
+			} else {
+				model.addAttribute("dotori", "");
+			}
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
@@ -371,7 +382,7 @@ public class StoreController {
                     }
                 } else {
                     result.put("success", false);
-                    result.put("message", "장바구니에 중복된 상품이 있습니다.");
+                    result.put("message", "이미 보유하고 있는 상품이 있습니다.");
                 }
             } else {
                 result.put("success", false);

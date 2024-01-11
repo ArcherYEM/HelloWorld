@@ -23,10 +23,11 @@
 		         </a>
 		       </div>
 		       <div class="index-header-right">
+	            <h5 class="right" id="userDotori"><img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"><span id="userDotoriCnt">${dotori}</span>개</h5>
 	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
 	            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
-	            <a href="<c:url value='/mnHome/mainView' />" class="index-a-mnh">내 미니홈피</a>
-	            <a href="<c:url value="/index/member/logout" />" class="index-a-logout">로그아웃</a>
+	            <a id="storeLoginMyhome" href="<c:url value='/mnHome/mainView/${sessionScope.userId.userNickname }' />" class="index-a-mnh">내 미니홈피</a>
+	            <a id="storeLoginLogout" href="<c:url value="/index/member/logout" />" class="index-a-logout">로그아웃</a>
 	        </div>
 	      </div>
 		
@@ -74,9 +75,8 @@
 			<div class="btnNoticeGroup">
 				<form id="frm1" method="POST" action="/notice/noticeDelete">
 					<input type="button" class="btn-notice" id="btnDelete" value="삭제">
-				
-					<input type="button" class="btn-notice" id="btnWrite" value="등록">
 				</form>
+					<input type="button" class="btn-notice" id="btnWrite" value="등록">
 			</div>
 			
 			<!-- paging -->
@@ -105,6 +105,31 @@
 		
 		<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
 		<script>
+		
+			window.onload = function() {
+				
+		        let userDotoriElement = document.getElementById('userDotori');
+		        let storeLoginMyhome = document.getElementById('storeLoginMyhome');
+		        let storeLoginLogout = document.getElementById('storeLoginLogout');
+		        let btnDelete = document.getElementById('btnDelete');
+		        let btnWrite = document.getElementById('btnWrite');
+		        let userDotoriCnt = '<c:out value="${dotori}" />' || '';
+		
+		        if (userDotoriCnt.trim() !== '') {
+		            userDotoriElement.style.display = 'block';
+		            storeLoginMyhome.style.display = 'block';
+		            storeLoginLogout.style.display = 'block';
+		            btnDelete.style.display = 'block';
+		            btnWrite.style.display = 'block';
+		        } else {
+		            userDotoriElement.style.display = 'none';
+		            storeLoginMyhome.style.display = 'none';
+		            storeLoginLogout.style.display = 'none';
+		            btnDelete.style.display = 'none';
+		            btnWrite.style.display = 'none';
+		        }
+			}
+		
 			$(function(){
 				let result = '' + '${msg}';
 				if(result != ""){

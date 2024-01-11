@@ -3,6 +3,7 @@
 .btnNoticeGroup {
 	display: flex;
 	justify-content: flex-end;
+	flex-direction: row;
 }
 
 .btnNotice {

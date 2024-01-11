@@ -351,17 +351,6 @@
    <script>
      var bgColor = "${bgSkin}";
      document.body.style.backgroundColor = bgColor;
-   </script>
-   <script>
-	   function redirectToMainView() {
-	       var selectElement = document.getElementById("friendSelect");
-	       var selectedValue = selectElement.options[selectElement.selectedIndex].value;
-	       if (selectedValue) {
-	           var url = "/mnHome/mainView/" + selectedValue;
-	           window.location.href = url;
-	       }
-	   }
-   </script>
-   
+   </script>  
 </body>
 </html>

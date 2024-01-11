@@ -46,7 +46,7 @@
 								</div>
 							 </c:if>
 							<div class="content-title-url">
-								https://www.helloworld.com/minihome/leejubin</div>
+								https://www.helloworld.com/minihome/${userNickname }</div>
 						</div>
 					<div class="box content-box">
 						<div class=" album-submit">

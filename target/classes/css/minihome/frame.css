@@ -94,10 +94,12 @@ body a{
 }
 
 .profile-image-img {
-  width: 80%;
-  height :auto;
+  width:auto;
+  height:auto;
+  max-width: 100%; /* 가로 최대 너비를 100%로 설정하여 원본 비율 유지 */
+  max-height: 100%;
   display: block;
-  margin: 0 auto;
+  margin : 0 auto;  
 }
 
 .profile-text {

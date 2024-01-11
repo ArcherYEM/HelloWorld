@@ -50,6 +50,7 @@
             if (result) {
                 $.ajax({
                     type: 'POST',
+                    async: 'false',
                     url: '/store/buyCart',
                     success: function(msg) {
                         console.log(msg);
@@ -57,6 +58,7 @@
                             alert(msg.message);
                             updateDotoriCount();
                             
+                            clearCart();
                         } else {
                             alert(msg.message);
                             clearCart();
