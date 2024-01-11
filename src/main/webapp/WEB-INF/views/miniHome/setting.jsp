@@ -55,7 +55,7 @@
 								</div>
 							</div>
 							<div class="setting-devide-dot">---------------------------------</div>
-							<div class="font-kyobohand setting-profile-username">${sessionScope.userId.userName }&#128698;</div>
+							<div class="font-kyobohand setting-profile-username">${userName }&#128698;</div>
 							<div class="profile-dropDown">
 								<select id="friendSelect" onchange="redirectToMainView()">
 		                           <option value="" disabled selected hidden="">파도타기</option>
@@ -94,7 +94,8 @@
 										<a class="setting-myMinimi-change" onclick="MinimiChange()">대표미니미 변경</a>
 									</div>
 								</div>
-								
+								<input type="hidden" id="userNickname" value=${userNickname }>
+								<input type="hidden" id="userEmail" value=${sessionScope.userEmail }>
 								<div class="set-info-group">
 									<div class="set-info">
 										<div class="set-info-title">
@@ -105,39 +106,27 @@
 												<div class="set-info-name-left">
 													<span>&#128394;</span> 이름
 												</div>
-												<div class="set-info-name-right" id="set-UserName">
-													${sessionScope.userId.userName }
-												</div>
-												<div class="set-info-name-a">
-													<a 
-													  onclick="openNewWindowMyProfileEdit()">수정
-													</a>
+												<textarea class="textInfo" id="set-UserName" readonly>${userName}</textarea>
+												<div class="set-info-name-a" onclick="changeName()">
+													수정
 												</div>
 											</div>
 											<div class="set-info-Nickname">
 												<div class="set-info-Nickname-left">
 													<span>&#128364;</span>닉네임
 												</div>
-												<div class="set-info-Nickname-right" id="set-UserNickname">
-													${sessionScope.userId.userNickname }
-												</div>
-												<div class="set-info-Nickname-a">
-													<a 
-													  onclick="openNewWindowMyProfileEdit()">수정
-													</a>
+												<textarea class="textInfo" id="set-UserNickname" readonly>${userNickname }</textarea>
+												<div class="set-info-Nickname-a" onclick ="changeNickname()">
+													수정
 												</div>
 											</div>		
 											<div class="set-info-phone">
 												<div class="set-info-phone-left">
 													<span>&#128382;</span> 연락처
 												</div>
-												<div class="set-info-phone-right" id="set-UserPhone">
-													${sessionScope.userId.userPhone }
-												</div>
-												<div class="set-info-phone-a">
-													<a 
-													  onclick="openNewWindowMyProfileEdit()">수정
-													</a>
+												<textarea class="textInfo" id="set-UserPhone" readonly>${sessionScope.userId.userPhone }</textarea>
+												<div class="set-info-phone-a" onclick="changeNumber()">
+													수정
 												</div>
 											</div>
 											<div class="set-info-date">

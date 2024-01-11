@@ -52,7 +52,8 @@ function loadTabContent(tabName) {
                 htmlToAdd += '<script type="text/javascript" src="../../../../resources/js/visit.js"></script>';
            
             }else if(tabName === '/mnHome/settingView' || tabName.indexOf('/mnHome/settingView') != -1){
-                htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
+            	htmlToAdd += '<script type="text/javascript" src="../../../../resources/js/setting.js"></script>';
+            	htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
            
             }else if(tabName === '/mnHome/settingFriends' || tabName.indexOf('/mnHome/settingFriends') != -1){
                 htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';

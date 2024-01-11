@@ -375,6 +375,17 @@
 	width: 30%;
 }
 
+.textInfo{
+	width: 55%;
+	height:20px;
+	font-size: 12px;
+	resize: none;
+	overflow-y:hidden;
+	font-weight: bold;
+	border: none;
+	outline:none;
+}
+
 .set-info-name-right,
 .set-info-Nickname-right,
 .set-info-phone-right,
