@@ -33,4 +33,6 @@ public interface SettingDao {
 	public int changeNickname (Map map);
 	
 	public int changeNumber (Map map);
+	
+	public Map selectMyBgm(Map map);
 }

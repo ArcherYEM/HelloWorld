@@ -33,4 +33,6 @@ public interface SettingService {
 	public int changeNickname (Map map) throws Exception;
 	
 	public int changeNumber (Map map) throws Exception;
+	
+	public Map selectMyBgm(Map map);
 }
