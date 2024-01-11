@@ -8,6 +8,9 @@ function btnPage(page) {
         success: function(response) {
             // 전체 HTML 문서를 서버의 응답으로 교체
             document.documentElement.innerHTML = response;
+            
+            loadStyles(tabName);
+
         },
         error: function(error) {
             // 에러 처리
@@ -15,6 +18,15 @@ function btnPage(page) {
         }
     });
 }
+
+function loadStyles(tabName) {
+	  // 해당 탭에 필요한 CSS 파일을 동적으로 로드
+	  var link = document.createElement('link');
+	  link.rel = 'stylesheet';
+	  link.type = 'text/css';
+	  link.href = 'setting.css'; // 각 탭별로 다른 CSS 파일로 설정
+	  document.head.appendChild(link);
+	}
 
 function insertComment() {
     let userNickname = $("#userNickname").val();

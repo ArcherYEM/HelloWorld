@@ -27,4 +27,10 @@ public interface SettingDao {
 	public List<Map<String, Object>> selectSkinMenu(Map map);
 	
 	public List<Map<String, Object>> allocationOnSkinMenu(Map map);
+	
+	public int changeName (Map map);
+	
+	public int changeNickname (Map map);
+	
+	public int changeNumber (Map map);
 }

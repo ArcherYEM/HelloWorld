@@ -82,5 +82,23 @@ public class SettingDaoImpl implements SettingDao {
 		SettingMapper mapper = sqlSession.getMapper(SettingMapper.class);
 		return mapper.allocationOnSkinMenu(map);
 	}
+
+	@Override
+	public int changeName(Map map) {
+		SettingMapper mapper = sqlSession.getMapper(SettingMapper.class);
+		return mapper.changeName (map);
+	}
+	
+	@Override
+	public int changeNickname(Map map) {
+		SettingMapper mapper = sqlSession.getMapper(SettingMapper.class);
+		return mapper.changeNickname (map);
+	}
+
+	@Override
+	public int changeNumber(Map map) {
+		SettingMapper mapper = sqlSession.getMapper(SettingMapper.class);
+		return mapper.changeNumber (map);
+	}
     
 }

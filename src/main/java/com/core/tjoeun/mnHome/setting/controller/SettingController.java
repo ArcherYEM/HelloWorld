@@ -43,6 +43,7 @@ public class SettingController {
 		
 		Map map = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", map.get("userName"));
+		model.addAttribute("userNickname", userNickname);
 		model.addAttribute("title", map.get("title"));
 		
         //접속중인 유저의 친구 전부 가져오기
@@ -451,5 +452,50 @@ public class SettingController {
 		
 		return result;
 	}
+	@RequestMapping(value = "/mnHome/changeName", method = RequestMethod.POST)
+	@ResponseBody
+	public int changeName(@RequestBody Map<String, String> requestData) {
+		
+		int result = 0;
+		try {
+			result = settingService.changeName(requestData);
+		} catch (Exception e) {
+			System.out.println("에러가 발생했습니다");
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
+	@RequestMapping(value = "/mnHome/changeNickname", method = RequestMethod.POST)
+	@ResponseBody
+	public int changeNickname(@RequestBody Map<String, String> requestData) {
+		
+		int result = 0;
+		try {
+			result = settingService.changeNickname(requestData);
+		} catch (Exception e) {
+			String error = e.getMessage();
+			if(e.getMessage().contains("Duplicate")) {
+				result=3;
+			}
+		}
+		return result;
+	}
+
+	@RequestMapping(value = "/mnHome/changeNumber", method = RequestMethod.POST)
+	@ResponseBody
+	public int changeNumber(@RequestBody Map<String, String> requestData) {
+		System.out.println(requestData);
+		
+		int result = 0;
+		try {
+			result = settingService.changeNumber(requestData);
+		} catch (Exception e) {
+			String error = e.getMessage();
+			if(e.getMessage().contains("Duplicate")) {
+				result=3;
+			}
+		}
+		return result;
+	}
 }

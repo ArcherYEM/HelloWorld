@@ -48,6 +48,7 @@ public class MemberController {
                 session.setAttribute("userId", result);
                 session.setAttribute("userDotoriCnt", result.get("currentDotori"));
                 session.setAttribute("userNickname", result.get("userNickname"));                
+                session.setAttribute("userEmail", result.get("userEmail"));                
 
                 resultMap.put("resultCode", "1");
                 resultMap.put("userEmail", result.get("userEmail"));

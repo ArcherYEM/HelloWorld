@@ -121,4 +121,36 @@ public class SettingServiceImpl implements SettingService {
 		return settingDao.allocationOnSkinMenu(map);
 	}
     
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
+	public int changeName(Map map) throws Exception {
+		int result = settingDao.changeName(map);
+		
+		if(result != 1) {
+			throw new Exception();
+		}
+		return result;		
+	}
+	
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
+	public int changeNickname(Map map) throws Exception {
+		int result = settingDao.changeNickname(map);
+		
+		if(result != 1) {
+			throw new Exception();
+		}
+		return result;		
+	}
+	
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
+	public int changeNumber(Map map) throws Exception {
+		int result = settingDao.changeNumber(map);
+		
+		if(result != 1) {
+			throw new Exception();
+		}
+		return result;		
+	}
 }
