@@ -108,7 +108,7 @@
 										        <c:when test="${onSkin.productName == 'white'}">white</c:when>
 										        <c:when test="${onSkin.productName == 'green'}">green</c:when>
 										        <c:when test="${onSkin.productName == 'lime'}">lime</c:when>
-										        <c:when test="${onSkin.productName == 'gray'}">gray</c:when>
+										        <c:when test="${onSkin.productName == 'grey'}">gray</c:when>
 										        <c:otherwise>orange</c:otherwise>
 										    </c:choose>
 										</c:forEach>;">
@@ -143,7 +143,7 @@
 						                                <c:when test="${skinItem.productName == 'white'}">white</c:when>
 						                                <c:when test="${skinItem.productName == 'green'}">green</c:when>
 						                                <c:when test="${skinItem.productName == 'lime'}">lime</c:when>
-						                                <c:when test="${skinItem.productName == 'gray'}">gray</c:when>
+						                                <c:when test="${skinItem.productName == 'grey'}">gray</c:when>
 						                            </c:choose>;
 											       " >
 										   </div>
