@@ -193,7 +193,24 @@ public class MainController {
         	
 		return "miniHome/main";
 	}
-
+	
+	@RequestMapping(value="/mnHome/friendCmt", method = RequestMethod.POST)
+	@ResponseBody
+	public Map friendCMT(@RequestBody Map map) {
+		Map friendMap = new HashMap(); 
+		
+		try {
+			int result = mainService.insertFriendCmt(map);
+			if (result == 1) {
+				friendMap.put("resultCode", "1");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			friendMap.put("resultCode", "0");
+		}
+		return friendMap;
+	}
 	
 	@RequestMapping("/mnHome/mnhProfileEditView")
 	public String mnhProfileEdit() {

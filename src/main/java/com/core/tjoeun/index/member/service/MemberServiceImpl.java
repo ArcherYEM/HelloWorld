@@ -102,6 +102,9 @@ public class MemberServiceImpl implements MemberService{
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
     public void logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+    	
+    	memberDao.loginOffStatus((String) session.getAttribute("userNickname"));
+    	
     	session.invalidate();
         
         Cookie[] cookies = request.getCookies();
@@ -111,7 +114,6 @@ public class MemberServiceImpl implements MemberService{
                 response.addCookie(cookie);
             }
         }
-        memberDao.loginOffStatus((String) session.getAttribute("userNickname"));
         handleLogoutResponse(response);
     }
 

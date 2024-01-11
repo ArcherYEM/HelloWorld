@@ -86,21 +86,11 @@ public class MemberController {
         return resultMap;
     }
 
-    @RequestMapping("/logout")
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
-        session.invalidate();
 
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                cookie.setMaxAge(0);
-                response.addCookie(cookie);
-            }
-        }
+        memberService.logout(session, request, response);
         
-        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-        response.setHeader("Pragma", "no-cache");
-        response.setHeader("Expires", "0");
         return "redirect:/";
     }
 
