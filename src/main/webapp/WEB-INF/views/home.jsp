@@ -206,7 +206,8 @@
               document.getElementById('linkLogout').style.display = 'block';
               divHome.style.display = 'none';
               divLogin.style.display = 'block';
-              location.reload();
+              location.href="/";
+              //location.reload();
               console.log(json.friendCnt + json.userDotoriCnt);
            } else {
               alert('아이디와 비밀번호를 다시 확인해 주세요.');
