@@ -48,7 +48,6 @@ public class MemberServiceImpl implements MemberService{
 	   		 memberDao.insertUserStorage(userNickname);
 	   		 memberDao.insertLoginStatus(userNickname);
 	   		 memberDao.insertUserStorageSkin(userNickname);
-	   		 memberDao.insertLoginStatus(userNickname);
 	   		 memberDao.insertUserStorageMenu(userNickname);
      }
       if (result != 1) {

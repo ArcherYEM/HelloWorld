@@ -27,4 +27,10 @@ public interface SettingService {
 	public List<Map<String, Object>> selectSkinMenu(Map map);
 	
 	public List<Map<String, Object>> allocationOnSkinMenu(Map map);
+	
+	public int changeName (Map map) throws Exception;
+	
+	public int changeNickname (Map map) throws Exception;
+	
+	public int changeNumber (Map map) throws Exception;
 }
