@@ -24,24 +24,67 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       )   
    </insert>
    
+   <insert id="insertLoginLog" parameterType="String">
+   		insert into loginLog(
+   			userNickname
+   		) values (
+   			#{userNickname}
+   		)
+   </insert>
+   
+   <insert id="insertLoginStatus" parameterType="String">
+    INSERT INTO loginStatus (
+    	userNickname
+    ) VALUES (
+    	#{userNickname}
+    )
+	</insert>
+   
+    <update id="loginOnStatus" parameterType="String">
+    	update loginStatus set
+    	status = '1'
+    	where userNickname = #{userNickname}
+    </update>
+    
+    <update id="loginOffStatus" parameterType="String">
+    	update loginStatus set
+    	status = '0'
+    	where userNickname = #{userNickname}
+    </update>
+   
+    <select id="selectOnFriendCnt" parameterType="String" resultType="int">
+    	SELECT COUNT(*) as count
+		FROM user u
+			JOIN friends f ON u.userNickname = f.userNickname
+			JOIN loginStatus ls ON u.userNickname = ls.userNickname
+		WHERE u.userNickname = #{userNickname} 
+		AND ls.status = '1'
+    </select>
+   
     <insert id="insertUserDotori" parameterType="String">
 		insert into dotori (
 			userNickname
 		    ,currentDotori
 		) values (
 			#{userNickname}
-		    ,100)
+		    ,100
+		)
 	</insert>
 	
-	<insert id="insertUserDotoriC" parameterType="String">
+	<insert id="insertUserDotoriC" parameterType="map">
    		insert into dotoriC (
 			userNickname
     		,dotoriCharge
     		,dotoriChargeDate
+    		,dotoriChargeMethod
+    		,dotoriPrice
     	) values (
 			#{userNickname}
     		,100
-    		,current_timestamp)
+    		,current_timestamp
+    		,#{dotoriChargeMethod}
+    		,#{dotoriPrice}
+    	)
 	</insert>
 	
 	<insert id="insertMiniroomBackground" parameterType="String">
@@ -176,5 +219,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where 
           	userNickname = #{userNickname} 
    </select>
+   
+   <insert id="insertUserStorageSkin" parameterType="String">
+		insert into 
+		   userStorage (
+		      userNickname
+		      , category
+		      , productName
+		      , contentPath
+		      , buy_date
+		      , allocation
+		   ) values (
+		      #{userNickname}
+		      , 'skin'
+		      , 'rgb(42, 140, 168)'
+		      , '기본'
+		      , '2024-01-01'
+		      , '1'
+		   )
+	</insert>
+   
+    <insert id="insertUserStorageMenu" parameterType="String">
+		insert into 
+		   userStorage (
+		      userNickname
+		      , category
+		      , productName
+		      , contentPath
+		      , buy_date
+		      , allocation
+		   ) values (
+		      #{userNickname}
+		      , 'menu'
+		      , 'rgb(42, 140, 168)'
+		      , '기본'
+		      , '2024-01-01'
+		      , '1'
+		   )
+	</insert>
    
 </mapper>
