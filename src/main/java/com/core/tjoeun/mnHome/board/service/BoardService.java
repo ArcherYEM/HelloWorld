@@ -16,4 +16,8 @@ public interface BoardService {
 	public void deleteBoard(ArrayList<String> list);
 	
 	public int checkFriend(Map checkMap);
+	
+	public int insertBoardComment(Map requestData);
+	
+	public List<Map> getBoardComment(int boardSeq);
 }

@@ -77,6 +77,8 @@
 						<div class="board-detail-title">
 							${list.get(0).title}
 						</div>
+						<input type="hidden" value="${seq }" id="boardSeq">
+						<input type="hidden" value="${sessionScope.userNickname }" id="userNickname">
 					</div>
 					<div class="board-write-container">
 						<span class="board-writer">${list.get(0).userNickname}</span>
@@ -96,44 +98,25 @@
 						<span>
 							댓글
 						</span>
-						<input type="text" class="comment-content-write">
-						<input type="button" value="확인">
+						<input type="text" class="comment-content-write" id="inputComment">
+						<input type="button" value="확인" id="btnComment" onclick="btnComment()">
 					</div>
 					</c:if>
-					<div class="board-comment-container">
+					<div class="board-comment-container" id="board-comment-container">
+					<c:forEach items="${comment}" var="comment">
 						<div class="board-comment">
 							<span class="board-comment-writer">
-								이진우
+								${comment.userNickname }
 							</span>
 							<span class="board-comment-content">
-								성공하면 혁명 실패하면 반역 아닙니까
+								${comment.content }
 							</span>
 							<span class="board-comment-date">
-								(2023.12.24 13:25)
+								${comment.update_date_format }
 							</span>
 						</div>
-						<div class="board-comment">
-							<span class="board-comment-writer">
-								양은모
-							</span>
-							<span class="board-comment-content">
-								신나는 코딩
-							</span>
-							<span class="board-comment-date">
-								(2023.12.24 15:20)
-							</span>
-						</div>
-						<div class="board-comment">
-							<span class="board-comment-writer">
-								채승원
-							</span>
-							<span class="board-comment-content">
-								롤하고 싶다.
-							</span>
-							<span class="board-comment-date">
-								(2023.12.24 20:15)
-							</span>
-						</div>
+					</c:forEach>
+					
 					</div>
 					</div>
 				</div>

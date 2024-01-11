@@ -81,6 +81,7 @@ public class MemberController {
         } catch (Exception e) {
             // 예외 발생 시
             resultMap.put("resultCode", "-1");
+            e.printStackTrace();
         }
 
         return resultMap;

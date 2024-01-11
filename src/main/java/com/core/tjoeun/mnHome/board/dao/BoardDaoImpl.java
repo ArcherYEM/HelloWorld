@@ -52,4 +52,17 @@ public class BoardDaoImpl implements BoardDao{
 		return mapper.checkFriend(checkMap);
 	}
 
+	@Override
+	public int insertBoardComment(Map requestData) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		
+		return mapper.insertBoardComment(requestData);
+	}
+
+	@Override
+	public List<Map> getBoardComment(int boardSeq) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		
+		return mapper.getBoardComment(boardSeq);
+	}
 }
