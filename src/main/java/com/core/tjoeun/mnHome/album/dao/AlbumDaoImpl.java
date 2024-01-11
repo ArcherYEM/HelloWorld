@@ -1,5 +1,7 @@
 package com.core.tjoeun.mnHome.album.dao;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -18,6 +20,12 @@ public class AlbumDaoImpl implements AlbumDao{
 	public int insertAlbum(Map map) {
 		AlbumMapper albumMapper = sqlsession.getMapper(AlbumMapper.class);
 		return albumMapper.insertAlbum(map);
+	}
+	
+	@Override
+	public List<HashMap> selectAlbum(Map map) {
+		AlbumMapper albumMapper = sqlsession.getMapper(AlbumMapper.class);
+		return albumMapper.selectAlbum(map);
 	}
 
 }
