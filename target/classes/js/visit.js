@@ -1,5 +1,5 @@
 function btnPage(page) {
-    var targetNickname = $('#targetNickname').val();
+    var targetNickname = $('#targewortNickname').val();
     var url = "/mnHome/visitView/" + targetNickname + "?page=" + page;
 
     $.ajax({

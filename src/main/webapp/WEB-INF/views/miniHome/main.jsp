@@ -221,8 +221,8 @@
                      <div class="main-cmt">
                         <div class="main-cmt-write">
                            일촌평
-                           <input type="text" class="main-cmt-input">
-                           <button type="submit" value="확인">확인</button>
+                           <input type="text" id="friendCmt" class="main-cmt-input">
+                           <button type="button" id="btnFriendCmt" value="확인">확인</button>
                         </div>
                         <div class="main-cmt-content">
                            <ul>
@@ -242,6 +242,12 @@
                                  <span class="main-cmt-info"> <a href="#">(금민재)</a> 2023.11.05</span>
                               </li>
                            </ul>
+                        </div>
+                        <div>
+                        	<form id="frmFriendCmt" action="<c:url value="mnHome/mainView" />">
+                        		<input type="hidden" id="frdTargetNickname" value="${userNickname }">
+                        		<input type = "hidden" id="userNickname" value="${sessionScope.userId.userNickname}" >
+                        	</form>
                         </div>
                      </div>
                   </div>
@@ -511,6 +517,28 @@
    <script src="../../../../resources/js/default.js"></script>
    <script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
    <script>
+   	  document.getElementById('btnFriendCmt').addEventListener('click', function() {
+   		
+   		  let userNickname = $("#userNickname").val();
+   		  let friendNickname = $('#frdTargetNickname').val();
+   		  let content = $('#friendCmt').val();
+   		  
+   		  let jsonData = {
+   	           "userNickname": userNickname
+   	           ,"friendNickname": friendNickname
+   	           ,"content": content
+   	        };
+   		  
+	   		$.ajax({
+	            method: 'POST',
+	            url: "<c:url value='/mnHome/friendCmt' />",
+	            contentType: 'application/json',
+	            data: JSON.stringify(jsonData)
+	         }).done(function (json) {
+	         	console.log(json.resultCode);
+	   	  		})
+   	  })
+   	  
       // 미니홈피 프로필 수정창
       function openNewWindowMinihomeProfileEdit() {
        var windowSettings = 'width=460, height=570, scrollbars=no, resizable=no, toolbars=no, menubar=no, left=100, top=50';
