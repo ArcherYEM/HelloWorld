@@ -15,6 +15,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.binary.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,7 +111,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/mnHome/boardDetail/{userNickname}/{seq}")
-	public String boardDetail(@PathVariable String userNickname, @PathVariable String seq, Model model) {
+	public String boardDetail(@PathVariable String userNickname, @PathVariable String seq, Model model, HttpSession session, HttpServletRequest req) {
 		
 		Map profile = mainService.getProfile(userNickname);
 		String image = (String) profile.get("image");
@@ -132,6 +133,23 @@ public class BoardController {
         //접속중인 유저의 친구 전부 가져오기
         List<Map> friendMap = mainService.getMyFriends(userNickname);
         model.addAttribute("friend", friendMap);
+        
+        //현재 접속중인 유저가 방문한 페이지의 주인과 친구인지 체크
+        Map userMap = new HashMap();
+        session = req.getSession();
+		userMap = (Map) session.getAttribute("userId");
+		String Nickname = (String) userMap.get("userNickname");
+        
+		int friend;
+        Map checkMap = new HashMap();
+        checkMap.put("userNickname",Nickname );
+        checkMap.put("friendNickname", userNickname); 
+        friend = boardService.checkFriend(checkMap);
+        if(Nickname.equals(userNickname)) {
+        	friend=1;
+        }
+        model.addAttribute("check",friend);
+        
 		
 		return "miniHome/boardDetail";
 	}
@@ -236,6 +254,5 @@ public class BoardController {
 			e.printStackTrace();
 		}
 	}
-
+	
 }
-;
