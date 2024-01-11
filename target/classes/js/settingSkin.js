@@ -11,13 +11,13 @@ function logClick() {
 
     // 모든 스킨 아이템의 스타일 변경
     for (var i = 0; i < skinItems.length; i++) {
-        skinItems[i].style.border = '5px solid black';
+        skinItems[i].style.border = '2px solid black';
         skinItems[i].style.borderRadius = '5px';
     }
 
     // 클릭된 요소의 스타일 변경
     var clickedItem = event.currentTarget;
-    clickedItem.style.border = '5px solid orange';
+    clickedItem.style.border = '2px solid orange';
     clickedItem.style.borderRadius = '5px';
     
  // 클릭된 요소에서 데이터 추출

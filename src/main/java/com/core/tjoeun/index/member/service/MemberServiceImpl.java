@@ -46,7 +46,6 @@ public class MemberServiceImpl implements MemberService{
 	   		 memberDao.insertMinihomeTitle(userNickname);
 	   		 memberDao.insertUserProfile(userNickname);
 	   		 memberDao.insertUserStorage(userNickname);
-	   		 
 	   		 memberDao.insertLoginStatus(userNickname);
      }
       if (result != 1) {
