@@ -50,12 +50,11 @@
 						<div class="profile-dot">---------------------------------</div>
 						<div class="profile-username font-kyobohand"> ${userName }&#128698;</div>
 						<div class="profile-dropDown">
-							<select>
-								<option value="" disabled selected hidden="">파도타기</option>
-								<option value="temp1">이정은(jungeun@gmail.com)</option>
-								<option value="temp2">이진우(junwoo@naver.com)</option>
-								<option value="temp3">채승원(seungwon@daum.net)</option>
-								<option value="temp4">양은모(eunmo@nate.com)</option>
+							<select id="friendSelect" onchange="redirectToMainView()">
+	                           <option value="" disabled selected hidden="">파도타기</option>
+							    <c:forEach var="friend" items="${friend}" varStatus="status">
+							        <option value="${friend.Name}">${friend.Name}(${friend.userEmail})</option>
+							    </c:forEach>
 							</select>
 						</div>
 					</div>
@@ -72,7 +71,7 @@
 								</div>
 							 </c:if>
 							<div class="content-title-url">
-								https://www.helloworld.com/minihome/leejubin</div>
+								https://www.helloworld.com/minihome/${userNickname }</div>
 					</div>
 					<div class="box content-box">
 					
@@ -121,7 +120,7 @@
 					
 					<div class="page-container">
 						<c:forEach var="page" begin="1" end="${totalPage}">
-							<span class="spanPage" data-page="${page}" onclick="btnPage(${page})">[${page}]</span>
+							<span class="spanPage" data-page="${page}" onclick="btnPage(${page})" style = "cursor:pointer">[${page}]</span>
 						</c:forEach>
 					</div>
 					

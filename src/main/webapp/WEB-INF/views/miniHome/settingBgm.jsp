@@ -57,12 +57,11 @@
 								<div class="setting-devide-dot">---------------------------------</div>
 								<div class="font-kyobohand setting-profile-username">${sessionScope.userId.userName }&#128698;</div>
 								<div class="profile-dropDown">
-									<select>
-										<option value="" disabled selected hidden="">파도타기</option>
-										<option value="temp1">이정은(jungeun@gmail.com)</option>
-										<option value="temp2">이진우(junwoo@naver.com)</option>
-										<option value="temp3">채승원(seungwon@daum.net)</option>
-										<option value="temp4">양은모(eunmo@nate.com)</option>
+									<select id="friendSelect" onchange="redirectToMainView()">
+			                           <option value="" disabled selected hidden="">파도타기</option>
+									    <c:forEach var="friend" items="${friend}" varStatus="status">
+									        <option value="${friend.Name}">${friend.Name}(${friend.userEmail})</option>
+									    </c:forEach>
 									</select>
 								</div>
 							</div>
@@ -79,7 +78,7 @@
 									</div>
 							</c:if>
 							<div class="content-title-url">
-								https://www.helloworld.com/minihome/leejubin
+								https://www.helloworld.com/minihome/${userNickname }
 							</div>
 						</div>
 						<div class="box content-box">

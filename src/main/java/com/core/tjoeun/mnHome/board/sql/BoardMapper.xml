@@ -18,27 +18,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </insert>
 
 <select id="selectBoardList" parameterType="map" resultType="map">
-	SELECT 
-		  seq
-		, userNickname
-		, title
-		, content
-		, imagePath
-		, hits
-		, create_date
-		, update_date
-		, del_yn
-		, openScope
-	From board
-	where del_yn = 'N'
-	and openScope = 1
-	and userNickname = #{userNickname}
-	<if test="seq != null">
-	and	seq = #{seq}
-	</if>
-	order by seq desc
-	limit #{limit}
-	offset #{offset}
+SELECT 
+    seq
+  , userNickname
+  , title
+  , content
+  , imagePath
+  , hits
+  , create_date
+  , update_date
+  , del_yn
+  , openScope
+  <![CDATA[ 
+  , CASE WHEN TIMESTAMPDIFF(HOUR, update_date, NOW()) <= 24 THEN 1 ELSE 0 END AS newcontent
+  ]]>
+FROM board
+WHERE del_yn = 'N'
+  AND openScope = 1
+  AND userNickname = #{userNickname}
+  <if test="seq != null">
+  AND seq = #{seq}
+  </if>
+ORDER BY seq DESC
+LIMIT #{limit}
+OFFSET #{offset}
+
 </select>
 
 <select id="getBoardPage" parameterType="map" resultType="map">

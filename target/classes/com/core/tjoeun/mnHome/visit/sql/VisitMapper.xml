@@ -43,6 +43,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    user u ON us.userNickname = u.userNickname
 	WHERE 
 	    v.targetNickname = #{targetNickname}
+	    AND category = "minimi"
 	    AND us.allocation = 1
 	ORDER BY
 		v.update_date DESC
