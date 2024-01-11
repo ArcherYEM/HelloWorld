@@ -170,13 +170,16 @@ body a{
 }
 
 .content-title-name {
-  flex: 1;
+  flex: 60%;
+  font-size: 16px;
+  margin-left: 10px;
 }
 
 .content-title-url {
-  flex: 1;
+  flex: 40%;
   font-size: 0.5rem;
   text-align: end;
+  margin-right: 10px;
 }
 
 .content-box {
