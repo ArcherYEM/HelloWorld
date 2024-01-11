@@ -65,6 +65,10 @@ public class VisitController {
 		model.addAttribute("visit",resultList);
 		model.addAttribute("totalPage",totalPage);
 		
+        //접속중인 유저의 친구 전부 가져오기
+        List<Map> friendMap = mainService.getMyFriends(userNickname);
+        model.addAttribute("friend", friendMap);
+		
 		return "miniHome/visit";
 	}
 	

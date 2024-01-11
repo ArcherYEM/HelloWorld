@@ -44,6 +44,10 @@ public class SettingController {
 		Map map = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", map.get("userName"));
 		model.addAttribute("title", map.get("title"));
+		
+        //접속중인 유저의 친구 전부 가져오기
+        List<Map> friendMap = mainService.getMyFriends(userNickname);
+        model.addAttribute("friend", friendMap);
 
 		return "miniHome/setting";
 	}
@@ -55,6 +59,10 @@ public class SettingController {
 		model.addAttribute("userName", map.get("userName"));
 		model.addAttribute("title", map.get("title"));
 		
+        //접속중인 유저의 친구 전부 가져오기
+        List<Map> friendMap = mainService.getMyFriends(userNickname);
+        model.addAttribute("friend", friendMap);
+		
 		return "miniHome/settingInfoEdit";
 	}
 
@@ -65,6 +73,10 @@ public class SettingController {
 		model.addAttribute("userName", map.get("userName"));
 		model.addAttribute("title", map.get("title"));
 
+        //접속중인 유저의 친구 전부 가져오기
+        List<Map> friendMap = mainService.getMyFriends(userNickname);
+        model.addAttribute("friend", friendMap);
+		
 		return "miniHome/settingBgm";
 	}
 
@@ -76,6 +88,10 @@ public class SettingController {
 		model.addAttribute("userName", map.get("userName"));
 		model.addAttribute("title", map.get("title"));
 
+        //접속중인 유저의 친구 전부 가져오기
+        List<Map> friendMap = mainService.getMyFriends(userNickname);
+        model.addAttribute("friend", friendMap);
+		
 		return "miniHome/settingMenu";
 	}
 
@@ -90,6 +106,10 @@ public class SettingController {
 		putMap.put("userNickname", userMap.get("userNickname"));
 		putMap.put("category", "skin");
 		System.out.println("putMap : " + putMap);
+		
+        //접속중인 유저의 친구 전부 가져오기
+        List<Map> friendMap = mainService.getMyFriends(userNickname);
+        model.addAttribute("friend", friendMap);
 		
 		try {
 		    List<Map<String, Object>> onSkin = settingService.allocationOnSkinMenu(putMap);
@@ -185,6 +205,10 @@ public class SettingController {
 	    model.addAttribute("userName", userInfoMap.get("userName"));
 	    model.addAttribute("title", userInfoMap.get("title"));
 	    model.addAttribute("dotoriUse", dotoriMap);
+	    
+        //접속중인 유저의 친구 전부 가져오기
+        List<Map> friendMap = mainService.getMyFriends(userNickname);
+        model.addAttribute("friend", friendMap);
 
 	    return "miniHome/settingDotoriUse";
 	}
@@ -197,6 +221,10 @@ public class SettingController {
 		model.addAttribute("userName", map.get("userName"));
 		model.addAttribute("title", map.get("title"));
 		model.addAttribute("dotoriCharge", dotoriMap);		
+		
+        //접속중인 유저의 친구 전부 가져오기
+        List<Map> friendMap = mainService.getMyFriends(userNickname);
+        model.addAttribute("friend", friendMap);
 
 		return "miniHome/settingDotoriCharge";
 	}
@@ -211,6 +239,10 @@ public class SettingController {
 		
 		Map nameMap = new HashMap();
 		nameMap.put("userNickname", userNickname);
+		
+        //접속중인 유저의 친구 전부 가져오기
+        List<Map> friendMap = mainService.getMyFriends(userNickname);
+        model.addAttribute("friend", friendMap);
 		
 		String name = null;
 		if(friendName.isPresent()) {

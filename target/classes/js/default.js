@@ -218,3 +218,12 @@ document.addEventListener('DOMContentLoaded', function() {
         loadTrack(++currentTrack);
     });
 });
+//파도타기
+function redirectToMainView() {
+    var selectElement = document.getElementById("friendSelect");
+    var selectedValue = selectElement.options[selectElement.selectedIndex].value;
+    if (selectedValue) {
+        var url = "/mnHome/mainView/" + selectedValue;
+        window.location.href = url;
+    }
+}
