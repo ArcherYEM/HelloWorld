@@ -39,6 +39,7 @@ public class MemberController {
             loginInfo.put("userEmail", req.get("userEmail"));
             loginInfo.put("userPassword", req.get("userPassword"));
 
+
             Map result = memberService.login(loginInfo);
             String userNickname = "";
 
