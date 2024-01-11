@@ -71,7 +71,7 @@
 						<span id="userNickname"><c:out value='${sessionScope.userId.userNickname}'/></span>
 					</div>
 					<div class="login-top-right">
-						<span class="login-top-right-imz">&#127752;</span>일촌 ON <span class="login-top-right-bfCnt">10</span>
+						<span class="login-top-right-imz">&#127752;</span>일촌 ON <span id="spanOnfriendCnt" class="login-top-right-bfCnt">${sessionScope.friendCnt }</span>
 					</div>
 				</div>
 				<div class="login-profile-frame">
@@ -195,16 +195,19 @@
            let helloMessage = document.getElementById('helloMessage');
            let userDotori = document.getElementById('userDotori');
            let userMinimiElement = document.getElementById('mainMinimi');
+           let spanOnfriendCnt = document.getElementById('spanOnfriendCnt');
 
            if (json.resultCode === '1') {
               helloMessage.innerText = json.userNickname + '  님 환영합니다.';
               userDotori.innerText = '내 도토리 : ' + json.userDotoriCnt + ' 개';
               userMinimiElement.src = "<c:url value='" + json.contentPath + "'/>";
+              spanOnfriendCnt.innerText = json.friendCnt;
               document.getElementById('linkMnh').style.display = 'block';
               document.getElementById('linkLogout').style.display = 'block';
               divHome.style.display = 'none';
               divLogin.style.display = 'block';
               location.reload();
+              console.log(json.friendCnt + json.userDotoriCnt);
            } else {
               alert('아이디와 비밀번호를 다시 확인해 주세요.');
               helloMessage.innerText = '안녕하세요. HelloWorld에 오신 걸 환영합니다.';

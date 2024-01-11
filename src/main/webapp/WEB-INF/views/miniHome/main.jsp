@@ -19,27 +19,26 @@
 <body>
 
 <!-- 적용시킬예정    -->
-   <div class="skin-item-color" id="skin-item-color-select" 
-		data-user-nickname="${skinItem.userNickname}"
-		data-category="${bgSkin.category}"
-		data-product-name="${bgSkin.productName}"
-		style="
+  <div id="test"></div>
+   <div class="main-frame-skin" id="skin-item-color-select" 
+		style="width: 100%; height: 100%;
 	       background-color: 
 			<c:choose>
-               <c:when test="${bgSkin.productName == 'red'}">red</c:when>
-               <c:when test="${bgSkin.productName == 'yellow'}">yellow</c:when>
-               <c:when test="${bgSkin.productName == 'black'}">black</c:when>
-               <c:when test="${bgSkin.productName == 'blue'}">blue</c:when>
-               <c:when test="${bgSkin.productName == 'purple'}">purple</c:when>
-               <c:when test="${bgSkin.productName == 'white'}">white</c:when>
-               <c:when test="${bgSkin.productName == 'green'}">green</c:when>
-               <c:when test="${bgSkin.productName == 'lime'}">lime</c:when>
-               <c:when test="${bgSkin.productName == 'gray'}">gray</c:when>
-           </c:choose>;
+               <c:when test="${bgProductName == 'red'}">red</c:when>
+               <c:when test="${bgProductName == 'yellow'}">yellow</c:when>
+               <c:when test="${bgProductName == 'black'}">black</c:when>
+               <c:when test="${bgProductName == 'blue'}">blue</c:when>
+               <c:when test="${bgProductName == 'purple'}">purple</c:when>
+               <c:when test="${bgProductName == 'white'}">white</c:when>
+               <c:when test="${bgProductName == 'green'}">green</c:when>
+               <c:when test="${bgProductName == 'lime'}">lime</c:when>
+               <c:when test="${bgProductName == 'grey'}">gray</c:when>
+               <c:when test="${bgProductName == 'navy'}">navy</c:when>
+               <c:when test="${bgProductName == 'rgb(42, 140, 168)'}">rgb(42, 140, 168)</c:when>
+           </c:choose>
+           ;
 	       " >
-	       </div>
    
-   <div id="test"></div>
    <div class="main-frame">
       <div class="bookcover">
          <div class="bookdot">
@@ -314,6 +313,8 @@
       </div>
    </div>
    <div id="testUnder"></div>
+   
+   </div> <!-- backgourn div -->
    <script src="../../../../resources/js/default.js"></script>
    <script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
    <script>

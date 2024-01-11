@@ -31,12 +31,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="userNickname != null">
 			AND userNickname = #{userNickname}
 		</if>
-		<if test="category != null">
-	        <choose>
-	            <when test="category == 'skin' or category == 'menu'">
-	                AND (category = 'skin' OR category = 'menu')
-	            </when>
-	        </choose>
+<!-- 		<if test="category != null"> -->
+<!-- 	        <choose> -->
+<!-- 	            <when test="category == 'skin' or category == 'menu'"> -->
+<!-- 	                AND (category = 'skin' OR category = 'menu') -->
+<!-- 	            </when> -->
+<!-- 	        </choose> -->
+<!-- 	    </if> -->
+	    <if test="category == 'skin'">
+	    	AND category = 'skin'
+	    </if>
+	    <if test="category == 'menu'">
+	    	AND category = 'menu'
 	    </if>
 	</select>
 	
@@ -57,12 +63,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			AND
 				productName = #{productName}
 		</if>
-		<if test="category != null">
-	        <choose>
-	            <when test="category == 'skin' or category == 'menu'">
-	                AND (category = 'skin' OR category = 'menu')
-	            </when>
-	        </choose>
+<!-- 		<if test="category != null"> -->
+<!-- 	        <choose> -->
+<!-- 	            <when test="category == 'skin' or category == 'menu'"> -->
+<!-- 	                AND (category = 'skin' OR category = 'menu') -->
+<!-- 	            </when> -->
+<!-- 	        </choose> -->
+<!-- 	    </if> -->
+	    <if test="category == 'skin'">
+	    	AND category = 'skin'
+	    </if>
+	    <if test="category == 'menu'">
+	    	AND category = 'menu'
 	    </if>
     	AND
     		allocation = 1;

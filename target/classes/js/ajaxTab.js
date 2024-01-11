@@ -66,6 +66,7 @@ function loadTabContent(tabName) {
             }else if(tabName === '/mnHome/settingMenu'|| tabName.indexOf('/mnHome/settingMenu') != -1){
               htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';
               htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/settingMenu.css" />';
+              htmlToAdd += '<script type="text/javascript" src="../../../../resources/js/settingMenu.js"></script>';
          
            }else if(tabName === '/mnHome/settingSkin'|| tabName.indexOf('/mnHome/settingSkin') != -1){
               htmlToAdd += '<link href="/resources/css/minihome/setting.css" rel="stylesheet">';

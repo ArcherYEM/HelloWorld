@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/setting.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/settingMenu.css" />
+<script type="text/javascript" src="../../../../resources/js/settingMenu.js"></script>
 <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 </head>
 <body>
@@ -90,7 +91,29 @@
 								<div class="set-menu-selected-span">
 									<span>적용중인 메뉴</span>
 								</div>
-								<div class="set-menu-selected-skin">
+								<div class="set-menu-selected-menu" id="menu-item-color-select"
+									style="
+								     		width: 200px;
+								            height: 30px;
+								            margin-bottom: 10px;
+								            margin-right: 5px;
+								            border: 2px solid black;
+								            border-radius: 5px;
+								            background-color:
+										<c:forEach var="onMenu" items="${onMenu}">
+  												 <c:choose>
+										        <c:when test="${onMenu.productName == 'red'}">red</c:when>
+										        <c:when test="${onMenu.productName == 'yellow'}">yellow</c:when>
+										        <c:when test="${onMenu.productName == 'black'}">black</c:when>
+										        <c:when test="${onMenu.productName == 'blue'}">blue</c:when>
+										        <c:when test="${onMenu.productName == 'purple'}">purple</c:when>
+										        <c:when test="${onMenu.productName == 'white'}">white</c:when>
+										        <c:when test="${onMenu.productName == 'green'}">green</c:when>
+										        <c:when test="${onMenu.productName == 'lime'}">lime</c:when>
+										        <c:when test="${onMenu.productName == 'navy'}">navy</c:when>
+										        <c:when test="${onMenu.productName == 'rgb(42, 140, 168)'}">rgb(42, 140, 168)</c:when>
+										    </c:choose>
+										</c:forEach>;">
 								</div>
 							</div>
 							
@@ -98,19 +121,49 @@
 								<div class="set-menu-p">
 									<p>보유중인 메뉴</p>
 								</div>
-								<div class="set-menu-list">
-									<div class="temp1"></div>
-									<div class="temp2"></div>
-									<div class="temp3"></div>
-									<div class="temp4"></div>
-									<div class="temp5"></div>
-									<div class="temp6"></div>
-								</div>
+									<div class="set-menu-list">
+											<c:forEach var="menuItem" items="${menuMap}">
+												<div class="menu-item-group" id="menu-item-group-select">
+													<div class="menu-item-color" id="menu-item-color-select" 
+													data-user-nickname="${menuItem.userNickname}"
+													data-category="${menuItem.category}"
+													data-product-name="${menuItem.productName}"
+													onclick="logClick()" 
+													style="
+												       width: 200px;
+												       height: 30px;
+												       margin-bottom: 10px;
+												       margin-left: 20px;
+												       border: 2px solid black;
+		    										   border-radius: 5px;	
+												       background-color: 
+														<c:choose>
+							                                <c:when test="${menuItem.productName == 'red'}">red</c:when>
+							                                <c:when test="${menuItem.productName == 'yellow'}">yellow</c:when>
+							                                <c:when test="${menuItem.productName == 'black'}">black</c:when>
+							                                <c:when test="${menuItem.productName == 'blue'}">blue</c:when>
+							                                <c:when test="${menuItem.productName == 'purple'}">purple</c:when>
+							                                <c:when test="${menuItem.productName == 'white'}">white</c:when>
+							                                <c:when test="${menuItem.productName == 'green'}">green</c:when>
+							                                <c:when test="${menuItem.productName == 'lime'}">lime</c:when>
+							                                <c:when test="${menuItem.productName == 'grey'}">gray</c:when>
+							                                <c:when test="${menuItem.productName == 'navy'}">navy</c:when>
+							                                <c:when test="${menuItem.productName == 'rgb(42, 140, 168)'}">rgb(42, 140, 168)</c:when>
+							                            </c:choose>;
+												       " >
+											   </div>
+											   <div class="menu-item-name">${menuItem.productName}</div>
+										   </div>
+										</c:forEach>
+									</div>
 							</div>
 							
-							<form action="">
+							<form action="/mnHome/settingMenu/menuChoice" >
 								<div class="set-menu-btn">
-									<input type="button" class="set-menu-select" value="적용" />
+									<input type="hidden" name="selectedProductName" id="selectedProductName" class="set-menu-select" />
+									<input type="hidden" name="selectedCategory" id="selectedCategory" class="set-menu-select"/>
+									<input type="hidden" name="nickname" id="nickname" class="set-menu-select"/>
+									<input type="submit" class="set-menu-select apply-button" value="적용" />
 								</div>
 							</form>
 							

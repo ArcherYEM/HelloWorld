@@ -7,12 +7,12 @@ function logClick() {
     console.log('클릭');
 
     // 모든 스킨 아이템을 가져옴
-    var skinItems = document.querySelectorAll('.skin-item-color');
+    var menuItems = document.querySelectorAll('.menu-item-color');
 
     // 모든 스킨 아이템의 스타일 변경
-    for (var i = 0; i < skinItems.length; i++) {
-        skinItems[i].style.border = '2px solid black';
-        skinItems[i].style.borderRadius = '5px';
+    for (var i = 0; i < menuItems.length; i++) {
+        menuItems[i].style.border = '2px solid black';
+        menuItems[i].style.borderRadius = '5px';
     }
 
     // 클릭된 요소의 스타일 변경
@@ -52,14 +52,14 @@ $(document).one("click", ".apply-button", function (event) {
     // Ajax 요청 보내기
     $.ajax({
         method: 'POST',
-        url: '/mnHome/skinChoice',
+        url: '/mnHome/menuChoice',
         contentType: 'application/json',
         data: JSON.stringify(jsonData),
     }).done(function(json) {
         if(json.resultCode === '1' ){
             alert("선택하신 스킨을 적용하였습니다.");
             console.log(json);
-            document.getElementById("spanSettingSkin").click();
+            document.getElementById("spanSettingMenu").click();
         } else if(json.resultCode === "0"){
             alert("스킨 적용에 실패했습니다. 다시 시도해주세요.");
         }

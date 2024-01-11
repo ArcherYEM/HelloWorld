@@ -16,7 +16,7 @@ public interface MemberDao {
 	
 	public int insertUserDotori(String userNickname);
 	
-	public int insertUserDotoriC(String userNickname);
+	public int insertUserDotoriC(Map map);
 	
 	public int insertMiniroomBackground(String userNickname);
 	
@@ -31,4 +31,19 @@ public interface MemberDao {
 	public String selectUserName(String userNickname);
 	
 	public int selectRequest(String userNickname);
+	
+	public int insertLoginStatus(String userNickname);
+	
+	public int loginOnStatus(String userNickname);
+	
+	public int loginOffStatus(String userNickname);
+	
+	public int insertLoginLog(String userNickname);
+
+	public int selectOnFriendCnt(String userNickname);
+	
+	public int insertUserStorageSkin(String userNickname);
+	
+	public int insertUserStorageMenu(String userNickname);
+	
 }
