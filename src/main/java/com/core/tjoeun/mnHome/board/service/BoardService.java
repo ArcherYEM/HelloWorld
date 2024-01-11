@@ -14,4 +14,6 @@ public interface BoardService {
 	public Long getBoardPage(Map map);
 	
 	public void deleteBoard(ArrayList<String> list);
+	
+	public int checkFriend(Map checkMap);
 }

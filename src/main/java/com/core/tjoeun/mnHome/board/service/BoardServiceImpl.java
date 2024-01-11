@@ -72,6 +72,10 @@ public class BoardServiceImpl implements BoardService{
 		
 	}
 	
-	
+	@Override
+	@Transactional(readOnly = true)
+	public int checkFriend(Map checkMap) {
+		return boardDao.checkFriend(checkMap);
+	}
 
 }

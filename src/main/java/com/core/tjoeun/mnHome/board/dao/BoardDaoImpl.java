@@ -44,5 +44,12 @@ public class BoardDaoImpl implements BoardDao{
 		
 		return mapper.deleteBoard(list);
 	}
+	
+	@Override
+	public int checkFriend(Map checkMap) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		
+		return mapper.checkFriend(checkMap);
+	}
 
 }

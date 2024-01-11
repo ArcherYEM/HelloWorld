@@ -65,5 +65,21 @@ OFFSET #{offset}
 	</foreach>
 </update>
 
+<select id="checkFriend" parameterType="map" resultType="int">
+SELECT 
+    CASE
+        WHEN #{friendNickname} IN (
+            SELECT 
+                CASE
+                    WHEN userNickname = #{userNickname} THEN friendNickname
+                    ELSE userNickname
+                END
+            FROM friends
+            WHERE (userNickname = #{userNickname} OR friendNickname = #{userNickname})
+              AND fStatus = 1
+        ) THEN 1
+        ELSE 0
+    END AS Result;
+</select>
 
 </mapper>

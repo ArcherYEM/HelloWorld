@@ -91,6 +91,7 @@
 							<button id="btnBoardUpdate">수정</button>
 						</c:if> --%>
 					</div>
+					<c:if test="${check == 1 }">
 					<div class="board-comment-write">
 						<span>
 							댓글
@@ -98,6 +99,7 @@
 						<input type="text" class="comment-content-write">
 						<input type="button" value="확인">
 					</div>
+					</c:if>
 					<div class="board-comment-container">
 						<div class="board-comment">
 							<span class="board-comment-writer">
