@@ -164,7 +164,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <select id="selectUserMinimi" parameterType="String" resultType="String">
 		select contentPath from userStorage
 		where userNickname = #{userNickname}
-		And allocation = 1;   
+		and allocation = 1   
+		and category = 'minimi'
    </select>
    
    <select id="selectUserName" parameterType="String" resultType="String">

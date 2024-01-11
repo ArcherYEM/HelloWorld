@@ -55,10 +55,11 @@ public class MemberController {
                 resultMap.put("userNickname", result.get("userNickname"));
                 resultMap.put("userDotoriCnt", result.get("currentDotori"));
                 
-                userNickname = (String
-                ) result.get("userNickname");
+                userNickname = (String) result.get("userNickname");
                 String userMinimi = memberService.selectUserMinimi(userNickname);
+                System.out.println("userMinimi1 : " + userMinimi);
                 resultMap.put("contentPath", userMinimi);
+                System.out.println("userMinimi2 : " + userMinimi);
                 
                 session.setAttribute("userMinimi", userMinimi);
                 if(userMinimi==null) {
@@ -76,7 +77,7 @@ public class MemberController {
             } 
         } catch (Exception e) {
             // 예외 발생 시
-            resultMap.put("resultCode", "0");
+            resultMap.put("resultCode", "-1");
         }
 
         return resultMap;

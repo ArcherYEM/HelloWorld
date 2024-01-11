@@ -92,46 +92,79 @@ public class SettingController {
 		System.out.println("putMap : " + putMap);
 		
 		try {
-			List<Map<String, Object>> skinMap = settingService.selectSkinMenu(putMap);
+		    List<Map<String, Object>> onSkin = settingService.allocationOnSkinMenu(putMap);
+		    List<String> productNames = new ArrayList<>(); 
+		    
+		    for (Map<String, Object> skin : onSkin) {
+		        String productName = (String) skin.get("productName"); 
+		        productNames.add(productName); 
+		    }
+		    
+		    System.out.println("★onSkin : " + onSkin);
+
+		    model.addAttribute("onSkin", onSkin);
+		    model.addAttribute("productNames", productNames); 
+
+		    List<Map<String, Object>> skinMap = settingService.selectSkinMenu(putMap);
 			model.addAttribute("skinMap", skinMap);
 			System.out.println("skinMap : " + skinMap);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "miniHome/settingSkin";
 	}
 	
-	@RequestMapping(value="/mnHome/settingSkin/skinChoice")
-	public String skinChoice(HttpSession session, Model model,
-			@RequestParam("selectedSkin") String mySkin) {
+	@RequestMapping(value = "/mnHome/skinChoice", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> skinChoice(@RequestBody Map<String, String> requestData, HttpSession session, Model model) {
+	    String selectedProductName = requestData.get("selectedProductName");
+		System.out.println("mySkin : " + selectedProductName);
+		
 		Map userMap = new HashMap();
 		userMap = (Map)session.getAttribute("userId");
 		String userNickname = (String)userMap.get("userNickname");
 		
-		System.out.println("userNickname : " + userNickname);
+		System.out.println("★ userNickname : " + userNickname);
 		
-		try {
 			Map skinMap = new HashMap();
 			skinMap.put("userNickname", userNickname);
-			skinMap.put("productName", mySkin);
+			skinMap.put("productName", selectedProductName);
 			skinMap.put("category", "skin");
+			System.out.println("★ sknMap : " + skinMap);
 			
-			settingService.updateAllocationOff(skinMap);
-			settingService.updateAllocationOn(skinMap);
+			try {
+				settingService.updateAllocationOff(skinMap);
+				settingService.updateAllocationOn(skinMap);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			
 			Map putMap = new HashMap();
 			putMap.put("userNickname", userMap.get("userNickname"));
 			putMap.put("category", "skin");
-			System.out.println("putMap : " + putMap);
+			System.out.println("★ putMap : " + putMap);
 			
 			List<Map<String, Object>> userSkin = settingService.allocationOnSkinMenu(putMap);
-			model.addAttribute("skinMap", skinMap);
-			System.out.println("skinMap : " + skinMap);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			System.out.println("★userSkin : " + userSkin);
+			model.addAttribute("skinMap", userSkin);
+			System.out.println("★ model : " + model);
+			System.out.println("★ userSkin : " + userSkin);
+			if (userSkin != null && !userSkin.isEmpty()) {
+			    Map<String, Object> skinMap2 = userSkin.get(0);
+			    System.out.println("★ skinMap2 : " + skinMap2);
+			    
+			    if(skinMap2 != null) {
+			    	skinMap2.put("resultCode", "1");
+				} else {
+					skinMap2.put("resultCode", "0");
+				}
+			    
+			    return skinMap2;
+			} else {
+			    return new HashMap<>();
+			}
 		
-		return "miniHome/settingSkin";
 	}
 
 	@RequestMapping(value = "/mnHome/settingDotoriUse/{userNickname}")
@@ -155,7 +188,6 @@ public class SettingController {
 
 	    return "miniHome/settingDotoriUse";
 	}
-
 
 	@RequestMapping(value = "/mnHome/settingDotoriCharge/{userNickname}")
 	public String settingDotoriChargeView(@PathVariable String userNickname, Model model) {
@@ -323,7 +355,6 @@ public class SettingController {
 		
 				return "miniHome/mnhMinimiChangeSuccess";
 	}
-	
 	
 	@RequestMapping(value = "/mnHome/acceptFriends")
 	@ResponseBody

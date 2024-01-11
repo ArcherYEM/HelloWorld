@@ -53,6 +53,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="userNickname != null">
 			AND userNickname = #{userNickname}
 		</if>
+		<if test="productName != null">
+			AND
+				productName = #{productName}
+		</if>
 		<if test="category != null">
 	        <choose>
 	            <when test="category == 'skin' or category == 'menu'">
@@ -60,10 +64,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	            </when>
 	        </choose>
 	    </if>
-	    <if test="allocation != null">
-	    	AND
-	    		allocation = 1;
-	    </if>
+    	AND
+    		allocation = 1;
 	</select>
 	
 	<update id="updateAllocationOff" parameterType="String">
@@ -158,7 +160,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			and fStatus != -1
 		</if>
 	</select>
-	
 	
 	<update id="updateStatus" parameterType="map">
 		update
