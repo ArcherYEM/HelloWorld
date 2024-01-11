@@ -41,4 +41,6 @@ public interface MainDao {
 	public List<Map> getMyFriends(String userNickname);
 	
 	public Map mainSkin(Map map);
+
+	public int insertFriendCmt(Map map);
 }

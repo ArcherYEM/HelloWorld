@@ -178,5 +178,16 @@ public class MainServiceImpl implements MainService{
 		
 		return mainDao.mainSkin(map);
 	}
+
+	@Override
+	public int insertFriendCmt(Map map) throws Exception {
+		int result = mainDao.insertFriendCmt(map);
+		
+		if(result != 1) {
+			throw new Exception();
+		} else {
+			return result;
+		}
+	}
 	
 }

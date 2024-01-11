@@ -193,4 +193,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		AND allocation = '1'
 </select>
 
+<insert id="insertFriendCmt" parameterType="map">
+	insert into friendCMT (
+		userNickname
+		,friendNickname
+		,content
+	) values (
+		#{userNickname}
+		,#{friendNickname}
+		,#{content}
+	)
+</insert>
+
 </mapper>

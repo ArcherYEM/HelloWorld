@@ -40,4 +40,5 @@ public interface MainService {
 	
 	public Map mainSkin(Map map);
 	
+	public int insertFriendCmt(Map map) throws Exception;
 }
