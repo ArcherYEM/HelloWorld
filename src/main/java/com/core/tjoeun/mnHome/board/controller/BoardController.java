@@ -24,6 +24,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -34,9 +35,6 @@ import com.core.tjoeun.mnHome.main.service.MainService;
 
 @Controller
 public class BoardController {
-	
-	@Autowired
-	MemberService memberService;
 	
 	@Autowired
 	MainService mainService;
@@ -171,6 +169,7 @@ public class BoardController {
 		selectMap.put("userNickname", userNickname);
 		selectMap.put("seq", seq);
 		model.addAttribute("list",boardService.getBoardList(selectMap));
+		model.addAttribute("seq",seq);
 		
         //접속중인 유저의 친구 전부 가져오기
         List<Map> friendMap = mainService.getMyFriends(userNickname);
@@ -191,6 +190,11 @@ public class BoardController {
         	friend=1;
         }
         model.addAttribute("check",friend);
+        
+     //댓글 불러오기
+        int boardSeq = Integer.parseInt(seq);
+        List<Map> commentMap = boardService.getBoardComment(boardSeq);
+        model.addAttribute("comment",commentMap);
 
      // menu color 적용하기
         Map callMenu = new HashMap();
@@ -317,4 +321,22 @@ public class BoardController {
 		}
 	}
 	
+	@RequestMapping(value = "/mnHome/addComment", method = RequestMethod.POST)
+	@ResponseBody
+	public List<Map> changeName(@RequestBody Map<String, String> requestData) {
+		List<Map> commentMap = new ArrayList();
+		
+		try {
+			int result = boardService.insertBoardComment(requestData);
+			if (result==1){
+				int boardSeq = Integer.parseInt(requestData.get("boardSeq"));
+				commentMap = boardService.getBoardComment(boardSeq);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return commentMap;
+	}
 }

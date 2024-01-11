@@ -77,5 +77,19 @@ public class BoardServiceImpl implements BoardService{
 	public int checkFriend(Map checkMap) {
 		return boardDao.checkFriend(checkMap);
 	}
+	
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
+	public int insertBoardComment(Map requestData){
+		int result = boardDao.insertBoardComment(requestData);
+
+		return result;
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Map> getBoardComment(int boardSeq) {
+		return boardDao.getBoardComment(boardSeq);
+	}
 
 }

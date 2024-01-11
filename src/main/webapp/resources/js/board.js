@@ -1,3 +1,65 @@
+function btnComment(){
+	var content = document.getElementById('inputComment').value;
+	var boardSeq = document.getElementById('boardSeq').value;
+	var userNickname = document.getElementById('userNickname').value;
+
+	let jsonData = {
+		"boardSeq" : boardSeq,
+		"userNickname" : userNickname,
+		"content" : content
+	};
+	
+	$.ajax({
+		method: 'POST',
+		url: '/mnHome/addComment',
+		contentType: 'application/json',
+		data: JSON.stringify(jsonData)		
+	}).done(function(json) {
+		if(json.length==0){
+			alert("댓글 작성에 실패했습니다.");
+		}else{
+			//신규 댓글의 정보가져옴
+			var newCommentInfo=json[0];
+			var newCommentUserNickname=newCommentInfo.userNickname;
+			var newCommentUpdateDate=newCommentInfo.update_date_format;
+			var newCommentContent=newCommentInfo.content;
+			
+			//추가할 댓글 폼
+			var commentContainer = document.getElementById("board-comment-container");
+			var commentDiv = document.createElement("div");
+			commentDiv.className = "board-comment";
+
+			var writerSpan = document.createElement("span");
+			writerSpan.className = "board-comment-writer";
+			writerSpan.textContent = newCommentUserNickname;
+
+			var contentSpan = document.createElement("span");
+			contentSpan.className = "board-comment-content";
+			contentSpan.textContent = newCommentContent;
+
+			var dateSpan = document.createElement("span");
+			dateSpan.className = "board-comment-date";
+			dateSpan.textContent = newCommentUpdateDate;
+
+			commentDiv.appendChild(writerSpan);
+			commentDiv.appendChild(contentSpan);
+			commentDiv.appendChild(dateSpan);
+
+			var firstComment = commentContainer.firstChild;
+			if (firstComment) {
+			    commentContainer.insertBefore(commentDiv, firstComment);
+			} else {
+			    commentContainer.appendChild(commentDiv);
+			}
+			
+			
+			document.getElementById('inputComment').value="";	
+			alert("댓글이 성공적으로 등록되었습니다.");	
+		}
+				
+	})
+}
+
 
 $(document).ready(function() {
 // 		전체선택 기능

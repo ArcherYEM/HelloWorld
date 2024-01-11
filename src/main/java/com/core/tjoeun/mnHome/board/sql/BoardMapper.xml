@@ -82,4 +82,31 @@ SELECT
     END AS Result;
 </select>
 
+<insert id="insertBoardComment" parameterType="map">
+	insert into boardCMT (
+	boardSeq
+	,userNickname
+	,content
+	,create_date
+	,update_date
+	,openScope
+	) values (
+	#{boardSeq}
+	,#{userNickname}
+	,#{content}
+	,current_timestamp()
+	,current_timestamp()
+	,1
+	)
+</insert>
+
+<select id="getBoardComment" parameterType="int" resultType="map">
+	select userNickname, content, 
+	DATE_FORMAT(update_date, '%Y.%m.%d %H:%i') as update_date_format 
+	from boardCMT 
+	where boardSeq=#{boardSeq}
+	and openScope=1
+	ORDER BY update_date_format DESC;
+</select>
+
 </mapper>
