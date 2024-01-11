@@ -1,5 +1,6 @@
 package com.core.tjoeun.mnHome.diary.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -37,6 +38,27 @@ public class DiaryController {
 	        model.addAttribute("diaryList", diaryList);
 	    }
 		
+		// menu color 적용하기
+        Map callMenu = new HashMap();
+        callMenu.put("category", "menu");
+        callMenu.put("userNickname", userNickname);
+        System.out.println("### callMenu : " + callMenu);
+        
+        try {
+        	Map mainMenu = mainService.mainMenu(callMenu);
+        	System.out.println("### mainMenu : " + mainMenu);
+        	
+        	model.addAttribute("menuProductName", mainMenu.get("productName"));
+	        model.addAttribute("menuCategory", mainMenu.get("category"));
+	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
+	        System.out.println("### menu model : " + model);
+	        
+        } catch (NullPointerException n) {
+	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
+	        	model.addAttribute("menuCategory", "menu");
+	        	n.printStackTrace();
+        }
+		
 		return "miniHome/diary";
 	}
 	
@@ -46,6 +68,27 @@ public class DiaryController {
 		Map userMap = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", userMap.get("userName"));
 		model.addAttribute("title", userMap.get("title"));
+		
+		// menu color 적용하기
+        Map callMenu = new HashMap();
+        callMenu.put("category", "menu");
+        callMenu.put("userNickname", userNickname);
+        System.out.println("### callMenu : " + callMenu);
+        
+        try {
+        	Map mainMenu = mainService.mainMenu(callMenu);
+        	System.out.println("### mainMenu : " + mainMenu);
+        	
+        	model.addAttribute("menuProductName", mainMenu.get("productName"));
+	        model.addAttribute("menuCategory", mainMenu.get("category"));
+	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
+	        System.out.println("### menu model : " + model);
+	        
+        } catch (NullPointerException n) {
+	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
+	        	model.addAttribute("menuCategory", "menu");
+	        	n.printStackTrace();
+        }
 		
 		return "miniHome/diaryWrite";
 	}

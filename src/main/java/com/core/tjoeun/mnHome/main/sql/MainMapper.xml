@@ -189,8 +189,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		userStorage
 	WHERE 1=1
 		AND userNickname = #{userNickname}
-		AND category = #{category}
 		AND allocation = '1'
+		AND category = 'skin'
+</select>
+
+<select id="mainMenu" parameterType="map" resultType="map">
+	SELECT 
+		category
+		,productName
+		,userNickname
+	FROM
+		userStorage
+	WHERE 1=1
+		AND userNickname = #{userNickname}
+		AND allocation = '1'
+		AND category = 'menu'
 </select>
 
 </mapper>

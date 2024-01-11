@@ -1,6 +1,5 @@
 package com.core.tjoeun.mnHome.main.dao;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -139,5 +138,11 @@ public class MainDaoImpl implements MainDao{
 	public Map mainSkin(Map map) {
 		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
 		return mapper.mainSkin(map);
+	}
+	
+	@Override
+	public Map mainMenu(Map map) {
+		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
+		return mapper.mainMenu(map);
 	}
 }
