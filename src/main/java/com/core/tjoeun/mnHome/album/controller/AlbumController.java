@@ -156,7 +156,7 @@ public class AlbumController {
 	}
 	
 	
-	@RequestMapping(value="/mnHome/albumView/{userNickname}")
+	@RequestMapping(value="/mnHome/albumDetailView/{userNickname}")
 	public String albumDetailView(@PathVariable String userNickname, Model model) {
 		
 		return  "miniHome/albumDetail";
