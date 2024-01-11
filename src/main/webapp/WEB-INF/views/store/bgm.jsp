@@ -26,8 +26,8 @@
 				<h5 class="right" id="userDotori"><img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"><span id="userDotoriCnt">${dotori}</span>개</h5>
 	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
 	            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
-	            <a href="<c:url value='/mnHome/mainView/${sessionScope.userId.userNickname }' />" class="index-a-mnh">내 미니홈피</a>
-	            <a href="<c:url value="/index/member/logout" />" class="index-a-logout">로그아웃</a>
+	            <a id="storeLoginMyhome" href="<c:url value='/mnHome/mainView/${sessionScope.userId.userNickname }' />" class="index-a-mnh">내 미니홈피</a>
+	            <a id="storeLoginLogout" href="<c:url value="/index/member/logout" />" class="index-a-logout">로그아웃</a>
 	        </div>
       </div>
 
@@ -77,95 +77,113 @@
 	
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-function reloadParentWindow() {
-    location.reload();
-}
+	window.onload = function() {
+		
+        let userDotoriElement = document.getElementById('userDotori');
+        let storeLoginMyhome = document.getElementById('storeLoginMyhome');
+        let storeLoginLogout = document.getElementById('storeLoginLogout');
+        let userDotoriCnt = '<c:out value="${dotori}" />' || '';
 
-//검색 기능
-function search(){
-	$('#content').val($('#searchInput').val());
-	$.ajax({
-		method:"POST"
-		,url: '<c:url value="/store/bgm/searchBgm"/>'
-		,data: {content:$('#content').val()}		
-	}).done(function( msg ){
-		var resultHtml = '';
-		if('success'==msg.result){
-			if(msg.data.length>0){
-            $.each(msg.data, function(i, item) {
-            	resultHtml += '<div class="bgm-list bgm-grid" id="ajaxTable">';
-                resultHtml += '<div><input type="checkbox" id="checkbox' + i + '"></div>';
-                resultHtml += '<div>' + (i + 1) + '</div>';
-                resultHtml += '<div>' + item.title + '</div>';
-                resultHtml += '<div>' + item.artist + '</div>';
-                resultHtml += '<div>' + item.runningTime + '</div>';
-                resultHtml += '<div>' + item.bgmPrice + '</div>';
-                resultHtml += '</div>';
-                $('#test').html(resultHtml);
-            });
-            
-            $('#selectAllCheckbox').on('change', function () {
-                var isChecked = $(this).prop('checked');
-                for (var i = 0; i < msg.data.length; i++) {
-                    $('#checkbox' + i).prop('checked', isChecked);
-                }
-                console.log("전체선택");
-            });
-            
-            $(document).ready(function() {
-                $('.bgm-list.bgm-grid').on('click', function() {
-                    var checkbox = $(this).find('input[type="checkbox"]');
-                    checkbox.prop('checked', !checkbox.prop('checked'));
-                    console.log("클릭");
-
-                }).find('input[type="checkbox"]').on('click', function(e) {
-                    e.stopPropagation(); // 부모 요소의 클릭 이벤트 전파 막기
-                });
-            });
-
-		} else {
-			 resultHtml += '<div>';
-             resultHtml += '<div style="text-align:center;">검색 결과가 없습니다.</div>';
-             resultHtml += '</div>';
-		}
-		$('#test').html(resultHtml);			
-		}else if('fail'==msg.result){
-			alert('에러');
-		}
-	});
-}
-
-$('#searchBtn').on('click',function(){
-	search();	
-});
-
-$(document).ready(function() {
-	search();
-});
-</script>
-<script>
-	var selected = [];
-	
-	function openNewWindowBgmBuy() {
-		$('.bgm-list.bgm-grid').each(function() {
-		    if ($(this).find('input[type="checkbox"]').prop('checked')) {
-		      var title = $(this).find('div:eq(2)').text();
-		      var artist = $(this).find('div:eq(3)').text();
-		      var price = $(this).find('div:eq(5)').text();
-		      
-		      var selectedItem = {
-		        title: title,
-		        artist: artist,
-		        price: price
-		      };
-
-		      selected.push(selectedItem);
-		    }
-		  });
-		var windowSettings = 'width=800, height=600, scrollbars=no, resizable=no, toolbar=no, menubar=no, left=100, top=50';
-		var selectedData = JSON.stringify(selected);
-		window.open('/store/bgmBuy?selectedData=' + encodeURIComponent(selectedData), '_blank', windowSettings);
+        if (userDotoriCnt.trim() !== '') {
+            userDotoriElement.style.display = 'block';
+            storeLoginMyhome.style.display = 'block';
+            storeLoginLogout.style.display = 'block';
+        } else {
+            userDotoriElement.style.display = 'none';
+            storeLoginMyhome.style.display = 'none';
+            storeLoginLogout.style.display = 'none';
+        }
 	}
+	function reloadParentWindow() {
+	    location.reload();
+	}
+	
+	
+	//검색 기능
+	function search(){
+		$('#content').val($('#searchInput').val());
+		$.ajax({
+			method:"POST"
+			,url: '<c:url value="/store/bgm/searchBgm"/>'
+			,data: {content:$('#content').val()}		
+		}).done(function( msg ){
+			var resultHtml = '';
+			if('success'==msg.result){
+				if(msg.data.length>0){
+	            $.each(msg.data, function(i, item) {
+	            	resultHtml += '<div class="bgm-list bgm-grid" id="ajaxTable">';
+	                resultHtml += '<div><input type="checkbox" id="checkbox' + i + '"></div>';
+	                resultHtml += '<div>' + (i + 1) + '</div>';
+	                resultHtml += '<div>' + item.title + '</div>';
+	                resultHtml += '<div>' + item.artist + '</div>';
+	                resultHtml += '<div>' + item.runningTime + '</div>';
+	                resultHtml += '<div>' + item.bgmPrice + '</div>';
+	                resultHtml += '</div>';
+	                $('#test').html(resultHtml);
+	            });
+	            
+	            $('#selectAllCheckbox').on('change', function () {
+	                var isChecked = $(this).prop('checked');
+	                for (var i = 0; i < msg.data.length; i++) {
+	                    $('#checkbox' + i).prop('checked', isChecked);
+	                }
+	                console.log("전체선택");
+	            });
+	            
+	            $(document).ready(function() {
+	                $('.bgm-list.bgm-grid').on('click', function() {
+	                    var checkbox = $(this).find('input[type="checkbox"]');
+	                    checkbox.prop('checked', !checkbox.prop('checked'));
+	                    console.log("클릭");
+	
+	                }).find('input[type="checkbox"]').on('click', function(e) {
+	                    e.stopPropagation(); // 부모 요소의 클릭 이벤트 전파 막기
+	                });
+	            });
+	
+			} else {
+				 resultHtml += '<div>';
+	             resultHtml += '<div style="text-align:center;">검색 결과가 없습니다.</div>';
+	             resultHtml += '</div>';
+			}
+			$('#test').html(resultHtml);			
+			}else if('fail'==msg.result){
+				alert('에러');
+			}
+		});
+	}
+	
+	$('#searchBtn').on('click',function(){
+		search();	
+	});
+	
+	$(document).ready(function() {
+		search();
+	});
+	</script>
+	<script>
+		var selected = [];
+		
+		function openNewWindowBgmBuy() {
+			$('.bgm-list.bgm-grid').each(function() {
+			    if ($(this).find('input[type="checkbox"]').prop('checked')) {
+			      var title = $(this).find('div:eq(2)').text();
+			      var artist = $(this).find('div:eq(3)').text();
+			      var price = $(this).find('div:eq(5)').text();
+			      
+			      var selectedItem = {
+			        title: title,
+			        artist: artist,
+			        price: price
+			      };
+	
+			      selected.push(selectedItem);
+			    }
+			  });
+			var windowSettings = 'width=800, height=600, scrollbars=no, resizable=no, toolbar=no, menubar=no, left=100, top=50';
+			var selectedData = JSON.stringify(selected);
+			window.open('/store/bgmBuy?selectedData=' + encodeURIComponent(selectedData), '_blank', windowSettings);
+		}
 </script>
 
 </body>

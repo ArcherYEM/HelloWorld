@@ -18,18 +18,29 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.core.tjoeun.index.notice.service.NoticeService;
+import com.core.tjoeun.index.store.service.StoreService;
 
 @Controller
 public class NoticeController {
 	
 	@Autowired
 	NoticeService noticeService;
+	@Autowired
+	StoreService storeService;
 	
 	@RequestMapping(value="/notice/noticeView", method = RequestMethod.GET)
-	public String noticeView(Model model, @RequestParam Map map) {
+	public String noticeView(Model model, @RequestParam Map map, HttpSession session) {
 		model.addAttribute("list",noticeService.getNoticeList(map));
 		model.addAttribute("totalPage",noticeService.getPage());
 
+		String userNickname = (String) session.getAttribute("userNickname");
+		if (userNickname != null ) {
+			int dotori = storeService.getMyDotori(userNickname);
+			model.addAttribute("dotori", dotori);
+		} else {
+			model.addAttribute("dotori", "");
+		}
+		
 		return "notice/notice";
 	}
 	
