@@ -29,21 +29,24 @@ public class MemberServiceImpl implements MemberService{
    public void signUp(Map map) throws Exception {
      map.put("userPassword", SHA256.encryptSHA256((String) map.get("userPassword")));
       int result = memberDao.insertUserInfo(map);
-      String  userNickname = (String) map.get("userNickname");
+      String userNickname = (String) map.get("userNickname");
       System.out.println("리턴값:"+result);
       System.out.println(userNickname);
       
       if(result == 1) {
-
+    	  	 Map signUpmap = new HashMap();
+    	  	 signUpmap.put("userNickname", userNickname);
+    	  	 signUpmap.put("dotoriChargeMethod", "회원가입 축하 포인트");
+    	  	 signUpmap.put("dotoriPrice", "0");
+    	  	 
 	   		 memberDao.insertUserDotori(userNickname);
-	   		 memberDao.insertUserDotoriC(userNickname);
+	   		 memberDao.insertUserDotoriC(signUpmap);
 	   		 memberDao.insertMiniroomBackground(userNickname);
 	   		 memberDao.insertMiniroomMinimi(userNickname);
 	   		 memberDao.insertMinihomeTitle(userNickname);
 	   		 memberDao.insertUserProfile(userNickname);
 	   		 memberDao.insertUserStorage(userNickname);
-	   		 
-	   		 
+	   		 memberDao.insertLoginStatus(userNickname);
      }
       if (result != 1) {
          throw new Exception();
@@ -51,7 +54,7 @@ public class MemberServiceImpl implements MemberService{
    }
 
    @Override
-   @Transactional(readOnly = true)
+   @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
    public Map login(Map map) throws Exception {
        map.put("userPassword", SHA256.encryptSHA256((String) map.get("userPassword")));
         Map selectMap = memberDao.selectUserInfo(map);
@@ -62,6 +65,14 @@ public class MemberServiceImpl implements MemberService{
            System.out.println(SHA256.encryptSHA256((String) map.get("userPassword")));
            System.out.println((String)selectMap.get("userPassword"));
            System.out.println();
+           
+           
+           memberDao.insertLoginLog((String) selectMap.get("userNickname"));
+           memberDao.loginOnStatus((String) selectMap.get("userNickname"));
+           
+           int onFriends = memberDao.selectOnFriendCnt((String) selectMap.get("userNickname"));
+           
+           selectMap.put("friendCnt", memberDao.selectOnFriendCnt((String) selectMap.get("userNickname"))) ;
             // 로그인 성공 시, 사용자 정보 반환
             return selectMap;
         } else {
@@ -87,9 +98,10 @@ public class MemberServiceImpl implements MemberService{
    }
    
     @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
     public void logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
-        session.invalidate();
-
+    	session.invalidate();
+        
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
@@ -97,7 +109,7 @@ public class MemberServiceImpl implements MemberService{
                 response.addCookie(cookie);
             }
         }
-
+        memberDao.loginOffStatus((String) session.getAttribute("userNickname"));
         handleLogoutResponse(response);
     }
 
