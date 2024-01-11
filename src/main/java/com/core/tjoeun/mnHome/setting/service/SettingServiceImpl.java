@@ -155,7 +155,7 @@ public class SettingServiceImpl implements SettingService {
 	}
 
 	@Override
-	public Map selectMyBgm(Map map) {
+	public List<Map> selectMyBgm(Map map) {
 		return settingDao.selectMyBgm(map);
 	}
 }

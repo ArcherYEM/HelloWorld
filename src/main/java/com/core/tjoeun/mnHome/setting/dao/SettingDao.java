@@ -34,5 +34,5 @@ public interface SettingDao {
 	
 	public int changeNumber (Map map);
 	
-	public Map selectMyBgm(Map map);
+	public List<Map> selectMyBgm(Map map);
 }

@@ -82,6 +82,7 @@ function loadTabContent(tabName) {
               htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/settingDotori.css" />';
            
            }else if(tabName === '/mnHome/mainView'|| tabName.indexOf('/mnHome/mainView') != -1){
+           }else if(tabName === '/miniHome/test'|| tabName.indexOf('/miniHome/test') != -1){
            }
             
             // Append all the HTML at once.

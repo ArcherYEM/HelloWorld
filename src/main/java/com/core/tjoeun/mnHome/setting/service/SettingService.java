@@ -34,5 +34,5 @@ public interface SettingService {
 	
 	public int changeNumber (Map map) throws Exception;
 	
-	public Map selectMyBgm(Map map);
+	public List<Map> selectMyBgm(Map map);
 }

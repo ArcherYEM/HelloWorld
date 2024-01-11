@@ -102,7 +102,7 @@ public class SettingDaoImpl implements SettingDao {
 	}
 
 	@Override
-	public Map selectMyBgm(Map map) {
+	public List<Map> selectMyBgm(Map map) {
 		SettingMapper mapper = sqlSession.getMapper(SettingMapper.class);
 		return mapper.selectMyBgm(map);
 	}

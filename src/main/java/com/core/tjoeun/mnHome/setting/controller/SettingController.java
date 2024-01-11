@@ -105,7 +105,7 @@ public class SettingController {
 		String contentPath = "";
 		int allocation = 0;
 		
-		Map bgmMap = settingService.selectMyBgm(inputMap);
+		List<Map> bgmMap = settingService.selectMyBgm(inputMap);
 		model.addAttribute("title",title);
 		model.addAttribute("artist",artist);
 		model.addAttribute("runningTime",runningTime);
@@ -136,7 +136,8 @@ public class SettingController {
 	        	n.printStackTrace();
         }
 		
-		return "miniHome/settingBgm";
+//		return "miniHome/settingBgm";
+        return "miniHome/test";
 	}
 
 
