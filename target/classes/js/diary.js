@@ -6,8 +6,19 @@ function addDiary() {
     oEditors.getById["txtContent"].exec("UPDATE_CONTENTS_FIELD", []);  
 
     // txtContent의 값을 가져와서 개행 문자를 제거
+    let realContent = document.getElementById("txtContent").value;
     let content = document.getElementById("txtContent").value.replace("\r\n", "");
     console.log(content);
+    
+    if(title == null || title == '') {
+    	alert('제목을 입력하여 주세요.');
+    	return;
+    } 
+    
+    if(realContent == null || realContent == '' || realContent== '<p>&nbsp;</p>') {
+    	alert('내용을 입력하여 주세요.');
+    	return;
+    }
     
     let jsonData = {
         "content" : content,
