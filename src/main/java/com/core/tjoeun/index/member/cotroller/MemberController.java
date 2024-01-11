@@ -48,12 +48,14 @@ public class MemberController {
                 session.setAttribute("userId", result);
                 session.setAttribute("userDotoriCnt", result.get("currentDotori"));
                 session.setAttribute("userNickname", result.get("userNickname"));                
+                session.setAttribute("friendCnt", result.get("friendCnt"));                
 
                 resultMap.put("resultCode", "1");
                 resultMap.put("userEmail", result.get("userEmail"));
                 resultMap.put("userPassword", result.get("userPassword"));
                 resultMap.put("userNickname", result.get("userNickname"));
                 resultMap.put("userDotoriCnt", result.get("currentDotori"));
+                resultMap.put("friendCnt", result.get("friendCnt"));
                 
                 userNickname = (String) result.get("userNickname");
                 String userMinimi = memberService.selectUserMinimi(userNickname);

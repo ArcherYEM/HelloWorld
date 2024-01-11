@@ -59,10 +59,10 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public int insertUserDotoriC(String userNickname) {
+	public int insertUserDotoriC(Map map) {
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
 		
-		return mapper.insertUserDotoriC(userNickname);
+		return mapper.insertUserDotoriC(map);
 		
 	}
 
@@ -118,5 +118,40 @@ public class MemberDaoImpl implements MemberDao {
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
 		
 		return mapper.selectRequest(userNickname);
+	}
+
+	@Override
+	public int insertLoginStatus(String userNickname) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		
+		return mapper.insertLoginStatus(userNickname);
+	}
+	
+	@Override
+	public int selectOnFriendCnt(String userNickname) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		
+		return mapper.selectOnFriendCnt(userNickname);
+	}
+	
+	@Override
+	public int insertLoginLog(String userNickname) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		
+		return mapper.insertLoginLog(userNickname);
+	}
+
+	@Override
+	public int loginOnStatus(String userNickname) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		
+		return mapper.loginOnStatus(userNickname);
+	}
+	
+	@Override
+	public int loginOffStatus(String userNickname) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		
+		return mapper.loginOffStatus(userNickname);
 	}
 }
