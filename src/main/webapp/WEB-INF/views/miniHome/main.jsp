@@ -135,7 +135,7 @@
                                  
                               </div>
                               <div class="menu-item" onclick="quickAlbum()">
-                                 	사진첩<span class="menu-num">0/0</span>
+                                 	사진첩<span class="menu-num">${newCount.AlbumCount}/${count.AlbumCount }</span>
                                  <c:if test="${newCount.AlbumCount>0 }">
                                  	<img src="../../../../resources/images/minihome/newIcon.png"
                                  		alt="new Icon" class="minihome-nIcon">

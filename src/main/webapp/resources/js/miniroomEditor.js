@@ -80,7 +80,16 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // 미니미 및 버튼 생성 함수
+//미니미 및 버튼 생성 함수
 function createMinimi(imgSrc) {
+    var existingMinimis = divCanvas.querySelectorAll('.minimiContainer').length;
+
+    // 미니미가 5개 이상이면 경고를 표시하고 함수를 종료합니다.
+    if (existingMinimis >= 5) {
+        alert('미니미는 최대 5개까지만 추가할 수 있습니다.');
+        return;
+    }
+
     var minimiContainer = document.createElement('div');
     minimiContainer.className = "minimiContainer";
     minimiContainer.style.cssText = "width:100px; height:100px;";
@@ -97,6 +106,7 @@ function createMinimi(imgSrc) {
     addDragEvent(minimiContainer);
     addButtonEvent(minimiContainer);
 }
+
 
 // 버튼 컨테이너 및 버튼 생성 함수
 function createButtonContainer() {

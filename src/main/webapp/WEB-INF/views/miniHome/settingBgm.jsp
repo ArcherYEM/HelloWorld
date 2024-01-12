@@ -97,17 +97,18 @@
 								<div>재생시간</div>
 							</div>
 							
-							
-							<div class="setting-bgm-list setting-bgm-grid">
-								<div><input type="checkbox"></div>
-								<div>1</div>
-								<div>Gee</div>
-								<div>소녀시대</div>
-								<div>03:11</div>
-							</div>
+							<c:forEach items="${playList}" var="playList" varStatus="status">
+								<div class="setting-bgm-list setting-bgm-grid" id="playListBgm">
+									<div><input type="checkbox"></div>
+									<div>${status.index + 1}</div>
+									<div class="title-list">${playList.title }</div>
+									<div>${playList.artist }</div>
+									<div>${playList.runningTime }</div>
+								</div>
+							</c:forEach>
 							
 							<div class="setting-bgm-list-delete">
-								<input type="button" value="삭제">
+								<input type="button" value="삭제" onclick="removePlayList()">
 							</div>
 							
 						</div>
@@ -115,39 +116,28 @@
 						<div id="setting-divDivideLine"></div>
 						<div class="setting-bgm-frame setting-bgm-myList">
 						<div class="setting-menuTitle">보유 BGM</div>
-						<div class="setting-bgm-search-group">
-							<input type="text" class="setting-bgm-search-input" placeholder="제목 혹은 가수명을 입력하세요" maxlength="18">
-							<button class="setting-bgm-search-btn"></button> <!-- 돋보기 아이콘 css 처리 -->
-						</div>
-						
-						<div class="setting-bgm-order-select">
-								<select>
-									<option>최근구매순</option>
-									<option>제목오름차순</option>
-									<option>가수오름차순</option>
-								</select>
-						</div>
-						
+							
 						<div class="setting-bgm-list-group setting-bgm-grid">
-							<div><input type="checkbox"></div>
+							<div><input id="selectAll" type="checkbox"></div>
 							<div>순번</div>
 							<div>제목</div>
 							<div>아티스트</div>
 							<div>재생시간</div>
 						</div>
 						
+						<input type="hidden" id="userNickname" value=${userNickname }>
 						<c:forEach items="${bgmMap}" var="bgmMap" varStatus="status">
 						    <div class="setting-bgm-list setting-bgm-grid">
-						        <div><input type="checkbox"></div>
+						        <div class="checkboxBgm"><input type="checkbox"></div>
 						        <div>${status.index + 1}</div>
-						        <div>${bgmMap.title }</div>
+						        <div class="title">${bgmMap.title }</div>
 						        <div>${bgmMap.artist }</div>
 						        <div>${bgmMap.runningTime }</div>
 						    </div>
 						</c:forEach>
 
 						<div class="setting-bgm-list-add">
-							<input type="button" value="재생목록추가">
+							<input type="button" value="재생목록추가" onclick="addPlayList()">
 						</div>
 						
 					</div>

@@ -142,6 +142,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT 
 		    (SELECT COUNT(*) FROM diary WHERE userNickname = #{userNickname}) AS DiaryCount,	    
 		    (SELECT COUNT(*) FROM board WHERE userNickname = #{userNickname}) AS BoardCount,
+		    (SELECT COUNT(*) FROM album WHERE userNickname = #{userNickname}) AS AlbumCount,
 		    (SELECT COUNT(*) FROM visit WHERE targetNickname = #{userNickname}) AS VisitCount
 	</select>
 	
@@ -157,6 +158,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		     WHERE userNickname = #{userNickname}
 		     <![CDATA[ 
 		     	AND TIMESTAMPDIFF(HOUR, update_date, NOW()) <= 24) AS BoardCount,
+			]]>
+
+		    (SELECT COUNT(*) FROM album 
+		     WHERE userNickname = #{userNickname}
+		     <![CDATA[ 
+		     	AND TIMESTAMPDIFF(HOUR, update_date, NOW()) <= 24) AS AlbumCount,
 			]]>
 			
 		    (SELECT COUNT(*) FROM visit 

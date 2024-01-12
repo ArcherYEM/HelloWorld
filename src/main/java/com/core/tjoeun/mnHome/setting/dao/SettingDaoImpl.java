@@ -106,5 +106,23 @@ public class SettingDaoImpl implements SettingDao {
 		SettingMapper mapper = sqlSession.getMapper(SettingMapper.class);
 		return mapper.selectMyBgm(map);
 	}
+
+	@Override
+	public int addPlayList(Map param) {
+		SettingMapper mapper = sqlSession.getMapper(SettingMapper.class);
+		return mapper.addPlayList(param);
+	}
+
+	@Override
+	public int removePlayList(Map param) {
+		SettingMapper mapper = sqlSession.getMapper(SettingMapper.class);
+		return mapper.removePlayList(param);
+	}
+
+	@Override
+	public List<Map> selectPlayList(String userNickname) {
+		SettingMapper mapper = sqlSession.getMapper(SettingMapper.class);
+		return mapper.selectPlayList(userNickname);
+	}
     
 }
