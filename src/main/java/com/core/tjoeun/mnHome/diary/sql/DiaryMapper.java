@@ -14,4 +14,12 @@ public interface DiaryMapper {
 	public int deleteDiary(ArrayList<String> list);
 	
 	public int modifyDiary(Map map);
+	
+	public int insertDiaryCMT(Map map);
+	
+	public ArrayList<String> selectDiarySeq (String userNickname);
+
+	public List<Map> selectDiaryCMT (ArrayList<String> list);
+	
+	
 }

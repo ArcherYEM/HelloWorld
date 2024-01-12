@@ -22,6 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="selectDiary" resultType="map" parameterType="map">
 	    SELECT
+	    	seq,
 	        userNickname,
 	        title,
 	        content,
@@ -67,5 +68,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where
 			seq = #{seq}
 	</update>
+	
+	<insert id="insertDiaryCMT" parameterType="map">
+		insert into diaryCMT(
+			diarySeq
+			, userNickname
+			, content
+			, openScope
+		) values(
+			#{diarySeq}
+			,#{userNickname}
+			,#{content}
+			,#{openScope}
+		)
+		
+	</insert>
+	
+	
+	
+	
 
 </mapper>

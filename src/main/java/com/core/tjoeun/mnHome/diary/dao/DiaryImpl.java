@@ -42,5 +42,13 @@ public class DiaryImpl implements DiaryDao {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public int insertDiaryCMT(Map map) {
+		DiaryMapper mapper = sqlSession.getMapper(DiaryMapper.class);
+		
+		return mapper.insertDiaryCMT(map);
+	}
+
 	
 }
