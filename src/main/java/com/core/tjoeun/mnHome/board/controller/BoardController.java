@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.codec.binary.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,10 +26,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
-import com.core.tjoeun.index.member.service.MemberService;
 import com.core.tjoeun.mnHome.board.service.BoardService;
+import com.core.tjoeun.mnHome.main.dao.MainDao;
 import com.core.tjoeun.mnHome.main.service.MainService;
 
 @Controller
@@ -41,6 +39,9 @@ public class BoardController {
 	
 	@Autowired
 	BoardService boardService;
+	
+	@Autowired
+	MainDao mainDao;
 	
 	@RequestMapping(value={"/mnHome/boardView/{userNickname}","/mnHome/boardView/{userNickname}/{page}"})
 	public String boardView(@PathVariable String userNickname, @PathVariable Optional<String> page, Model model) {
@@ -89,6 +90,17 @@ public class BoardController {
 	        	n.printStackTrace();
         }
 		
+      //방문자 수 가져오기
+        try {
+			Map visitCntMap = new HashMap();
+			visitCntMap = mainDao.selectVisitCnt(userNickname);
+			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
 		return "miniHome/board";
 	}
 	
@@ -132,18 +144,40 @@ public class BoardController {
 	        	n.printStackTrace();
         }
 		
+      //방문자 수 가져오기
+        try {
+			Map visitCntMap = new HashMap();
+			visitCntMap = mainDao.selectVisitCnt(userNickname);
+			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
 		return "miniHome/boardWrite";
 	}
 	
 	@RequestMapping(value="/mnHome/boardWrite")
 	@ResponseBody
-	public Map boardWrite(@RequestBody Map map) {
+	public Map boardWrite(@RequestBody Map map, Model model, HttpSession session) {
 		Map result = new HashMap<String, String>();
 		try {
 			boardService.writeBoard(map);
 			result.put("resultCode", "1");
 		} catch (Exception e) {
 			result.put("resultCode", "0");
+			e.printStackTrace();
+		}
+		
+		//방문자 수 가져오기
+        try {
+			Map visitCntMap = new HashMap();
+			visitCntMap = mainDao.selectVisitCnt((String) session.getAttribute("userNickname"));
+			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -217,12 +251,23 @@ public class BoardController {
 	        	n.printStackTrace();
         }
         
+      //방문자 수 가져오기
+        try {
+			Map visitCntMap = new HashMap();
+			visitCntMap = mainDao.selectVisitCnt(userNickname);
+			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
 		return "miniHome/boardDetail";
 	}
 	
 	@RequestMapping(value="/mnHome/boardDelete")
 	@ResponseBody
-	public Map boardDelete(@RequestBody ArrayList<String> seq) {
+	public Map boardDelete(@RequestBody ArrayList<String> seq, Model model,HttpSession session) {
 		Map result = new HashMap<String, String>();
 		
 		try {

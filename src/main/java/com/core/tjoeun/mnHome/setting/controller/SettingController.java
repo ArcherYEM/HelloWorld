@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.core.tjoeun.index.member.service.MemberService;
+import com.core.tjoeun.mnHome.main.dao.MainDao;
 import com.core.tjoeun.mnHome.main.service.MainService;
 import com.core.tjoeun.mnHome.setting.service.SettingService;
 
@@ -36,7 +37,8 @@ public class SettingController {
 	@Autowired
 	MainService mainService;
 	
-	
+	@Autowired
+	MainDao mainDao;
 	
 	@RequestMapping(value = "/mnHome/settingView/{userNickname}")
 	public String settingView(@PathVariable String userNickname, Model model) {
@@ -70,6 +72,17 @@ public class SettingController {
 	        	model.addAttribute("menuCategory", "menu");
 	        	n.printStackTrace();
         }
+        
+      //방문자 수 가져오기
+        try {
+			Map visitCntMap = new HashMap();
+			visitCntMap = mainDao.selectVisitCnt(userNickname);
+			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return "miniHome/setting";
 	}
@@ -85,6 +98,17 @@ public class SettingController {
         List<Map> friendMap = mainService.getMyFriends(userNickname);
         model.addAttribute("friend", friendMap);
 		
+      //방문자 수 가져오기
+        try {
+			Map visitCntMap = new HashMap();
+			visitCntMap = mainDao.selectVisitCnt(userNickname);
+			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
 		return "miniHome/settingInfoEdit";
 	}
 
@@ -132,6 +156,17 @@ public class SettingController {
 	        	model.addAttribute("menuCategory", "menu");
 	        	n.printStackTrace();
         }
+        
+      //방문자 수 가져오기
+        try {
+			Map visitCntMap = new HashMap();
+			visitCntMap = mainDao.selectVisitCnt(userNickname);
+			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return "miniHome/settingBgm";
 //        return "miniHome/test";
@@ -185,6 +220,17 @@ public class SettingController {
 	        	model.addAttribute("menuCategory", "menu");
 	        	n.printStackTrace();
         }
+        
+      //방문자 수 가져오기
+        try {
+			Map visitCntMap = new HashMap();
+			visitCntMap = mainDao.selectVisitCnt(userNickname);
+			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return "miniHome/settingMenu";
 	}
@@ -216,6 +262,17 @@ public class SettingController {
 		Map putMap = new HashMap();
 		putMap.put("userNickname", userMap.get("userNickname"));
 		putMap.put("category", "menu");
+		
+		//방문자 수 가져오기
+        try {
+			Map visitCntMap = new HashMap();
+			visitCntMap = mainDao.selectVisitCnt(userNickname);
+			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		List<Map<String, Object>> userMenu = settingService.allocationOnSkinMenu(putMap);
 		
@@ -269,6 +326,17 @@ public class SettingController {
 	        callMenu.put("category", "menu");
 	        callMenu.put("userNickname", userNickname);
 	        
+	      //방문자 수 가져오기
+	        try {
+				Map visitCntMap = new HashMap();
+				visitCntMap = mainDao.selectVisitCnt(userNickname);
+				model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+				model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	        
 	        try {
 	        	Map mainMenu = mainService.mainMenu(callMenu);
 	        	
@@ -304,6 +372,17 @@ public class SettingController {
 			skinMap.put("productName", selectedProductName);
 			skinMap.put("category", "skin");
 			System.out.println("★ sknMap : " + skinMap);
+			
+			//방문자 수 가져오기
+	        try {
+				Map visitCntMap = new HashMap();
+				visitCntMap = mainDao.selectVisitCnt(userNickname);
+				model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+				model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			try {
 				settingService.updateAllocationOff(skinMap);
@@ -379,7 +458,18 @@ public class SettingController {
 	        	model.addAttribute("menuCategory", "menu");
 	        	n.printStackTrace();
         }
-
+        
+      //방문자 수 가져오기
+        try {
+			Map visitCntMap = new HashMap();
+			visitCntMap = mainDao.selectVisitCnt(userNickname);
+			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
 	    return "miniHome/settingDotoriUse";
 	}
 
@@ -414,6 +504,17 @@ public class SettingController {
 	        	model.addAttribute("menuCategory", "menu");
 	        	n.printStackTrace();
         }
+        
+      //방문자 수 가져오기
+        try {
+			Map visitCntMap = new HashMap();
+			visitCntMap = mainDao.selectVisitCnt(userNickname);
+			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return "miniHome/settingDotoriCharge";
 	}
@@ -484,6 +585,17 @@ public class SettingController {
 	        	model.addAttribute("menuCategory", "menu");
 	        	n.printStackTrace();
         }
+        
+      //방문자 수 가져오기
+        try {
+			Map visitCntMap = new HashMap();
+			visitCntMap = mainDao.selectVisitCnt(userNickname);
+			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return "miniHome/settingFriends";
 	}
@@ -525,7 +637,7 @@ public class SettingController {
 	
 	@RequestMapping(value = "/miniHome/setting", method = RequestMethod.POST)
 	@ResponseBody
-	public Map setting(@RequestBody Map map) {
+	public Map setting(@RequestBody Map map, Model model, HttpSession session) {
 		System.out.println("setting 메서드 실행");
 		Map resultMap = common(map);
 		
@@ -535,6 +647,17 @@ public class SettingController {
 	    resultMap.put("createDate", resultMap.get("date"));
 	    System.out.println("setting 메서드 종료");
 	    System.out.println(resultMap);
+	    
+	  //방문자 수 가져오기
+        try {
+			Map visitCntMap = new HashMap();
+			visitCntMap = mainDao.selectVisitCnt((String) session.getAttribute("userNickname"));
+			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	    return resultMap;
 	}
 
@@ -552,6 +675,17 @@ public class SettingController {
 	    String userNickname = (String) userMap.get("userNickname");
 	      
 	   System.out.println("userNickname : " +  userNickname);
+	   
+	 //방문자 수 가져오기
+       try {
+			Map visitCntMap = new HashMap();
+			visitCntMap = mainDao.selectVisitCnt(userNickname);
+			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	    try {
 	        List<Map<String, Object>> userStorageData = settingService.selectSettingUserStorage(userNickname);
 
@@ -590,6 +724,17 @@ public class SettingController {
 					e.printStackTrace();
 				}
 		
+				//방문자 수 가져오기
+		        try {
+					Map visitCntMap = new HashMap();
+					visitCntMap = mainDao.selectVisitCnt((String) session.getAttribute("userNickname"));
+					model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+					model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		        
 				return "miniHome/mnhMinimiChangeSuccess";
 	}
 	

@@ -4,19 +4,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.core.tjoeun.index.member.service.MemberService;
 import com.core.tjoeun.mnHome.album.service.AlbumService;
+import com.core.tjoeun.mnHome.main.dao.MainDao;
 import com.core.tjoeun.mnHome.main.service.MainService;
 
 @Controller
@@ -30,6 +32,9 @@ public class AlbumController {
 	
 	@Autowired
 	AlbumService albumService;
+	
+	@Autowired
+	MainDao mainDao;
 	
 	@RequestMapping(value="/mnHome/albumView/{userNickname}")
 	public String albumView(@PathVariable String userNickname, Model model) {
@@ -92,6 +97,17 @@ public class AlbumController {
 		model.addAttribute("list", albumService.getAlbum(userMap));
 		model.addAttribute("images", images);
         
+		//방문자 수 가져오기
+        try {
+			Map visitCntMap = new HashMap();
+			visitCntMap = mainDao.selectVisitCnt(userNickname);
+			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 		return "miniHome/album";
 	}
@@ -132,13 +148,24 @@ public class AlbumController {
 	        	n.printStackTrace();
         }
         
+        //방문자 수 가져오기
+        try {
+			Map visitCntMap = new HashMap();
+			visitCntMap = mainDao.selectVisitCnt(userNickname);
+			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
 		return "miniHome/albumWrite";
 	}
 	
 	
 	@RequestMapping(value="/mnHome/albumWrite/{userNickname}")
 	@ResponseBody
-	public Map albumWrite(@PathVariable String userNickname
+	public Map albumWrite(@PathVariable String userNickname, Model model
 							, @RequestPart(value = "contents")Map map
 							, @RequestPart(value = "uploadFile") MultipartFile[] uploadFile) {
 		Map result = new HashMap<String, String>();
@@ -147,7 +174,19 @@ public class AlbumController {
 			map.put("openScope", 1);
 			
 			albumService.insertAlbum(uploadFile, map);
+			
+			//방문자 수 가져오기
+	        try {
+				Map visitCntMap = new HashMap();
+				visitCntMap = mainDao.selectVisitCnt(userNickname);
+				model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+				model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			result.put("resultCode", "1");
+			
 		} catch (Exception e) {
 			result.put("resultCode", "0");
 			e.printStackTrace();
@@ -208,6 +247,17 @@ public class AlbumController {
 		model.addAttribute("list", listResult.get(0));
 		model.addAttribute("imageParts", imageParts);
 		
+		//방문자 수 가져오기
+        try {
+			Map visitCntMap = new HashMap();
+			visitCntMap = mainDao.selectVisitCnt(userNickname);
+			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return  "miniHome/albumDetail";
 		
 	}
@@ -215,7 +265,7 @@ public class AlbumController {
 	
 	@RequestMapping(value="/mnHome/albumDelete")
 	@ResponseBody
-	public Map albumDelete(@RequestBody Map map) {
+	public Map albumDelete(@RequestBody Map map, Model model, HttpSession session) {
 		Map result = new HashMap<String, String>();
 		try {
 			albumService.updateAlbum(map);
