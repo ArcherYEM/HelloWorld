@@ -156,8 +156,49 @@ public class AlbumController {
 	}
 	
 	
-	@RequestMapping(value="/mnHome/albumDetailView/{userNickname}")
-	public String albumDetailView(@PathVariable String userNickname, Model model) {
+	@RequestMapping(value="/mnHome/albumDetailView/{userNickname}/{seq}")
+	public String albumDetailView(@PathVariable String userNickname, @PathVariable int seq, Model model) {
+		
+		Map profile = mainService.getProfile(userNickname);
+		String image = (String) profile.get("image");
+		String msg = (String) profile.get("msg");
+		msg = msg.replace("\n", "<br>");
+		model.addAttribute("image", image);
+		model.addAttribute("msg", msg);
+		
+		Map map = mainService.getUserInfo(userNickname);
+		model.addAttribute("userName", map.get("userName"));
+		model.addAttribute("title", map.get("title"));
+		
+		//접속중인 유저의 친구 전부 가져오기
+        List<Map> friendMap = mainService.getMyFriends(userNickname);
+        model.addAttribute("friend", friendMap);
+        
+     // menu color 적용하기
+        Map callMenu = new HashMap();
+        callMenu.put("category", "menu");
+        callMenu.put("userNickname", userNickname);
+        System.out.println("### callMenu : " + callMenu);
+        
+        try {
+        	Map mainMenu = mainService.mainMenu(callMenu);
+        	System.out.println("### mainMenu : " + mainMenu);
+        	
+        	model.addAttribute("menuProductName", mainMenu.get("productName"));
+	        model.addAttribute("menuCategory", mainMenu.get("category"));
+	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
+	        System.out.println("### menu model : " + model);
+	        
+        } catch (NullPointerException n) {
+	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
+	        	model.addAttribute("menuCategory", "menu");
+	        	n.printStackTrace();
+        }
+        
+        Map userMap = new HashMap();
+		userMap.put("userNickname", userNickname);
+		
+		List<HashMap> listResult = albumService.getAlbum(userMap);
 		
 		return  "miniHome/albumDetail";
 		

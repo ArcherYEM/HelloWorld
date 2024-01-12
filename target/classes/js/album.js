@@ -107,4 +107,9 @@ function writeAlbum(){
 		})
 		
 		
-	}		
+	}
+
+
+
+
+
