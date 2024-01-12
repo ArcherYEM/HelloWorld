@@ -48,4 +48,16 @@ public class DiaryServiceImpl implements DiaryService {
 		return 0;
 	}
 
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
+	public void insertDiaryCMT(Map map) throws Exception {
+		int result = diaryDao.insertDiaryCMT(map);
+		if(result != 1) {
+			throw new Exception();
+		}
+		
+	}
+
+	
+
 }

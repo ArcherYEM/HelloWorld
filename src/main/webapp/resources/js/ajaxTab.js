@@ -14,6 +14,7 @@ function loadTabContent(tabName) {
                 htmlToAdd += '<link rel="stylesheet" href="../../../../resources/css/minihome/jquery-ui(1.13.2).css">';
                 htmlToAdd += '<script src="https://kit.fontawesome.com/91b557f547.js" crossorigin="anonymous"></script>';
                 htmlToAdd += '<script src="../../../../resources/js/datePicker.js"></script>';
+                htmlToAdd += '<script src="../../../../resources/js/diaryComment.js"></script>';
             
             }else if(tabName === '/mnHome/diaryWriteView' || tabName.indexOf('/mnHome/diaryWriteView') != -1){
                htmlToAdd += '<link href="/resources/css/minihome/diary.css" rel="stylesheet">';

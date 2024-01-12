@@ -14,5 +14,9 @@ public interface DiaryDao {
 	public int deleteDiary(ArrayList<String> list);
 	
 	public int modifyDiary(Map map);
+	
+	public int insertDiaryCMT(Map map);
+	
+	
 
 }

@@ -88,8 +88,9 @@
 													</c:if>
 													<div class="board-comment-write">
 														<span>댓글</span>
-														<input type="text" class="comment-content-write">
-														<input type="button" value="확인">
+														<input type="text" class="comment-content-write" id="cmtContent">
+														<input type="hidden" value="${sessionScope.userId.userNickname}" id="cmtWriter">
+														<input type="button" value="확인" onclick="addCmt(${diary.seq})">
 													</div>
 													<div class="board-comment-container">
 														<div class="board-comment">

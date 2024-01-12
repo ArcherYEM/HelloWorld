@@ -46,6 +46,7 @@ function addDiary() {
     
 }
 
+
 // 페이지 로드 시 SmartEditor 초기화
 var oEditors = [];
 

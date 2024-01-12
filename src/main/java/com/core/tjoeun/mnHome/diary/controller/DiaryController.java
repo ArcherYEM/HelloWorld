@@ -1,5 +1,6 @@
 package com.core.tjoeun.mnHome.diary.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +38,8 @@ public class DiaryController {
 		if (!diaryList.isEmpty()) {
 	        model.addAttribute("diaryList", diaryList);
 	    }
+		
+		
 		
 		// menu color 적용하기
         Map callMenu = new HashMap();
@@ -107,6 +110,24 @@ public class DiaryController {
 				resultMap.put("resultCode", "0");
 				return resultMap;
 			}
+	}
+	
+	@RequestMapping(value="/mnHome/diaryAddCMT", method = RequestMethod.POST)
+	@ResponseBody
+	public Map diaryAddCMT(@RequestBody  Map map) throws Exception {
+			
+			map.put("openScope",1);
+			
+			Map resultMap = new HashMap();
+			
+			try {
+				diaryService.insertDiaryCMT(map);
+				resultMap.put("resultCode", "1");
+			} catch (Exception e) {
+				resultMap.put("resultCode", "0");
+			}
+			
+			return resultMap;
 	}
 
 }
