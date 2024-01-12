@@ -77,10 +77,19 @@ function writeAlbum(){
 		let inputFile = $("input[name='albumFile']");
 		let files = inputFile[0].files;
 		
+		if(files.length <=0){
+			alert("사진을 첨부해주세요.");
+			return;
+		}
+		
 		for(let i = 0; i < files.length; i++){
 			formData.append("uploadFile", files[i]);
 		}
-		console.log(files);
+		
+		if($.trim($("#albumTitle").val())==""){
+			alert("제목을 입력해주세요.");
+			return;
+		}		
 		
 		let albumData = {
 			title : $("#albumTitle").val()
