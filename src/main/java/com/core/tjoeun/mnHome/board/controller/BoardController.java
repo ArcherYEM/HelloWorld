@@ -323,7 +323,7 @@ public class BoardController {
 	
 	@RequestMapping(value = "/mnHome/addComment", method = RequestMethod.POST)
 	@ResponseBody
-	public List<Map> changeName(@RequestBody Map<String, String> requestData) {
+	public List<Map> addComment(@RequestBody Map<String, String> requestData) {
 		List<Map> commentMap = new ArrayList();
 		
 		try {
@@ -338,5 +338,14 @@ public class BoardController {
 		}
 
 		return commentMap;
+	}
+	
+	@RequestMapping(value = "/mnHome/deleteComment", method = RequestMethod.POST)
+	@ResponseBody
+	public int deleteComment(@RequestParam("seq") int seq) {
+		
+		int result=boardService.deleteBoardComment(seq);
+
+		return result;
 	}
 }
