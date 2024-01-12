@@ -346,7 +346,6 @@ public class StoreController {
         ShoppingCart shoppingCart = getOrCreateShoppingCart(session);
         shoppingCart.clearCart();
         
-        session.setAttribute("cart", shoppingCart);
     }
 
     
@@ -356,17 +355,17 @@ public class StoreController {
         Map resultMap = new HashMap();
         resultMap.put("userNickname", session.getAttribute("userNickname"));
         updateCartDotoriCount(session);
-        Object currentDotoriObj = session.getAttribute("userDotoriCnt");
-        Object userBuyCartObj = session.getAttribute("userBuyCart");
+        String currentDotoriStr = session.getAttribute("userDotoriCnt").toString();
+        String userBuyCartStr = session.getAttribute("userBuyCart").toString();
         int result = 0;
-        
+        	
         try {
-            Long currentDotori = (currentDotoriObj instanceof Long) ? (Long) currentDotoriObj : null;
-            Integer userBuyCart = (userBuyCartObj instanceof Integer) ? (Integer) userBuyCartObj : null;
+        	Integer currentDotori = Integer.parseInt(currentDotoriStr);
+        	Integer userBuyCart = Integer.parseInt(userBuyCartStr);
             
             
             if (currentDotori != null && userBuyCart != null) {
-                result = currentDotori.intValue() - userBuyCart;
+                result = currentDotori - userBuyCart;
 
                 // 장바구니 도토리 개수를 업데이트
                 session.setAttribute("userDotoriCnt", result);
