@@ -1,6 +1,7 @@
 
 package com.core.tjoeun.mnHome.main.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -179,6 +180,7 @@ public class MainServiceImpl implements MainService{
 	}
 
 	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW, rollbackFor = {Exception.class})
 	public int insertFriendCmt(Map map) throws Exception {
 		int result = mainDao.insertFriendCmt(map);
 		
@@ -190,9 +192,23 @@ public class MainServiceImpl implements MainService{
 	}
 	
 	@Override
+	@Transactional(readOnly = true)
+	public List<Map> selectFriendCmt(Map map) throws Exception {
+		List<Map> friendCmtListMap = new ArrayList<Map>();
+		friendCmtListMap = mainDao.selectFriendCmt(map);
+		
+		if(friendCmtListMap == null) {
+			throw new Exception();
+		} else {
+			return friendCmtListMap;
+		}
+	}
+
+	@Override
 	public Map mainMenu(Map map) {
 		
 		return mainDao.mainMenu(map);
 	}
+
 	
 }
