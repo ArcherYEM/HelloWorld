@@ -36,7 +36,6 @@
            </c:choose>
            ;
 	       " >
-   
    <div class="main-frame">
       <div class="bookcover">
          <div class="bookdot">
@@ -466,7 +465,6 @@
             </div>
          </div>
       </div>
-      
       <div class="audioPlayerContainer">
 <!--          <audio id="audioElement" autoplay></audio> -->
          <div class="audioPlayingContainer">
@@ -503,8 +501,8 @@
          </div>
       </div>
    </div>
+   <div class="main-under-bar">test</div>
    <div id="testUnder"></div>
-   
    </div> <!-- backgourn div -->
    <script src="../../../../resources/js/default.js"></script>
    <script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
