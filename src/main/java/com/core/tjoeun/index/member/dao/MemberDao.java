@@ -46,4 +46,6 @@ public interface MemberDao {
 	
 	public int insertUserStorageMenu(String userNickname);
 	
+	public int insertVisitCnt(String userNickname);
+	
 }

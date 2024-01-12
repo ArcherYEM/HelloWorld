@@ -156,4 +156,16 @@ public class MainDaoImpl implements MainDao{
 		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
 		return mapper.mainMenu(map);
 	}
+	
+	@Override
+	public Map selectVisitCnt(String userNickname) {
+		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
+		return mapper.selectVisitCnt(userNickname);
+	}
+
+	@Override
+	public int updateVisitCnt(Map map) {
+		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
+		return mapper.updateVisitCnt(map);
+	}
 }

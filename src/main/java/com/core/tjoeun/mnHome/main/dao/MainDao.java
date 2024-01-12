@@ -47,4 +47,8 @@ public interface MainDao {
 	
 	public Map mainMenu(Map map);
 	
+	public Map selectVisitCnt(String userNickname);
+	
+	public int updateVisitCnt(Map map);
+	
 }
