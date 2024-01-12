@@ -9,5 +9,7 @@ public interface AlbumMapper {
 	public int insertAlbum(Map map);
 	
 	public List<HashMap> selectAlbum(Map map);
+	
+	public int updateAlbum(Map map);
 
 }

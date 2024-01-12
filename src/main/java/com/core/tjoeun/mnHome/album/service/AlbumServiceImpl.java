@@ -81,5 +81,15 @@ public class AlbumServiceImpl implements AlbumService{
 		
 		return albumDao.selectAlbum(map);
 	}
+
+	@Override
+	@Transactional(readOnly = false, rollbackFor = Exception.class, propagation = Propagation.REQUIRES_NEW)
+	public void updateAlbum(Map map) throws Exception {
+		int result = albumDao.updateAlbum(map);
+		if(result != 1) {
+			throw new Exception();
+		}
+		
+	}
 	
 }

@@ -11,5 +11,7 @@ public interface AlbumService {
 	public void insertAlbum(MultipartFile[] uploadFile, Map map) throws Exception;
 	
 	public List<HashMap> getAlbum(Map map);
+	
+	public void updateAlbum(Map map) throws Exception;
 
 }
