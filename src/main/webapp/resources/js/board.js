@@ -23,12 +23,17 @@ function btnComment(){
 			var newCommentUserNickname=newCommentInfo.userNickname;
 			var newCommentUpdateDate=newCommentInfo.update_date_format;
 			var newCommentContent=newCommentInfo.content;
-			
-			//추가할 댓글 폼
 			var commentContainer = document.getElementById("board-comment-container");
+
+			// 새로운 댓글을 위한 div 요소 생성
 			var commentDiv = document.createElement("div");
 			commentDiv.className = "board-comment";
 
+			// 댓글 정보를 담는 div 요소 생성
+			var commentInfoDiv = document.createElement("div");
+			commentInfoDiv.className = "comment-info";
+
+			// 작성자, 내용, 날짜를 위한 span 요소 생성
 			var writerSpan = document.createElement("span");
 			writerSpan.className = "board-comment-writer";
 			writerSpan.textContent = newCommentUserNickname;
@@ -41,9 +46,40 @@ function btnComment(){
 			dateSpan.className = "board-comment-date";
 			dateSpan.textContent = newCommentUpdateDate;
 
-			commentDiv.appendChild(writerSpan);
-			commentDiv.appendChild(contentSpan);
-			commentDiv.appendChild(dateSpan);
+			// comment-info div에 span 요소 추가
+			commentInfoDiv.appendChild(writerSpan);
+			commentInfoDiv.appendChild(contentSpan);
+			commentInfoDiv.appendChild(dateSpan);
+
+			// commentDiv에 comment-info div 추가
+			commentDiv.appendChild(commentInfoDiv);
+
+			// 수정 및 삭제 버튼을 위한 div 요소 생성
+			var actionsDiv = document.createElement("div");
+			actionsDiv.className = "board-comment-actions";
+
+			// 수정 버튼 생성
+			var editSpan = document.createElement("span");
+			editSpan.className = "board-comment-edit";
+			editSpan.textContent = "수정";
+			// 수정 기능을 위한 추가 코드가 필요할 수 있습니다.
+
+			// 삭제 버튼 생성
+			var deleteSpan = document.createElement("span");
+			deleteSpan.className = "board-comment-delete";
+			deleteSpan.textContent = "삭제";
+			// 삭제 기능을 위한 추가 코드가 필요할 수 있습니다.
+
+			// actionsDiv에 수정 및 삭제 버튼 추가
+			actionsDiv.appendChild(editSpan);
+			actionsDiv.appendChild(deleteSpan);
+
+			// commentDiv에 actionsDiv 추가
+			commentDiv.appendChild(actionsDiv);
+
+			// commentContainer에 commentDiv 추가
+			commentContainer.prepend(commentDiv); // prepend를 사용하여 맨 위에 댓글을 추가
+
 
 			var firstComment = commentContainer.firstChild;
 			if (firstComment) {
@@ -60,6 +96,26 @@ function btnComment(){
 	})
 }
 
+
+function btnCommentDelete(event){
+	 var commentDiv = event.target.closest('.board-comment');
+
+	 var boardSeqValue = commentDiv.querySelector('input[type="hidden"]').value;
+	 
+	 var userResponse = confirm("정말로 댓글을 삭제하시겠습니까?");
+	 if (userResponse) {
+			 $.ajax({
+				 method: 'POST',
+				 url: '/mnHome/deleteComment',
+				 contentType: 'application/x-www-form-urlencoded',
+				 data: { seq: seq }
+			 }).done(function(json){
+				 
+			 });
+	    } else {
+	        return;
+	    }
+}
 
 $(document).ready(function() {
 // 		전체선택 기능

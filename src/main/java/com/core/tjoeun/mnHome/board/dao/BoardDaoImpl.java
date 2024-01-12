@@ -65,4 +65,11 @@ public class BoardDaoImpl implements BoardDao{
 		
 		return mapper.getBoardComment(boardSeq);
 	}
+	
+	@Override
+	public int deleteBoardComment(int seq) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		
+		return mapper.deleteBoardComment(seq);
+	}
 }
