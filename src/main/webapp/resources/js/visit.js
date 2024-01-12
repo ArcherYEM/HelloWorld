@@ -1,5 +1,5 @@
 function btnPage(page) {
-    var targetNickname = $('#targewortNickname').val();
+    var targetNickname = $('#targetNickname').val();
     var url = "/mnHome/visitView/" + targetNickname + "?page=" + page;
 
     $.ajax({
@@ -53,7 +53,7 @@ function insertComment() {
     }).done(function(json) {
         if(json.result === "Success"){
             $('#visit-comment-insert').val('');
-            $('#menu-visit').trigger('click');
+            $('#quickVisit').trigger('click');
         } else if(json.result === "false"){
             alert("댓글 작성에 실패했습니다. 다시 시도해주세요.");
         }
