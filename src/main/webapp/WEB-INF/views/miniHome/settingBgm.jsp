@@ -97,17 +97,18 @@
 								<div>재생시간</div>
 							</div>
 							
-							
-							<div class="setting-bgm-list setting-bgm-grid">
-								<div><input type="checkbox"></div>
-								<div>1</div>
-								<div>Gee</div>
-								<div>소녀시대</div>
-								<div>03:11</div>
-							</div>
+							<c:forEach items="${playList}" var="playList" varStatus="status">
+								<div class="setting-bgm-list setting-bgm-grid" id="playListBgm">
+									<div><input type="checkbox"></div>
+									<div>${status.index + 1}</div>
+									<div class="title-list">${playList.title }</div>
+									<div>${playList.artist }</div>
+									<div>${playList.runningTime }</div>
+								</div>
+							</c:forEach>
 							
 							<div class="setting-bgm-list-delete">
-								<input type="button" value="삭제">
+								<input type="button" value="삭제" onclick="removePlayList()">
 							</div>
 							
 						</div>

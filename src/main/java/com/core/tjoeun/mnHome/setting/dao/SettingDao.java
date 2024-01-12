@@ -35,4 +35,10 @@ public interface SettingDao {
 	public int changeNumber (Map map);
 	
 	public List<Map> selectMyBgm(Map map);
+	
+	public int addPlayList(Map param);
+	
+	public int removePlayList(Map param);
+	
+	public List<Map> selectPlayList(String userNickname);
 }

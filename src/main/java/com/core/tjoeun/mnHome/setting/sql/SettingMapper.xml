@@ -243,4 +243,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</if>
 	</select>
 	
+	<update id="addPlayList" parameterType="map">
+		update userBgm
+	    set allocation = 1
+	    where userNickname = #{userNickname}
+	    and title IN
+	    <foreach item="titleItem" collection="title" open="(" separator="," close=")">
+	        #{titleItem}
+	    </foreach>
+	</update>
+	
+	<update id="removePlayList" parameterType="map">
+		update userBgm
+	    set allocation = 0
+	    where userNickname = #{userNickname}
+	    and title IN
+	    <foreach item="titleItem" collection="title" open="(" separator="," close=")">
+	        #{titleItem}
+	    </foreach>
+	</update>
+	
+	<select id="selectPlayList" parameterType="String" resultType="map">
+		select title, artist, runningTime 
+		from userBgm
+		where userNickname=#{userNickname}
+		and allocation = 1;
+	</select>
+	
 </mapper>

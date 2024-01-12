@@ -111,6 +111,12 @@ body a {
 	outline:none;
 }
 
+.visit-page:hover{
+	cursor: pointer;
+	border: 1px solid gray;
+	
+}
+
 /* 임시효과 */
 .visit-line-tbImg:hover {
 	cursor: pointer;

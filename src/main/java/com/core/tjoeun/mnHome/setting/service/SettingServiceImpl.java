@@ -158,4 +158,20 @@ public class SettingServiceImpl implements SettingService {
 	public List<Map> selectMyBgm(Map map) {
 		return settingDao.selectMyBgm(map);
 	}
+
+	@Override
+	public int addPlayList(Map param) {
+		return settingDao.addPlayList(param);
+	}
+	
+	@Override
+	public int removePlayList(Map param) {
+		return settingDao.removePlayList(param);
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Map> selectPlayList(String userNickname) {
+		return settingDao.selectPlayList(userNickname);
+	}
 }

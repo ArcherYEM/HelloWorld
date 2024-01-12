@@ -93,8 +93,8 @@ function changeNickname() {
 	            data: JSON.stringify(jsonData)        	
 	        }).done(function(json) {
 				if(json==1){
-					alert("성공적으로 닉네임을 변경했습니다. 세션이 만료되었으니 새로 로그인해주세요.")
-					window.location.href = '/index/member/logout';					
+					alert("성공적으로 닉네임을 변경했습니다.\n세션이 만료되었으니 새로 로그인해주세요.")
+			        document.getElementById("logOutBtn").click();					
 				} else if(json==3){
 					alert("이미 사용중인 닉네임입니다.")
 					userNicknameArea.value=userNickname;
@@ -188,10 +188,34 @@ function addPlayList(){
     	contentType: 'application/json',
         data: JSON.stringify(jsonData)
     }).done(function(json){
-    	
-    })
-    
+    	document.getElementById("spanSettingBgm").click();
+    })  
+}
 
+function removePlayList(){
+	var checkedBoxes = document.querySelectorAll('#playListBgm input[type="checkbox"]:checked');
+	var checkedValues = [];
+	var userNickname = document.getElementById("userNickname").value;
+	
+	checkedBoxes.forEach(function(checkbox) {
+		var title = checkbox.closest('.setting-bgm-grid').querySelector('.title-list').textContent;
+		checkedValues.push(title);
+	});
+	
+	let jsonData = {
+			"title" : checkedValues,
+			"userNickname" : userNickname 
+	};
+	console.log(jsonData);
+	$.ajax({
+		method: "POST",
+		url: '/mnHome/removePlayList',
+		dataType: 'json',
+		contentType: 'application/json',
+		data: JSON.stringify(jsonData)
+	}).done(function(json){
+		document.getElementById("spanSettingBgm").click();
+	})  
 }
 
 document.addEventListener('DOMContentLoaded', function() {

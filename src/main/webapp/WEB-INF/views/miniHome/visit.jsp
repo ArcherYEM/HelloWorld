@@ -120,7 +120,7 @@
 					
 					<div class="page-container">
 						<c:forEach var="page" begin="1" end="${totalPage}">
-							<span class="visit-page" data-page="/mnHome/visitView/${userNickname }?page=${page}"  style = "cursor:pointer">[${page}]</span>
+							<span class="visit-page" data-page="/mnHome/visitView/${userNickname }?page=${page}" >[${page}]</span>
 						</c:forEach>
 					</div>
 					

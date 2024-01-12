@@ -167,6 +167,11 @@ public class SettingController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+        
+        //플레이 리스트 가져오기
+        List<Map> playList = settingService.selectPlayList(userNickname);
+        System.out.println(playList);
+        model.addAttribute("playList",playList);
 		
 		return "miniHome/settingBgm";
 //        return "miniHome/test";
@@ -861,9 +866,30 @@ public class SettingController {
 	@RequestMapping(value = "/mnHome/addPlayList", method = RequestMethod.POST)
 	@ResponseBody
 	public int addPlayList(@RequestBody Map requestData) {
-		System.out.println(requestData);
+		Map param = new HashMap();
+		param.put("userNickname", requestData.get("userNickname"));
+		param.put("title", requestData.get("title"));
 		
-		int result = 0;
+		int result = settingService.addPlayList(param);
+		System.out.println(result);
+		try {
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			String error = e.getMessage();
+		}
+		return result;
+	}
+	
+	@RequestMapping(value = "/mnHome/removePlayList", method = RequestMethod.POST)
+	@ResponseBody
+	public int removePlayList(@RequestBody Map requestData) {
+		Map param = new HashMap();
+		param.put("userNickname", requestData.get("userNickname"));
+		param.put("title", requestData.get("title"));
+		
+		int result = settingService.removePlayList(param);
+		
 		try {
 			
 		} catch (Exception e) {
