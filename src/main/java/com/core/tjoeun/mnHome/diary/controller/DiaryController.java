@@ -1,6 +1,5 @@
 package com.core.tjoeun.mnHome.diary.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.core.tjoeun.mnHome.diary.service.DiaryService;
+import com.core.tjoeun.mnHome.main.dao.MainDao;
 import com.core.tjoeun.mnHome.main.service.MainService;
 
 @Controller
@@ -25,6 +25,9 @@ public class DiaryController {
 
 	@Autowired
 	DiaryService diaryService;
+	
+	@Autowired
+	MainDao mainDao;
 	
 	@RequestMapping("/mnHome/diaryView/{userNickname}")
 	public String diaryView(@PathVariable String userNickname, Model model) {
@@ -61,6 +64,17 @@ public class DiaryController {
 	        	model.addAttribute("menuCategory", "menu");
 	        	n.printStackTrace();
         }
+        
+      //방문자 수 가져오기
+        try {
+			Map visitCntMap = new HashMap();
+			visitCntMap = mainDao.selectVisitCnt(userNickname);
+			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return "miniHome/diary";
 	}
@@ -93,6 +107,17 @@ public class DiaryController {
 	        	n.printStackTrace();
         }
 		
+      //방문자 수 가져오기
+        try {
+			Map visitCntMap = new HashMap();
+			visitCntMap = mainDao.selectVisitCnt(userNickname);
+			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
 		return "miniHome/diaryWrite";
 	}
 	

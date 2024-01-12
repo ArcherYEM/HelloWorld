@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.core.tjoeun.mnHome.main.dao.MainDao;
 import com.core.tjoeun.mnHome.main.service.MainService;
 import com.core.tjoeun.mnHome.visit.service.VisitService;
 
@@ -24,6 +25,9 @@ public class VisitController {
 	
 	@Autowired
 	VisitService visitService;
+	
+	@Autowired
+	MainDao mainDao;
 	
 	@RequestMapping(value="/mnHome/visitView/{userNickname}")
 	public String visitView(@PathVariable String userNickname, Model model, @RequestParam(required = false) Integer page) {
@@ -90,6 +94,17 @@ public class VisitController {
 	        	n.printStackTrace();
         }
 		
+      //방문자 수 가져오기
+        try {
+			Map visitCntMap = new HashMap();
+			visitCntMap = mainDao.selectVisitCnt(userNickname);
+			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
 		return "miniHome/visit";
 	}
 	
