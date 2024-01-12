@@ -117,11 +117,8 @@
 								${comment.update_date_format }
 							</span>
 							</div>
-							<c:if test="${sessionScope.userId.userNickname eq userNickname }">
+							<c:if test="${sessionScope.userId.userNickname eq comment.userNickname }">
 							<div class="board-comment-actions">
-								<span class="board-comment-edit">
-									수정
-								</span>
 								<span class="board-comment-delete" onclick = "btnCommentDelete(event)">
 									삭제
 								</span>

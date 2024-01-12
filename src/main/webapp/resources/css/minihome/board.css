@@ -217,11 +217,16 @@ thead tr:last-child th {
 }
 
 .board-comment-writer{
+	display:inline-block;
+	margin-right:5px;
+	min-width:50px;
 	color:steelblue;
 	font-weight: bold;
 }
 
 .board-comment-content{
+	display:inline-block;
+	max-width:280px;
 	margin-left:20px;
 	margin-right:10px;
 }
