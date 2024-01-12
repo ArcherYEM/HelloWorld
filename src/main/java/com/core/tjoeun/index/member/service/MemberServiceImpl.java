@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.core.tjoeun.index.member.dao.MemberDao;
+import com.core.tjoeun.mnHome.main.dao.MainDao;
 import com.core.tjoeun.util.SHA256;
 
 @Service
@@ -23,6 +24,9 @@ public class MemberServiceImpl implements MemberService{
 
    @Autowired
    MemberDao memberDao;
+   
+   @Autowired
+   MainDao mainDao;
    
    @Override
    @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
@@ -77,7 +81,12 @@ public class MemberServiceImpl implements MemberService{
            int onFriends = memberDao.selectOnFriendCnt((String) selectMap.get("userNickname"));
            
            selectMap.put("friendCnt", memberDao.selectOnFriendCnt((String) selectMap.get("userNickname"))) ;
-            // 로그인 성공 시, 사용자 정보 반환
+           
+           Map visitCntMap = new HashMap();
+           visitCntMap = mainDao.selectVisitCnt((String) selectMap.get("userNickname"));
+           
+           selectMap.put("todayCnt", visitCntMap.get("todayCnt"));
+           // 로그인 성공 시, 사용자 정보 반환
             return selectMap;
         } else {
             // 로그인 실패 시, null 반환

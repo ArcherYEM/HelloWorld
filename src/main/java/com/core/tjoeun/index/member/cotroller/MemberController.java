@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.core.tjoeun.index.member.service.MemberService;
+import com.core.tjoeun.mnHome.main.dao.MainDao;
 
 @Controller
 @RequestMapping("/index/member")
@@ -50,6 +51,7 @@ public class MemberController {
                 session.setAttribute("userNickname", result.get("userNickname"));                
                 session.setAttribute("userEmail", result.get("userEmail"));                
                 session.setAttribute("friendCnt", result.get("friendCnt"));                
+                session.setAttribute("todayCnt", result.get("todayCnt"));                
 
                 resultMap.put("resultCode", "1");
                 resultMap.put("userEmail", result.get("userEmail"));
@@ -57,6 +59,7 @@ public class MemberController {
                 resultMap.put("userNickname", result.get("userNickname"));
                 resultMap.put("userDotoriCnt", result.get("currentDotori"));
                 resultMap.put("friendCnt", result.get("friendCnt"));
+                resultMap.put("todayCnt", result.get("todayCnt"));
                 
                 userNickname = (String) result.get("userNickname");
                 String userMinimi = memberService.selectUserMinimi(userNickname);
