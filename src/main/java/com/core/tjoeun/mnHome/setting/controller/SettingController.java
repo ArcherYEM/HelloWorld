@@ -712,4 +712,19 @@ public class SettingController {
 		}
 		return result;
 	}
+	
+	@RequestMapping(value = "/mnHome/addPlayList", method = RequestMethod.POST)
+	@ResponseBody
+	public int addPlayList(@RequestBody Map requestData) {
+		System.out.println(requestData);
+		
+		int result = 0;
+		try {
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			String error = e.getMessage();
+		}
+		return result;
+	}
 }

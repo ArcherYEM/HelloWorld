@@ -166,3 +166,57 @@ function changeNumber() {
         isEditModeNum = false;
     }
 }
+function addPlayList(){
+    var checkedBoxes = document.querySelectorAll('.setting-bgm-list input[type="checkbox"]:checked');
+    var checkedValues = [];
+    var userNickname = document.getElementById("userNickname").value;
+
+    checkedBoxes.forEach(function(checkbox) {
+        var title = checkbox.closest('.setting-bgm-grid').querySelector('.title').textContent;
+        checkedValues.push(title);
+    });
+
+    let jsonData = {
+		"title" : checkedValues,
+		"userNickname" : userNickname 
+    };
+    	console.log(jsonData);
+    $.ajax({
+    	method: "POST",
+    	url: '/mnHome/addPlayList',
+    	dataType: 'json',
+    	contentType: 'application/json',
+        data: JSON.stringify(jsonData)
+    }).done(function(json){
+    	
+    })
+    
+
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    var selectAllCheckbox = document.getElementById('selectAll');
+    var individualCheckboxes = document.querySelectorAll('.checkboxBgm input[type="checkbox"]');
+
+    // 전체 선택 체크박스의 상태 변경 감지
+    selectAllCheckbox.addEventListener('change', function() {
+        individualCheckboxes.forEach(function(checkbox) {
+            checkbox.checked = selectAllCheckbox.checked;
+        });
+    });
+
+    // 개별 체크박스 상태 변경 감지
+    individualCheckboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            // 개별 체크박스가 선택 해제되면 전체 선택 체크박스도 해제
+            if (!checkbox.checked) {
+                selectAllCheckbox.checked = false;
+            } 
+            // 모든 개별 체크박스가 선택되면 전체 선택 체크박스도 선택
+            else if (Array.from(individualCheckboxes).every(chk => chk.checked)) {
+                selectAllCheckbox.checked = true;
+            }
+        });
+    });
+});
+
