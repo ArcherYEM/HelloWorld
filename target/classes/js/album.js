@@ -77,10 +77,19 @@ function writeAlbum(){
 		let inputFile = $("input[name='albumFile']");
 		let files = inputFile[0].files;
 		
+		if(files.length <=0){
+			alert("사진을 첨부해주세요.");
+			return;
+		}
+		
 		for(let i = 0; i < files.length; i++){
 			formData.append("uploadFile", files[i]);
 		}
-		console.log(files);
+		
+		if($.trim($("#albumTitle").val())==""){
+			alert("제목을 입력해주세요.");
+			return;
+		}		
 		
 		let albumData = {
 			title : $("#albumTitle").val()
@@ -107,8 +116,31 @@ function writeAlbum(){
 		 });
 		
 	}
-
-
+	
+	function deleteAlbum(seq){
+		if(confirm("Are you sure?")){
+			let userNickname = $("#hiddenUserNickname").val();
+			
+			let jsonData = { 
+							"seq" : seq 
+							};
+		
+			$.ajax({
+				url: "/mnHome/albumDelete"
+				,type: "POST"
+				, dataType : "json"
+				, data: JSON.stringify(jsonData)
+				, contentType: "application/json"
+				, success : function(data){
+					alert("삭제했습니다.");
+					document.getElementById("albumView").click();
+				}, error : function(error){
+					console.log("Error : " + error);
+					alert('잠시 후 다시 시도해주세요.');
+				}
+			});
+		}
+	}	
 
 
 

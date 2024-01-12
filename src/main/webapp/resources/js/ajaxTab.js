@@ -150,6 +150,7 @@ $(document).on("click", ".btn-diarylist", function (event) {
    loadTabContent(tabName); 
 });
 
+
 $(document).on("click", ".album-under-left", function (event) {
    event.preventDefault();
    tabName = $(this).data("albumview");
@@ -218,4 +219,11 @@ $(document).on("click", ".board-page", function (event) {
    tabName = $(this).data("page");
    console.log('TabName:', tabName);
    loadTabContent(tabName); 
+});
+
+$(document).on("click", ".visit-page", function (event) {
+	event.preventDefault();
+	tabName = $(this).data("page");
+	console.log('TabName:', tabName);
+	loadTabContent(tabName); 
 });

@@ -105,6 +105,8 @@
 					<div class="board-comment-container" id="board-comment-container">
 					<c:forEach items="${comment}" var="comment">
 						<div class="board-comment">
+							<input type="hidden" value=${comment.seq } id="board-seq">
+							<div class="comment-info">
 							<span class="board-comment-writer">
 								${comment.userNickname }
 							</span>
@@ -114,6 +116,14 @@
 							<span class="board-comment-date">
 								${comment.update_date_format }
 							</span>
+							</div>
+							<c:if test="${sessionScope.userId.userNickname eq comment.userNickname }">
+							<div class="board-comment-actions">
+								<span class="board-comment-delete" onclick = "btnCommentDelete(event)">
+									삭제
+								</span>
+							</div>
+							</c:if>
 						</div>
 					</c:forEach>
 					

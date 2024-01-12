@@ -18,16 +18,17 @@ function btnComment(){
 		if(json.length==0){
 			alert("댓글 작성에 실패했습니다.");
 		}else{
-			//신규 댓글의 정보가져옴
 			var newCommentInfo=json[0];
 			var newCommentUserNickname=newCommentInfo.userNickname;
 			var newCommentUpdateDate=newCommentInfo.update_date_format;
 			var newCommentContent=newCommentInfo.content;
-			
-			//추가할 댓글 폼
 			var commentContainer = document.getElementById("board-comment-container");
+
 			var commentDiv = document.createElement("div");
 			commentDiv.className = "board-comment";
+
+			var commentInfoDiv = document.createElement("div");
+			commentInfoDiv.className = "comment-info";
 
 			var writerSpan = document.createElement("span");
 			writerSpan.className = "board-comment-writer";
@@ -41,9 +42,25 @@ function btnComment(){
 			dateSpan.className = "board-comment-date";
 			dateSpan.textContent = newCommentUpdateDate;
 
-			commentDiv.appendChild(writerSpan);
-			commentDiv.appendChild(contentSpan);
-			commentDiv.appendChild(dateSpan);
+			commentInfoDiv.appendChild(writerSpan);
+			commentInfoDiv.appendChild(contentSpan);
+			commentInfoDiv.appendChild(dateSpan);
+
+			commentDiv.appendChild(commentInfoDiv);
+
+			var actionsDiv = document.createElement("div");
+			actionsDiv.className = "board-comment-actions";
+
+			var deleteSpan = document.createElement("span");
+			deleteSpan.className = "board-comment-delete";
+			deleteSpan.textContent = "삭제";
+
+			actionsDiv.appendChild(deleteSpan);
+
+			commentDiv.appendChild(actionsDiv);
+
+			commentContainer.prepend(commentDiv);
+
 
 			var firstComment = commentContainer.firstChild;
 			if (firstComment) {
@@ -60,6 +77,31 @@ function btnComment(){
 	})
 }
 
+
+function btnCommentDelete(event){
+	 var commentDiv = event.target.closest('.board-comment');
+
+	 var boardSeqValue = commentDiv.querySelector('input[type="hidden"]').value;
+	 
+	 var userResponse = confirm("정말로 댓글을 삭제하시겠습니까?");
+	 if (userResponse) {
+			 $.ajax({
+				 method: 'POST',
+				 url: '/mnHome/deleteComment',
+				 contentType: 'application/x-www-form-urlencoded',
+				 data: { seq: boardSeqValue }
+			 }).done(function(json){
+				 if(json==1){
+					 alert("댓글이 정상적으로 삭제되었습니다.");
+					 commentDiv.remove();
+				 }else{
+					 alert("오류가 발생했습니다.");
+				 }
+			 });
+	    } else {
+	        return;
+	    }
+}
 
 $(document).ready(function() {
 // 		전체선택 기능

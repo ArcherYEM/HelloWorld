@@ -92,4 +92,11 @@ public class BoardServiceImpl implements BoardService{
 		return boardDao.getBoardComment(boardSeq);
 	}
 
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
+	public int deleteBoardComment(int seq) {
+		
+		return boardDao.deleteBoardComment(seq);
+		
+	}
 }

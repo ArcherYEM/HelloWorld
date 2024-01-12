@@ -123,11 +123,13 @@
 .album-under-left {
   margin-right: auto;
   padding-left: 10px;
+  cursor: pointer;
 }
 
 .album-under-right {
   text-align: right;
   margin-right: 5px;
+  cursor: pointer;
 }
 
 

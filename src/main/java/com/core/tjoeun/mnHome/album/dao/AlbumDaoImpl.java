@@ -28,4 +28,10 @@ public class AlbumDaoImpl implements AlbumDao{
 		return albumMapper.selectAlbum(map);
 	}
 
+	@Override
+	public int updateAlbum(Map map) {
+		AlbumMapper albumMapper = sqlsession.getMapper(AlbumMapper.class);
+		return albumMapper.updateAlbum(map);
+	}
+
 }

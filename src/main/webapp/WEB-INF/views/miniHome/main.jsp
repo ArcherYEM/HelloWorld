@@ -142,16 +142,16 @@
                         </div>
                         <div class="update-box">
                            <div class="menu-row">
-                              <div class="menu-item">
-                                 <a href="/mnHome/diaryView">다이어리<span class="menu-num">${newCount.DiaryCount}/${count.DiaryCount }</span></a>
+                              <div class="menu-item" onclick="quickDiary()">
+                                 	다이어리<span class="menu-num">${newCount.DiaryCount}/${count.DiaryCount }</span>
                                  <c:if test="${newCount.DiaryCount>0 }">
                                  	<img src="../../../../resources/images/minihome/newIcon.png"
                                  		alt="new Icon" class="minihome-nIcon">
                                  </c:if>
                                  
                               </div>
-                              <div class="menu-item">
-                                 <a href="/mnHome/albumView">사진첩<span class="menu-num">0/0</span></a>
+                              <div class="menu-item" onclick="quickAlbum()">
+                                 	사진첩<span class="menu-num">0/0</span>
                                  <c:if test="${newCount.AlbumCount>0 }">
                                  	<img src="../../../../resources/images/minihome/newIcon.png"
                                  		alt="new Icon" class="minihome-nIcon">
@@ -159,15 +159,15 @@
                               </div>
                            </div>
                            <div class="menu-row">
-                              <div class="menu-item">
-                                 <a href="/mnHome/boardView">게시판<span class="menu-num">${newCount.BoardCount}/${count.BoardCount }</span></a>
+                              <div class="menu-item" onclick="quickBoard()">
+                                 	게시판<span class="menu-num">${newCount.BoardCount}/${count.BoardCount }</span>
                                  <c:if test="${newCount.BoardCount>0 }">
                                  	<img src="../../../../resources/images/minihome/newIcon.png"
                                  		alt="new Icon" class="minihome-nIcon">
                                  </c:if>
                               </div>
-                              <div class="menu-item">
-                                 <a href="/mnHome/visitView">방명록<span class="menu-num">${newCount.VisitCount}/${count.VisitCount }</span></a>
+                              <div class="menu-item" onclick="quickVisit()">
+                                 	방명록<span class="menu-num">${newCount.VisitCount}/${count.VisitCount }</span>
                                  <c:if test="${newCount.VisitCount>0 }">
                                  	<img src="../../../../resources/images/minihome/newIcon.png"
                                  		alt="new Icon" class="minihome-nIcon">
@@ -291,7 +291,7 @@
 						홈
 					</span>
 					</div>
-					<div class="menu-content" data-tab="<c:url value='/mnHome/diaryView/${userNickname }'/>"
+					<div id="tabDiary" class="menu-content" data-tab="<c:url value='/mnHome/diaryView/${userNickname }'/>"
 					style=" background-color: 
 								<c:choose>
 									<c:when test="${menuProductName == 'red' }">red</c:when>
@@ -326,7 +326,7 @@
 						다이어리
 					</span>
 					</div>
-					<div class="menu-content" data-tab="<c:url value='/mnHome/albumView/${userNickname }'/>"
+					<div id="tabAlbum" class="menu-content" data-tab="<c:url value='/mnHome/albumView/${userNickname }'/>"
 					style=" background-color: 
 								<c:choose>
 									<c:when test="${menuProductName == 'red' }">red</c:when>
@@ -361,7 +361,7 @@
 						사진첩
 					</span>
 					</div>
-					<div class="menu-content" data-tab="<c:url value='/mnHome/boardView/${userNickname }'/>"
+					<div id="tabBoard" class="menu-content" data-tab="<c:url value='/mnHome/boardView/${userNickname }'/>"
 					style=" background-color: 
 								<c:choose>
 									<c:when test="${menuProductName == 'red' }">red</c:when>
@@ -396,7 +396,7 @@
 						게시판
 					</span>
 					</div>
-					<div class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>"
+					<div id="tabVisit" class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>"
 					style=" background-color: 
 								<c:choose>
 									<c:when test="${menuProductName == 'red' }">red</c:when>
@@ -575,5 +575,23 @@
      var bgColor = "${bgSkin}";
      document.body.style.backgroundColor = bgColor;
    </script>  
+   <script>
+   	function quickDiary(){
+   		var tabDiary = document.getElementById("tabDiary");
+		tabDiary.click();
+   	}
+   	function quickAlbum(){
+   		var tabAlbum = document.getElementById("tabAlbum");
+   		tabAlbum.click();
+   	}
+   	function quickBoard(){
+   		var tabBoard = document.getElementById("tabBoard");
+   		tabBoard.click();
+   	}
+   	function quickVisit(){
+   		var tabVisit = document.getElementById("tabVisit");
+   		tabVisit.click();
+   	}
+   </script>
 </body>
 </html>

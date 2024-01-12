@@ -145,6 +145,12 @@ public class MainDaoImpl implements MainDao{
 		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
 		return mapper.insertFriendCmt(map);
 	}
+	
+	@Override
+	public List<Map> selectFriendCmt(Map map) {
+		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
+		return mapper.selectFriendCmt(map);
+	}
 	@Override
 	public Map mainMenu(Map map) {
 		MainMapper mapper = sqlSession.getMapper(MainMapper.class);

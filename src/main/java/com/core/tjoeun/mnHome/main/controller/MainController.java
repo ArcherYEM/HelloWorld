@@ -190,6 +190,19 @@ public class MainController {
 	        	model.addAttribute("menuCategory", "menu");
 	        	n.printStackTrace();
         }
+        
+        //일촌평 가져오기
+        List<Map> friendCmtList = new ArrayList<Map>();
+        Map map = new HashMap();
+        map.put("userNickname", userNickname);
+        try {
+        	friendCmtList = mainService.selectFriendCmt(map);
+        	
+        	model.addAttribute("friendCmtList", friendCmtList);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         	
 		return "miniHome/main";
 	}
