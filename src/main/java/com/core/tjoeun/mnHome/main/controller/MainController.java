@@ -214,6 +214,29 @@ public class MainController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+        
+        //게시판, 사진첩 최신 게시글 상위 4개 가져오기
+        List<Map> currentMap = mainService.selectCurrentContent(userNickname);
+        for(Map<String, String> current : currentMap) {
+            String tableName = current.get("tableName");
+            String url;
+            if("album".equals(tableName)) {
+            	url="/mnHome/albumDetailView/"+userNickname+"/"+String.valueOf(current.get("seq"));
+            	System.out.println(url);
+            	current.put("url", url);
+            	current.put("category", "news-category category-pic");
+            	current.put("tableName", "사진첩");
+            } else if("board".equals(tableName)) {
+            	url="/mnHome/boardDetail/"+userNickname+"/"+String.valueOf(current.get("seq"));
+            	System.out.println(url);
+            	current.put("url", url);
+            	current.put("category", "news-category category-post");
+            	current.put("tableName", "게시판");
+            }
+        }
+        System.out.println("!최신"+currentMap);
+        model.addAttribute("current",currentMap);
+        
 		return "miniHome/main";
 	}
 	

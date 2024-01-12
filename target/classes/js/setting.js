@@ -8,7 +8,7 @@ function changeName() {
     var btnFix = document.querySelector('.set-info-name-a');
 
     if (!isEditMode) {
-        var userName = userNameArea.value; // userName을 여기에서 선언
+        userName = userNameArea.value; // userName을 여기에서 선언
         userNameArea.readOnly = false;
         userNameArea.focus();
         userNameArea.style.border = '1px solid black';
@@ -17,7 +17,7 @@ function changeName() {
         isEditMode = true;
     } else {
         var changedName = userNameArea.value;
-        
+        console.log(userName);
         for (var i = 0; i < changedName.length; i++) {
             var char = changedName.charAt(i);
             if (char >= '0' && char <= '9') {
@@ -93,7 +93,8 @@ function changeNickname() {
 	            data: JSON.stringify(jsonData)        	
 	        }).done(function(json) {
 				if(json==1){
-					alert("성공적으로 닉네임을 변경했습니다.")
+					alert("성공적으로 닉네임을 변경했습니다. 세션이 만료되었으니 새로 로그인해주세요.")
+					window.location.href = '/index/member/logout';					
 				} else if(json==3){
 					alert("이미 사용중인 닉네임입니다.")
 					userNicknameArea.value=userNickname;

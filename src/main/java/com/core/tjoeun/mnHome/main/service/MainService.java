@@ -45,4 +45,6 @@ public interface MainService {
 
 	public Map mainMenu(Map map);
 	
+	public List<Map> selectCurrentContent(String userNickname);
+	
 }

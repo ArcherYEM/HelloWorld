@@ -51,4 +51,6 @@ public interface MainDao {
 	
 	public int updateVisitCnt(Map map);
 	
+	public List<Map> selectCurrentContent(String userNickname);
+	
 }

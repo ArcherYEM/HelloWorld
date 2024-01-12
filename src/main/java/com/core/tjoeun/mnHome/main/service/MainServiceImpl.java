@@ -235,6 +235,12 @@ public class MainServiceImpl implements MainService{
 			throw new Exception();
 		}
 	}
-
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Map> selectCurrentContent(String userNickname) {
+		
+		return mainDao.selectCurrentContent(userNickname);
+	}
 	
 }

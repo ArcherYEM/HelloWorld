@@ -468,3 +468,13 @@ body a{
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
 }
+
+.news-title{
+	width:60%;
+	margin-left:5px;
+}
+
+.news-title:hover{
+	cursor:pointer;
+	font-weight: bold;
+}

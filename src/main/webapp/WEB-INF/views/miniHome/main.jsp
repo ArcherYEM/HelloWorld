@@ -115,30 +115,15 @@
                      </div>
                      <div class="news-flex-box">
                         <div class="news-box">
-                           <div class="news-row">
-                              <div class="news-category category-post">게시판</div>
-                              <div class="news-title">
-                                 <a href="/mnHome/boardView">HTML, CSS, JAVASCRIPT</a>
+                        <c:forEach var = "current" items="${current}">
+							<div class="news-row">
+                              <div class="${current.category}">${current.tableName }</div>
+                              <input type="hidden" id="currentUrl">
+                              <div class="news-title" data-url="${current.url }">
+                                 ${current.title }
                               </div>
-                           </div>
-                           <div class="news-row">
-                              <div class="news-category category-pic">사진첩</div>
-                              <div class="news-title">
-                                 <a href="/mnHome/albumView">2023을 보내며...</a>
-                              </div>
-                           </div>
-                           <div class="news-row">
-                              <div class="news-category category-post">게시판</div>
-                              <div class="news-title">
-                                 <a href="/mnHome/boardView">스프링이란 무엇인가</a>
-                              </div>
-                           </div>
-                           <div class="news-row">
-                              <div class="news-category category-post">게시판</div>
-                              <div class="news-title">
-                                 <a href="/mnHome/boardView">Maven 과 Gradle 의 차이</a>
-                              </div>
-                           </div>
+							</div>
+                        </c:forEach>
                         </div>
                         <div class="update-box">
                            <div class="menu-row">

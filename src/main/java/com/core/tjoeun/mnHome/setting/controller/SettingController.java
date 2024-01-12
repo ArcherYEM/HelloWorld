@@ -661,16 +661,18 @@ public class SettingController {
 	}
 	@RequestMapping(value = "/mnHome/changeName", method = RequestMethod.POST)
 	@ResponseBody
-	public int changeName(@RequestBody Map<String, String> requestData) {
+	public int changeName(@RequestBody Map<String, String> requestData, HttpSession session) {
 		int result = 0;
 		
 		if(requestData.get("originalName")==null) {
 			result = 4;
 		}
-		
-		
+				
 		try {
 			result = settingService.changeName(requestData);
+			if(result == 1) {
+				session.setAttribute("userName", requestData.get("changedName"));
+			}
 		} catch (Exception e) {
 			System.out.println("에러가 발생했습니다");
 			e.printStackTrace();
@@ -680,11 +682,14 @@ public class SettingController {
 	
 	@RequestMapping(value = "/mnHome/changeNickname", method = RequestMethod.POST)
 	@ResponseBody
-	public int changeNickname(@RequestBody Map<String, String> requestData) {
+	public int changeNickname(@RequestBody Map<String, String> requestData,HttpSession session) {
 		
 		int result = 0;
 		try {
 			result = settingService.changeNickname(requestData);
+			if(result == 1) {
+				session.setAttribute("userNickname", requestData.get("changedNickname"));
+			}
 		} catch (Exception e) {
 			String error = e.getMessage();
 			if(e.getMessage().contains("Duplicate")) {
