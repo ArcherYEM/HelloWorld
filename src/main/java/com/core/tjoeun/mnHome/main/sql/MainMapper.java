@@ -50,4 +50,6 @@ public interface MainMapper {
 	public Map selectVisitCnt(String userNickname);
 	
 	public int updateVisitCnt(Map map);
+	
+	public List<Map> selectCurrentContent(String userNickname);
 }

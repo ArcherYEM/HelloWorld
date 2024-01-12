@@ -100,7 +100,7 @@
 													<img src="../../../../resources/images/minihome/newIcon.png" class="newIcon">
 												</c:if>
 												</td>												
-												<td class="td-writer">${list.userNickname}</td>
+												<td class="td-writer"><a href="<c:url value="/mnHome/mainView/${list.userNickname }" />">${list.userNickname}</a></td>
 												<td class="td-view">${list.hits}</td>
 											</tr>
 										</c:forEach>
