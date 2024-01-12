@@ -91,6 +91,9 @@
 									</tr>
 								</thead>							
 								<tbody>
+									<c:if test="${list eq null || list.size() <=0}">
+										<td colspan="4" class="noneMsg">아직 게시물이 없습니다.</td>
+									</c:if>
 									<c:if test="${list ne null}">
 										<c:forEach items="${list}" var="list" varStatus="i">
 											<tr>
