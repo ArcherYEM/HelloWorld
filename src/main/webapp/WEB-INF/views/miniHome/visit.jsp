@@ -97,7 +97,7 @@
 									<tr>
 										<td>No. ${visit.number}</td>
 										<td>${visit.userName}
-											<img src="../../../../resources/images/minihome/homeIcon.png" class="visit-line-tbImg">
+											<a href="<c:url value="/mnHome/mainView/${visit.userNickname }" />"><img src="../../../../resources/images/minihome/homeIcon.png" class="visit-line-tbImg"></a>
 										</td>
 										<td>${visit.update_date }</td>
 										<td>비밀로하기</td>
