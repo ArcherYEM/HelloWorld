@@ -289,3 +289,10 @@
     white-space: nowrap;
     max-height: 2.5em; /* 최대 2.5em(약 2줄)의 높이를 설정 */
 }
+
+#noneMsg{
+	text-align : center;
+	font-size : 20px;
+	font-family: "KyoboHand";
+	margin : auto;
+}

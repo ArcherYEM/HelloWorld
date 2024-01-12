@@ -288,3 +288,9 @@ thead tr:last-child th {
    border: none;
    margin: 0 auto;
 }
+
+.noneMsg{
+	text-align :center;
+	border-bottom: 1px dotted #000;
+	height : 50px;
+}

@@ -83,7 +83,9 @@
 						</c:if>
 							<div class="album-overflow">
 								<div class="album-container-container">
-								
+									<c:if test="${list eq null || list.size() <= 0}">
+										<div id="noneMsg">사진이 없습니다.</div>
+									</c:if>
 									<c:if test="${list ne null}">
 										<c:forEach items="${list}" var="item" varStatus="i">
 											<div class="album-container" data-albumdetail="/mnHome/albumDetailView/${userNickname}/${item.seq}">
