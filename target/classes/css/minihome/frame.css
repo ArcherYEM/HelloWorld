@@ -36,7 +36,8 @@ body a{
 
 .bookcover {
   background-color: #b4d1da;
-  border-radius: 9px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
   border: 1px solid #738186;
   width: 960px;
   height: 510px;
@@ -285,10 +286,6 @@ body a{
   display: flex;
 }
 
-/* .miniroom-gif-box img {
-	width: 100%
-} */
-
 .main-cmt-write{
   background: rgb(211, 211, 211);
   border: 2px solid color=navy;
@@ -355,6 +352,24 @@ body a{
 	color: black;
 	margin-bottom: 2px;
 	line-height: 35px;
+}
+
+/* 최하단 언더바 */
+.main-under-bar {
+  color: red;
+  top: 4.5%;
+  left: 44.3%;
+  transform: translate(-50%, -50%);
+  margin-top: 130px;
+  border: 1px solid gray;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  width: 940px;
+  height: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative;
+  background-color: black;
 }
 
 /*오디오*/
