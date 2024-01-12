@@ -20,4 +20,6 @@ public interface BoardMapper {
 	public int insertBoardComment(Map requestData);
 	
 	public List<Map> getBoardComment(int boardSeq);
+	
+	public int deleteBoardComment(int seq);
 }

@@ -179,6 +179,19 @@ thead tr:last-child th {
 	border-left:none;
 	border-right:none;
 	font-size: 13px;
+	justify-content: space-between;
+}
+
+.board-comment-actions {
+		
+}
+
+.board-comment-edit, .board-comment-delete {
+	cursor:pointer
+}
+
+.board-comment-delete{
+	margin-right:10px;
 }
 
 .comment-content-write{
@@ -200,6 +213,7 @@ thead tr:last-child th {
 	background-color: #E2E2E2;
 	align-items:center;
 	font-size: 12px;
+	justify-content: space-between;
 }
 
 .board-comment-writer{

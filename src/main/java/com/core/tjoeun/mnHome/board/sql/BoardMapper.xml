@@ -101,12 +101,16 @@ SELECT
 </insert>
 
 <select id="getBoardComment" parameterType="int" resultType="map">
-	select userNickname, content, 
+	select seq, userNickname, content,
 	DATE_FORMAT(update_date, '%Y.%m.%d %H:%i') as update_date_format 
 	from boardCMT 
 	where boardSeq=#{boardSeq}
 	and openScope=1
 	ORDER BY update_date_format DESC;
 </select>
+
+<delete id="deleteBoardComment" parameterType="int">
+	delete from boardCMT where seq = #{seq};
+</delete>
 
 </mapper>

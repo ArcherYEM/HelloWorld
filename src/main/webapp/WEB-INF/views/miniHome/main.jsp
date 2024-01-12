@@ -143,7 +143,7 @@
                         <div class="update-box">
                            <div class="menu-row">
                               <div class="menu-item">
-                                 <a href="/mnHome/diaryView">다이어리<span class="menu-num">${newCount.DiaryCount}/${count.DiaryCount }</span></a>
+                                 <a href="/mnHome/diaryView/${userNickname }">다이어리<span class="menu-num">${newCount.DiaryCount}/${count.DiaryCount }</span></a>
                                  <c:if test="${newCount.DiaryCount>0 }">
                                  	<img src="../../../../resources/images/minihome/newIcon.png"
                                  		alt="new Icon" class="minihome-nIcon">
@@ -151,7 +151,7 @@
                                  
                               </div>
                               <div class="menu-item">
-                                 <a href="/mnHome/albumView">사진첩<span class="menu-num">0/0</span></a>
+                                 <a href="/mnHome/albumView/${userNickname }">사진첩<span class="menu-num">0/0</span></a>
                                  <c:if test="${newCount.AlbumCount>0 }">
                                  	<img src="../../../../resources/images/minihome/newIcon.png"
                                  		alt="new Icon" class="minihome-nIcon">
@@ -160,14 +160,14 @@
                            </div>
                            <div class="menu-row">
                               <div class="menu-item">
-                                 <a href="/mnHome/boardView">게시판<span class="menu-num">${newCount.BoardCount}/${count.BoardCount }</span></a>
+                                 <a href="/mnHome/boardView/${userNickname }">게시판<span class="menu-num">${newCount.BoardCount}/${count.BoardCount }</span></a>
                                  <c:if test="${newCount.BoardCount>0 }">
                                  	<img src="../../../../resources/images/minihome/newIcon.png"
                                  		alt="new Icon" class="minihome-nIcon">
                                  </c:if>
                               </div>
                               <div class="menu-item">
-                                 <a href="/mnHome/visitView">방명록<span class="menu-num">${newCount.VisitCount}/${count.VisitCount }</span></a>
+                                 <a href="/mnHome/visitView/${userNickname }">방명록<span class="menu-num">${newCount.VisitCount}/${count.VisitCount }</span></a>
                                  <c:if test="${newCount.VisitCount>0 }">
                                  	<img src="../../../../resources/images/minihome/newIcon.png"
                                  		alt="new Icon" class="minihome-nIcon">
