@@ -356,20 +356,59 @@ body a{
 
 /* 최하단 언더바 */
 .main-under-bar {
-  color: red;
-  top: 4.5%;
-  left: 44.3%;
-  transform: translate(-50%, -50%);
-  margin-top: 130px;
-  border: 1px solid gray;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-  width: 940px;
-  height: 30px;
+  border: 1px solid black;
+  width: 100%;
+  height: 40px;
   padding-left: 10px;
   padding-right: 10px;
-  position: relative;
-  background-color: black;
+  background-color: gray;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 15px;
+}
+
+.main-udb-myhome {
+	flex-basis: 15%;
+	text-align: left;
+}
+
+.udb-myhome-a,
+.udb-logout-a {
+	color: black;
+	border: none;
+	background: none;
+}
+
+.udb-myhome-a:hover,
+.udb-logout-a:hover {
+	cursor: pointer;
+	font-weight: bold;
+	color: white;
+} 
+
+.main-udb-notice {
+	flex-basis: 60%;
+	text-align: center;
+}
+
+.main-udb-past {
+	flex-basis: 25%;
+	text-align: center;
+}
+
+.main-udb-logout {
+	flex-basis: 10%;
+	text-align: right;
+	margin-right: 20px;
+}
+
+.udb-logout-a {
+	color: black;
 }
 
 /*오디오*/

@@ -105,7 +105,7 @@
 							</div>
 						</div>
 						<div class="my-btn">
-				    	    <input type="button" class="mainBtn1" id="btnGoMinihome" value="내 미니홈피" >
+				    	    <input type="button" class="mainBtn1" id="btnGoMinihome" value="내 미니홈피" onclick="openMiniHomepage()" target="_blank">
 				        	<input type="button" class="mainBtn2" id="btnLogout" value="로그아웃">
 				        </div>
 			        </div>
@@ -293,10 +293,6 @@
                divLogin.style.display = 'block';
            }
        });
-    
-    document.getElementById('btnGoMinihome').addEventListener('click', function() {
-       location.href = "<c:url value="/mnHome/mainView/${sessionScope.userId.userNickname}" />"
-    });
     
     document.getElementById('btnLogout').addEventListener('click', function() {
        location.href = "<c:url value="/index/member/logout" />"

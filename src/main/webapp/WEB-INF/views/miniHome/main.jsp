@@ -486,11 +486,37 @@
          </div>
       </div>
    </div>
-   <div class="main-under-bar">test</div>
+   <div class="main-under-bar font-neo">
+		<div class="main-udb-myhome">
+			<input type="button" class="udb-myhome-a font-neo" value="내 미니홈피" onclick="goToMyHome()">
+		</div>
+		<div class="main-udb-notice">
+			공지사항 최근 5개 롤링
+		</div>
+		<div class="main-udb-past">
+			이전에 방문한 홈피
+		</div>
+		<div class="main-udb-logout">
+			<input type="button" class="udb-logout-a font-neo" value="로그아웃" id="logOutBtn">
+		</div>
+   </div>
    <div id="testUnder"></div>
    </div> <!-- backgourn div -->
    <script src="../../../../resources/js/default.js"></script>
    <script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
+   <script>
+//    내 미니홈피 가기
+	function goToMyHome() {
+	    var userNickname = "<c:out value='${sessionScope.userId.userNickname}' />";
+	    var url = "<c:url value='/mnHome/mainView/' />" + userNickname;
+	    window.location.href = url;
+	}
+	
+	document.getElementById("logOutBtn").addEventListener("click", function() {
+		alert('좋은하루 되십시오');
+	    window.close();
+	  });
+	</script>
    <script>
    	  document.getElementById('btnFriendCmt').addEventListener('click', function() {
    		
