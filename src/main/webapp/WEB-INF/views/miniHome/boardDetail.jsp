@@ -107,9 +107,9 @@
 						<div class="board-comment">
 							<input type="hidden" value=${comment.seq } id="board-seq">
 							<div class="comment-info">
-							<span class="board-comment-writer">
+							<a href="<c:url value="/mnHome/mainView/${comment.userNickname }" />"><span class="board-comment-writer">
 								${comment.userNickname }
-							</span>
+							</span></a>
 							<span class="board-comment-content">
 								${comment.content }
 							</span>
