@@ -37,12 +37,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		,artist
 		,runningTime
 		,contentPath
+		,allocation
 	) values (
 		#{userNickname}
 		,#{title}
 		,#{artist}
 		,#{runningTime}
 		,#{contentPath}
+		,0
 	)
 </insert>
 
@@ -153,11 +155,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         ,category
         ,productName
         ,contentPath
+        ,allocation
 	) values (
 		#{userNickname}
 	    ,#{category}
 	    ,#{productName}
 	    ,#{contentPath}
+	    ,0
 	)
 </insert>
 

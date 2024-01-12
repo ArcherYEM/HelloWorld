@@ -19,8 +19,8 @@
 			<div class="edit-container-over">
 				<div class="store-edit-file">
 					<div class="buySuccessComment">
-					    <span class="failMessage">구입에 실패하였습니다
-					    	<span class="redAndBold">(도토리 부족)</span>
+					    <span class="failMessage">구입에 실패하였습니다<br/>
+					    	<span class="redAndBold">${reason }</span>
 					    </span>
 					</div>
 					<div class="hello">
