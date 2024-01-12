@@ -78,10 +78,10 @@ public class AlbumController {
 		
 		for(int i=0; i<listResult.size(); i++){
 			tempPath = listResult.get(i).get("imagePath").toString();
-			System.out.println("1996 : " + i + " : " + tempPath);
+			
 			if(tempPath.indexOf(',') > 0) {
 				images[i] = tempPath.substring(0,tempPath.indexOf(','));
-				System.out.println(images[i]);
+				
 			}else {
 				images[i] = tempPath;
 			}
@@ -197,8 +197,14 @@ public class AlbumController {
         
         Map userMap = new HashMap();
 		userMap.put("userNickname", userNickname);
+		userMap.put("seq", seq);
 		
 		List<HashMap> listResult = albumService.getAlbum(userMap);
+		String tempImages = listResult.get(0).get("imagePath").toString();
+		
+		String[] imageParts = tempImages.split(",");
+		model.addAttribute("list", listResult.get(0));
+		model.addAttribute("imageParts", imageParts);
 		
 		return  "miniHome/albumDetail";
 		
