@@ -11,6 +11,8 @@ function changeName() {
         var userName = userNameArea.value; // userName을 여기에서 선언
         userNameArea.readOnly = false;
         userNameArea.focus();
+        userNameArea.style.border = '1px solid black';
+        userNameArea.style.borderRadius = '5px';
         btnFix.textContent = "확인";
         isEditMode = true;
     } else {
@@ -38,14 +40,17 @@ function changeName() {
                 data: JSON.stringify(jsonData)        	
             }).done(function(json) {
                 if (json == 1) {
-                    alert("성공적으로 닉네임을 변경했습니다.")
-                } else {
-                    alert("변경에 실패했습니다. 다시 시도하세요.")
+                    alert("성공적으로 이름을 변경했습니다.")
+                } else if(json == 4){
+                	alert("기존 이름에서 변경 후 시도해주세요.");
+                }else{
+                	alert("변경에 실패했습니다.");
                 }
             });
         }
 
         userNameArea.readOnly = true;
+        userNameArea.style.border = 'none';
         btnFix.textContent = "수정";
         isEditMode = false;
     }
@@ -61,6 +66,8 @@ function changeNickname() {
         userNickname = userNicknameArea.value;
         userNicknameArea.readOnly = false;
         userNicknameArea.focus();
+        userNicknameArea.style.border = '1px solid black';
+        userNicknameArea.style.borderRadius = '5px';
         btnFix.textContent = "확인";
         isEditModeN = true;
     } else {
@@ -97,6 +104,7 @@ function changeNickname() {
         }
 
         userNicknameArea.readOnly = true;
+        userNicknameArea.style.border = 'none';
         btnFix.textContent = "수정";
         isEditModeN = false;
     }
@@ -109,6 +117,8 @@ function changeNumber() {
         userNumber = userNumberArea.value;
         userNumberArea.readOnly = false;
         userNumberArea.focus();
+        userNumberArea.style.border = '1px solid black';
+        userNumberArea.style.borderRadius = '5px';
         btnFix.textContent = "확인";
         isEditModeNum = true;
     } else {
@@ -150,6 +160,7 @@ function changeNumber() {
         }
 
         userNumberArea.readOnly = true;
+        userNumberArea.style.border = 'none';
         btnFix.textContent = "수정";
         isEditModeNum = false;
     }

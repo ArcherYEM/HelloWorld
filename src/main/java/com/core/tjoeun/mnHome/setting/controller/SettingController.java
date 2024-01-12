@@ -662,8 +662,13 @@ public class SettingController {
 	@RequestMapping(value = "/mnHome/changeName", method = RequestMethod.POST)
 	@ResponseBody
 	public int changeName(@RequestBody Map<String, String> requestData) {
-		
 		int result = 0;
+		
+		if(requestData.get("originalName")==null) {
+			result = 4;
+		}
+		
+		
 		try {
 			result = settingService.changeName(requestData);
 		} catch (Exception e) {
