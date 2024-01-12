@@ -142,16 +142,16 @@
                         </div>
                         <div class="update-box">
                            <div class="menu-row">
-                              <div class="menu-item">
-                                 <a href="/mnHome/diaryView/${userNickname }">다이어리<span class="menu-num">${newCount.DiaryCount}/${count.DiaryCount }</span></a>
+                              <div class="menu-item" onclick="quickDiary()">
+                                 	다이어리<span class="menu-num">${newCount.DiaryCount}/${count.DiaryCount }</span>
                                  <c:if test="${newCount.DiaryCount>0 }">
                                  	<img src="../../../../resources/images/minihome/newIcon.png"
                                  		alt="new Icon" class="minihome-nIcon">
                                  </c:if>
                                  
                               </div>
-                              <div class="menu-item">
-                                 <a href="/mnHome/albumView/${userNickname }">사진첩<span class="menu-num">0/0</span></a>
+                              <div class="menu-item" onclick="quickAlbum()">
+                                 	사진첩<span class="menu-num">0/0</span>
                                  <c:if test="${newCount.AlbumCount>0 }">
                                  	<img src="../../../../resources/images/minihome/newIcon.png"
                                  		alt="new Icon" class="minihome-nIcon">
@@ -159,15 +159,15 @@
                               </div>
                            </div>
                            <div class="menu-row">
-                              <div class="menu-item">
-                                 <a href="/mnHome/boardView/${userNickname }">게시판<span class="menu-num">${newCount.BoardCount}/${count.BoardCount }</span></a>
+                              <div class="menu-item" onclick="quickBoard()">
+                                 	게시판<span class="menu-num">${newCount.BoardCount}/${count.BoardCount }</span>
                                  <c:if test="${newCount.BoardCount>0 }">
                                  	<img src="../../../../resources/images/minihome/newIcon.png"
                                  		alt="new Icon" class="minihome-nIcon">
                                  </c:if>
                               </div>
-                              <div class="menu-item">
-                                 <a href="/mnHome/visitView/${userNickname }">방명록<span class="menu-num">${newCount.VisitCount}/${count.VisitCount }</span></a>
+                              <div class="menu-item" onclick="quickVisit()">
+                                 	방명록<span class="menu-num">${newCount.VisitCount}/${count.VisitCount }</span>
                                  <c:if test="${newCount.VisitCount>0 }">
                                  	<img src="../../../../resources/images/minihome/newIcon.png"
                                  		alt="new Icon" class="minihome-nIcon">
@@ -225,16 +225,24 @@
                            <button type="button" id="btnFriendCmt" value="확인">확인</button>
                         </div>
                         <div class="main-cmt-content">
-						    <ul>
-						        <c:forEach var="list" items="${friendCmtList}" varStatus="i">
-						            <li>${list.content}
-						                <span class="main-cmt-info">
-						                    <a href="<c:url value='/mnHome/mainView/${list.friendNickname}' />">${list.friendNickname}</a> ${list.createDate}
-						                </span>
-						            </li>
-						        </c:forEach>
-						    </ul>
-						</div>
+                           <ul>
+                              <li>AWS 로 DB Server 풀 가동 하시는거죠?
+                                 <span class="main-cmt-info"> <a href="#">(이정은)</a> 2023.12.25</span>
+                              </li>
+                              <li>JSP 파일만 30개가 넘는다면서요?ㅋㅋ 
+                                 <span class="main-cmt-info"><a href="#">(채승원)</a> 2023.12.15</span>
+                              </li>
+                              <li>Git 으로 형상관리 하고계시죠? 
+                                 <span class="main-cmt-info"> <a href="#">(이진우)</a> 2023.12.05</span>
+                              </li>
+                              <li>400 은 행복입니다. 다된거죠. 500은..하
+                                 <span class="main-cmt-info"> <a href="#">(양은모)</a> 2023.12.01</span>
+                              </li>
+                              <li>뭐라고요? 이주빈은 @Bean 을 2주동안 만들어서 이주빈이라고요? 
+                                 <span class="main-cmt-info"> <a href="#">(금민재)</a> 2023.11.05</span>
+                              </li>
+                           </ul>
+                        </div>
                         <div>
                         	<form id="frmFriendCmt" action="<c:url value="mnHome/mainView" />">
                         		<input type="hidden" id="frdTargetNickname" value="${userNickname }">
@@ -283,7 +291,7 @@
 						홈
 					</span>
 					</div>
-					<div class="menu-content" data-tab="<c:url value='/mnHome/diaryView/${userNickname }'/>"
+					<div id="tabDiary" class="menu-content" data-tab="<c:url value='/mnHome/diaryView/${userNickname }'/>"
 					style=" background-color: 
 								<c:choose>
 									<c:when test="${menuProductName == 'red' }">red</c:when>
@@ -318,7 +326,7 @@
 						다이어리
 					</span>
 					</div>
-					<div class="menu-content" data-tab="<c:url value='/mnHome/albumView/${userNickname }'/>"
+					<div id="tabAlbum" class="menu-content" data-tab="<c:url value='/mnHome/albumView/${userNickname }'/>"
 					style=" background-color: 
 								<c:choose>
 									<c:when test="${menuProductName == 'red' }">red</c:when>
@@ -353,7 +361,7 @@
 						사진첩
 					</span>
 					</div>
-					<div class="menu-content" data-tab="<c:url value='/mnHome/boardView/${userNickname }'/>"
+					<div id="tabBoard" class="menu-content" data-tab="<c:url value='/mnHome/boardView/${userNickname }'/>"
 					style=" background-color: 
 								<c:choose>
 									<c:when test="${menuProductName == 'red' }">red</c:when>
@@ -388,7 +396,7 @@
 						게시판
 					</span>
 					</div>
-					<div class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>"
+					<div id="tabVisit" class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>"
 					style=" background-color: 
 								<c:choose>
 									<c:when test="${menuProductName == 'red' }">red</c:when>
@@ -528,7 +536,6 @@
 	            data: JSON.stringify(jsonData)
 	         }).done(function (json) {
 	         	console.log(json.resultCode);
-	         	$('#friendCmt').val('');
 	   	  		})
    	  })
    	  
@@ -568,5 +575,23 @@
      var bgColor = "${bgSkin}";
      document.body.style.backgroundColor = bgColor;
    </script>  
+   <script>
+   	function quickDiary(){
+   		var tabDiary = document.getElementById("tabDiary");
+		tabDiary.click();
+   	}
+   	function quickAlbum(){
+   		var tabAlbum = document.getElementById("tabAlbum");
+   		tabAlbum.click();
+   	}
+   	function quickBoard(){
+   		var tabBoard = document.getElementById("tabBoard");
+   		tabBoard.click();
+   	}
+   	function quickVisit(){
+   		var tabVisit = document.getElementById("tabVisit");
+   		tabVisit.click();
+   	}
+   </script>
 </body>
 </html>

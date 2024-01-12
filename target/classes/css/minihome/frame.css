@@ -380,6 +380,7 @@ body a{
 
 .menu-item {
   flex: 1;
+  cursor:pointer;
 }
 
 .menu-num {

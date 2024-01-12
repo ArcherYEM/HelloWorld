@@ -150,6 +150,7 @@ $(document).on("click", ".btn-diarylist", function (event) {
    loadTabContent(tabName); 
 });
 
+
 $(document).on("click", ".album-under-left", function (event) {
    event.preventDefault();
    tabName = $(this).data("albumview");
