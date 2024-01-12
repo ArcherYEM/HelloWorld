@@ -90,7 +90,7 @@
 							<div class="login-profile-section2">
 								<span>&#128099;</span>
 								<span>오늘방문자</span>
-								<span class="login-profile-info-2">11</span>
+								<span id="todayCnt" class="login-profile-info-2"><c:out value='${sessionScope.todayCnt}'/></span>
 							</div>
 							<div class="login-profile-section3">
 								<span>&#128203;</span>
@@ -196,12 +196,14 @@
            let userDotori = document.getElementById('userDotori');
            let userMinimiElement = document.getElementById('mainMinimi');
            let spanOnfriendCnt = document.getElementById('spanOnfriendCnt');
+           let todayCnt = document.getElementById('todayCnt');
 
            if (json.resultCode === '1') {
               helloMessage.innerText = json.userNickname + '  님 환영합니다.';
               userDotori.innerText = '내 도토리 : ' + json.userDotoriCnt + ' 개';
               userMinimiElement.src = "<c:url value='" + json.contentPath + "'/>";
               spanOnfriendCnt.innerText = json.friendCnt;
+              todayCnt.innerText = json.todayCnt;
               document.getElementById('linkMnh').style.display = 'block';
               document.getElementById('linkLogout').style.display = 'block';
               divHome.style.display = 'none';
