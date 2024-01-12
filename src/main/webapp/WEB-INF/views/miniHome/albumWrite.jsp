@@ -96,8 +96,8 @@
 								  </div>
 								  <div class="album-container-under">
 								  	<div class="album-under">
-								  		<a href="/mnHome/albumView" class="album-under-left" data-albumView="<c:url value='/mnHome/albumView/${userNickname}'/>">목록</a>
-								  		<a href="/mnHome/albumView" class="album-under-right">등록</a>
+								  		<a href="/mnHome/albumView" class="album-under-left" id="albumView" data-albumView="<c:url value='/mnHome/albumView/${userNickname}'/>">목록</a>
+								  		<a  class="album-under-right" onclick="writeAlbum()">등록</a>
 								  	</div>
 								  </div>
 							  </div>

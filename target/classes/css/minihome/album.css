@@ -242,3 +242,48 @@
    border: none;
    margin: 0 auto;
 }
+
+
+.album-container-container{
+	display: flex;
+    flex-wrap: wrap;
+	
+}
+
+.album-container {
+    width: 30%; /* 100% / 3 - 여기서 3은 원하는 열의 수 */
+    height :150px;
+    box-sizing: border-box;
+    margin: 0 1.33%; /* 여백 조정 (좌우 간격 조절) */
+    margin-bottom : 20px;
+    float: left; /* float 속성 사용 */
+    border : 1px solid grey;
+}
+
+.album-thumbnail {
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height :80%;
+  
+  /* align-items: center;
+  margin-top: 20px;
+  width: 100%; */
+}
+
+.album-thumbnail img {
+  width : 100%;
+  max-height : 120px;
+  display: block;
+  margin: 0 auto;
+}
+
+.album-thumbtitle {
+	font-size : 12px;
+	text-align : center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-height: 2.5em; /* 최대 2.5em(약 2줄)의 높이를 설정 */
+}

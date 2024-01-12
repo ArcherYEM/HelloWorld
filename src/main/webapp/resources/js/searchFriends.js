@@ -112,7 +112,7 @@ $(document).on('click', '#accept', function() {
 			, contentType: "application/json"
 			, success : function(data){
 				alert("일촌신청을 수락했습니다.");
-			
+				document.getElementById("spanSettingFriends").click();
 			}, error : function(error){
 				console.log("Error : " + error);
 				alert('잠시 후 다시 시도해주세요.');
@@ -140,7 +140,7 @@ $(document).on('click', '#reject', function() {
 			, contentType: "application/json"
 			, success : function(data){
 				alert("일촌신청을 거절했습니다.");
-			
+				document.getElementById("spanSettingFriends").click();
 			}, error : function(error){
 				console.log("Error : " + error);
 				alert('잠시 후 다시 시도해주세요.');
@@ -168,7 +168,7 @@ $(document).on('click', '#cancle', function() {
 			, contentType: "application/json"
 			, success : function(data){
 				alert("일촌신청을 취소했습니다.");
-			
+				document.getElementById("spanSettingFriends").click();
 			}, error : function(error){
 				console.log("Error : " + error);
 				alert('잠시 후 다시 시도해주세요.');

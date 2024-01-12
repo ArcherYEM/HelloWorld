@@ -170,13 +170,16 @@ body a{
 }
 
 .content-title-name {
-  flex: 1;
+  flex: 55%;
+  font-size: 16px;
+  margin-left: 10px;
 }
 
 .content-title-url {
-  flex: 1;
+  flex: 45%;
   font-size: 0.5rem;
   text-align: end;
+  margin-right: 10px;
 }
 
 .content-box {
@@ -402,10 +405,7 @@ body a{
 
 .btn-edit {
   margin-bottom: 0;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 1px;
-  padding-bottom: 2px;
+  padding: 2px 5px;
   font-size: 10px;
   background-color: rgb(177, 175, 175);
   color: white;
