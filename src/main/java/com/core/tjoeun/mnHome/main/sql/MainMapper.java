@@ -42,5 +42,8 @@ public interface MainMapper {
 	public Map mainSkin(Map map);
 	
 	public int insertFriendCmt(Map map);
+	
 	public Map mainMenu(Map map);
+	
+	public List<Map> selectFriendCmt(Map map);
 }

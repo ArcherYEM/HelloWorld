@@ -43,5 +43,8 @@ public interface MainDao {
 
 	public int insertFriendCmt(Map map);
 	
+	public List<Map> selectFriendCmt(Map map);
+	
 	public Map mainMenu(Map map);
+	
 }

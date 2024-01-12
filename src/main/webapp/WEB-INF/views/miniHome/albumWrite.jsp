@@ -72,15 +72,15 @@
 									<div class="album-container2">
 										<div class="album-container1">
 											<div class="album-title albumWrite-title">
-												<input type="text" placeholder="제목을 입력하세요">
+												<input type="text" placeholder="제목을 입력하세요" id="albumTitle">
 											</div>
 											
 										   <div id="preview-container"></div>
 										   
 										  <div class="album-content albumWrite-content">
-										  	<input type="file" class="albumWirte-file fileupload" multiple="multiple" onchange="multiFiles(this.files)">
+										  	<input type="file" name="albumFile" class="albumWirte-file fileupload" multiple="multiple" onchange="multiFiles(this.files)">
 										  	<div id="preview-container"></div>
-										  	<textarea placeholder="내용을 입력하세요"></textarea>
+										  	<textarea placeholder="내용을 입력하세요" id="albumContent"></textarea>
 										  </div>
 									  </div>
 									  <div class="album-public">
