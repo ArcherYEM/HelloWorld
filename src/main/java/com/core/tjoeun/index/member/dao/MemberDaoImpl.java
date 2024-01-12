@@ -168,4 +168,11 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return mapper.insertUserStorageMenu(userNickname);
 	}
+	
+	@Override
+	public int insertVisitCnt(String userNickname) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		
+		return mapper.insertVisitCnt(userNickname);
+	}
 }

@@ -210,5 +210,31 @@ public class MainServiceImpl implements MainService{
 		return mainDao.mainMenu(map);
 	}
 
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW, rollbackFor = {Exception.class})
+	public Map updateVisitCnt(String userNickname) throws Exception {
+		Map visitCntMap = new HashMap();
+		int result = 0;
+		
+		visitCntMap = mainDao.selectVisitCnt(userNickname);
+		if(visitCntMap != null) {
+			int today = (int) visitCntMap.get("todayCnt") + 1 ;
+			int total = (int) visitCntMap.get("totalCnt") + 1 ;
+			
+			Map updateVisitCntMap = new HashMap();
+			updateVisitCntMap.put("todayCnt", today);
+			updateVisitCntMap.put("totalCnt", total);
+			
+			result = mainDao.updateVisitCnt(updateVisitCntMap);
+			if(result != 0) {
+				return updateVisitCntMap;
+			} else {
+				throw new Exception();
+			}
+		} else {
+			throw new Exception();
+		}
+	}
+
 	
 }

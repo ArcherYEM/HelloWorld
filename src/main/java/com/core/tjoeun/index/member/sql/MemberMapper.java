@@ -45,4 +45,6 @@ public interface MemberMapper {
 	public int insertUserStorageSkin(String userNickname);
 	
 	public int insertUserStorageMenu(String userNickname);
+	
+	public int insertVisitCnt(String userNickname);
 }

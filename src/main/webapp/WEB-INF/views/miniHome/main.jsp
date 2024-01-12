@@ -43,7 +43,7 @@
             <div class="page">
                <div class="profile-container">
                   <div class="header profile-title font-neo">
-                     TODAY&nbsp;<span class="today-span">404</span>&nbsp;| TOTAL 500
+                     TODAY&nbsp;<span class="today-span">${todayCnt }</span>&nbsp;| TOTAL ${totalCnt }
                   </div>
                   <div class="box profile-box">
                      <div class="profile-image">
@@ -225,24 +225,16 @@
                            <button type="button" id="btnFriendCmt" value="확인">확인</button>
                         </div>
                         <div class="main-cmt-content">
-                           <ul>
-                              <li>AWS 로 DB Server 풀 가동 하시는거죠?
-                                 <span class="main-cmt-info"> <a href="#">(이정은)</a> 2023.12.25</span>
-                              </li>
-                              <li>JSP 파일만 30개가 넘는다면서요?ㅋㅋ 
-                                 <span class="main-cmt-info"><a href="#">(채승원)</a> 2023.12.15</span>
-                              </li>
-                              <li>Git 으로 형상관리 하고계시죠? 
-                                 <span class="main-cmt-info"> <a href="#">(이진우)</a> 2023.12.05</span>
-                              </li>
-                              <li>400 은 행복입니다. 다된거죠. 500은..하
-                                 <span class="main-cmt-info"> <a href="#">(양은모)</a> 2023.12.01</span>
-                              </li>
-                              <li>뭐라고요? 이주빈은 @Bean 을 2주동안 만들어서 이주빈이라고요? 
-                                 <span class="main-cmt-info"> <a href="#">(금민재)</a> 2023.11.05</span>
-                              </li>
-                           </ul>
-                        </div>
+						    <ul>
+						        <c:forEach var="list" items="${friendCmtList}" varStatus="i">
+						            <li>${list.content}
+						                <span class="main-cmt-info">
+						                    <a href="<c:url value='/mnHome/mainView/${list.friendNickname}' />">${list.friendNickname}</a> ${list.createDate}
+						                </span>
+						            </li>
+						        </c:forEach>
+						    </ul>
+						</div>
                         <div>
                         	<form id="frmFriendCmt" action="<c:url value="mnHome/mainView" />">
                         		<input type="hidden" id="frdTargetNickname" value="${userNickname }">

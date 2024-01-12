@@ -41,6 +41,8 @@ public interface MainService {
 	
 	public List<Map> selectFriendCmt(Map map) throws Exception;
 	
+	public Map updateVisitCnt(String userNickname) throws Exception;
+
 	public Map mainMenu(Map map);
 	
 }

@@ -259,4 +259,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		   )
 	</insert>
    
+    <insert id="insertVisitCnt" parameterType="String">
+    	insert into visitCnt (
+			userNickname    	
+    	) values (
+    		#{userNickname}
+    	)
+    </insert>
+   
 </mapper>

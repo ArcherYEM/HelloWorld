@@ -49,6 +49,8 @@ public class MemberServiceImpl implements MemberService{
 	   		 memberDao.insertLoginStatus(userNickname);
 	   		 memberDao.insertUserStorageSkin(userNickname);
 	   		 memberDao.insertUserStorageMenu(userNickname);
+	   		 memberDao.insertVisitCnt(userNickname);
+	   		
      }
       if (result != 1) {
          throw new Exception();
@@ -159,4 +161,5 @@ public class MemberServiceImpl implements MemberService{
 	public int selectRequest(String userNickname) {
 		return memberDao.selectRequest(userNickname);
 	}
+
 }

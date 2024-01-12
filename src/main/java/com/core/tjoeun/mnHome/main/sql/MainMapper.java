@@ -46,4 +46,8 @@ public interface MainMapper {
 	public Map mainMenu(Map map);
 	
 	public List<Map> selectFriendCmt(Map map);
+	
+	public Map selectVisitCnt(String userNickname);
+	
+	public int updateVisitCnt(Map map);
 }

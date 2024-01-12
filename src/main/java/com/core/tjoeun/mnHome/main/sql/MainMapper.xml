@@ -227,11 +227,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from friendCMT
 		where 1=1
 		<if test="userNickname != null">
-			and userNickname = #{userNickname}
+			and friendNickname = #{userNickname}
 		</if>
 		and del_yn = 'n'
 		order by createDate desc
 		limit 5
 	</select>
-
+	
+	<select id="selectVisitCnt" parameterType="String" resultType="map">
+		select
+			userNickname
+			,todayCnt
+			,totalCnt
+		from visitCnt
+		where userNickname = #{userNickname}
+		
+	</select>
+	
+	<update id="updateVisitCnt" parameterType="map">
+		update visitCnt
+		set
+		todayCnt = #{todayCnt}
+		,totalCnt = #{totalCnt}
+		where 1=1
+		<if test="userNickname != null">
+			and userNickname = #{userNickname}
+		</if>
+	</update>
 </mapper>
+
+
+
