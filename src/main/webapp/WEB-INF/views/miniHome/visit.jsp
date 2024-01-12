@@ -120,7 +120,7 @@
 					
 					<div class="page-container">
 						<c:forEach var="page" begin="1" end="${totalPage}">
-							<span class="spanPage" data-page="${page}" onclick="btnPage(${page})" style = "cursor:pointer">[${page}]</span>
+							<span class="visit-page" data-page="/mnHome/visitView/${userNickname }?page=${page}"  style = "cursor:pointer">[${page}]</span>
 						</c:forEach>
 					</div>
 					
@@ -269,7 +269,7 @@
 						게시판
 					</span>
 					</div>
-					<div class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>"
+					<div id="quickVisit" class="menu-content" data-tab="<c:url value='/mnHome/visitView/${userNickname }'/>"
 					style=" background-color: 
 								<c:choose>
 									<c:when test="${menuProductName == 'red' }">red</c:when>
