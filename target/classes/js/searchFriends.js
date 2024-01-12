@@ -94,7 +94,7 @@ function searchUser() {
 
 
 	
-$(document).on('click', '#accept', function() {
+$(document).on('click', '.accept', function() {
 	if(confirm("일촌신청을 수락하시겠습니까?")){
 		let fSeq = $(this).data('seq');
 		console.log(fSeq);
@@ -122,7 +122,7 @@ $(document).on('click', '#accept', function() {
 		
 });
 
-$(document).on('click', '#reject', function() {
+$(document).on('click', '.reject', function() {
 	if(confirm("일촌신청을 거절하시겠습니까?")){
 		let fSeq = $(this).data('seq');
 		console.log(fSeq);
@@ -150,7 +150,7 @@ $(document).on('click', '#reject', function() {
 		
 });
 
-$(document).on('click', '#cancle', function() {
+$(document).on('click', 'input.cancle', function() {
 	if(confirm("일촌신청을 취소하시겠습니까?")){
 		let fSeq = $(this).data('seq');
 		console.log(fSeq);
@@ -174,7 +174,8 @@ $(document).on('click', '#cancle', function() {
 				alert('잠시 후 다시 시도해주세요.');
 			}
 			});
-		}
+		return;
+	}
 		
 });
 

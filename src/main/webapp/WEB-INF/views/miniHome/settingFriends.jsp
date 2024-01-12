@@ -191,8 +191,8 @@
 											            <td>${fRes.createDate}</td>
 											            <td>
 											            	<input type="hidden" value="${fRes.seq}" id="fSeq">
-											            	<input type="button" class="set-frd-bf-tb-input" value="수락" data-seq="${fRes.seq}" id="accept"/>
-											            	<input type="button" class="set-frd-bf-tb-input" value="거절" data-seq="${fRes.seq}" id="reject"/>
+											            	<input type="button" class="set-frd-bf-tb-input accept" value="수락" data-seq="${fRes.seq}" />
+											            	<input type="button" class="set-frd-bf-tb-input reject" value="거절" data-seq="${fRes.seq}"/>
 											            </td>
 										        	</tr>
 												</c:forEach> 
@@ -227,7 +227,7 @@
 												            <td>${fReq.createDate}</td>
 												            <td>
 												            	<input type="hidden" value="${fReq.seq}" id="fSeq">
-												            	<input type="button" class="set-frd-bf-tb-input" data-seq="${fReq.seq}" value="취소" id="cancle"/>
+												            	<input type="button" class="set-frd-bf-tb-input cancle" data-seq="${fReq.seq}" value="취소" />
 												            </td>
 											        	</tr>
 												</c:forEach>
