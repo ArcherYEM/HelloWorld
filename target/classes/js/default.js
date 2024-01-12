@@ -53,11 +53,7 @@ $(document).on('click', '#btn-title-save', function() {
 });
 // 상단 타이틀 끝 
 
-
-
-
 //일촌신청 
-
 
 // When the user clicks on div, open the popup
 function popupFunction() {
@@ -97,8 +93,6 @@ function requestFriendship(userNickname){
 	}
 }
 
-
-	
 // 오디오 관련 스크립트
 document.addEventListener('DOMContentLoaded', function() {
 	var playlist = [
@@ -218,6 +212,7 @@ document.addEventListener('DOMContentLoaded', function() {
         loadTrack(++currentTrack);
     });
 });
+
 //파도타기
 function redirectToMainView() {
     var selectElement = document.getElementById("friendSelect");
@@ -228,4 +223,5 @@ function redirectToMainView() {
     }
 }
 
+// 미니홈피 새창열기
 

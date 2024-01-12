@@ -17,7 +17,8 @@ public class ShoppingCart {
 
     public void addToCart(CartItem item) {
         cartItems.add(item);
-        System.out.println(item.getName());
+        System.out.println("★★★★" + item.getName());
+        System.out.println(cartItems);
     }
     
     public void clearCart() {
@@ -25,6 +26,7 @@ public class ShoppingCart {
     }
 	
     public int getTotalDotoriCount() {
+    	System.out.println("★★★★★★" + cartItems);
         if (cartItems == null) {
             System.out.println("cartItems is null");
             return 0;

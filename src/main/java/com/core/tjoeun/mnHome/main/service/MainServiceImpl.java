@@ -222,6 +222,7 @@ public class MainServiceImpl implements MainService{
 			int total = (int) visitCntMap.get("totalCnt") + 1 ;
 			
 			Map updateVisitCntMap = new HashMap();
+			updateVisitCntMap.put("userNickname", userNickname);
 			updateVisitCntMap.put("todayCnt", today);
 			updateVisitCntMap.put("totalCnt", total);
 			

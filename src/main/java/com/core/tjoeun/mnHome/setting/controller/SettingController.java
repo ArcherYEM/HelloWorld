@@ -106,11 +106,8 @@ public class SettingController {
 		int allocation = 0;
 		
 		List<Map> bgmMap = settingService.selectMyBgm(inputMap);
-		model.addAttribute("title",title);
-		model.addAttribute("artist",artist);
-		model.addAttribute("runningTime",runningTime);
-		model.addAttribute("contentPath",contentPath);
-		model.addAttribute("allocation",allocation);
+		
+		model.addAttribute("bgmMap",bgmMap);
 		System.out.println("### bgmMap : " + bgmMap);
 		
         //접속중인 유저의 친구 전부 가져오기
@@ -136,8 +133,8 @@ public class SettingController {
 	        	n.printStackTrace();
         }
 		
-//		return "miniHome/settingBgm";
-        return "miniHome/test";
+		return "miniHome/settingBgm";
+//        return "miniHome/test";
 	}
 
 

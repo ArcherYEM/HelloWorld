@@ -97,41 +97,10 @@
 								<div>재생시간</div>
 							</div>
 							
+							
 							<div class="setting-bgm-list setting-bgm-grid">
 								<div><input type="checkbox"></div>
 								<div>1</div>
-								<div>Super Star</div>
-								<div>쥬얼리</div>
-								<div>03:18</div>
-							</div>
-							
-							<div class="setting-bgm-list setting-bgm-grid">
-								<div><input type="checkbox"></div>
-								<div>2</div>
-								<div>죽을만큼 아파서</div>
-								<div>mc몽</div>
-								<div>03:38</div>
-							</div>
-							
-							<div class="setting-bgm-list setting-bgm-grid">
-								<div><input type="checkbox"></div>
-								<div>3</div>
-								<div>거짓말</div>
-								<div>빅뱅</div>
-								<div>03:58</div>
-							</div>
-							
-							<div class="setting-bgm-list setting-bgm-grid">
-								<div><input type="checkbox"></div>
-								<div>4</div>
-								<div>Tell me</div>
-								<div>원더걸스</div>
-								<div>04:10</div>
-							</div>
-							
-							<div class="setting-bgm-list setting-bgm-grid">
-								<div><input type="checkbox"></div>
-								<div>5</div>
 								<div>Gee</div>
 								<div>소녀시대</div>
 								<div>03:11</div>
@@ -159,7 +128,6 @@
 								</select>
 						</div>
 						
-						
 						<div class="setting-bgm-list-group setting-bgm-grid">
 							<div><input type="checkbox"></div>
 							<div>순번</div>
@@ -168,13 +136,13 @@
 							<div>재생시간</div>
 						</div>
 						
-						<c:forEach items="${bgmMap}" var="bgm" varStatus="status">
+						<c:forEach items="${bgmMap}" var="bgmMap" varStatus="status">
 						    <div class="setting-bgm-list setting-bgm-grid">
 						        <div><input type="checkbox"></div>
 						        <div>${status.index + 1}</div>
-						        <div>${bgm.title }</div>
-						        <div>${bgm.artist }</div>
-						        <div>${bgm.runningTime }</div>
+						        <div>${bgmMap.title }</div>
+						        <div>${bgmMap.artist }</div>
+						        <div>${bgmMap.runningTime }</div>
 						    </div>
 						</c:forEach>
 
