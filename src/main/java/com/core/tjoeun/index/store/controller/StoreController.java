@@ -1,6 +1,7 @@
 package com.core.tjoeun.index.store.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.core.tjoeun.index.store.service.BgmItem;
 import com.core.tjoeun.index.store.service.StoreService;
+import com.core.tjoeun.mnHome.setting.service.SettingService;
 import com.core.tjoeun.util.CartItem;
 import com.core.tjoeun.util.ShoppingCart;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -32,6 +33,9 @@ public class StoreController {
 
 	@Autowired
 	StoreService storeService;
+	
+	@Autowired
+	SettingService settingService;
 
 	@RequestMapping(value = "/store/skinView")
 	public String skin(HttpSession session, HttpServletRequest req, Model model) {
@@ -71,7 +75,10 @@ public class StoreController {
 	}
 	
 	@RequestMapping(value = "/store/dotoriBuy")
-	public String dotoriBuy(@RequestParam("content") String dotoriCharge, @RequestParam("method") String dotoriMethod, @RequestParam("price") String dotoriPrice, HttpSession session, HttpServletRequest req) {
+	public String dotoriBuy(@RequestParam("content") String dotoriCharge
+			, @RequestParam("method") String dotoriMethod
+			, @RequestParam("price") String dotoriPrice
+			, HttpSession session, HttpServletRequest req) {
 
 		System.out.println("테스트:"+dotoriMethod);
 		
@@ -136,7 +143,8 @@ public class StoreController {
 	}
 	
 	@RequestMapping(value = "/store/bgmBuy")
-	public String bgmBuy(Model model, @RequestParam(value = "selectedData", required = false) String selectedData) {
+	public String bgmBuy(Model model
+			, @RequestParam(value = "selectedData", required = false) String selectedData) {
 		System.out.println("선택된 곡들 : " + selectedData);
 	    if (selectedData != null) {
 	        ObjectMapper objectMapper = new ObjectMapper();
@@ -163,19 +171,30 @@ public class StoreController {
         session = req.getSession();
 		userMap = (Map) session.getAttribute("userId");
 		String userNickname = (String) userMap.get("userNickname");
+		System.out.println("### userMap : " + userMap);
         
         try {
 	         // 현재 보유도토리와 결제 도토리 값 비교
 	            int myDtr = storeService.getMyDotori(userNickname);
-	            System.out.println("myDtr : " + myDtr);
-	            System.out.println("totalPrice : " + totalPrice);
 	            
 	            int amount = 0;
 	            amount = myDtr - totalPrice;
-	            System.out.println("amount : " + amount);
+	            
 	            if (amount < 0) {
+	            	String reason = " [" + (amount * (-1) + "] 개 의 도토리가 부족합니다.");
+	            	model.addAttribute("reason", reason);
 	            	return "/store/bgmBuyFail";
 	            } else {
+	            	// 보유 bgm 확인
+	            	List<Map> myBgmCheckMap = settingService.selectMyBgm(userMap);
+	            	List<String>myBgmTitle = new ArrayList<>();
+	            	for (int i = 0; i < myBgmCheckMap.size(); i++) {
+	            		Map<String, String> titleMap = myBgmCheckMap.get(i);
+	            		String getTitle = titleMap.get("title");
+	            		myBgmTitle.add( getTitle);
+	            	}
+	            	System.out.println("### myBgmTitle : " + myBgmTitle);
+	            	
 	            	ObjectMapper objectMapper = new ObjectMapper();
 	                List<Map<String, String>> bgmList = objectMapper.readValue(selectedData, new TypeReference<List<Map<String, String>>>(){});
 	                
@@ -191,9 +210,6 @@ public class StoreController {
 	                    String title = bgmItem.get("title");
 	                    String artist = bgmItem.get("artist");
 	                    
-	                    System.out.println("title : " + title);
-	                    System.out.println("artist : " + artist);
-	                    
 	                    bgmForMap.put("title", title);
 	                    bgmForMap.put("artist", artist);
 	                    
@@ -205,7 +221,43 @@ public class StoreController {
 	                    	totalMap.addAll((List<Map<String, Object>>) resultList);
 	                    }
 	                    
-	                    System.out.println("bgmForMap : " + bgmForMap);
+	                }
+	                
+	                // totalMap 에 있는 cartBgmTitle 과 보유중인 myBgmTitle 비교
+	                
+	               List<String> cartBgmTitle = new ArrayList<>();  // 장바구니 bgm list 를 담을 Map
+	               for (int i = 0; i < totalMap.size(); i++) {
+	            	   Map<String, Object> tempList = totalMap.get(i);
+	            	   String getTitle = (String) tempList.get("title");
+	            	   cartBgmTitle.add(getTitle);
+	               }
+	               System.out.println("### cartBgmTitle : " + cartBgmTitle);
+	                
+	                List<String> comparison = new ArrayList<>(); // 전체 bgm list 를 담을 Map
+	                comparison.addAll(myBgmTitle);
+	                comparison.addAll(cartBgmTitle);
+	                System.out.println("### comparison : " + comparison);
+	                
+	                Collections.sort(comparison);
+	                System.out.println("### Sorting comparison : " + comparison);
+	                
+	                String duplicatedBgm = null;
+	                
+	                for (int i = 0; i < comparison.size() - 1; i++) {
+	                    String currentItem = comparison.get(i);
+	                    String nextItem = comparison.get(i + 1);
+	                    
+	                    if (currentItem.equals(nextItem)) {
+	                        System.out.println("### Duplicate !! " + currentItem);
+	                        duplicatedBgm = currentItem;
+	                        break;
+	                    }
+	                }
+
+	                if (duplicatedBgm != null) {
+                    	String reason = " [" + duplicatedBgm + "] BGM 은 이미 보유하고있습니다.";
+                    	model.addAttribute("reason", reason);
+                    	return "/store/bgmBuyFail";
 	                }
 	                
     	            // totalMap에 필요한 정보가 저장됨
@@ -215,17 +267,9 @@ public class StoreController {
     	                String runningTimeDb = (String) resultMap.get("runningTime");
     	                String contentPathDb = (String) resultMap.get("contentPath");
     	                
-    	                System.out.println("titleDb : " + titleDb);
-    	                System.out.println("artistDb : " + artistDb);
-    	                System.out.println("runningTimeDb : " + runningTimeDb);
-    	                System.out.println("contentPathDb : " + contentPathDb);
-    	                
-    	                System.out.println("resultMap : " + resultMap);
-    	                
     	                resultMap.put("userNickname", userNickname);
     	                
     	                storeService.putBgm(resultMap);
-    	                System.out.println("totalMap : " + totalMap);
     	            } // for문 괄호
     	            
     	            // 도토리차감
@@ -233,7 +277,6 @@ public class StoreController {
     	            updateMap.put("userNickname", userNickname);
     	            updateMap.put("amount", amount);
     	            storeService.deductDotori(updateMap);
-    	            System.out.println("myDtr : " + myDtr);
     	            
     	            return "/store/bgmBuySuccess";
             }
