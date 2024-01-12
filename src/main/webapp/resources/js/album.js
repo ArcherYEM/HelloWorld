@@ -118,7 +118,7 @@ function writeAlbum(){
 	}
 	
 	function deleteAlbum(seq){
-		if(confirm("Are you sure?")){
+		if(confirm("정말 삭제하시겠습니까?")){
 			let userNickname = $("#hiddenUserNickname").val();
 			
 			let jsonData = { 
