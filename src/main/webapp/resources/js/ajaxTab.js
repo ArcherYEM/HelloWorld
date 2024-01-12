@@ -143,6 +143,13 @@ $(document).on("click", ".td-title", function (event) {
    loadTabContent(tabName); 
 });
 
+$(document).on("click", ".news-title", function (event) {
+	event.preventDefault();
+	tabName = $(this).data("url");
+	console.log('TabName:', tabName);
+	loadTabContent(tabName); 
+});
+
 $(document).on("click", ".btn-diarylist", function (event) {
    event.preventDefault();
    tabName = $(this).data("diaryview");

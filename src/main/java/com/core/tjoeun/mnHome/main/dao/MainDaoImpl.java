@@ -168,4 +168,10 @@ public class MainDaoImpl implements MainDao{
 		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
 		return mapper.updateVisitCnt(map);
 	}
+	
+	@Override
+	public List<Map> selectCurrentContent(String userNickname) {
+		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
+		return mapper.selectCurrentContent(userNickname);
+	}
 }
