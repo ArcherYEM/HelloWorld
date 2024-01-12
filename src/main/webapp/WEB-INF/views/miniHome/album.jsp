@@ -86,7 +86,7 @@
 								
 									<c:if test="${list ne null}">
 										<c:forEach items="${list}" var="item" varStatus="i">
-											<div class="album-container">
+											<div class="album-container" data-albumdetail="/mnHome/albumDetailView/${userNickname}/${item.seq}">
 												<div class="album-thumbnail">
 													<img src="<c:url value="/../../../../resources/images/download/${images[i.index]}" />" alt="이미지 설명">
 												</div>

@@ -30,6 +30,10 @@ function loadTabContent(tabName) {
                 htmlToAdd += '<link class="album" href="/resources/css/minihome/album.css" rel="stylesheet">';
                 htmlToAdd += '<script type="text/javascript" src="../../../../resources/js/album.js"></script>';
             
+            }else if(tabName === '/mnHome/albumDetailView' || tabName.indexOf('/mnHome/albumDetailView') != -1){
+            	htmlToAdd += '<link class="album" href="/resources/css/minihome/album.css" rel="stylesheet">';
+                htmlToAdd += '<script type="text/javascript" src="../../../../resources/js/album.js"></script>';
+           
             }else if(tabName === '/mnHome/boardView' || tabName.indexOf('/mnHome/boardView') != -1){
                 htmlToAdd += '<link class="board" href="/resources/css/minihome/board.css" rel="stylesheet">';
                 htmlToAdd += '<link class="board" href="/resources/css/minihome/album.css" rel="stylesheet">';
@@ -149,6 +153,13 @@ $(document).on("click", ".btn-diarylist", function (event) {
 $(document).on("click", ".album-under-left", function (event) {
    event.preventDefault();
    tabName = $(this).data("albumview");
+   console.log('TabName:', tabName);
+   loadTabContent(tabName); 
+});
+
+$(document).on("click", ".album-container", function (event) {
+   event.preventDefault();
+   tabName = $(this).data("albumdetail");
    console.log('TabName:', tabName);
    loadTabContent(tabName); 
 });
