@@ -116,8 +116,31 @@ function writeAlbum(){
 		 });
 		
 	}
-
-
+	
+	function deleteAlbum(seq){
+		if(confirm("Are you sure?")){
+			let userNickname = $("#hiddenUserNickname").val();
+			
+			let jsonData = { 
+							"seq" : seq 
+							};
+		
+			$.ajax({
+				url: "/mnHome/albumDelete"
+				,type: "POST"
+				, dataType : "json"
+				, data: JSON.stringify(jsonData)
+				, contentType: "application/json"
+				, success : function(data){
+					alert("삭제했습니다.");
+					document.getElementById("albumView").click();
+				}, error : function(error){
+					console.log("Error : " + error);
+					alert('잠시 후 다시 시도해주세요.');
+				}
+			});
+		}
+	}	
 
 
 

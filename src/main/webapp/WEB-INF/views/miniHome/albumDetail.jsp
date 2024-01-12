@@ -126,10 +126,11 @@
 								  <div class="album-container-under">
 								  	<div class="album-under">
 								  		<!-- <a href="#" class="album-under-left">스크랩하기</a> -->
+								  		<a class="album-under-left" id="albumView" data-albumView="<c:url value='/mnHome/albumView/${userNickname}'/>">목록</a>
 								  		<c:if test="${sessionScope.userId.userNickname eq userNickname }">
 									  		<!-- <a href="#" class="album-under-right">이동</a> -->
 									  		<!-- <a href="#" class="album-under-right">수정</a> -->
-									  		<a href="#" class="album-under-right">삭제</a>
+									  		<a class="album-under-right" onclick="deleteAlbum(${list.seq})">삭제</a>
 								  		</c:if>
 								  	</div>
 								  </div>

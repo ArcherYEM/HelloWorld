@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -208,6 +210,23 @@ public class AlbumController {
 		
 		return  "miniHome/albumDetail";
 		
+	}
+	
+	
+	@RequestMapping(value="/mnHome/albumDelete")
+	@ResponseBody
+	public Map albumDelete(@RequestBody Map map) {
+		Map result = new HashMap<String, String>();
+		try {
+			albumService.updateAlbum(map);
+			result.put("resultCode", "1");
+		} catch (Exception e) {
+			result.put("resultCode", "0");
+			e.printStackTrace();
+			return result;
+		}
+		
+		return result ;
 	}
 	
 	
