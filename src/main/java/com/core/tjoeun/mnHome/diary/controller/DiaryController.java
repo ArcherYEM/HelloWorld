@@ -1,5 +1,6 @@
 package com.core.tjoeun.mnHome.diary.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,11 +38,33 @@ public class DiaryController {
 		model.addAttribute("title", userMap.get("title"));
 		System.out.println("userMap : " + userMap);
 		System.out.println("map 시작");
-		List<Map> diaryList = diaryService.selectDiary(userMap);
-		if (!diaryList.isEmpty()) {
-	        model.addAttribute("diaryList", diaryList);
-	    }
 		
+		
+		List<Map> diaryList = diaryService.selectDiary(userMap);
+	    model.addAttribute("diaryList", diaryList);
+	    List<HashMap> cmtList = diaryService.selectDiaryCMT(userNickname);
+	    
+	 // 일기별로 댓글을 저장할 맵
+	    Map<String, List<HashMap>> diaryCmt = new HashMap<>();
+
+	    // 결과 반복 처리
+	    for (HashMap<String, Object> cmt : cmtList) {
+	        String diarySeq = cmt.get("diarySeq").toString();
+	        
+	        // 맵에 해당 일기의 댓글 리스트가 이미 존재하는지 확인
+	        if (diaryCmt.containsKey(diarySeq)) {
+	            // 이미 존재한다면 리스트에 댓글 추가
+	        	diaryCmt.get(diarySeq).add(cmt);
+	        } else {
+	            // 존재하지 않는다면 새로운 리스트를 만들어서 댓글 추가 후 맵에 추가
+	            List<HashMap> newCMTList = new ArrayList<>();
+	            newCMTList.add(cmt);
+	            diaryCmt.put(diarySeq, newCMTList);
+	        }
+	    }
+
+	    model.addAttribute("cmtList", diaryCmt);
+	    
 		
 		
 		// menu color 적용하기

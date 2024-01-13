@@ -50,5 +50,12 @@ public class DiaryImpl implements DiaryDao {
 		return mapper.insertDiaryCMT(map);
 	}
 
+	@Override
+	public List<HashMap> selectDiaryCMT(String userNickname) {
+		DiaryMapper mapper = sqlSession.getMapper(DiaryMapper.class);
+		
+		return mapper.selectDiaryCMT(userNickname);
+	}
+
 	
 }
