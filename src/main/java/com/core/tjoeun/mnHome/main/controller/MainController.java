@@ -197,10 +197,9 @@ public class MainController {
         map.put("userNickname", userNickname);
         try {
         	friendCmtList = mainService.selectFriendCmt(map);
-        	
         	model.addAttribute("friendCmtList", friendCmtList);
+        	System.out.println("### firendCmtList : " + friendCmtList);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         
