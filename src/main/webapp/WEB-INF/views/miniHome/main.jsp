@@ -219,7 +219,7 @@
 						        <c:forEach var="list" items="${friendCmtList}" varStatus="i">
 						            <li>${list.content}
 						                <span class="main-cmt-info">
-						                    <a href="<c:url value='/mnHome/mainView/${list.friendNickname}' />">${list.friendNickname}</a> ${list.createDate}
+						                    <a href="<c:url value='/mnHome/mainView/${list.userNickname}' />">${list.userNickname}</a> ${list.createDate}
 						                </span>
 						            </li>
 						        </c:forEach>
@@ -457,7 +457,7 @@
          </div>
       </div>
       <div class="audioPlayerContainer">
-<!--          <audio id="audioElement" autoplay></audio> -->
+         <audio id="audioElement" autoplay></audio>
          <div class="audioPlayingContainer">
             <div class="audioPlayingDiv">
                <img id="audioPlayingImg" src="../../../../resources/images/audioPlayer/nowPlaying.png">
@@ -518,10 +518,13 @@
 	    window.location.href = url;
 	}
 	
+// 	로그아웃하고 종료하기
 	document.getElementById("logOutBtn").addEventListener("click", function() {
 		alert('좋은하루 되십시오');
 	    window.close();
-	  });
+	    window.location.href = "<c:url value='/index/member/logout' />"; // home.jsp로 이동
+	    window.opener.location.reload
+	});
 	</script>
    <script>
    	  document.getElementById('btnFriendCmt').addEventListener('click', function() {
