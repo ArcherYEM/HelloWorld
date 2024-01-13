@@ -549,10 +549,23 @@ function cancel() {
 	            url: "<c:url value='/mnHome/friendCmt' />",
 	            contentType: 'application/json',
 	            data: JSON.stringify(jsonData)
-	         }).done(function (json) {
-	         	console.log(json.resultCode);
-	   	  		})
-   	  })
+	         }).done(function (newCommentList) {
+	         	console.log(newCommentList);
+	         	
+	         	let commentListHTML = '';
+	            for (let i = 0; i < newCommentList.length; i++) {
+	                let comment = newCommentList[i];
+	                commentListHTML += '<li>' + comment.content +
+	                    '<span class="main-cmt-info">' +
+	                    '<a href="/mnHome/mainView/' + comment.userNickname + '">' + comment.userNickname + '</a> ' + comment.createDate +
+	                    '</span>' +
+	                    '</li>';
+	            }
+
+	            $('.main-cmt-content ul').html(commentListHTML);  
+	            $('#friendCmt').val('');
+	   	  		});
+   	  });
    	  
       // 미니홈피 프로필 수정창
       function openNewWindowMinihomeProfileEdit() {
