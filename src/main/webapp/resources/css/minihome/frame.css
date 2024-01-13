@@ -358,7 +358,7 @@ body a{
 .main-under-bar {
   border: 1px solid black;
   width: 100%;
-  height: 400px;
+  height: 40px;
   padding-left: 10px;
   padding-right: 10px;
   background-color: gray;
@@ -396,63 +396,17 @@ body a{
 	text-align: left;
 }
 
-.main-udb-notice {
-    flex-basis: 60%;
-    text-align: left;
-}
-
-#notice-container {
-    height: 40px; /* 높이 제한을 40px로 지정 */
-    overflow: hidden;
-}
-
-.rolling-notice-container {
-    display: flex;
-    flex-direction: column-reverse; /* 요소들을 수직으로 역순으로 나열하도록 설정합니다 */
-}
-
 .rolling-notice {
-    opacity: 1;
-    animation: rollUp 5s linear infinite; /* 위로 올라가는 애니메이션 사용 */
-    margin-bottom: 0; /* 간격 제거 */
-    height: 5px; /* 각 롤링 공지사항의 높이를 40px로 설정 */
-}
-
-.rolling-notice.active {
-    opacity: 1; /* 초기에는 보이지 않도록 설정 */
-}
-
-@keyframes rollUp {
-    0% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    16% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    32% {
-        opacity: 1;
-        transform: translateY(-100%);
-    }
-    48% {
-        opacity: 1;
-        transform: translateY(-100%);
-    }
-    64% {
-        opacity: 1;
-        transform: translateY(-200%);
-    }
-    80% {
-        opacity: 1;
-        transform: translateY(-200%);
-    }
-    100% {
         opacity: 0;
-        transform: translateY(-200%);
+        height: 0;
+        overflow: hidden;
+        transition: opacity 0.5s ease-in-out, height 0.5s ease-in-out;
     }
-}
 
+    .rolling-notice.active {
+        opacity: 1;
+        height: auto;
+    }
 
 .main-udb-past {
 	flex-basis: 25%;
