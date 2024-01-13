@@ -184,6 +184,7 @@
 			var selectedData = JSON.stringify(selected);
 			window.open('/store/bgmBuy?selectedData=' + encodeURIComponent(selectedData), '_blank', windowSettings);
 		}
+
 </script>
 
 </body>

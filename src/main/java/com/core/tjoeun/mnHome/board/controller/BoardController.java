@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.core.tjoeun.index.member.service.MemberService;
 import com.core.tjoeun.mnHome.board.service.BoardService;
 import com.core.tjoeun.mnHome.main.dao.MainDao;
 import com.core.tjoeun.mnHome.main.service.MainService;
@@ -38,6 +39,9 @@ public class BoardController {
 	MainService mainService;
 	
 	@Autowired
+	MemberService memberService;
+	
+	@Autowired
 	BoardService boardService;
 	
 	@Autowired
@@ -45,6 +49,10 @@ public class BoardController {
 	
 	@RequestMapping(value={"/mnHome/boardView/{userNickname}","/mnHome/boardView/{userNickname}/{page}"})
 	public String boardView(@PathVariable String userNickname, @PathVariable Optional<String> page, Model model) {
+		
+		//홈피 주인 성별 가져오기
+		String userGender = memberService.selectUserGender(userNickname);
+		model.addAttribute("userGender",userGender);
 		
 		Map profile = mainService.getProfile(userNickname);
 		String image = (String) profile.get("image");
@@ -107,6 +115,10 @@ public class BoardController {
 	
 	@RequestMapping(value="/mnHome/boardWriteView/{userNickname}")
 	public String boardWriteView(@PathVariable String userNickname, Model model) {
+		
+		//홈피 주인 성별 가져오기
+		String userGender = memberService.selectUserGender(userNickname);
+		model.addAttribute("userGender",userGender);
 		
 		Map profile = mainService.getProfile(userNickname);
 		String image = (String) profile.get("image");
@@ -186,6 +198,10 @@ public class BoardController {
 	
 	@RequestMapping(value="/mnHome/boardDetail/{userNickname}/{seq}")
 	public String boardDetail(@PathVariable String userNickname, @PathVariable String seq, Model model, HttpSession session, HttpServletRequest req) {
+		
+		//홈피 주인 성별 가져오기
+		String userGender = memberService.selectUserGender(userNickname);
+		model.addAttribute("userGender",userGender);
 		
 		Map profile = mainService.getProfile(userNickname);
 		String image = (String) profile.get("image");

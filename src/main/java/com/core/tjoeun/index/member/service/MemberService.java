@@ -28,4 +28,6 @@ public interface MemberService {
 	
 	public int selectRequest(String userNickname);
 	
+	public String selectUserGender(String userNickname);
+	
 }

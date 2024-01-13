@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.core.tjoeun.index.member.service.MemberService;
 import com.core.tjoeun.mnHome.main.dao.MainDao;
 import com.core.tjoeun.mnHome.main.service.MainService;
 import com.core.tjoeun.mnHome.visit.service.VisitService;
@@ -24,6 +25,9 @@ public class VisitController {
 	MainService mainService;
 	
 	@Autowired
+	MemberService memberService;
+	
+	@Autowired
 	VisitService visitService;
 	
 	@Autowired
@@ -31,6 +35,11 @@ public class VisitController {
 	
 	@RequestMapping(value="/mnHome/visitView/{userNickname}")
 	public String visitView(@PathVariable String userNickname, Model model, @RequestParam(required = false) Integer page) {
+		
+		//홈피 주인 성별 가져오기
+		String userGender = memberService.selectUserGender(userNickname);
+		model.addAttribute("userGender",userGender);
+		
 		//프로필 정보 가져오기
 		Map profile = mainService.getProfile(userNickname);
 		String image = (String) profile.get("image");
@@ -59,6 +68,7 @@ public class VisitController {
 		paramMap.put("targetNickname", userNickname);
 		
 		List<Map> resultList = visitService.selectVisitComment(paramMap);
+		System.out.println("!테스트"+paramMap);
 		for(int i = 0; i < resultList.size(); i++) {
 			Map map2 = resultList.get(i);
 			map2.put("number", ((page-1)*5+(i+1)));

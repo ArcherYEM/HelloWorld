@@ -79,7 +79,13 @@
 							        <input type="hidden" id="responseUser" name="responseUser" value="${userNickname}">
 							    </div>
 							</c:if>
-                        ${userName }&#128698;
+						<c:if test="${userGender eq 'M'}">
+                        	${userName }&#128102
+						</c:if>
+						<c:if test="${userGender eq 'F'}">
+                        	${userName }&#128103
+						</c:if>
+                        
                      </div>
 <%--                      <div class="profile-username font-kyobohand"> ${sessionScope.userId.userName }&#128698;</div> --%>
 
@@ -497,7 +503,7 @@
 			이전에 방문한 홈피
 		</div>
 		<div class="main-udb-logout">
-			<input type="button" class="udb-logout-a font-neo" value="로그아웃" id="logOutBtn">
+			<input type="button" class="udb-logout-a font-neo" value="로그아웃" onclick="cancel()">
 		</div>
    </div>
    <div id="testUnder"></div>
@@ -513,12 +519,18 @@
 	}
 	
 // 	로그아웃하고 종료하기
-	document.getElementById("logOutBtn").addEventListener("click", function() {
-		alert('좋은하루 되십시오');
+// 	document.getElementById("logOutBtn").addEventListener("click", function() {
+// 		alert('좋은하루 되십시오');
+// 		window.close();
+// 		if (window.opener && !window.opener.closed) {
+// 		    window.location.href = "<c:url value='/index/member/logout' />";
+// 	        window.opener.reloadParentWindow();
+// 	    }
+// 	});
+	function cancel() {
+        window.opener.reloadParentWindow();
 	    window.close();
-	    window.location.href = "<c:url value='/index/member/logout' />"; // home.jsp로 이동
-	    window.opener.location.reload
-	});
+	}
 	</script>
    <script>
    	  document.getElementById('btnFriendCmt').addEventListener('click', function() {
