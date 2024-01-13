@@ -244,17 +244,6 @@ public class MainController {
         
         //공지사항 제목 최근 5개 가져오기
         List<Map> noticeMap = noticeService.sendMainBar();
-//        Map tempMap = new HashMap();
-//        for (int i = 0; i < noticeMap.size(); i++) {
-//            Map<String, Object> noticeItem = noticeMap.get(i);
-//            int noticeSeq = (int) noticeItem.get("seq"); 
-//            String noticeTitle = (String) noticeItem.get("title"); 
-//            System.out.println("### " + i + "번째 공지사항 제목 추가 : " + noticeTitle);
-//            
-//            tempMap.put("seq", noticeSeq);
-//            tempMap.put("title", noticeTitle);
-//        }
-//        System.out.println("### tempMap : " + tempMap);
         model.addAttribute("noticeMap", noticeMap);
         
         //코드실행시간계산
