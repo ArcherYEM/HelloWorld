@@ -184,7 +184,7 @@
 									<c:when test="${menuProductName == 'rgb(42, 140, 168)' }">rgb(42, 140, 168)</c:when>
 								</c:choose>
 					">
-						<span class="menu-content-span"
+						<span class="menu-content-span" id="godiary"
 						style=" color: 
 								<c:choose>
 									<c:when test="${menuProductName == 'red' }">lightgreen</c:when>
