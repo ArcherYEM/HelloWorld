@@ -133,7 +133,7 @@
                         <div class="update-box">
                            <div class="menu-row">
                               <div class="menu-item" onclick="quickDiary()">
-                                 	다이어리<span class="menu-num">${newCount.DiaryCount}/${count.DiaryCount }</span>
+                                 	다이어리<span class="menu-num">${tabs.RecentDiaryCount}/${tabs.TotalDiaryCount }</span>
                                  <c:if test="${newCount.DiaryCount>0 }">
                                  	<img src="../../../../resources/images/minihome/newIcon.png"
                                  		alt="new Icon" class="minihome-nIcon">
@@ -141,7 +141,7 @@
                                  
                               </div>
                               <div class="menu-item" onclick="quickAlbum()">
-                                 	사진첩<span class="menu-num">${newCount.AlbumCount}/${count.AlbumCount }</span>
+                                 	사진첩<span class="menu-num">${tabs.RecentAlbumCount}/${tabs.TotalAlbumCount }</span>
                                  <c:if test="${newCount.AlbumCount>0 }">
                                  	<img src="../../../../resources/images/minihome/newIcon.png"
                                  		alt="new Icon" class="minihome-nIcon">
@@ -150,14 +150,14 @@
                            </div>
                            <div class="menu-row">
                               <div class="menu-item" onclick="quickBoard()">
-                                 	게시판<span class="menu-num">${newCount.BoardCount}/${count.BoardCount }</span>
+                                 	게시판<span class="menu-num">${tabs.RecentBoardCount}/${tabs.TotalBoardCount }</span>
                                  <c:if test="${newCount.BoardCount>0 }">
                                  	<img src="../../../../resources/images/minihome/newIcon.png"
                                  		alt="new Icon" class="minihome-nIcon">
                                  </c:if>
                               </div>
                               <div class="menu-item" onclick="quickVisit()">
-                                 	방명록<span class="menu-num">${newCount.VisitCount}/${count.VisitCount }</span>
+                                 	방명록<span class="menu-num">${tabs.RecentVisitCount}/${tabs.TotalVisitCount }</span>
                                  <c:if test="${newCount.VisitCount>0 }">
                                  	<img src="../../../../resources/images/minihome/newIcon.png"
                                  		alt="new Icon" class="minihome-nIcon">

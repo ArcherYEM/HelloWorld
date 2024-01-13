@@ -3,7 +3,17 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper	namespace="com.core.tjoeun.mnHome.main.sql.MainMapper">
-
+	
+	<select id="selectVisitCnt" parameterType="String" resultType="map">
+		select
+			userNickname
+			,todayCnt
+			,totalCnt
+		from visitCnt
+		where userNickname = #{userNickname}
+	</select>
+	
+	<!-- 프로필 가져오기 -->
 	<select id="getProfile" parameterType="String" resultType="map">
 		select
 			image
@@ -42,6 +52,70 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ORDER BY create_date DESC
 		LIMIT 1
 	</select>
+
+
+	<select id="selectUserInfo" parameterType="String" resultType="map">
+		SELECT
+		    mht.seq,
+		    mht.title,
+		    u.userGender,
+		    u.userName
+		FROM
+		    user u
+		JOIN
+		    miniHomeTitle mht ON u.userNickname = mht.userNickname
+		WHERE
+		    u.userNickname = #{userNickname}
+	</select>
+
+	<select id="getMyFriends" parameterType="String" resultType="map">
+		SELECT 
+		    CASE 
+		        WHEN f.userNickname = #{userNickname} THEN f.friendNickname
+		        WHEN f.friendNickname = #{userNickname} THEN f.userNickname
+		    END AS Name,
+		    u.userEmail
+		FROM friends AS f
+		JOIN user AS u ON (f.userNickname = #{userNickname} AND f.friendNickname = u.userNickname) 
+		                OR (f.friendNickname = #{userNickname} AND f.userNickname = u.userNickname)
+		WHERE (#{userNickname} = f.userNickname OR #{userNickname} = f.friendNickname) 
+		AND f.fStatus = 1 AND f.del_yn = 'n';
+	</select>
+
+	<select id="tabs" parameterType="String" resultType="map">
+		SELECT 
+		    (SELECT COUNT(*) FROM diary WHERE userNickname = #{userNickname}) AS TotalDiaryCount,
+		    <![CDATA[ 
+		    	(SELECT COUNT(*) FROM diary WHERE userNickname = #{userNickname} AND TIMESTAMPDIFF(HOUR, update_date, NOW()) <= 24) AS RecentDiaryCount,
+			]]>
+		    
+		    (SELECT COUNT(*) FROM board WHERE userNickname = #{userNickname}) AS TotalBoardCount,
+		    <![CDATA[ 
+		    	(SELECT COUNT(*) FROM board WHERE userNickname = #{userNickname} AND TIMESTAMPDIFF(HOUR, update_date, NOW()) <= 24) AS RecentBoardCount,
+			]]>
+			
+		    (SELECT COUNT(*) FROM album WHERE userNickname = #{userNickname}) AS TotalAlbumCount,
+		    <![CDATA[
+		    	(SELECT COUNT(*) FROM album WHERE userNickname = #{userNickname} AND TIMESTAMPDIFF(HOUR, update_date, NOW()) <= 24) AS RecentAlbumCount,
+			]]>
+		    (SELECT COUNT(*) FROM visit WHERE targetNickname = #{userNickname}) AS TotalVisitCount,
+		    <![CDATA[
+		    	(SELECT COUNT(*) FROM visit WHERE targetNickname = #{userNickname} AND TIMESTAMPDIFF(HOUR, update_date, NOW()) <= 24) AS RecentVisitCount
+			]]>
+	</select>
+	
+	<select id="selectCurrentContent" parameterType="String" resultType="map">
+		SELECT seq, title, 'board' AS tableName, update_date
+		FROM board
+		WHERE userNickname = #{userNickname} AND del_yn = 'N'
+		UNION ALL
+		SELECT seq, title, 'album' AS tableName, update_date
+		FROM album
+		WHERE userNickname = #{userNickname} AND del_yn = 'N'
+		ORDER BY update_date DESC
+		LIMIT 4
+	</select>
+
 	
 	<select id="getProfileHistory" parameterType="String" resultType="map">
 		select 
@@ -138,55 +212,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			userNickname = #{userNickname}
 	</update>
 	
-	<select id="selectAllTab" parameterType="String" resultType="map">
-		SELECT 
-		    (SELECT COUNT(*) FROM diary WHERE userNickname = #{userNickname}) AS DiaryCount,	    
-		    (SELECT COUNT(*) FROM board WHERE userNickname = #{userNickname}) AS BoardCount,
-		    (SELECT COUNT(*) FROM album WHERE userNickname = #{userNickname}) AS AlbumCount,
-		    (SELECT COUNT(*) FROM visit WHERE targetNickname = #{userNickname}) AS VisitCount
-	</select>
-	
-	<select id="selectNewTab" parameterType="String" resultType="map">
-		SELECT 
-		    (SELECT COUNT(*) FROM diary 
-		     WHERE userNickname = #{userNickname}
-		     <![CDATA[ 
-		     	AND TIMESTAMPDIFF(HOUR, update_date, NOW()) <= 24) AS DiaryCount,
-		     ]]>
-		
-		    (SELECT COUNT(*) FROM board 
-		     WHERE userNickname = #{userNickname}
-		     <![CDATA[ 
-		     	AND TIMESTAMPDIFF(HOUR, update_date, NOW()) <= 24) AS BoardCount,
-			]]>
-
-		    (SELECT COUNT(*) FROM album 
-		     WHERE userNickname = #{userNickname}
-		     <![CDATA[ 
-		     	AND TIMESTAMPDIFF(HOUR, update_date, NOW()) <= 24) AS AlbumCount,
-			]]>
-			
-		    (SELECT COUNT(*) FROM visit 
-		     WHERE targetNickname = #{userNickname}
-		      <![CDATA[
-		     	AND TIMESTAMPDIFF(HOUR, update_date, NOW()) <= 24) AS VisitCount
-		     ]]>
-	</select>
-	
-	<select id="getMyFriends" parameterType="String" resultType="map">
-		SELECT 
-		    CASE 
-		        WHEN f.userNickname = #{userNickname} THEN f.friendNickname
-		        WHEN f.friendNickname = #{userNickname} THEN f.userNickname
-		    END AS Name,
-		    u.userEmail
-		FROM friends AS f
-		JOIN user AS u ON (f.userNickname = #{userNickname} AND f.friendNickname = u.userNickname) 
-		                OR (f.friendNickname = #{userNickname} AND f.userNickname = u.userNickname)
-		WHERE (#{userNickname} = f.userNickname OR #{userNickname} = f.friendNickname) 
-		AND f.fStatus = 1 AND f.del_yn = 'n';
-	</select>
-	
 	<select id="mainSkin" parameterType="map" resultType="map">
 		SELECT 
 			category
@@ -241,15 +266,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		limit 5
 	</select>
 	
-	<select id="selectVisitCnt" parameterType="String" resultType="map">
-		select
-			userNickname
-			,todayCnt
-			,totalCnt
-		from visitCnt
-		where userNickname = #{userNickname}
-		
-	</select>
+
 	
 	<update id="updateVisitCnt" parameterType="map">
 		update visitCnt
@@ -262,17 +279,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</if>
 	</update>
 	
-	<select id="selectCurrentContent" parameterType="String" resultType="map">
-		SELECT seq, title, 'board' AS tableName, update_date
-		FROM board
-		WHERE userNickname = #{userNickname} AND del_yn = 'N'
-		UNION ALL
-		SELECT seq, title, 'album' AS tableName, update_date
-		FROM album
-		WHERE userNickname = #{userNickname} AND del_yn = 'N'
-		ORDER BY update_date DESC
-		LIMIT 4
-	</select>
+
+
 </mapper>
 
 

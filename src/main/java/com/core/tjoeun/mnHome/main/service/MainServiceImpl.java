@@ -30,6 +30,35 @@ public class MainServiceImpl implements MainService{
 	@Value("${default.image.path}")
     private String defaultImagePath;
 	
+	//미니홈피 방문자 수 가져오기
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW, rollbackFor = {Exception.class})
+	public Map updateVisitCnt(String userNickname) throws Exception {
+		Map visitCntMap = new HashMap();
+		int result = 0;
+		
+		visitCntMap = mainDao.selectVisitCnt(userNickname);
+		if(visitCntMap != null) {
+			int today = (int) visitCntMap.get("todayCnt") + 1 ;
+			int total = (int) visitCntMap.get("totalCnt") + 1 ;
+			
+			Map updateVisitCntMap = new HashMap();
+			updateVisitCntMap.put("userNickname", userNickname);
+			updateVisitCntMap.put("todayCnt", today);
+			updateVisitCntMap.put("totalCnt", total);
+			
+			result = mainDao.updateVisitCnt(updateVisitCntMap);
+			if(result != 0) {
+				return updateVisitCntMap;
+			} else {
+				throw new Exception();
+			}
+		} else {
+			throw new Exception();
+		}
+	}
+	
+	//프로필 정보 가져오기	
 	@Override
 	@Transactional(readOnly = true)
 	public Map getProfile(String userNickname) {
@@ -51,7 +80,70 @@ public class MainServiceImpl implements MainService{
 	 }
 	 	return profile;
 	}
-
+	
+	//기본정보 가져오기(이름,성별,제목)
+	@Override
+	@Transactional(readOnly = true)
+	public Map selectUserInfo(String userNickname) {
+		
+		return mainDao.selectUserInfo(userNickname);
+	}
+	
+	//접속중인 유저의 친구 전부 가져오기
+	@Override
+	@Transactional(readOnly = true)
+	public List<Map> getMyFriends(String userNickname) {
+		
+		return mainDao.getMyFriends(userNickname);
+	}
+	
+	//미니홈피 제목 가져오기
+	@Override
+	@Transactional(readOnly = true)
+	public Map getHomeTitle(String userNickname) {
+		
+		return mainDao.selectHomeTitle(userNickname);
+	}
+	
+	//다이어리, 앨범, 게시판, 방명록 전체 개수 및 최근 24시간 개수 가져오기
+	@Override
+	@Transactional(readOnly = true)
+	public Map tabs(String userNickname) {
+		
+		return mainDao.tabs(userNickname);
+	}
+	
+	//게시판, 사진첩 최신 게시글 상위 4개 가져오기
+	@Override
+	@Transactional(readOnly = true)
+	public List<Map> selectCurrentContent(String userNickname) {
+		
+		return mainDao.selectCurrentContent(userNickname);
+	}
+	
+	//홈피 주인 이름 가져오기 
+	@Override
+	public Map getUserInfo(String userNickname) {
+		Map map = new HashMap();
+		map.put("userNickname", userNickname);
+		
+		//홈피 주인 이름 가져오기 
+		String userName = memberService.getUserName(userNickname);
+		map.put("userName", userName);
+		map.put("del_yn", "n");
+		map.put("openScope", 1);
+		
+		//Home Title
+		Map title = getHomeTitle(userNickname);
+		if(title != null) {
+			map.put("title", title.get("title"));
+		}else {
+			map.put("title", userName + "의 미니홈피입니다.");
+		}
+		return map;
+	}
+	
+	
 	@Override
 	@Transactional(readOnly = true)
 	public List<Map> getProfileHistory(String userNickname) {
@@ -104,12 +196,6 @@ public class MainServiceImpl implements MainService{
 		return mainDao.selectBackground(userNickname);
 	}
 
-	@Override
-	@Transactional(readOnly = true)
-	public Map getHomeTitle(String userNickname) {
-		
-		return mainDao.selectHomeTitle(userNickname);
-	}
 
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW, rollbackFor = {Exception.class})
@@ -131,47 +217,6 @@ public class MainServiceImpl implements MainService{
 		
 	}
 
-	@Override
-	public Map getUserInfo(String userNickname) {
-		Map map = new HashMap();
-		map.put("userNickname", userNickname);
-		
-		//홈피 주인 이름 가져오기 
-		String userName = memberService.getUserName(userNickname);
-		map.put("userName", userName);
-		map.put("del_yn", "n");
-		map.put("openScope", 1);
-		
-		//Home Title
-		Map title = getHomeTitle(userNickname);
-		if(title != null) {
-			map.put("title", title.get("title"));
-		}else {
-			map.put("title", userName + "의 미니홈피입니다.");
-		}
-		return map;
-	}
-	
-	@Override
-	@Transactional(readOnly = true)
-	public Map selectAllTab(String userNickname) {
-		
-		return mainDao.selectAllTab(userNickname);
-	}
-
-	@Override
-	@Transactional(readOnly = true)
-	public Map selectNewTab(String userNickname) {
-		
-		return mainDao.selectNewTab(userNickname);
-	}
-
-	@Override
-	@Transactional(readOnly = true)
-	public List<Map> getMyFriends(String userNickname) {
-		
-		return mainDao.getMyFriends(userNickname);
-	}
 
 	@Override
 	public Map mainSkin(Map map) {
@@ -210,38 +255,7 @@ public class MainServiceImpl implements MainService{
 		return mainDao.mainMenu(map);
 	}
 
-	@Override
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW, rollbackFor = {Exception.class})
-	public Map updateVisitCnt(String userNickname) throws Exception {
-		Map visitCntMap = new HashMap();
-		int result = 0;
-		
-		visitCntMap = mainDao.selectVisitCnt(userNickname);
-		if(visitCntMap != null) {
-			int today = (int) visitCntMap.get("todayCnt") + 1 ;
-			int total = (int) visitCntMap.get("totalCnt") + 1 ;
-			
-			Map updateVisitCntMap = new HashMap();
-			updateVisitCntMap.put("userNickname", userNickname);
-			updateVisitCntMap.put("todayCnt", today);
-			updateVisitCntMap.put("totalCnt", total);
-			
-			result = mainDao.updateVisitCnt(updateVisitCntMap);
-			if(result != 0) {
-				return updateVisitCntMap;
-			} else {
-				throw new Exception();
-			}
-		} else {
-			throw new Exception();
-		}
-	}
 	
-	@Override
-	@Transactional(readOnly = true)
-	public List<Map> selectCurrentContent(String userNickname) {
-		
-		return mainDao.selectCurrentContent(userNickname);
-	}
-	
+
+
 }

@@ -103,11 +103,27 @@ public class MainController {
 //		return "miniHome/main";
 //	}
 	
+	String hostNickname;
+	String guestNickname;	
+	
 	@RequestMapping("/mnHome/mainView/{userNickname}")
-	public String mainView(@PathVariable String userNickname, Model model) {
+	public String mainView(@PathVariable String userNickname, Model model, HttpSession session) {
+		hostNickname = userNickname;
+		guestNickname =  (String) session.getAttribute("userNickname");
+		
 		// 코드실행시간계산
 		long beforeTime = System.currentTimeMillis();
-	    
+		
+        //미니홈피 방문자 수 가져오기
+        try {
+			Map updateVisitCntMap = new HashMap();
+			updateVisitCntMap =	mainService.updateVisitCnt(userNickname);
+			model.addAttribute("todayCnt", (int) updateVisitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) updateVisitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		//프로필 정보 가져오기
 		Map profile = mainService.getProfile(userNickname);
 		if(null == profile) {
@@ -118,43 +134,54 @@ public class MainController {
 		msg = msg.replace("\n", "<br>");
 		model.addAttribute("image", image);
 		model.addAttribute("msg", msg);
-		
-		//홈피 주인 성별 가져오기
-		String userGender = memberService.selectUserGender(userNickname);
-		model.addAttribute("userGender",userGender);
-		
-		//홈피 주인 이름 가져오기 
-		String userName = memberService.getUserName(userNickname);
-		model.addAttribute("userName", userName);
-		
-		//Home Title
-		Map title = mainService.getHomeTitle(userNickname);
+        
+		//미니홈피 주인 정보 가져오기 (이름,성별,제목)
+		Map userInfo = mainService.selectUserInfo(userNickname);
+		model.addAttribute("userName", userInfo.get("userName"));		
+		model.addAttribute("userGender",userInfo.get("userGender"));
+		String title = (String) userInfo.get("title");
 		if(title != null) {
-			model.addAttribute("title", title.get("title"));
+			model.addAttribute("title", title);
 		}else {
-			model.addAttribute("title", userName + "의 미니홈피입니다.");
+			model.addAttribute("title", userNickname + "의 미니홈피입니다.");
 		}
 		
-		//miniroom
+		//접속중인 유저의 친구 전부 가져오기
+		List<Map> friendMap = mainService.getMyFriends(userNickname);
+		model.addAttribute("friend", friendMap);
+		
+		//다이어리, 앨범, 게시판, 방명록 전체 개수 및 최근 24시간 개수 가져오기
+		Map tabs = mainService.tabs(userNickname);
+		model.addAttribute("tabs", tabs);
+		
+        //게시판, 사진첩 최신 게시글 상위 4개 가져오기
+        List<Map> currentMap = mainService.selectCurrentContent(userNickname);
+        for(Map<String, String> current : currentMap) {
+            String tableName = current.get("tableName");
+            String url;
+            if("album".equals(tableName)) {
+            	url="/mnHome/albumDetailView/"+userNickname+"/"+String.valueOf(current.get("seq"));
+            	System.out.println(url);
+            	current.put("url", url);
+            	current.put("category", "news-category category-pic");
+            	current.put("tableName", "사진첩");
+            } else if("board".equals(tableName)) {
+            	url="/mnHome/boardDetail/"+userNickname+"/"+String.valueOf(current.get("seq"));
+            	System.out.println(url);
+            	current.put("url", url);
+            	current.put("category", "news-category category-post");
+            	current.put("tableName", "게시판");
+            }
+        }
+        model.addAttribute("current",currentMap);
+	
+		//미니룸
 		List<Map> minimiList = mainService.selectMinimi(userNickname);
-        model.addAttribute("minimiList", minimiList);
-        
+        model.addAttribute("minimiList", minimiList);        
         Map background = mainService.selectBackground(userNickname);
         model.addAttribute("background", background);
-		
-        //다이어리, 앨범, 게시판, 방명록 전체 개수 가져오기
-        Map countMap = mainService.selectAllTab(userNickname);
-        model.addAttribute("count",countMap);
-        
-        //다이어리, 앨범, 게시판, 방명록 최근 24개 개수 가져오기
-        Map newMap = mainService.selectNewTab(userNickname);
-        model.addAttribute("newCount",newMap);
-        
-        //접속중인 유저의 친구 전부 가져오기
-        List<Map> friendMap = mainService.getMyFriends(userNickname);
-        model.addAttribute("friend", friendMap);
-        
-     // background color 적용하기
+      
+        //background color 적용하기
         Map callSkin = new HashMap();
         callSkin.put("category", "skin");
         callSkin.put("userNickname", userNickname);
@@ -176,7 +203,7 @@ public class MainController {
 	        	n.printStackTrace();
         }
         
-        // menu color 적용하기
+        //menu color 적용하기
         Map callMenu = new HashMap();
         callMenu.put("category", "menu");
         callMenu.put("userNickname", userNickname);
@@ -209,43 +236,10 @@ public class MainController {
 			e.printStackTrace();
 		}
         
-        //미니홈피 방문자 수 가져오기
-        try {
-			Map updateVisitCntMap = new HashMap();
-			updateVisitCntMap =	mainService.updateVisitCnt(userNickname);
-			model.addAttribute("todayCnt", (int) updateVisitCntMap.get("todayCnt"));
-			model.addAttribute("totalCnt", (int) updateVisitCntMap.get("totalCnt"));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        
-        //게시판, 사진첩 최신 게시글 상위 4개 가져오기
-        List<Map> currentMap = mainService.selectCurrentContent(userNickname);
-        for(Map<String, String> current : currentMap) {
-            String tableName = current.get("tableName");
-            String url;
-            if("album".equals(tableName)) {
-            	url="/mnHome/albumDetailView/"+userNickname+"/"+String.valueOf(current.get("seq"));
-            	System.out.println(url);
-            	current.put("url", url);
-            	current.put("category", "news-category category-pic");
-            	current.put("tableName", "사진첩");
-            } else if("board".equals(tableName)) {
-            	url="/mnHome/boardDetail/"+userNickname+"/"+String.valueOf(current.get("seq"));
-            	System.out.println(url);
-            	current.put("url", url);
-            	current.put("category", "news-category category-post");
-            	current.put("tableName", "게시판");
-            }
-        }
-        System.out.println("!최신"+currentMap);
-        model.addAttribute("current",currentMap);
-        
         //코드실행시간계산
         long afterTime = System.currentTimeMillis();
         long secDiffTime = (afterTime - beforeTime);
-        System.out.println("★ 미니홈피 로딩 소요시간 : "+secDiffTime+"나노 초 소요!!");
+        System.out.println("★ 미니홈피 로딩 소요시간 : "+secDiffTime+"밀리 초 소요!!");
         
 		return "miniHome/main";
 	}
@@ -261,7 +255,6 @@ public class MainController {
 				friendMap.put("resultCode", "1");
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			friendMap.put("resultCode", "0");
 		}
