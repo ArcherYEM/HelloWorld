@@ -113,19 +113,6 @@ public class MainDaoImpl implements MainDao{
 		return mapper.updateHomeTitle(map);
 	}
 	
-	@Override
-	public Map selectAllTab(String userNickname) {
-		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
-		
-		return mapper.selectAllTab(userNickname);
-	}
-	
-	@Override
-	public Map selectNewTab(String userNickname) {
-		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
-		
-		return mapper.selectNewTab(userNickname);
-	}
 
 	@Override
 	public List<Map> getMyFriends(String userNickname) {
@@ -173,5 +160,17 @@ public class MainDaoImpl implements MainDao{
 	public List<Map> selectCurrentContent(String userNickname) {
 		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
 		return mapper.selectCurrentContent(userNickname);
+	}
+
+	@Override
+	public Map selectUserInfo(String userNickname) {
+		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
+		return mapper.selectUserInfo(userNickname);
+	}
+
+	@Override
+	public Map tabs(String userNickname) {
+		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
+		return mapper.tabs(userNickname);
 	}
 }

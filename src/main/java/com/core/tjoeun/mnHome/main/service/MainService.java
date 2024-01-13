@@ -27,12 +27,6 @@ public interface MainService {
 	
 	public void updateHomeTitle(Map map) throws Exception;
 	
-	public Map getUserInfo(String userNickname);
-	
-	public Map selectAllTab(String userNickname);
-	
-	public Map selectNewTab(String userNickname);
-	
 	public List<Map> getMyFriends(String userNickname);
 	
 	public Map mainSkin(Map map);
@@ -46,5 +40,11 @@ public interface MainService {
 	public Map mainMenu(Map map);
 	
 	public List<Map> selectCurrentContent(String userNickname);
+	
+	public Map selectUserInfo(String userNickname);
+	
+	public Map getUserInfo(String userNickname);
+	
+	public Map tabs(String userNickname);
 	
 }
