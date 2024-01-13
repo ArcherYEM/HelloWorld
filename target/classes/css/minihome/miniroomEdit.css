@@ -1,0 +1,185 @@
+body{
+	font-size: 12px;
+}
+
+.mnr-frame {
+	margin: 0 auto;
+	padding: 3px;
+	width: 95%;
+	height: 95%;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid black;
+}
+
+.section-over {
+	width: 100%;
+	display: flex;
+	height: 59%;
+	justify-content: space-between;
+}
+
+.section1 {
+	width: 503px;
+	height: 100%;
+	padding: 3px;
+}
+
+.miniroom-title{
+	width:503px;
+	height:53px;
+	background-color: #D2D8D9;
+	text-align:center;
+	font-weight: bold;
+	align-items: center;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-canvas{
+	width:503px;
+	height:283px;
+	position:relative;
+}
+
+.section2 {
+	width: 238px;
+	height: 100%;
+	padding: 3px;
+}
+
+.background-title{
+	width:236px;
+	height:53px;
+	background-color: #A4E9FF;
+	text-align:center;
+	font-weight: bold;
+	align-items: center;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mnr-bg {
+	height: 271px;
+	overflow-y:auto; 
+}
+
+.section2 img {
+	width: 210px;
+	height: 110px;
+	margin: 5 0;
+}
+
+.section-under {
+    width: 748.6px;
+    height: 38%;
+    display: flex;
+    margin-top: 10px;
+    flex-direction: column;
+}
+
+.section3 {
+	width: 748px;
+	max-width:748px;
+	height: 100%;
+	padding: 3px;
+	overflow-y:auto;
+
+	margin-right:10px; 
+}
+
+.minimi-title{
+	width:700px;
+	height:20px;
+	background-color: #A1E0DD;
+	text-align:center;
+	font-weight: bold;
+	align-items: center;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section3 img{
+	width:95px;
+	height:90px;
+	border:1px solid black;
+	border-radius:5px;
+	margin-top:5px;
+}
+
+.minimiBtnPlus{
+	margin-right:3px;
+	text-align:center;
+	font-weight: bold;
+	padding: 0;
+	margin:0;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.minimiBtnMinus{
+	margin-right:3px;
+	text-align:center;
+	font-weight: bold;
+	padding: 0;
+	margin:0;
+	font-size: 20;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.minimiBtnDelete{
+	margin-right:3px;
+	text-align:center;
+	font-weight: bold;
+	padding: 0;
+	margin:0;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.minimiContainer {
+    position: relative;
+}
+
+.btnContainer {
+    opacity: 0; /* 기본적으로 투명하게 */
+    transition: opacity 0.3s; /* 투명도 변화에 대한 부드러운 전환 효과 */
+    pointer-events: none; /* 기본적으로 마우스 이벤트 받지 않음 */
+    display:flex;
+    justify-content: center;
+    position: absolute;
+}
+
+.minimiContainer:hover .btnContainer {
+    opacity: 1; /* 호버 시 불투명하게 */
+    pointer-events: auto; /* 호버 시 마우스 이벤트 받음 */
+}
+
+.button-section {
+    width: 700px; /* 폭을 100%로 설정하여 부모 요소의 전체 폭을 차지하도록 합니다. */
+    padding: 10px; /* 패딩을 추가하여 내부 요소와의 간격을 조정합니다. */
+    text-align: center; /* 내부 요소를 중앙 정렬합니다. */
+}
+
+.button-section form {
+    display: inline-block; /* 폼을 인라인 블록 요소로 만들어 줄 바꿈 없이 다른 요소와 나란히 배치합니다. */
+}
+
+.minimiImg{
+	width:710px;
+}
+
+.edit-text{
+	text-align:center;
+	justify-content: center;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+}

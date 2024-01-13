@@ -1,0 +1,233 @@
+@charset "UTF-8";
+.set-frd-frame {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.set-frd-search-frame {
+	border-bottom: 1px solid gray;
+	display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+}
+
+.set-frd-search-group {
+	height: 20px;
+	padding-bottom: 10px;
+}
+
+.set-frd-search-title {
+	font-size: 20px;
+	font-weight: bold;
+	grid-column: 1 / 2;
+    grid-row: 1 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.set-frd-search {
+	grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    display: flex;
+    justify-content: space-between;
+}
+
+.set-frd-search-input {
+	font-size: 12px;
+	font-weight: bold;
+	width: 250px;
+	height: 40px;
+	border: 2px solid orange;
+	border-radius: 5px;
+	padding-top:12px;
+	padding-bottom:12px;
+	margin-right: 5px;
+	margin-top: 3px;
+	outline: none;
+	align-items: center;
+	color: blue;
+	text-align: center;
+	flex: 1;
+}
+
+.set-frd-search-btn {
+	flex: 0;
+}
+
+.set-frd-search-place {
+	margin: 0 auto;
+	margin-bottom: 10px;
+	margin-right: 50px;
+	border-bottom: 2px solid orange;
+	padding-top: 10px;
+	font-size: 12px;
+	font-weight: bold;
+	color: blue;
+	width: 83%;
+	height: 25px;
+	text-align: center;
+	grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+.set-frd-mid-bg {
+	height: 200px;
+	border-bottom: 1px dotted gray;
+}
+
+.set-frd-mid-btn {
+	display: flex;
+	justify-content: flex-start;
+	margin-top: 25px;
+}
+
+.set-frd-mid-bf-ipt,
+.set-frd-mid-req-ipt,
+.set-frd-act-bf-ipt {
+	border: 2px solid orange;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-bottom: none;
+}
+
+.set-frd-mid-bf {
+	margin-left: 5px;
+}
+
+
+.set-frd-mid-search {
+	display: flex;
+    align-items: center;
+    margin-left: 78px;
+}
+
+.set-frd-mid-input {
+	font-size: 12px;
+	width: 150px;
+	height: 12px;
+	border: 2px solid orange;
+	border-radius: 5px;
+	padding-top:12px;
+	padding-bottom:12px;
+	outline: none;
+	align-items: center;
+	margin-right: 5px;
+	margin-left: 5px;
+	color: blue;
+	text-align: center;
+}
+
+.set-frd-bf-list,
+.set-frd-bf-request,
+.set-frd-bf-accept {
+	padding: 10px 20px;
+	display: flax;
+	width: 89%;
+	height: 150px;
+	margin-left: 3px;
+	background-color: white;
+	border: 2px solid orange;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.set-frd-bf-request,
+.set-frd-bf-accept {
+	display: none;
+}
+
+.set-frd-bf-list table,
+..set-frd-bf-request table,
+.set-frd-bf-accept table{
+	font-family: Arial, sans-serif;
+	width: 100%;
+	margin: 5px auto;
+	text-align: center;
+	table-layout: fixed;
+}
+
+.set-frd-bf-list tr,
+.set-frd-bf-request tr,
+.set-frd-bf-accept tr {
+}
+
+.set-frd-bf-list td,
+.set-frd-bf-request td,
+.set-frd-bf-accept td {
+    text-align: center;
+	border-bottom: 1px dotted gray;
+	font-size: 14px;
+	height: 35px;
+	width: 25%;
+}
+
+.set-frd-bf-tb-input {
+	background-color: white;
+	border: none;
+	font-size: 12px;
+	color: orange;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.set-frd-bf-tb-input:hover {
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.friend-home-Img {
+	width: 10px;
+	height: auto;
+	margin-top: 1px;
+	margin-left: 5px;
+}
+
+/* Popup container - can be anything you want */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 60px;
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 6px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 70%;
+  left: 50%;
+  margin-left: -80px;
+  border : 1px solid grey;
+}
+
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}

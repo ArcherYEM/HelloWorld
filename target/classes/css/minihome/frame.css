@@ -1,0 +1,592 @@
+body {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: 0;
+	font-size: 16px;
+	font-family: "Noto Sans KR", sans-serif;
+	overflow-y: auto;
+}
+
+/*임시 효과*/
+body a:hover{
+  font-weight: bold;
+}
+
+body a{
+  text-decoration: none;
+}
+
+.main-frame-skin {
+	width: 100%;
+	height: 100%;
+}
+
+/*미니홈피 테두리*/
+.main-frame{
+  width: 1165px;
+  height: 510px;
+  position: relative;
+  top: 50%;
+  left: 53%;
+  transform: translate(-50%, -50%);
+}
+
+.bookcover {
+  background-color: #b4d1da;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border: 1px solid #738186;
+  width: 960px;
+  height: 510px;
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.bookdot {
+  border-radius: 9px;
+  border: 2px dashed #ffffff;
+  padding: 15px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.page {
+  background-color: #eeeeee;
+  border-radius: 9px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  display: flex;
+  padding: 15px;
+}
+
+/*미니홈피 좌측 (프로필 라인)*/
+.profile-container {
+  flex: 0.4;
+  margin-right: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-title {
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-box {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  max-height: 370px;
+}
+
+.profile-image {
+  flex: none;
+  height :50%;
+  max-height :50%;
+  overflow : auto;
+}
+
+.profile-image-img {
+  width:auto;
+  height:auto;
+  max-width: 100%; /* 가로 최대 너비를 100%로 설정하여 원본 비율 유지 */
+  max-height: 100%;
+  display: block;
+  margin : 0 auto;  
+}
+
+.profile-text {
+  font-size: 13px;
+  line-height: 1.7;
+  flex: 1;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+.profile-history{
+  font-size: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-history a {
+	color: orange;
+	padding: 0 10px;
+	font-weight: bold;
+	border: 1px solid white;
+	margin-right: 20px;
+}
+
+.profile-history a:hover{
+	cursor: pointer;
+	border: 1px solid gray;
+	border-radius: 5px;
+}
+
+.profile-hs{
+  margin-left: 20px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.profile-username {
+  /* flex: 1; */
+  color: #0f1b5c;
+  margin-bottom :5px;
+}
+
+.profile-dot {
+  color: #3b7ada;
+}
+
+.profile-dropDown {
+  min-width: 90px;
+}
+
+/*미니홈피 센터 (미니룸 라인)*/
+.content-container {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.content-title {
+  display: flex;
+  align-items: center;
+}
+
+.content-title-name {
+  flex: 55%;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.content-title-url {
+  flex: 45%;
+  font-size: 0.5rem;
+  text-align: end;
+  margin-right: 10px;
+}
+
+.content-box {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 20px);
+}
+
+.box-title {
+  font-family: "KOTRA_BOLD-Bold";
+  border-bottom: 1px solid grey;
+  color: #3b87ab;
+}
+
+.box-title-sub {
+  font-family: "KOTRA_BOLD-Bold";
+  font-size: 8px;
+  color: gray;
+  padding-bottom: 3px;
+}
+
+.news-flex-box {
+  flex: 0 0 auto;
+  margin-bottom: 5px;
+  display: flex;
+  font-size: 0.8rem;
+}
+
+.news-box {
+  flex: 1;
+}
+
+.news-row {
+  display: flex;
+  font-size: 0.85rem;
+  margin: 3px 0;
+}
+
+.category-pic {
+  background-color: #f15f5f;
+}
+
+.category-post {
+  background-color: #617dc1;
+}
+
+.news-category {
+  padding: 0 6px;
+  margin-right: 6px;
+  color: white;
+  border-radius: 3px;
+}
+
+.miniroom {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.mnr-group {
+	display:flex;
+	justify-content: space-between;
+}
+
+.mnr-title {
+	flex: 1;
+	margin-left: 3px;
+}
+
+.mnr-edit {
+	flex: 1;
+	text-align: right;
+	margin-right: 3px;
+}
+
+.mnr-edit:hover {
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.miniroom-title {
+  border: 1px solid gray;
+  max-width: 100px;
+  text-align: center;
+  font-size: 12px;
+  padding: 3px 8px;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+}
+
+.mnh-Edit {
+	font-size: 14px;
+	color: orange;
+	text-align: right;
+}
+
+.miniroom-gif-box {
+  border: 1px solid #808080;
+  flex: 1;
+  display: flex;
+}
+
+.main-cmt-write{
+  background: rgb(211, 211, 211);
+  border: 2px solid color=navy;
+  padding-left: 10px;
+  font-size: 12px;
+}
+
+.main-cmt-write input {
+  min-width: 360px;
+  margin-right: 20px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.main-cmt-content li {
+  font-size: 12px;
+  border-bottom: 1px solid gray;
+  padding: 5px;
+}
+
+.main-cmt-info {
+	color: black;
+	font-weight: bold;
+	margin-left: 10px;
+	font-size: 10px;
+}
+
+/*미니홈피 우측 (메뉴 라인)*/
+.menu-container{
+	margin-top: 50px;
+}
+
+.smsmsm{
+	color: red;
+}
+
+.menu-content {
+	text-align: center;
+	width: 60px;
+	height: 35px;
+	font-size: 12px;
+	border: solid 1px black;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin-bottom: 2px;
+	line-height: 35px;
+}
+
+.menu-content:hover {
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.menu-content-clicked {
+	text-align: center;
+	width: 60px;
+	height: 35px;
+	font-size: 12px;
+	border: solid 1px black;
+	border-left: none;  /* 왼쪽 테두리 제거 */
+	background-color: white;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	color: black;
+	margin-bottom: 2px;
+	line-height: 35px;
+}
+
+/* 최하단 언더바 */
+.main-under-bar {
+  border: 1px solid black;
+  width: 100%;
+  height: 400px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: gray;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 15px;
+}
+
+.main-udb-myhome {
+	flex-basis: 15%;
+	text-align: left;
+}
+
+.udb-myhome-a,
+.udb-logout-a {
+	color: black;
+	border: none;
+	background: none;
+}
+
+.udb-myhome-a:hover,
+.udb-logout-a:hover {
+	cursor: pointer;
+	font-weight: bold;
+	color: white;
+} 
+
+.main-udb-notice {
+	flex-basis: 60%;
+	text-align: left;
+}
+
+.main-udb-notice {
+    flex-basis: 60%;
+    text-align: left;
+}
+
+#notice-container {
+    height: 40px; /* 높이 제한을 40px로 지정 */
+    overflow: hidden;
+}
+
+.rolling-notice-container {
+    display: flex;
+    flex-direction: column-reverse; /* 요소들을 수직으로 역순으로 나열하도록 설정합니다 */
+}
+
+.rolling-notice {
+    opacity: 1;
+    animation: rollUp 5s linear infinite; /* 위로 올라가는 애니메이션 사용 */
+    margin-bottom: 0; /* 간격 제거 */
+    height: 5px; /* 각 롤링 공지사항의 높이를 40px로 설정 */
+}
+
+.rolling-notice.active {
+    opacity: 1; /* 초기에는 보이지 않도록 설정 */
+}
+
+@keyframes rollUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    16% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    32% {
+        opacity: 1;
+        transform: translateY(-100%);
+    }
+    48% {
+        opacity: 1;
+        transform: translateY(-100%);
+    }
+    64% {
+        opacity: 1;
+        transform: translateY(-200%);
+    }
+    80% {
+        opacity: 1;
+        transform: translateY(-200%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-200%);
+    }
+}
+
+
+.main-udb-past {
+	flex-basis: 25%;
+	text-align: center;
+}
+
+.main-udb-logout {
+	flex-basis: 10%;
+	text-align: right;
+	margin-right: 20px;
+}
+
+.udb-logout-a {
+	color: black;
+}
+
+/*오디오*/
+.side-right{
+  float: right;
+  width: 12.5%;
+  margin-top: 7%;
+}
+
+.side-right audio{
+  width:150px;
+}
+
+.update-box {
+  flex: 1;
+}
+
+.menu-row {
+  display: flex;
+  border-bottom: 1px dashed grey;
+  margin: 3px 0;
+}
+
+.menu-item {
+  flex: 1;
+  cursor:pointer;
+}
+
+.menu-num {
+  font-family: "NeoDunggeunmo";
+  padding-left: 6px;
+  color: #003399;
+}
+
+.minihome-nIcon {
+	width: 10px;
+}
+
+/*별도*/
+.header {
+  flex: 0.1;
+}
+
+.box {
+  background-color: white;
+  flex: 3;
+  border-radius: 10px;
+  border: 1px solid #cdcdcd;
+}
+
+.btn-edit {
+  margin-bottom: 0;
+  padding: 2px 5px;
+  font-size: 10px;
+  background-color: rgb(177, 175, 175);
+  color: white;
+  border-radius: 5px;
+  border: 0px solid gray;
+}
+
+#newtitle{
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size : 15px;
+}
+
+
+
+/* Popup container - can be anything you want */
+.mainpopup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.mainpopup .mainpopuptext {
+  visibility: hidden;
+  width: 60px;
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 6px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 70%;
+  left: 50%;
+  margin-left: -80px;
+  border : 1px solid grey;
+}
+
+/* Popup arrow */
+.mainpopup .mainpopuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.mainpopup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+.news-title{
+	width:60%;
+	margin-left:5px;
+}
+
+.news-title:hover{
+	cursor:pointer;
+	font-weight: bold;
+}
