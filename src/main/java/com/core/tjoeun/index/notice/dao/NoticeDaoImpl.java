@@ -52,4 +52,11 @@ public class NoticeDaoImpl implements NoticeDao{
 		return mapper.modifyNotice(map);
 	}
 
+	@Override
+	public List<Map> sendMainBar() {
+		NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+		
+		return mapper.sendMainBar();
+	}
+
 }
