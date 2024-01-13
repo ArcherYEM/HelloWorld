@@ -16,4 +16,6 @@ public interface NoticeDao {
 	public Map getTotalPage();
 	
 	public int modifyNotice(Map map);
+	
+	public List<Map> sendMainBar();
 }

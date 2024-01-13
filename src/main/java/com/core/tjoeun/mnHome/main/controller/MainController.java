@@ -33,7 +33,8 @@ public class MainController {
 	@Autowired
 	MemberService memberService;
 	
-	@Autowired NoticeService noticeService;
+	@Autowired
+	NoticeService noticeService;
 	
 	@Value("${default.image.path}")
     private String defaultImagePath;
@@ -43,65 +44,6 @@ public class MainController {
 	
 	@Value("${default.background.path}")
     private String defaultBackground;
-	
-//	//메인 홈 (프로필 사진, 프로필 메시지, 미니룸 불러옴)
-//	@RequestMapping("/mnHome/mainView")
-//	public String minihome(Model model, @RequestParam Map map, HttpServletRequest req , HttpSession session) {
-//		
-//		if(session == null || session.getAttribute("userId") == null) {
-//			model.addAttribute("loginStatus",false);
-//			model.addAttribute("image",defaultImagePath);
-//			
-//			// 배경에 대한 기본 설정을 Map에 담아 모델에 추가합니다.
-//	        Map background = new HashMap();
-//	        background.put("backgroundPath", defaultBackground);
-//	        model.addAttribute("background",background);
-//	        
-//	        // 미니미에 대한 기본 설정을 Map에 담아 모델에 추가합니다.
-//	        Map<String, Object> minimiList = new HashMap<>();
-//	        minimiList.put("minimiPath",defaultMinimi);
-//	        minimiList.put("minimiLeft", "390");
-//	        minimiList.put("minimiTop", "163");
-//	        model.addAttribute("minimiList", minimiList);
-//	
-//            return "miniHome/main";
-//        }
-//		model.addAttribute("loginStatus",true);
-//		//세션을 이용하여 현재 접속해있는 유저의 정보를 가져옵니다.
-//		Map userMap = new HashMap();
-//		session = req.getSession();
-//		userMap = (Map) session.getAttribute("userId");
-//		String userNickname = (String) userMap.get("userNickname");
-//		String userName = (String) userMap.get("userName");
-//		
-//		Map profile = mainService.getProfile(userNickname);
-//		String image = (String) profile.get("image");
-//		String msg = (String) profile.get("msg");
-//		msg = msg.replace("\n", "<br>");
-//		System.out.println("### profile : " + profile);
-//		
-//		model.addAttribute("image", image);
-//		model.addAttribute("msg", msg);
-//		session.setAttribute("userId", userMap);
-//		
-//		//홈피 주인 이름 가져오기 
-//		//String userName = memberService.getUserName(userNickname);
-//		model.addAttribute("userName", userName);
-//		model.addAttribute("userNickname", userNickname);
-//		
-//		Map title = mainService.getHomeTitle(userNickname);
-//		if(title != null) {
-//			model.addAttribute("title", title.get("title"));
-//		}else {
-//			model.addAttribute("title", userName + "의 미니홈피입니다.");
-//		}
-//		System.out.println("### title : " + title);
-//		
-//		List<Map> minimiList = mainService.selectMinimi(userNickname);
-//        model.addAttribute("minimiList", minimiList);
-//        
-//		return "miniHome/main";
-//	}
 	
 	String hostNickname;
 	String guestNickname;	
@@ -235,6 +177,10 @@ public class MainController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+        
+      //공지사항 제목 최근 5개 가져오기
+        List<Map> noticeMap = noticeService.sendMainBar();
+        model.addAttribute("noticeMap", noticeMap);
         
         //코드실행시간계산
         long afterTime = System.currentTimeMillis();
@@ -385,8 +331,5 @@ public class MainController {
 		
 		return result;
 	}
-	
-	
-	
 	
 }

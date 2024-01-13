@@ -17,4 +17,6 @@ public interface NoticeService {
 	
 	public void modifyNotice(Map map) throws Exception;
 	
+	public List<Map> sendMainBar();
+	
 }
