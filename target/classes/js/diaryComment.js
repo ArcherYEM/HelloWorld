@@ -19,6 +19,7 @@ function addCmt(seq){
 			, success : function(data){
 				if(data.resultCode == "1"){
 					alert('작성 완료');
+					document.getElementById("godiary").click();
 				}else{
 					alert('작성 실패');
 				}
