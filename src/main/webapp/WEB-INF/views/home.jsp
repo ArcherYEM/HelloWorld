@@ -182,6 +182,13 @@
 	    }
 	    return false;
 	}
+	
+// 	부모창 리로드 명령
+	function reloadParentWindow() {
+		location.href = "<c:url value="/index/member/logout" />"
+	    location.reload();
+	}
+
 	</script>
     <script>
     // Ajax 유저 로그인
