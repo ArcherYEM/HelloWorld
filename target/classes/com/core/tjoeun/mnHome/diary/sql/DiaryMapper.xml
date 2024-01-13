@@ -84,6 +84,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 	</insert>
 	
+	<select id="selectDiaryCMT" parameterType="String" resultType="map">
+	SELECT
+    dc.seq AS commentSeq,
+    dc.userNickname AS commentUserNickname,
+    dc.content AS commentContent,
+    dc.create_date AS commentCreateDate,
+    d.seq AS diarySeq
+	FROM
+	    diaryCMT dc
+	JOIN
+	    diary d ON dc.diarySeq = d.seq
+	WHERE
+	    d.userNickname = #{userNickname}
+	ORDER BY
+	    d.seq DESC;
+	</select>
+	
 	
 	
 	

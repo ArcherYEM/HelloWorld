@@ -17,6 +17,6 @@ public interface DiaryDao {
 	
 	public int insertDiaryCMT(Map map);
 	
-	
+	public List<HashMap> selectDiaryCMT (String userNickname);
 
 }

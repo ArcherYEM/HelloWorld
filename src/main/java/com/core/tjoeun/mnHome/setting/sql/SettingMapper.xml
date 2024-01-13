@@ -154,7 +154,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	
-	<select id="selectFriends" parameterType="map" resultType="map">
+	<!-- <select id="selectFriends" parameterType="map" resultType="map">
 		select 
 			seq
 			, userNickname
@@ -171,7 +171,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="checkFriend = 1">
 			and fStatus != -1
 		</if>
+	</select> -->
+	<select id="selectFriends" parameterType="map" resultType="map">
+		select 
+			f.seq,
+	        f.userNickname,
+	        f.friendNickname,
+	        f.fStatus,
+	        substring(f.createDate, 1, 10) as createDate,
+	        u.userName
+		from friends f
+		JOIN
+        user u ON (f.userNickname = u.userNickname OR f.friendNickname = u.userNickname)
+		where (f.userNickname = #{userNickname} OR f.friendNickname = #{userNickname})
+        AND f.del_yn = 'N'
+        AND u.userName != #{userNickname} 
+        <if test="name != null">
+            AND (f.userNickname LIKE CONCAT('%', #{name}, '%') OR f.friendNickname LIKE CONCAT('%', #{name}, '%'))
+        </if>
+        <if test="checkFriend = 1">
+            AND f.fStatus != -1
+        </if>
 	</select>
+	
+	
 	
 	<update id="updateStatus" parameterType="map">
 		update

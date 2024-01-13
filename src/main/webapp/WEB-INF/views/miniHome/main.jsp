@@ -519,6 +519,32 @@
    <script src="../../../../resources/js/default.js"></script>
    <script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
    <script>
+    var notices = document.querySelectorAll(".rolling-notice");
+    var currentIndex = 0;
+    var initialDelay = 1700; 
+    var transitionDuration = 300; 
+    var reducedDelayFactor = 0.2; 
+
+    function showNextNotice() {
+        if (currentIndex > 0) {
+            notices[currentIndex - 1].classList.remove("active");
+        }
+        if (currentIndex < notices.length) {
+            notices[currentIndex].classList.add("active");
+            currentIndex++;
+        } else {
+            currentIndex = 0; 
+        }
+
+        var delay = currentIndex === 0 ? initialDelay : initialDelay + transitionDuration * notices.length * reducedDelayFactor;
+        setTimeout(showNextNotice, delay); 
+    }
+
+    showNextNotice();
+</script>
+
+
+   <script>
 //    내 미니홈피 가기
 	function goToMyHome() {
 	    var userNickname = "<c:out value='${sessionScope.userId.userNickname}' />";

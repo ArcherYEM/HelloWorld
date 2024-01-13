@@ -61,6 +61,7 @@
 										<c:choose>
 											<c:when test="${not empty diaryList}">
 												<c:forEach items="${diaryList}" var="diary">
+												
 													<div class="album-db-group">
 														<div class="diary-title">${diary.title}</div>
 														<div class="diary-date-right">
@@ -88,23 +89,31 @@
 													</c:if>
 													<div class="board-comment-write">
 														<span>댓글</span>
-														<input type="text" class="comment-content-write" id="cmtContent">
-														<input type="hidden" value="${sessionScope.userId.userNickname}" id="cmtWriter">
+														<input type="text" class="comment-content-write" id="cmtContent${diary.seq}">
+														<input type="hidden" value="${sessionScope.userId.userNickname}" class="cmtWriter">
 														<input type="button" value="확인" onclick="addCmt(${diary.seq})">
 													</div>
 													<div class="board-comment-container">
-														<div class="board-comment">
-															<span class="board-comment-writer">
-																<!--  댓글 작성자명 -->
-															</span>
-															<span class="board-comment-content">
-																<!-- 댓글내용 -->
-															</span>
-															<span class="board-comment-date">
-																<!-- 댓글 작성 일시 -->
-															</span>
-															<i class="fa-regular fa-rectangle-xmark icon-color btn-cmt-del"></i>
-														</div>
+													<c:forEach var="commentEntry" items="${cmtList}">
+											            
+											            <c:set var="commentDiarySeq" value="${commentEntry.key}" />
+											            
+											            <c:if test="${commentDiarySeq eq diary.seq}">
+											                
+											                <c:set var="comments" value="${commentEntry.value}" />
+											                
+											                <c:if test="${not empty comments}">
+											                    <c:forEach var="comment" items="${comments}">
+											                        <div class="board-comment">
+											                            <span class="board-comment-writer">${comment.commentUserNickname}</span>
+											                            <span class="board-comment-content">${comment.commentContent}</span>
+											                            <span class="board-comment-date">${comment.commentCreateDate}</span>
+											                        </div>
+											                    </c:forEach>
+											                </c:if>
+											            </c:if>
+											        </c:forEach>
+												   
 													</div>
 												</c:forEach>
 											</c:when>
@@ -175,7 +184,7 @@
 									<c:when test="${menuProductName == 'rgb(42, 140, 168)' }">rgb(42, 140, 168)</c:when>
 								</c:choose>
 					">
-						<span class="menu-content-span"
+						<span class="menu-content-span" id="godiary"
 						style=" color: 
 								<c:choose>
 									<c:when test="${menuProductName == 'red' }">lightgreen</c:when>
