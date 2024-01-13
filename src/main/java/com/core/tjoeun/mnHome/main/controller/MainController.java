@@ -246,17 +246,17 @@ public class MainController {
 	
 	@RequestMapping(value="/mnHome/friendCmt", method = RequestMethod.POST)
 	@ResponseBody
-	public Map friendCMT(@RequestBody Map map) {
-		Map friendMap = new HashMap(); 
+	public List<Map> friendCMT(@RequestBody Map map) {
+		List<Map> friendMap = new ArrayList<Map>(); 
 		
 		try {
 			int result = mainService.insertFriendCmt(map);
 			if (result == 1) {
-				friendMap.put("resultCode", "1");
+				friendMap = mainService.selectFriendCmt(map);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			friendMap.put("resultCode", "0");
+			
 		}
 		return friendMap;
 	}
