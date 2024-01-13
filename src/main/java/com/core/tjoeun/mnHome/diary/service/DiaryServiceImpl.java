@@ -1,6 +1,7 @@
 package com.core.tjoeun.mnHome.diary.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -56,6 +57,11 @@ public class DiaryServiceImpl implements DiaryService {
 			throw new Exception();
 		}
 		
+	}
+
+	@Override
+	public List<HashMap> selectDiaryCMT(String userNickname) {
+		return diaryDao.selectDiaryCMT(userNickname);
 	}
 
 	

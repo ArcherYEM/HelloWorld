@@ -17,6 +17,6 @@ public interface DiaryService {
 	
 	public void insertDiaryCMT(Map map) throws Exception;
 	
-	
+	public List<HashMap> selectDiaryCMT(String userNickname);
 
 }

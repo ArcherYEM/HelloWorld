@@ -19,7 +19,7 @@ public interface DiaryMapper {
 	
 	public ArrayList<String> selectDiarySeq (String userNickname);
 
-	public List<Map> selectDiaryCMT (ArrayList<String> list);
+	public List<HashMap> selectDiaryCMT (String userNickname);
 	
 	
 }
