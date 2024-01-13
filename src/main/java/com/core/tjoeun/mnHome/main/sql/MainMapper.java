@@ -33,10 +33,6 @@ public interface MainMapper {
 	
 	public int updateHomeTitle(Map map);
 	
-	public Map selectAllTab(String userNickname);
-
-	public Map selectNewTab(String userNickname);
-	
 	public List<Map> getMyFriends(String userNickname);
 	
 	public Map mainSkin(Map map);
@@ -52,4 +48,8 @@ public interface MainMapper {
 	public int updateVisitCnt(Map map);
 	
 	public List<Map> selectCurrentContent(String userNickname);
+	
+	public Map selectUserInfo(String userNickname);
+	
+	public Map tabs(String userNickname);
 }
