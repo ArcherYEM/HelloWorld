@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+.set-dtr-use-frame {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.set-dtr-use-title {
+	font-weight: bold;
+	border-bottom: 2px solid gray;
+	padding-bottom: 5px;
+}
+
+.set-dtr-use-list {
+	border-bottom: 2px dotted gray;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-top: 15px;
+	font-size: 14px;
+	align-items: center;
+}
+
+.set-dtr-use-list-header {
+	font-weight: bold;
+	color: orange;
+	width: 100%;
+}
+
+.set-dtr-use-list-table {
+	text-align: center;
+	margin: 0 auto;
+}
+
+.set-dtr-use-list-table th {
+	color: orange;
+	font-size: 14px;
+}
+
+..set-dtr-use-list-table td {
+	color: gray;
+	font-size: 12px;
+}
+
+.set-dtr-ust-list-table th,
+.set-dtr-ust-list-table td {
+  padding: 5px 10px;
+}
