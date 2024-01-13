@@ -93,7 +93,9 @@
 						<select id="friendSelect" onchange="redirectToMainView()">
                            <option value="" disabled selected hidden="">파도타기</option>
 						    <c:forEach var="friend" items="${friend}" varStatus="status">
-						        <option value="${friend.Name}">${friend.Name}(${friend.userEmail})</option>
+						        <option value="${friend.Name}">
+						        	${friend.Name}(${friend.userEmail})
+						        </option>
 						    </c:forEach>
 						</select>
                      </div>
@@ -497,7 +499,13 @@
 			<input type="button" class="udb-myhome-a font-neo" value="내 미니홈피" onclick="goToMyHome()">
 		</div>
 		<div class="main-udb-notice">
-			공지사항 최근 5개 롤링
+		    <div id="notice-container">
+		        <div class="rolling-notice-container">
+		            <c:forEach var="notice" items="${noticeMap}" varStatus="loop">
+		                <div class="rolling-notice">${notice.title}</div>
+		            </c:forEach>
+		        </div>
+		    </div>
 		</div>
 		<div class="main-udb-past">
 			이전에 방문한 홈피
@@ -507,7 +515,7 @@
 		</div>
    </div>
    <div id="testUnder"></div>
-   </div> <!-- backgourn div -->
+   </div> 
    <script src="../../../../resources/js/default.js"></script>
    <script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
    <script>
@@ -517,17 +525,8 @@
 	    var url = "<c:url value='/mnHome/mainView/' />" + userNickname;
 	    window.location.href = url;
 	}
-	
-// 	로그아웃하고 종료하기
-// 	document.getElementById("logOutBtn").addEventListener("click", function() {
-// 		alert('좋은하루 되십시오');
-// 		window.close();
-// 		if (window.opener && !window.opener.closed) {
-// 		    window.location.href = "<c:url value='/index/member/logout' />";
-// 	        window.opener.reloadParentWindow();
-// 	    }
-// 	});
-	function cancel() {
+
+function cancel() {
         window.opener.reloadParentWindow();
 	    window.close();
 	}

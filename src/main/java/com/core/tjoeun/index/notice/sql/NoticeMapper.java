@@ -16,4 +16,6 @@ public interface NoticeMapper {
 	public Map getTotalPage();
 	
 	public int modifyNotice(Map map);
+	
+	public List<Map> sendMainBar();
 }

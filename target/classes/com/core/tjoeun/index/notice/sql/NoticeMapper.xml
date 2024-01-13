@@ -33,9 +33,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by create_date desc
 		limit #{limit}
 		offset #{offset}
-		
 	</select>
 	
+	<select id ="sendMainBar" resultType="map">
+		SELECT
+			seq
+			, title
+		FROM
+			notice
+		WHERE
+			del_yn != 'Y'
+		ORDER BY
+ 	       update_date DESC 
+	    LIMIT 5
+	</select>
 	
 	<update id="deleteNotice" parameterType="java.util.List">
 		update 

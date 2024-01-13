@@ -87,5 +87,10 @@ public class NoticeServiceImpl implements NoticeService{
 		}
 		
 	}
+
+	@Override
+	public List<Map> sendMainBar() {
+		return noticeDao.sendMainBar();
+	}
 	
 }
