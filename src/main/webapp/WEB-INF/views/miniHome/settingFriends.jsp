@@ -155,7 +155,7 @@
 													<tr>
 														<td>${loop.index + 1}</td>
 														
-											            <td>userNickname</td>
+											            <td>${bf.userName}</td>
 											             <td>${bfNickname}</td>
 											            <td>${bf.createDate}</td>
 											            <td>
@@ -192,7 +192,7 @@
 														<td>${loop.index + 1}</td>
 														
 											            <td>${fResNickname}</td>
-											            <td>userNickname</td>
+											            <td>${fRes.userName}</td>
 											            <td>${fRes.createDate}</td>
 											            <td>
 											            	<input type="hidden" value="${fRes.seq}" id="fSeq">
@@ -228,7 +228,7 @@
 															<td>${loop.index + 1}</td>
 															
 												            <td>${fReqNickname}</td>
-												            <td>userNickname</td>
+												            <td>${fReq.userName}</td>
 												            <td>${fReq.createDate}</td>
 												            <td>
 												            	<input type="hidden" value="${fReq.seq}" id="fSeq">
