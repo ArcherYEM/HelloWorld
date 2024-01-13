@@ -1,7 +1,9 @@
 function addCmt(seq){
-	let userNickname = $("#cmtWriter").val();
-	let content = $("#cmtContent").val();
-	
+	let userNickname = $(".cmtWriter").val();
+	let tempId = 'cmtContent' + seq;
+	let content = $("#" + tempId).val();
+		
+	console.log(userNickname + content);
 	let jsonData = {
 		"diarySeq" : seq
 		, "userNickname" : userNickname
