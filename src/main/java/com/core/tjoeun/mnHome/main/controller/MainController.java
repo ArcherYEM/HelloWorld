@@ -104,6 +104,8 @@ public class MainController {
 	
 	@RequestMapping("/mnHome/mainView/{userNickname}")
 	public String mainView(@PathVariable String userNickname, Model model) {
+		// 코드실행시간계산
+		long beforeTime = System.currentTimeMillis();
 	    
 		//프로필 정보 가져오기
 		Map profile = mainService.getProfile(userNickname);
@@ -238,6 +240,11 @@ public class MainController {
         }
         System.out.println("!최신"+currentMap);
         model.addAttribute("current",currentMap);
+        
+        //코드실행시간계산
+        long afterTime = System.currentTimeMillis();
+        long secDiffTime = (afterTime - beforeTime)/1000;
+        System.out.println("★ 미니홈피 로딩 소요시간 : "+secDiffTime+"초 소요!!");
         
 		return "miniHome/main";
 	}
