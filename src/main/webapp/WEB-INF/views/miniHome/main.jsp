@@ -553,7 +553,6 @@
 	         }).done(function (newCommentList) {
 	         	console.log(newCommentList);
 	         	
-	         	 // 서버에서 반환된 새로운 댓글 목록을 이용하여 동적으로 HTML을 생성
 	         	let commentListHTML = '';
 	            for (let i = 0; i < newCommentList.length; i++) {
 	                let comment = newCommentList[i];
@@ -564,7 +563,6 @@
 	                    '</li>';
 	            }
 
-	            // 기존 댓글 목록에 새로운 댓글 목록으로 교체
 	            $('.main-cmt-content ul').html(commentListHTML);
 	            $('#friendCmt').val('');
 	   	  		});
