@@ -11,8 +11,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.core.tjoeun.index.member.service.MemberService;
+import com.core.tjoeun.index.notice.service.NoticeService;
 import com.core.tjoeun.mnHome.main.service.MainService;
 
 
@@ -33,6 +32,8 @@ public class MainController {
 	
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired NoticeService noticeService;
 	
 	@Value("${default.image.path}")
     private String defaultImagePath;
@@ -243,8 +244,8 @@ public class MainController {
         
         //코드실행시간계산
         long afterTime = System.currentTimeMillis();
-        long secDiffTime = (afterTime - beforeTime)/1000;
-        System.out.println("★ 미니홈피 로딩 소요시간 : "+secDiffTime+"초 소요!!");
+        long secDiffTime = (afterTime - beforeTime);
+        System.out.println("★ 미니홈피 로딩 소요시간 : "+secDiffTime+"나노 초 소요!!");
         
 		return "miniHome/main";
 	}
