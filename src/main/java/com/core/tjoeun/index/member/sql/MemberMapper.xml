@@ -56,7 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	SELECT COUNT(*) as count
 		FROM user u
 			JOIN friends f ON u.userNickname = f.userNickname
-			JOIN loginStatus ls ON u.userNickname = ls.userNickname
+			JOIN loginStatus ls ON f.friendNickname = ls.userNickname
 		WHERE u.userNickname = #{userNickname}
 		AND f.fStatus = '1'
 		AND ls.status = '1'

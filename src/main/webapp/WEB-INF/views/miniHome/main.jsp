@@ -538,10 +538,25 @@
 	            url: "<c:url value='/mnHome/friendCmt' />",
 	            contentType: 'application/json',
 	            data: JSON.stringify(jsonData)
-	         }).done(function (json) {
-	         	console.log(json.resultCode);
-	   	  		})
-   	  })
+	         }).done(function (newCommentList) {
+	         	console.log(newCommentList);
+	         	
+	         	 // 서버에서 반환된 새로운 댓글 목록을 이용하여 동적으로 HTML을 생성
+	         	let commentListHTML = '';
+	            for (let i = 0; i < newCommentList.length; i++) {
+	                let comment = newCommentList[i];
+	                commentListHTML += '<li>' + comment.content +
+	                    '<span class="main-cmt-info">' +
+	                    '<a href="/mnHome/mainView/' + comment.userNickname + '">' + comment.userNickname + '</a> ' + comment.createDate +
+	                    '</span>' +
+	                    '</li>';
+	            }
+
+	            // 기존 댓글 목록에 새로운 댓글 목록으로 교체
+	            $('.main-cmt-content ul').html(commentListHTML);
+	            $('#friendCmt').val('');
+	   	  		});
+   	  });
    	  
       // 미니홈피 프로필 수정창
       function openNewWindowMinihomeProfileEdit() {

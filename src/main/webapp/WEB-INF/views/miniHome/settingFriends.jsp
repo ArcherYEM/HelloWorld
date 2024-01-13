@@ -139,7 +139,7 @@
 													<td></td>
 												</tr>
 												
-												<c:forEach items="${bf}" var="bf">
+												<c:forEach items="${bf}" var="bf" varStatus="loop">
 														<c:if test="${bf.userNickname  eq userNickname}">
 															<c:set var="bfNickname" value="${bf.friendNickname}" scope="session" />
 											            </c:if>
@@ -148,10 +148,10 @@
 											            </c:if>
 											            
 													<tr>
-														<td>${bf.seq}</td>
+														<td>${loop.index + 1}</td>
 														
-											            <td>${bfNickname}</td>
 											            <td>userNickname</td>
+											             <td>${bfNickname}</td>
 											            <td>${bf.createDate}</td>
 											            <td>
 											            	<input type="button" class="set-frd-bf-tb-input" value="방문하기" onclick="window.location.href='/mnHome/mainView/${bfNickname}'"/>
@@ -176,7 +176,7 @@
 													<td></td>
 												</tr>
 												
-												 <c:forEach items="${fRes}" var="fRes">
+												 <c:forEach items="${fRes}" var="fRes" varStatus="loop">
 												 		<c:if test="${fRes.userNickname  eq userNickname}">
 															<c:set var="fResNickname" value="${fRes.friendNickname}" scope="session" />
 											            </c:if>
@@ -184,7 +184,7 @@
 											            	<c:set var="fResNickname" value="${fRes.userNickname}" scope="session" />
 											            </c:if>
 													<tr>
-														<td>${fRes.seq}</td>
+														<td>${loop.index + 1}</td>
 														
 											            <td>${fResNickname}</td>
 											            <td>userNickname</td>
@@ -212,7 +212,7 @@
 													<td>신청일</td>
 													<td></td>
 												</tr>
-												<c:forEach items="${fReq}" var="fReq">
+												<c:forEach items="${fReq}" var="fReq" varStatus="loop">
 														<c:if test="${fReq.userNickname  eq userNickname}">
 															<c:set var="fReqNickname" value="${fReq.friendNickname}" scope="session" />
 											            </c:if>
@@ -220,7 +220,7 @@
 											            	<c:set var="fReqNickname" value="${fReq.userNickname}" scope="session" />
 											            </c:if>
 														<tr>
-															<td>${fReq.seq}</td>
+															<td>${loop.index + 1}</td>
 															
 												            <td>${fReqNickname}</td>
 												            <td>userNickname</td>
