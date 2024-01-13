@@ -563,7 +563,7 @@
 	                    '</li>';
 	            }
 
-	            $('.main-cmt-content ul').html(commentListHTML);
+	            $('.main-cmt-content ul').html(commentListHTML);  
 	            $('#friendCmt').val('');
 	   	  		});
    	  });
