@@ -79,7 +79,13 @@
 							        <input type="hidden" id="responseUser" name="responseUser" value="${userNickname}">
 							    </div>
 							</c:if>
-                        ${userName }&#128698;
+						<c:if test="${userGender eq 'M'}">
+                        	${userName }&#128102
+						</c:if>
+						<c:if test="${userGender eq 'F'}">
+                        	${userName }&#128103
+						</c:if>
+                        
                      </div>
 <%--                      <div class="profile-username font-kyobohand"> ${sessionScope.userId.userName }&#128698;</div> --%>
 

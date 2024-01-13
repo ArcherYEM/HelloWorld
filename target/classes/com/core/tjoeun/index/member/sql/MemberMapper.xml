@@ -266,5 +266,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     		#{userNickname}
     	)
     </insert>
+    
+    <select id="selectUserGender" parameterType="String" resultType="String">
+    	select userGender 
+    	from user 
+    	where userNickname=#{userNickname}
+    </select>
    
 </mapper>

@@ -116,6 +116,9 @@ public class MainController {
 		model.addAttribute("image", image);
 		model.addAttribute("msg", msg);
 		
+		//홈피 주인 성별 가져오기
+		String userGender = memberService.selectUserGender(userNickname);
+		model.addAttribute("userGender",userGender);
 		
 		//홈피 주인 이름 가져오기 
 		String userName = memberService.getUserName(userNickname);

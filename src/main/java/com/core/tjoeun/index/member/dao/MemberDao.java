@@ -48,4 +48,6 @@ public interface MemberDao {
 	
 	public int insertVisitCnt(String userNickname);
 	
+	public String selectUserGender(String userNickname);
+	
 }
