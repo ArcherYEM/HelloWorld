@@ -175,4 +175,11 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return mapper.insertVisitCnt(userNickname);
 	}
+	
+	@Override
+	public String selectUserGender(String userNickname) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		
+		return mapper.selectUserGender(userNickname);
+	}
 }

@@ -55,7 +55,12 @@
 								</div>
 							</div>
 								<div class="setting-devide-dot">---------------------------------</div>
-								<div class="font-kyobohand setting-profile-username">${sessionScope.userId.userName }&#128698;</div>
+								<c:if test="${userGender eq 'M'}">
+	                        	${userName }&#128102
+								</c:if>
+								<c:if test="${userGender eq 'F'}">
+		                        	${userName }&#128103
+								</c:if>
 								<div class="profile-dropDown">
 									<select id="friendSelect" onchange="redirectToMainView()">
 			                           <option value="" disabled selected hidden="">파도타기</option>

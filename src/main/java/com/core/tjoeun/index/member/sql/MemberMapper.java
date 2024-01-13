@@ -47,4 +47,6 @@ public interface MemberMapper {
 	public int insertUserStorageMenu(String userNickname);
 	
 	public int insertVisitCnt(String userNickname);
+	
+	public String selectUserGender(String userNickname);
 }

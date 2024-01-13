@@ -39,6 +39,10 @@ public class AlbumController {
 	@RequestMapping(value="/mnHome/albumView/{userNickname}")
 	public String albumView(@PathVariable String userNickname, Model model) {
 		
+		//홈피 주인 성별 가져오기
+		String userGender = memberService.selectUserGender(userNickname);
+		model.addAttribute("userGender",userGender);
+		
 		Map profile = mainService.getProfile(userNickname);
 		String image = (String) profile.get("image");
 		String msg = (String) profile.get("msg");
@@ -118,6 +122,10 @@ public class AlbumController {
 	
 	@RequestMapping(value="/mnHome/albumWriteView/{userNickname}")
 	public String albumWriteView(@PathVariable String userNickname, Model model) {
+		
+		//홈피 주인 성별 가져오기
+		String userGender = memberService.selectUserGender(userNickname);
+		model.addAttribute("userGender",userGender);
 		
 		Map map = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", map.get("userName"));
@@ -199,6 +207,10 @@ public class AlbumController {
 	
 	@RequestMapping(value="/mnHome/albumDetailView/{userNickname}/{seq}")
 	public String albumDetailView(@PathVariable String userNickname, @PathVariable int seq, Model model) {
+		
+		//홈피 주인 성별 가져오기
+		String userGender = memberService.selectUserGender(userNickname);
+		model.addAttribute("userGender",userGender);
 		
 		Map profile = mainService.getProfile(userNickname);
 		String image = (String) profile.get("image");

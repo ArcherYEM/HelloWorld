@@ -170,5 +170,11 @@ public class MemberServiceImpl implements MemberService{
 	public int selectRequest(String userNickname) {
 		return memberDao.selectRequest(userNickname);
 	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public String selectUserGender(String userNickname) {
+		return memberDao.selectUserGender(userNickname);
+	}
 
 }

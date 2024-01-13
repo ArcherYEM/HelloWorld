@@ -43,6 +43,10 @@ public class SettingController {
 	@RequestMapping(value = "/mnHome/settingView/{userNickname}")
 	public String settingView(@PathVariable String userNickname, Model model) {
 		
+		//홈피 주인 성별 가져오기
+		String userGender = memberService.selectUserGender(userNickname);
+		model.addAttribute("userGender",userGender);
+		
 		Map map = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", map.get("userName"));
 		model.addAttribute("userNickname", userNickname);
@@ -115,6 +119,10 @@ public class SettingController {
 	@RequestMapping(value = "/mnHome/settingBgm/{userNickname}")
 	public String settingBgmView(@PathVariable String userNickname, Model model) {
 		
+		//홈피 주인 성별 가져오기
+		String userGender = memberService.selectUserGender(userNickname);
+		model.addAttribute("userGender",userGender);
+		
 		Map map = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", map.get("userName"));
 		model.addAttribute("title", map.get("title"));
@@ -180,6 +188,10 @@ public class SettingController {
 
 	@RequestMapping(value = "/mnHome/settingMenu/{userNickname}")
 	public String settingMenuView(@PathVariable String userNickname, Model model) {
+		
+		//홈피 주인 성별 가져오기
+		String userGender = memberService.selectUserGender(userNickname);
+		model.addAttribute("userGender",userGender);
 		
 		Map userMap = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", userMap.get("userName"));
@@ -301,6 +313,10 @@ public class SettingController {
 
 	@RequestMapping(value = "/mnHome/settingSkin/{userNickname}")
 	public String settingSkinView(@PathVariable String userNickname, Model model) {
+		
+		//홈피 주인 성별 가져오기
+		String userGender = memberService.selectUserGender(userNickname);
+		model.addAttribute("userGender",userGender);
 		
 		Map userMap = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", userMap.get("userName"));
@@ -426,6 +442,10 @@ public class SettingController {
 	public String settingDotoriUseView(@PathVariable String userNickname, Model model) {
 	    List<Map> dotoriMap = settingService.selectDotoriUse(userNickname);
 
+		//홈피 주인 성별 가져오기
+		String userGender = memberService.selectUserGender(userNickname);
+		model.addAttribute("userGender",userGender);
+	    
 	    for (Map map : dotoriMap) {
 	        String dotoriUseFor = (String) map.get("dotoriUseFor");
 	        // "구매-"를 기준으로 문자열을 분할합니다.
@@ -482,6 +502,10 @@ public class SettingController {
 	public String settingDotoriChargeView(@PathVariable String userNickname, Model model) {
 	    List<Map> dotoriMap = settingService.selectDotoriCharge(userNickname);
 
+		//홈피 주인 성별 가져오기
+		String userGender = memberService.selectUserGender(userNickname);
+		model.addAttribute("userGender",userGender);
+	    
 		Map map = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", map.get("userName"));
 		model.addAttribute("title", map.get("title"));
@@ -527,6 +551,10 @@ public class SettingController {
 	@RequestMapping(value = {"/mnHome/settingFriends/{userNickname}", "/mnHome/settingFriends/{userNickname}/{friendName}"})
 	public String settingFriends(@PathVariable String userNickname
 								,@PathVariable Optional<String> friendName, Model model) {
+		
+		//홈피 주인 성별 가져오기
+		String userGender = memberService.selectUserGender(userNickname);
+		model.addAttribute("userGender",userGender);
 		
 		Map map = mainService.getUserInfo(userNickname);
 		model.addAttribute("userName", map.get("userName"));
