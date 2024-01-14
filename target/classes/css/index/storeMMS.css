@@ -178,3 +178,19 @@
 #btnOrder:hover{
 	background-color: #D17A45; /* 호버 시 배경 색상 변경 */
 }
+
+.minimi-paging {
+	margin-top: 20px;
+}
+
+.spanPage{
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+.spanPage:hover {
+	cursor: pointer;
+	color: blue;
+	font-weight: bold;
+}
