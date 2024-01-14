@@ -85,7 +85,7 @@ body a {
 	width: 320px;
 	height: 130px;
 	width: 100%;
-  	min-height: 130px;
+  	min-height: 129px;
 }
 
 #char-count{
@@ -134,7 +134,7 @@ body a {
     padding-top: calc(65px - 6px); /* 커서를 수직 중앙에 위치시키기 위해 상단 패딩 조정 */
     padding-bottom: calc(65px - 6px); /* 커서를 수직 중앙에 위치시키기 위해 하단 패딩 조정 */
     padding-left: 5px; /* 텍스트와 왼쪽 테두리 간의 간격 */
-    overflow-y: auto; /* 내용이 많아질 경우 스크롤바 표시 */
+    overflow-y: hidden; /* 내용이 많아질 경우 스크롤바 표시 */
 }
 
 .page-container{
