@@ -1,5 +1,6 @@
 
 $(document).ready(function() {
+	let userNickname = document.getElementById("hiddenUserNickname").value;
 
     $.datepicker.setDefaults({
         dateFormat: 'yymmdd',
@@ -14,6 +15,41 @@ $(document).ready(function() {
         yearSuffix: '년'
     });
 
-    $('#datepicker').datepicker();
+    $('#datepicker').datepicker({
+        onSelect: function(dateText, inst) {
+            let formattedDate = dateText.slice(0, 4) + '-' + dateText.slice(4, 6) + '-' + dateText.slice(6, 8);
+
+            let jsonData = {
+                "date": formattedDate,
+                "userNickname": userNickname
+            };
+
+            $.ajax({
+                method: 'POST',
+                url: '/mnHome/diaryTest',
+                contentType: 'application/json',
+                data: JSON.stringify(jsonData)
+            }).done(function(json){
+                if (!json || json.title === undefined) {
+                    document.getElementById('diaryTitle').textContent = "다이어리를 작성해주세요";
+                } else {
+                    document.getElementById('diaryTitle').textContent = json.title;
+                }
+
+                if (!json || json.formatted_update_date === undefined) {
+                    document.getElementById('diaryDate').textContent = "";
+                } else {
+                    document.getElementById('diaryDate').textContent = json.formatted_update_date;
+                }
+
+                if (!json || json.content === undefined) {
+                    document.getElementById('diaryContent').innerHTML = "매일매일 일촌들과 일상을 공유해보아요!";
+                } else {
+                    document.getElementById('diaryContent').innerHTML = json.content;
+                }
+            });
+
+        }
+    });
 });
 

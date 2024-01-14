@@ -9,7 +9,7 @@ public interface DiaryMapper {
 	
 	public int insertDiary(Map map);
 
-	public List<Map> selectDiary(Map map);
+	public Map selectDiary(Map map);
 	
 	public int deleteDiary(ArrayList<String> list);
 	
@@ -20,6 +20,8 @@ public interface DiaryMapper {
 	public ArrayList<String> selectDiarySeq (String userNickname);
 
 	public List<HashMap> selectDiaryCMT (String userNickname);
+	
+	public Map diaryTest (Map paramMap);
 	
 	
 }
