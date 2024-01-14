@@ -40,8 +40,8 @@ public class DiaryController {
 		System.out.println("map 시작");
 		
 		
-		List<Map> diaryList = diaryService.selectDiary(userMap);
-	    model.addAttribute("diaryList", diaryList);
+		Map diary = diaryService.selectDiary(userMap);
+	    model.addAttribute("diary", diary);
 	    List<HashMap> cmtList = diaryService.selectDiaryCMT(userNickname);
 	    
 	 // 일기별로 댓글을 저장할 맵
@@ -177,5 +177,14 @@ public class DiaryController {
 			
 			return resultMap;
 	}
-
+	
+	@RequestMapping(value="/mnHome/diaryTest", method = RequestMethod.POST)
+	@ResponseBody
+	public Map diaryTest(@RequestBody Map paramMap){
+		
+		Map resultMap = diaryService.diaryTest(paramMap);
+		System.out.println("테스트"+resultMap);
+		
+		return resultMap;
+	}
 }

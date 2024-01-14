@@ -21,29 +21,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="selectDiary" resultType="map" parameterType="map">
-	    SELECT
-	    	seq,
-	        userNickname,
-	        title,
-	        content,
-	        update_date,
-	        del_yn,
-	        openScope
-	    FROM 
-	        diary
-	    WHERE
-	        1=1
-	    <if test="del_yn != null">
-	        AND del_yn = #{del_yn}
-	    </if>
-	    <if test="openScope != null">
-	        <!-- 추후에는 #{openScope} 로 바꿔서 경우 처리해야함 -->
-	        AND openScope = #{openScope}
-	    </if>
-	    <if test="userNickname != null">
-	        AND userNickname = #{userNickname} 
-	    </if>
-	    ORDER BY create_date DESC
+		SELECT *, DATE_FORMAT(update_date, '%Y-%m-%d %H:%i') AS formatted_update_date
+		FROM 
+		    diary
+		WHERE
+		    1=1
+		    AND DATE(update_date) = CURDATE() -- 오늘 날짜에 해당하는 데이터만 선택
+		<if test="del_yn != null">
+		    AND del_yn = #{del_yn}
+		</if>
+		<if test="openScope != null">
+		    <!-- 추후에는 #{openScope} 로 바꿔서 경우 처리해야함 -->
+		    AND openScope = #{openScope}
+		</if>
+		<if test="userNickname != null">
+		    AND userNickname = #{userNickname} 
+		</if>
 	</select>
 
 	<update id="deleteDiary" parameterType="java.util.List">
@@ -101,7 +94,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    d.seq DESC;
 	</select>
 	
-	
+	<select id="diaryTest" parameterType="map" resultType="map">
+		SELECT *, DATE_FORMAT(update_date, '%Y-%m-%d %H:%i') AS formatted_update_date
+		FROM diary
+		WHERE userNickname = #{userNickname}
+		AND DATE(update_date) = #{date};
+
+	</select>
 	
 	
 
