@@ -1,15 +1,9 @@
 function addCmt(seq){
-<<<<<<< HEAD
-	let userNickname = $("#cmtWriter").val();
-	let content = $("#cmtContent").val();
-	
-=======
 	let userNickname = $(".cmtWriter").val();
 	let tempId = 'cmtContent' + seq;
 	let content = $("#" + tempId).val();
 		
 	console.log(userNickname + content);
->>>>>>> f871cbf8c1afd72efdfb8b3cc99f933abc5210dc
 	let jsonData = {
 		"diarySeq" : seq
 		, "userNickname" : userNickname
@@ -25,10 +19,7 @@ function addCmt(seq){
 			, success : function(data){
 				if(data.resultCode == "1"){
 					alert('작성 완료');
-<<<<<<< HEAD
-=======
 					document.getElementById("godiary").click();
->>>>>>> f871cbf8c1afd72efdfb8b3cc99f933abc5210dc
 				}else{
 					alert('작성 실패');
 				}
