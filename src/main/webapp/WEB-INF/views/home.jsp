@@ -8,7 +8,7 @@
 <html>
    <head>
       <meta charset="UTF-8">
-      <title>HelloWorld</title>
+      <title>헬로월드</title>
       <link  href="/resources/css/index/main.css" rel="stylesheet">
       <link  href="/resources/css/index/notice.css" rel="stylesheet">
       <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
