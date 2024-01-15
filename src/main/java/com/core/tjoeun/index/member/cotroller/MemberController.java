@@ -63,9 +63,7 @@ public class MemberController {
                 
                 userNickname = (String) result.get("userNickname");
                 String userMinimi = memberService.selectUserMinimi(userNickname);
-                System.out.println("userMinimi1 : " + userMinimi);
                 resultMap.put("contentPath", userMinimi);
-                System.out.println("userMinimi2 : " + userMinimi);
                 
                 session.setAttribute("userMinimi", userMinimi);
                 if(userMinimi==null) {
