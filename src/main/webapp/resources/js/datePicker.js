@@ -49,7 +49,7 @@ $(document).ready(function() {
                 }
                 
                 if (!json || json.cmt === undefined) {
-                    document.getElementById('diaryCmtContainer').innerHTML = "아직 댓글이 없습니다.";
+                    document.getElementById('diaryCmtContainer').innerHTML = "";
                 } else {
                 	var container = document.getElementById("diaryCmtContainer");
                 	for(let i=0; i<json.cmt.length; i++){

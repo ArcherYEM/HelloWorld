@@ -188,14 +188,13 @@ public class DiaryController {
 		Map jsonMap = new HashMap();
 		Map resultMap = diaryService.diaryTest(paramMap);
 		
-		jsonMap.put("formatted_update_date", resultMap.get("formatted_update_date"));
-		jsonMap.put("title", resultMap.get("title"));
-		jsonMap.put("content", resultMap.get("content"));
-		
-		//{openScope=1, formatted_update_date=2024-01-11 01:48, userNickname=제인, title=오늘은 사진첩 하는 날, create_date=2024-01-11 01:48:22.0, seq=34, content=<p><span style="font-size: 18pt; font-family: 궁서, gungsuh, gungseo;">파일 업로드 개빡세네</span></p>, update_date=2024-01-11 01:48:22.0, del_yn=n}
-		System.out.println(resultMap);
-		
 		if(resultMap != null) {
+			jsonMap.put("formatted_update_date", resultMap.get("formatted_update_date"));
+			jsonMap.put("title", resultMap.get("title"));
+			jsonMap.put("content", resultMap.get("content"));
+			
+			System.out.println(resultMap);
+		
 			int seq = (int) resultMap.get("seq");
 			List<HashMap> cmtList = diaryService.diaryCmtTest(String.valueOf(seq));
 			jsonMap.put("cmt", cmtList);
