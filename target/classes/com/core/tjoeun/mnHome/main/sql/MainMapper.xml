@@ -84,19 +84,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="tabs" parameterType="String" resultType="map">
 		SELECT 
-		    (SELECT COUNT(*) FROM diary WHERE userNickname = #{userNickname}) AS TotalDiaryCount,
+		    (SELECT COUNT(*) FROM diary WHERE userNickname = #{userNickname} and del_yn="n") AS TotalDiaryCount,
 		    <![CDATA[ 
-		    	(SELECT COUNT(*) FROM diary WHERE userNickname = #{userNickname} AND TIMESTAMPDIFF(HOUR, update_date, NOW()) <= 24) AS RecentDiaryCount,
+		    	(SELECT COUNT(*) FROM diary WHERE userNickname = #{userNickname} and del_yn="n" AND TIMESTAMPDIFF(HOUR, update_date, NOW()) <= 24) AS RecentDiaryCount,
 			]]>
 		    
-		    (SELECT COUNT(*) FROM board WHERE userNickname = #{userNickname}) AS TotalBoardCount,
+		    (SELECT COUNT(*) FROM board WHERE userNickname = #{userNickname} and del_yn="n") AS TotalBoardCount,
 		    <![CDATA[ 
-		    	(SELECT COUNT(*) FROM board WHERE userNickname = #{userNickname} AND TIMESTAMPDIFF(HOUR, update_date, NOW()) <= 24) AS RecentBoardCount,
+		    	(SELECT COUNT(*) FROM board WHERE userNickname = #{userNickname} and del_yn="n" AND TIMESTAMPDIFF(HOUR, update_date, NOW()) <= 24) AS RecentBoardCount,
 			]]>
 			
-		    (SELECT COUNT(*) FROM album WHERE userNickname = #{userNickname}) AS TotalAlbumCount,
+		    (SELECT COUNT(*) FROM album WHERE userNickname = #{userNickname} and del_yn="n") AS TotalAlbumCount,
 		    <![CDATA[
-		    	(SELECT COUNT(*) FROM album WHERE userNickname = #{userNickname} AND TIMESTAMPDIFF(HOUR, update_date, NOW()) <= 24) AS RecentAlbumCount,
+		    	(SELECT COUNT(*) FROM album WHERE userNickname = #{userNickname} and del_yn="n" AND TIMESTAMPDIFF(HOUR, update_date, NOW()) <= 24) AS RecentAlbumCount,
 			]]>
 		    (SELECT COUNT(*) FROM visit WHERE targetNickname = #{userNickname}) AS TotalVisitCount,
 		    <![CDATA[

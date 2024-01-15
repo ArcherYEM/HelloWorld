@@ -22,6 +22,19 @@ public class BoardServiceImpl implements BoardService{
 	
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
+	public int updateHit(Map map) throws Exception {
+		
+		int result = boardDao.updateHit(map);
+		
+		if(result != 1) {
+			throw new Exception();
+		}
+		
+		return result;
+	}
+	
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
 	public void writeBoard(Map map) throws Exception {
 		int result = boardDao.insertBoard(map);
 		
@@ -29,13 +42,13 @@ public class BoardServiceImpl implements BoardService{
 			throw new Exception();
 		}
 	}
+	
 
 	@Override
 	@Transactional(readOnly = true, propagation = Propagation.REQUIRES_NEW)
 	public List<HashMap> getBoardList(Map map) {
 		
 		Object page = map.get("page");
-		
 		
 		if(null == page || "".equals(page)) {
 			map.put("limit", 10);

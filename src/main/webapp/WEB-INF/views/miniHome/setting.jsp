@@ -333,7 +333,7 @@
 					</span>
 					</div>
 					<c:if test="${sessionScope.userId.userNickname eq userNickname }">
-						<div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>"
+						<div id="quick-setting" class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>"
 						style=" background-color: 
 								<c:choose>
 									<c:when test="${menuProductName == 'red' }">red</c:when>
@@ -392,6 +392,8 @@
 	    function openNewWindow(url, settings) {
 	        window.open(url, '_blank', settings);
 	    }
+	    
+
 	</script>
 
 </body>

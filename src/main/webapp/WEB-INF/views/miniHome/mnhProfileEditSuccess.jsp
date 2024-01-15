@@ -33,9 +33,9 @@
 	
 	function closeWindow() {
 	    if (window.opener && !window.opener.closed) {
-	        window.opener.location.reload(true); // 부모 창 (메인 홈페이지) 새로고침
+		    window.opener.onChildButtonClick();
+		    window.close(); // 현재 창 닫기
 	    }
-	    window.close(); // 현재 창 닫기
 	}
 	
 	window.onload = function() {
