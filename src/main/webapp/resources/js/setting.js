@@ -2,6 +2,10 @@ var isEditMode = false;
 var isEditModeN = false;
 var isEditModeNum = false;
 
+function onChildButtonClick() {
+    document.getElementById("quick-setting").click();
+}
+
 function changeName() {
     var userNickname = document.getElementById('userNickname').value;
     var userNameArea = document.getElementById('set-UserName');

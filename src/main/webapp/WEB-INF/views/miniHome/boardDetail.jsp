@@ -87,7 +87,7 @@
 					</div>
 					<div class="board-write-container">
 						<span class="board-writer">${list.get(0).userNickname}</span>
-						<span class="board-write-date">${list.get(0).create_date}</span>						
+						<span class="board-write-date"><fmt:formatDate value="${list.get(0).create_date}" pattern="yyyy-MM-dd HH:mm" /></span>						
 					</div>
 					<div class="board-content-container">
 						${list.get(0).content}

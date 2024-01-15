@@ -99,7 +99,7 @@
 													${list.writer}
 												</span>
 												<span class="album-date">
-													${list.create_date}
+													<fmt:formatDate value="${list.create_date}" pattern="yyyy-MM-dd HH:mm" />
 												</span>
 											</div>
 											

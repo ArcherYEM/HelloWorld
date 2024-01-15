@@ -221,7 +221,7 @@
 						        <c:forEach var="list" items="${friendCmtList}" varStatus="i">
 						            <li>${list.content}
 						                <span class="main-cmt-info">
-						                    <a href="<c:url value='/mnHome/mainView/${list.userNickname}' />">${list.userNickname}</a> ${list.createDate}
+						                    <a href="<c:url value='/mnHome/mainView/${list.userNickname}' />">${list.userNickname}</a> <fmt:formatDate value="${list.createDate}" pattern="yyyy-MM-dd HH:mm" />
 						                </span>
 						            </li>
 						        </c:forEach>
