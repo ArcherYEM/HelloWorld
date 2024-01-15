@@ -16,6 +16,13 @@ public class MainDaoImpl implements MainDao{
 	SqlSession sqlSession;
 
 	@Override
+	public List<Map> getMyBgm(String userNickname) {
+		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
+		
+		return mapper.getMyBgm(userNickname);
+	}
+	
+	@Override
 	public Map getProfile(String userNickname) {
 		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
 		

@@ -56,6 +56,10 @@ public class MainController {
 		// 코드실행시간계산
 		long beforeTime = System.currentTimeMillis();
 		
+		//유저 플레이리스트 가져오기
+		List<Map> playList = mainService.getMyBgm(userNickname);	
+		model.addAttribute("playList", playList);
+		
         //미니홈피 방문자 수 가져오기
         try {
 			Map updateVisitCntMap = new HashMap();
