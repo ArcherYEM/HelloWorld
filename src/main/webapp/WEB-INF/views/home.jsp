@@ -44,10 +44,9 @@
          <div id="divHome" class="divLogin">
             <div >
                <form class="frmLogin" id="frmLogin" method="POST" action="/index/member/login">
-                  <!-- <label for="userEmail">아이디: </label> -->
+                  
                   <input type="email" id="userEmail" name="userEmail" placeholder="Email"><br>
                   <br>
-<!--                   <label for="userPw">비밀번호: </label> -->
                   <input type="password" id="userPassword" name="userPassword" placeholder="Password"><br>
                   <br>
                   <input type="button" id="btnLogin" value="로그인"><br>
@@ -142,12 +141,7 @@
 				<span class="dot" data-slide-to="3" onclick="currentSlide(3)"></span>
                     <!-- <span class="dot"></span>  -->
                </div>
-               <%-- <div class="mySlides fade">
-                 <img src="<c:url value="/resources/images/mainSlideImg1.jpg"/>" style="width:100%">
-               </div> --%>
-            
             </div>
-            
          </div>
          
       </div>
@@ -215,7 +209,6 @@
            contentType: 'application/json',
            data: JSON.stringify(jsonData)
         }).done(function (json) {
-        	console.log(json);
         	
            let helloMessage = document.getElementById('helloMessage');
            let userDotori = document.getElementById('userDotori');
@@ -234,8 +227,6 @@
               divHome.style.display = 'none';
               divLogin.style.display = 'block';
               location.href="/";
-              //location.reload();
-              console.log(json.friendCnt + json.userDotoriCnt);
            } else {
               alert('아이디와 비밀번호를 다시 확인해 주세요.');
               helloMessage.innerText = '안녕하세요. HelloWorld에 오신 걸 환영합니다.';
@@ -326,19 +317,19 @@
         } else {
         	linkMnh.style.display = 'none';
             linkLogout.style.display = 'none';
-           divHome.style.display = 'block';
-           divLogin.style.display = 'none';
-           helloMessage.innerText = 'HelloWorld에 오신 걸 환영합니다.';
-           document.getElementById('indexDotoriImg').style.display = 'none';
+            divHome.style.display = 'block';
+            divLogin.style.display = 'none';
+            helloMessage.innerText = 'HelloWorld에 오신 걸 환영합니다.';
+            document.getElementById('indexDotoriImg').style.display = 'none';
         }
 
         if (userDotoriElement) {
            if (userDotoriCnt.trim() !== '' && userDotoriCnt !== 'null') {
         	   userDotoriElement.innerHTML = '<img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"> ' + userDotoriCnt + ' 개';
-              userDotoriElement.style.display = 'block';
+               userDotoriElement.style.display = 'block';
            } else {
         	   userDotoriElement.innerHTML = '<img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"> 0 개';
-              userDotoriElement.style.display = 'none';
+               userDotoriElement.style.display = 'none';
            }
         }
      }
