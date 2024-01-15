@@ -9,7 +9,7 @@ public interface DiaryDao {
 	
 	public int insertDiary(Map map);
 
-	public List<Map> selectDiary(Map map);
+	public Map selectDiary(Map map);
 	
 	public int deleteDiary(ArrayList<String> list);
 	
@@ -18,5 +18,9 @@ public interface DiaryDao {
 	public int insertDiaryCMT(Map map);
 	
 	public List<HashMap> selectDiaryCMT (String userNickname);
+	
+	public Map diaryTest (Map paramMap);
+	
+	public List<HashMap> diaryCmtTest(String seq);
 
 }

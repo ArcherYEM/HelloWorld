@@ -92,7 +92,7 @@
 										</th>
 										<th class="th-title">제목</th>
 										<th class="th-writer">작성자</th>
-										<th class="th-view">조회</th>
+										<th class="th-view">조회수</th>
 									</tr>
 								</thead>							
 								<tbody>
@@ -244,7 +244,7 @@
 						사진첩
 					</span>
 					</div>
-					<div class="menu-content" data-tab="<c:url value='/mnHome/boardView/${userNickname }'/>"
+					<div id="tabBoard" class="menu-content" data-tab="<c:url value='/mnHome/boardView/${userNickname }'/>"
 					style=" background-color: 
 								<c:choose>
 									<c:when test="${menuProductName == 'red' }">red</c:when>

@@ -25,7 +25,7 @@ public class DiaryImpl implements DiaryDao {
 	}
 
 	@Override
-	public List<Map> selectDiary(Map map) {
+	public Map selectDiary(Map map) {
 		DiaryMapper mapper = sqlSession.getMapper(DiaryMapper.class);
 		
 		return mapper.selectDiary(map);
@@ -55,6 +55,20 @@ public class DiaryImpl implements DiaryDao {
 		DiaryMapper mapper = sqlSession.getMapper(DiaryMapper.class);
 		
 		return mapper.selectDiaryCMT(userNickname);
+	}
+
+	@Override
+	public Map diaryTest (Map paramMap) {
+		DiaryMapper mapper = sqlSession.getMapper(DiaryMapper.class);
+		
+		return mapper.diaryTest(paramMap);
+	}
+
+	@Override
+	public List<HashMap> diaryCmtTest(String seq) {
+		DiaryMapper mapper = sqlSession.getMapper(DiaryMapper.class);
+		
+		return mapper.diaryCmtTest(seq);
 	}
 
 	

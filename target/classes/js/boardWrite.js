@@ -93,7 +93,19 @@ function writeBoard() {
 
     // txtContent의 값을 가져와서 개행 문자를 제거
     let content = document.getElementById("txtContent").value.replace("\r\n", "");
-    console.log(content);
+    
+    if((title == null || title.trim() === '') || /^\s*$/.test(title)) {
+    	alert('제목을 입력하여 주세요.');
+    	$("#diaryTitle").val('');
+    	$("#diaryTitle").focus();
+    	return;
+    } 
+    
+    if(content== '<p>&nbsp;</p>') {
+    	alert('내용을 입력하여 주세요.');
+    	$("#diaryTitle").focus();
+    	return;
+    }	
     
     let jsonData = {
         "content" : content,

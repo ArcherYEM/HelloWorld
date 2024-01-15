@@ -70,6 +70,7 @@ public class BoardController {
 		if(page.isPresent()) {
 			selectMap.put("page", page.get());			
 		}
+
 		model.addAttribute("list",boardService.getBoardList(selectMap));
 		model.addAttribute("totalPage", boardService.getBoardPage(selectMap));
 		
@@ -198,6 +199,16 @@ public class BoardController {
 	
 	@RequestMapping(value="/mnHome/boardDetail/{userNickname}/{seq}")
 	public String boardDetail(@PathVariable String userNickname, @PathVariable String seq, Model model, HttpSession session, HttpServletRequest req) {
+		
+		Map map2 = new HashMap();
+		map2.put("seq", seq);
+		map2.put("userNickname", userNickname);
+		
+		try {
+			boardService.updateHit(map2);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
 		
 		//홈피 주인 성별 가져오기
 		String userGender = memberService.selectUserGender(userNickname);

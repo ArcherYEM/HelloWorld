@@ -23,9 +23,9 @@
 <script>
 	function closeWindow() {
 	    if (window.opener && !window.opener.closed) {
-	        window.opener.location.reload(true);
+		    window.opener.onChildButtonClick();
+		    window.close(); // 현재 창 닫기
 	    }
-	    window.close();
 	}
 </script>
 </body>

@@ -58,18 +58,16 @@
 							<div class="album-container3">
 								<div class="album-container2">
 									<div class="diary-container1">
-										<c:choose>
-											<c:when test="${not empty diaryList}">
-												<c:forEach items="${diaryList}" var="diary">
-												
-													<div class="album-db-group">
-														<div class="diary-title">${diary.title}</div>
-														<div class="diary-date-right">
-															<fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${diary.update_date}" var="formattedDate" />
-															${formattedDate}
-														</div>
-														<div class="diary-content">${diary.content}</div>
-													</div>
+									<div class="album-db-group">
+										   
+										        <!-- diary 객체와 필요한 필드가 null이 아닌 경우의 콘텐츠 -->
+										        
+										            <div id="diaryTitle" class="diary-title">${diary.title}</div>
+										            <div id="diaryDate" class="diary-date-right">${formatted_update_date}</div>
+										            <div id="diaryContent" class="diary-content">${diary.content}</div>
+										        
+										  
+										</div>
 													<c:if test="${sessionScope.userId.userNickname eq userNickname }">
 														<div class="album-public">
 															<div class="album-dropDown ">
@@ -93,37 +91,29 @@
 														<input type="hidden" value="${sessionScope.userId.userNickname}" class="cmtWriter">
 														<input type="button" value="확인" onclick="addCmt(${diary.seq})">
 													</div>
-													<div class="board-comment-container">
-													<c:forEach var="commentEntry" items="${cmtList}">
-											            
-											            <c:set var="commentDiarySeq" value="${commentEntry.key}" />
-											            
-											            <c:if test="${commentDiarySeq eq diary.seq}">
-											                
-											                <c:set var="comments" value="${commentEntry.value}" />
-											                
-											                <c:if test="${not empty comments}">
-											                    <c:forEach var="comment" items="${comments}">
-											                        <div class="board-comment">
-											                            <span class="board-comment-writer">${comment.commentUserNickname}</span>
-											                            <span class="board-comment-content">${comment.commentContent}</span>
-											                            <span class="board-comment-date">${comment.commentCreateDate}</span>
-											                        </div>
-											                    </c:forEach>
-											                </c:if>
-											            </c:if>
-											        </c:forEach>
+													<div class="board-comment-container" id="diaryCmtContainer">
+														<c:forEach var="commentEntry" items="${cmtList}">
+												            
+												            <c:set var="commentDiarySeq" value="${commentEntry.key}" />
+												            
+												            <c:if test="${commentDiarySeq eq diary.seq}">
+												                
+												                <c:set var="comments" value="${commentEntry.value}" />
+												                
+												                <c:if test="${not empty comments}">
+												                    <c:forEach var="comment" items="${comments}">
+												                        <div class="board-comment">
+												                            <span class="board-comment-writer">${comment.commentUserNickname}</span>
+												                            <span class="board-comment-content">${comment.commentContent}</span>
+												                            <span class="board-comment-date">${comment.commentCreateDate}</span>
+												                        </div>
+												                    </c:forEach>
+												                </c:if>
+												            </c:if>
+												        </c:forEach>
 												   
 													</div>
-												</c:forEach>
-											</c:when>
-											<c:otherwise>
-												<div class="album-db-group">
-													<div class="diary-title">다이어리를 작성해주세요</div>
-													<div class="diary-content">매일매일 일촌들과 일상을 공유해보아요!</div>
-												</div>
-											</c:otherwise>
-										</c:choose>
+
 									</div>
 								</div>
 							</div>

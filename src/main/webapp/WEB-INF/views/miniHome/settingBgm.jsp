@@ -95,7 +95,7 @@
 							
 							
 							<div class="setting-bgm-list-group setting-bgm-grid">
-								<div><input type="checkbox"></div>
+								<div><input id="checkbox-all-playlist" type="checkbox"></div>
 								<div>순번</div>
 								<div>제목</div>
 								<div>아티스트</div>
@@ -104,7 +104,7 @@
 							
 							<c:forEach items="${playList}" var="playList" varStatus="status">
 								<div class="setting-bgm-list setting-bgm-grid" id="playListBgm">
-									<div><input type="checkbox"></div>
+									<div><input class="playlistCheckbox" type="checkbox"></div>
 									<div>${status.index + 1}</div>
 									<div class="title-list">${playList.title }</div>
 									<div>${playList.artist }</div>
@@ -123,7 +123,7 @@
 						<div class="setting-menuTitle">보유 BGM</div>
 							
 						<div class="setting-bgm-list-group setting-bgm-grid">
-							<div><input id="selectAll" type="checkbox"></div>
+							<div><input id="checkbox-all-bgm" type="checkbox"></div>
 							<div>순번</div>
 							<div>제목</div>
 							<div>아티스트</div>
@@ -133,7 +133,7 @@
 						<input type="hidden" id="userNickname" value=${userNickname }>
 						<c:forEach items="${bgmMap}" var="bgmMap" varStatus="status">
 						    <div class="setting-bgm-list setting-bgm-grid">
-						        <div class="checkboxBgm"><input type="checkbox"></div>
+						        <div><input class="checkboxBgm" type="checkbox"></div>
 						        <div>${status.index + 1}</div>
 						        <div class="title">${bgmMap.title }</div>
 						        <div>${bgmMap.artist }</div>

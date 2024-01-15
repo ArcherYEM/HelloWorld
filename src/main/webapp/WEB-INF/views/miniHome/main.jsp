@@ -240,7 +240,7 @@
 <!--             우측 메뉴탭 -->
                <div class="menu-container">
                
-					<div class="menu-content" data-tab="<c:url value='/mnHome/mainView/${userNickname }'/>"
+					<div id="tabHome" class="menu-content" data-tab="<c:url value='/mnHome/mainView/${userNickname }'/>"
 						style=" background-color: 
 								<c:choose>
 									<c:when test="${menuProductName == 'red' }">red</c:when>
@@ -630,6 +630,10 @@ function cancel() {
      document.body.style.backgroundColor = bgColor;
    </script>  
    <script>
+  	function quickHome(){
+   		var tabHome = document.getElementById("tabHome");
+   		tabHome.click();
+   	}
    	function quickDiary(){
    		var tabDiary = document.getElementById("tabDiary");
 		tabDiary.click();
@@ -645,6 +649,9 @@ function cancel() {
    	function quickVisit(){
    		var tabVisit = document.getElementById("tabVisit");
    		tabVisit.click();
+   	}
+   	function onChildButtonClick() {
+   	    quickHome();
    	}
    </script>
 </body>

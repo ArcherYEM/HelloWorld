@@ -2,7 +2,7 @@ function btnComment(){
 	var content = document.getElementById('inputComment').value;
 	var boardSeq = document.getElementById('boardSeq').value;
 	var userNickname = document.getElementById('userNickname').value;
-
+	
 	let jsonData = {
 		"boardSeq" : boardSeq,
 		"userNickname" : userNickname,
@@ -138,8 +138,8 @@ $(document).ready(function() {
 				, data: JSON.stringify(delList)
 				, contentType: "application/json"
 				, success : function(data){
-				
 					alert("삭제되었습니다.");
+					document.getElementById("tabBoard").click();
 				
 				}, error : function(error){
 					console.log("Error: " + error);

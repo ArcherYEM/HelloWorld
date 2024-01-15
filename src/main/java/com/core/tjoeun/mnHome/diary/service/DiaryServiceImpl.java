@@ -32,7 +32,7 @@ public class DiaryServiceImpl implements DiaryService {
 	}
 
 	@Override
-	public List<Map> selectDiary(Map map) {
+	public Map selectDiary(Map map) {
 		
 		return diaryDao.selectDiary(map);
 	}
@@ -62,6 +62,16 @@ public class DiaryServiceImpl implements DiaryService {
 	@Override
 	public List<HashMap> selectDiaryCMT(String userNickname) {
 		return diaryDao.selectDiaryCMT(userNickname);
+	}
+
+	@Override
+	public Map diaryTest (Map paramMap) {
+		return diaryDao.diaryTest(paramMap);
+	}
+
+	@Override
+	public List<HashMap> diaryCmtTest(String seq) {
+		return diaryDao.diaryCmtTest(seq);
 	}
 
 	

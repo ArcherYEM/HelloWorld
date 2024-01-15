@@ -2,6 +2,10 @@ var isEditMode = false;
 var isEditModeN = false;
 var isEditModeNum = false;
 
+function onChildButtonClick() {
+    document.getElementById("quick-setting").click();
+}
+
 function changeName() {
     var userNickname = document.getElementById('userNickname').value;
     var userNameArea = document.getElementById('set-UserName');
@@ -218,29 +222,34 @@ function removePlayList(){
 	})  
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    var selectAllCheckbox = document.getElementById('selectAll');
-    var individualCheckboxes = document.querySelectorAll('.checkboxBgm input[type="checkbox"]');
+$(document).ready(function() {
+	 $(document).on('change', '#checkbox-all-playlist', function() {
+	       
+	        var checkboxAll = document.getElementById('checkbox-all-playlist');
+	        
+	        var checkboxes = document.querySelectorAll('.playlistCheckbox');
+	        var allChecked = checkboxAll.checked;
 
-    // 전체 선택 체크박스의 상태 변경 감지
-    selectAllCheckbox.addEventListener('change', function() {
-        individualCheckboxes.forEach(function(checkbox) {
-            checkbox.checked = selectAllCheckbox.checked;
-        });
-    });
+	       // console.log('All checked:', allChecked);
 
-    // 개별 체크박스 상태 변경 감지
-    individualCheckboxes.forEach(function(checkbox) {
-        checkbox.addEventListener('change', function() {
-            // 개별 체크박스가 선택 해제되면 전체 선택 체크박스도 해제
-            if (!checkbox.checked) {
-                selectAllCheckbox.checked = false;
-            } 
-            // 모든 개별 체크박스가 선택되면 전체 선택 체크박스도 선택
-            else if (Array.from(individualCheckboxes).every(chk => chk.checked)) {
-                selectAllCheckbox.checked = true;
-            }
-        });
-    });
+	        checkboxes.forEach(function(checkbox) {
+	            checkbox.checked = allChecked;
+	        });
+	 });
+	 
+	 $(document).on('change', '#checkbox-all-bgm', function() {
+	       
+	        var checkboxAll = document.getElementById('checkbox-all-bgm');
+	        
+	        var checkboxes = document.querySelectorAll('.checkboxBgm');
+	        var allChecked = checkboxAll.checked;
+
+	       // console.log('All checked:', allChecked);
+
+	        checkboxes.forEach(function(checkbox) {
+	            checkbox.checked = allChecked;
+	        });
+	 });
 });
+
 
