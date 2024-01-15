@@ -112,7 +112,6 @@ function writeBoard() {
         "userNickname" : userNickname,
         "title" : title
     };
-    console.log(jsonData);
     
     $.ajax({
         method: 'POST',
@@ -122,7 +121,6 @@ function writeBoard() {
     }).done(function(json) {
         if(json.resultCode === '1' ){
         	 alert("저장되었습니다.");
-        	 console.log(json);
         	 document.getElementById("btnBoardView").click();
         } else if(json.resultCode === "0"){
             alert("잠시 후 다시 시도해주세요.");

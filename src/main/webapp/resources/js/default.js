@@ -26,8 +26,6 @@ $(document).on('click', '#btn-title-save', function() {
 				,"userNickname" : userNickname
 				};
 				
-	console.log(newTitle, userNickname);
-	
 	$.ajax({
 		url: "/mnHome/titleUpdate"
 		,type: "POST"
@@ -78,7 +76,6 @@ function requestFriendship(userNickname){
 			, data: JSON.stringify(jsonData)
 			, contentType: "application/json"
 			, success : function(data){
-				console.log(data.msg);
 				if(data.code == "1"){
 					alert("일촌신청을 보냈습니다.");
 				}else if(data.code =="-1"){
