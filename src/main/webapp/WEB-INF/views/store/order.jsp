@@ -7,7 +7,7 @@
 <html lang="ko" style="resizeable:no">
 <head>
     <meta charset="UTF-8">
-    <title>프로필 수정</title>
+    <title>헬로월드</title>
     <link rel="stylesheet" href="../../../../resources/css/index/order.css" />
     <link rel="stylesheet" href="../../../../resources/css/index/bgm.css" />
     <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
@@ -138,10 +138,6 @@ var selectedProduct;
     	productDiscount = "12%";
     	productPrice = "29,000";
     }
-    
-    console.log(buyDotoriOriginalPrice);
-    console.log(buyDotoriDiscount);
-    console.log(buyDotoriPrice);
     
     document.getElementById("buyDotoriCount").textContent = selectedProduct;
     document.getElementById("buyDotoriOriginalPrice").textContent = productOriginalPrice;

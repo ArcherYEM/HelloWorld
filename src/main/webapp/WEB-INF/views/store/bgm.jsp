@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>HelloWorld</title>
+	<title>헬로월드</title>
 	<link href="/resources/css/index/main.css" rel="stylesheet">
 	<link href="/resources/css/index/store.css" rel="stylesheet">
 	<link href="/resources/css/index/bgm.css" rel="stylesheet">
@@ -21,15 +21,15 @@
 	         <a class="logoATag" href="<c:url value='/'/>">
 	           <img class="index-header-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
 	         </a>
-	       </div>
-	       <div class="index-header-right">
+	      </div>
+	      <div class="index-header-right">
 				<h5 class="right" id="userDotori"><img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"><span id="userDotoriCnt">${dotori}</span>개</h5>
 	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
 	            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
 	            <a id="storeLoginMyhome" href="<c:url value='/mnHome/mainView/${sessionScope.userId.userNickname }' />" class="index-a-mnh">내 미니홈피</a>
 	            <a id="storeLoginLogout" href="<c:url value="/index/member/logout" />" class="index-a-logout">로그아웃</a>
-	        </div>
-      </div>
+	      </div>
+      	</div>
 
 		<div id="divHiUser">
 			<a class="storeAtag" href="/store/minimiView">미니미</a>
@@ -127,14 +127,12 @@
 	                for (var i = 0; i < msg.data.length; i++) {
 	                    $('#checkbox' + i).prop('checked', isChecked);
 	                }
-	                console.log("전체선택");
 	            });
 	            
 	            $(document).ready(function() {
 	                $('.bgm-list.bgm-grid').on('click', function() {
 	                    var checkbox = $(this).find('input[type="checkbox"]');
 	                    checkbox.prop('checked', !checkbox.prop('checked'));
-	                    console.log("클릭");
 	
 	                }).find('input[type="checkbox"]').on('click', function(e) {
 	                    e.stopPropagation(); // 부모 요소의 클릭 이벤트 전파 막기
