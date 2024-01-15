@@ -31,13 +31,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="userNickname != null">
 			AND userNickname = #{userNickname}
 		</if>
-<!-- 		<if test="category != null"> -->
-<!-- 	        <choose> -->
-<!-- 	            <when test="category == 'skin' or category == 'menu'"> -->
-<!-- 	                AND (category = 'skin' OR category = 'menu') -->
-<!-- 	            </when> -->
-<!-- 	        </choose> -->
-<!-- 	    </if> -->
 	    <if test="category == 'skin'">
 	    	AND category = 'skin'
 	    </if>
@@ -63,13 +56,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			AND
 				productName = #{productName}
 		</if>
-<!-- 		<if test="category != null"> -->
-<!-- 	        <choose> -->
-<!-- 	            <when test="category == 'skin' or category == 'menu'"> -->
-<!-- 	                AND (category = 'skin' OR category = 'menu') -->
-<!-- 	            </when> -->
-<!-- 	        </choose> -->
-<!-- 	    </if> -->
 	    <if test="category == 'skin'">
 	    	AND category = 'skin'
 	    </if>
@@ -88,15 +74,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	        userNickname = #{userNickname}
 	    <if test="category == 'minimi'">
 	        AND
-	        category = 'minimi'
+	      	  category = 'minimi'
 	    </if>
 	    <if test="category == 'skin'">
 	        AND
-	        category = 'skin'
+	   	     category = 'skin'
 	    </if>
 	    <if test="category == 'menu'">
 	        AND
-	        category = 'menu'
+	    	    category = 'menu'
 	    </if>
 	    AND
 	  	  allocation = 1
@@ -153,25 +139,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		)
 	</insert>
 	
-	
-	<!-- <select id="selectFriends" parameterType="map" resultType="map">
-		select 
-			seq
-			, userNickname
-			, friendNickname
-			, fStatus
-			, substring(createDate,1,10) as createDate
-		from friends
-		where (userNickname = #{userNickname} or friendNickname = #{userNickname})
-		and del_yn = 'N'
-		<if test="name != null">
-			and (userNickname like concat('%',#{name},'%') 
-				or friendNickname like concat('%',#{name},'%'))
-		</if>
-		<if test="checkFriend = 1">
-			and fStatus != -1
-		</if>
-	</select> -->
 	<select id="selectFriends" parameterType="map" resultType="map">
 		select 
 			f.seq,
@@ -193,8 +160,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             AND f.fStatus != -1
         </if>
 	</select>
-	
-	
 	
 	<update id="updateStatus" parameterType="map">
 		update
