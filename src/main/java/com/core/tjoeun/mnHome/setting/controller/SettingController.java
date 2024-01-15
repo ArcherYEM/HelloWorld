@@ -172,7 +172,6 @@ public class SettingController {
 			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
 			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         
@@ -182,7 +181,7 @@ public class SettingController {
         model.addAttribute("playList",playList);
 		
 		return "miniHome/settingBgm";
-//        return "miniHome/test";
+
 	}
 
 
@@ -245,7 +244,6 @@ public class SettingController {
 			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
 			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -287,7 +285,6 @@ public class SettingController {
 			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
 			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -354,7 +351,6 @@ public class SettingController {
 				model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
 				model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	        
@@ -571,7 +567,6 @@ public class SettingController {
 		if(friendName.isPresent()) {
 			name = friendName.get();
 			nameMap.put("name", name);
-			System.out.println(userNickname + " | " + name);
 		}
 		
 		//일촌 목록 가져오기 
@@ -593,8 +588,6 @@ public class SettingController {
 					fRes.add(fmap);
 				}
 			}
-			
-			System.out.println("bf :" + bf.size() + "| fReq :" + fReq.size() + "| fRes :" + fRes.size());
 		}
 		model.addAttribute("bf", bf);
 		model.addAttribute("fReq", fReq);
@@ -671,16 +664,13 @@ public class SettingController {
 	@RequestMapping(value = "/miniHome/setting", method = RequestMethod.POST)
 	@ResponseBody
 	public Map setting(@RequestBody Map map, Model model, HttpSession session) {
-		System.out.println("setting 메서드 실행");
 		Map resultMap = common(map);
 		
 		resultMap.put("userName", resultMap.get("name"));
 	    resultMap.put("userNickname", resultMap.get("nickname"));
 	    resultMap.put("userPhone", resultMap.get("phone"));
 	    resultMap.put("createDate", resultMap.get("date"));
-	    System.out.println("setting 메서드 종료");
-	    System.out.println(resultMap);
-	    
+	   
 	  //방문자 수 가져오기
         try {
 			Map visitCntMap = new HashMap();
@@ -688,7 +678,6 @@ public class SettingController {
 			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
 			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	    return resultMap;
@@ -707,8 +696,6 @@ public class SettingController {
 		userMap = (Map) session.getAttribute("userId");
 	    String userNickname = (String) userMap.get("userNickname");
 	      
-	   System.out.println("userNickname : " +  userNickname);
-	   
 	 //방문자 수 가져오기
        try {
 			Map visitCntMap = new HashMap();
@@ -716,14 +703,12 @@ public class SettingController {
 			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
 			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	    try {
 	        List<Map<String, Object>> userStorageData = settingService.selectSettingUserStorage(userNickname);
 
 	        model.addAttribute("userStorageList", userStorageData);
-	        System.out.println("userStorageData : " + userStorageData);
 	    } catch (SQLException sqle) {
 	        sqle.printStackTrace();
 	        throw sqle;
@@ -734,9 +719,8 @@ public class SettingController {
 	}
 	
 	@RequestMapping(value="/mnHome/mnhMinimiChangeAction", method = RequestMethod.POST)
-	public String MinimiChange(
-			@RequestParam ("selectedUserStorage") String minimiName,HttpSession session, HttpServletRequest req, Model model 
-			) {
+	public String MinimiChange(@RequestParam ("selectedUserStorage") String minimiName
+								,HttpSession session, HttpServletRequest req, Model model ) {
 		
 				try {
 					Map userMap = new HashMap();
@@ -764,7 +748,6 @@ public class SettingController {
 					model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
 					model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 		        
@@ -899,7 +882,6 @@ public class SettingController {
 		param.put("title", requestData.get("title"));
 		
 		int result = settingService.addPlayList(param);
-		System.out.println(result);
 		try {
 			
 		} catch (Exception e) {
