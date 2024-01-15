@@ -47,6 +47,30 @@ $(document).ready(function() {
                 } else {
                     document.getElementById('diaryContent').innerHTML = json.content;
                 }
+                
+                if (!json || json.cmt === undefined) {
+                    document.getElementById('diaryCmtContainer').innerHTML = "아직 댓글이 없습니다.";
+                } else {
+                	var container = document.getElementById("diaryCmtContainer");
+                	for(let i=0; i<json.cmt.length; i++){
+                		let comment = json.cmt[i];
+                		// 새로운 board-comment 태그 생성
+				        var commentElement = document.createElement("div");
+				        commentElement.className = "board-comment";
+				
+				        // 내부 요소 추가
+				        commentElement.innerHTML = `
+				            <span class="board-comment-writer">${comment.userNickname}</span>
+				            <span class="board-comment-content">${comment.content}</span>
+				            <span class="board-comment-date">${comment.cmtDate}</span>
+				        `;
+				
+				        // container에 새로 생성한 태그 추가
+				        container.appendChild(commentElement);
+                	}
+                    //document.getElementById('diaryCmtContainer').innerHTML = json.content;
+                }
+                
             });
 
         }
