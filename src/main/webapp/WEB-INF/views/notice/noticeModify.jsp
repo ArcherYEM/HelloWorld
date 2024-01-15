@@ -10,7 +10,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>HelloWorld</title>
+		<title>헬로월드</title>
 		<link  href="/resources/css/index/main.css" rel="stylesheet">
 		<link  href="/resources/css/index/store.css" rel="stylesheet">
 		<link  href="/resources/css/index/notice.css" rel="stylesheet">
@@ -27,12 +27,12 @@
 		         <a class="logoATag" href="<c:url value='/'/>">
 		           <img class="index-header-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
 		         </a>
-		       </div>
-		       <div class="index-header-right">
+		      </div>
+		      <div class="index-header-right">
 		            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
 		            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
-		       </div>
-	      </div>
+		      </div>
+	      	</div>
 			
 			<div class="notice-write">
 				<p>공지사항 글쓰기 </p>
@@ -40,7 +40,6 @@
 			
 			<div class="notice-write-group">
 				<input class="notice-write-title" id="noticeTitle" type="text" value="<c:out value='${title}'/>" form = "frmNotice" name="title">
-				<!-- <textarea class="notice-write-content" id="noticeContent" placeholder="내용을 입력하세요." form = "frmNotice" name="content"></textarea> -->
 				<textarea class="notice-write-content" name="content" id="txtContent" rows="10" cols="100" form = "frmNotice" >
 					<c:out value='${content}'/>
 				</textarea>
@@ -65,15 +64,13 @@
 				<h1>team core</h1>
 			</div>
 				
-			</div>
+		</div>
 			
 		<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>	
 		<script>
 			document.getElementById('btnNoticeWrite').addEventListener('click', function() {
 				document.getElementById('noticeHiddenTitle').value = document.getElementById('noticeTitle').value;
-				/* document.getElementById('noticeHiddenContent').value = document.getElementById('txtContent').value; */
 				
-				/* console.log(document.getElementById('noticeUserNickname').value); */
 				oEditors.getById["txtContent"].exec("UPDATE_CONTENTS_FIELD", []);  
 	    		//스마트 에디터 값을 텍스트컨텐츠로 전달
 	    		/* var content = document.getElementById("smartEditor").value; */
@@ -82,7 +79,6 @@
 	    		let content = document.getElementById("txtContent").value.replace("\r\n","");
 	    		
 	    		document.getElementById('noticeHiddenContent').value = content;
-/* 	    		document.getElementById('noticeHiddenContent').value = document.getElementById("txtContent").value; */
 	    		
 				document.getElementById('noticeUpdate').submit();
 			});
