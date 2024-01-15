@@ -91,26 +91,26 @@
 														<input type="hidden" value="${sessionScope.userId.userNickname}" class="cmtWriter">
 														<input type="button" value="확인" onclick="addCmt(${diary.seq})">
 													</div>
-													<div class="board-comment-container">
-													<c:forEach var="commentEntry" items="${cmtList}">
-											            
-											            <c:set var="commentDiarySeq" value="${commentEntry.key}" />
-											            
-											            <c:if test="${commentDiarySeq eq diary.seq}">
-											                
-											                <c:set var="comments" value="${commentEntry.value}" />
-											                
-											                <c:if test="${not empty comments}">
-											                    <c:forEach var="comment" items="${comments}">
-											                        <div class="board-comment">
-											                            <span class="board-comment-writer">${comment.commentUserNickname}</span>
-											                            <span class="board-comment-content">${comment.commentContent}</span>
-											                            <span class="board-comment-date">${comment.commentCreateDate}</span>
-											                        </div>
-											                    </c:forEach>
-											                </c:if>
-											            </c:if>
-											        </c:forEach>
+													<div class="board-comment-container" id="diaryCmtContainer">
+														<c:forEach var="commentEntry" items="${cmtList}">
+												            
+												            <c:set var="commentDiarySeq" value="${commentEntry.key}" />
+												            
+												            <c:if test="${commentDiarySeq eq diary.seq}">
+												                
+												                <c:set var="comments" value="${commentEntry.value}" />
+												                
+												                <c:if test="${not empty comments}">
+												                    <c:forEach var="comment" items="${comments}">
+												                        <div class="board-comment">
+												                            <span class="board-comment-writer">${comment.commentUserNickname}</span>
+												                            <span class="board-comment-content">${comment.commentContent}</span>
+												                            <span class="board-comment-date">${comment.commentCreateDate}</span>
+												                        </div>
+												                    </c:forEach>
+												                </c:if>
+												            </c:if>
+												        </c:forEach>
 												   
 													</div>
 

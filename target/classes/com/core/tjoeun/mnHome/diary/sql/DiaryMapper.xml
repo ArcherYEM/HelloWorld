@@ -102,6 +102,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	</select>
 	
+	<select id="diaryCmtTest" parameterType="string" resultType="map">
+		select * , DATE_FORMAT(update_date, '%Y-%m-%d %H:%i') AS cmtDate
+		From diaryCMT
+		where diarySeq = #{seq}
+	</select>
+	
 	
 
 </mapper>

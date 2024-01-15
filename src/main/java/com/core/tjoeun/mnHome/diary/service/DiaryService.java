@@ -20,5 +20,7 @@ public interface DiaryService {
 	public List<HashMap> selectDiaryCMT(String userNickname);
 	
 	public Map diaryTest (Map paramMap);
+	
+	public List<HashMap> diaryCmtTest(String seq);
 
 }
