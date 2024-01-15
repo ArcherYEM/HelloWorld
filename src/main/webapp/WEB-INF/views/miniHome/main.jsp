@@ -467,7 +467,7 @@
             <div class="audioPlayingMargin">            
             </div>         
              <div class="nowPlaying">
-                 <div class="audioTitle" id="songTitle">노래 제목</div>
+                 <div class="audioTitle" id="songTitle">노래 없음</div>
              </div>
           </div>
           <div class="audioControlsContainer">
@@ -515,7 +515,11 @@
 		</div>
    </div>
    <div id="testUnder"></div>
-   </div> 
+   </div>
+   <c:forEach var = "playList" items="${playList}">
+   		<input type="hidden" class="bgmTitle" value="${playList.title }">
+   		<input type="hidden" class="bgmPath" value="${playList.contentPath }">
+   </c:forEach>    
    <script src="../../../../resources/js/default.js"></script>
    <script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
    <script>

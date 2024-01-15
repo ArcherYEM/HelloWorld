@@ -5,6 +5,8 @@ import java.util.Map;
 
 public interface MainMapper {
 	
+	public List<Map> getMyBgm(String userNickname);
+	
 	public Map getProfile(String userNickname);
 	
 	public List<Map> getProfileHistory(String userNickname);

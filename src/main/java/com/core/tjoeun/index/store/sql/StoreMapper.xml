@@ -143,6 +143,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<if test="category != null">
 		and category = #{category}
 	</if>
+	AND productName != '기본 미니미'
 </select>
 
 <select id="getMyDotori" parameterType="String" resultType="int">

@@ -30,6 +30,13 @@ public class MainServiceImpl implements MainService{
 	@Value("${default.image.path}")
     private String defaultImagePath;
 	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Map> getMyBgm(String userNickname) {
+		
+		return mainDao.getMyBgm(userNickname);
+	}
+	
 	//미니홈피 방문자 수 가져오기
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW, rollbackFor = {Exception.class})

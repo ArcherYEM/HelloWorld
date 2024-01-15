@@ -3,6 +3,12 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper	namespace="com.core.tjoeun.mnHome.main.sql.MainMapper">
+
+	<select id="getMyBgm" parameterType="String" resultType="map">
+		select * from userBgm 
+		where userNickname = #{userNickname} 
+		and allocation = 1
+	</select>
 	
 	<select id="selectVisitCnt" parameterType="String" resultType="map">
 		select

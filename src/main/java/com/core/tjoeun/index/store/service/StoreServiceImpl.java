@@ -41,7 +41,6 @@ public class StoreServiceImpl implements StoreService {
 	public int putBgm(Map map) {
 		//도토리 사용내역
 		Map dotoriMap = new HashMap();
-		System.out.println("!테스트"+map);
 		dotoriMap.put("userNickname", map.get("userNickname"));
 		dotoriMap.put("dotoriUse", map.get("bgmPrice"));
 		dotoriMap.put("dotoriUseFor", ("bgm 구매-"+map.get("title")));

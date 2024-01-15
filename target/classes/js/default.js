@@ -95,11 +95,18 @@ function requestFriendship(userNickname){
 
 // 오디오 관련 스크립트
 document.addEventListener('DOMContentLoaded', function() {
-	var playlist = [
-		{url:'../../../../resources/sounds/OneDrink.mp3', title: '소주 한 잔'} ,
-		{url:'../../../../resources/sounds/IBelieve.mp3', title: 'I Believe'} ,
-		{url:'../../../../resources/sounds/Confession.mp3', title: '고백'}
-    ];
+	var playlist = [];
+	
+	var titles = document.querySelectorAll('.bgmTitle');
+	var paths = document.querySelectorAll('.bgmPath');
+	
+	for (var i = 0; i < titles.length; i++) {
+	    playlist.push({
+	        title: titles[i].value,
+	        url: paths[i].value
+	    });
+	}
+	
     var currentTrack = 0;
     var audioElement = document.getElementById('audioElement');
     var audioPlay = document.getElementById('audioPlay');
