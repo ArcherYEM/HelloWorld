@@ -91,7 +91,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	WHERE
 	    d.userNickname = #{userNickname}
 	ORDER BY
-	    d.seq DESC;
+	    dc.seq DESC
 	</select>
 	
 	<select id="diaryTest" parameterType="map" resultType="map">
@@ -106,6 +106,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * , DATE_FORMAT(update_date, '%Y-%m-%d %H:%i') AS cmtDate
 		From diaryCMT
 		where diarySeq = #{seq}
+		order by seq desc
 	</select>
 	
 	

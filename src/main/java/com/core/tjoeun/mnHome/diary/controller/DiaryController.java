@@ -192,6 +192,7 @@ public class DiaryController {
 			jsonMap.put("formatted_update_date", resultMap.get("formatted_update_date"));
 			jsonMap.put("title", resultMap.get("title"));
 			jsonMap.put("content", resultMap.get("content"));
+			jsonMap.put("seq", resultMap.get("seq"));
 			
 			System.out.println(resultMap);
 		
@@ -200,6 +201,24 @@ public class DiaryController {
 			jsonMap.put("cmt", cmtList);
 		}
 		
+		
+		return jsonMap;
+	}
+	
+	@RequestMapping(value="/mnHome/getDiaryCmt", method = RequestMethod.POST)
+	@ResponseBody
+	public Map getDiaryCmt(@RequestBody Map paramMap){
+		Map jsonMap = new HashMap();
+		
+		if(paramMap != null) {
+			int seq = (int) paramMap.get("seq");
+			
+			//int seq = Integer.parseInt(seqString);
+			
+			List<HashMap> cmtList = diaryService.diaryCmtTest(String.valueOf(seq));
+			jsonMap.put("cmt", cmtList);
+			
+		}
 		
 		return jsonMap;
 	}
