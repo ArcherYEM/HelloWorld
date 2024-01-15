@@ -107,13 +107,11 @@ public class MainController {
             String url;
             if("album".equals(tableName)) {
             	url="/mnHome/albumDetailView/"+userNickname+"/"+String.valueOf(current.get("seq"));
-            	System.out.println(url);
             	current.put("url", url);
             	current.put("category", "news-category category-pic");
             	current.put("tableName", "사진첩");
             } else if("board".equals(tableName)) {
             	url="/mnHome/boardDetail/"+userNickname+"/"+String.valueOf(current.get("seq"));
-            	System.out.println(url);
             	current.put("url", url);
             	current.put("category", "news-category category-post");
             	current.put("tableName", "게시판");

@@ -121,7 +121,6 @@ public class StoreServiceImpl implements StoreService {
 	        buyCartMap.put("productName", cartItem.getName());
 	        buyCartMap.put("contentPath", cartItem.getContentPath());
 	        
-	        System.out.println("!테스트"+cartItem.getName());
 	        
 	        //도토리 사용내역//
 	        Map map = new HashMap();
