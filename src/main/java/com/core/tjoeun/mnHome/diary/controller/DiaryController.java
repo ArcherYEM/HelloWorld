@@ -36,8 +36,7 @@ public class DiaryController {
 		model.addAttribute("userName", userMap.get("userName"));
 		model.addAttribute("userNickname", userMap.get("userNickname"));
 		model.addAttribute("title", userMap.get("title"));
-		System.out.println("userMap : " + userMap);
-		System.out.println("map 시작");
+		
 		
 		
 		Map diary = diaryService.selectDiary(userMap);
@@ -152,8 +151,7 @@ public class DiaryController {
 	@RequestMapping(value="/mnHome/diaryAdd", method = RequestMethod.POST)
 	@ResponseBody
 	public Map diaryAdd(@RequestBody  Map map) throws Exception {
-			System.out.println("add 실행");
-			System.out.println("map : " + map);
+			
 			map.put("openScope",1);
 			Map resultMap = diaryService.insertDiary(map);
 			if(resultMap != null) {
@@ -195,8 +193,7 @@ public class DiaryController {
 			jsonMap.put("content", resultMap.get("content"));
 			jsonMap.put("seq", resultMap.get("seq"));
 			
-			System.out.println(resultMap);
-		
+			
 			int seq = (int) resultMap.get("seq");
 			List<HashMap> cmtList = diaryService.diaryCmtTest(String.valueOf(seq));
 			jsonMap.put("cmt", cmtList);
@@ -213,8 +210,6 @@ public class DiaryController {
 		
 		if(paramMap != null) {
 			int seq = (int) paramMap.get("seq");
-			
-			//int seq = Integer.parseInt(seqString);
 			
 			List<HashMap> cmtList = diaryService.diaryCmtTest(String.valueOf(seq));
 			jsonMap.put("cmt", cmtList);
