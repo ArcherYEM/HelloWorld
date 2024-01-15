@@ -266,8 +266,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		limit 5
 	</select>
 	
-
-	
 	<update id="updateVisitCnt" parameterType="map">
 		update visitCnt
 		set

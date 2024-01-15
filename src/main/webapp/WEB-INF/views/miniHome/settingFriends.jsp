@@ -114,7 +114,7 @@
 								        <input type="button" class="set-frd-mid-req-ipt" value="받은신청" onclick="showFriendType('request');">
 								    </div>
 								    <div class="set-frd-mid-accept">
-								        <input type="button" class="set-frd-act-bf-ipt" value="신청목록" onclick="showFriendType('accept');">
+								        <input type="button" class="set-frd-act-bf-ipt" value="보낸신청" onclick="showFriendType('accept');">
 								    </div>
 								    <div class="set-frd-mid-search">
 								    	<c:if test="${not empty fName}">
