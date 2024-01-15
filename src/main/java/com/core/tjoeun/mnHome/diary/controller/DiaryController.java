@@ -41,8 +41,11 @@ public class DiaryController {
 		
 		Map diary = diaryService.selectDiary(userMap);
 	    model.addAttribute("diary", diary);
-	    
-	    
+	    if(diary == null) {
+	    	model.addAttribute("nullCheck",true);
+	    }else if(diary != null) {
+	    	model.addAttribute("nullCheck",false);
+	    }
 	    List<HashMap> cmtList = diaryService.selectDiaryCMT(userNickname);
 	    
 	 // 일기별로 댓글을 저장할 맵

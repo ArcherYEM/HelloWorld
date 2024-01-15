@@ -51,7 +51,12 @@
 					<div class="box content-box">
 						<div class=" album-submit">
 							<c:if test="${sessionScope.userId.userNickname eq userNickname }">
-								<input type="button" id="btnUpload" class="btnDiaryWrite" data-diaryWrite="<c:url value='/mnHome/diaryWriteView/${userNickname}'/>" value="글쓰기">
+								<c:if test="${nullCheck}">
+									<input type="button" id="btnUpload" class="btnDiaryWrite" data-diaryWrite="<c:url value='/mnHome/diaryWriteView/${userNickname}'/>" value="글쓰기">
+								</c:if>
+								<c:if test="${!nullCheck}">
+									<input type="button" onclick="already()" value="글쓰기">
+								</c:if>
 							</c:if>
 						</div>
 						<div class="album-overflow">
@@ -60,8 +65,6 @@
 									<div class="diary-container1">
 									<div class="album-db-group">
 										   
-										        <!-- diary 객체와 필요한 필드가 null이 아닌 경우의 콘텐츠 -->
-										        
 										            <div id="diaryTitle" class="diary-title">${diary.title}</div>
 										            <div id="diaryDate" class="diary-date-right">${formatted_update_date}</div>
 										            <div id="diaryContent" class="diary-content">${diary.content}</div>

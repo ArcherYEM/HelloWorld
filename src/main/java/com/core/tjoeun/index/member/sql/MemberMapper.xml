@@ -234,7 +234,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		      #{userNickname}
 		      , 'skin'
 		      , 'rgb(42, 140, 168)'
-		      , '기본'
+		      , '기본 스킨'
 		      , '2024-01-01'
 		      , '1'
 		   )
@@ -253,7 +253,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		      #{userNickname}
 		      , 'menu'
 		      , 'rgb(42, 140, 168)'
-		      , '기본'
+		      , '기본 메뉴'
 		      , '2024-01-01'
 		      , '1'
 		   )
