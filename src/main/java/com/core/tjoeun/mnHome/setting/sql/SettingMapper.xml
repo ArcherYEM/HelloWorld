@@ -185,7 +185,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         user u ON (f.userNickname = u.userNickname OR f.friendNickname = u.userNickname)
 		where (f.userNickname = #{userNickname} OR f.friendNickname = #{userNickname})
         AND f.del_yn = 'N'
-        AND u.userName != #{userNickname} 
+        AND u.userNickname != #{userNickname} 
         <if test="name != null">
             AND (f.userNickname LIKE CONCAT('%', #{name}, '%') OR f.friendNickname LIKE CONCAT('%', #{name}, '%'))
         </if>
