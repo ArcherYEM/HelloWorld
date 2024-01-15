@@ -76,8 +76,6 @@ public class MainServiceImpl implements MainService{
 		 String image = (String) profile.get("image");
 		 String msg = (String) profile.get("msg");
 		 
-		 System.out.println("테스트:"+profile);
-		 
 		 if(image.equals("noneFile")&&(!msg.equals("")||(msg!=null))) {
 			 profile = mainDao.getProfileNoImg(userNickname);
 		 }
@@ -212,7 +210,6 @@ public class MainServiceImpl implements MainService{
 		
 		if(titleExist != null) {
 			result = mainDao.updateHomeTitle(map);
-
 		}else {
 			result = mainDao.insertHomeTitle(map);
 		}
