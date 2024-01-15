@@ -32,8 +32,11 @@ $(document).ready(function() {
             }).done(function(json){
                 if (!json || json.title === undefined) {
                     document.getElementById('diaryTitle').textContent = "다이어리를 작성해주세요";
+                    document.getElementById('cmtInputContainer').style.display = "none";
+                    
                 } else {
                     document.getElementById('diaryTitle').textContent = json.title;
+                    document.getElementById('cmtInputContainer').style.display = "block";
                 }
 
                 if (!json || json.formatted_update_date === undefined) {
@@ -48,7 +51,17 @@ $(document).ready(function() {
                     document.getElementById('diaryContent').innerHTML = json.content;
                 }
                 
-                if (!json || json.cmt === undefined) {
+                if (!json || json.seq === undefined) {
+                    document.getElementById('cmtSeq').value = "";
+                    document.getElementById('diaryCmtContainer').innerHTML = "";
+                } else {
+                    document.getElementById('cmtSeq').value = json.seq;
+                    let seq = Number(json.seq);
+                    getCmt(seq);
+                }
+                
+                
+               /* if (!json || json.cmt === undefined) {
                     document.getElementById('diaryCmtContainer').innerHTML = "";
                 } else {
                 	var container = document.getElementById("diaryCmtContainer");
@@ -69,7 +82,10 @@ $(document).ready(function() {
 				        container.appendChild(commentElement);
                 	}
                     //document.getElementById('diaryCmtContainer').innerHTML = json.content;
+                    
                 }
+                */
+                
                 
             });
 
