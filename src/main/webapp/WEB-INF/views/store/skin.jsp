@@ -8,7 +8,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>HelloWorld</title>
+		<title>헬로월드</title>
 		<link  href="/resources/css/index/main.css" rel="stylesheet">
 		<link  href="/resources/css/index/storeMMS.css" rel="stylesheet">
 		<link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
@@ -19,11 +19,11 @@
 	<body>
 	<div class="index-frame">
 		<div class="divIndexMenu index-header">
-	      <div class="index-header-left">
-	         <a class="logoATag" href="<c:url value='/'/>">
-	           <img class="index-header-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
-	         </a>
-	       </div>
+	    	<div class="index-header-left">
+	        	<a class="logoATag" href="<c:url value='/'/>">
+	        		<img class="index-header-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+	         	</a>
+	        </div>
 	       <div class="index-header-right">
 				<h5 class="right" id="userDotori"><img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"><span id="userDotoriCnt">${dotori}</span>개</h5>
 	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>

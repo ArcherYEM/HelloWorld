@@ -7,7 +7,7 @@
 <html lang="ko" style="resizeable:no">
 <head>
     <meta charset="UTF-8">
-    <title>프로필 수정</title>
+    <title>헬로월드</title>
     <link rel="stylesheet" href="../../../../resources/css/index/order.css" />
     <link rel="stylesheet" href="../../../../resources/css/index/bgm.css" />
     <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
@@ -18,20 +18,19 @@
 <div class="store-edit-frame">
 	<div class="store-edit-pad">
 		<div class="edit-container-over">
-	    <div class="store-edit-file">
-			<div class="buySuccessComment">
-				구입에 성공했습니다!
-			</div>
-			<div class="hello">
-				<input type="button" value="확인" class="btnConfirm" onclick="closeWindow()">
-			</div>
-	    </div>
-	    <div class="store-file-preview" id="preview-container"></div>
-	  </div>
+		    <div class="store-edit-file">
+				<div class="buySuccessComment">
+					구입에 성공했습니다!
+				</div>
+				<div class="hello">
+					<input type="button" value="확인" class="btnConfirm" onclick="closeWindow()">
+				</div>
+		    </div>
+		    <div class="store-file-preview" id="preview-container"></div>
+	  	</div>
 	  <div class="store-edit-container-under">
-	  	<div class="store-edit-introduce">
-
-
+	  	<div class="store-edit-introduce"></div>
+	  </div>
 	</div>	
 </div>
 
