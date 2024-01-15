@@ -363,6 +363,9 @@ public class StoreController {
             if (currentDotori != null && userBuyCart != null) {
                 result = currentDotori - userBuyCart;
 
+                if(result < 0) {
+                	return -1;
+                }
                 // 장바구니 도토리 개수를 업데이트
                 session.setAttribute("userDotoriCnt", result);
                 resultMap.put("currentDotori", result);
@@ -400,23 +403,29 @@ public class StoreController {
             ShoppingCart shoppingCart = getOrCreateShoppingCart(session);
             List<CartItem> cartItems = shoppingCart.getCartItems();
             String userNickname = (String) session.getAttribute("userNickname");
+            int resultDotoriCnt = updateDotoriCount(session);
 
             if (userNickname != null) {
                 if (!storeService.hasDuplicateCartItem(cartItems, userNickname)) {
-                    // 중복된 상품이 없으면 구매 로직 수행
-                    int buyResult = storeService.buyCart(cartItems, userNickname);
+                    if (resultDotoriCnt != -1) {
+                        // 중복된 상품이 없으면 구매 로직 수행
+                        int buyResult = storeService.buyCart(cartItems, userNickname);
 
-                    if (buyResult == 1) {
-                        // 구매 성공
-                        // 장바구니 비우기
-                        session.setAttribute("cart", shoppingCart);
+                        if (buyResult == 1) {
+                            // 구매 성공
+                            // 장바구니 비우기
+                            session.setAttribute("cart", shoppingCart);
 
-                        result.put("success", true);
-                        result.put("message", "상품 구매가 완료되었습니다.");
+                            result.put("success", true);
+                            result.put("message", "상품 구매가 완료되었습니다.");
+                        } else {
+                            // 구매 실패
+                            result.put("success", false);
+                            result.put("message", "상품 구매에 실패했습니다. 다시 시도해주세요.");
+                        }
                     } else {
-                        // 구매 실패
                         result.put("success", false);
-                        result.put("message", "상품 구매에 실패했습니다. 다시 시도해주세요.");
+                        result.put("message", "보유한 도토리 개수가 부족합니다.");
                     }
                 } else {
                     result.put("success", false);
@@ -433,5 +442,5 @@ public class StoreController {
         }
         return result;
     }
-       
+
 }
