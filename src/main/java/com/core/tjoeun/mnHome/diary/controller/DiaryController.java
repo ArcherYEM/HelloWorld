@@ -42,9 +42,10 @@ public class DiaryController {
 		
 		Map diary = diaryService.selectDiary(userMap);
 	    model.addAttribute("diary", diary);
-	    System.out.println("다이어리 가져오기 : " + diary);
-	    if(diary != null) {
-	    	System.out.println("seq Test : "  + diary.get("seq"));
+	    if(diary == null) {
+	    	model.addAttribute("nullCheck",true);
+	    }else if(diary != null) {
+	    	model.addAttribute("nullCheck",false);
 	    }
 	    List<HashMap> cmtList = diaryService.selectDiaryCMT(userNickname);
 	    
