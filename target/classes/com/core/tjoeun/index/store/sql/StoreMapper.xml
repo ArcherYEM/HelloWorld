@@ -81,6 +81,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
        contentPath,
        productPrice
    FROM store
+   WHERE category = 'minimi'
+   AND productName != '기본 미니미'
    LIMIT #{limit, jdbcType=INTEGER} 
    OFFSET #{offset, jdbcType=INTEGER}
    ]]>
