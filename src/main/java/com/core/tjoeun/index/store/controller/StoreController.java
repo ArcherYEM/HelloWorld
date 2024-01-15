@@ -80,7 +80,6 @@ public class StoreController {
 			, @RequestParam("price") String dotoriPrice
 			, HttpSession session, HttpServletRequest req) {
 
-		System.out.println("테스트:"+dotoriMethod);
 		
 		Map userMap = new HashMap();
 		
@@ -115,11 +114,11 @@ public class StoreController {
 			userMap = (Map) session.getAttribute("userId");
 			String userNickname = (String) userMap.get("userNickname");
 			
-			System.out.println(map);
+			
 			List<Map> bgm = storeService.getBgmList(map);
 			model.addAttribute("bgmInfo", bgm);
 			model.addAttribute("dotori",storeService.getMyDotori(userNickname));
-			System.out.println("dbg : " + storeService.getBgmList(userMap));
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -145,7 +144,7 @@ public class StoreController {
 	@RequestMapping(value = "/store/bgmBuy")
 	public String bgmBuy(Model model
 			, @RequestParam(value = "selectedData", required = false) String selectedData) {
-		System.out.println("선택된 곡들 : " + selectedData);
+		
 	    if (selectedData != null) {
 	        ObjectMapper objectMapper = new ObjectMapper();
 	        try {
@@ -165,18 +164,15 @@ public class StoreController {
             @RequestParam(value = "totalPrice", required = false) int totalPrice,
             HttpSession session, HttpServletRequest req, Model model) {
 		
-        System.out.println("dbg selectedData : " + selectedData);
         
         Map userMap = new HashMap();
         session = req.getSession();
 		userMap = (Map) session.getAttribute("userId");
 		String userNickname = (String) userMap.get("userNickname");
-		System.out.println("### userMap : " + userMap);
         
         try {
 	         // 현재 보유도토리와 결제 도토리 값 비교
 	            int myDtr = storeService.getMyDotori(userNickname);
-	            
 	            int amount = 0;
 	            amount = myDtr - totalPrice;
 	            
@@ -193,7 +189,7 @@ public class StoreController {
 	            		String getTitle = titleMap.get("title");
 	            		myBgmTitle.add( getTitle);
 	            	}
-	            	System.out.println("### myBgmTitle : " + myBgmTitle);
+	            	
 	            	
 	            	ObjectMapper objectMapper = new ObjectMapper();
 	                List<Map<String, String>> bgmList = objectMapper.readValue(selectedData, new TypeReference<List<Map<String, String>>>(){});
@@ -231,15 +227,15 @@ public class StoreController {
 	            	   String getTitle = (String) tempList.get("title");
 	            	   cartBgmTitle.add(getTitle);
 	               }
-	               System.out.println("### cartBgmTitle : " + cartBgmTitle);
+	               
 	                
 	                List<String> comparison = new ArrayList<>(); // 전체 bgm list 를 담을 Map
 	                comparison.addAll(myBgmTitle);
 	                comparison.addAll(cartBgmTitle);
-	                System.out.println("### comparison : " + comparison);
+	                
 	                
 	                Collections.sort(comparison);
-	                System.out.println("### Sorting comparison : " + comparison);
+	                
 	                
 	                String duplicatedBgm = null;
 	                
@@ -248,7 +244,7 @@ public class StoreController {
 	                    String nextItem = comparison.get(i + 1);
 	                    
 	                    if (currentItem.equals(nextItem)) {
-	                        System.out.println("### Duplicate !! " + currentItem);
+	                        
 	                        duplicatedBgm = currentItem;
 	                        break;
 	                    }
