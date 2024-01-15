@@ -42,6 +42,10 @@ public class DiaryController {
 		
 		Map diary = diaryService.selectDiary(userMap);
 	    model.addAttribute("diary", diary);
+	    System.out.println("다이어리 가져오기 : " + diary);
+	    if(diary != null) {
+	    	System.out.println("seq Test : "  + diary.get("seq"));
+	    }
 	    List<HashMap> cmtList = diaryService.selectDiaryCMT(userNickname);
 	    
 	 // 일기별로 댓글을 저장할 맵
@@ -181,10 +185,23 @@ public class DiaryController {
 	@RequestMapping(value="/mnHome/diaryTest", method = RequestMethod.POST)
 	@ResponseBody
 	public Map diaryTest(@RequestBody Map paramMap){
-		
+		Map jsonMap = new HashMap();
 		Map resultMap = diaryService.diaryTest(paramMap);
-		System.out.println("테스트"+resultMap);
 		
-		return resultMap;
+		jsonMap.put("formatted_update_date", resultMap.get("formatted_update_date"));
+		jsonMap.put("title", resultMap.get("title"));
+		jsonMap.put("content", resultMap.get("content"));
+		
+		//{openScope=1, formatted_update_date=2024-01-11 01:48, userNickname=제인, title=오늘은 사진첩 하는 날, create_date=2024-01-11 01:48:22.0, seq=34, content=<p><span style="font-size: 18pt; font-family: 궁서, gungsuh, gungseo;">파일 업로드 개빡세네</span></p>, update_date=2024-01-11 01:48:22.0, del_yn=n}
+		System.out.println(resultMap);
+		
+		if(resultMap != null) {
+			int seq = (int) resultMap.get("seq");
+			List<HashMap> cmtList = diaryService.diaryCmtTest(String.valueOf(seq));
+			jsonMap.put("cmt", cmtList);
+		}
+		
+		
+		return jsonMap;
 	}
 }

@@ -69,6 +69,11 @@ public class DiaryServiceImpl implements DiaryService {
 		return diaryDao.diaryTest(paramMap);
 	}
 
+	@Override
+	public List<HashMap> diaryCmtTest(String seq) {
+		return diaryDao.diaryCmtTest(seq);
+	}
+
 	
 
 }

@@ -64,5 +64,12 @@ public class DiaryImpl implements DiaryDao {
 		return mapper.diaryTest(paramMap);
 	}
 
+	@Override
+	public List<HashMap> diaryCmtTest(String seq) {
+		DiaryMapper mapper = sqlSession.getMapper(DiaryMapper.class);
+		
+		return mapper.diaryCmtTest(seq);
+	}
+
 	
 }
