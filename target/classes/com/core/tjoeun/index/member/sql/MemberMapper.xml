@@ -53,13 +53,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </update>
    
     <select id="selectOnFriendCnt" parameterType="String" resultType="int">
-    	SELECT COUNT(*) as count
-		FROM user u
-			JOIN friends f ON u.userNickname = f.userNickname
-			JOIN loginStatus ls ON f.friendNickname = ls.userNickname
-		WHERE u.userNickname = #{userNickname}
-		AND f.fStatus = '1'
-		AND ls.status = '1'
+    	SELECT count(*)
+		FROM (
+		    SELECT f.friendNickname AS userNickname
+		    FROM friends f
+		    JOIN loginStatus ls ON (f.friendNickname = ls.userNickname)
+		    WHERE f.userNickname = #{userNickname} AND f.fStatus = '1' AND ls.status = '1'
+		    UNION
+		    SELECT f.userNickname
+		    FROM friends f
+		    JOIN loginStatus ls ON (f.userNickname = ls.userNickname)
+		    WHERE f.friendNickname = #{userNickname} AND f.fStatus = '1' AND ls.status = '1'
+		) AS subquery
     </select>
    
     <insert id="insertUserDotori" parameterType="String">
