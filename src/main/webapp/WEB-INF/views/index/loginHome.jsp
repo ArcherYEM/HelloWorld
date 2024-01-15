@@ -12,7 +12,7 @@
 		<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
 		<meta http-equiv="Pragma" content="no-cache">
 		<meta http-equiv="Expires" content="0">
-		<title>HelloWorld</title>
+		<title>헬로월드</title>
 	</head>
 	<body>
 		<div style="display:flex; flex-direction: row;">

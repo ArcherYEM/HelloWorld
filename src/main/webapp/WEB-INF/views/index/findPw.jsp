@@ -11,7 +11,7 @@
 	<link  href="/resources/css/index/find.css" rel="stylesheet">
 	<link  href="/resources/css/index/signUp.css" rel="stylesheet">
 	<link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
-	<title>Hello World</title>
+	<title>헬로월드</title>
 </head>
 	
 <body>
@@ -22,43 +22,35 @@
 	  <div class="grid-item">
 	  
 	  	<div id="divUserInfo">
-				<img class="findId-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
-				<div class="findId-title">
-			  	비밀번호 찾기
-			  </div>
-			  <div class="find-tag">
+			<img class="findId-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+			<div class="findId-title"> 비밀번호 찾기 </div>
+			<div class="find-tag">
 			  	<label for="userId">아이디</label><br>
-					<input type="text" id="userId" placeholder="아이디" class="widthFull"><br>
-				</div>
-				<div class="find-tag">
-					<label for="userName">이름</label><br>
-					<input type="text" id="userName" placeholder="이름" class="widthFull">
-				</div>
-				<div class="find-tag">
-					<label for="userPhone">연락처</label><br>
-					<input type="text" id="userPhone" placeholder="' ㅡ ' 를 제외한 숫자만 입력하세요" class="widthFull">
-				</div>
+				<input type="text" id="userId" placeholder="아이디" class="widthFull"><br>
+			</div>
+			<div class="find-tag">
+				<label for="userName">이름</label><br>
+				<input type="text" id="userName" placeholder="이름" class="widthFull">
+			</div>
+			<div class="find-tag">
+				<label for="userPhone">연락처</label><br>
+				<input type="text" id="userPhone" placeholder="' ㅡ ' 를 제외한 숫자만 입력하세요" class="widthFull">
+			</div>
 				
-				<div class="find-btn">
-					<%-- <form action="/index/member/home" method="GET">
-						<input type="submit" value="취소"> 
-					</form>
-					<form action="<c:url value=''/>" method="GET"> <!-- 추후 포스트로 변경 필요  --> 
-						<input type="submit" value="찾기"> 
-					</form> --%>
-					<button id="btnCancle">취소</button>
-					<button id="btnSubmit">찾기</button>
-				</div>
+			<div class="find-btn">
+				<button id="btnCancle">취소</button>
+				<button id="btnSubmit">찾기</button>
+			</div>
 	  	</div>
 	  </div>
 		  	
-	 	<div class="grid-item"></div>  
+	 <div class="grid-item"></div>  
 	 	
-	 	 <form id="frm1" action="/index/member/afterFindPw" method="POST">
-	  	 	<input id="hiddenUserId" type="hidden" name="userId">
-	  	 	<input id="hiddenUserName" type="hidden" name="userName">
-	  	 	<input id="hiddenUserPhone" type="hidden" name="userPhone">
-	  	 </form>
+	 <form id="frm1" action="/index/member/afterFindPw" method="POST">
+	  	 <input id="hiddenUserId" type="hidden" name="userId">
+	  	 <input id="hiddenUserName" type="hidden" name="userName">
+	  	 <input id="hiddenUserPhone" type="hidden" name="userPhone">
+	  </form>
 	</div>
 	
 	
@@ -76,10 +68,6 @@
 			let userName = $('#userName').val();
 			
 			
-			/* 
-			let phoneNum = document.getElementById('userPhone').value;
-			let userName = document.getElementById('userName').value; */
-			
 			if(phoneNum.length<1 || userName.length<1 || userId.length <1){
 				alert('모든 내용을 입력해주세요.');
 				
@@ -92,7 +80,6 @@
 				return false;
 			}else{
 				$('#hiddenUserPhone').val(phoneNum);
-				/* document.getElementById('hiddenUserPhone').value = phoneNum; */
 			}
 			
 			if(userName.length <2){
@@ -103,14 +90,10 @@
 				return false;
 			}else{
 				$('#hiddenUserName').val(userName);
-				/* document.getElementById('hiddenUserName').value = userName; */
 			}
 			$('#hiddenUserId').val(userId);
 		
-			
-			
 			document.getElementById('frm1').submit();
-			
 			
 		});
 		

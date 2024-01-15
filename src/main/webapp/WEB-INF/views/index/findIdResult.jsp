@@ -11,7 +11,7 @@
 		<link  href="/resources/css/index/signUp.css" rel="stylesheet">
 		<link  href="/resources/css/index/findIdResult.css" rel="stylesheet">
 		<link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
-		<title>Hello World</title>
+		<title>헬로월드</title>
 	</head>
 		
 	<body>
@@ -32,11 +32,8 @@
 		               <a href="<c:url value='/'/>">로그인</a> / 
 		               <a href="/index/member/findPwView">비밀번호 찾기</a>
 		            </div>
-					
 				</div>
-			  	
-		  	</div>
-			  	
+		  	 </div>
 		  </div>
 		  <div class="grid-item"></div>  
 		</div>
