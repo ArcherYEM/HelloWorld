@@ -79,17 +79,18 @@
 																</select>
 															</div>
 															<div class="album-under">
-																<a href="#" class="album-under-right">이동</a>
+																<!-- <a href="#" class="album-under-right">이동</a> -->
 																<a href="#" class="album-under-right">수정</a>
 																<a href="#" class="album-under-right">삭제</a>
 															</div>
 														</div>
 													</c:if>
-													<div class="board-comment-write">
+													<div class="board-comment-write" id="cmtInputContainer">
 														<span>댓글</span>
 														<input type="text" class="comment-content-write" id="cmtContent${diary.seq}">
 														<input type="hidden" value="${sessionScope.userId.userNickname}" class="cmtWriter">
-														<input type="button" value="확인" onclick="addCmt(${diary.seq})">
+														<input type="hidden" value="${diary.seq}" id="cmtSeq">
+														<input type="button" value="확인" onclick="addCmt()">
 													</div>
 													<div class="board-comment-container" id="diaryCmtContainer">
 														<c:forEach var="commentEntry" items="${cmtList}">
@@ -111,7 +112,6 @@
 												                </c:if>
 												            </c:if>
 												        </c:forEach>
-												   
 													</div>
 
 									</div>
