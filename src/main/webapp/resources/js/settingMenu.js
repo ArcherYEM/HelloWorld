@@ -25,11 +25,6 @@ function logClick() {
     category = clickedItem.getAttribute('data-category');
     productName = clickedItem.getAttribute('data-product-name');
 
-    // 값을 콘솔에 출력
-    console.log('선택한 사용자 닉네임:', userNickname);
-    console.log('선택한 카테고리:', category);
-    console.log('선택한 상품 이름:', productName);
-    
     document.getElementById('selectedProductName').value = productName;
     document.getElementById('selectedCategory').value = category;
     document.getElementById('nickname').value = userNickname;
@@ -40,9 +35,6 @@ function logClick() {
 $(document).one("click", ".apply-button", function (event) {
     event.preventDefault();
 
-    console.log('보낸 사용자 닉네임:', userNickname);
-    console.log('보낸 카테고리:', category);
-    console.log('보낸 상품 이름:', productName);
 
     // JSON 데이터 생성
     var jsonData = {
@@ -58,7 +50,6 @@ $(document).one("click", ".apply-button", function (event) {
     }).done(function(json) {
         if(json.resultCode === '1' ){
             alert("선택하신 스킨을 적용하였습니다.");
-            console.log(json);
             document.getElementById("spanSettingMenu").click();
         } else if(json.resultCode === "0"){
             alert("스킨 적용에 실패했습니다. 다시 시도해주세요.");

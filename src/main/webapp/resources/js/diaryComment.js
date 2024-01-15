@@ -3,7 +3,6 @@ function addCmt(){
 	let seq = $("#cmtSeq").val();
 	let content = $(".comment-content-write").val();
 	
-	console.log(userNickname + content + seq);
 	let jsonData = {
 		"diarySeq" : seq
 		, "userNickname" : userNickname

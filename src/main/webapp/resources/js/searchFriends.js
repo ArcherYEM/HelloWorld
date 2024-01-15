@@ -13,7 +13,6 @@ function searchUser() {
 		        let jsonData = {
 		           "userNickname": userNickname
 		        };
-				console.log(userNickname);
 		        $.ajax({
 		           method: 'POST',
 		           url: "/mnHome/searchFriends",
@@ -97,7 +96,6 @@ function searchUser() {
 $(document).on('click', '.accept', function() {
 	if(confirm("일촌신청을 수락하시겠습니까?")){
 		let fSeq = $(this).data('seq');
-		console.log(fSeq);
 		
 		let jsonData = { 
 						"seq" : fSeq 
@@ -125,7 +123,6 @@ $(document).on('click', '.accept', function() {
 $(document).on('click', '.reject', function() {
 	if(confirm("일촌신청을 거절하시겠습니까?")){
 		let fSeq = $(this).data('seq');
-		console.log(fSeq);
 		
 		let jsonData = { 
 						"seq" : fSeq 
@@ -153,7 +150,6 @@ $(document).on('click', '.reject', function() {
 $(document).on('click', 'input.cancle', function() {
 	if(confirm("일촌신청을 취소하시겠습니까?")){
 		let fSeq = $(this).data('seq');
-		console.log(fSeq);
 		
 		let jsonData = { 
 						"seq" : fSeq 
@@ -184,7 +180,6 @@ $(document).on('click', '#searchBf', function() {
 	let name = document.getElementById('searchBfName').value;
 	let userNickname = document.getElementById('hiddenUserNickname').value;
 	let url = "/mnHome/settingFriends/" + userNickname + "/" + name;
-	console.log(url);
 	loadTabContent(url);
 	
 });

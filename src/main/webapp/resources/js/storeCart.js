@@ -82,7 +82,6 @@
                 data: JSON.stringify(),
                 success: function (result) {
                 	if (result !== undefined) {
-                        console.log('도토리 개수 업데이트 성공');
                         $('#userDotoriCnt').text(result);
                     }
                 },
@@ -116,7 +115,6 @@
 	            const productName = $(this).data('product-name');
 	            const productPrice = $(this).data('product-price');
 				
-	            console.log(productCate, productTableCate, productContentPath, productName, productPrice);
 	            addToCart(productCate, productTableCate, productContentPath, productName, productPrice);
 	        });
 	        
@@ -127,7 +125,6 @@
 	            const productName = $(this).data('product-name');
 	            const productPrice = $(this).data('product-price');
 				
-	            console.log(productCate, productTableCate, productName, productContentPath, productPrice);
 	            addToCart(productCate, productTableCate,  productName, productContentPath, productPrice);
 	        });
 	

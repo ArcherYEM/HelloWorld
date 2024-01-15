@@ -21,7 +21,6 @@ function changeName() {
         isEditMode = true;
     } else {
         var changedName = userNameArea.value;
-        console.log(userName);
         for (var i = 0; i < changedName.length; i++) {
             var char = changedName.charAt(i);
             if (char >= '0' && char <= '9') {
@@ -184,7 +183,7 @@ function addPlayList(){
 		"title" : checkedValues,
 		"userNickname" : userNickname 
     };
-    	console.log(jsonData);
+
     $.ajax({
     	method: "POST",
     	url: '/mnHome/addPlayList',
@@ -210,7 +209,6 @@ function removePlayList(){
 			"title" : checkedValues,
 			"userNickname" : userNickname 
 	};
-	console.log(jsonData);
 	$.ajax({
 		method: "POST",
 		url: '/mnHome/removePlayList',
@@ -230,8 +228,6 @@ $(document).ready(function() {
 	        var checkboxes = document.querySelectorAll('.playlistCheckbox');
 	        var allChecked = checkboxAll.checked;
 
-	       // console.log('All checked:', allChecked);
-
 	        checkboxes.forEach(function(checkbox) {
 	            checkbox.checked = allChecked;
 	        });
@@ -243,8 +239,6 @@ $(document).ready(function() {
 	        
 	        var checkboxes = document.querySelectorAll('.checkboxBgm');
 	        var allChecked = checkboxAll.checked;
-
-	       // console.log('All checked:', allChecked);
 
 	        checkboxes.forEach(function(checkbox) {
 	            checkbox.checked = allChecked;

@@ -112,8 +112,6 @@ $(document).ready(function() {
         var checkboxes = document.querySelectorAll('.td-checkbox input[type="checkbox"]');
         var allChecked = checkboxAll.checked;
 
-       // console.log('All checked:', allChecked);
-
         checkboxes.forEach(function(checkbox) {
             checkbox.checked = allChecked;
         });
@@ -170,8 +168,6 @@ $('#btn-title-save').on('click', function(){
 				"title" : newTitle 
 				,"userNickname" : userNickname
 				};
-				
-	console.log(newTitle, userNickname);
 	
 	$.ajax({
 		url: "/mnHome/titleUpdate"
