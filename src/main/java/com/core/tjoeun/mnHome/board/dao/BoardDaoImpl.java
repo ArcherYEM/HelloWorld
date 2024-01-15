@@ -25,6 +25,13 @@ public class BoardDaoImpl implements BoardDao{
 	}
 
 	@Override
+	public int updateHit(Map map) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		
+		return mapper.updateHit(map);
+	}	
+	
+	@Override
 	public List<HashMap> selectBoardList(Map map) {
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		

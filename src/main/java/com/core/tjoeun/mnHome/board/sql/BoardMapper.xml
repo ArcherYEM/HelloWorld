@@ -17,6 +17,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 </insert>
 
+<update id="updateHit" parameterType="map">
+	update board 
+	set hits = hits+1
+	where seq = #{seq}
+	and userNickname = #{userNickname}
+</update>
+
+
 <select id="selectBoardList" parameterType="map" resultType="map">
 SELECT 
     seq
