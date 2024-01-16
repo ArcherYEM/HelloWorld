@@ -79,13 +79,15 @@
 							<div class="content-title-url"> https://www.helloworld.com/minihome/${userNickname }</div>
 						</div>
 						
+<!-- 						앨범 센터라인 -->
 						<div class="box content-box">
 						<c:if test="${sessionScope.userId.userNickname eq userNickname }">
-							<div class=" album-submit">
+							<div class="album-submit">
 								<input type="button" class="btnAlbumWrite" id="btnUpload" data-albumWrite="<c:url value="/mnHome/albumWriteView/${userNickname}" />" value="사진올리기">
 							</div>
 						</c:if>
 							<div class="album-overflow">
+							
 								<div class="album-container-container">
 									<c:if test="${list eq null || list.size() <= 0}">
 										<div id="noneMsg">사진이 없습니다.</div>
@@ -94,7 +96,7 @@
 										<c:forEach items="${list}" var="item" varStatus="i">
 											<div class="album-container" data-albumdetail="/mnHome/albumDetailView/${userNickname}/${item.seq}">
 												<div class="album-thumbnail">
-													<img src="<c:url value="/../../../../resources/images/download/${images[i.index]}" />" alt="이미지 설명">
+													<img src="<c:url value="/../../../../resources/images/download/${images[i.index]}" />" class="addImage">
 												</div>
 												<div class="album-thumbtitle">${item.title}</div>
 											</div>
