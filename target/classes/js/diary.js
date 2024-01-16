@@ -54,3 +54,15 @@ $(document).ready(function() {
         fCreator: "createSEditor2"
     });
 });
+
+$(document).ready(function() {
+	let test1=document.getElementById('diaryTitle').textContent;
+	if(test1 == ""){
+		document.getElementById('diaryTitle').textContent="다이어리를 작성해주세요";
+	}
+	let test2=document.getElementById('diaryContent').innerHTML;
+	if(test2 == ""){
+		document.getElementById('diaryContent').innerHTML="매일매일 일촌들과 일상을 공유해보아요!";
+	}
+
+});
