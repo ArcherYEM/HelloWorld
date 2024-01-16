@@ -17,7 +17,6 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </head>
 <body>
-
   <div id="test"></div>
    <div class="main-frame-skin" id="skin-item-color-select" 
 		style="background-color: 
@@ -519,7 +518,7 @@
    <c:forEach var = "playList" items="${playList}">
    		<input type="hidden" class="bgmTitle" value="${playList.title }">
    		<input type="hidden" class="bgmPath" value="${playList.contentPath }">
-   </c:forEach>    
+   </c:forEach>
    <script src="../../../../resources/js/default.js"></script>
    <script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
    <script>
