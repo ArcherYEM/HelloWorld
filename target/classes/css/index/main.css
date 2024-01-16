@@ -166,6 +166,13 @@ a {
 	margin-left: 10px;
 }
 
+.login-top-right:hover {
+	color: white;
+	background-color: gray;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
 .login-profile-frame {
 	display: flex;
 	justify-content: space-between;
@@ -207,6 +214,16 @@ a {
 	display: grid;
     grid-template-columns: 20% 50% 30%;
     margin: 10px 0;
+}
+
+.login-profile-section1:hover,
+.login-profile-section2:hover,
+.login-profile-section3:hover,
+.login-profile-section4:hover {
+	cursor: pointer;
+	color: white;
+	background-color: gray;
+	border-radius: 5px;
 }
 
 .login-profile-info-1,
