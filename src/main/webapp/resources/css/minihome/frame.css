@@ -91,6 +91,7 @@ body a{
   flex-direction: column;
   padding: 1rem;
   max-height: 370px;
+  min-height: 369px;
 }
 
 .profile-image {
