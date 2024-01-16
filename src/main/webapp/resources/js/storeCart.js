@@ -34,7 +34,7 @@
         	 
             cartItems.forEach(function (item) {
             	const imagePath = "/resources/images/store/storeDotoriIcon.png";
-            	const row = '<tr><td>' + item.cate + '</td><td>' + item.name + '</td><td><img id="dotoriIcon" src="' + imagePath + '" alt="' + item.name + '">' + item.price + '</td></tr>';
+            	const row = '<tr><td>' + item.cate + '</td><td>' + item.contentPath + '</td><td><img id="dotoriIcon" src="' + imagePath + '" alt="' + item.name + '">' + item.price + '</td></tr>';
                 cartTableBody.append(row);
             });
 
