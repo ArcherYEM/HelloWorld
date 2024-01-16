@@ -29,7 +29,8 @@
 	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
 	            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
 	            <a id="linkMnh" href="#" 
-	            	class="index-a-mnh" onclick="openMiniHomepage()">내 미니홈피</a>
+	            	class="index-a-mnh" onclick="openMiniHomepage()">내 미니홈피
+	            </a>
    				<a id="linkLogout" href="<c:url value='/index/member/logout' />" class="index-a-logout">로그아웃</a>
 	       </div>
       </div>

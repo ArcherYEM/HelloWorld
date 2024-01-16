@@ -106,12 +106,18 @@ public class NoticeController {
 	
 	
 	@RequestMapping(value="/notice/noticeDetail", method = RequestMethod.GET)
-	public String noticeDetail(Model model, @RequestParam Map map) {
+	public String noticeDetail(Model model, @RequestParam Map map, HttpSession session) {
+		String userNickname = (String) session.getAttribute("userNickname");
+		if (userNickname != null ) {
+			int dotori = storeService.getMyDotori(userNickname);
+			model.addAttribute("dotori", dotori);
+		} else {
+			model.addAttribute("dotori", "");
+		}
+		
 		List tempList = noticeService.getNoticeList(map);
 		
 		String content = ((String) ((Map) tempList.get(0)).get("content")).replace("\r\n", "");
-		
-		
 		model.addAttribute("list",tempList);
 		
 		return "notice/noticeDetail";
