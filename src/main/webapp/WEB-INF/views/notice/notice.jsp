@@ -8,7 +8,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>HelloWorld</title>
+		<title>헬로월드</title>
 		<link  href="/resources/css/index/main.css" rel="stylesheet">
 		<link  href="/resources/css/index/store.css" rel="stylesheet">
 		<link  href="/resources/css/index/notice.css" rel="stylesheet">
@@ -23,52 +23,52 @@
 		         </a>
 		       </div>
 		       <div class="index-header-right">
-	            <h5 class="right" id="userDotori"><img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"><span id="userDotoriCnt">${dotori}</span>개</h5>
-	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
-	            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
-	            <a id="storeLoginMyhome" href="<c:url value='/mnHome/mainView/${sessionScope.userId.userNickname }' />" class="index-a-mnh">내 미니홈피</a>
-	            <a id="storeLoginLogout" href="<c:url value="/index/member/logout" />" class="index-a-logout">로그아웃</a>
-	        </div>
-	      </div>
+		            <h5 class="right" id="userDotori"><img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"><span id="userDotoriCnt">${dotori}</span>개</h5>
+		            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
+		            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
+		            <a id="storeLoginMyhome" href="<c:url value='/mnHome/mainView/${sessionScope.userId.userNickname }' />" class="index-a-mnh">내 미니홈피</a>
+		            <a id="storeLoginLogout" href="<c:url value="/index/member/logout" />" class="index-a-logout">로그아웃</a>
+	        	</div>
+	      	</div>
 		
 			<div class="notice-table-title">
 				<table class="notice-tanle">
-		    	<colgroup>
-		    		<col class="col-choice">
-		        <col class="col-number">
-		        <col class="col-title">
-		        <col class="col-date">
-		    	</colgroup>
-		   		<tr>
-		   			<th>선택</th>
-		        <th>번호</th>
-		        <th>제목</th>
-		        <th>등록일</th>
-		    	</tr>
+			    	<colgroup>
+			    		<col class="col-choice">
+				        <col class="col-number">
+				        <col class="col-title">
+				        <col class="col-date">
+			    	</colgroup>
+			   		<tr>
+			   			<th>선택</th>
+				        <th>번호</th>
+				        <th>제목</th>
+				        <th>등록일</th>
+			    	</tr>
 				</table>
 			</div>
 			<div class="notice-table-title-mid">
 				<table class="notice-tanle">
 					<colgroup>
 						<col class="col-choice">
-		        <col class="col-number">
-		        <col class="col-title">
-		        <col class="col-date">
-		    	</colgroup>
-		    	<c:forEach items="${list}" var="list" varStatus="i">
-		    		<tr class="notice-table-tr">
-						<td><input type="checkbox" class="notice-cbx" form="frm1" name="<c:out value='${i.index}'/>" value="<c:out value='${list.seq}'/>"></td>
-						<td>
-							<c:out value="${list.seq}"/>
-						</td>
-						<td class="notice-td-title" data-seq="<c:out value='${list.seq}'/>">
-							<c:out value="${list.title}"/>
-						</td>
-						<td>
-							<c:out value="${list.date}"/>
-						</td>
-					</tr>
-		    	</c:forEach>
+				        <col class="col-number">
+				        <col class="col-title">
+				        <col class="col-date">
+		    		</colgroup>
+			    	<c:forEach items="${list}" var="list" varStatus="i">
+			    		<tr class="notice-table-tr">
+							<td><input type="checkbox" class="notice-cbx" form="frm1" name="<c:out value='${i.index}'/>" value="<c:out value='${list.seq}'/>"></td>
+							<td>
+								<c:out value="${list.seq}"/>
+							</td>
+							<td class="notice-td-title" data-seq="<c:out value='${list.seq}'/>">
+								<c:out value="${list.title}"/>
+							</td>
+							<td>
+								<c:out value="${list.date}"/>
+							</td>
+						</tr>
+			    	</c:forEach>
 					
 				</table>
 			</div>

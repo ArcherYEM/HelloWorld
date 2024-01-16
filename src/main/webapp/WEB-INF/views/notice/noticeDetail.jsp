@@ -8,7 +8,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>HelloWorld</title>
+		<title>헬로월드</title>
 		<link  href="/resources/css/index/main.css" rel="stylesheet">
 		<link  href="/resources/css/index/store.css" rel="stylesheet">
 		<link  href="/resources/css/index/notice.css" rel="stylesheet">
@@ -22,11 +22,11 @@
 		         <a class="logoATag" href="<c:url value='/'/>">
 		           <img class="index-header-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
 		         </a>
-		       </div>
-		       <div class="index-header-right">
+		      </div>
+		      <div class="index-header-right">
 		            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
 		            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
-		       </div>
+		      </div>
 	   	    </div>
 	      
 			<div class="noticeDetail-container">
@@ -34,7 +34,6 @@
 					<p>공지사항</p>
 				</div>
 				<div class="noticeDetail-content-container">
-					
 					<div class="notice-info-group">
 						<input class="notice-title" type="text" value="${list[0].seq }. ${list[0].title}" readonly>
 						<div class="notice-info">
@@ -48,7 +47,7 @@
 						</div>
 					</div>
 				</div>
-				<form >
+				<form>
 					<div class="btn-container">
 						<div class="btn-left">
 							<input class="nd-btn-list" type="button" id="btnNoticeView" value="목록">					

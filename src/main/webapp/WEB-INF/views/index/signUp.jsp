@@ -7,7 +7,7 @@
 <html>
    <head>
       <meta charset="UTF-8">
-      <title>Hello World</title>
+      <title>헬로월드</title>
       <link  href="/resources/css/index/main.css" rel="stylesheet">
       <link  href="/resources/css/index/signUp.css" rel="stylesheet">
       <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
@@ -18,14 +18,13 @@
         <div class="grid-item"></div>
         
         <div class="grid-item content">
-           <div id="divUserInfo">
-<!--               <div id="signUplogo"> -->
-			<a class="logoATag" href="<c:url value='/'/>">
-            	<img class="index-header-logo otherPage-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
-         	</a>
-         </div>
+        	<div id="divUserInfo">
+				<a class="logoATag" href="<c:url value='/'/>">
+            		<img class="index-header-logo otherPage-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+         		</a>
+        	</div>
             
-              <div class="signUp-title">회원가입</div>
+            <div class="signUp-title">회원가입</div>
               
             <form class="signUp-frame" id="frmSignUp" method="POST" action="/index/member/signUpConfirm">
                <div class="section">

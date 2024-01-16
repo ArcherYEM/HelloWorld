@@ -11,7 +11,7 @@
 	<link  href="/resources/css/index/error.css" rel="stylesheet">
 	<link  href="/resources/css/minihome/fonts.css" rel="stylesheet">
 	<link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
-	<title>Hello World</title>
+	<title>헬로월드</title>
 </head>
 <body>
 	<div class="error-frame font-neo" >

@@ -7,7 +7,7 @@
 		        contentType: 'application/json',
 		        success: function () {
 		            scrollToBottom();
-		            loadCart(); // 장바구니 비우고 난 후에 장바구니 데이터를 다시 로드
+		            loadCart();
 		        },
 		        error: function () {
 		            console.error('Clear cart failed');
@@ -20,8 +20,6 @@
                 type: 'GET',
                 url: "/store/loadCart",
                 success: function (data) {
-                    // 서버에서 받은 데이터를 처리하여 페이지 갱신
-                    // 예시: 장바구니 리스트 갱신
                     updateCart(data);
                 },
                 error: function () {
@@ -32,9 +30,8 @@
 
         function updateCart(cartItems) {
         	 const cartTableBody = $('#cart-list tbody');
-        	 cartTableBody.empty(); // 기존 장바구니 비우기
-
-            // 새로운 장바구니 데이터로 리스트 업데이트
+        	 cartTableBody.empty();
+        	 
             cartItems.forEach(function (item) {
             	const imagePath = "/resources/images/store/storeDotoriIcon.png";
             	const row = '<tr><td>' + item.cate + '</td><td>' + item.name + '</td><td><img id="dotoriIcon" src="' + imagePath + '" alt="' + item.name + '">' + item.price + '</td></tr>';
@@ -74,15 +71,12 @@
         }
         
         function updateDotoriCount() {
-            // 여기에서 서버에서 현재 사용자의 도토리 개수를 가져와서 화면에 업데이트하는 로직을 추가합니다.
-            // AJAX 요청을 사용하여 서버에서 도토리 개수를 가져오고, 화면에 업데이트합니다.
             $.ajax({
                 type: 'POST',
                 url: '/store/updateDotoriCount',
                 data: JSON.stringify(),
                 success: function (result) {
                 	if (result !== undefined) {
-                        console.log('도토리 개수 업데이트 성공');
                         $('#userDotoriCnt').text(result);
                     }
                 },
@@ -103,7 +97,7 @@
 	    }
 	
 	    $(document).ready(function () {
-	        loadCart(); // 페이지 로드 시에 장바구니 데이터 로드
+	        loadCart();
 	
 	        $('.spanPage').on('click', function(){
 	            loadPage($(this).data('page'));
@@ -116,7 +110,6 @@
 	            const productName = $(this).data('product-name');
 	            const productPrice = $(this).data('product-price');
 				
-	            console.log(productCate, productTableCate, productContentPath, productName, productPrice);
 	            addToCart(productCate, productTableCate, productContentPath, productName, productPrice);
 	        });
 	        
@@ -127,7 +120,6 @@
 	            const productName = $(this).data('product-name');
 	            const productPrice = $(this).data('product-price');
 				
-	            console.log(productCate, productTableCate, productName, productContentPath, productPrice);
 	            addToCart(productCate, productTableCate,  productName, productContentPath, productPrice);
 	        });
 	
@@ -139,7 +131,7 @@
 	                data: JSON.stringify({ cate: cate, tableCate: tableCate, name: name,
 	                					contentPath: contentPath, price: price }),
 	                success: function () {
-	                    loadCart(); // 장바구니에 상품 추가 후 다시 로드
+	                    loadCart();
 	                },
 	                error: function () {
 	                    console.error('Ajax request failed');

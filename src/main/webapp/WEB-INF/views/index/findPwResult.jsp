@@ -11,7 +11,7 @@
 	<link  href="/resources/css/index/signUp.css" rel="stylesheet">
 	<link  href="/resources/css/index/find.css" rel="stylesheet">
 	<link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
-	<title>Hello World</title>
+	<title>헬로월드</title>
 </head>
 	
 <body>
@@ -20,34 +20,26 @@
 	  
 	  <div class="grid-item">
 	  	<div id="divUserInfo">
-				<img class="findId-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
-				<div class="findId-title">
-			  	비밀번호 변경
-			  </div>
-			  <div class="find-tag">
+			<img class="findId-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+			<div class="findId-title">비밀번호 변경</div>
+			<div class="find-tag">
 			  	<label for="userPassword">새 비밀번호</label><br>
-					<input type="password" id="userPassword" placeholder="새 비밀번호를 입력하세요." class="widthFull" oninput="checkPasswordMatch()"><br>
-			  </div>
-				<div class="find-tag">
-					<div class="pw-group">
-						<div class="pw-left">
-							<label for="userPassword2">비밀번호 확인</label>
-						</div>
-						<div class="pw-right">
-							<span id="passwordMatchMessage"></span>
-						</div>
+				<input type="password" id="userPassword" placeholder="새 비밀번호를 입력하세요." class="widthFull" oninput="checkPasswordMatch()"><br>
+			</div>
+			<div class="find-tag">
+				<div class="pw-group">
+					<div class="pw-left">
+						<label for="userPassword2">비밀번호 확인</label>
 					</div>
-					<input type="password" id="userPassword2" placeholder="" class="widthFull" oninput="checkPasswordMatch()">
+					<div class="pw-right">
+						<span id="passwordMatchMessage"></span>
+					</div>
 				</div>
+				<input type="password" id="userPassword2" placeholder="" class="widthFull" oninput="checkPasswordMatch()">
+			</div>
 				
 				
 				<div class="find-btn">
-					<%-- <form action="/index/member/home" method="GET">
-						<input type="submit" value="취소"> 
-					</form>
-					<form action="<c:url value='/'/>" method="GET"> 
-						<input type="submit" value="변경"> 
-					</form> --%>
 					<button id="btnCancle">취소</button>
 					<button id="btnSubmit">확인</button>
 				</div>
@@ -55,12 +47,12 @@
 	  	</div>
 	  </div>
 		  	
-	 	<div class="grid-item"></div>  
+	 <div class="grid-item"></div>  
 	 	
-	 	 <form id="frm1" action="/index/member/findPw" method="POST">
-	  	 	<input id="hiddenUserId" type="hidden" name="userId">
-	  	 	<input id="hiddenNewPw" type="hidden" name="newPw">
-	  	 </form>
+	 <form id="frm1" action="/index/member/findPw" method="POST">
+	  	<input id="hiddenUserId" type="hidden" name="userId">
+	  	<input id="hiddenNewPw" type="hidden" name="newPw">
+	 </form>
 	</div>
 	
 	<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
@@ -79,12 +71,9 @@
 	});
 	
 	
-	
 	document.getElementById('btnSubmit').addEventListener('click',function(){
 		document.getElementById('hiddenUserId').value = "${findId}";
 		document.getElementById('hiddenNewPw').value = document.getElementById('userPassword').value;
-		console.log(document.getElementById('hiddenUserId').value);
-		
 		document.getElementById('frm1').submit();
 		
 	});
@@ -95,10 +84,8 @@
 
 	    if (password === confirmPassword) {
 	        document.getElementById('passwordMatchMessage').innerHTML = '<span style="color: #008000;">비밀번호가 일치합니다.</span>';
-	        /* document.getElementById('btnSignUp').disabled = false; */
 	    } else {
 	        document.getElementById('passwordMatchMessage').innerHTML ='<span style="color: red;">비밀번호가 일치하지 않습니다.</span>';
-	        /* document.getElementById('btnSignUp').disabled = true; */
 	    }
 	}
 	

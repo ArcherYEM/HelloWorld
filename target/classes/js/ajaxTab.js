@@ -112,49 +112,42 @@ $(document).on("click", ".menu-content", function (event) {
 $(document).on("click", ".btnDiaryWrite", function (event) {
    event.preventDefault();
    tabName = $(this).data("diarywrite");
-   console.log('TabName:', tabName);
    loadTabContent(tabName); 
 });
 
 $(document).on("click", ".btnAlbumWrite", function (event) {
    event.preventDefault();
    tabName = $(this).data("albumwrite");
-   console.log('TabName:', tabName);
    loadTabContent(tabName); 
 });
 
 $(document).on("click", ".btnBoardWrite", function (event) {
    event.preventDefault();
    tabName = $(this).data("boardwrite");
-   console.log('TabName:', tabName);
    loadTabContent(tabName); 
 });
 
 $(document).on("click", ".btn-boardlist", function (event) {
    event.preventDefault();
    tabName = $(this).data("boardview");
-   console.log('TabName:', tabName);
    loadTabContent(tabName); 
 });
 
 $(document).on("click", ".td-title", function (event) {
    event.preventDefault();
    tabName = $(this).data("boarddetail");
-   console.log('TabName:', tabName);
    loadTabContent(tabName); 
 });
 
 $(document).on("click", ".news-title", function (event) {
 	event.preventDefault();
 	tabName = $(this).data("url");
-	console.log('TabName:', tabName);
 	loadTabContent(tabName); 
 });
 
 $(document).on("click", ".btn-diarylist", function (event) {
    event.preventDefault();
    tabName = $(this).data("diaryview");
-   console.log('TabName:', tabName);
    loadTabContent(tabName); 
 });
 
@@ -162,76 +155,65 @@ $(document).on("click", ".btn-diarylist", function (event) {
 $(document).on("click", ".album-under-left", function (event) {
    event.preventDefault();
    tabName = $(this).data("albumview");
-   console.log('TabName:', tabName);
    loadTabContent(tabName); 
 });
 
 $(document).on("click", ".album-container", function (event) {
    event.preventDefault();
    tabName = $(this).data("albumdetail");
-   console.log('TabName:', tabName);
    loadTabContent(tabName); 
 });
 
 $(document).on("click", "#spanSetting", function (event) {
    event.preventDefault();
    tabName = $(this).data("setting");
-   console.log('TabName:', tabName);
    loadTabContent(tabName); 
 });
 
 $(document).on("click", "#spanSettingFriends", function (event) {
    event.preventDefault();
    tabName = $(this).data("friends");
-   console.log('TabName:', tabName);
    loadTabContent(tabName); 
 });
 
 $(document).on("click", "#spanSettingBgm", function (event) {
    event.preventDefault();
    tabName = $(this).data("bgm");
-   console.log('TabName:', tabName);
    loadTabContent(tabName); 
 });
 
 $(document).on("click", "#spanSettingMenu", function (event) {
    event.preventDefault();
    tabName = $(this).data("menu");
-   console.log('TabName:', tabName);
    loadTabContent(tabName); 
 });
 
 $(document).on("click", "#spanSettingSkin", function (event) {
    event.preventDefault();
    tabName = $(this).data("skin");
-   console.log('TabName:', tabName);
    loadTabContent(tabName); 
 });
 
 $(document).on("click", "#spanSettingDotoriU", function (event) {
    event.preventDefault();
    tabName = $(this).data("dotoriu");
-   console.log('TabName:', tabName);
    loadTabContent(tabName); 
 });
 
 $(document).on("click", "#spanSettingDotoriC", function (event) {
    event.preventDefault();
    tabName = $(this).data("dotoric");
-   console.log('TabName:', tabName);
    loadTabContent(tabName); 
 });
 
 $(document).on("click", ".board-page", function (event) {
    event.preventDefault();
    tabName = $(this).data("page");
-   console.log('TabName:', tabName);
    loadTabContent(tabName); 
 });
 
 $(document).on("click", ".visit-page", function (event) {
 	event.preventDefault();
 	tabName = $(this).data("page");
-	console.log('TabName:', tabName);
 	loadTabContent(tabName); 
 });

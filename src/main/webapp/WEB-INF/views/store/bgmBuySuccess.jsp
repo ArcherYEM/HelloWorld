@@ -6,7 +6,7 @@
 <html lang="ko" style="resizeable: no">
 <head>
 <meta charset="UTF-8">
-<title>프로필 수정</title>
+<title>헬로월드</title>tle>
 <link rel="stylesheet" href="../../../../resources/css/index/order.css" />
 <link rel="stylesheet" href="../../../../resources/css/index/bgm.css" />
 <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">

@@ -7,7 +7,6 @@ function addDiary() {
 
     // txtContent의 값을 가져와서 개행 문자를 제거
     let content = document.getElementById("txtContent").value.replace("\r\n", "");
-    console.log(content);
     
     if((title == null || title.trim() === '') || /^\s*$/.test(title)) {
     	alert('제목을 입력하여 주세요.');
@@ -27,7 +26,6 @@ function addDiary() {
         "userNickname" : userNickname,
         "title" : title
     };
-    console.log(jsonData);
     
     $.ajax({
         method: 'POST',
@@ -37,7 +35,6 @@ function addDiary() {
     }).done(function(json) {
         if(json.resultCode === '1' ){
         	 alert("성공메세지");
-        	 console.log(json);
         	 document.getElementById("btnBoardView").click();
         } else if(json.resultCode === "0"){
             alert("다이어리 작성에 실패했습니다. 다시 시도해주세요.");

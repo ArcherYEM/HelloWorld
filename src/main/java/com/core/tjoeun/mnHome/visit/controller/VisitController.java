@@ -68,14 +68,12 @@ public class VisitController {
 		paramMap.put("targetNickname", userNickname);
 		
 		List<Map> resultList = visitService.selectVisitComment(paramMap);
-		System.out.println("!테스트"+paramMap);
+		
 		for(int i = 0; i < resultList.size(); i++) {
 			Map map2 = resultList.get(i);
 			map2.put("number", ((page-1)*5+(i+1)));
 		}
 		
-		System.out.println("테스트"+resultList);
-		System.out.println("토탈페이지"+totalPage);
 		model.addAttribute("visit",resultList);
 		model.addAttribute("totalPage",totalPage);
 		
@@ -158,8 +156,6 @@ public class VisitController {
 	public Map visitCommentDelete(@RequestBody Map map) {
 		
 		int result = visitService.deleteVisitComment(map);
-		
-		System.out.println("테스트"+result);
 		
 		String returnResult;
 		Map resultMap = new HashMap();

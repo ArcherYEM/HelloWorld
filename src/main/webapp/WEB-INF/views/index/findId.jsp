@@ -11,7 +11,7 @@
 	<link  href="/resources/css/index/find.css" rel="stylesheet">
 	<link  href="/resources/css/index/signUp.css" rel="stylesheet">
 	<link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
-	<title>Hello World</title>
+	<title>헬로월드</title>
 </head>
 	
 <body>
@@ -20,44 +20,29 @@
 	  
 	  <div class="grid-item">
 	  	<div id="divUserInfo">
-				<img class="findId-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
-				<div class="findId-title">
-			  		아이디 찾기
-			  </div>
-			  <div class="find-tag">
+			<img class="findId-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+			<div class="findId-title"> 아이디 찾기 </div>
+			<div class="find-tag">
 			  	<label for="userName">이름</label><br>
-					<input type="text" id="userName" placeholder="이름" class="widthFull"><br>
-				</div>
-				<!-- <div class="find-tag">
-					<label for="userBirth">생년월일</label><br>
-					<input type="text" id="userBirth" placeholder="ex)19940830" class="widthFull">
-				</div> -->
-				<div class="find-tag">
-					<label for="userPhone">연락처</label><br>
-					<input type="text" id="userPhone" placeholder="ex)01012341234" class="widthFull">
-				</div>
+				<input type="text" id="userName" placeholder="이름" class="widthFull"><br>
+			</div>
+			<div class="find-tag">
+				<label for="userPhone">연락처</label><br>
+				<input type="text" id="userPhone" placeholder="ex)01012341234" class="widthFull">
+			</div>
 				
-				<div class="find-btn">
-					
-					<!-- <form action="/index/member/home" method="GET">
-						<input type="submit" value="취소"> 
-					</form>
-					<form action="" method="POST">
-						<input type="submit" value="찾기"> 
-					</form> -->
-					<button id="btnCancle">취소</button>
-					<button id="btnSubmit">찾기</button>
-				</div>
-				
+			<div class="find-btn">
+				<button id="btnCancle">취소</button>
+				<button id="btnSubmit">찾기</button>
+			</div>
 	  	</div>
-	  	
 	  	 <form id="frm1" action="/index/member/afterFindId" method="POST">
 	  	 	<input id="hiddenUserName" type="hidden" name="userName">
 	  	 	<input id="hiddenUserPhone" type="hidden" name="userPhone">
 	  	 </form>
 	  </div>
 		  	
-	 	<div class="grid-item"></div>  
+	 <div class="grid-item"></div>  
 	</div>
 	
 	<script>
