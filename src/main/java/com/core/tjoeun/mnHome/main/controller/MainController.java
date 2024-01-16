@@ -129,17 +129,13 @@ public class MainController {
         Map callSkin = new HashMap();
         callSkin.put("category", "skin");
         callSkin.put("userNickname", userNickname);
-        System.out.println("### userNickname : " + userNickname);
-        System.out.println("### callSkin : " + callSkin);
         
         try {
 	        Map mainSkin = mainService.mainSkin(callSkin);
-	        System.out.println("### mainSkin : " + mainSkin);
         
 	        model.addAttribute("bgProductName", mainSkin.get("productName"));
 	        model.addAttribute("bgCategory", mainSkin.get("category"));
 	        model.addAttribute("bgUserNickname", mainSkin.get("userNickname"));
-	        System.out.println("### model : " + model);
 	        
         } catch (NullPointerException n) {
 	        	model.addAttribute("bgProductName", "rgb(42, 140, 168)");
@@ -151,16 +147,13 @@ public class MainController {
         Map callMenu = new HashMap();
         callMenu.put("category", "menu");
         callMenu.put("userNickname", userNickname);
-        System.out.println("### callMenu : " + callMenu);
         
         try {
         	Map mainMenu = mainService.mainMenu(callMenu);
-        	System.out.println("### mainMenu : " + mainMenu);
         	
         	model.addAttribute("menuProductName", mainMenu.get("productName"));
 	        model.addAttribute("menuCategory", mainMenu.get("category"));
 	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
-	        System.out.println("### menu model : " + model);
 	        
         } catch (NullPointerException n) {
 	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
@@ -175,7 +168,6 @@ public class MainController {
         try {
         	friendCmtList = mainService.selectFriendCmt(map);
         	model.addAttribute("friendCmtList", friendCmtList);
-        	System.out.println("### firendCmtList : " + friendCmtList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
