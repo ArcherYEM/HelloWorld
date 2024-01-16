@@ -80,15 +80,13 @@
 				</form>
 					<input type="button" class="btn-notice" id="btnWrite" value="등록">
 			</div>
-			
 			<!-- paging -->
 	        <div class="notice-paging">
 	            <c:forEach var="page" begin="1" end="${totalPage}">
 	                <span class="spanPage" data-page="${page}">
-	                    [${page}]
+	                    【${page}】
 	                </span>
 	            </c:forEach>
-	            
 	            <form id="frm2" action="<c:url value='/notice/noticeView'/>" method="get">
 					<input type="hidden" name="page" id="page" />
 				</form>
@@ -96,9 +94,7 @@
 	            <form id="frm3" action="<c:url value='/notice/noticeDetail'/>" method="get">
 					<input type="hidden" name="detailSeq" id="detailSeq" />
 				</form>
-		
 	        </div>
-			
 			<div class="bottom-fix">
 				<hr>
 				<h1>team core</h1>
