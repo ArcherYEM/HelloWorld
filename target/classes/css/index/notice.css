@@ -105,6 +105,16 @@
 	margin-left: 10px;
 }
 
+.spanPage {
+	margin: 10px;
+	font-size: 18px;
+}
+
+.spanPage:hover {
+	font-weight: bold;
+	cursor: pointer; 
+	color: blue;
+}
 /* ##### noticeWrite.jsp ##### */
 .notice-write{
 	height: 60px;
