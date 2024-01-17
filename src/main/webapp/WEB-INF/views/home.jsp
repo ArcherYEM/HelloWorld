@@ -317,6 +317,10 @@
            }
         }
      }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 5107747e2458f118ee3750ae60e551e0b2aa7cc6
     function newContent(){
     	let userNickname = '<c:out value="${sessionScope.userId.userNickname}" />';
     	let newContent = document.getElementById('newContent');
