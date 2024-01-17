@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.core.tjoeun.index.member.service.MemberService;
 import com.core.tjoeun.mnHome.main.dao.MainDao;
+import com.core.tjoeun.mnHome.main.service.MainService;
 
 @Controller
 @RequestMapping("/index/member")
@@ -27,6 +28,9 @@ public class MemberController {
 
     @Autowired
     MemberService memberService;
+    
+    @Autowired
+	MainService mainService;
     
     @Value("${default.user.minimi.path}")
     private String defaultMinimi;
@@ -68,8 +72,10 @@ public class MemberController {
                 session.setAttribute("userMinimi", userMinimi);
                 if(userMinimi==null) {
                 	session.setAttribute("userMinimi", defaultMinimi);
-                }                
-            
+                }
+                
+        		resultMap.put("recentContents", memberService.selectNewContent(userNickname));
+        		
                 Cookie userCookie = new Cookie("userEmail", result.get("userEmail").toString());
                 userCookie.setMaxAge(60 * 60 * 24 * 7);
                 userCookie.setPath("/");
@@ -81,6 +87,7 @@ public class MemberController {
             } 
         } catch (Exception e) {
             // 예외 발생 시
+        	resultMap.clear();
             resultMap.put("resultCode", "-1");
             e.printStackTrace();
         }
@@ -227,6 +234,20 @@ public class MemberController {
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String indexHome() {
        return "home";
+    }
+    
+    @RequestMapping(value="/getNew", method=RequestMethod.POST)
+    @ResponseBody
+    public Map getNew(@RequestBody Map map) {
+    	
+    	String userNickname = (String) map.get("userNickname");
+    	Map resultMap = new HashMap();
+    	//새 게시물 갯수 가져오기 
+       resultMap.put("newContent", memberService.selectNewContent(userNickname));
+       //일촌신청 갯수 가져오기
+       resultMap.put("newFriend", memberService.getFriendCount(userNickname));
+       
+       return resultMap;
     }
     
 }
