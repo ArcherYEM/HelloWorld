@@ -96,7 +96,7 @@
 							<div class="login-profile-section3">
 								<span>&#128203;</span>
 								<span>새게시물</span>
-								<span class="login-profile-info-3">0</span>
+								<span class="login-profile-info-3" id="newContent">0</span>
 							</div>
 							<div class="login-profile-section4">
 								<span>&#128149;</span>
@@ -275,23 +275,7 @@
      setInterval(function() {
          moveSlide(1);
      }, 5000); // Change image every 2 seconds
-       
-       $(function() {
-           let userEmail = '<c:out value="${sessionScope.userId.userEmail}" />';
-           let userNickname = '<c:out value="${sessionScope.userId.userNickname}" />';
-           let helloMessage = document.getElementById('helloMessage');
-           let divHome = document.getElementById('divHome');
-           let divLogin = document.getElementById('divLogin');
-           
-           if (userEmail === '') {
-               divHome.style.display = 'block';
-               divLogin.style.display = 'none';
-           } else {
-          	 helloMessage.innerText = userNickname + ' 님 반갑습니다';
-               divHome.style.display = 'none';
-               divLogin.style.display = 'block';
-           }
-       });
+        
     
     document.getElementById('btnLogout').addEventListener('click', function() {
        location.href = "<c:url value="/index/member/logout" />"
@@ -334,9 +318,30 @@
            }
         }
      }
+    
+    function newContent(){
+    	let userNickname = '<c:out value="${sessionScope.userId.userNickname}" />';
+    	let newContent = document.getElementById('newContent');
+    	
+    	let jsonData = {
+    			
+    			"userNickname" : userNickname
+    	};
+    	
+    	$.ajax({
+            method: 'POST',
+            url: "<c:url value='/index/member/newContent' />",
+            contentType: 'application/json',
+            data: JSON.stringify(jsonData)
+         }).done(function (json) {
+        	 newContent.innerText = json.newContent;
+         });
+    	
+    }
 
     window.onload = function () {
         showUserInfo();
+        newContent();
      };
     
 	</script>
