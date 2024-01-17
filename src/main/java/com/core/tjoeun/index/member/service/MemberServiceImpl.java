@@ -200,6 +200,13 @@ public class MemberServiceImpl implements MemberService{
 		Map resultMap = mainDao.selectVisitCnt(userNickname);
 		return (String.valueOf(resultMap.get("todayCnt")));
 	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public int getOnFriendCnt(String userNickname) {
+		int result = memberDao.selectOnFriendCnt(userNickname);
+		return result;
+	}
 
 
 }

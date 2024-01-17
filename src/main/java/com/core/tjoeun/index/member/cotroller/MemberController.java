@@ -240,6 +240,7 @@ public class MemberController {
        resultMap.put("newContent", memberService.selectNewContent(userNickname));
        resultMap.put("newFriend", memberService.getFriendCount(userNickname));
        resultMap.put("todayCnt", memberService.getTodayVisit(userNickname));
+       resultMap.put("onFriendCnt", memberService.getOnFriendCnt(userNickname));
        
        
        return resultMap;
