@@ -41,7 +41,9 @@
 			<a class="storeAtag" href="/store/bgmView">bgm</a>
 		</div>
 		<div class="products">
-			<h3>메뉴 상품 목록입니다.</h3>
+			<div class="product-title">
+	        	메뉴 상품 목록
+	        </div>
 			<div class="content-container">
 				<div class="productList">
 					<div class="divOneProduct" data-product-cate="메뉴" data-product-table-cate="menu" 

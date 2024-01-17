@@ -44,7 +44,9 @@
 		</div>
 		
 		<div class="products">
-			<h3>스킨 상품 목록입니다.</h3>
+			<div class="product-title">
+	        	스킨 상품 목록
+	        </div>
 			<div class="content-container">
 				<div class="productList">
 					<div class="divOneProduct" data-product-cate="스킨" data-product-table-cate="skin" 
