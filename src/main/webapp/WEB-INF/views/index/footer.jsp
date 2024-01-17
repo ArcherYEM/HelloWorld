@@ -7,19 +7,30 @@
 </head>
 <body>
 	<div class="footer">
-		<div>Made By Core 2024.</div>
+		<div class="footer-title">
+			<span>https://github.com/ArcherYEM/HelloWorld.git</span>
+			<span>Made By Core 2024.</span>
+		</div>
 		<div class="grid-container">
 			<div class="grid-item">
-				양은모
+				<span>양은모</span>
+				<span>yem@gmail.com</span>
+				<span>https://github.com/ArcherYEM</span>
 			</div>
 			<div class="grid-item">
-				이정은
+				<span>이정은</span>
+				<span>yem@gmail.com</span>
+				<span>https://github.com/ArcherYEM</span>
 			</div>
 			<div class="grid-item">
-				이진우
+				<span>이진우</span>
+				<span>yem@gmail.com</span>
+				<span>https://github.com/ArcherYEM</span>
 			</div>  
 			<div class="grid-item">
-				채승원
+				<span>채승원</span>
+				<span>yem@gmail.com</span>
+				<span>https://github.com/ArcherYEM</span>
 			</div>
 		</div>
 	</div>
