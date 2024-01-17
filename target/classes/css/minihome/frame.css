@@ -90,8 +90,10 @@ body a{
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  max-height: 370px;
-  min-height: 369px;
+  max-width: 208px;
+  min-width:207.9px;
+  min-height: 368.9px;
+  max-height: 369px;
 }
 
 .profile-image {
@@ -104,7 +106,7 @@ body a{
 .profile-image-img {
   width:auto;
   height:auto;
-  max-width: 100%; /* 가로 최대 너비를 100%로 설정하여 원본 비율 유지 */
+  max-width: 100%;
   max-height: 100%;
   display: block;
   margin : 0 auto;  
@@ -191,6 +193,8 @@ body a{
   padding: 1rem;
   overflow-y: auto;
   max-height: calc(100vh - 20px);
+  max-width: 538px;
+  min-width: 537.9px;
 }
 
 .box-title {
