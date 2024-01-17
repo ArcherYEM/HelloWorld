@@ -19,9 +19,7 @@
 		<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	</head>
 	<body>
-	
 		<div class="index-frame">
-		
 			<div class="divIndexMenu index-header">
 		      <div class="index-header-left">
 		         <a class="logoATag" href="<c:url value='/'/>">
@@ -38,39 +36,31 @@
 		            <a id="storeLoginLogout" href="<c:url value="/index/member/logout" />" class="index-a-logout">로그아웃</a>
 	        	</div>
 	      	</div>
-			
 			<div class="notice-write">
 				<p>공지사항 글쓰기 </p>
 			</div>
-			
 			<div class="notice-write-group">
 				<input class="notice-write-title" id="noticeTitle" type="text" value="<c:out value='${title}'/>" form = "frmNotice" name="title">
 				<textarea class="notice-write-content" name="content" id="txtContent" rows="10" cols="100" form = "frmNotice" >
 					<c:out value='${content}'/>
 				</textarea>
 			</div>
-			
 			<form>
 				<div class="btn-container">
 					<input class="nw-btn-list" type="button" id="btnNoticeView" value="목록">
 					<input class="nw-btn-write" type="button" id="btnNoticeWrite" value="작성">
 				</div>
 			</form>
-			
-			
 			<form id="noticeUpdate" method="POST" action="/notice/modify">
 				<input type="hidden" type="text" name="title" id="noticeHiddenTitle" >
 				<input type="hidden" type="text" name="content" id="noticeHiddenContent" >
 				<input type="hidden" type="text" name="seq" id="noticeSeq" value="<c:out value='${seq }'/>">
 			</form>
-			
 			<div class="bottom-fix">
 				<hr>
 				<h1>team core</h1>
 			</div>
-				
 		</div>
-			
 		<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>	
 		<script>
 	function openMiniHomepage() {
