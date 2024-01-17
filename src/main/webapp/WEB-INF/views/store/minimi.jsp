@@ -31,7 +31,7 @@
 	            <a id="linkMnh" href="#" 
 	            	class="index-a-mnh" onclick="openMiniHomepage()">내 미니홈피
 	            </a>
-	            <a id="storeLoginLogout" href="<c:url value="/index/member/logout" />" class="index-a-logout">로그아웃</a>
+	            <a id="storeLoginLogout" href="<c:url value="/index/member/logout" />" class="index-a-logout" id="linkLogout">로그아웃</a>
 	        </div>
 	    </div>
 	
@@ -127,7 +127,6 @@
 		location.href = "<c:url value="/index/member/logout" />"
 	    location.reload();
 	}
-
 	</script>
 	<script>
 		window.onload = function() {
@@ -178,7 +177,47 @@
 	        }
 	        
 		}
-	
+		showUserInfo();
+		function showUserInfo() {
+		    let userEmail = '<c:out value="${sessionScope.userId.userEmail}" />';
+		    let linkMnh = document.getElementById('linkMnh');
+		    let linkLogout = document.getElementById('linkLogout');
+		    let userDotoriElement = document.getElementById('userDotori');
+		    let userDotoriCnt = '${dotori}';
+		    let helloMessage = document.getElementById('helloMessage');
+		    let divHome = document.getElementById('divHome');
+		    let divLogin = document.getElementById('divLogin');
+		    console.log('userEmail : ' + userEmail);
+
+		    // userEmail이 빈 문자열인 경우
+		    if (userEmail === '') {
+		        divHome.style.display = 'none';
+		    } else {
+		        divHome.style.display = 'block';
+		    }
+
+		    if (userEmail !== '') {
+		       linkMnh.style.display = 'block';
+		       linkLogout.style.display = 'block';
+		       divLogin.style.display = 'block';
+		       document.getElementById('indexDotoriImg').style.display = 'inline-block';
+		    } else {
+		        linkMnh.style.display = 'none';
+		        linkLogout.style.display = 'none';
+		        divLogin.style.display = 'none';
+		        document.getElementById('indexDotoriImg').style.display = 'none';
+		    }
+
+		    if (userDotoriElement) {
+		       if (userDotoriCnt.trim() !== '' && userDotoriCnt !== 'null') {
+		           userDotoriElement.innerHTML = '<img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"> ' + userDotoriCnt + ' 개';
+		           userDotoriElement.style.display = 'block';
+		       } else {
+		           userDotoriElement.innerHTML = '<img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"> 0 개';
+		           userDotoriElement.style.display = 'none';
+		       }
+		    }
+		}
 		document.getElementById('btnCartClear').addEventListener('click',function() {
 			clearCart();
 		});
@@ -189,7 +228,6 @@
 	        enlargeAndFadeOut(this);
 	    });
 	});
-
 	function enlargeAndFadeOut(image) {
 	    image.style.transform = 'scale(1.5)';
 	    image.style.opacity = '0';
