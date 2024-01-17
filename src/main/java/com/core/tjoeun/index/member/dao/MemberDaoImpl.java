@@ -128,7 +128,7 @@ public class MemberDaoImpl implements MemberDao {
 	}
 	
 	@Override
-	public int selectOnFriendCnt(String userNickname) {
+	public Map selectOnFriendCnt(String userNickname) {
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
 		
 		return mapper.selectOnFriendCnt(userNickname);

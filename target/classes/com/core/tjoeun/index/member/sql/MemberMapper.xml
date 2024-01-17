@@ -52,8 +52,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	where userNickname = #{userNickname}
     </update>
    
-    <select id="selectOnFriendCnt" parameterType="String" resultType="int">
-    	SELECT count(*)
+    <select id="selectOnFriendCnt" parameterType="String" resultType="map">
+    	SELECT count(*) as count, userNickname
 		FROM (
 		    SELECT f.friendNickname AS userNickname
 		    FROM friends f
