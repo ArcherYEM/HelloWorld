@@ -33,7 +33,7 @@
 	<!-- mp3 setting -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/sounds/**" location="/resources/sound/" />
-	<resources mapping="/download/**" location="file:/home/ubuntu/apache-tomcat-8.5.98/webapps/download/" />
+	<!-- <resources mapping="/download/**" location="file:/home/ubuntu/apache-tomcat-8.5.98/webapps/download/" /> -->
 	
 
 </beans:beans>
