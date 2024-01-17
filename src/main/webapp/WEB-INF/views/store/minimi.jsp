@@ -15,6 +15,7 @@
 	    <script src="../../../../resources/js/jquery-3.7.1.min.js"></script>
 	    <script src="<c:url value="/resources/js/storeCart.js" />"></script>
 	</head>
+	
 	<body>
 	<div class="index-frame">
 	    <div class="divIndexMenu index-header">
@@ -33,6 +34,7 @@
 	            <a id="storeLoginLogout" href="<c:url value="/index/member/logout" />" class="index-a-logout">로그아웃</a>
 	        </div>
 	    </div>
+	
 	    <div id="divHiUser">
 	        <a class="storeAtag present" href="/store/minimiView">미니미</a>
 	        <a class="storeAtag" href="/store/skinView">스킨</a>
@@ -40,6 +42,7 @@
 	        <a class="storeAtag" href="/store/dotoriView">도토리</a>
 	        <a class="storeAtag" href="/store/bgmView">bgm</a>
 	    </div>
+	
 	    <div class="products">
 	        <div class="product-title">
 	        	미니미 상품 목록
@@ -62,6 +65,7 @@
 						</div>
 				    </c:forEach>
 				</div>
+				
 				<div class="cart-widget">
 				  <h2>장바구니</h2>
 				    <div class="cart-list-over">
@@ -73,6 +77,7 @@
 				                    <th>가격</th>
 				                </tr>
 				            </thead>
+				            <tbody></tbody>
 				        </table>
 				    </div>
 				  <div class="cart-list-under">
@@ -122,9 +127,30 @@
 		location.href = "<c:url value="/index/member/logout" />"
 	    location.reload();
 	}
+
 	</script>
 	<script>
 		window.onload = function() {
+			var currentPage = getParameterByName('page');
+	        var pageLinks = document.querySelectorAll('.spanPage');
+	        
+	        for (var i = 0; i < pageLinks.length; i++) {
+	            var pageLink = pageLinks[i];
+	            var pageNumber = pageLink.getAttribute('data-page');
+
+	            if (pageNumber === currentPage) {
+	                pageLink.style.color = 'blue';
+	                pageLink.style.fontWeight = 'bold';
+	            }
+	        }
+	        
+	        if (currentPage === null) {
+	            var firstPageLink = document.querySelector('.spanPage[data-page="1"]');
+	            if (firstPageLink) {
+	                firstPageLink.style.color = 'blue';
+	            }
+	        }
+		
 	        let userDotoriElement = document.getElementById('userDotori');
 	        let storeLoginMyhome = document.getElementById('storeLoginMyhome');
 	        let storeLoginLogout = document.getElementById('storeLoginLogout');
@@ -132,13 +158,25 @@
 	
 	        if (userDotoriCnt.trim() !== '') {
 	            userDotoriElement.style.display = 'block';
-	            storeLoginMyhome.style.display = 'block';
 	            storeLoginLogout.style.display = 'block';
 	        } else {
 	            userDotoriElement.style.display = 'none';
 	            storeLoginMyhome.style.display = 'none';
 	            storeLoginLogout.style.display = 'none';
 	        }
+	        
+	        function getParameterByName(name, url) {
+	            if (!url) {
+	                url = window.location.href;
+	            }
+	            name = name.replace(/[\[\]]/g, '\\$&');
+	            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+	                results = regex.exec(url);
+	            if (!results) return null;
+	            if (!results[2]) return '';
+	            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+	        }
+	        
 		}
 	
 		document.getElementById('btnCartClear').addEventListener('click',function() {
@@ -164,43 +202,6 @@
 	        image.style.transition = 'none';
 	    });
 	}
-	</script>
-	<!-- JavaScript 코드 추가 -->
-	<script>
-	    window.onload = function() {
-	        var currentPage = getParameterByName('page');
-	        var pageLinks = document.querySelectorAll('.spanPage');
-	
-	        for (var i = 0; i < pageLinks.length; i++) {
-	            var pageLink = pageLinks[i];
-	            var pageNumber = pageLink.getAttribute('data-page');
-	
-	            if (pageNumber === currentPage) {
-	                pageLink.style.color = 'blue';
-	                pageLink.style.fontWeight = 'bold';
-	            }
-	        }
-	        
-	        if (currentPage === null) {
-	            var firstPageLink = document.querySelector('.spanPage[data-page="1"]');
-	            if (firstPageLink) {
-	                firstPageLink.style.color = 'blue';
-	            }
-	        }
-	    }
-	
-	    // URL에서 파라미터 값을 추출하는 함수입니다.
-	    function getParameterByName(name, url) {
-	        if (!url) {
-	            url = window.location.href;
-	        }
-	        name = name.replace(/[\[\]]/g, '\\$&');
-	        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-	            results = regex.exec(url);
-	        if (!results) return null;
-	        if (!results[2]) return '';
-	        return decodeURIComponent(results[2].replace(/\+/g, ' '));
-	    }
 	</script>
 	</body>
 </html>
