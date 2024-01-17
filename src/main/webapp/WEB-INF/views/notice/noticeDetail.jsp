@@ -27,7 +27,7 @@
 		            <h5 class="right" id="userDotori"><img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"><span id="userDotoriCnt">${dotori}</span>개</h5>
 		            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
 		            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
-		            <a id="linkMnh" href="#" 
+		            <a id="storeLoginMyhome" href="#" 
 		            	class="index-a-mnh" onclick="openMiniHomepage()">내 미니홈피
 		            </a>
 		            <a id="storeLoginLogout" href="<c:url value="/index/member/logout" />" class="index-a-logout">로그아웃</a>
@@ -57,9 +57,15 @@
 						<div class="btn-left">
 							<input class="nd-btn-list" type="button" id="btnNoticeView" value="목록">					
 						</div>
+						<c:if test="${isAdmin eq '1'}">	
+							<c:set var="type" value="button"></c:set>
+						</c:if>
+						<c:if test="${isAdmin eq '0'}">	
+							<c:set var="type" value="hidden"></c:set>
+						</c:if>
 						<div class="btn-right">
-							<input class="nd-btn-update" type="button" id="btnNoticeUpdate" value="수정">
-							<input class="nd-btn-delete" type="button" id="btnNoticeDelete" value="삭제">				
+							<input class="nd-btn-update" type="${type}" id="btnNoticeUpdate" value="수정">
+							<input class="nd-btn-delete" type="${type}" id="btnNoticeDelete" value="삭제">				
 						</div>
 					</div>
 				</form>
@@ -144,6 +150,29 @@
 				}
 				
 			});
+			
+			window.onload = function() {
+		        let userDotoriElement = document.getElementById('userDotori');
+		        let storeLoginMyhome = document.getElementById('storeLoginMyhome');
+		        let storeLoginLogout = document.getElementById('storeLoginLogout');
+		        let btnDelete = document.getElementById('btnDelete');
+		        let btnWrite = document.getElementById('btnWrite');
+		        let userDotoriCnt = '<c:out value="${dotori}" />' || '';
+		
+		        if (userDotoriCnt.trim() !== '') {
+		            userDotoriElement.style.display = 'block';
+		            storeLoginMyhome.style.display = 'block';
+		            storeLoginLogout.style.display = 'block';
+		            btnDelete.style.display = 'block';
+		            btnWrite.style.display = 'block';
+		        } else {
+		            userDotoriElement.style.display = 'none';
+		            storeLoginMyhome.style.display = 'none';
+		            storeLoginLogout.style.display = 'none';
+		            btnDelete.style.display = 'none';
+		            btnWrite.style.display = 'none';
+		        }
+			}
 			
 			
 		</script>

@@ -26,7 +26,7 @@
 		            <h5 class="right" id="userDotori"><img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"><span id="userDotoriCnt">${dotori}</span>개</h5>
 		            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
 		            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
-		            <a id="linkMnh" href="#" 
+		            <a id="storeLoginMyhome" href="#" 
 		            	class="index-a-mnh" onclick="openMiniHomepage()">내 미니홈피
 		            </a>
 		            <a id="storeLoginLogout" href="<c:url value="/index/member/logout" />" class="index-a-logout">로그아웃</a>
@@ -36,13 +36,17 @@
 			<div class="notice-table-title">
 				<table class="notice-tanle">
 			    	<colgroup>
-			    		<col class="col-choice">
+				    	<c:if test="${isAdmin eq '1'}">	
+				    		<col class="col-choice">
+				    	</c:if>
 				        <col class="col-number">
 				        <col class="col-title">
 				        <col class="col-date">
 			    	</colgroup>
 			   		<tr>
-			   			<th>선택</th>
+				   		<c:if test="${isAdmin eq '1'}">	
+				   			<th>선택</th>
+				   		</c:if>
 				        <th>번호</th>
 				        <th>제목</th>
 				        <th>등록일</th>
@@ -52,14 +56,21 @@
 			<div class="notice-table-title-mid">
 				<table class="notice-tanle">
 					<colgroup>
-						<col class="col-choice">
+						<c:if test="${isAdmin eq '1'}">	
+							<col class="col-choice">
+						</c:if>
 				        <col class="col-number">
 				        <col class="col-title">
 				        <col class="col-date">
 		    		</colgroup>
 			    	<c:forEach items="${list}" var="list" varStatus="i">
 			    		<tr class="notice-table-tr">
-							<td><input type="checkbox" class="notice-cbx" form="frm1" name="<c:out value='${i.index}'/>" value="<c:out value='${list.seq}'/>"></td>
+			    			
+							<c:if test="${isAdmin eq '1'}">									
+								<td>
+									<input type="checkbox" class="notice-cbx" form="frm1" name="<c:out value='${i.index}'/>" value="<c:out value='${list.seq}'/>">
+								</td>
+							</c:if>
 							<td>
 								<c:out value="${list.seq}"/>
 							</td>
@@ -74,12 +85,19 @@
 					
 				</table>
 			</div>
+			<c:if test="${isAdmin eq '1'}">	
+				<c:set var="type" value="button"></c:set>
+			</c:if>
+			<c:if test="${isAdmin eq '0'}">	
+				<c:set var="type" value="hidden"></c:set>
+			</c:if>
 			<div class="btnNoticeGroup">
 				<form id="frm1" method="POST" action="/notice/noticeDelete">
-					<input type="button" class="btn-notice" id="btnDelete" value="삭제">
+					<input type="${type}" class="btn-notice" id="btnDelete" value="삭제">
 				</form>
-					<input type="button" class="btn-notice" id="btnWrite" value="등록">
+					<input type="${type}" class="btn-notice" id="btnWrite" value="등록">
 			</div>
+			
 			<!-- paging -->
 	        <div class="notice-paging">
 	            <c:forEach var="page" begin="1" end="${totalPage}">
