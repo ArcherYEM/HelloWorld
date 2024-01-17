@@ -186,8 +186,14 @@ public class MemberServiceImpl implements MemberService{
   			recentContents += Integer.parseInt(String.valueOf(tabs.get("RecentAlbumCount")));
   			recentContents += Integer.parseInt(String.valueOf(tabs.get("RecentVisitCount")));
   		}
-  		System.out.println("###recentContents : " + recentContents);
   		return recentContents;
+	}
+
+	@Override
+	public String getFriendCount(String userNickname) {
+		Map resultMap = memberDao.getFriendCount(userNickname);
+		
+		return (String.valueOf(resultMap.get("totalCount")));
 	}
 
 

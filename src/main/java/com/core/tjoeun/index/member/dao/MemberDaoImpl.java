@@ -182,4 +182,11 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return mapper.selectUserGender(userNickname);
 	}
+
+	@Override
+	public Map getFriendCount(String userNickname) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		
+		return mapper.getFriendCount(userNickname);
+	}
 }

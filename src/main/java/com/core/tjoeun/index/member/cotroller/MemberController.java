@@ -236,15 +236,17 @@ public class MemberController {
        return "home";
     }
     
-    @RequestMapping(value="/newContent", method=RequestMethod.POST)
+    @RequestMapping(value="/getNew", method=RequestMethod.POST)
     @ResponseBody
-    public Map newContent(@RequestBody Map map) {
+    public Map getNew(@RequestBody Map map) {
     	
     	String userNickname = (String) map.get("userNickname");
     	Map resultMap = new HashMap();
-    	
+    	//새 게시물 갯수 가져오기 
        resultMap.put("newContent", memberService.selectNewContent(userNickname));
-
+       //일촌신청 갯수 가져오기
+       resultMap.put("newFriend", memberService.getFriendCount(userNickname));
+       
        return resultMap;
     }
     
