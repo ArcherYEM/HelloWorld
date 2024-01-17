@@ -49,4 +49,6 @@ public interface MemberMapper {
 	public int insertVisitCnt(String userNickname);
 	
 	public String selectUserGender(String userNickname);
+	
+	public Map getFriendCount(String userNickname);
 }

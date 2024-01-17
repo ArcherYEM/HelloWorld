@@ -50,4 +50,6 @@ public interface MemberDao {
 	
 	public String selectUserGender(String userNickname);
 	
+	public Map getFriendCount(String userNickname);
+	
 }
