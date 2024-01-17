@@ -80,7 +80,6 @@ public class StoreController {
 			, @RequestParam("price") String dotoriPrice
 			, HttpSession session, HttpServletRequest req) {
 
-		
 		Map userMap = new HashMap();
 		
 		session = req.getSession();
@@ -113,7 +112,6 @@ public class StoreController {
 			session = req.getSession();
 			userMap = (Map) session.getAttribute("userId");
 			String userNickname = (String) userMap.get("userNickname");
-			
 			
 			List<Map> bgm = storeService.getBgmList(map);
 			model.addAttribute("bgmInfo", bgm);
@@ -157,14 +155,12 @@ public class StoreController {
 	    }
 	    return "/store/bgmBuy";
 	}
-	
 
 	@RequestMapping(value = "/store/bgmBuyOk", method = RequestMethod.POST)
 	public String bgmBuyOk(@RequestParam(value = "selectedData", required = false) String selectedData,
             @RequestParam(value = "totalPrice", required = false) int totalPrice,
             HttpSession session, HttpServletRequest req, Model model) {
 		
-        
         Map userMap = new HashMap();
         session = req.getSession();
 		userMap = (Map) session.getAttribute("userId");
@@ -189,7 +185,6 @@ public class StoreController {
 	            		String getTitle = titleMap.get("title");
 	            		myBgmTitle.add( getTitle);
 	            	}
-	            	
 	            	
 	            	ObjectMapper objectMapper = new ObjectMapper();
 	                List<Map<String, String>> bgmList = objectMapper.readValue(selectedData, new TypeReference<List<Map<String, String>>>(){});
@@ -218,9 +213,7 @@ public class StoreController {
 	                    }
 	                    
 	                }
-	                
 	                // totalMap 에 있는 cartBgmTitle 과 보유중인 myBgmTitle 비교
-	                
 	               List<String> cartBgmTitle = new ArrayList<>();  // 장바구니 bgm list 를 담을 Map
 	               for (int i = 0; i < totalMap.size(); i++) {
 	            	   Map<String, Object> tempList = totalMap.get(i);
@@ -228,14 +221,11 @@ public class StoreController {
 	            	   cartBgmTitle.add(getTitle);
 	               }
 	               
-	                
 	                List<String> comparison = new ArrayList<>(); // 전체 bgm list 를 담을 Map
 	                comparison.addAll(myBgmTitle);
 	                comparison.addAll(cartBgmTitle);
 	                
-	                
 	                Collections.sort(comparison);
-	                
 	                
 	                String duplicatedBgm = null;
 	                
