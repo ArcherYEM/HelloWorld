@@ -28,7 +28,7 @@
 				<h5 class="right" id="userDotori"><img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"><span id="userDotoriCnt">${dotori}</span>개</h5>
 	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
 	            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
-	            <a id="linkMnh" href="#" 
+	            <a id="storeLoginMyhome" href="#" 
 	            	class="index-a-mnh" onclick="openMiniHomepage()">내 미니홈피
 	            </a>
 	            <a id="storeLoginLogout" href="<c:url value="/index/member/logout" />" class="index-a-logout">로그아웃</a>
@@ -182,27 +182,80 @@
 	    location.reload();
 	}
 	</script>
-		<script>
-			window.onload = function() {
-		        let userDotoriElement = document.getElementById('userDotori');
-		        let storeLoginMyhome = document.getElementById('storeLoginMyhome');
-		        let storeLoginLogout = document.getElementById('storeLoginLogout');
-		        let userDotoriCnt = '<c:out value="${dotori}" />' || '';
+	<script>
+		window.onload = function() {
+			var currentPage = getParameterByName('page');
+	        var pageLinks = document.querySelectorAll('.spanPage');
+	        
+	        for (var i = 0; i < pageLinks.length; i++) {
+	            var pageLink = pageLinks[i];
+	            var pageNumber = pageLink.getAttribute('data-page');
+
+	            if (pageNumber === currentPage) {
+	                pageLink.style.color = 'blue';
+	                pageLink.style.fontWeight = 'bold';
+	            }
+	        }
+	        
+	        if (currentPage === null) {
+	            var firstPageLink = document.querySelector('.spanPage[data-page="1"]');
+	            if (firstPageLink) {
+	                firstPageLink.style.color = 'blue';
+	            }
+	        }
 		
-		        if (userDotoriCnt.trim() !== '') {
-		            userDotoriElement.style.display = 'block';
-		            storeLoginMyhome.style.display = 'block';
-		            storeLoginLogout.style.display = 'block';
-		        } else {
-		            userDotoriElement.style.display = 'none';
-		            storeLoginMyhome.style.display = 'none';
-		            storeLoginLogout.style.display = 'none';
-		        }
-			}
-		
-			document.getElementById('btnCartClear').addEventListener('click',function() {
-				clearCart();
-			});
-		</script>
+	        let userDotoriElement = document.getElementById('userDotori');
+	        let storeLoginMyhome = document.getElementById('storeLoginMyhome');
+	        let storeLoginLogout = document.getElementById('storeLoginLogout');
+	        let userDotoriCnt = '<c:out value="${dotori}" />' || '';
+	
+	        if (userDotoriCnt.trim() !== '') {
+	            userDotoriElement.style.display = 'block';
+	            storeLoginLogout.style.display = 'block';
+	        } else {
+	            userDotoriElement.style.display = 'none';
+	            storeLoginMyhome.style.display = 'none';
+	            storeLoginLogout.style.display = 'none';
+	        }
+	        
+	        function getParameterByName(name, url) {
+	            if (!url) {
+	                url = window.location.href;
+	            }
+	            name = name.replace(/[\[\]]/g, '\\$&');
+	            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+	                results = regex.exec(url);
+	            if (!results) return null;
+	            if (!results[2]) return '';
+	            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+	        }
+	        
+		}
+		showUserInfo();
+		function showUserInfo() {
+		    let userEmail = '<c:out value="${sessionScope.userId.userEmail}" />';
+		    let userDotoriElement = document.getElementById('userDotori');
+		    let userDotoriCnt = '${dotori}';
+
+		    if (userEmail.trim() !== '') {
+		       document.getElementById('indexDotoriImg').style.display = 'inline-block';
+		    } else {
+		        document.getElementById('indexDotoriImg').style.display = 'none';
+		    }
+
+		    if (userDotoriElement) {
+		       if (userDotoriCnt.trim() !== '' && userDotoriCnt !== 'null') {
+		           userDotoriElement.innerHTML = '<img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"> ' + userDotoriCnt + ' 개';
+		           userDotoriElement.style.display = 'block';
+		       } else {
+		           userDotoriElement.innerHTML = '<img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"> 0 개';
+		           userDotoriElement.style.display = 'none';
+		       }
+		    }
+		}
+		document.getElementById('btnCartClear').addEventListener('click',function() {
+			clearCart();
+		});
+	</script>
 	</body>
 </html>
