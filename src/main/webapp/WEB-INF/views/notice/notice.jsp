@@ -113,10 +113,11 @@
 					<input type="hidden" name="detailSeq" id="detailSeq" />
 				</form>
 	        </div>
+	        </div>
 			<div class="bottom-fix">
 				<jsp:include page="/WEB-INF/views/index/footer.jsp"></jsp:include>
 			</div>
-		</div>
+		
 		<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
 		<script>
 	function openMiniHomepage() {
