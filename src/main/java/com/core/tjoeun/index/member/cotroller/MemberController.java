@@ -55,7 +55,6 @@ public class MemberController {
                 session.setAttribute("userNickname", result.get("userNickname"));                
                 session.setAttribute("userEmail", result.get("userEmail"));                
                 session.setAttribute("friendCnt", result.get("friendCnt"));                
-                session.setAttribute("todayCnt", result.get("todayCnt"));                
 
                 resultMap.put("resultCode", "1");
                 resultMap.put("userEmail", result.get("userEmail"));
@@ -63,7 +62,6 @@ public class MemberController {
                 resultMap.put("userNickname", result.get("userNickname"));
                 resultMap.put("userDotoriCnt", result.get("currentDotori"));
                 resultMap.put("friendCnt", result.get("friendCnt"));
-                resultMap.put("todayCnt", result.get("todayCnt"));
                 
                 userNickname = (String) result.get("userNickname");
                 String userMinimi = memberService.selectUserMinimi(userNickname);
@@ -74,7 +72,6 @@ public class MemberController {
                 	session.setAttribute("userMinimi", defaultMinimi);
                 }
                 
-        		resultMap.put("recentContents", memberService.selectNewContent(userNickname));
         		
                 Cookie userCookie = new Cookie("userEmail", result.get("userEmail").toString());
                 userCookie.setMaxAge(60 * 60 * 24 * 7);
@@ -246,6 +243,9 @@ public class MemberController {
        resultMap.put("newContent", memberService.selectNewContent(userNickname));
        //일촌신청 갯수 가져오기
        resultMap.put("newFriend", memberService.getFriendCount(userNickname));
+       //오늘 방문자 가져오기 
+       resultMap.put("todayCnt", memberService.getTodayVisit(userNickname));
+       
        
        return resultMap;
     }

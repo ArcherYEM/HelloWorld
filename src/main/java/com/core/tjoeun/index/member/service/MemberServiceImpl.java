@@ -78,10 +78,7 @@ public class MemberServiceImpl implements MemberService{
            
            selectMap.put("friendCnt", memberDao.selectOnFriendCnt((String) selectMap.get("userNickname"))) ;
            
-           Map visitCntMap = new HashMap();
-           visitCntMap = mainDao.selectVisitCnt((String) selectMap.get("userNickname"));
            
-           selectMap.put("todayCnt", visitCntMap.get("todayCnt"));
            // 로그인 성공 시, 사용자 정보 반환
             return selectMap;
         } else {
@@ -190,10 +187,18 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public String getFriendCount(String userNickname) {
 		Map resultMap = memberDao.getFriendCount(userNickname);
 		
 		return (String.valueOf(resultMap.get("totalCount")));
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public String getTodayVisit(String userNickname) {
+		Map resultMap = mainDao.selectVisitCnt(userNickname);
+		return (String.valueOf(resultMap.get("todayCnt")));
 	}
 
 
