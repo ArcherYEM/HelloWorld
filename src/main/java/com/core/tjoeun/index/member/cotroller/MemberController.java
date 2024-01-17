@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.core.tjoeun.index.member.service.MemberService;
 import com.core.tjoeun.mnHome.main.dao.MainDao;
+import com.core.tjoeun.mnHome.main.service.MainService;
 
 @Controller
 @RequestMapping("/index/member")
@@ -27,6 +28,9 @@ public class MemberController {
 
     @Autowired
     MemberService memberService;
+    
+    @Autowired
+	MainService mainService;
     
     @Value("${default.user.minimi.path}")
     private String defaultMinimi;
@@ -51,7 +55,6 @@ public class MemberController {
                 session.setAttribute("userNickname", result.get("userNickname"));                
                 session.setAttribute("userEmail", result.get("userEmail"));                
                 session.setAttribute("friendCnt", result.get("friendCnt"));                
-                session.setAttribute("todayCnt", result.get("todayCnt"));                
 
                 resultMap.put("resultCode", "1");
                 resultMap.put("userEmail", result.get("userEmail"));
@@ -59,7 +62,6 @@ public class MemberController {
                 resultMap.put("userNickname", result.get("userNickname"));
                 resultMap.put("userDotoriCnt", result.get("currentDotori"));
                 resultMap.put("friendCnt", result.get("friendCnt"));
-                resultMap.put("todayCnt", result.get("todayCnt"));
                 
                 userNickname = (String) result.get("userNickname");
                 String userMinimi = memberService.selectUserMinimi(userNickname);
@@ -68,8 +70,9 @@ public class MemberController {
                 session.setAttribute("userMinimi", userMinimi);
                 if(userMinimi==null) {
                 	session.setAttribute("userMinimi", defaultMinimi);
-                }                
-            
+                }
+                
+        		
                 Cookie userCookie = new Cookie("userEmail", result.get("userEmail").toString());
                 userCookie.setMaxAge(60 * 60 * 24 * 7);
                 userCookie.setPath("/");
@@ -81,6 +84,7 @@ public class MemberController {
             } 
         } catch (Exception e) {
             // 예외 발생 시
+        	resultMap.clear();
             resultMap.put("resultCode", "-1");
             e.printStackTrace();
         }
@@ -227,6 +231,23 @@ public class MemberController {
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String indexHome() {
        return "home";
+    }
+    
+    @RequestMapping(value="/getNew", method=RequestMethod.POST)
+    @ResponseBody
+    public Map getNew(@RequestBody Map map) {
+    	
+    	String userNickname = (String) map.get("userNickname");
+    	Map resultMap = new HashMap();
+    	//새 게시물 갯수 가져오기 
+       resultMap.put("newContent", memberService.selectNewContent(userNickname));
+       //일촌신청 갯수 가져오기
+       resultMap.put("newFriend", memberService.getFriendCount(userNickname));
+       //오늘 방문자 가져오기 
+       resultMap.put("todayCnt", memberService.getTodayVisit(userNickname));
+       
+       
+       return resultMap;
     }
     
 }

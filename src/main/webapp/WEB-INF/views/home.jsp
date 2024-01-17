@@ -52,14 +52,13 @@
                   <br>
                   <input type="button" id="btnLogin" value="로그인"><br>
                   <br>
-                  <!-- 슬라이드 이미지 추가하면 주석 풀기 <input type="button" style="width: 200px" id="btnNotice" value="공지사항"><br>
-                  <br> -->
                </form>
             </div>
             <div >
-               <a class="signUpATag" href="/index/member/signUp">회원가입</a>
-               <a href="/index/member/findId">아이디</a>/ 
-               <a href="/index/member/findPwView">비밀번호 찾기</a>
+               <a class="signUpATag idx-su" href="/index/member/signUp">회원가입</a>
+               <a href="/index/member/findId" class="idx-id">아이디</a> 
+               <span class="index-idpw-span">/</span>
+               <a href="/index/member/findPwView" class="idx-pw">비밀번호 찾기</a>
             </div>
             
          </div>
@@ -91,17 +90,17 @@
 							<div class="login-profile-section2">
 								<span>&#128099;</span>
 								<span>오늘방문자</span>
-								<span id="todayCnt" class="login-profile-info-2"><c:out value='${sessionScope.todayCnt}'/></span>
+								<span id="todayCnt" class="login-profile-info-2"></span>
 							</div>
 							<div class="login-profile-section3">
 								<span>&#128203;</span>
 								<span>새게시물</span>
-								<span class="login-profile-info-3">0</span>
+								<span class="login-profile-info-3" id="newContent"></span>
 							</div>
 							<div class="login-profile-section4">
 								<span>&#128149;</span>
 								<span>일촌신청</span>
-								<span class="login-profile-info-4">1</span>
+								<span class="login-profile-info-4" id="newFriend"></span>
 							</div>
 						</div>
 						<div class="my-btn">
@@ -215,14 +214,14 @@
            let userDotori = document.getElementById('userDotori');
            let userMinimiElement = document.getElementById('mainMinimi');
            let spanOnfriendCnt = document.getElementById('spanOnfriendCnt');
-           let todayCnt = document.getElementById('todayCnt');
+          // let todayCnt = document.getElementById('todayCnt');
 
            if (json.resultCode === '1') {
               helloMessage.innerText = json.userNickname + '  님 환영합니다.';
               userDotori.innerText = '내 도토리 : ' + json.userDotoriCnt + ' 개';
               userMinimiElement.src = "<c:url value='" + json.contentPath + "'/>";
               spanOnfriendCnt.innerText = json.friendCnt;
-              todayCnt.innerText = json.todayCnt;
+             // todayCnt.innerText = json.todayCnt;
               document.getElementById('linkMnh').style.display = 'block';
               document.getElementById('linkLogout').style.display = 'block';
               divHome.style.display = 'none';
@@ -240,58 +239,42 @@
      let slideIndex = 1;
      showSlides(slideIndex);
 
-     function moveSlide(n) {
-         showSlides(slideIndex += n);
-     }
+	function moveSlide(n) {
+		showSlides(slideIndex += n);
+	}
      
-     function currentSlide(n) {
-    	    showSlides(slideIndex = n);
-    	}
+    function currentSlide(n) {
+    	showSlides(slideIndex = n);
+    }
      function showSlides(n) {
-    	    let slides = document.getElementsByClassName("mySlides");
-    	    let dots = document.getElementsByClassName("dot");
+   	    let slides = document.getElementsByClassName("mySlides");
+   	    let dots = document.getElementsByClassName("dot");
 
-    	    if (n > slides.length) {slideIndex = 1}
-    	    if (n < 1) {slideIndex = slides.length}
-    	    
-    	    // 모든 슬라이드를 비활성화하고, 화면 왼쪽으로 이동
-    	    for (let i = 0; i < slides.length; i++) {
-    	        slides[i].style.transform = "translateX(-100%)";
-    	        slides[i].style.zIndex = 0;  // z-index를 초기화
-    	    }
+   	    if (n > slides.length) {slideIndex = 1}
+   	    if (n < 1) {slideIndex = slides.length}
+   	    
+   	    // 모든 슬라이드를 비활성화하고, 화면 왼쪽으로 이동
+   	    for (let i = 0; i < slides.length; i++) {
+   	        slides[i].style.transform = "translateX(-100%)";
+   	        slides[i].style.zIndex = 0;  // z-index를 초기화
+   	    }
 
-    	    // 현재 슬라이드를 활성화하고, 화면 중앙으로 이동
-    	    slides[slideIndex-1].style.transform = "translateX(0)";
-    	    slides[slideIndex-1].style.zIndex = 1;  // 현재 슬라이드를 최상위로
+   	    // 현재 슬라이드를 활성화하고, 화면 중앙으로 이동
+   	    slides[slideIndex-1].style.transform = "translateX(0)";
+   	    slides[slideIndex-1].style.zIndex = 1;  // 현재 슬라이드를 최상위로
 
-    	    // dots 업데이트
-    	    for (let i = 0; i < dots.length; i++) {
-    	        dots[i].className = dots[i].className.replace(" active", "");
-    	    }
-    	    dots[slideIndex-1].className += " active";
-    	}
+   	    // dots 업데이트
+   	    for (let i = 0; i < dots.length; i++) {
+   	        dots[i].className = dots[i].className.replace(" active", "");
+   	    }
+   	    dots[slideIndex-1].className += " active";
+   	}
 
      // 자동 슬라이드 쇼
      setInterval(function() {
          moveSlide(1);
      }, 5000); // Change image every 2 seconds
-       
-       $(function() {
-           let userEmail = '<c:out value="${sessionScope.userId.userEmail}" />';
-           let userNickname = '<c:out value="${sessionScope.userId.userNickname}" />';
-           let helloMessage = document.getElementById('helloMessage');
-           let divHome = document.getElementById('divHome');
-           let divLogin = document.getElementById('divLogin');
-           
-           if (userEmail === '') {
-               divHome.style.display = 'block';
-               divLogin.style.display = 'none';
-           } else {
-          	 helloMessage.innerText = userNickname + ' 님 반갑습니다';
-               divHome.style.display = 'none';
-               divLogin.style.display = 'block';
-           }
-       });
+        
     
     document.getElementById('btnLogout').addEventListener('click', function() {
        location.href = "<c:url value="/index/member/logout" />"
@@ -334,11 +317,36 @@
            }
         }
      }
+    
+    function newContent(){
+    	let userNickname = '<c:out value="${sessionScope.userId.userNickname}" />';
+    	let newContent = document.getElementById('newContent');
+    	let newFriend = document.getElementById('newFriend');
+    	let todayCnt = document.getElementById('todayCnt');
+    	
+    	let jsonData = {
+    			
+    			"userNickname" : userNickname
+    	};
+    	
+    	$.ajax({
+            method: 'POST',
+            url: "<c:url value='/index/member/getNew' />",
+            contentType: 'application/json',
+            data: JSON.stringify(jsonData)
+         }).done(function (json) {
+        	 newContent.innerText = json.newContent;
+        	 newFriend.innerText = json.newFriend;
+        	 todayCnt.innerText = json.todayCnt;
+        	 
+         });
+    	
+    }
 
     window.onload = function () {
         showUserInfo();
+        newContent();
      };
-    
 	</script>
    </body>
 </html>

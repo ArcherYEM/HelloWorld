@@ -30,4 +30,10 @@ public interface MemberService {
 	
 	public String selectUserGender(String userNickname);
 	
+	public int selectNewContent(String userNickname);
+	
+	public String getFriendCount(String userNickname);
+	
+	public String getTodayVisit(String userNickname);
+	
 }

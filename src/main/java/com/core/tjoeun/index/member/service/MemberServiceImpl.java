@@ -78,10 +78,7 @@ public class MemberServiceImpl implements MemberService{
            
            selectMap.put("friendCnt", memberDao.selectOnFriendCnt((String) selectMap.get("userNickname"))) ;
            
-           Map visitCntMap = new HashMap();
-           visitCntMap = mainDao.selectVisitCnt((String) selectMap.get("userNickname"));
            
-           selectMap.put("todayCnt", visitCntMap.get("todayCnt"));
            // 로그인 성공 시, 사용자 정보 반환
             return selectMap;
         } else {
@@ -172,5 +169,37 @@ public class MemberServiceImpl implements MemberService{
 	public String selectUserGender(String userNickname) {
 		return memberDao.selectUserGender(userNickname);
 	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public int selectNewContent(String userNickname) {
+		// ###Tabs :{TotalBoardCount=2, TotalVisitCount=0, RecentDiaryCount=1, RecentBoardCount=2, RecentAlbumCount=1, TotalAlbumCount=1, TotalDiaryCount=1, RecentVisitCount=0}
+        //다이어리, 앨범, 게시판, 방명록 전체 개수 및 최근 24시간 개수 가져오기
+  		Map tabs = mainDao.tabs(userNickname);
+  		int recentContents = 0;
+  		if(tabs != null) {
+  			recentContents += Integer.parseInt(String.valueOf(tabs.get("RecentDiaryCount")));
+  			recentContents += Integer.parseInt(String.valueOf(tabs.get("RecentBoardCount")));
+  			recentContents += Integer.parseInt(String.valueOf(tabs.get("RecentAlbumCount")));
+  			recentContents += Integer.parseInt(String.valueOf(tabs.get("RecentVisitCount")));
+  		}
+  		return recentContents;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public String getFriendCount(String userNickname) {
+		Map resultMap = memberDao.getFriendCount(userNickname);
+		
+		return (String.valueOf(resultMap.get("totalCount")));
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public String getTodayVisit(String userNickname) {
+		Map resultMap = mainDao.selectVisitCnt(userNickname);
+		return (String.valueOf(resultMap.get("todayCnt")));
+	}
+
 
 }

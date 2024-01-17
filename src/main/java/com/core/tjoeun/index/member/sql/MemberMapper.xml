@@ -277,5 +277,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	from user 
     	where userNickname=#{userNickname}
     </select>
+    
+    <select id="getFriendCount" parameterType="String" resultType="map">
+    	select count(*) as totalCount
+		from friends f
+		JOIN
+        user u ON (f.userNickname = u.userNickname OR f.friendNickname = u.userNickname)
+		where ( f.friendNickname = #{userNickname})
+        AND f.del_yn = 'N'
+        AND u.userNickname != #{userNickname}
+		AND f.fStatus = 0;
+    </select>
    
 </mapper>
