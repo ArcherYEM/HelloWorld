@@ -35,7 +35,7 @@
                <div class="section">
                   <label for="userBirth">생년월일</label>
                   <input type="number" id="userBirth" name="userBirth" placeholder="생년월일 ex)19931013"
-                        class="widthFull" oninput="checkBirthLength()">
+                        class="widthFull" oninput="checkBirthLength()" >
                </div>
                
                <div class="section">
@@ -167,7 +167,10 @@
    <script>
       document.getElementById('btnSignUp').addEventListener('click', function() {
          var confirmation = document.querySelector('input[name="confirm"]:checked');
-           
+           if(!checkBirth()){
+        	   alert('올바른 생년월일을 입력해주세요.');
+        	   return;
+           }
            if (confirmation && confirmation.value === "noConfirm") {
                alert("개인정보수집 약관에 동의하지 않았습니다.");
                return;
@@ -178,10 +181,20 @@
       
       document.getElementById('btnEmailDuplcheck').addEventListener('click', function () {
          let userEmail = document.getElementById('userEmail').value;
+      	//  공백이 있는지 확인
+         let hasWhiteSpace = /\s/.test(userEmail);
+         if (hasWhiteSpace) {
+         	alert("이메일은 공백을 포함할 수 없습니다.");
+         	return;
+         }else if(userEmail == ""){
+        	 alert("이메일을 입력해주세요.");
+             return;
+         }
          
          let jsonData = {
                   "userEmail": userEmail,
                };
+         
 
                $.ajax({
                   method: 'POST',
@@ -200,6 +213,15 @@
       
       document.getElementById('btnPhoneDuplCheck').addEventListener('click', function () {
          let userPhone = document.getElementById('userPhone').value;
+     //  공백이 있는지 확인
+         let hasWhiteSpace = /\s/.test(userPhone);
+         if (hasWhiteSpace) {
+         	alert("공백을 포함할 수 없습니다. 올바른 값을 입력해주세요.");
+         	return;
+         }else if(userPhone == ""){
+        	 alert("연락처를 입력해주세요.");
+             return;
+         }
          
          let jsonData = {
                   "userPhone": userPhone,
@@ -244,7 +266,32 @@
            
            $('#userBirth').val(userBirth.slice(0, 8));
         };
+        
+     
      };
+     
+     function checkBirth(){
+    	 let userBirth = $('#userBirth').val();
+    	// 년, 월, 일로 나누기
+         const year = parseInt(userBirth.substring(0, 4), 10);
+         const month = parseInt(userBirth.substring(4, 6), 10);
+         const day = parseInt(userBirth.substring(6, 8), 10);
+
+         // 날짜 객체 생성
+         const dobDate = new Date(year, month - 1, day);
+
+         // 날짜 객체가 유효한지 확인
+         if (
+             dobDate.getFullYear() !== year ||
+             dobDate.getMonth() !== month - 1 ||
+             dobDate.getDate() !== day
+         ) {
+         	$('#userBirth').val(userBirth.slice(0, 0));
+             return false;
+         }else{
+        	 return true;
+         }
+     }
      
      function checkPhoneForm() {
           let userPhone = $('#userPhone').val();
