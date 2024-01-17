@@ -70,7 +70,7 @@
 						<span id="userNickname"><c:out value='${sessionScope.userId.userNickname}'/></span>
 					</div>
 					<div class="login-top-right">
-						<span class="login-top-right-imz">&#127752;</span>일촌 ON <span id="spanOnfriendCnt" class="login-top-right-bfCnt">${sessionScope.friendCnt }</span>
+						<span class="login-top-right-imz">&#127752;</span>일촌 ON <span id="spanOnfriendCnt" class="login-top-right-bfCnt">${sessionScope.friendCnt}</span>
 					</div>
 				</div>
 				<div class="login-profile-frame">
@@ -304,6 +304,8 @@
     	let newContent = document.getElementById('newContent');
     	let newFriend = document.getElementById('newFriend');
     	let todayCnt = document.getElementById('todayCnt');
+    	let onFriendCnt = document.getElementById('spanOnfriendCnt');
+    	
     	if (userNickname == 'null' || userNickname == ''){
     		
     	} else {
@@ -319,6 +321,7 @@
 	        	 newContent.innerText = json.newContent;
 	        	 newFriend.innerText = json.newFriend;
 	        	 todayCnt.innerText = json.todayCnt;
+	        	 onFriendCnt.innerText = json.onFriendCnt;
 	         });
     	}
     }
