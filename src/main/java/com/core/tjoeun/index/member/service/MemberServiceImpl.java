@@ -173,4 +173,22 @@ public class MemberServiceImpl implements MemberService{
 		return memberDao.selectUserGender(userNickname);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public int selectNewContent(String userNickname) {
+		// ###Tabs :{TotalBoardCount=2, TotalVisitCount=0, RecentDiaryCount=1, RecentBoardCount=2, RecentAlbumCount=1, TotalAlbumCount=1, TotalDiaryCount=1, RecentVisitCount=0}
+        //다이어리, 앨범, 게시판, 방명록 전체 개수 및 최근 24시간 개수 가져오기
+  		Map tabs = mainDao.tabs(userNickname);
+  		int recentContents = 0;
+  		if(tabs != null) {
+  			recentContents += Integer.parseInt(String.valueOf(tabs.get("RecentDiaryCount")));
+  			recentContents += Integer.parseInt(String.valueOf(tabs.get("RecentBoardCount")));
+  			recentContents += Integer.parseInt(String.valueOf(tabs.get("RecentAlbumCount")));
+  			recentContents += Integer.parseInt(String.valueOf(tabs.get("RecentVisitCount")));
+  		}
+  		System.out.println("###recentContents : " + recentContents);
+  		return recentContents;
+	}
+
+
 }
