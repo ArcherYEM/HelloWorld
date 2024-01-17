@@ -269,21 +269,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		)
 	</insert>
 
-	<select id="selectFriendCmt" parameterType="map" resultType="map">
-		select 
-			userNickname
-		    ,friendNickname
-		    ,content
-		    ,DATE_FORMAT(createDate, '%Y-%m-%d %H:%i') AS createDate
-		from friendCMT
-		where 1=1
-		<if test="userNickname != null">
-			and friendNickname = #{userNickname}
-		</if>
-		and del_yn = 'n'
-		order by createDate desc
-		limit 5
-	</select>
+<select id="selectFriendCmt" parameterType="map" resultType="map">
+	select 
+		userNickname
+	    ,friendNickname
+	    ,content
+	    ,DATE_FORMAT(createDate, '%Y-%m-%d %H:%i') AS createDate
+	from friendCMT
+	where 1=1
+	<if test="friendNickname == null">
+		and friendNickname = #{userNickname}
+	</if>
+	<if test="friendNicname != null">
+		and friendNickname = #{friendNickname}
+	</if>
+	and del_yn = 'n'
+	order by createDate desc
+	limit 5
+</select>
+
+
+
 	
 	<update id="updateVisitCnt" parameterType="map">
 		update visitCnt
