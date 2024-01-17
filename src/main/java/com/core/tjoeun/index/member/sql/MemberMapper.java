@@ -40,7 +40,7 @@ public interface MemberMapper {
 	
 	public int insertLoginLog(String userNickname);
 	
-	public int selectOnFriendCnt(String userNickname);
+	public Map selectOnFriendCnt(String userNickname);
 	
 	public int insertUserStorageSkin(String userNickname);
 	

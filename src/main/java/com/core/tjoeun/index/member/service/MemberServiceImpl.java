@@ -74,8 +74,6 @@ public class MemberServiceImpl implements MemberService{
            memberDao.insertLoginLog((String) selectMap.get("userNickname"));
            memberDao.loginOnStatus((String) selectMap.get("userNickname"));
            
-           int onFriends = memberDao.selectOnFriendCnt((String) selectMap.get("userNickname"));
-           
            selectMap.put("friendCnt", memberDao.selectOnFriendCnt((String) selectMap.get("userNickname"))) ;
            
            
@@ -203,9 +201,9 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Override
 	@Transactional(readOnly = true)
-	public int getOnFriendCnt(String userNickname) {
-		int result = memberDao.selectOnFriendCnt(userNickname);
-		return result;
+	public String getOnFriendCnt(String userNickname) {
+		Map resultMap = memberDao.selectOnFriendCnt(userNickname);
+		return (String.valueOf(resultMap.get("count")));
 	}
 
 

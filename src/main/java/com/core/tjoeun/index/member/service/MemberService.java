@@ -36,6 +36,6 @@ public interface MemberService {
 	
 	public String getTodayVisit(String userNickname);
 
-	public int getOnFriendCnt(String userNickname);
+	public String getOnFriendCnt(String userNickname);
 	
 }
