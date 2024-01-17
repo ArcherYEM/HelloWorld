@@ -181,7 +181,6 @@
 		location.href = "<c:url value="/index/member/logout" />"
 	    location.reload();
 	}
-
 	</script>
 		<script>
 			window.onload = function() {
