@@ -232,15 +232,12 @@
                      </div>
                   </div>
                </div>
-               
                <jsp:include page="/WEB-INF/views/miniHome/menuTab.jsp"></jsp:include>
-               
-               
             </div>
          </div>
       </div>
       <div class="audioPlayerContainer">
-         <audio id="audioElement" autoplay></audio>
+         <audio id="audioElement" autoplay preload="auto"></audio>
          <div class="audioPlayingContainer">
             <div class="audioPlayingDiv">
                <img id="audioPlayingImg" src="../../../../resources/images/audioPlayer/nowPlaying.png">

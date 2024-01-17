@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
         audioElement.src = track.url;
 		songTitle.textContent = track.title;
     }
-
+    
     function loadTrack(trackNumber) {
     	if (trackNumber < 0) { 
             trackNumber = playlist.length - 1;
@@ -212,9 +212,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     loadTrack(currentTrack);
     
-    audioElement.addEventListener('ended', function() {
-        loadTrack(++currentTrack);
+    audioPlay.addEventListener('click', function() {
+        audioElement.play(); 
     });
+    audioPlay.click();
+    setTimeout(function() {
+    	audioPlay.click();
+    }, 1000);
 });
 
 //파도타기
@@ -226,6 +230,3 @@ function redirectToMainView() {
         window.location.href = url;
     }
 }
-
-// 미니홈피 새창열기
-
