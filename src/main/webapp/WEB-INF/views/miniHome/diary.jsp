@@ -27,7 +27,7 @@
 					<div class="header profile-title font-neo">
 						TODAY&nbsp;<span class="today-span">${todayCnt }</span>&nbsp;| TOTAL ${totalCnt }
 					</div>
-					<div class="box profile-box">
+					<div class="box profile-box diary-box">
 						<div class="profile-image">
 							<div id="datepicker" style="width:80%"></div>
 						</div>
