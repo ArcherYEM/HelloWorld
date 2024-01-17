@@ -90,8 +90,8 @@ body a{
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  max-width: 208px;
-  min-width:207.9px;
+  max-width: 198px;
+  min-width:197.9px;
   min-height: 368.9px;
   max-height: 369px;
 }
@@ -157,8 +157,10 @@ body a{
   color: #3b7ada;
 }
 
-.profile-dropDown {
-  min-width: 90px;
+#friendSelect{
+  min-width: 190px;
+  max-width: 190.1px;
+  margin-top: 8px;
 }
 
 /*미니홈피 센터 (미니룸 라인)*/
