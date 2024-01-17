@@ -92,17 +92,17 @@
 							<div class="login-profile-section2">
 								<span>&#128099;</span>
 								<span>오늘방문자</span>
-								<span id="todayCnt" class="login-profile-info-2"><c:out value='${sessionScope.todayCnt}'/></span>
+								<span id="todayCnt" class="login-profile-info-2"></span>
 							</div>
 							<div class="login-profile-section3">
 								<span>&#128203;</span>
 								<span>새게시물</span>
-								<span class="login-profile-info-3" id="newContent">0</span>
+								<span class="login-profile-info-3" id="newContent"></span>
 							</div>
 							<div class="login-profile-section4">
 								<span>&#128149;</span>
 								<span>일촌신청</span>
-								<span class="login-profile-info-4" id="newFriend">0</span>
+								<span class="login-profile-info-4" id="newFriend"></span>
 							</div>
 						</div>
 						<div class="my-btn">
@@ -216,14 +216,14 @@
            let userDotori = document.getElementById('userDotori');
            let userMinimiElement = document.getElementById('mainMinimi');
            let spanOnfriendCnt = document.getElementById('spanOnfriendCnt');
-           let todayCnt = document.getElementById('todayCnt');
+          // let todayCnt = document.getElementById('todayCnt');
 
            if (json.resultCode === '1') {
               helloMessage.innerText = json.userNickname + '  님 환영합니다.';
               userDotori.innerText = '내 도토리 : ' + json.userDotoriCnt + ' 개';
               userMinimiElement.src = "<c:url value='" + json.contentPath + "'/>";
               spanOnfriendCnt.innerText = json.friendCnt;
-              todayCnt.innerText = json.todayCnt;
+             // todayCnt.innerText = json.todayCnt;
               document.getElementById('linkMnh').style.display = 'block';
               document.getElementById('linkLogout').style.display = 'block';
               divHome.style.display = 'none';
@@ -323,6 +323,7 @@
     	let userNickname = '<c:out value="${sessionScope.userId.userNickname}" />';
     	let newContent = document.getElementById('newContent');
     	let newFriend = document.getElementById('newFriend');
+    	let todayCnt = document.getElementById('todayCnt');
     	
     	let jsonData = {
     			
@@ -337,6 +338,7 @@
          }).done(function (json) {
         	 newContent.innerText = json.newContent;
         	 newFriend.innerText = json.newFriend;
+        	 todayCnt.innerText = json.todayCnt;
         	 
          });
     	
