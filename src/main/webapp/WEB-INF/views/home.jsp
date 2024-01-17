@@ -17,22 +17,24 @@
       <meta http-equiv="Expires" content="0">
    </head>
    <body>
-   <div class="index-frame">
-      <div class="divIndexMenu index-header">
-	      <div class="index-header-left">
-	         <a class="logoATag" href="<c:url value='/'/>">
-	           <img class="index-header-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
-	         </a>
-	       </div>
-	       <div class="index-header-right">
-		       <h5 class="right" id="userDotori"><img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"><span id="userDotoriCnt">${dotori}</span>개</h5>
-	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
-	            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
-	            <a id="linkMnh" href="#" 
-	            	class="index-a-mnh" onclick="openMiniHomepage()">내 미니홈피
-	            </a>
-   				<a id="linkLogout" href="<c:url value='/index/member/logout' />" class="index-a-logout">로그아웃</a>
-	       </div>
+	<div class="index-frame">
+      	<div class="divIndexMenu index-header">
+	      	<div class="index-header-left">
+	         	<a class="logoATag" href="<c:url value='/'/>">
+	           		<img class="index-header-logo" id="loginLogo" src="<c:url value="/resources/images/mainLogo.png"/>">
+	        	</a>
+			</div>
+			<div class="index-header-right">
+				<h5 class="right" id="userDotori"><img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />">
+					<span id="userDotoriCnt">${dotori}</span>
+				</h5>
+				<a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
+				<a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
+				<a id="linkMnh" href="#" 
+					class="index-a-mnh" onclick="openMiniHomepage()">내 미니홈피
+				</a>
+				<a id="linkLogout" href="<c:url value='/index/member/logout' />" class="index-a-logout">로그아웃</a>
+			</div>
       </div>
       
       <div id="divHiUser">
@@ -40,7 +42,6 @@
 		    HelloWorld 에 오신 걸 환영합니다.
 		  </p>
 	  </div>
-	  
       <div class="divIndexMain">
          <div id="divHome" class="divLogin">
             <div >
@@ -60,9 +61,7 @@
                <span class="index-idpw-span">/</span>
                <a href="/index/member/findPwView" class="idx-pw">비밀번호 찾기</a>
             </div>
-            
          </div>
-         
 <!--          로그인후 시점 -->
 		<div id="divLogin" class="divLogin">
 			<div class="login-frame">
@@ -71,22 +70,15 @@
 						<span id="userNickname"><c:out value='${sessionScope.userId.userNickname}'/></span>
 					</div>
 					<div class="login-top-right">
-						<span class="login-top-right-imz">&#127752;</span>일촌 ON <span id="spanOnfriendCnt" class="login-top-right-bfCnt">${sessionScope.friendCnt }</span>
+						<span class="login-top-right-imz">&#127752;</span>일촌 ON <span id="spanOnfriendCnt" class="login-top-right-bfCnt">${sessionScope.friendCnt}</span>
 					</div>
 				</div>
 				<div class="login-profile-frame">
-				
 					<div class="login-profile-minimi" id="divMainMinimi">
 						<img class="index-my-minimi" id="mainMinimi" src="<c:url value='${sessionScope.userMinimi}'/>"/>
 					</div>
-					
 					<div class="login-profile-information">
 						<div class="login-profile-info">
-							<div class="login-profile-section1">
-								<span>&#128233;</span>
-								<span>쪽지</span>
-								<span class="login-profile-info-1">8</span>
-							</div>
 							<div class="login-profile-section2">
 								<span>&#128099;</span>
 								<span>오늘방문자</span>
@@ -108,12 +100,10 @@
 				        	<input type="button" class="mainBtn2" id="btnLogout" value="로그아웃">
 				        </div>
 			        </div>
-			        
 				</div>
 			</div>
 		</div>
 <!--          로그인후 종점 -->
-
          <div id="divMainSlide">
             <div class="slideshow-container">
             	<div class="btnContainer">
@@ -127,14 +117,12 @@
                <div class="mySlides fade">
                  <img src="<c:url value="/resources/images/mainSlideImg1.jpg"/>" >
                </div>
-               
                <div class="mySlides fade">
                  <img src="<c:url value="/resources/images/slideImg1.png"/>" >
                </div>
                <div class="mySlides fade">
                  <img src="<c:url value="/resources/images/slideImg2.png"/>" >
                </div>
-
                <div class="divdot">
 				<span class="dot" data-slide-to="1" onclick="currentSlide(1)"></span>
 				<span class="dot" data-slide-to="2" onclick="currentSlide(2)"></span>
@@ -143,46 +131,33 @@
                </div>
             </div>
          </div>
-         
       </div>
-         
     </div>
-      
 	<div class="bottom-fix">
 		<hr>
 		<h1>team core</h1>
       </div>
-      
 	<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
 	<script>
 	function openMiniHomepage() {
-	    // URL 정의
 	    var url = "<c:url value='/mnHome/mainView/${sessionScope.userId.userNickname }' />";
-
-	    // 크기 정의
 	    var width = 1200;
 	    var height = 720;
-
-	    // 화면 중앙에 새 창을 위치시키기 위해 위치 계산
 	    var left = (window.innerWidth - width) / 2;
 	    var top = (window.innerHeight - height) / 2;
-
 	    // 새 창 열기
 	    var newWindow = window.open(url, 'MiniHomepage', 'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top);
-
 	    // 새 창이 열린 후, 현재 창을 그대로 유지하기 위해 기본 링크 동작 방지
 	    if (newWindow) {
 	        newWindow.focus(); // 새 창을 포커스합니다.
 	    }
 	    return false;
 	}
-	
 // 	부모창 리로드 명령
 	function reloadParentWindow() {
 		location.href = "<c:url value="/index/member/logout" />"
 	    location.reload();
 	}
-
 	</script>
     <script>
     // Ajax 유저 로그인
@@ -191,7 +166,6 @@
             loginUser();
          }
      });
-    
      document.getElementById('btnLogin').addEventListener('click', loginUser);
 
      function loginUser() {
@@ -316,37 +290,41 @@
                userDotoriElement.style.display = 'none';
            }
         }
+        
      }
-    
-    function newContent(){
-    	let userNickname = '<c:out value="${sessionScope.userId.userNickname}" />';
-    	let newContent = document.getElementById('newContent');
-    	let newFriend = document.getElementById('newFriend');
-    	let todayCnt = document.getElementById('todayCnt');
-    	
-    	let jsonData = {
-    			
-    			"userNickname" : userNickname
-    	};
-    	
-    	$.ajax({
-            method: 'POST',
-            url: "<c:url value='/index/member/getNew' />",
-            contentType: 'application/json',
-            data: JSON.stringify(jsonData)
-         }).done(function (json) {
-        	 newContent.innerText = json.newContent;
-        	 newFriend.innerText = json.newFriend;
-        	 todayCnt.innerText = json.todayCnt;
-        	 
-         });
-    	
-    }
-
     window.onload = function () {
         showUserInfo();
         newContent();
      };
+	</script>
+	<script>
+	function newContent(){
+		
+    	let userNickname = '<c:out value="${sessionScope.userId.userNickname}" />';
+    	let newContent = document.getElementById('newContent');
+    	let newFriend = document.getElementById('newFriend');
+    	let todayCnt = document.getElementById('todayCnt');
+    	let onFriendCnt = document.getElementById('spanOnfriendCnt');
+    	
+    	if (userNickname == 'null' || userNickname == ''){
+    		
+    	} else {
+	    	let jsonData = {
+	    			"userNickname" : userNickname
+	    	};
+	    	$.ajax({
+	            method: 'POST',
+	            url: "<c:url value='/index/member/getNew' />",
+	            contentType: 'application/json',
+	            data: JSON.stringify(jsonData)
+	         }).done(function (json) {
+	        	 newContent.innerText = json.newContent;
+	        	 newFriend.innerText = json.newFriend;
+	        	 todayCnt.innerText = json.todayCnt;
+	        	 onFriendCnt.innerText = json.onFriendCnt;
+	         });
+    	}
+    }
 	</script>
    </body>
 </html>

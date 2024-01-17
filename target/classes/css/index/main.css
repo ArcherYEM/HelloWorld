@@ -413,6 +413,7 @@ to {
 /* 팀정보 기재공간 위치 고정 */
 .bottom-fix {
 	bottom: 0;
+	width : 100%;
 }
 
 .selected {

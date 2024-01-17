@@ -37,8 +37,15 @@ public class NoticeController {
 		if (userNickname != null ) {
 			int dotori = storeService.getMyDotori(userNickname);
 			model.addAttribute("dotori", dotori);
+			
+			if(userNickname.equals("제인") || userNickname.equals("관리자")) {
+				model.addAttribute("isAdmin", "1");
+			}else {
+				model.addAttribute("isAdmin", "0");
+			}
 		} else {
 			model.addAttribute("dotori", "");
+			model.addAttribute("isAdmin", "0");
 		}
 		
 		return "notice/notice";
@@ -125,8 +132,14 @@ public class NoticeController {
 		if (userNickname != null ) {
 			int dotori = storeService.getMyDotori(userNickname);
 			model.addAttribute("dotori", dotori);
+			if(userNickname.equals("제인") || userNickname.equals("관리자")) {
+				model.addAttribute("isAdmin", "1");
+			}else {
+				model.addAttribute("isAdmin", "0");
+			}
 		} else {
 			model.addAttribute("dotori", "");
+			model.addAttribute("isAdmin", "0");
 		}
 		
 		List tempList = noticeService.getNoticeList(map);

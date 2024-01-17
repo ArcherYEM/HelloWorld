@@ -25,7 +25,7 @@
 				<h5 class="right" id="userDotori"><img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"><span id="userDotoriCnt">${dotori}</span>개</h5>
 	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
 	            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
-	            <a id="linkMnh" href="#" 
+	            <a id="storeLoginMyhome" href="#" 
 	            	class="index-a-mnh" onclick="openMiniHomepage()">내 미니홈피
 	            </a>
 	            <a id="storeLoginLogout" href="<c:url value="/index/member/logout" />" class="index-a-logout">로그아웃</a>
@@ -118,7 +118,6 @@
 	</script>
 	<script>
 	window.onload = function() {
-		
 		let userDotoriElement = document.getElementById('userDotori');
         let storeLoginMyhome = document.getElementById('storeLoginMyhome');
         let storeLoginLogout = document.getElementById('storeLoginLogout');
@@ -133,43 +132,30 @@
             storeLoginMyhome.style.display = 'none';
             storeLoginLogout.style.display = 'none';
         }
-/* ========================================================================================================== */
         const products = document.querySelectorAll('.product');
         products.forEach(function(product) {
             product.addEventListener('click', function(event) {
                 event.preventDefault(); // 기본 앵커 동작 방지
-
-                // 다른 모든 .product 객체들의 테두리 스타일을 초기화
-                products.forEach(p => {
+                products.forEach(function(p) {
                     p.style.border = ""; // 테두리 스타일 초기화
                     p.querySelector('.product-radio').checked = false; // 라디오 버튼 선택 해제
                 });
 
-                // 클릭된 객체에만 테두리 스타일 적용
                 this.style.border = "2px solid red";
-
-                // 클릭된 객체의 라디오 버튼을 선택
                 this.querySelector('.product-radio').checked = true;
             });
         });
     };
     
     function orderOpen() {
-        // 같은 이름을 가진 모든 라디오 버튼을 가져옵니다.
         var radioButtons = document.querySelectorAll('input[name="productSelect"]');
-
-        // 선택된 라디오 버튼을 찾습니다.
-        var selectedButton = Array.from(radioButtons).find(radio => radio.checked);
-
-        // 선택된 라디오 버튼의 값을 확인합니다.
+        var selectedButton = Array.from(radioButtons).find(function(radio) {
+            return radio.checked;
+        });
         if (selectedButton) {
-            // 선택된 라디오 버튼의 값(여기서는 상품의 고유 식별자나 이름일 수 있음)을 쿼리 문자열로 포함하여 URL을 구성합니다.
             var orderUrl = "/store/orderView?selectedProduct=" + encodeURIComponent(selectedButton.value);
-            
-            // 구성된 URL과 함께 새 창을 엽니다.
             window.open(orderUrl, '_blank', 'width=500,height=500');
         } else {
-            // 선택된 라디오 버튼이 없다면 사용자에게 알립니다.
             alert("상품을 선택해주세요.");
         }
     }

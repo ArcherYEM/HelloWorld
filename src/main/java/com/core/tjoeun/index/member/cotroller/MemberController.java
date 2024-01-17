@@ -71,13 +71,11 @@ public class MemberController {
                 if(userMinimi==null) {
                 	session.setAttribute("userMinimi", defaultMinimi);
                 }
-                
         		
                 Cookie userCookie = new Cookie("userEmail", result.get("userEmail").toString());
                 userCookie.setMaxAge(60 * 60 * 24 * 7);
                 userCookie.setPath("/");
                 res.addCookie(userCookie);
-                
             } else {
                 // 로그인 실패 시
                 resultMap.put("resultCode", "0");
@@ -239,12 +237,10 @@ public class MemberController {
     	
     	String userNickname = (String) map.get("userNickname");
     	Map resultMap = new HashMap();
-    	//새 게시물 갯수 가져오기 
        resultMap.put("newContent", memberService.selectNewContent(userNickname));
-       //일촌신청 갯수 가져오기
        resultMap.put("newFriend", memberService.getFriendCount(userNickname));
-       //오늘 방문자 가져오기 
        resultMap.put("todayCnt", memberService.getTodayVisit(userNickname));
+       resultMap.put("onFriendCnt", memberService.getOnFriendCnt(userNickname));
        
        
        return resultMap;
