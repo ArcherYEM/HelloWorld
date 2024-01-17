@@ -56,12 +56,14 @@
 								</div>
 							</div>
 								<div class="devide-dot">---------------------------------</div>
-								<c:if test="${userGender eq 'M'}">
-		                        	${userName }&#128102
-								</c:if>
-								<c:if test="${userGender eq 'F'}">
-		                        	${userName }&#128103
-								</c:if>
+								<div class="font-kyobohand">
+									<c:if test="${userGender eq 'M'}">
+			                        	${userName }&#128102
+									</c:if>
+									<c:if test="${userGender eq 'F'}">
+			                        	${userName }&#128103
+									</c:if>
+								</div>
 								<div class="profile-dropDown">
 									<select id="friendSelect" onchange="redirectToMainView()">
 			                           <option value="" disabled selected hidden="">파도타기</option>

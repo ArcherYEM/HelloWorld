@@ -48,12 +48,14 @@
 	                        </a>
 						</div>
 						<div class="profile-dot">---------------------------------</div>
-						<c:if test="${userGender eq 'M'}">
-                        	${userName }&#128102
-						</c:if>
-						<c:if test="${userGender eq 'F'}">
-                        	${userName }&#128103
-						</c:if>
+						<div class="font-kyobohand">
+							<c:if test="${userGender eq 'M'}">
+	                        	${userName }&#128102
+							</c:if>
+							<c:if test="${userGender eq 'F'}">
+	                        	${userName }&#128103
+							</c:if>
+						</div>
 						<div class="profile-dropDown">
 							<select id="friendSelect" onchange="redirectToMainView()">
 	                           <option value="" disabled selected hidden="">파도타기</option>
@@ -66,17 +68,18 @@
 				</div>
 				<div class="content-container">
 					<div class="header content-title">
-							 <div id="divHomeTitle" class="content-title-name"><c:out value="${title }"/></div>
-							 <input id="newTitle" class="content-title-name"  type="hidden" value="${title }">
-							 <input id="hiddenUserNickname" type="hidden" value="${userNickname }">
-							 <c:if test="${sessionScope.userId.userNickname eq userNickname }">
-								<div>
-									<input type="button" id="btn-title-edit" class="btn-edit" value="수정">
-									<input type="hidden" id="btn-title-save"class="btn-edit" value="저장">
-								</div>
-							 </c:if>
-							<div class="content-title-url">
-								https://www.helloworld.com/minihome/${userNickname }</div>
+						 <div id="divHomeTitle" class="content-title-name"><c:out value="${title }"/></div>
+						 <input id="newTitle" class="content-title-name"  type="hidden" value="${title }">
+						 <input id="hiddenUserNickname" type="hidden" value="${userNickname }">
+						 <c:if test="${sessionScope.userId.userNickname eq userNickname }">
+							<div>
+								<input type="button" id="btn-title-edit" class="btn-edit" value="수정">
+								<input type="hidden" id="btn-title-save"class="btn-edit" value="저장">
+							</div>
+						 </c:if>
+						<div class="content-title-url">
+							https://www.helloworld.com/minihome/${userNickname }
+						</div>
 					</div>
 					<div class="box content-box">
 						<div class="visit-overflow">
