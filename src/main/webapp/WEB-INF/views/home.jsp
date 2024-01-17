@@ -101,7 +101,7 @@
 							<div class="login-profile-section4">
 								<span>&#128149;</span>
 								<span>일촌신청</span>
-								<span class="login-profile-info-4">1</span>
+								<span class="login-profile-info-4" id="newFriend">0</span>
 							</div>
 						</div>
 						<div class="my-btn">
@@ -322,6 +322,7 @@
     function newContent(){
     	let userNickname = '<c:out value="${sessionScope.userId.userNickname}" />';
     	let newContent = document.getElementById('newContent');
+    	let newFriend = document.getElementById('newFriend');
     	
     	let jsonData = {
     			
@@ -330,11 +331,13 @@
     	
     	$.ajax({
             method: 'POST',
-            url: "<c:url value='/index/member/newContent' />",
+            url: "<c:url value='/index/member/getNew' />",
             contentType: 'application/json',
             data: JSON.stringify(jsonData)
          }).done(function (json) {
         	 newContent.innerText = json.newContent;
+        	 newFriend.innerText = json.newFriend;
+        	 
          });
     	
     }

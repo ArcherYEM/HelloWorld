@@ -32,4 +32,6 @@ public interface MemberService {
 	
 	public int selectNewContent(String userNickname);
 	
+	public String getFriendCount(String userNickname);
+	
 }
