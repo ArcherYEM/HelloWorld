@@ -114,8 +114,7 @@
 				</form>
 	        </div>
 			<div class="bottom-fix">
-				<hr>
-				<h1>team core</h1>
+				<jsp:include page="/WEB-INF/views/index/footer.jsp"></jsp:include>
 			</div>
 		</div>
 		<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
