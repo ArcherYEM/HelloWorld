@@ -43,9 +43,11 @@
   padding-bottom: 8px;
   width: 100%;
   position: relative;
+  border-bottom: 1px solid gray;
+  margin-bottom: 10px;
 }
 
-.album-submit input {
+.btnAlbumWrite {
 	background-color: white;
 	border-radius: 2px;
 	border: 1px solid gray;
@@ -54,6 +56,12 @@
 	font-size: 12px;
 	font-weight: bold;
 	height: 25px;
+}
+
+.btnAlbumWrite:hover {
+	background-color: gray;
+	color:white;
+	cursor: pointer;
 }
 /*임시효과*/
 .album-submit input:hover{
@@ -211,10 +219,7 @@
 .albumWirte-file{
 	margin-left: 15px;
 	margin-bottom: 5px;
-/* 	border: 1px solid gray;
-	border-radius: 2px; */
 	width: 90%;
-/* 	height: 80px; */
 }
 
 .image-container{
@@ -249,17 +254,24 @@
 .album-container-container{
 	display: flex;
     flex-wrap: wrap;
-	
 }
 
 .album-container {
-    width: 30%; /* 100% / 3 - 여기서 3은 원하는 열의 수 */
+    width: 30%; 
     height :150px;
     box-sizing: border-box;
-    margin: 0 1.33%; /* 여백 조정 (좌우 간격 조절) */
+    margin: 0 1.33%;
     margin-bottom : 20px;
-    float: left; /* float 속성 사용 */
+    float: left;
     border : 1px solid grey;
+    border-radius: 20px;
+}
+
+.album-container:hover {
+	border : 2px solid red;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 .album-thumbnail {
@@ -268,17 +280,16 @@
   align-items: center;
   justify-content: center;
   height :80%;
-  
-  /* align-items: center;
-  margin-top: 20px;
-  width: 100%; */
 }
 
-.album-thumbnail img {
-  width : 100%;
-  max-height : 120px;
-  display: block;
-  margin: 0 auto;
+.addImage {
+	padding-right: 20px;
+	padding-left: 20px;
+	max-height : 100px;
+	max-width: 100px;
+	width: auto;
+	display: block;
+	margin: 0 auto;
 }
 
 .album-thumbtitle {
@@ -287,7 +298,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    max-height: 2.5em; /* 최대 2.5em(약 2줄)의 높이를 설정 */
+    max-height: 2.5em;
 }
 
 #noneMsg{

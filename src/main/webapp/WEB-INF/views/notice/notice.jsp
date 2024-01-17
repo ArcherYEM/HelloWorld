@@ -26,7 +26,9 @@
 		            <h5 class="right" id="userDotori"><img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"><span id="userDotoriCnt">${dotori}</span>개</h5>
 		            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
 		            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
-		            <a id="storeLoginMyhome" href="<c:url value='/mnHome/mainView/${sessionScope.userId.userNickname }' />" class="index-a-mnh">내 미니홈피</a>
+		            <a id="linkMnh" href="#" 
+		            	class="index-a-mnh" onclick="openMiniHomepage()">내 미니홈피
+		            </a>
 		            <a id="storeLoginLogout" href="<c:url value="/index/member/logout" />" class="index-a-logout">로그아웃</a>
 	        	</div>
 	      	</div>
@@ -78,15 +80,13 @@
 				</form>
 					<input type="button" class="btn-notice" id="btnWrite" value="등록">
 			</div>
-			
 			<!-- paging -->
 	        <div class="notice-paging">
 	            <c:forEach var="page" begin="1" end="${totalPage}">
 	                <span class="spanPage" data-page="${page}">
-	                    [${page}]
+	                    【${page}】
 	                </span>
 	            </c:forEach>
-	            
 	            <form id="frm2" action="<c:url value='/notice/noticeView'/>" method="get">
 					<input type="hidden" name="page" id="page" />
 				</form>
@@ -94,20 +94,45 @@
 	            <form id="frm3" action="<c:url value='/notice/noticeDetail'/>" method="get">
 					<input type="hidden" name="detailSeq" id="detailSeq" />
 				</form>
-		
 	        </div>
-			
 			<div class="bottom-fix">
 				<hr>
 				<h1>team core</h1>
 			</div>
 		</div>
-		
 		<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
 		<script>
-		
+	function openMiniHomepage() {
+	    // URL 정의
+	    var url = "<c:url value='/mnHome/mainView/${sessionScope.userId.userNickname }' />";
+
+	    // 크기 정의
+	    var width = 1200;
+	    var height = 720;
+
+	    // 화면 중앙에 새 창을 위치시키기 위해 위치 계산
+	    var left = (window.innerWidth - width) / 2;
+	    var top = (window.innerHeight - height) / 2;
+
+	    // 새 창 열기
+	    var newWindow = window.open(url, 'MiniHomepage', 'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top);
+
+	    // 새 창이 열린 후, 현재 창을 그대로 유지하기 위해 기본 링크 동작 방지
+	    if (newWindow) {
+	        newWindow.focus(); // 새 창을 포커스합니다.
+	    }
+	    return false;
+	}
+	
+// 	부모창 리로드 명령
+	function reloadParentWindow() {
+		location.href = "<c:url value="/index/member/logout" />"
+	    location.reload();
+	}
+
+	</script>
+		<script>
 			window.onload = function() {
-				
 		        let userDotoriElement = document.getElementById('userDotori');
 		        let storeLoginMyhome = document.getElementById('storeLoginMyhome');
 		        let storeLoginLogout = document.getElementById('storeLoginLogout');

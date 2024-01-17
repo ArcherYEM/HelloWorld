@@ -46,7 +46,6 @@ public class NoticeController {
 	
 	@RequestMapping(value="/notice/noticeWrite", method = RequestMethod.GET)
 	public String noticeWrite(HttpServletRequest req ,HttpSession session, Model model) {
-		
 		String direction;
 		Map userMap = new HashMap();
 		
@@ -60,6 +59,14 @@ public class NoticeController {
 		    
 		    model.addAttribute("userNickname",userNickname);
 		    direction = "notice/noticeWrite";
+		}
+		
+		String userNickname = (String) session.getAttribute("userNickname");
+		if (userNickname != null ) {
+			int dotori = storeService.getMyDotori(userNickname);
+			model.addAttribute("dotori", dotori);
+		} else {
+			model.addAttribute("dotori", "");
 		}
 		
 		return direction;
@@ -78,7 +85,14 @@ public class NoticeController {
 	
 	
 	@RequestMapping(value="/notice/modifyView", method = RequestMethod.POST)
-	public String modifyView(Model model, @RequestParam Map map){
+	public String modifyView(Model model, @RequestParam Map map, HttpSession session){
+		String userNickname = (String) session.getAttribute("userNickname");
+		if (userNickname != null ) {
+			int dotori = storeService.getMyDotori(userNickname);
+			model.addAttribute("dotori", dotori);
+		} else {
+			model.addAttribute("dotori", "");
+		}
 		
 		model.addAttribute("seq", map.get("seq"));
 		model.addAttribute("title", map.get("title"));
@@ -106,12 +120,18 @@ public class NoticeController {
 	
 	
 	@RequestMapping(value="/notice/noticeDetail", method = RequestMethod.GET)
-	public String noticeDetail(Model model, @RequestParam Map map) {
+	public String noticeDetail(Model model, @RequestParam Map map, HttpSession session) {
+		String userNickname = (String) session.getAttribute("userNickname");
+		if (userNickname != null ) {
+			int dotori = storeService.getMyDotori(userNickname);
+			model.addAttribute("dotori", dotori);
+		} else {
+			model.addAttribute("dotori", "");
+		}
+		
 		List tempList = noticeService.getNoticeList(map);
 		
 		String content = ((String) ((Map) tempList.get(0)).get("content")).replace("\r\n", "");
-		
-		
 		model.addAttribute("list",tempList);
 		
 		return "notice/noticeDetail";
