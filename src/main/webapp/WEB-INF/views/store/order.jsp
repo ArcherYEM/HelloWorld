@@ -12,6 +12,46 @@
     <link rel="stylesheet" href="../../../../resources/css/index/bgm.css" />
     <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
     <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+	<script>
+        var IMP = window.IMP; 
+        IMP.init("imp85702711"); 
+        
+        function requestPay() {
+            IMP.request_pay({
+            	pg: "kakaopay",
+                pay_method: "card",
+                merchant_uid: "ORD20180131-0000011",   // 주문번호
+                name: "미니미 이진우",
+                amount: 64900,                         // 숫자 타입
+                buyer_email: "gildong@gmail.com",
+                buyer_name: "이진우",
+                buyer_tel: "010-4242-4242",
+                buyer_addr: "서울특별시 강남구 신사동",
+                buyer_postcode: "01181"
+            }, function (rsp) { // callback
+            	console.log(rsp);
+                var imp_uid = rsp.imp_uid;
+                $.ajax({
+                	   type: 'POST',
+                	   url: '/verify/' + rsp.imp_uid,
+                	}).done(function(data) {
+                	   if(rsp.paid_amount === data.paid_amount){
+                	      alert("결제 성공");
+                	      btnPurchase();
+                	   } else {
+                	      alert("결제 실패");
+                	   }
+                	});
+            });
+        }
+
+        function generateMerchantUID() {
+            // 실제 상황에서는 더 복잡한 로직이 필요할 수 있습니다.
+            return "ORD" + new Date().getTime();
+        }
+    </script>
 </head>
 
 <body>
@@ -72,7 +112,7 @@
 	  	</div>
 	  </div>
 	  <div class="store-edit-btn">
-	 		<input type="submit" value="구매" id="btnUpload" onclick="btnPurchase()" class="btn">
+	 		<input type="submit" value="구매" id="btnUpload" onclick="requestPay()" class="btn">
 	 		<input type="button" value="취소" id="cancel-button" class="btn">
 	  </div>
 	</div>	
@@ -147,6 +187,7 @@ var selectedProduct;
 };
 
 function btnPurchase(){
+	
 	var content = selectedProduct;
 	document.getElementById("content").value = content;
 	var method = document.getElementById("mySelect").value;

@@ -17,7 +17,7 @@
      
     <!-- Application Loggers -->
     <logger name="first" additivity="false">
-        <level value="warn" />
+        <level value="debug" />
         <appender-ref ref="console"/>
     </logger>
      

@@ -13,6 +13,8 @@
 	<link href="/resources/css/index/bgm.css" rel="stylesheet">
 	<link rel="stylesheet" href="../../../../resources/css/minihome/fonts.css" />
 	<link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
+	
+	
 </head>
 <body>
 	<div class="bgmBuy-frame">
@@ -78,7 +80,6 @@
 		
 	</div>
 	
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 var selected = [];
 var userNickname = '${sessionScope.userId.userNickname}';
@@ -89,6 +90,7 @@ var userNickname = '${sessionScope.userId.userNickname}';
 	var price = '<c:out value="${bgmItem.price}" />';
 selected.push({ title: title, artist: artist, price: price });
 </c:forEach>
+
 
 function openNewWindowBgmBuy() {
     var windowSettings = 'width=800, height=600, scrollbars=no, resizable=no, toolbar=no, menubar=no, left=100, top=50';
@@ -122,11 +124,12 @@ function renderSelectedItems() {
 
 // form 전송
 function sendSelectedDataToController() {
+	
     var form = document.getElementById("bgmBuyForm");
 
     var selectedDataField = document.getElementById("selectedDataField");
     selectedDataField.value = JSON.stringify(selected);
-
+    
     form.submit();
 }
 
