@@ -213,19 +213,20 @@
                      </div>
                      <br>
                      <div class="main-cmt">
-                        <div class="main-cmt-write">
-                           일촌평
+
                            <c:if test="${friendCheck==0 }">
-	                           <input type="text" id="friendCmt" class="main-cmt-input" value="일촌이 아니기 때문에 일촌평을 작성할 수 없습니다." readonly>
+
                            </c:if>
                            <c:if test="${friendCheck==1 }">
+							<div class="main-cmt-write">
+                           일촌평
 	                           <input type="text" id="friendCmt" class="main-cmt-input">
-                           </c:if>
-                           <c:if test="${friendCheck==2 }">
-	                           <input type="text" id="friendCmt" class="main-cmt-input" value="자기 자신은 일촌평을 작성할 수 없습니다.." readonly>
-                           </c:if>
                            <button type="button" id="btnFriendCmt" value="확인">확인</button>
                         </div>
+                           </c:if>
+                           <c:if test="${friendCheck==2 }">
+
+                           </c:if>
                         <div class="main-cmt-content">
 						    <ul>
 						        <c:forEach var="list" items="${friendCmtList}" varStatus="i">

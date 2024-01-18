@@ -1,5 +1,6 @@
 package com.core.tjoeun.index.store.controller;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -36,6 +37,13 @@ public class StoreController {
 	
 	@Autowired
 	SettingService settingService;
+	
+	@ResponseBody
+	@RequestMapping("/kakaopay")
+	public String singleKakaopay() {
+
+	}
+	
 
 	@RequestMapping(value = "/store/skinView")
 	public String skin(HttpSession session, HttpServletRequest req, Model model) {

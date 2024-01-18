@@ -146,7 +146,7 @@ var selectedProduct;
 
 };
 
-function btnPurchase(){
+/* function btnPurchase(){
 	var content = selectedProduct;
 	document.getElementById("content").value = content;
 	var method = document.getElementById("mySelect").value;
@@ -154,9 +154,17 @@ function btnPurchase(){
 	var price = document.getElementById("buyDotoriPrice").textContent;
 	document.getElementById("price").value = price;
 	document.getElementById("frmPurchase").submit();
-}
+} */
 	
 	
+function btnPurchase(){
+	$.ajax({
+		method: 'POST',
+		url: "/kakaopay",
+	}).done(function(json){
+		
+	}
+});
 
 </script>
 </body>
