@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.core.tjoeun.index.member.service.MemberService;
 import com.core.tjoeun.mnHome.diary.service.DiaryService;
 import com.core.tjoeun.mnHome.main.dao.MainDao;
 import com.core.tjoeun.mnHome.main.service.MainService;
@@ -30,6 +31,9 @@ public class DiaryController {
 	@Autowired
 	MainDao mainDao;
 	
+	@Autowired
+	MemberService memberService;
+	
 	@RequestMapping("/mnHome/diaryView/{userNickname}")
 	public String diaryView(@PathVariable String userNickname, Model model) {
 		Map userMap = mainService.getUserInfo(userNickname);
@@ -37,7 +41,18 @@ public class DiaryController {
 		model.addAttribute("userNickname", userMap.get("userNickname"));
 		model.addAttribute("title", userMap.get("title"));
 		
+		String userGender = memberService.selectUserGender(userNickname);
+		model.addAttribute("userGender",userGender);
 		
+		Map profile = mainService.getProfile(userNickname);
+		String image = (String) profile.get("image");
+		String msg = (String) profile.get("msg");
+		msg = msg.replace("\n", "<br>");
+		model.addAttribute("image", image);
+		model.addAttribute("msg", msg);
+		
+		List<Map> friendMap = mainService.getMyFriends(userNickname);
+        model.addAttribute("friend", friendMap);
 		
 		Map diary = diaryService.selectDiary(userMap);
 	    model.addAttribute("diary", diary);
@@ -55,36 +70,27 @@ public class DiaryController {
 	    for (HashMap<String, Object> cmt : cmtList) {
 	        String diarySeq = cmt.get("diarySeq").toString();
 	        
-	        // 맵에 해당 일기의 댓글 리스트가 이미 존재하는지 확인
 	        if (diaryCmt.containsKey(diarySeq)) {
-	            // 이미 존재한다면 리스트에 댓글 추가
 	        	diaryCmt.get(diarySeq).add(cmt);
 	        } else {
-	            // 존재하지 않는다면 새로운 리스트를 만들어서 댓글 추가 후 맵에 추가
 	            List<HashMap> newCMTList = new ArrayList<>();
 	            newCMTList.add(cmt);
 	            diaryCmt.put(diarySeq, newCMTList);
 	        }
 	    }
-
 	    model.addAttribute("cmtList", diaryCmt);
-	    
-		
 		
 		// menu color 적용하기
         Map callMenu = new HashMap();
         callMenu.put("category", "menu");
         callMenu.put("userNickname", userNickname);
-        System.out.println("### callMenu : " + callMenu);
         
         try {
         	Map mainMenu = mainService.mainMenu(callMenu);
-        	System.out.println("### mainMenu : " + mainMenu);
         	
         	model.addAttribute("menuProductName", mainMenu.get("productName"));
 	        model.addAttribute("menuCategory", mainMenu.get("category"));
 	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
-	        System.out.println("### menu model : " + model);
 	        
         } catch (NullPointerException n) {
 	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
@@ -99,10 +105,8 @@ public class DiaryController {
 			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
 			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return "miniHome/diary";
 	}
 	
@@ -113,20 +117,30 @@ public class DiaryController {
 		model.addAttribute("userName", userMap.get("userName"));
 		model.addAttribute("title", userMap.get("title"));
 		
+		String userGender = memberService.selectUserGender(userNickname);
+		model.addAttribute("userGender",userGender);
+		
+		Map profile = mainService.getProfile(userNickname);
+		String image = (String) profile.get("image");
+		String msg = (String) profile.get("msg");
+		msg = msg.replace("\n", "<br>");
+		model.addAttribute("image", image);
+		model.addAttribute("msg", msg);
+		
+		List<Map> friendMap = mainService.getMyFriends(userNickname);
+        model.addAttribute("friend", friendMap);
+		
 		// menu color 적용하기
         Map callMenu = new HashMap();
         callMenu.put("category", "menu");
         callMenu.put("userNickname", userNickname);
-        System.out.println("### callMenu : " + callMenu);
         
         try {
         	Map mainMenu = mainService.mainMenu(callMenu);
-        	System.out.println("### mainMenu : " + mainMenu);
         	
         	model.addAttribute("menuProductName", mainMenu.get("productName"));
 	        model.addAttribute("menuCategory", mainMenu.get("category"));
 	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
-	        System.out.println("### menu model : " + model);
 	        
         } catch (NullPointerException n) {
 	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
@@ -141,10 +155,8 @@ public class DiaryController {
 			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
 			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        
 		return "miniHome/diaryWrite";
 	}
 	
@@ -166,18 +178,15 @@ public class DiaryController {
 	@RequestMapping(value="/mnHome/diaryAddCMT", method = RequestMethod.POST)
 	@ResponseBody
 	public Map diaryAddCMT(@RequestBody  Map map) throws Exception {
-			
 			map.put("openScope",1);
 			
 			Map resultMap = new HashMap();
-			
 			try {
 				diaryService.insertDiaryCMT(map);
 				resultMap.put("resultCode", "1");
 			} catch (Exception e) {
 				resultMap.put("resultCode", "0");
 			}
-			
 			return resultMap;
 	}
 	
@@ -193,13 +202,10 @@ public class DiaryController {
 			jsonMap.put("content", resultMap.get("content"));
 			jsonMap.put("seq", resultMap.get("seq"));
 			
-			
 			int seq = (int) resultMap.get("seq");
 			List<HashMap> cmtList = diaryService.diaryCmtTest(String.valueOf(seq));
 			jsonMap.put("cmt", cmtList);
 		}
-		
-		
 		return jsonMap;
 	}
 	
@@ -213,9 +219,7 @@ public class DiaryController {
 			
 			List<HashMap> cmtList = diaryService.diaryCmtTest(String.valueOf(seq));
 			jsonMap.put("cmt", cmtList);
-			
 		}
-		
 		return jsonMap;
 	}
 }

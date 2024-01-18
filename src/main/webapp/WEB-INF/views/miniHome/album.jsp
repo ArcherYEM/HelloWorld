@@ -54,8 +54,7 @@
                    		 <div class="profile-dot">-----------------------------------</div>
                      	 <div class="left-3">
 		                     <div class="profile-username font-kyobohand mainpopup" onclick="popupFunction()"> 
-								<c:if test="${sessionScope.userId.userNickname == userNickname}">
-								</c:if>
+								<c:if test="${sessionScope.userId.userNickname == userNickname}"></c:if>
 								<c:if test="${sessionScope.userId.userNickname != userNickname}">
 								    <div class="mainpopuptext" id="myPopup" onclick="requestFriendship('${userNickname}')"> 
 								        일촌신청 
