@@ -37,6 +37,8 @@ public interface MainMapper {
 	
 	public List<Map> getMyFriends(String userNickname);
 	
+	public int friendCheck(Map map);
+	
 	public Map mainSkin(Map map);
 	
 	public int insertFriendCmt(Map map);

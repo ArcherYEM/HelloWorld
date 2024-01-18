@@ -127,6 +127,12 @@ public class MainDaoImpl implements MainDao{
 		
 		return mapper.getMyFriends(userNickname);
 	}
+	
+	@Override
+	public int friendCheck(Map map) {
+		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
+		return mapper.friendCheck(map);
+	}
 
 	@Override
 	public Map mainSkin(Map map) {

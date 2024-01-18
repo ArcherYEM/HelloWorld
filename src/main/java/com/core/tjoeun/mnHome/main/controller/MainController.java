@@ -162,6 +162,16 @@ public class MainController {
 	        	n.printStackTrace();
         }
         
+        //접속자가 홈피 주인이랑 친구인지 확인
+        Map checkmap = new HashMap();
+        checkmap.put("userNickname", userNickname);
+        checkmap.put("friendNickname", guestNickname);
+        int friendCheck = mainService.friendCheck(checkmap);
+        if(userNickname.equals(guestNickname)) {
+        	friendCheck=2;
+        }
+        model.addAttribute("friendCheck",friendCheck);
+        
         //일촌평 가져오기
         List<Map> friendCmtList = new ArrayList<Map>();
         Map map = new HashMap();
@@ -194,6 +204,7 @@ public class MainController {
 			int result = mainService.insertFriendCmt(map);
 			if (result == 1) {
 				friendMap = mainService.selectFriendCmt(map);
+				System.out.println(friendMap);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
