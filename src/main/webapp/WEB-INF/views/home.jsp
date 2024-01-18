@@ -127,7 +127,6 @@
 				<span class="dot" data-slide-to="1" onclick="currentSlide(1)"></span>
 				<span class="dot" data-slide-to="2" onclick="currentSlide(2)"></span>
 				<span class="dot" data-slide-to="3" onclick="currentSlide(3)"></span>
-                    <!-- <span class="dot"></span>  -->
                </div>
             </div>
          </div>
