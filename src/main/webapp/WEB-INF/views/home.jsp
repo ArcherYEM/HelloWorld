@@ -70,7 +70,7 @@
 						<span id="userNickname"><c:out value='${sessionScope.userId.userNickname}'/></span>
 					</div>
 					<div class="login-top-right">
-						<span class="login-top-right-imz">&#127752;</span>일촌 ON <span id="spanOnfriendCnt" class="login-top-right-bfCnt">${sessionScope.friendCnt}</span>
+						<span class="login-top-right-imz">&#127752;</span>일촌 ON <span id="spanOnfriendCnt" class="login-top-right-bfCnt"></span>
 					</div>
 				</div>
 				<div class="login-profile-frame">

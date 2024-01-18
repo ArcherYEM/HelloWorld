@@ -102,6 +102,13 @@ public class MainServiceImpl implements MainService{
 		return mainDao.getMyFriends(userNickname);
 	}
 	
+	@Override
+	@Transactional(readOnly = true)
+	public int friendCheck(Map map) {
+		
+		return mainDao.friendCheck(map);
+	}
+	
 	//미니홈피 제목 가져오기
 	@Override
 	@Transactional(readOnly = true)
