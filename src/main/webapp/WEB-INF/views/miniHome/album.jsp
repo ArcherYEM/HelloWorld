@@ -93,10 +93,8 @@
 										<input type="hidden" id="btn-title-save"class="btn-edit" value="저장">
 									</div>
 							 </c:if>
-							
 							<div class="content-title-url"> https://www.helloworld.com/minihome/${userNickname }</div>
 						</div>
-						
 <!-- 						앨범 센터라인 -->
 						<div class="box content-box">
 						<c:if test="${sessionScope.userId.userNickname eq userNickname }">
@@ -105,7 +103,6 @@
 							</div>
 						</c:if>
 							<div class="album-overflow">
-							
 								<div class="album-container-container">
 									<c:if test="${list eq null || list.size() <= 0}">
 										<div id="noneMsg">사진이 없습니다.</div>
@@ -121,17 +118,13 @@
 										</c:forEach>
 									</c:if>
 								</div>
-								
 						   </div>
 						</div>
 					</div>
-					
 					<jsp:include page="/WEB-INF/views/miniHome/menuTab.jsp"></jsp:include>
-					
 				</div>
 			</div>
 		</div>
-			
 	</div>
 </body>
 </html>

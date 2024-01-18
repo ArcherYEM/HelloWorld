@@ -1,4 +1,4 @@
-		
+
 		
 		function clearCart() {
 			$.ajax({
@@ -140,3 +140,6 @@
 	        }
 	        
 	    });
+	    
+	    
+	    

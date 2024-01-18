@@ -30,23 +30,20 @@
 				</h5>
 				<a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
 				<a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
-				<a id="linkMnh" href="#" 
-					class="index-a-mnh" onclick="openMiniHomepage()">내 미니홈피
-				</a>
+				<a href="<c:url value='/index/mapView'/>" class="index-a-map">찾아오는 길</a>
 				<a id="linkLogout" href="<c:url value='/index/member/logout' />" class="index-a-logout">로그아웃</a>
 			</div>
       </div>
       
-      <div id="divHiUser">
-		  <p class="hello-message" id="helloMessage">
-		    HelloWorld 에 오신 걸 환영합니다.
-		  </p>
-	  </div>
-      <div class="divIndexMain">
-         <div id="divHome" class="divLogin">
-            <div >
-               <form class="frmLogin" id="frmLogin" method="POST" action="/index/member/login">
-                  
+		<div id="divHiUser">
+			<p class="hello-message" id="helloMessage">
+				HelloWorld 에 오신 걸 환영합니다.
+			</p>
+		</div>
+		<div class="divIndexMain">
+			<div id="divHome" class="divLogin">
+            	<div >
+                	<form class="frmLogin" id="frmLogin" method="POST" action="/index/member/login">
                   <input type="email" id="userEmail" name="userEmail" placeholder="Email"><br>
                   <br>
                   <input type="password" id="userPassword" name="userPassword" placeholder="Password"><br>
@@ -187,15 +184,12 @@
            let userDotori = document.getElementById('userDotori');
            let userMinimiElement = document.getElementById('mainMinimi');
            let spanOnfriendCnt = document.getElementById('spanOnfriendCnt');
-          // let todayCnt = document.getElementById('todayCnt');
 
            if (json.resultCode === '1') {
               helloMessage.innerText = json.userNickname + '  님 환영합니다.';
               userDotori.innerText = '내 도토리 : ' + json.userDotoriCnt + ' 개';
               userMinimiElement.src = "<c:url value='" + json.contentPath + "'/>";
               spanOnfriendCnt.innerText = json.friendCnt;
-             // todayCnt.innerText = json.todayCnt;
-              document.getElementById('linkMnh').style.display = 'block';
               document.getElementById('linkLogout').style.display = 'block';
               divHome.style.display = 'none';
               divLogin.style.display = 'block';
@@ -255,7 +249,6 @@
     
     function showUserInfo() {
         let userEmail = '<c:out value="${sessionScope.userId.userEmail}" />';
-        let linkMnh = document.getElementById('linkMnh');
         let linkLogout = document.getElementById('linkLogout');
         let userDotoriElement = document.getElementById('userDotori');
         let userDotoriCnt = '${dotori}';
@@ -264,7 +257,6 @@
         let divLogin = document.getElementById('divLogin');
 
         if (userEmail !== '') {
-           linkMnh.style.display = 'block';
            linkLogout.style.display = 'block';
            divHome.style.display = 'none';
            divLogin.style.display = 'block';
@@ -272,7 +264,6 @@
            document.getElementById('indexDotoriImg').style.display = 'inline-block';
         
         } else {
-        	linkMnh.style.display = 'none';
             linkLogout.style.display = 'none';
             divHome.style.display = 'block';
             divLogin.style.display = 'none';
@@ -429,7 +420,6 @@
 		var resultContainer = document.getElementById("resultContainer");
 	    resultContainer.classList.toggle("show");
 	}
-	
 	</script>
    </body>
 </html>

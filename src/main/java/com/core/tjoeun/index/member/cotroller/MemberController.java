@@ -47,7 +47,7 @@ public class MemberController {
 
             Map result = memberService.login(loginInfo);
             String userNickname = "";
-
+            
             if (result != null) {
                 // 로그인 성공 시
                 session.setAttribute("userId", result);
@@ -228,7 +228,7 @@ public class MemberController {
     
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String indexHome() {
-       return "home";
+       return "store/payment";
     }
     
     @RequestMapping(value="/getNew", method=RequestMethod.POST)

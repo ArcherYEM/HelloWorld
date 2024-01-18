@@ -1,0 +1,31 @@
+.map-frame {
+	margin: 20px auto;
+	margin-left: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#map {
+	width: 800px;
+	height: 380px;
+}
+
+.map-frame p{
+	text-align: center;
+}
+
+.map-rocation {
+	color: orange;
+	background: none;
+	border: none;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.map-rocation:hover {
+	cursor: pointer;
+	color: red;
+}
+

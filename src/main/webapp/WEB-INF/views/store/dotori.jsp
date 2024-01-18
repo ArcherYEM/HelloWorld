@@ -117,6 +117,8 @@
 
 	</script>
 	<script>
+	
+	
 	window.onload = function() {
 		let userDotoriElement = document.getElementById('userDotori');
         let storeLoginMyhome = document.getElementById('storeLoginMyhome');

@@ -14,6 +14,10 @@
 	    <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 	    <script src="../../../../resources/js/jquery-3.7.1.min.js"></script>
 	    <script src="<c:url value="/resources/js/storeCart.js" />"></script>
+	    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+	    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+	    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+	
 	</head>
 	
 	<body>

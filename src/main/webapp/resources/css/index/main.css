@@ -109,11 +109,18 @@ a {
 	align-items: center;
 	font-size: 16px;
 	font-weight: bold;
+	text-align: center;
 }
 
 .index-header-right a:hover {
 	cursor: pointer;
 	background-color: orange;
+}
+
+.index-a-store,
+.index-a-notice,
+.index-a-map,
+.index-a-logout {
 }
 
 .index-a-store {
@@ -124,7 +131,7 @@ a {
 	padding: 25px 40px;
 }
 
-.index-a-mnh {
+.index-a-map {
 	padding: 25px 30px;
 }
 

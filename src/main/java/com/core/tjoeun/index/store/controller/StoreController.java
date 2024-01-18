@@ -37,13 +37,6 @@ public class StoreController {
 	
 	@Autowired
 	SettingService settingService;
-	
-	@ResponseBody
-	@RequestMapping("/kakaopay")
-	public String singleKakaopay() {
-
-	}
-	
 
 	@RequestMapping(value = "/store/skinView")
 	public String skin(HttpSession session, HttpServletRequest req, Model model) {

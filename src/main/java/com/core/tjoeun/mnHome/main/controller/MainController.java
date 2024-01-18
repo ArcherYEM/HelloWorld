@@ -99,7 +99,6 @@ public class MainController {
 		//다이어리, 앨범, 게시판, 방명록 전체 개수 및 최근 24시간 개수 가져오기
 		Map tabs = mainService.tabs(userNickname);
 		model.addAttribute("tabs", tabs);
-		System.out.println("###Tabs :" + tabs);
 		
         //게시판, 사진첩 최신 게시글 상위 4개 가져오기
         List<Map> currentMap = mainService.selectCurrentContent(userNickname);
@@ -204,7 +203,6 @@ public class MainController {
 			int result = mainService.insertFriendCmt(map);
 			if (result == 1) {
 				friendMap = mainService.selectFriendCmt(map);
-				System.out.println(friendMap);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

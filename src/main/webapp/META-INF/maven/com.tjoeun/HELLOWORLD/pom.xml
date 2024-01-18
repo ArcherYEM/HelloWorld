@@ -21,6 +21,10 @@
 			<id>oracle</id>
 			<url>http://maven.jahia.org/maven2</url>
 		</repository>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
 	</repositories>
 
 	<dependencies>
@@ -216,11 +220,11 @@
 		</dependency>
 
 		<!-- Gson -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.2.4</version>
-		</dependency>
+		</dependency> -->
 
 		<!-- Java Mail API -->
 		<dependency>
@@ -240,6 +244,13 @@
 			<artifactId>aopalliance</artifactId>
 			<version>1.0</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>com.github.iamport</groupId>
+		    <artifactId>iamport-rest-client-java</artifactId>
+		    <version>0.2.22</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

@@ -1,6 +1,7 @@
 <!-- views/miniHome/miniroomEdit -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.Map" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -12,6 +13,8 @@
     <link rel="stylesheet" href="../../../../resources/css/index/bgm.css" />
     <link rel="icon" href="./icons8-favorite-32.png" type="image/x-icon">
     <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 </head>
 
 <body>
@@ -72,7 +75,7 @@
 	  	</div>
 	  </div>
 	  <div class="store-edit-btn">
-	 		<input type="submit" value="구매" id="btnUpload" onclick="btnPurchase()" class="btn">
+	 		<input type="submit" value="구매" id="btnUpload" onclick="requestPay()" class="btn">
 	 		<input type="button" value="취소" id="cancel-button" class="btn">
 	  </div>
 	</div>	
@@ -83,6 +86,65 @@
 	<input type="hidden" name="method" id="method" value="">
 	<input type="hidden" name="price" id="price" value="">
 </form>
+
+<script>
+        var IMP = window.IMP; 
+        IMP.init("imp85702711"); 
+        
+        <%
+        // 세션에서 userId를 가져옵니다.
+        Object userIdObj = session.getAttribute("userId");
+
+        // userId가 Map 타입인 경우에만 내부 속성을 가져옵니다.
+        if (userIdObj != null && userIdObj instanceof Map) {
+          Map userMap = (Map) userIdObj;
+
+          // Map에서 원하는 속성을 가져옵니다.
+          String userPhone = (String) userMap.get("userPhone");
+          String userName = (String) userMap.get("userName");
+        %>
+
+        // 여기서 userPhone과 userName을 JavaScript 변수에 할당합니다.
+        var userPhone = '<%= userPhone %>';
+        var userName = '<%= userName %>';
+        var userEmail = '<%= session.getAttribute("userEmail") %>';
+		
+        <%
+        }
+        %>
+        
+        function requestPay() {
+            IMP.request_pay({
+            	pg: "kakaopay",
+                pay_method: "card",
+                merchant_uid: generateMerchantUID(),   // 주문번호
+                name: "도토리 구매",
+                amount: 100,                         // 숫자 타입
+                buyer_email: userEmail,
+                buyer_name: userName,
+                buyer_tel: userPhone,
+            }, function (rsp) { // callback
+            	console.log(rsp);
+                var imp_uid = rsp.imp_uid;
+                $.ajax({
+                	   type: 'POST',
+                	   url: '/verify/' + rsp.imp_uid,
+                	}).done(function(data) {
+                	   if(rsp.paid_amount === data.paid_amount){
+                	      alert("결제 성공");
+                	      btnPurchase();
+                	   } else {
+                	      alert("결제 실패");
+                	   }
+                	});
+            });
+        }
+
+        function generateMerchantUID() {
+            // 실제 상황에서는 더 복잡한 로직이 필요할 수 있습니다.
+            return "ORD" + new Date().getTime();
+        }
+    </script>
 
 <script>
 var selectedProduct;
@@ -146,7 +208,12 @@ var selectedProduct;
 
 };
 
+
 /* function btnPurchase(){
+=======
+function btnPurchase(){
+	
+>>>>>>> 7f9f06588379e2ce6628ffa4bec1286f6df8c338
 	var content = selectedProduct;
 	document.getElementById("content").value = content;
 	var method = document.getElementById("mySelect").value;
