@@ -97,17 +97,17 @@ body a{
 }
 
 .profile-image {
-  flex: none;
-  height :50%;
-  max-height :50%;
+  display: flex;
   overflow : auto;
+  align-items: center;
+  justify-content: center;
 }
 
 .profile-image-img {
   width:auto;
   height:auto;
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 190px;
+  max-height: 160px;
   display: block;
   margin : 0 auto;  
 }
@@ -118,6 +118,7 @@ body a{
   flex: 1;
   margin-bottom: 20px;
   margin-left: 10px;
+  min-height: 65px;
 }
 
 .profile-history{
@@ -148,7 +149,6 @@ body a{
 }
 
 .profile-username {
-  /* flex: 1; */
   color: #0f1b5c;
   margin-bottom :5px;
 }
@@ -161,6 +161,21 @@ body a{
   min-width: 190px;
   max-width: 190.1px;
   margin-top: 8px;
+}
+
+.left-1 {
+	min-height: 159.9px;
+	max-height: 160px;
+}
+
+.left-2 {
+	min-height: 99.9px;
+	max-height: 100px;
+}
+
+.left-3 {
+	min-height: 59.9px;
+	max-height: 60px;
 }
 
 /*미니홈피 센터 (미니룸 라인)*/

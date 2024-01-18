@@ -108,13 +108,8 @@ public class AlbumController {
 			e.printStackTrace();
 		}
 		
-		
 		return "miniHome/album";
 	}
-	
-	
-	
-	
 	
 	@RequestMapping(value="/mnHome/albumWriteView/{userNickname}")
 	public String albumWriteView(@PathVariable String userNickname, Model model) {
@@ -127,6 +122,13 @@ public class AlbumController {
 		model.addAttribute("userName", map.get("userName"));
 		model.addAttribute("title", map.get("title"));
 		
+		Map profile = mainService.getProfile(userNickname);
+		String image = (String) profile.get("image");
+		String msg = (String) profile.get("msg");
+		msg = msg.replace("\n", "<br>");
+		model.addAttribute("image", image);
+		model.addAttribute("msg", msg);
+		
         //접속중인 유저의 친구 전부 가져오기
         List<Map> friendMap = mainService.getMyFriends(userNickname);
         model.addAttribute("friend", friendMap);
@@ -135,16 +137,13 @@ public class AlbumController {
         Map callMenu = new HashMap();
         callMenu.put("category", "menu");
         callMenu.put("userNickname", userNickname);
-        System.out.println("### callMenu : " + callMenu);
         
         try {
         	Map mainMenu = mainService.mainMenu(callMenu);
-        	System.out.println("### mainMenu : " + mainMenu);
         	
         	model.addAttribute("menuProductName", mainMenu.get("productName"));
 	        model.addAttribute("menuCategory", mainMenu.get("category"));
 	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
-	        System.out.println("### menu model : " + model);
 	        
         } catch (NullPointerException n) {
 	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
@@ -197,7 +196,6 @@ public class AlbumController {
 		
 		return result ;
 	}
-	
 	
 	@RequestMapping(value="/mnHome/albumDetailView/{userNickname}/{seq}")
 	public String albumDetailView(@PathVariable String userNickname, @PathVariable int seq, Model model) {
@@ -262,9 +260,7 @@ public class AlbumController {
 		}
 		
 		return  "miniHome/albumDetail";
-		
 	}
-	
 	
 	@RequestMapping(value="/mnHome/albumDelete")
 	@ResponseBody
@@ -278,10 +274,7 @@ public class AlbumController {
 			e.printStackTrace();
 			return result;
 		}
-		
 		return result ;
 	}
 	
-	
 }
-
