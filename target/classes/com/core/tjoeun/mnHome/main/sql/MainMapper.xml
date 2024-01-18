@@ -292,7 +292,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    ,content
 	    ,DATE_FORMAT(createDate, '%Y-%m-%d %H:%i') AS createDate
 	from friendCMT
-	where 1=1g
+	where 1=1
 	<if test="friendNickname == null">
 		and friendNickname = #{userNickname}
 	</if>
