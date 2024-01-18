@@ -1,5 +1,6 @@
 package com.core.tjoeun.index.member.dao;
 
+import java.util.List;
 import java.util.Map;
 
 public interface MemberDao {
@@ -40,7 +41,7 @@ public interface MemberDao {
 	
 	public int insertLoginLog(String userNickname);
 
-	public Map selectOnFriendCnt(String userNickname);
+	public List<Map> selectOnFriendCnt(String userNickname);
 	
 	public int insertUserStorageSkin(String userNickname);
 	

@@ -241,6 +241,7 @@ public class MemberController {
        resultMap.put("newFriend", memberService.getFriendCount(userNickname));
        resultMap.put("todayCnt", memberService.getTodayVisit(userNickname));
        resultMap.put("onFriendCnt", memberService.getOnFriendCnt(userNickname));
+       resultMap.put("friendList", memberService.getOnFriendName(userNickname));
        
        
        return resultMap;

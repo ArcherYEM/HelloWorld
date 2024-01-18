@@ -1,6 +1,8 @@
 package com.core.tjoeun.index.member.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -202,8 +204,23 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	@Transactional(readOnly = true)
 	public String getOnFriendCnt(String userNickname) {
-		Map resultMap = memberDao.selectOnFriendCnt(userNickname);
-		return (String.valueOf(resultMap.get("count")));
+		List<Map> resultList = memberDao.selectOnFriendCnt(userNickname);
+		return (String.valueOf(resultList.get(0).get("count")));
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<String> getOnFriendName(String userNickname) {
+	    List<Map> resultList = memberDao.selectOnFriendCnt(userNickname);
+
+	    List<String> userNicknames = new ArrayList<>();
+
+	    for (Map<String, Object> resultMap : resultList) {
+	        String userNicknameValue = (String) resultMap.get("userNickname");
+	        userNicknames.add(userNicknameValue);
+	    }
+
+	    return userNicknames;
 	}
 
 
