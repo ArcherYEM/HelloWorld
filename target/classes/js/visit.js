@@ -36,7 +36,7 @@ function insertComment() {
         alert("자신의 방명록에는 글을 작성할 수 없습니다.");
         return;
     }
-
+    
     let commentValue = $('#visit-comment-insert').val();
 
     let jsonData = {
@@ -53,7 +53,7 @@ function insertComment() {
     }).done(function(json) {
         if(json.result === "Success"){
             $('#visit-comment-insert').val('');
-            $('#quickVisit').trigger('click');
+            document.getElementById("tabVisit").click();
         } else if(json.result === "false"){
             alert("댓글 작성에 실패했습니다. 다시 시도해주세요.");
         }
