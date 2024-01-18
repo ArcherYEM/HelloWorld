@@ -6,7 +6,7 @@ a {
 }
 
 .logoATag {
-	width: 20%;
+	
 }
 
 .index-frame {
@@ -17,10 +17,14 @@ a {
 .index-header-logo {
 	width: 50%;
 	height: auto;
+	display: block;
 }
 
 .otherPage-logo {
-	width: 100%;
+	display: inline-block;
+    width: 50%;
+    margin-left: 25%;
+    /* margin-bottom:20px; */
 }
 
 .IndexPageTab {

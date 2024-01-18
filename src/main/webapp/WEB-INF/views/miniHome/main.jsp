@@ -209,7 +209,15 @@
                      <div class="main-cmt">
                         <div class="main-cmt-write">
                            일촌평
-                           <input type="text" id="friendCmt" class="main-cmt-input">
+                           <c:if test="${friendCheck==0 }">
+	                           <input type="text" id="friendCmt" class="main-cmt-input" value="일촌이 아니기 때문에 일촌평을 작성할 수 없습니다." readonly>
+                           </c:if>
+                           <c:if test="${friendCheck==1 }">
+	                           <input type="text" id="friendCmt" class="main-cmt-input">
+                           </c:if>
+                           <c:if test="${friendCheck==2 }">
+	                           <input type="text" id="friendCmt" class="main-cmt-input" value="자기 자신은 일촌평을 작성할 수 없습니다.." readonly>
+                           </c:if>
                            <button type="button" id="btnFriendCmt" value="확인">확인</button>
                         </div>
                         <div class="main-cmt-content">
@@ -344,6 +352,14 @@ function cancel() {
 	</script>
    <script>
    	  document.getElementById('btnFriendCmt').addEventListener('click', function() {
+   		  if(${friendCheck}==0){
+   			  alert("일촌이 아니기 때문에 일촌평을 작성할 수 없습니다.");
+   			  return;
+   		  } else if(${friendCheck}==2){
+   			  alert("자기 자신은 일촌평을 작성할 수 없습니다.");
+   			  return;
+   		  }
+   		  
    		
    		  let userNickname = $("#userNickname").val();
    		  let friendNickname = $('#frdTargetNickname').val();

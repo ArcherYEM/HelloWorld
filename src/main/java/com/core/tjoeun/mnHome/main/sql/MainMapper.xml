@@ -100,6 +100,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE (#{userNickname} = f.userNickname OR #{userNickname} = f.friendNickname) 
 		AND f.fStatus = 1 AND f.del_yn = 'n';
 	</select>
+	
+	<select id="friendCheck" parameterType="map" resultType="int">
+		SELECT 
+		    CASE 
+		        WHEN EXISTS (
+		            SELECT 1 
+		            FROM friends 
+		            WHERE 
+		                (userNickname = #{userNickname} AND friendNickname = #{friendNickname} AND fStatus = 1) 
+		                OR 
+		                (userNickname = #{friendNickname} AND friendNickname = #{userNickname} AND fStatus = 1)
+		        ) 
+		        THEN 1 
+		        ELSE 0 
+		    END AS result
+	</select>
 
 	<select id="tabs" parameterType="String" resultType="map">
 		SELECT 
@@ -276,11 +292,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    ,content
 	    ,DATE_FORMAT(createDate, '%Y-%m-%d %H:%i') AS createDate
 	from friendCMT
-	where 1=1
+	where 1=1g
 	<if test="friendNickname == null">
 		and friendNickname = #{userNickname}
 	</if>
-	<if test="friendNicname != null">
+	<if test="friendNickname != null">
 		and friendNickname = #{friendNickname}
 	</if>
 	and del_yn = 'n'
