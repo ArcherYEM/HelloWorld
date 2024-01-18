@@ -24,54 +24,121 @@
 							TODAY&nbsp;<span class="today-span">${todayCnt }</span>&nbsp;| TOTAL ${totalCnt }
 						</div>
 						<div class="box profile-box">
-								<div class="setting-folder-group">
+							<div class="setting-folder-group">
 								<div>
-								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
-								  <span class="setting-menu-title">개인정보</span>
-								  <ul class="tree">
-									<li><a><span class="setting-menu-list" id="spanSetting" data-setting="/mnHome/settingView/${userNickname }">개인정보변경</span></a></li>
-								  </ul>
-								  
-								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
-								  <span class="setting-menu-title">미니홈피관리</span>
-								  <ul class="tree">
-								    <li><a><span class="setting-menu-list" id="spanSettingBgm" data-bgm="/mnHome/settingBgm/${userNickname }">BGM설정</span></a></li>
-								    <li><a><span class="setting-menu-list" id="spanSettingMenu" data-menu="/mnHome/settingMenu/${userNickname }">메뉴탭설정</span></a></li>
-								    <li><a><span class="setting-menu-list" id="spanSettingSkin" data-skin="/mnHome/settingSkin/${userNickname }">스킨설정</span></a></li>
-								  </ul>
-								 
-								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
-								  <span class="setting-menu-title">아이템/내역관리</span>
-								  <ul class="tree">
-									<li><a><span class="setting-menu-list" id="spanSettingDotoriU" data-dotoriU="/mnHome/settingDotoriUse/${userNickname }">도토리 사용내역</span></a></li>
-									<li><a><span class="setting-menu-list" id="spanSettingDotoriC" data-dotoriC="/mnHome/settingDotoriCharge/${userNickname }">도토리 구매내역</span></a></li>
-								  </ul>
-								  
-								  <span><img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>"></span>
-								  <span class="setting-menu-title">인맥관리</span>
-								  <ul class="tree">
-									<li><a><span class="setting-menu-list" id="spanSettingFriends" data-friends="/mnHome/settingFriends/${userNickname }">일촌현황</span></a></li>
-								  </ul>
+									<span>
+										<img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>">
+									</span>
+									<span class="setting-menu-title">
+										개인정보
+									</span>
+									<ul class="tree">
+										<li>
+											<a>
+												<span class="setting-menu-list" id="spanSetting" data-setting="/mnHome/settingView/${userNickname }">
+													개인정보변경
+												</span>
+											</a>
+										</li>
+									</ul>
+									<span>
+										<img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>">
+									</span>
+									<span class="setting-menu-title">
+										미니홈피관리
+									</span>
+									<ul class="tree">
+										<li>
+											<a>
+												<span class="setting-menu-list set-on" id="spanSettingBgm" data-bgm="/mnHome/settingBgm/${userNickname }">
+													BGM설정
+												</span>
+											</a>
+										</li>
+										<li>
+											<a>
+												<span class="setting-menu-list" id="spanSettingMenu" data-menu="/mnHome/settingMenu/${userNickname }">
+													메뉴탭설정
+												</span>
+											</a>
+										</li>
+										<li>
+											<a>
+												<span class="setting-menu-list" id="spanSettingSkin" data-skin="/mnHome/settingSkin/${userNickname }">
+													스킨설정
+												</span>
+											</a>
+										</li>
+									</ul>
+									<span>
+										<img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>">
+									</span>
+									<span class="setting-menu-title">
+										아이템/내역관리
+									</span>
+									<ul class="tree">
+										<li>
+											<a>
+												<span class="setting-menu-list" id="spanSettingDotoriU" data-dotoriU="/mnHome/settingDotoriUse/${userNickname }">
+													도토리 사용내역
+												</span>
+											</a>
+										</li>
+										<li>
+											<a>
+												<span class="setting-menu-list" id="spanSettingDotoriC" data-dotoriC="/mnHome/settingDotoriCharge/${userNickname }">
+													도토리 구매내역
+												</span>
+											</a>
+										</li>
+									</ul>
+									<span>
+										<img class="setting-menu-dot" src="<c:url value='/resources/images/minihome/menu-dot.png'/>">
+									</span>
+									<span class="setting-menu-title">
+										인맥관리
+									</span>
+									<ul class="tree">
+										<li>
+											<a>
+												<span class="setting-menu-list" id="spanSettingFriends" data-friends="/mnHome/settingFriends/${userNickname }">
+													일촌현황
+												</span>
+											</a>
+										</li>
+									</ul>
 								</div>
 							</div>
-								<div class="setting-devide-dot">---------------------------------</div>
-								<div class="font-kyobohand">
+							<div class="profile-dot">-----------------------------------</div>
+                     			 <div class="left-3">
+		                 		    <div class="profile-username font-kyobohand mainpopup" onclick="popupFunction()"> 
+										<c:if test="${sessionScope.userId.userNickname == userNickname}"></c:if>
+										<c:if test="${sessionScope.userId.userNickname != userNickname}">
+								   			<div class="mainpopuptext" id="myPopup" onclick="requestFriendship('${userNickname}')"> 
+								        	일촌신청 
+									        <input type="hidden" id="requestUser" name="requestUser" value="${sessionScope.userId.userNickname}">
+									        <input type="hidden" id="responseUser" name="responseUser" value="${userNickname}">
+									    </div>
+									</c:if>
 									<c:if test="${userGender eq 'M'}">
 			                        	${userName }&#128102
 									</c:if>
 									<c:if test="${userGender eq 'F'}">
 			                        	${userName }&#128103
 									</c:if>
-								</div>
-								<div class="profile-dropDown">
+			                     </div>
+		               		     <div class="profile-dropDown">
 									<select id="friendSelect" onchange="redirectToMainView()">
 			                           <option value="" disabled selected hidden="">파도타기</option>
 									    <c:forEach var="friend" items="${friend}" varStatus="status">
-									        <option value="${friend.Name}">${friend.Name}(${friend.userEmail})</option>
+									        <option value="${friend.Name}">
+									        	${friend.Name}(${friend.userEmail})
+									        </option>
 									    </c:forEach>
 									</select>
-								</div>
-							</div>
+		                   		</div>
+	                     	</div>
+						</div>
 					</div>
 					<div class="content-container">
 						<div class="header content-title">
