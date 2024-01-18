@@ -29,26 +29,58 @@
 					</div>
 					<div class="box profile-box diary-box">
 						<div class="profile-image">
-							<div id="datepicker" style="width:80%"></div>
+							<div id="datepicker"></div>
 						</div>
-						<div class="profile-dot">---------------------------------</div>
-						<div class="profile-username font-kyobohand mainpopup" onclick="popupFunction()"> 
-						<c:if test="${sessionScope.userId.userNickname == userNickname}">
-						</c:if>
-						<c:if test="${sessionScope.userId.userNickname != userNickname}">
-						    <div class="mainpopuptext" id="myPopup" onclick="requestFriendship('${userNickname}')"> 
-						        일촌신청 
-						        <input type="hidden" id="requestUser" name="requestUser" value="${sessionScope.userId.userNickname}">
-						        <input type="hidden" id="responseUser" name="responseUser" value="${userNickname}">
-						    </div>
-						</c:if>
-						<c:if test="${userGender eq 'M'}">
-                        	${userName }&#128102
-						</c:if>
-						<c:if test="${userGender eq 'F'}">
-                        	${userName }&#128103
-						</c:if>
-                     </div>
+						<div class="profile-dot">-----------------------------------</div>
+						<div class="left-2">
+	                    	 <div class="profile-text font-kyobohand">
+	                        	<c:out value="${msg}" escapeXml="false"/>
+	                     	</div>
+	                     	<div class="profile-history">
+	                        	<c:if test="${sessionScope.userId.userNickname eq userNickname }">
+		                           <a 
+		                             class="profile-edit" 
+		                             onclick="openNewWindowMinihomeProfileEdit()">Edit
+		                           </a>
+		                        </c:if>
+		                        <form action="/mnHome/miniroomHistoryView" method="POST" id="frmHistory" target="miniroomWindow">
+		                        	<input type="hidden" name="targetNickname" id="targetNickname" value=${userNickname }>
+		                        </form>
+		                        <a
+		                          class="profile-hs"
+		                          onclick="openNewWindowMiniroomHistory()">History                        
+		                        </a>
+		                     </div>
+                    	 </div>
+                    	 <div class="profile-dot">-----------------------------------</div>
+                     	 <div class="left-3">
+		                     <div class="profile-username font-kyobohand mainpopup" onclick="popupFunction()"> 
+								<c:if test="${sessionScope.userId.userNickname == userNickname}"></c:if>
+								<c:if test="${sessionScope.userId.userNickname != userNickname}">
+								    <div class="mainpopuptext" id="myPopup" onclick="requestFriendship('${userNickname}')"> 
+								        일촌신청 
+								        <input type="hidden" id="requestUser" name="requestUser" value="${sessionScope.userId.userNickname}">
+								        <input type="hidden" id="responseUser" name="responseUser" value="${userNickname}">
+								    </div>
+								</c:if>
+								<c:if test="${userGender eq 'M'}">
+		                        	${userName }&#128102
+								</c:if>
+								<c:if test="${userGender eq 'F'}">
+		                        	${userName }&#128103
+								</c:if>
+		                     </div>
+	               		     <div class="profile-dropDown">
+								<select id="friendSelect" onchange="redirectToMainView()">
+		                           <option value="" disabled selected hidden="">파도타기</option>
+								    <c:forEach var="friend" items="${friend}" varStatus="status">
+								        <option value="${friend.Name}">
+								        	${friend.Name}(${friend.userEmail})
+								        </option>
+								    </c:forEach>
+								</select>
+	                   		</div>
+                     	</div>
 					</div>
 				</div>
 				<div class="content-container">

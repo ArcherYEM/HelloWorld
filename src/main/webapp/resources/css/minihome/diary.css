@@ -23,26 +23,15 @@
 /* 좌측라인  */
 .album-folder-group{
 	font-size: 12px;
-	
 }
 
 .album-folder-group img{
 	width: 15px;
 	height: auto;
-	
 }
 
-.album-folder {
-	margin-bottom: 5px;
-}
-
-.album-folder a{
-	margin-left: 5px;
-	top : 50%;
-}
-
-.folder-name{
-	
+#datepicker {
+	max-width: 100%;
 }
 
 .diary-content{
