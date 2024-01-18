@@ -1,5 +1,6 @@
 package com.core.tjoeun.index.member.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -128,7 +129,7 @@ public class MemberDaoImpl implements MemberDao {
 	}
 	
 	@Override
-	public Map selectOnFriendCnt(String userNickname) {
+	public List<Map> selectOnFriendCnt(String userNickname) {
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
 		
 		return mapper.selectOnFriendCnt(userNickname);

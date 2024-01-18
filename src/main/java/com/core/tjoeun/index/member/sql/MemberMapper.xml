@@ -53,7 +53,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </update>
    
     <select id="selectOnFriendCnt" parameterType="String" resultType="map">
-    	SELECT count(*) as count, userNickname
+    	SELECT 
+		    (SELECT COUNT(*) 
+		     FROM (
+		         SELECT f.friendNickname AS userNickname
+		         FROM friends f
+		         JOIN loginStatus ls ON (f.friendNickname = ls.userNickname)
+		         WHERE f.userNickname = #{userNickname} AND f.fStatus = '1' AND ls.status = '1'
+		         UNION
+		         SELECT f.userNickname
+		         FROM friends f
+		         JOIN loginStatus ls ON (f.userNickname = ls.userNickname)
+		         WHERE f.friendNickname = #{userNickname} AND f.fStatus = '1' AND ls.status = '1'
+		     ) AS subquery
+		    ) AS count,
+		    userNickname
 		FROM (
 		    SELECT f.friendNickname AS userNickname
 		    FROM friends f

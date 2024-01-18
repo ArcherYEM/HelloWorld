@@ -1,5 +1,6 @@
 package com.core.tjoeun.index.member.sql;
 
+import java.util.List;
 import java.util.Map;
 
 public interface MemberMapper {
@@ -40,7 +41,7 @@ public interface MemberMapper {
 	
 	public int insertLoginLog(String userNickname);
 	
-	public Map selectOnFriendCnt(String userNickname);
+	public List<Map> selectOnFriendCnt(String userNickname);
 	
 	public int insertUserStorageSkin(String userNickname);
 	

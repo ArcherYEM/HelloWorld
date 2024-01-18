@@ -1,5 +1,6 @@
 package com.core.tjoeun.index.member.service;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,5 +38,7 @@ public interface MemberService {
 	public String getTodayVisit(String userNickname);
 
 	public String getOnFriendCnt(String userNickname);
+	
+	public List<String> getOnFriendName(String userNickname);
 	
 }
