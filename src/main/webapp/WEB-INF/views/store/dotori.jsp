@@ -156,7 +156,7 @@
         });
         if (selectedButton) {
             var orderUrl = "/store/orderView?selectedProduct=" + encodeURIComponent(selectedButton.value);
-            window.open(orderUrl, '_blank', 'width=500,height=500');
+            window.open(orderUrl, '_blank', 'width=900,height=800');
         } else {
             alert("상품을 선택해주세요.");
         }
