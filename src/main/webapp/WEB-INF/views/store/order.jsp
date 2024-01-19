@@ -87,34 +87,24 @@
 	<input type="hidden" name="price" id="price" value="">
 </form>
 
+<form id="userSessionForm">
+    <input type="hidden" id="userPhone" value="${sessionScope.userId.userPhone}">
+    <input type="hidden" id="userName" value="${sessionScope.userId.userName}">
+    <input type="hidden" id="userEmail" value="${sessionScope.userEmail}">
+</form>
+
 <script>
+		var userPhone = document.getElementById("userPhone").value;
+		var userName = document.getElementById("userName").value;
+		var userEmail = document.getElementById("userEmail").value;
+		
 		var IMP = window.IMP;
 		IMP.init("imp85702711");
 		
-			// 세션에서 userId를 가져옵니다.
-		<%
-		Object userIdObj = session.getAttribute("userId");
-		
-		if (userIdObj == null || !(userIdObj instanceof Map)) {
-		    // 사용자가 로그인되어 있지 않은 경우
-		    out.println("alert('로그인 후 이용해주세요.');");
-		    out.println("window.close();"); // 현재 창을 닫습니다.
-		} else {
-		    Map userMap = (Map) userIdObj;
-		    String userPhone = (String) userMap.get("userPhone");
-		    String userName = (String) userMap.get("userName");
-		    String userEmail = (String) session.getAttribute("userEmail");
-		
-		    if (userEmail == null) {
-		        out.println("alert('이메일이 없습니다.');");
-		    }
-		%>
-		var userPhone = '<%= userPhone %>';
-		var userName = '<%= userName %>';
-		var userEmail = '<%= userEmail %>';
-		<%
+		if (!userEmail) {
+		    alert('로그인 후 이용해주세요.');
+		    window.close();
 		}
-		%>
 	        
         function requestPay() {
         	console.log("userEmail: ", userEmail);
