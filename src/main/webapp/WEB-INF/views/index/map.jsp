@@ -7,6 +7,8 @@
 <!DOCTYPE html>
 <html>
    <head>
+   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=afa149d5091d552ae811a96e9423ecce"></script>
+   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=afa149d5091d552ae811a96e9423ecce&libraries=services,clusterer,drawing"></script>
       <meta charset="UTF-8">
       <title>헬로월드</title>
       <link  href="/resources/css/index/main.css" rel="stylesheet">
@@ -48,8 +50,8 @@
 				</button> 
 			</p>
 		</div>
-		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=afa149d5091d552ae811a96e9423ecce"></script>
-		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=afa149d5091d552ae811a96e9423ecce&libraries=services,clusterer,drawing"></script>
+<!-- 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=afa149d5091d552ae811a96e9423ecce"></script> -->
+<!-- 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=afa149d5091d552ae811a96e9423ecce&libraries=services,clusterer,drawing"></script> -->
 		<script>
 			var container = document.getElementById('map');
 			var options = {
