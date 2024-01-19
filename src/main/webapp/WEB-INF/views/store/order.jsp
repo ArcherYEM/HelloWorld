@@ -66,8 +66,8 @@
 					<select id="mySelect" class="simple-select">
 	  					<option value="문화상품권">문화상품권</option>
 	  					<option value="휴대폰">휴대폰</option>
-	  					<option value="카카오페이">카카오페이</option>
-	  					<option value="신용/체크카드">신용/체크카드</option>
+	  					<option value="kakaopay">카카오페이</option>
+	  					<option value="html5_inicis">신용/체크카드</option>
 	  					<option value="무통장 입금">무통장 입금</option>
 	  				</select>
 	  			</div>
@@ -92,6 +92,7 @@
     <input type="hidden" id="userName" value="${sessionScope.userId.userName}">
     <input type="hidden" id="userEmail" value="${sessionScope.userEmail}">
     <input type="hidden" id="selectedProduct" value="${param.selectedProduct}">
+    <input type="hidden" id="paymentMethod" value="">
 </form>
 
 <script>
@@ -112,9 +113,10 @@
         	
         	var selectedProduct = document.getElementById("selectedProduct").value;
             var productPrice = calculateProductPrice(selectedProduct);
-        	
+            var paymentMethod = document.getElementById("mySelect").value;
+            
             IMP.request_pay({
-            	pg: "kakaopay",
+            	pg: paymentMethod,
                 pay_method: "card",
                 merchant_uid: generateMerchantUID(),
                 name: "도토리 구매",
