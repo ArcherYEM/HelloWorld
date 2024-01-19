@@ -91,6 +91,7 @@
     <input type="hidden" id="userPhone" value="${sessionScope.userId.userPhone}">
     <input type="hidden" id="userName" value="${sessionScope.userId.userName}">
     <input type="hidden" id="userEmail" value="${sessionScope.userEmail}">
+    <input type="hidden" id="selectedProduct" value="${param.selectedProduct}">
 </form>
 
 <script>
@@ -109,16 +110,15 @@
         function requestPay() {
         	console.log("userEmail: ", userEmail);
         	
-        	if(userEmail == null) {
-        		alert('로그인 후 이용해주세요.');
-        	}
+        	var selectedProduct = document.getElementById("selectedProduct").value;
+            var productPrice = calculateProductPrice(selectedProduct);
         	
             IMP.request_pay({
             	pg: "kakaopay",
                 pay_method: "card",
-                merchant_uid: generateMerchantUID(),   // 주문번호
+                merchant_uid: generateMerchantUID(),
                 name: "도토리 구매",
-                amount: 100,                         // 숫자 타입
+                amount: productPrice,                       
                 buyer_email: userEmail,
                 buyer_name: userName,
                 buyer_tel: userPhone,
@@ -131,7 +131,7 @@
                 	   url: '/verify/' + rsp.imp_uid,
                 	}).done(function(data) {
                 		console.log("ajax 성공 콜백 내부");
-                	   if(rsp.paid_amount === data.paid_amount){
+                	   if(rsp.paid_amount === data.response.amount){
                 	      alert("결제 성공");
                 	      btnPurchase();
                 	   } else {
@@ -142,10 +142,24 @@
         }
 
         function generateMerchantUID() {
-            // 실제 상황에서는 더 복잡한 로직이 필요할 수 있습니다.
             return "ORD" + new Date().getTime();
         }
-
+		
+        function calculateProductPrice(selectedProduct) {
+            if (selectedProduct == 10) {
+                return 1100;
+            } else if (selectedProduct == 30) {
+                return 3300;
+            } else if (selectedProduct == 50) {
+                return 5200;
+            } else if (selectedProduct == 100) {
+                return 9900;
+            } else if (selectedProduct == 300) {
+                return 29000;
+            }
+            return 0;
+        }
+        
 	var selectedProduct;
 	
 	  document.getElementById("cancel-button").addEventListener("click", function() {
