@@ -60,16 +60,13 @@ public class SettingController {
         Map callMenu = new HashMap();
         callMenu.put("category", "menu");
         callMenu.put("userNickname", userNickname);
-        System.out.println("### callMenu : " + callMenu);
         
         try {
         	Map mainMenu = mainService.mainMenu(callMenu);
-        	System.out.println("### mainMenu : " + mainMenu);
         	
         	model.addAttribute("menuProductName", mainMenu.get("productName"));
 	        model.addAttribute("menuCategory", mainMenu.get("category"));
 	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
-	        System.out.println("### menu model : " + model);
 	        
         } catch (NullPointerException n) {
 	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
@@ -129,7 +126,6 @@ public class SettingController {
 		
 		Map inputMap= new HashMap();
 		inputMap.put("userNickname", userNickname);
-		System.out.println("### inputMap : " + inputMap);
 		
 		String title = "";
 		String artist = "";
@@ -140,7 +136,6 @@ public class SettingController {
 		List<Map> bgmMap = settingService.selectMyBgm(inputMap);
 		
 		model.addAttribute("bgmMap",bgmMap);
-		System.out.println("### bgmMap : " + bgmMap);
 		
         //접속중인 유저의 친구 전부 가져오기
         List<Map> friendMap = mainService.getMyFriends(userNickname);
@@ -150,7 +145,6 @@ public class SettingController {
         Map callMenu = new HashMap();
         callMenu.put("category", "menu");
         callMenu.put("userNickname", userNickname);
-        System.out.println("### callMenu : " + callMenu);
         
         try {
         	Map mainMenu = mainService.mainMenu(callMenu);
@@ -177,7 +171,6 @@ public class SettingController {
         
         //플레이 리스트 가져오기
         List<Map> playList = settingService.selectPlayList(userNickname);
-        System.out.println(playList);
         model.addAttribute("playList",playList);
 		
 		return "miniHome/settingBgm";
@@ -254,13 +247,10 @@ public class SettingController {
 	@ResponseBody
 	public Map<String, Object> menuChoice(@RequestBody Map<String, String> requestData, HttpSession session, Model model) {
 	    String selectedProductName = requestData.get("selectedProductName");
-		System.out.println("### myMenu : " + selectedProductName);
 		
 		Map userMap = new HashMap();
 		userMap = (Map)session.getAttribute("userId");
 		String userNickname = (String)userMap.get("userNickname");
-		
-		System.out.println("★ userNickname : " + userNickname);
 		
 		Map menuMap = new HashMap();
 		menuMap.put("userNickname", userNickname);
@@ -322,7 +312,6 @@ public class SettingController {
 		Map putMap = new HashMap();
 		putMap.put("userNickname", userMap.get("userNickname"));
 		putMap.put("category", "skin");
-		System.out.println("### Skin putMap : " + putMap);
 		
 		try {
 		    List<Map<String, Object>> onSkin = settingService.allocationOnSkinMenu(putMap);
@@ -377,18 +366,15 @@ public class SettingController {
 	@ResponseBody
 	public Map<String, Object> skinChoice(@RequestBody Map<String, String> requestData, HttpSession session, Model model) {
 	    String selectedProductName = requestData.get("selectedProductName");
-		System.out.println("mySkin : " + selectedProductName);
 		
 		Map userMap = new HashMap();
 		userMap = (Map)session.getAttribute("userId");
 		String userNickname = (String)userMap.get("userNickname");
-		System.out.println("★ userNickname : " + userNickname);
 		
 			Map skinMap = new HashMap();
 			skinMap.put("userNickname", userNickname);
 			skinMap.put("productName", selectedProductName);
 			skinMap.put("category", "skin");
-			System.out.println("★ sknMap : " + skinMap);
 			
 			//방문자 수 가져오기
 	        try {
@@ -411,22 +397,17 @@ public class SettingController {
 			Map putMap = new HashMap();
 			putMap.put("userNickname", userMap.get("userNickname"));
 			putMap.put("category", "skin");
-			System.out.println("★ putMap : " + putMap);
 			
 			List<Map<String, Object>> userSkin = settingService.allocationOnSkinMenu(putMap);
-			System.out.println("★userSkin : " + userSkin);
 			model.addAttribute("skinMap", userSkin);
-			System.out.println("★ model : " + model);
 			if (userSkin != null && !userSkin.isEmpty()) {
 			    Map<String, Object> skinMap2 = userSkin.get(0);
-			    System.out.println("★ skinMap2 : " + skinMap2);
 			    
 			    if(skinMap2 != null) {
 			    	skinMap2.put("resultCode", "1");
 				} else {
 					skinMap2.put("resultCode", "0");
 				}
-			    
 			    return skinMap2;
 			} else {
 			    return new HashMap<>();
@@ -468,7 +449,6 @@ public class SettingController {
         
         try {
         	Map mainMenu = mainService.mainMenu(callMenu);
-        	System.out.println("### mainMenu : " + mainMenu);
         	
         	model.addAttribute("menuProductName", mainMenu.get("productName"));
 	        model.addAttribute("menuCategory", mainMenu.get("category"));
@@ -515,7 +495,6 @@ public class SettingController {
         Map callMenu = new HashMap();
         callMenu.put("category", "menu");
         callMenu.put("userNickname", userNickname);
-        System.out.println("### callMenu : " + callMenu);
         
         try {
         	Map mainMenu = mainService.mainMenu(callMenu);
@@ -649,7 +628,6 @@ public class SettingController {
 //	searchFriends , setting 공통메서드
 	public Map common(Map map) {
 	    Map resultMap = new HashMap();
-	    System.out.println("공통메서드 실행");
 	    try {
 	        resultMap = settingService.getSearchUser(map);
 	        resultMap.put("resultCode", "1");
@@ -657,7 +635,6 @@ public class SettingController {
 	        e.printStackTrace();
 	        resultMap.put("resultCode", "0");
 	    }
-	    System.out.println("공통메서드 종료");
 	    return resultMap;
 	}
 	
@@ -832,7 +809,6 @@ public class SettingController {
 				session.setAttribute("userName", requestData.get("changedName"));
 			}
 		} catch (Exception e) {
-			System.out.println("에러가 발생했습니다");
 			e.printStackTrace();
 		}
 		return result;
@@ -860,8 +836,6 @@ public class SettingController {
 	@RequestMapping(value = "/mnHome/changeNumber", method = RequestMethod.POST)
 	@ResponseBody
 	public int changeNumber(@RequestBody Map<String, String> requestData) {
-		System.out.println(requestData);
-		
 		int result = 0;
 		try {
 			result = settingService.changeNumber(requestData);
