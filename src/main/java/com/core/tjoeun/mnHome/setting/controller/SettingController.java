@@ -836,6 +836,7 @@ public class SettingController {
 	@RequestMapping(value = "/mnHome/changeNumber", method = RequestMethod.POST)
 	@ResponseBody
 	public int changeNumber(@RequestBody Map<String, String> requestData) {
+
 		int result = 0;
 		try {
 			result = settingService.changeNumber(requestData);
