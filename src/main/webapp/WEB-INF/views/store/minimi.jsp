@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -17,9 +16,7 @@
 	    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 	    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 	    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-	
 	</head>
-	
 	<body>
 	<div class="index-frame">
 	    <div class="divIndexMenu index-header">
@@ -69,7 +66,6 @@
 						</div>
 				    </c:forEach>
 				</div>
-				
 				<div class="cart-widget">
 				  <h2>장바구니</h2>
 				    <div class="cart-list-over">
@@ -93,9 +89,7 @@
 	        <!-- paging -->
 	        <div class="minimi-paging">
 	            <c:forEach var="page" begin="1" end="${totalPage}">
-	                <span class="spanPage" data-page="${page}" onclick="loadPage(${page})">
-					    【${page}】
-					</span>
+	                <span class="spanPage" data-page="${page}" onclick="loadPage(${page})">${page}</span>
 	            </c:forEach>
 	        </div>
 	        <form id="frm1" action="/store/minimiView" method="GET">

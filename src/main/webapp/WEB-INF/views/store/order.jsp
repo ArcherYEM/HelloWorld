@@ -66,8 +66,8 @@
 					<select id="mySelect" class="simple-select">
 	  					<option value="문화상품권">문화상품권</option>
 	  					<option value="휴대폰">휴대폰</option>
-	  					<option value="카카오페이">카카오페이</option>
-	  					<option value="신용/체크카드">신용/체크카드</option>
+	  					<option value="kakaopay">카카오페이</option>
+	  					<option value="html5_inicis">신용/체크카드</option>
 	  					<option value="무통장 입금">무통장 입금</option>
 	  				</select>
 	  			</div>
@@ -87,50 +87,53 @@
 	<input type="hidden" name="price" id="price" value="">
 </form>
 
+<form id="userSessionForm">
+    <input type="hidden" id="userPhone" value="${sessionScope.userId.userPhone}">
+    <input type="hidden" id="userName" value="${sessionScope.userId.userName}">
+    <input type="hidden" id="userEmail" value="${sessionScope.userEmail}">
+    <input type="hidden" id="selectedProduct" value="${param.selectedProduct}">
+    <input type="hidden" id="paymentMethod" value="">
+</form>
+
 <script>
-        var IMP = window.IMP; 
-        IMP.init("imp85702711"); 
-        
-        <%
-        // 세션에서 userId를 가져옵니다.
-        Object userIdObj = session.getAttribute("userId");
-
-        // userId가 Map 타입인 경우에만 내부 속성을 가져옵니다.
-        if (userIdObj != null && userIdObj instanceof Map) {
-          Map userMap = (Map) userIdObj;
-
-          // Map에서 원하는 속성을 가져옵니다.
-          String userPhone = (String) userMap.get("userPhone");
-          String userName = (String) userMap.get("userName");
-        %>
-
-        // 여기서 userPhone과 userName을 JavaScript 변수에 할당합니다.
-        var userPhone = '<%= userPhone %>';
-        var userName = '<%= userName %>';
-        var userEmail = '<%= session.getAttribute("userEmail") %>';
+		var userPhone = document.getElementById("userPhone").value;
+		var userName = document.getElementById("userName").value;
+		var userEmail = document.getElementById("userEmail").value;
 		
-        <%
-        }
-        %>
-        
+		var IMP = window.IMP;
+		IMP.init("imp85702711");
+		
+		if (!userEmail) {
+		    alert('로그인 후 이용해주세요.');
+		    window.close();
+		}
+	        
         function requestPay() {
+        	console.log("userEmail: ", userEmail);
+        	
+        	var selectedProduct = document.getElementById("selectedProduct").value;
+            var productPrice = calculateProductPrice(selectedProduct);
+            var paymentMethod = document.getElementById("mySelect").value;
+            
             IMP.request_pay({
-            	pg: "kakaopay",
+            	pg: paymentMethod,
                 pay_method: "card",
-                merchant_uid: generateMerchantUID(),   // 주문번호
+                merchant_uid: generateMerchantUID(),
                 name: "도토리 구매",
-                amount: 100,                         // 숫자 타입
+                amount: productPrice,                       
                 buyer_email: userEmail,
                 buyer_name: userName,
                 buyer_tel: userPhone,
             }, function (rsp) { // callback
             	console.log(rsp);
                 var imp_uid = rsp.imp_uid;
+                console.log("ajax 호출 전");
                 $.ajax({
                 	   type: 'POST',
                 	   url: '/verify/' + rsp.imp_uid,
                 	}).done(function(data) {
-                	   if(rsp.paid_amount === data.paid_amount){
+                		console.log("ajax 성공 콜백 내부");
+                	   if(rsp.paid_amount === data.response.amount){
                 	      alert("결제 성공");
                 	      btnPurchase();
                 	   } else {
@@ -141,7 +144,6 @@
         }
 
         function generateMerchantUID() {
-            // 실제 상황에서는 더 복잡한 로직이 필요할 수 있습니다.
             return "ORD" + new Date().getTime();
         }
     </script>
@@ -222,7 +224,38 @@ function btnPurchase(){
 	document.getElementById("price").value = price;
 	document.getElementById("frmPurchase").submit();
 } */
+		
+        function calculateProductPrice(selectedProduct) {
+            if (selectedProduct == 10) {
+                return 1100;
+            } else if (selectedProduct == 30) {
+                return 3300;
+            } else if (selectedProduct == 50) {
+                return 5200;
+            } else if (selectedProduct == 100) {
+                return 9900;
+            } else if (selectedProduct == 300) {
+                return 29000;
+            }
+            return 0;
+        }
+        
+	var selectedProduct;
 	
+	  document.getElementById("cancel-button").addEventListener("click", function() {
+	    window.close();
+	  });
+	  
+	/* ========================================================================================================== */
+	 window.onload = function() {
+		var dotoriImageUrl;
+	  	var productCount;
+	  	var productOriginalPrice;
+	  	var productDiscount;
+	  	var productPrice;
+	
+	    // 현재 페이지의 URL을 가져옵니다.
+	    var currentUrl = window.location.href;
 	
 function btnPurchase(){
 	$.ajax({
@@ -232,7 +265,60 @@ function btnPurchase(){
 		
 	}
 });
-
+	    // URL에서 쿼리 문자열을 파싱합니다.
+	    var urlParams = new URLSearchParams(window.location.search);
+	
+	    // 'selectedProduct' 파라미터의 값을 가져옵니다.
+		selectedProduct = urlParams.get('selectedProduct');
+	
+	    dotoriImageUrl = "/resources/images/store/dotoriBuy"+selectedProduct+".png"
+	    document.getElementById("buyDotoriImage").src=dotoriImageUrl
+	    producntCount = selectedProduct;
+	    
+	    if(selectedProduct == 10){
+	    	productOriginalPrice = "1,100";
+	    	productDiscount = "0%";
+	    	productPrice = "1,100";
+	    }
+	    else if(selectedProduct == 30){
+	    	productOriginalPrice = "3,300";
+	    	productDiscount = "0%";
+	    	productPrice = "3,300";
+	    }
+	    else if(selectedProduct == 50){
+	    	productOriginalPrice = "5,500";
+	    	productDiscount = "5%";
+	    	productPrice = "5,200";
+	    }
+	    else if(selectedProduct == 100){
+	    	productOriginalPrice = "11,000";
+	    	productDiscount = "9%";
+	    	productPrice = "9,900";
+	    }
+	    else if(selectedProduct == 300){
+	    	productOriginalPrice = "33,000";
+	    	productDiscount = "12%";
+	    	productPrice = "29,000";
+	    }
+	    
+	    document.getElementById("buyDotoriCount").textContent = selectedProduct;
+	    document.getElementById("buyDotoriOriginalPrice").textContent = productOriginalPrice;
+	    document.getElementById("buyDotoriDiscount").textContent = productDiscount;
+	    document.getElementById("buyDotoriPrice").textContent = productPrice;
+	
+	};
+	
+	function btnPurchase(){
+		
+		var content = selectedProduct;
+		document.getElementById("content").value = content;
+		var method = document.getElementById("mySelect").value;
+		document.getElementById("method").value = method;
+		var price = document.getElementById("buyDotoriPrice").textContent;
+		document.getElementById("price").value = price;
+		document.getElementById("frmPurchase").submit();
+	}
+	
 </script>
 </body>
 </html>

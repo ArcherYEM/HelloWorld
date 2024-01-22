@@ -7,6 +7,8 @@
 <!DOCTYPE html>
 <html>
    <head>
+   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=afa149d5091d552ae811a96e9423ecce"></script>
+   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=afa149d5091d552ae811a96e9423ecce&libraries=services,clusterer,drawing"></script>
       <meta charset="UTF-8">
       <title>헬로월드</title>
       <link  href="/resources/css/index/main.css" rel="stylesheet">
@@ -48,8 +50,8 @@
 				</button> 
 			</p>
 		</div>
-		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=afa149d5091d552ae811a96e9423ecce"></script>
-		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=afa149d5091d552ae811a96e9423ecce&libraries=services,clusterer,drawing"></script>
+<!-- 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=afa149d5091d552ae811a96e9423ecce"></script> -->
+<!-- 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=afa149d5091d552ae811a96e9423ecce&libraries=services,clusterer,drawing"></script> -->
 		<script>
 			var container = document.getElementById('map');
 			var options = {
@@ -76,9 +78,7 @@
 			    map.setBounds(bounds);
 			}
 			
-			// 마커가 지도 위에 표시되도록 설정합니다
 			marker.setMap(map);
-
 			var iwContent = 
 					'<a href="#" class="map-find" onclick="openKakaoMap(); return false;" style="margin-left: 30px; color: red; font-weight: bold; text-align: center;" target="_blank">Core 길찾기</a>',
 			    iwPosition = new kakao.maps.LatLng(33.450701, 126.570667);

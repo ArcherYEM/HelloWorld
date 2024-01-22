@@ -288,27 +288,35 @@
      };
 	</script>
 	<script>
-	let popup;
+		let popup;
+		let friendListContainer;
 	
-	document.addEventListener('DOMContentLoaded', function () {
-	    document.getElementById('spanOnfriendCnt').addEventListener('click', function (e) {
-	    	togglePopup();
-	    });
-	});
-
-	function togglePopup() {
-	    let popupContainer = document.getElementById("popupContainer");
-
-	    // 팝업이 이미 존재하는지 확인
-	    if (popupContainer) {
-	        // 이미 존재하는 경우, 제거하여 숨김
-	        document.body.removeChild(popupContainer);
-	    } else {
-	        // 존재하지 않는 경우, 팝업 생성 및 표시
-	        newContent();
-	    }
-	}
+		document.addEventListener('DOMContentLoaded', function () {
+		    // 초기에 한 번만 friendListContainer를 생성
+		    friendListContainer = document.createElement("div");
+		    friendListContainer.setAttribute("id", "friendListContainer");
 	
+		    document.getElementById('spanOnfriendCnt').addEventListener('click', function (e) {
+		        console.log('Click Event - PageX:', e.pageX, 'PageY:', e.pageY);
+
+		        // 클릭할 때마다 friendListContainer를 초기화
+		        friendListContainer.innerHTML = '';
+
+		        // newContent 함수를 호출하여 friendListContainer에 내용 추가
+		        newContent();
+
+		        // 클릭한 위치에 팝업을 표시
+				
+				friendListContainer.style.position = 'fixed';
+				friendListContainer.style.visibility = 'visible';
+				friendListContainer.style.left = '41%';
+				friendListContainer.style.top = '23%';
+				
+
+		        // friendListContainer를 body에 추가
+		        document.body.appendChild(friendListContainer);
+		    });
+		});
 	function newContent() {
 	    let userNickname = '<c:out value="${sessionScope.userId.userNickname}" />';
 	    let newContent = document.getElementById('newContent');
@@ -317,11 +325,12 @@
 	    let onFriendCnt = document.getElementById('spanOnfriendCnt');
 
 	    if (userNickname == 'null' || userNickname == '') {
-
+	        // 로그인되지 않은 경우에 대한 처리
 	    } else {
 	        let jsonData = {
 	            "userNickname": userNickname
 	        };
+
 	        $.ajax({
 	            method: 'POST',
 	            url: "/index/member/getNew",
@@ -334,50 +343,12 @@
 	            onFriendCnt.innerText = json.onFriendCnt;
 
 	            if (json.friendList && json.friendList.length > 0) {
-	                showFriendListPopup(json.friendList);
+	                for (let i = 0; i < json.friendList.length; i++) {
+	                    let friendElement = document.createElement("div");
+	                    friendElement.innerText = json.friendList[i];
+	                    friendListContainer.appendChild(friendElement);
+	                }
 	            }
-
-	            // 부모 container 생성
-	            let parentContainer = document.createElement("div");
-
-	            // 팝업 엘리먼트 생성
-	            let popup = document.createElement("div");
-	            popup.setAttribute("class", "popup-container"); // .popup-container 클래스 추가
-	            popup.setAttribute("id", "myPopup");
-
-	            // 닫기 버튼 추가
-	            let closeButton = document.createElement("span");
-	            closeButton.innerHTML = "&times;"; // X 아이콘
-	            closeButton.setAttribute("class", "close-button");
-	            closeButton.addEventListener("click", function () {
-	                document.body.removeChild(popup); // 팝업 닫기
-	            });
-
-	            popup.appendChild(closeButton); // 닫기 버튼을 팝업에 추가
-
-	            // 친구 목록을 팝업에 추가
-	            for (let i = 0; i < json.friendList.length; i++) {
-	                let friendElement = document.createElement("div");
-	                friendElement.innerHTML = json.friendList[i];
-	                popup.appendChild(friendElement);
-	            }
-
-	            // 팝업을 부모 container에 추가
-	            parentContainer.appendChild(popup);
-
-	            // 결과 text 담을 div
-	            let resultContainer = document.createElement("div");
-	            resultContainer.setAttribute("class", "popup");
-	            resultContainer.setAttribute("id", "resultContainer");
-	            resultContainer.addEventListener("click", showFriendListPopup);
-
-	            // tag 주입
-	            resultContainer.innerHTML = json.userNickname;
-
-	            parentContainer.appendChild(resultContainer);
-
-	            // 문서에 부모 container 추가
-	            document.body.appendChild(parentContainer);
 	        });
 	    }
 	}
@@ -416,9 +387,9 @@
 	}
 
 	function popupFunction() {
-	    // resultContainer의 클래스를 조작하여 show 클래스를 토글
-		var resultContainer = document.getElementById("resultContainer");
-	    resultContainer.classList.toggle("show");
+	    // friendListContainer의 클래스를 조작하여 show 클래스를 토글
+	    var friendListContainer = document.getElementById("friendListContainer");
+	    friendListContainer.classList.toggle("show");
 	}
 	</script>
    </body>

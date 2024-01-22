@@ -475,7 +475,7 @@ to {
 /* Popup arrow */
 .popup .popuptext::after {
   content: "";
-  position: absolute;
+  position: absolute; /* fixed에서 absolute로 변경 */
   top: 100%;
   left: 50%;
   margin-left: -5px;
@@ -483,7 +483,6 @@ to {
   border-style: solid;
   border-color: #555 transparent transparent transparent;
 }
-
 
 /* Toggle this class - hide and show the popup */
 .popup .show {
