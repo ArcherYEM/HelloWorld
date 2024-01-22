@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Propagation;
@@ -27,6 +28,7 @@ public class SettingServiceImpl implements SettingService {
 
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
+	@CacheEvict(key="#map['userNickname']", cacheNames = {"menu", "skin"}, condition = "#map['category']=='menu' || #map['category']=='skin' ")
 	public void updateAllocationOff(Map map)  throws Exception{
 		settingDao.updateAllocationOff(map);
 		
@@ -122,6 +124,7 @@ public class SettingServiceImpl implements SettingService {
     
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
+	@CacheEvict(key="#map['userNickname']", cacheNames = {"profile", "userInfo"})
 	public int changeName(Map map) throws Exception {
 		int result = settingDao.changeName(map);
 		
@@ -133,6 +136,7 @@ public class SettingServiceImpl implements SettingService {
 	
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
+	@CacheEvict(key="#map['userNickname']", cacheNames = {"profile", "userInfo"})
 	public int changeNickname(Map map) throws Exception {
 		int result = settingDao.changeNickname(map);
 		
@@ -144,6 +148,7 @@ public class SettingServiceImpl implements SettingService {
 	
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
+	@CacheEvict(key="#map['userNickname']", cacheNames = {"profile", "userInfo"})
 	public int changeNumber(Map map) throws Exception {
 		int result = settingDao.changeNumber(map);
 		
@@ -159,11 +164,13 @@ public class SettingServiceImpl implements SettingService {
 	}
 
 	@Override
+	@CacheEvict(key="#param['userNickname']", value="bgmList")
 	public int addPlayList(Map param) {
 		return settingDao.addPlayList(param);
 	}
 	
 	@Override
+	@CacheEvict(key="#param['userNickname']", value="bgmList")
 	public int removePlayList(Map param) {
 		return settingDao.removePlayList(param);
 	}

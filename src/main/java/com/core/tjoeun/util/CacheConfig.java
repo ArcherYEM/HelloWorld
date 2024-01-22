@@ -22,7 +22,8 @@ public class CacheConfig {
 											,"background"
 											,"skin"
 											,"menu"
-											,"userName");
+											,"userName"
+											,"currentContent");
 		
 	}
 	
