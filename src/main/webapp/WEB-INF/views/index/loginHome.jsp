@@ -57,10 +57,11 @@
             <input type="button" class="mainBtn" id="btnLogout" value="로그아웃" onclick="logout()">
         </form>
    	 </div>
-		<hr style="border: 2px solid black; margin-top: 200px;">
+		<!-- <hr style="border: 2px solid black; margin-top: 200px;">
 		<div id="divTeamInfo">
 			<h1 style="margin-left: 50px">team core</h1>
-		</div>
+		</div> -->
+		<jsp:include page="/WEB-INF/views/index/footer.jsp"></jsp:include>
 	</body>
 	
 	<script>

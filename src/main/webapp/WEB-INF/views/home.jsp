@@ -130,9 +130,10 @@
       </div>
     </div>
 	<div class="bottom-fix">
-		<hr>
-		<h1>team core</h1>
-      </div>
+		<!-- <hr>
+		<h1>team core</h1> -->
+    </div>
+      <jsp:include page="/WEB-INF/views/index/footer.jsp"></jsp:include>
 	<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
 	<script>
 	function openMiniHomepage() {

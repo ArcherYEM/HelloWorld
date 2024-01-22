@@ -86,6 +86,7 @@
 			<button id="btnOrder" onclick='orderOpen()'>구입</button>
 		</div>
 	</div>
+	 <jsp:include page="/WEB-INF/views/index/footer.jsp"></jsp:include>
 	<script>
 	function openMiniHomepage() {
 	    // URL 정의

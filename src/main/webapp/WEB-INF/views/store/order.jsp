@@ -80,7 +80,7 @@
 	  </div>
 	</div>	
 </div>
-
+ <jsp:include page="/WEB-INF/views/index/footer.jsp"></jsp:include>
 <form id="frmPurchase" action="<c:url value='/store/dotoriBuy'/>" method="post">
 	<input type="hidden" name="content" id="content" value="">
 	<input type="hidden" name="method" id="method" value="">
