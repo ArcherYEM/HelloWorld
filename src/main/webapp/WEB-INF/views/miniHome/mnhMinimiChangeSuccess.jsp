@@ -12,7 +12,6 @@
     <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 </head>
 <body>
-	
 	<div class="mnm-change-success">
 		적용에 성공했습니다!
 		<div>
@@ -20,13 +19,9 @@
 		</div>
 	</div>		
 <script>
-function closeWindow() {
-    if (window.opener && !window.opener.closed) {
-	    window.opener.onChildButtonClick();
-	    window.close(); // 현재 창 닫기
-    }
-}
+	function closeWindow() {
+	    window.close();
+	}
 </script>
-
 </body>
 </html>
