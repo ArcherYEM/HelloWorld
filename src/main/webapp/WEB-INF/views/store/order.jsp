@@ -146,6 +146,84 @@
         function generateMerchantUID() {
             return "ORD" + new Date().getTime();
         }
+    </script>
+
+<script>
+var selectedProduct;
+
+  document.getElementById("cancel-button").addEventListener("click", function() {
+    window.close();
+  });
+  
+/* ========================================================================================================== */
+ window.onload = function() {
+	var dotoriImageUrl;
+  	var productCount;
+  	var productOriginalPrice;
+  	var productDiscount;
+  	var productPrice;
+  	
+
+    // 현재 페이지의 URL을 가져옵니다.
+    var currentUrl = window.location.href;
+
+    // URL에서 쿼리 문자열을 파싱합니다.
+    var urlParams = new URLSearchParams(window.location.search);
+
+    // 'selectedProduct' 파라미터의 값을 가져옵니다.
+	selectedProduct = urlParams.get('selectedProduct');
+
+    dotoriImageUrl = "/resources/images/store/dotoriBuy"+selectedProduct+".png"
+    document.getElementById("buyDotoriImage").src=dotoriImageUrl
+    producntCount = selectedProduct;
+    
+    if(selectedProduct == 10){
+    	productOriginalPrice = "1,100";
+    	productDiscount = "0%";
+    	productPrice = "1,100";
+    }
+    else if(selectedProduct == 30){
+    	productOriginalPrice = "3,300";
+    	productDiscount = "0%";
+    	productPrice = "3,300";
+    }
+    else if(selectedProduct == 50){
+    	productOriginalPrice = "5,500";
+    	productDiscount = "5%";
+    	productPrice = "5,200";
+    }
+    else if(selectedProduct == 100){
+    	productOriginalPrice = "11,000";
+    	productDiscount = "9%";
+    	productPrice = "9,900";
+    }
+    else if(selectedProduct == 300){
+    	productOriginalPrice = "33,000";
+    	productDiscount = "12%";
+    	productPrice = "29,000";
+    }
+    
+    document.getElementById("buyDotoriCount").textContent = selectedProduct;
+    document.getElementById("buyDotoriOriginalPrice").textContent = productOriginalPrice;
+    document.getElementById("buyDotoriDiscount").textContent = productDiscount;
+    document.getElementById("buyDotoriPrice").textContent = productPrice;
+
+};
+
+
+/* function btnPurchase(){
+=======
+function btnPurchase(){
+	
+>>>>>>> 7f9f06588379e2ce6628ffa4bec1286f6df8c338
+	var content = selectedProduct;
+	document.getElementById("content").value = content;
+	var method = document.getElementById("mySelect").value;
+	document.getElementById("method").value = method;
+	var price = document.getElementById("buyDotoriPrice").textContent;
+	document.getElementById("price").value = price;
+	document.getElementById("frmPurchase").submit();
+} */
 		
         function calculateProductPrice(selectedProduct) {
             if (selectedProduct == 10) {
@@ -175,11 +253,18 @@
 	  	var productOriginalPrice;
 	  	var productDiscount;
 	  	var productPrice;
-	  	
 	
 	    // 현재 페이지의 URL을 가져옵니다.
 	    var currentUrl = window.location.href;
 	
+function btnPurchase(){
+	$.ajax({
+		method: 'POST',
+		url: "/kakaopay",
+	}).done(function(json){
+		
+	}
+});
 	    // URL에서 쿼리 문자열을 파싱합니다.
 	    var urlParams = new URLSearchParams(window.location.search);
 	
@@ -233,9 +318,7 @@
 		document.getElementById("price").value = price;
 		document.getElementById("frmPurchase").submit();
 	}
-		
-		
-
+}
 </script>
 </body>
 </html>
