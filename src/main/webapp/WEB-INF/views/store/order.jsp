@@ -318,7 +318,7 @@ function btnPurchase(){
 		document.getElementById("price").value = price;
 		document.getElementById("frmPurchase").submit();
 	}
-	
+}
 </script>
 </body>
 </html>
