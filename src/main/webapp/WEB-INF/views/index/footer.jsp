@@ -19,8 +19,9 @@
 			</div>
 			<div class="grid-item">
 				<span>이정은</span>
-				<span>yem@gmail.com</span>
-				<span>https://github.com/ArcherYEM</span>
+				<span>jjeongeun327@gmail.com</span>
+				<span>https://github.com/jjeongeun327</span>
+				<span>https://velog.io/@jjeongeun327/posts</span>
 			</div>
 			<div class="grid-item">
 				<span>이진우</span>
