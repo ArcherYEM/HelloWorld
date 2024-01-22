@@ -9,6 +9,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Propagation;
@@ -29,6 +30,7 @@ public class AlbumServiceImpl implements AlbumService{
 	
 	@Override
 	@Transactional(readOnly = false, rollbackFor = Exception.class, propagation = Propagation.REQUIRES_NEW)
+	@CacheEvict(key="#map['userNickname']", value="currentContent")
 	public void insertAlbum(MultipartFile[] uploadFile, Map map) throws Exception {
 		
 		//사진  업로드
@@ -84,6 +86,7 @@ public class AlbumServiceImpl implements AlbumService{
 
 	@Override
 	@Transactional(readOnly = false, rollbackFor = Exception.class, propagation = Propagation.REQUIRES_NEW)
+	@CacheEvict(value="currentContent")
 	public void updateAlbum(Map map) throws Exception {
 		int result = albumDao.updateAlbum(map);
 		if(result != 1) {
