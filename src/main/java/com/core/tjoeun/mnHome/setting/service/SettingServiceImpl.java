@@ -124,7 +124,7 @@ public class SettingServiceImpl implements SettingService {
     
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
-	@CacheEvict(key="#map['userNickname']", cacheNames = {"profile", "userInfo"})
+	@CacheEvict(key="#map['userNickname']", cacheNames = {"userInfo", "userName"})
 	public int changeName(Map map) throws Exception {
 		int result = settingDao.changeName(map);
 		
@@ -136,7 +136,7 @@ public class SettingServiceImpl implements SettingService {
 	
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
-	@CacheEvict(key="#map['userNickname']", cacheNames = {"profile", "userInfo"})
+	@CacheEvict(key="#map['userNickname']", allEntries = true)
 	public int changeNickname(Map map) throws Exception {
 		int result = settingDao.changeNickname(map);
 		
@@ -148,7 +148,7 @@ public class SettingServiceImpl implements SettingService {
 	
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
-	@CacheEvict(key="#map['userNickname']", cacheNames = {"profile", "userInfo"})
+	@CacheEvict(key="#map['userNickname']", cacheNames = {"userInfo"})
 	public int changeNumber(Map map) throws Exception {
 		int result = settingDao.changeNumber(map);
 		
