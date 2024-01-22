@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -133,6 +134,7 @@ public class MainServiceImpl implements MainService{
 	//게시판, 사진첩 최신 게시글 상위 4개 가져오기
 	@Override
 	@Transactional(readOnly = true)
+	@Cacheable(key="#userNickname", value="currentContent")
 	public List<Map> selectCurrentContent(String userNickname) {
 		
 		return mainDao.selectCurrentContent(userNickname);
@@ -190,6 +192,7 @@ public class MainServiceImpl implements MainService{
 	}
 	
 	@Override
+	@CacheEvict(key="#userNickname", cacheNames={"minimi", "background"})
 	public void resetBackground(String userNickname) {
 		
 		mainDao.resetBackground(userNickname);		
@@ -220,6 +223,7 @@ public class MainServiceImpl implements MainService{
 
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW, rollbackFor = {Exception.class})
+	@CacheEvict(key="#map['userNickname']", value="homeTitle")
 	public void updateHomeTitle(Map map) throws Exception {
 		Map titleExist = mainDao.selectHomeTitle((String) map.get("userNickname"));
 		int result;
