@@ -56,10 +56,13 @@ public class SettingController {
         List<Map> friendMap = mainService.getMyFriends(userNickname);
         model.addAttribute("friend", friendMap);
         
-     // menu color 적용하기
+        //menu color 적용하기
         Map callMenu = new HashMap();
         callMenu.put("category", "menu");
         callMenu.put("userNickname", userNickname);
+        
+        //유저 번호 가져오기
+        model.addAttribute("phoneNumber",settingService.selectPhone(userNickname));
         
         try {
         	Map mainMenu = mainService.mainMenu(callMenu);

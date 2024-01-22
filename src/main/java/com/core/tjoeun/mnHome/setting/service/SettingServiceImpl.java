@@ -180,4 +180,10 @@ public class SettingServiceImpl implements SettingService {
 	public List<Map> selectPlayList(String userNickname) {
 		return settingDao.selectPlayList(userNickname);
 	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public String selectPhone(String userNickname) {
+		return settingDao.selectPhone(userNickname);
+	}
 }
