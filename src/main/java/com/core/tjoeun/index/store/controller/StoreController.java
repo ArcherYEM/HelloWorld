@@ -1,6 +1,5 @@
 package com.core.tjoeun.index.store.controller;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -336,8 +335,6 @@ public class StoreController {
     }
 
     
-    @PostMapping("/store/updateDotoriCount")
-    @ResponseBody
     public int updateDotoriCount(HttpSession session) {
         Map resultMap = new HashMap();
         resultMap.put("userNickname", session.getAttribute("userNickname"));
@@ -394,11 +391,10 @@ public class StoreController {
             ShoppingCart shoppingCart = getOrCreateShoppingCart(session);
             List<CartItem> cartItems = shoppingCart.getCartItems();
             String userNickname = (String) session.getAttribute("userNickname");
-            int resultDotoriCnt = updateDotoriCount(session);
 
             if (userNickname != null) {
                 if (!storeService.hasDuplicateCartItem(cartItems, userNickname)) {
-                    if (resultDotoriCnt != -1) {
+                    if (updateDotoriCount(session) != -1) {
                         // 중복된 상품이 없으면 구매 로직 수행
                         int buyResult = storeService.buyCart(cartItems, userNickname);
 
@@ -434,4 +430,15 @@ public class StoreController {
         return result;
     }
 
+    @RequestMapping(value = "/store/getUserDotoriCnt", method = RequestMethod.GET)
+    @ResponseBody
+    public Map afterBuyMyDotori(HttpSession session) {
+    	Map resultMap = new HashMap();
+    	String userNickname = (String) session.getAttribute("userNickname");
+    	int userDotori = storeService.getMyDotori(userNickname);
+    	resultMap.put("userDotoriCnt", userDotori);
+    	
+    	return resultMap;
+    }
+    
 }
