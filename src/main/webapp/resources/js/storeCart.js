@@ -96,8 +96,7 @@ function buyCart() {
                         type: 'GET',
                         url: '/store/getUserDotoriCnt',
                         success: function(data) {
-                        	console.log(data.userDotoriCnt);
-                        	document.getElementById('userDotoriCnt').text = data.userDotoriCnt;
+                        	document.getElementById('userDotoriCnt').innerText = data.userDotoriCnt;
                         },
                         error: function(error) {
                             console.error(error);
