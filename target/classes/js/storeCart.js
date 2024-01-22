@@ -86,13 +86,23 @@ function buyCart() {
     if (result) {
         $.ajax({
             type: 'POST',
-            async: 'false',
+            async: false,
             url: '/store/buyCart',
             success: function(msg) {
                 console.log(msg);
                 if (msg.success) {
                     alert(msg.message);
-                    updateDotoriCount();
+                    $.ajax({
+                        type: 'GET',
+                        url: '/store/getUserDotoriCnt',
+                        success: function(data) {
+                        	console.log(data.userDotoriCnt);
+                        	document.getElementById('userDotoriCnt').text = data.userDotoriCnt;
+                        },
+                        error: function(error) {
+                            console.error(error);
+                        }
+                    });
                     clearCart();
                 } else {
                     alert(msg.message);
@@ -108,21 +118,6 @@ function buyCart() {
     }
 }
 
-function updateDotoriCount() {
-    $.ajax({
-        type: 'POST',
-        url: '/store/updateDotoriCount',
-        data: JSON.stringify(),
-        success: function (result) {
-            if (result !== undefined) {
-                $('#userDotoriCnt').text(result);
-            }
-        },
-        error: function (error) {
-            console.error('도토리 개수 업데이트 실패');
-        }
-    });
-}
 
 function scrollToBottom() {
     const cartList = document.querySelector('.cart-list-over');
