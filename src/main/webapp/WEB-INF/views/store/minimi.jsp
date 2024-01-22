@@ -190,7 +190,7 @@
 
 		    if (userDotoriElement) {
 		       if (userDotoriCnt.trim() !== '' && userDotoriCnt !== 'null') {
-		           userDotoriElement.innerHTML = '<img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"> ' + userDotoriCnt + ' 개';
+		           userDotoriElement.innerHTML = '<img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"> <span id="userDotoriCnt">' + userDotoriCnt + '</span> 개';
 		           userDotoriElement.style.display = 'block';
 		       } else {
 		           userDotoriElement.innerHTML = '<img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"> 0 개';
