@@ -130,6 +130,7 @@
 			</div>
 		</div>
 	</div>
+	 <jsp:include page="/WEB-INF/views/index/footer.jsp"></jsp:include>
 	<script>
 	function openMiniHomepage() {
 	    // URL 정의

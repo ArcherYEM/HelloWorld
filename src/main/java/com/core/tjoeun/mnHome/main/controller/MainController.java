@@ -62,8 +62,8 @@ public class MainController {
 		
         //미니홈피 방문자 수 가져오기
         try {
-			Map updateVisitCntMap = new HashMap();
-			updateVisitCntMap =	mainService.updateVisitCnt(userNickname);
+			//Map updateVisitCntMap = new HashMap();
+        	Map updateVisitCntMap =	mainService.updateVisitCnt(userNickname);
 			model.addAttribute("todayCnt", (int) updateVisitCntMap.get("todayCnt"));
 			model.addAttribute("totalCnt", (int) updateVisitCntMap.get("totalCnt"));
 		} catch (Exception e) {

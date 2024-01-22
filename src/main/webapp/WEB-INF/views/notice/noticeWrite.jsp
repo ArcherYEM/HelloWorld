@@ -53,10 +53,11 @@
 				<input type="hidden" type="text" name="userNickname" id="noticeUserNickname" value="<c:out value='${userNickname }'/>">
 			</form>
 			<div class="bottom-fix">
-				<hr>
-				<h1>team core</h1>
+				<!-- <hr>
+				<h1>team core</h1> -->
 			</div>
 		</div>
+		<jsp:include page="/WEB-INF/views/index/footer.jsp"></jsp:include>
 		<script>
 	function openMiniHomepage() {
 	    // URL 정의

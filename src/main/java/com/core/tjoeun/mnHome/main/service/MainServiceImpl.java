@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Propagation;
@@ -32,6 +33,7 @@ public class MainServiceImpl implements MainService{
 	
 	@Override
 	@Transactional(readOnly = true)
+	@Cacheable(key="#userNickname", value="bgmList")
 	public List<Map> getMyBgm(String userNickname) {
 		
 		return mainDao.getMyBgm(userNickname);
@@ -68,6 +70,7 @@ public class MainServiceImpl implements MainService{
 	//프로필 정보 가져오기	
 	@Override
 	@Transactional(readOnly = true)
+	@Cacheable(key="#userNickname", value="profile")
 	public Map getProfile(String userNickname) {
 	 Map profile = mainDao.getProfile(userNickname);
 	 
@@ -89,6 +92,7 @@ public class MainServiceImpl implements MainService{
 	//기본정보 가져오기(이름,성별,제목)
 	@Override
 	@Transactional(readOnly = true)
+	@Cacheable(key="#userNickname", value="userInfo")
 	public Map selectUserInfo(String userNickname) {
 		
 		return mainDao.selectUserInfo(userNickname);
@@ -112,6 +116,7 @@ public class MainServiceImpl implements MainService{
 	//미니홈피 제목 가져오기
 	@Override
 	@Transactional(readOnly = true)
+	@Cacheable(key="#userNickname", value="homeTitle")
 	public Map getHomeTitle(String userNickname) {
 		
 		return mainDao.selectHomeTitle(userNickname);
@@ -135,6 +140,8 @@ public class MainServiceImpl implements MainService{
 	
 	//홈피 주인 이름 가져오기 
 	@Override
+	@Transactional(readOnly = true)
+	@Cacheable(key="#userNickname", value="userName")
 	public Map getUserInfo(String userNickname) {
 		Map map = new HashMap();
 		map.put("userNickname", userNickname);
@@ -196,6 +203,7 @@ public class MainServiceImpl implements MainService{
 
 	@Override
 	@Transactional(readOnly = true)
+	@Cacheable(key="#userNickname", value="minimi")
 	public List<Map> selectMinimi(String userNickname) {
 		
 		return mainDao.selectMinimi(userNickname);
@@ -203,6 +211,7 @@ public class MainServiceImpl implements MainService{
 
 	@Override
 	@Transactional(readOnly = true)
+	@Cacheable(key="#userNickname", value="background")
 	public Map selectBackground(String userNickname) {
 		
 		return mainDao.selectBackground(userNickname);
@@ -230,6 +239,7 @@ public class MainServiceImpl implements MainService{
 
 
 	@Override
+	@Cacheable(key="#map['userNickname']", value="skin")
 	public Map mainSkin(Map map) {
 		
 		return mainDao.mainSkin(map);
@@ -261,6 +271,7 @@ public class MainServiceImpl implements MainService{
 	}
 
 	@Override
+	@Cacheable(key="#map['userNickname']", value="menu")
 	public Map mainMenu(Map map) {
 		
 		return mainDao.mainMenu(map);

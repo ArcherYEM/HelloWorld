@@ -69,10 +69,10 @@
 	
 	</div>
 	<div class="bottom-fix">
-		<hr>
-		<h1>team core</h1>
+		<!-- <hr>
+		<h1>team core</h1> -->
 	</div>
-	
+	 <jsp:include page="/WEB-INF/views/index/footer.jsp"></jsp:include>
 	<form id="frmSearch" action="<c:url value='/store/bgmView'/>" method="post">
 		<input type="hidden" name="content" id="content">	
 	</form>
