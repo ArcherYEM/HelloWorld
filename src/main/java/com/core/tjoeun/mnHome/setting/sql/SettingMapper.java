@@ -41,4 +41,6 @@ public interface SettingMapper {
     public int removePlayList(Map param);
     
     public List<Map> selectPlayList(String userNickname);
+    
+    public String selectPhone(String userNickname);
 }

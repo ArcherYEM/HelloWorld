@@ -145,7 +145,7 @@
 												<div class="set-info-phone-left">
 													<span>&#128382;</span> 연락처
 												</div>
-												<textarea class="textInfo" id="set-UserPhone" readonly>${sessionScope.userId.userPhone }</textarea>
+												<textarea class="textInfo" id="set-UserPhone" readonly>${phoneNumber }</textarea>
 												<div class="set-info-phone-a" onclick="changeNumber()">
 													수정
 												</div>

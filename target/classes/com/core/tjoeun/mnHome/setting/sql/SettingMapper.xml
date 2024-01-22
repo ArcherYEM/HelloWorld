@@ -258,4 +258,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and allocation = 1;
 	</select>
 	
+	<select id="selectPhone" parameterType="String" resultType="String">
+		select userPhone 
+		from user
+		where userNickname=#{userNickname}
+	</select>
+	
 </mapper>

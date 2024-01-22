@@ -125,4 +125,10 @@ public class SettingDaoImpl implements SettingDao {
 		return mapper.selectPlayList(userNickname);
 	}
     
+	@Override
+	public String selectPhone(String userNickname){
+		SettingMapper mapper = sqlSession.getMapper(SettingMapper.class);
+		return mapper.selectPhone(userNickname);
+	}
+	
 }
