@@ -99,6 +99,7 @@ public class StoreController {
 			storeService.insertDotori(map);
 		} else {
 			storeService.updateDotori(map);
+			session.setAttribute("userDotoriCnt", storeService.getMyDotori(userNickname));
 		}
 
 		return "/store/dotoriBuySuccess";
@@ -402,7 +403,8 @@ public class StoreController {
                             // 구매 성공
                             // 장바구니 비우기
                             session.setAttribute("cart", shoppingCart);
-
+                            System.out.println("★★★★★" + session.getAttribute("userDotoriCnt"));
+                            
                             result.put("success", true);
                             result.put("message", "상품 구매가 완료되었습니다.");
                         } else {
