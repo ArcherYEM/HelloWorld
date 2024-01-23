@@ -25,12 +25,12 @@
 			<div class="grid-item">
 				<span>이진우</span>
 				<span>jinwoo4506@gmail.com</span>
-				<span>https://github.com/ArcherYEM</span>
+				<span>https://github.com/hatecas</span>
 			</div>  
 			<div class="grid-item">
 				<span>채승원</span>
 				<span>yem@gmail.com</span>
-				<span>https://github.com/hatecas</span>
+				<span>https://github.com/ArcherYEM</span>
 			</div>
 		</div>
 	</div>

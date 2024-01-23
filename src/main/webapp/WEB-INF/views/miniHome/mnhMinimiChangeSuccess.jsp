@@ -19,9 +19,12 @@
 		</div>
 	</div>		
 <script>
-	function closeWindow() {
-	    window.close();
-	}
+function closeWindow() {
+    if (window.opener && !window.opener.closed) {
+	    window.opener.quickSetting();
+	    window.close(); // 현재 창 닫기
+    }
+}
 </script>
 </body>
 </html>
