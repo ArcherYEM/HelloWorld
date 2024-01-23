@@ -28,7 +28,7 @@ public class SettingServiceImpl implements SettingService {
 
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
-	@CacheEvict(key="#map['userNickname']", cacheNames = {"menu", "skin"}, condition = "#map['category']=='menu' || #map['category']=='skin' ")
+	@CacheEvict(key="#map['userNickname']", cacheNames = {"menu", "skin", "minimi"}, condition = "#map['category']=='menu' || #map['category']=='skin' || #map['category']=='minimi' ")
 	public void updateAllocationOff(Map map)  throws Exception{
 		settingDao.updateAllocationOff(map);
 		
