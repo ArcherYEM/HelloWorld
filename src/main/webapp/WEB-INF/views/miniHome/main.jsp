@@ -455,6 +455,10 @@ function cancel() {
    		var tabVisit = document.getElementById("tabVisit");
    		tabVisit.click();
    	}
+   	function quickSetting(){
+   		var tabSetting = document.getElementById("tabSetting");
+   		tabSetting.click();
+   	}
    	function onChildButtonClick() {
    	    quickHome();
    	}

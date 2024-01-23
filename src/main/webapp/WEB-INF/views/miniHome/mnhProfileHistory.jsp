@@ -35,7 +35,7 @@
 				${profile.create_date}
 			</div>
 			<div class="history-image">
-				<img src="/../../../../resources/images/download/${profile.image}">
+				<img src="/download/${profile.image}">
 			</div>
 			
 			<div class="history-msg">

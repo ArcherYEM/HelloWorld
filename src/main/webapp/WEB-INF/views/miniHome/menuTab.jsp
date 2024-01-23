@@ -180,7 +180,7 @@
 					</span>
 					</div>
 					<c:if test="${sessionScope.userId.userNickname eq userNickname }">
-						<div class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>"
+						<div id="tabSetting"class="menu-content" data-tab="<c:url value='/mnHome/settingView/${userNickname }'/>"
 						style=" background-color: 
 								<c:choose>
 									<c:when test="${menuProductName == 'red' }">red</c:when>
