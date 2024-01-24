@@ -159,21 +159,31 @@ function countBytes(str) {
 }
 
 function countCharacters() {
-    var textInput = document.getElementById('visit-comment-insert').value;
-    var byteCount = countBytes(textInput);
-    
+    // textarea의 내용을 가져옴
+    var textarea = document.getElementById('visit-comment-insert');
+    var text = textarea.value;
+
     // 입력 가능한 최대 바이트 수
     var maxBytes = 5000; // VARCHAR(5000)에 해당
 
     // 바이트 수를 초과하지 않도록 제한
-    while (byteCount > maxBytes) {
-        // 바이트 수가 최대치를 초과하면 마지막 문자 제거
-        textInput = textInput.slice(0, -1);
-        byteCount = countBytes(textInput);
+    if (countBytes(text) > maxBytes) {
+        // 현재 입력값이 최대 바이트를 초과하면 처리하지 않음
+        return;
     }
-    // 수정된 텍스트를 다시 설정
-    document.getElementById('visit-comment-insert').value = textInput;
-    
+
+    // 엔터 키 처리: 개행 문자(\n)를 <br>로 변환
+    var formattedText = text.replace(/\n/g, "<br>");
+
+    // contenteditable 속성이 부여된 div에 해당 내용을 설정
+    var contentEditableDiv = document.getElementById('visit-comment-insert');
+    contentEditableDiv.innerHTML = formattedText;
+
     // 현재 바이트 수를 표시
-    document.getElementById('char-count').innerText = byteCount + '/' + maxBytes;
+    document.getElementById('char-count').innerText = countBytes(text) + '/' + maxBytes;
 }
+
+// input 이벤트에 countCharacters 함수를 연결
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('visit-comment-insert').addEventListener('input', countCharacters);
+});
