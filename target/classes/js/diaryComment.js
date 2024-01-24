@@ -72,3 +72,16 @@ function getCmt(seq){
                 }
 		});
 }
+
+function modifyDiary(){
+    let seq = $("#cmtSeq").val();
+    let userNickname = document.getElementById("hiddenUserNickname").value;
+    
+    console.log(userNickname);
+   	url = '/mnHome/diaryModifyView/';
+   	
+    let tabName = url.concat(userNickname,'/',seq);
+    console.log(tabName);
+	loadTabContent(tabName); 
+    
+}
