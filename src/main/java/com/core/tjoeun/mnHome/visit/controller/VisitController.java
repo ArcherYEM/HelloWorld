@@ -33,83 +33,87 @@ public class VisitController {
 	@Autowired
 	MainDao mainDao;
 	
-	@RequestMapping(value="/mnHome/visitView/{userNickname}")
+	@RequestMapping(value = "/mnHome/visitView/{userNickname}")
 	public String visitView(@PathVariable String userNickname, Model model, @RequestParam(required = false) Integer page) {
-		
-		//홈피 주인 성별 가져오기
-		String userGender = memberService.selectUserGender(userNickname);
-		model.addAttribute("userGender",userGender);
-		
-		//프로필 정보 가져오기
-		Map profile = mainService.getProfile(userNickname);
-		String image = (String) profile.get("image");
-		String msg = (String) profile.get("msg");
-		msg = msg.replace("\n", "<br>");
-		model.addAttribute("image", image);
-		model.addAttribute("msg", msg);
-				
-		Map map = mainService.getUserInfo(userNickname);
-		model.addAttribute("userName", map.get("userName"));
-		model.addAttribute("title", map.get("title"));
-		
-		//방명록 내용 가져오기
-		if(page == null) {
-			page = 1;
-		}
-		int totalCnt = visitService.selectCnt(userNickname);
-		int totalPage = totalCnt/5;
-		if(0 < totalCnt % 5) {
-			totalPage++;
-		}
-		int offset = (page-1)*5;
-		
-		Map paramMap = new HashMap();
-		paramMap.put("offset", offset);
-		paramMap.put("targetNickname", userNickname);
-		
-		List<Map> resultList = visitService.selectVisitComment(paramMap);
-		
-		for(int i = 0; i < resultList.size(); i++) {
-			Map map2 = resultList.get(i);
-			map2.put("number", ((page-1)*5+(i+1)));
-		}
-		
-		model.addAttribute("visit",resultList);
-		model.addAttribute("totalPage",totalPage);
-		
-        //접속중인 유저의 친구 전부 가져오기
-        List<Map> friendMap = mainService.getMyFriends(userNickname);
-        model.addAttribute("friend", friendMap);
-        
-     // menu color 적용하기
-        Map callMenu = new HashMap();
-        callMenu.put("category", "menu");
-        callMenu.put("userNickname", userNickname);
-        
-        try {
-        	Map mainMenu = mainService.mainMenu(callMenu);
-        	
-        	model.addAttribute("menuProductName", mainMenu.get("productName"));
+
+	    // 홈피 주인 성별 가져오기
+	    String userGender = memberService.selectUserGender(userNickname);
+	    model.addAttribute("userGender", userGender);
+
+	    // 프로필 정보 가져오기
+	    Map profile = mainService.getProfile(userNickname);
+	    String image = (String) profile.get("image");
+	    String msg = (String) profile.get("msg");
+	    msg = msg.replace("\n", "<br>");
+	    model.addAttribute("image", image);
+	    model.addAttribute("msg", msg);
+
+	    Map map = mainService.getUserInfo(userNickname);
+	    model.addAttribute("userName", map.get("userName"));
+	    model.addAttribute("title", map.get("title"));
+
+	    // 방명록 내용 가져오기
+	    if (page == null) {
+	        page = 1;
+	    }
+	    int totalCnt = visitService.selectCnt(userNickname);
+	    int totalPage = totalCnt / 5;
+	    if (0 < totalCnt % 5) {
+	        totalPage++;
+	    }
+	    int offset = (page - 1) * 5;
+
+	    Map paramMap = new HashMap();
+	    paramMap.put("offset", offset);
+	    paramMap.put("targetNickname", userNickname);
+
+	    List<Map> resultList = visitService.selectVisitComment(paramMap);
+
+	    for (int i = 0; i < resultList.size(); i++) {
+	        Map map2 = resultList.get(i);
+	        map2.put("number", ((page - 1) * 5 + (i + 1)));
+
+	        String content = (String) map2.get("content");
+	        content = content.replace("\n", "<br>");
+	        map2.put("content", content);
+	    }
+
+	    model.addAttribute("visit", resultList);
+	    model.addAttribute("totalPage", totalPage);
+
+	    // 접속중인 유저의 친구 전부 가져오기
+	    List<Map> friendMap = mainService.getMyFriends(userNickname);
+	    model.addAttribute("friend", friendMap);
+
+	    // menu color 적용하기
+	    Map callMenu = new HashMap();
+	    callMenu.put("category", "menu");
+	    callMenu.put("userNickname", userNickname);
+
+	    try {
+	        Map mainMenu = mainService.mainMenu(callMenu);
+
+	        model.addAttribute("menuProductName", mainMenu.get("productName"));
 	        model.addAttribute("menuCategory", mainMenu.get("category"));
 	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
-	        
-        } catch (NullPointerException n) {
-	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
-	        	model.addAttribute("menuCategory", "menu");
-	        	n.printStackTrace();
-        }
-		
-      //방문자 수 가져오기
-        try {
-			Map visitCntMap = new HashMap();
-			visitCntMap = mainDao.selectVisitCnt(userNickname);
-			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
-			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-        
-		return "miniHome/visit";
+
+	    } catch (NullPointerException n) {
+	        model.addAttribute("menuProductName", "rgb(42, 140, 168)");
+	        model.addAttribute("menuCategory", "menu");
+	        n.printStackTrace();
+	    }
+
+	    // 방문자 수 가져오기
+	    try {
+	        Map visitCntMap = new HashMap();
+	        visitCntMap = mainDao.selectVisitCnt(userNickname);
+	        model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+	        model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return "miniHome/visit";
 	}
 	
 	@RequestMapping(value = "/mnHome/visitComment")

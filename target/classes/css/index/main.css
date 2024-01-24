@@ -53,6 +53,10 @@ a {
 	text-align: center;
 }
 
+.frmLogin input {
+	margin: 20px 0;
+}
+
 #indexDotoriImg {
 	width: 15px;
 	height: 15px;
@@ -73,7 +77,8 @@ a {
 }
 
 #divHiUser {
-  min-height: 60px;
+  min-height: 59.9px;
+  max-height: 60px;
   background-color: orange;
   display: flex;
   justify-content: space-between;
@@ -97,12 +102,14 @@ a {
 .idx-pw:hover {
 	font-weight: bold;
 	color: orange;
+	border-bottom: 1px solid red;
 }
 
 .hello-message {
 	color: white;
 	margin: 20px;
-	font-size: 25px;
+	padding-left: 50px;
+	font-size: 20px;
 	font-weight: bold;
 	flex: 1; /* 추가 */
 }
@@ -136,6 +143,7 @@ a {
 .index-header-right a:hover {
 	cursor: pointer;
 	background-color: orange;
+	color: white;
 }
 
 .index-a-store,
@@ -162,10 +170,10 @@ a {
 
 .divdot {
 	 position: absolute;
-    bottom: 10px; /* 슬라이드 하단에 위치 */
+    bottom: 10px; 
     width: 100%;
     text-align: center;
-    z-index: 5; /* 이미지 위에 표시되도록 z-index 설정 */
+    z-index: 5; 
 }
 
 .divLogin {
@@ -226,6 +234,10 @@ a {
 	padding-top: 20px;
 	padding-bottom: 20px;
 	align-items: center;
+}
+
+#btnLogin:hover {
+	cursor: pointer;
 }
 
 .login-profile-minimi,

@@ -44,9 +44,13 @@ public class DiaryServiceImpl implements DiaryService {
 	}
 
 	@Override
-	public int modifyDiary(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
+	public void modifyDiary(Map map) throws Exception {
+		int result = diaryDao.modifyDiary(map);
+		
+		if(result != 1) {
+			throw new Exception();
+		}
 	}
 
 	@Override
@@ -72,6 +76,12 @@ public class DiaryServiceImpl implements DiaryService {
 	@Override
 	public List<HashMap> diaryCmtTest(String seq) {
 		return diaryDao.diaryCmtTest(seq);
+	}
+
+	@Override
+	public Map selectOne(Map map) {
+		
+		return diaryDao.selectOne(map);
 	}
 
 	
