@@ -71,7 +71,7 @@ public class MainServiceImpl implements MainService{
 	//프로필 정보 가져오기	
 	@Override
 	@Transactional(readOnly = true)
-	//@Cacheable(key="#userNickname", value="profile")
+	@Cacheable(key="#userNickname", value="profile")
 	public Map getProfile(String userNickname) {
 	 Map profile = mainDao.getProfile(userNickname);
 	 
