@@ -12,8 +12,8 @@ a {
 	color: inherit;
 }
 
-.logoATag {
-	
+.present {
+	color: white;
 }
 
 .index-frame {
@@ -65,6 +65,13 @@ a {
   flex-shrink: 0;
 }
 
+.press-btn {
+	text-decoration: underline;
+	text-decoration-color: red;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 5px;
+}
+
 #divHiUser {
   min-height: 60px;
   background-color: orange;
@@ -73,6 +80,11 @@ a {
   align-items: center;
   word-break: keep-all;
   font-weight: bold;
+}
+
+#divHiUser a:hover{
+	background-color: pink;
+	border-radius: 50%;
 }
 
 .index-idpw-span {
