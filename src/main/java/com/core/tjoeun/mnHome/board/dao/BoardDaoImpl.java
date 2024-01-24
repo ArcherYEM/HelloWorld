@@ -25,6 +25,13 @@ public class BoardDaoImpl implements BoardDao{
 	}
 
 	@Override
+	public int modifyBoard(Map map) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		
+		return mapper.modifyBoard(map);
+	}
+
+	@Override
 	public int updateHit(Map map) {
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		
@@ -78,5 +85,12 @@ public class BoardDaoImpl implements BoardDao{
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		
 		return mapper.deleteBoardComment(seq);
+	}
+	
+	@Override
+	public Map getContent(int seq) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		
+		return mapper.getContent(seq);
 	}
 }

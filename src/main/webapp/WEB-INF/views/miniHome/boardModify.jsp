@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="../../../../resources/css/minihome/album.css" />
 <link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
 <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
+<script type="text/javascript" src="../../../../resources/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <body>
@@ -97,64 +98,33 @@
 							 </c:if>
 							<div class="content-title-url">
 								https://www.helloworld.com/minihome/${userNickname }</div>
-						</div>
+					</div>
 					<div class="box content-box">
-					<div class="board-outer-container">
-						<div class="board-detail-title">
-							${list.get(0).title}
+					<input type="hidden" value="${seq }" id="boardSeq">
+					<div class="board-overflow">
+						<div class="board-title-container">
+							<input type="text" placeholder=" 제목을 입력하세요" class="board-title" maxlength="30" value="${content.title }">
 						</div>
-						<input type="hidden" value="${seq }" id="boardSeq">
-						<input type="hidden" value="${sessionScope.userNickname }" id="userNickname">
-					</div>
-					<div class="board-write-container">
-						<span class="board-writer">${list.get(0).userNickname}</span>
-						<span class="board-write-date"><fmt:formatDate value="${list.get(0).create_date}" pattern="yyyy-MM-dd HH:mm" /></span>						
-					</div>
-					<div class="board-content-container">
-						${list.get(0).content}
-					</div>
-					<div class="board-detail-right">
-						<button class="btn-boardlist" id="btnBoardView" data-boardView="<c:url value='/mnHome/boardView/${userNickname}'/>">목록</button>
-						<c:if test="${sessionScope.userId.userNickname eq userNickname }">
-							<button class="btnBoardWrite" data-boardWrite="<c:url value='/mnHome/boardModifyView/${userNickname}/${seq }'/>">수정</button>
-
-						</c:if>
-					</div>
-					<c:if test="${check == 1 }">
-					<div class="board-comment-write">
-						<span>
-							댓글
-						</span>
-						<input type="text" class="comment-content-write" id="inputComment">
-						<input type="button" value="확인" id="btnComment" onclick="btnComment()">
-					</div>
-					</c:if>
-					<div class="board-comment-container" id="board-comment-container">
-					<c:forEach items="${comment}" var="comment">
-						<div class="board-comment">
-							<input type="hidden" value=${comment.seq } id="board-seq">
-							<div class="comment-info">
-							<a href="<c:url value="/mnHome/mainView/${comment.userNickname }" />"><span class="board-comment-writer">
-								${comment.userNickname }
-							</span></a>
-							<span class="board-comment-content">
-								${comment.content }
-							</span>
-							<span class="board-comment-date">
-								${comment.update_date_format }
-							</span>
-							</div>
-							<c:if test="${sessionScope.userId.userNickname eq comment.userNickname }">
-							<div class="board-comment-actions">
-								<span class="board-comment-delete" onclick = "btnCommentDelete(event)">
-									삭제
-								</span>
-							</div>
-							</c:if>
+						<div class="board-write-container">
+							<span class="board-writer"> ${userName }(작성자)</span>
+							<span class="board-write-date"><fmt:formatDate value="<%=new java.util.Date()%>" pattern="yyyy-MM-dd" /></span>						
 						</div>
-					</c:forEach>
+						<textarea name="content" id="txtContent" rows="10" cols="100" style="width:500px; height:180px; min-width:500px; display:none;">
+							<c:out value='${content.content}'/>
+						</textarea><br>
+						<br>
+						<div class="btn-container">
+							<div class="btn-left">
+								<input type="file" multiple="multiple" onchange="multiFiles(this.files)" class="fileUpload">
+							</div>
+							<div class="btn-right">
+								<input class="btn-boardlist" type="button" id="btnBoardView" data-boardView="<c:url value='/mnHome/boardView/${userNickname}'/>" value="목록">
+								<input class="btn-write" type="button" id="btnBoardModify" value="등록" onclick="modifyBoard()">
+							</div>
+						</div>
+						<div id="preview-container"></div>
+					</div>
 					
-					</div>
 					</div>
 				</div>
 				

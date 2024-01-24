@@ -43,6 +43,16 @@ public class BoardServiceImpl implements BoardService{
 		if(result != 1) {
 			throw new Exception();
 		}
+		
+	}
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
+	public void modifyBoard(Map map) throws Exception {
+		int result = boardDao.modifyBoard(map);
+		
+		if(result != 1) {
+			throw new Exception();
+		}
 	}
 	
 
@@ -114,5 +124,11 @@ public class BoardServiceImpl implements BoardService{
 		
 		return boardDao.deleteBoardComment(seq);
 		
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public Map getContent(int seq) {
+		return boardDao.getContent(seq);
 	}
 }

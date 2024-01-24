@@ -17,6 +17,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 </insert>
 
+<update id="modifyBoard" parameterType="map">
+	update board 
+	set title = #{title}, 
+	    content = #{content}, 
+	    update_date = current_timestamp() 
+	where seq = #{seq}
+
+
+</update>
+
 <update id="updateHit" parameterType="map">
 	update board 
 	set hits = hits+1
@@ -120,5 +130,11 @@ SELECT
 <delete id="deleteBoardComment" parameterType="int">
 	delete from boardCMT where seq = #{seq};
 </delete>
+
+<select id="getContent" parameterType="int" resultType="map">
+	select * 
+	from board
+	where seq=#{seq}
+</select>
 
 </mapper>

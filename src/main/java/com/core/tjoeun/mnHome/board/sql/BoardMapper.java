@@ -9,6 +9,8 @@ public interface BoardMapper {
 	
 	public int insertBoard(Map map);
 	
+	public int modifyBoard(Map map);
+	
 	public int updateHit(Map map);
 	
 	public List<HashMap> selectBoardList(Map map);
@@ -24,4 +26,6 @@ public interface BoardMapper {
 	public List<Map> getBoardComment(int boardSeq);
 	
 	public int deleteBoardComment(int seq);
+	
+	public Map getContent(int seq);	
 }
