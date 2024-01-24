@@ -81,7 +81,7 @@
 	                   		</div>
                      	</div>
                   	</div>
-					</div>
+				</div>
 				<div class="content-container">
 					<div class="header content-title">
 						 <div id="divHomeTitle" class="content-title-name"><c:out value="${title }"/></div>
@@ -99,64 +99,60 @@
 					</div>
 					<div class="box content-box">
 						<div class="visit-overflow">
-						<div class="visit-frame">
-							<div class="visit-frame-write view-margin">
-								<img class ="visit-minimi"
-										src="../../../../${sessionScope.userMinimi}" />
-								<div class="visit-write-text" contenteditable="true">
-			    				<textarea id="visit-comment-insert" class="visit-view-inner" oninput="countCharacters()"></textarea>
-								</div>						
-							</div>
-							<div id="char-count">0/5000</div>
-							<div class="visit-frame-btn">
-								<input type="button" value="등록" id="visit-comment-btn" onclick="insertComment()" />
-							</div>
-						</div>
-						<c:forEach var = "visit" items="${visit}" varStatus="status">
-							<div id="visit-${status.index}" data-userNickname="${visit.userNickname}">
-								<div class="visit-line">
-									<table>
-										<tr>
-											<td>No. ${visit.number}</td>
-											<td>${visit.userName}
-												<a href="<c:url value="/mnHome/mainView/${visit.userNickname }" />"><img src="../../../../resources/images/minihome/homeIcon.png" class="visit-line-tbImg"></a>
-											</td>
-											<td>${visit.update_date }</td>
-											<td>비밀로하기</td>
-											<c:if test="${sessionScope.userNickname==visit.userNickname}">
-												<td onclick="btnModify(this)">수정</td>
-												<td onclick="btnDelete(this)">삭제</td>
-											</c:if>
-										</tr>
-									</table>
-								</div>
+							<div class="visit-frame">
 								<div class="visit-frame-write view-margin">
 									<img class ="visit-minimi"
-											src="../../../..${visit.contentPath }" />
-									<div class="visit-view">
-				    				<input type="text" readonly class="visit-view-inner" value="${visit.content }" data-original-content="${visit.content}">
+										src="../../../../${sessionScope.userMinimi}" />
+									<div class="visit-write-text" contenteditable="true">
+				    					<textarea id="visit-comment-insert" class="visit-view-inner" oninput="countCharacters()"></textarea>
 									</div>						
 								</div>
+								<div id="char-count">0/5000</div>
+								<div class="visit-frame-btn">
+									<input type="button" value="등록" id="visit-comment-btn" onclick="insertComment()" />
+								</div>
 							</div>
-						</c:forEach>
-						<div class="page-container">
-							<c:forEach var="page" begin="1" end="${totalPage}">
-								<span class="visit-page" data-page="/mnHome/visitView/${userNickname }?page=${page}" >[${page}]</span>
+							<c:forEach var = "visit" items="${visit}" varStatus="status">
+								<div id="visit-${status.index}" data-userNickname="${visit.userNickname}">
+									<div class="visit-line">
+										<table>
+											<tr>
+												<td>No. ${visit.number}</td>
+												<td>${visit.userName}
+													<a href="<c:url value="/mnHome/mainView/${visit.userNickname }" />"><img src="../../../../resources/images/minihome/homeIcon.png" class="visit-line-tbImg"></a>
+												</td>
+												<td>${visit.update_date }</td>
+												<td>비밀로하기</td>
+												<c:if test="${sessionScope.userNickname==visit.userNickname}">
+													<td onclick="btnModify(this)">수정</td>
+													<td onclick="btnDelete(this)">삭제</td>
+												</c:if>
+											</tr>
+										</table>
+									</div>
+									<div class="visit-frame-write view-margin">
+										<img class ="visit-minimi" src="../../../..${visit.contentPath }" />
+										<div class="visit-view">
+					    					<input type="text" readonly class="visit-view-inner" value="${visit.content }" data-original-content="${visit.content}">
+										</div>						
+									</div>
+								</div>
 							</c:forEach>
-						</div>
+							<div class="page-container">
+								<c:forEach var="page" begin="1" end="${totalPage}">
+									<span class="visit-page" data-page="/mnHome/visitView/${userNickname }?page=${page}" >${page}</span>
+								</c:forEach>
+							</div>
 						</div>
 					</div>
 				</div>
-				
 				<jsp:include page="/WEB-INF/views/miniHome/menuTab.jsp"></jsp:include>
-				
 				<input type = "hidden" value="${sessionScope.userId.userNickname}" id="userNickname">
 				<input type = "hidden" value="${userNickname}" id="targetNickname">				
 			</div>
 		</div>
 	</div>
 </div>
-
 <script>
 	// 미니홈피 프로필 수정창
 	function openNewWindowMinihomeProfileEdit() {
