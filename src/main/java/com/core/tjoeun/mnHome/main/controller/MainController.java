@@ -83,7 +83,6 @@ public class MainController {
         
 		//미니홈피 주인 정보 가져오기 (이름,성별,제목)
 		Map userInfo = mainService.selectUserInfo(userNickname);
-		System.out.println(userInfo);
 		model.addAttribute("userName", userInfo.get("userName"));		
 		model.addAttribute("userGender",userInfo.get("userGender"));
 		String title = (String) userInfo.get("title");
@@ -95,7 +94,6 @@ public class MainController {
 		
 		//접속중인 유저의 친구 전부 가져오기
 		List<Map> friendMap = mainService.getMyFriends(userNickname);
-		System.out.println(friendMap);
 		model.addAttribute("friend", friendMap);
 		
 		//다이어리, 앨범, 게시판, 방명록 전체 개수 및 최근 24시간 개수 가져오기
@@ -296,7 +294,6 @@ public class MainController {
 		return "miniHome/mnhProfileHistory";
 	}
 	
-	//
 	@RequestMapping("/mnHome/miniroomEditView")
 	public String miniroomEdit(HttpServletRequest req, HttpSession session, Model model) {
 		

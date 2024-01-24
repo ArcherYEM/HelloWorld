@@ -20,11 +20,10 @@ function btnPage(page) {
 }
 
 function loadStyles(tabName) {
-	  // 해당 탭에 필요한 CSS 파일을 동적으로 로드
 	  var link = document.createElement('link');
 	  link.rel = 'stylesheet';
 	  link.type = 'text/css';
-	  link.href = 'setting.css'; // 각 탭별로 다른 CSS 파일로 설정
+	  link.href = 'setting.css';
 	  document.head.appendChild(link);
 	}
 
@@ -148,42 +147,27 @@ function countBytes(str) {
     for (var i = 0; i < str.length; i++) {
         var charCode = str.charCodeAt(i);
         if (charCode < 0x0080) {
-            byteLength += 1; // 1바이트 문자
+            byteLength += 1;
         } else if (charCode < 0x0800) {
-            byteLength += 2; // 2바이트 문자
+            byteLength += 2; 
         } else {
-            byteLength += 3; // 3바이트 문자 (한글 포함)
+            byteLength += 3;
         }
     }
     return byteLength;
 }
 
 function countCharacters() {
-    // textarea의 내용을 가져옴
-    var textarea = document.getElementById('visit-comment-insert');
-    var text = textarea.value;
+    var textInput = document.getElementById('visit-comment-insert').value;
+    var byteCount = countBytes(textInput);
+    var maxBytes = 5000;
 
-    // 입력 가능한 최대 바이트 수
-    var maxBytes = 5000; // VARCHAR(5000)에 해당
-
-    // 바이트 수를 초과하지 않도록 제한
-    if (countBytes(text) > maxBytes) {
-        // 현재 입력값이 최대 바이트를 초과하면 처리하지 않음
-        return;
+    while (byteCount > maxBytes) {
+        textInput = textInput.slice(0, -1);
+        byteCount = countBytes(textInput);
     }
 
-    // 엔터 키 처리: 개행 문자(\n)를 <br>로 변환
-    var formattedText = text.replace(/\n/g, "<br>");
-
-    // contenteditable 속성이 부여된 div에 해당 내용을 설정
-    var contentEditableDiv = document.getElementById('visit-comment-insert');
-    contentEditableDiv.innerHTML = formattedText;
-
-    // 현재 바이트 수를 표시
-    document.getElementById('char-count').innerText = countBytes(text) + '/' + maxBytes;
+    document.getElementById('visit-comment-insert').value = textInput;
+    document.getElementById('char-count').innerText = byteCount + '/' + maxBytes;
 }
 
-// input 이벤트에 countCharacters 함수를 연결
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('visit-comment-insert').addEventListener('input', countCharacters);
-});
