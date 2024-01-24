@@ -55,7 +55,6 @@ public class MemberServiceImpl implements MemberService{
 	   		 memberDao.insertUserStorageSkin(userNickname);
 	   		 memberDao.insertUserStorageMenu(userNickname);
 	   		 memberDao.insertVisitCnt(userNickname);
-	   		
      }
       if (result != 1) {
          throw new Exception();
@@ -78,7 +77,6 @@ public class MemberServiceImpl implements MemberService{
            
            selectMap.put("friendCnt", memberDao.selectOnFriendCnt((String) selectMap.get("userNickname"))) ;
            
-           
            // 로그인 성공 시, 사용자 정보 반환
             return selectMap;
         } else {
@@ -93,6 +91,14 @@ public class MemberServiceImpl implements MemberService{
       Map emailMap = new HashMap();
       emailMap = memberDao.selectUserInfo(map);
       return emailMap;
+   }
+   
+   @Override
+   @Transactional(readOnly = true)
+   public Map selectNickname(Map map) {
+	   Map nicknameMap = new HashMap();
+	   nicknameMap = memberDao.selectUserInfo(map);
+	   return nicknameMap;
    }
 
    @Override

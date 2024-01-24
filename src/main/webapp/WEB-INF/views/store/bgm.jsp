@@ -13,7 +13,6 @@
 	<link href="/resources/css/index/bgm.css" rel="stylesheet">
 	<link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 </head>
-
 <body>
 	<div class="index-frame">
 		<div class="divIndexMenu index-header">
@@ -24,15 +23,12 @@
 	       </div>
 	       <div class="index-header-right">
 				<h5 class="right" id="userDotori"><img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"><span id="userDotoriCnt">${dotori}</span>개</h5>
-	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
+	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store press-btn">상점</a>
 	            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
-	            <a id="storeLoginMyhome" href="#" 
-	            	class="index-a-mnh" onclick="openMiniHomepage()">내 미니홈피
-	            </a>
+	            <a href="<c:url value='/index/mapView'/>" class="index-a-map">찾아오는 길</a>
 	            <a id="storeLoginLogout" href="<c:url value="/index/member/logout" />" class="index-a-logout">로그아웃</a>
 	        </div>
       	</div>
-
 		<div id="divHiUser">
 			<a class="storeAtag" href="/store/minimiView">미니미</a>
 			<a class="storeAtag" href="/store/skinView">스킨</a>
@@ -40,14 +36,11 @@
 			<a class="storeAtag" href="/store/dotoriView">도토리</a>
 			<a class="storeAtag present" href="/store/bgmView">bgm</a>
 		</div>
-	
 		<div class="bgm-frame">
-		
 			<div class="bgm-search-group">
 				<input type="text" class="bgm-search-input" id="searchInput" onkeyup="search()"placeholder="제목 혹은 가수명을 입력하세요" maxlength="18" autofocus>
 				<button class="bgm-search-btn" id="searchBtn"></button> <!-- 돋보기 아이콘 css 처리 -->
 			</div>
-			
 			<div class="bgm-list-group bgm-grid">
 				<div><input type="checkbox" id="selectAllCheckbox"></div>
 				<div>순번</div>
@@ -56,27 +49,20 @@
 				<div>재생시간</div>
 				<div>금액</div>
 			</div>
-			
 			<div id="test">
 <!-- 				Ajax 로 Bgm List 뿌려주는 공간 -->
 			</div>
-			
 			<div class="bgm-buy">
 				<input type="button" value="구매" onclick="openNewWindowBgmBuy()">
 			</div>
-			
 		</div>
-	
 	</div>
 	<div class="bottom-fix">
-		<!-- <hr>
-		<h1>team core</h1> -->
 	</div>
 	 <jsp:include page="/WEB-INF/views/index/footer.jsp"></jsp:include>
 	<form id="frmSearch" action="<c:url value='/store/bgmView'/>" method="post">
 		<input type="hidden" name="content" id="content">	
 	</form>
-	
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 	function openMiniHomepage() {

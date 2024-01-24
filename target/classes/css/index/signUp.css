@@ -1,3 +1,8 @@
+body input[type="radio"] {
+	width: 20px;
+	height: 20px;
+}
+
 #divUserInfo {
 	margin-left: auto;
 	margin-right: auto;
@@ -6,11 +11,19 @@
     line-height: 0;
 }
 
+.no-cursor {
+	cursor: default;
+}
+
 .signUp-title {
 	font-size: 25px;
 	font-weight: bold;
 	text-align: center;
 	margin: 20px 0;
+}
+
+.btn-hover:hover {
+	cursor:pointer;
 }
 
 .widthFull {
@@ -75,6 +88,17 @@
 .confirm-group {
 	margin-bottom: 50px;
 	text-align: center;
+	display: flex;
+	align-items: center;
+}
+
+.divGender {
+	display: flex;
+	align-items: center;
+}
+
+.confirm-group label{
+	margin-left: 5px;
 }
 
 .join-ok input{

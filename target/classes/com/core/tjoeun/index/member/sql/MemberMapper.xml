@@ -200,7 +200,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          <if test="userNickname != null">
             and user.userNickname = #{userNickname}
          </if>
-      
    </select>
    
    <select id="selectUserId" parameterType="map" resultType="map">
