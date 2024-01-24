@@ -6,17 +6,17 @@
 
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta charset="UTF-8">
-      <title>헬로월드</title>
-      <link  href="/resources/css/index/main.css" rel="stylesheet">
-      <link  href="/resources/css/index/notice.css" rel="stylesheet">
-      <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
-      <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
-      <meta http-equiv="Pragma" content="no-cache">
-      <meta http-equiv="Expires" content="0">
-   </head>
-   <body>
+<head>
+	<meta charset="UTF-8">
+	<title>헬로월드</title>
+	<link  href="/resources/css/index/main.css" rel="stylesheet">
+	<link  href="/resources/css/index/notice.css" rel="stylesheet">
+	<link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
+	<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="0">
+</head>
+<body>
 	<div class="index-frame">
       	<div class="divIndexMenu index-header">
 	      	<div class="index-header-left">
@@ -33,8 +33,7 @@
 				<a href="<c:url value='/index/mapView'/>" class="index-a-map">찾아오는 길</a>
 				<a id="linkLogout" href="<c:url value='/index/member/logout' />" class="index-a-logout">로그아웃</a>
 			</div>
-      </div>
-      
+		</div>
 		<div id="divHiUser">
 			<p class="hello-message" id="helloMessage" onmousedown="return false;" style="cursor: default;">
 				HelloWorld 에 오신 걸 환영합니다.
@@ -43,92 +42,89 @@
 		<div class="divIndexMain">
 			<div id="divHome" class="divLogin">
             	<div >
-                	<form class="frmLogin" id="frmLogin" method="POST" action="/index/member/login">
-                  <input type="email" id="userEmail" name="userEmail" placeholder="Email"><br>
-                  <br>
-                  <input type="password" id="userPassword" name="userPassword" placeholder="Password"><br>
-                  <br>
-                  <input type="button" id="btnLogin" value="로그인"><br>
-                  <br>
-               </form>
-            </div>
-            <div >
-               <a class="signUpATag idx-su" href="/index/member/signUp">회원가입</a>
-               <a href="/index/member/findId" class="idx-id">아이디</a> 
-               <span class="index-idpw-span" onmousedown="return false;" style="cursor: default;">/</span>
-               <a href="/index/member/findPwView" class="idx-pw">비밀번호 찾기</a>
-            </div>
-         </div>
+	                <form class="frmLogin" id="frmLogin" method="POST" action="/index/member/login">
+		                <input type="email" id="userEmail" name="userEmail" placeholder="Email">
+		                <input type="password" id="userPassword" name="userPassword" placeholder="Password">
+		                <input type="button" id="btnLogin" value="로그인">
+	               </form>
+            	</div>
+	            <div onmousedown="return false;" style="cursor: default;">
+					<a class="signUpATag idx-su" href="/index/member/signUp">회원가입</a>
+					<a href="/index/member/findId" class="idx-id">아이디</a> 
+					<span class="index-idpw-span" onmousedown="return false;" style="cursor: default;">/</span>
+					<a href="/index/member/findPwView" class="idx-pw">비밀번호 찾기</a>
+	            </div>
+         	</div>
 <!--          로그인후 시점 -->
-		<div id="divLogin" class="divLogin">
-			<div class="login-frame">
-				<div class="login-top">
-					<div class="login-top-left">
-						<span id="userNickname" onmousedown="return false;" style="cursor: default;"><c:out value='${sessionScope.userId.userNickname}'/></span>
-					</div>
-					<div class="login-top-right">
-						<span class="login-top-right-imz">&#127752;</span>일촌 ON <span id="spanOnfriendCnt" class="login-top-right-bfCnt"></span>
-					</div>
-				</div>
-				<div class="login-profile-frame">
-					<div class="login-profile-minimi" id="divMainMinimi">
-						<img class="index-my-minimi" id="mainMinimi" src="<c:url value='${sessionScope.userMinimi}'/>"/>
-					</div>
-					<div class="login-profile-information">
-						<div class="login-profile-info">
-							<div class="login-profile-section2">
-								<span>&#128099;</span>
-								<span>오늘방문자</span>
-								<span id="todayCnt" class="login-profile-info-2"></span>
-							</div>
-							<div class="login-profile-section3">
-								<span>&#128203;</span>
-								<span>새게시물</span>
-								<span class="login-profile-info-3" id="newContent"></span>
-							</div>
-							<div class="login-profile-section4">
-								<span>&#128149;</span>
-								<span>일촌신청</span>
-								<span class="login-profile-info-4" id="newFriend"></span>
-							</div>
+			<div id="divLogin" class="divLogin">
+				<div class="login-frame">
+					<div class="login-top">
+						<div class="login-top-left">
+							<span id="userNickname" onmousedown="return false;" style="cursor: default;"><c:out value='${sessionScope.userId.userNickname}'/></span>
 						</div>
-						<div class="my-btn">
-				    	    <input type="button" class="mainBtn1" id="btnGoMinihome" value="내 미니홈피" onclick="openMiniHomepage()" target="_blank">
-				        	<input type="button" class="mainBtn2" id="btnLogout" value="로그아웃">
+						<div class="login-top-right">
+							<span class="login-top-right-imz">&#127752;</span>일촌 ON <span id="spanOnfriendCnt" class="login-top-right-bfCnt"></span>
+						</div>
+					</div>
+					<div class="login-profile-frame">
+						<div class="login-profile-minimi" id="divMainMinimi">
+							<img class="index-my-minimi" id="mainMinimi" src="<c:url value='${sessionScope.userMinimi}'/>"/>
+						</div>
+						<div class="login-profile-information">
+							<div class="login-profile-info">
+								<div class="login-profile-section2">
+									<span>&#128099;</span>
+									<span>오늘방문자</span>
+									<span id="todayCnt" class="login-profile-info-2"></span>
+								</div>
+								<div class="login-profile-section3">
+									<span>&#128203;</span>
+									<span>새게시물</span>
+									<span class="login-profile-info-3" id="newContent"></span>
+								</div>
+								<div class="login-profile-section4">
+									<span>&#128149;</span>
+									<span>일촌신청</span>
+									<span class="login-profile-info-4" id="newFriend"></span>
+								</div>
+							</div>
+							<div class="my-btn">
+					    	    <input type="button" class="mainBtn1" id="btnGoMinihome" value="내 미니홈피" onclick="openMiniHomepage()" target="_blank">
+					        	<input type="button" class="mainBtn2" id="btnLogout" value="로그아웃">
+					        </div>
 				        </div>
-			        </div>
+					</div>
 				</div>
 			</div>
-		</div>
 <!--          로그인후 종점 -->
-         <div id="divMainSlide">
-            <div class="slideshow-container">
-            	<div class="btnContainer">
-            		<div class="btnLeft">
-						<a class="btnClick" onclick="moveSlide(-1)">&#10094;</a>
-					</div>
-					<div class="btnRight">
-						<a class="btnClick" onclick="moveSlide(1)">&#10095;</a>
-					</div>
-   				</div>
-               <div class="mySlides fade">
-                 <img src="<c:url value="/resources/images/mainSlideImg1.jpg"/>" >
-               </div>
-               <div class="mySlides fade">
-                 <img src="<c:url value="/resources/images/slideImg1.png"/>" >
-               </div>
-               <div class="mySlides fade">
-                 <img src="<c:url value="/resources/images/slideImg2.png"/>" >
-               </div>
-               <div class="divdot">
-				<span class="dot" data-slide-to="1" onclick="currentSlide(1)"></span>
-				<span class="dot" data-slide-to="2" onclick="currentSlide(2)"></span>
-				<span class="dot" data-slide-to="3" onclick="currentSlide(3)"></span>
-               </div>
-            </div>
-         </div>
-      </div>
-    </div>
+	         <div id="divMainSlide">
+	            <div class="slideshow-container">
+	            	<div class="btnContainer">
+	            		<div class="btnLeft">
+							<a class="btnClick" onclick="moveSlide(-1)">&#10094;</a>
+						</div>
+						<div class="btnRight">
+							<a class="btnClick" onclick="moveSlide(1)">&#10095;</a>
+						</div>
+	   				</div>
+	               <div class="mySlides fade">
+	                 <img src="<c:url value="/resources/images/mainSlideImg1.jpg"/>" >
+	               </div>
+	               <div class="mySlides fade">
+	                 <img src="<c:url value="/resources/images/slideImg1.png"/>" >
+	               </div>
+	               <div class="mySlides fade">
+	                 <img src="<c:url value="/resources/images/slideImg2.png"/>" >
+	               </div>
+	               <div class="divdot">
+					<span class="dot" data-slide-to="1" onclick="currentSlide(1)"></span>
+					<span class="dot" data-slide-to="2" onclick="currentSlide(2)"></span>
+					<span class="dot" data-slide-to="3" onclick="currentSlide(3)"></span>
+	               </div>
+	           </div>
+	        </div>
+		</div>
+	</div>
 	<div class="bottom-fix">
 		<!-- <hr>
 		<h1>team core</h1> -->
