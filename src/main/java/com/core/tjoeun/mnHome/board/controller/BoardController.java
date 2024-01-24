@@ -172,7 +172,12 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/mnHome/boardModifyView/{userNickname}/{seq}")
-	public String boardModifyView(@PathVariable String userNickname, Model model) {
+	public String boardModifyView(@PathVariable String userNickname, @PathVariable String seq, Model model) {
+		
+		int seq2=Integer.parseInt(seq);
+		Map contentMap = boardService.getContent(seq2);
+		model.addAttribute("content",contentMap);
+		model.addAttribute("seq", seq);
 		
 		//홈피 주인 성별 가져오기
 		String userGender = memberService.selectUserGender(userNickname);
@@ -226,6 +231,46 @@ public class BoardController {
 		}
         
 		return "miniHome/boardModify";
+	}
+	
+	@RequestMapping(value="/mnHome/boardModify")
+	@ResponseBody
+	public Map boardModify(@RequestBody Map map, Model model, HttpSession session) {
+		
+	    int seq;
+	    try {
+	        seq = Integer.parseInt(map.get("seq").toString());
+	    } catch (NumberFormatException e) {
+	        // seq 값이 정수로 변환되지 않는 경우, 오류 처리
+	        Map<String, Object> result = new HashMap<>();
+	        result.put("resultCode", "0");
+	        result.put("message", "잘못된 요청입니다.");
+	        return result;
+	    }
+	    map.put("seq", seq);
+	    
+	    System.out.println(map);
+	    Map<String, Object> result = new HashMap<>();
+	    try {
+	        boardService.modifyBoard(map);
+	        result.put("resultCode", "1");
+	    } catch (Exception e) {
+	        result.put("resultCode", "0");
+	        e.printStackTrace();
+	    }
+		
+		//방문자 수 가져오기
+        try {
+			Map visitCntMap = new HashMap();
+			visitCntMap = mainDao.selectVisitCnt((String) session.getAttribute("userNickname"));
+			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 	
 	@RequestMapping(value="/mnHome/boardWrite")

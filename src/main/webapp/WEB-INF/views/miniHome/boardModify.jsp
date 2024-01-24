@@ -100,25 +100,26 @@
 								https://www.helloworld.com/minihome/${userNickname }</div>
 					</div>
 					<div class="box content-box">
-					
+					<input type="hidden" value="${seq }" id="boardSeq">
 					<div class="board-overflow">
 						<div class="board-title-container">
-							<input type="text" placeholder=" 제목을 입력하세요" class="board-title" maxlength="30">
+							<input type="text" placeholder=" 제목을 입력하세요" class="board-title" maxlength="30" value="${content.title }">
 						</div>
 						<div class="board-write-container">
 							<span class="board-writer"> ${userName }(작성자)</span>
 							<span class="board-write-date"><fmt:formatDate value="<%=new java.util.Date()%>" pattern="yyyy-MM-dd" /></span>						
 						</div>
-						<textarea name="content" id="txtContent" rows="10" cols="100" style="width:500px; height:180px; min-width:500px; display:none;"></textarea><br>
+						<textarea name="content" id="txtContent" rows="10" cols="100" style="width:500px; height:180px; min-width:500px; display:none;">
+							<c:out value='${content.content}'/>
+						</textarea><br>
 						<br>
-
 						<div class="btn-container">
 							<div class="btn-left">
 								<input type="file" multiple="multiple" onchange="multiFiles(this.files)" class="fileUpload">
 							</div>
 							<div class="btn-right">
 								<input class="btn-boardlist" type="button" id="btnBoardView" data-boardView="<c:url value='/mnHome/boardView/${userNickname}'/>" value="목록">
-								<input class="btn-write" type="button" id="btnBoardWrite" value="등록" onclick="writeBoard()">
+								<input class="btn-write" type="button" id="btnBoardModify" value="등록" onclick="modifyBoard()">
 							</div>
 						</div>
 						<div id="preview-container"></div>

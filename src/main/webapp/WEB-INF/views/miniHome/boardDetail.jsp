@@ -116,7 +116,8 @@
 					<div class="board-detail-right">
 						<button class="btn-boardlist" id="btnBoardView" data-boardView="<c:url value='/mnHome/boardView/${userNickname}'/>">목록</button>
 						<c:if test="${sessionScope.userId.userNickname eq userNickname }">
-							<input type="button" class="btnBoardWrite" value="수정" data-boardWrite="<c:url value='/mnHome/boardModifyView/${userNickname}/${seq }'/>">
+							<button class="btnBoardWrite" data-boardWrite="<c:url value='/mnHome/boardModifyView/${userNickname}/${seq }'/>">수정</button>
+
 						</c:if>
 					</div>
 					<c:if test="${check == 1 }">
