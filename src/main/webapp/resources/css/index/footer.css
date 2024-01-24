@@ -1,6 +1,13 @@
 @charset "UTF-8";
 
+body{
+	margin: 0;
+	padding: 0;
+	min-height: 100vh;
+}
+
 .footer{
+	margin-top: auto;
 	display : block;
 	margin-top : 70px;
 	background-color : #003366;
@@ -12,6 +19,7 @@
 .footer-title{
 	padding :10px;
 	display : block;
+	margin-left: 15px;
 }
 
 .grid-container {
@@ -24,5 +32,21 @@
   padding: 20px;
   font-size: 15px;
   text-align: left;
-  
+}
+
+.yem-git:hover,
+.ljw-git:hover,
+.lje-git:hover,
+.lje-blog:hover,
+.csw-git:hover {
+	cursor: pointer;
+	color: yellow;
+}
+
+.no-cursor {
+	cursor: default;
+}
+
+.ft-name {
+	font-weight: bold;
 }

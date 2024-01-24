@@ -36,7 +36,7 @@
       </div>
       
 		<div id="divHiUser">
-			<p class="hello-message" id="helloMessage">
+			<p class="hello-message" id="helloMessage" onmousedown="return false;" style="cursor: default;">
 				HelloWorld 에 오신 걸 환영합니다.
 			</p>
 		</div>

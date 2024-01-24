@@ -15,7 +15,6 @@
 		<script src="../../../../resources/js/jquery-3.7.1.min.js"></script>
 		<script src="<c:url value="/resources/js/storeCart.js" />"></script>
 	</head>
-	
 	<body>
 	<div class="index-frame">
 		<div class="divIndexMenu index-header">
