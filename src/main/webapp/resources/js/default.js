@@ -230,3 +230,5 @@ function redirectToMainView() {
         window.location.href = url;
     }
 }
+
+

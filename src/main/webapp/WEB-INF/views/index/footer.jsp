@@ -14,7 +14,7 @@
 		<div class="grid-container">
 			<div class="grid-item">
 				<span>양은모</span>
-				<span>yem@gmail.com</span>
+				<span>em.yang94@gmail.com</span>
 				<span>https://github.com/ArcherYEM</span>
 			</div>
 			<div class="grid-item">
@@ -30,8 +30,8 @@
 			</div>  
 			<div class="grid-item">
 				<span>채승원</span>
-				<span>yem@gmail.com</span>
-				<span>https://github.com/ArcherYEM</span>
+				<span>seung6087@nate.com</span>
+				<span>https://github.com/Seungwon-Chae</span>
 			</div>
 		</div>
 	</div>

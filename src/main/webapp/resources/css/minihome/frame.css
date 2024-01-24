@@ -96,11 +96,14 @@ body a{
   max-height: 369px;
 }
 
+.left-1 {
+    display: flex;
+    align-items: center;
+  	justify-content: center;
+}
+
 .profile-image {
-  display: flex;
   overflow : auto;
-  align-items: center;
-  justify-content: center;
 }
 
 .profile-image-img {
@@ -428,6 +431,7 @@ body a{
     .rolling-notice.active {
         opacity: 1;
         height: auto;
+        cursor: pointer;
     }
 
 .main-udb-past {
