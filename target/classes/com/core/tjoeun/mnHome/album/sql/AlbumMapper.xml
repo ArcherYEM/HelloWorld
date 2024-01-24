@@ -40,12 +40,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </select>
 
 <update id="updateAlbum" parameterType="map">
-
 	update
 		album
 	set
 		del_yn = 'Y'
 	where seq = #{seq}
-
 </update>
 </mapper>
