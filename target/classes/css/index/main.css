@@ -351,7 +351,7 @@ position: absolute;
 	position: relative;
     margin: auto;
     height: 350px; /* 이미지 높이와 일치하도록 설정 */
-    overflow: hidden; /* 컨테이너 범위 밖 내용 숨김 */
+    overflow: auto; /* 컨테이너 범위 밖 내용 숨김 */
 }
 
 .btnContainer{
