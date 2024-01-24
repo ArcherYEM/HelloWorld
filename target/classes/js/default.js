@@ -231,4 +231,13 @@ function redirectToMainView() {
     }
 }
 
+function lastPage() {
+    var lastPage = document.getElementById("lastpage").value;
+    if (lastPage === "") {
+        alert("이전에 방문한 페이지가 없습니다.");
+        return;
+    }
+    window.location.href = "/mnHome/mainView/" + lastPage;
+}
+
 

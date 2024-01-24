@@ -437,6 +437,7 @@ body a{
 .main-udb-past {
 	flex-basis: 25%;
 	text-align: center;
+	cursor: pointer;
 }
 
 .main-udb-logout {
