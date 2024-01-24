@@ -25,5 +25,7 @@ public interface DiaryMapper {
 	
 	public List<HashMap> diaryCmtTest(String seq);
 	
+	public Map selectOne(Map map);
+	
 	
 }

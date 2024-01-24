@@ -22,5 +22,7 @@ public interface DiaryDao {
 	public Map diaryTest (Map paramMap);
 	
 	public List<HashMap> diaryCmtTest(String seq);
+	
+	public Map selectOne(Map map);
 
 }
