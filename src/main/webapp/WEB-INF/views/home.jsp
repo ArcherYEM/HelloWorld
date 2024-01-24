@@ -55,7 +55,7 @@
             <div >
                <a class="signUpATag idx-su" href="/index/member/signUp">회원가입</a>
                <a href="/index/member/findId" class="idx-id">아이디</a> 
-               <span class="index-idpw-span">/</span>
+               <span class="index-idpw-span" onmousedown="return false;" style="cursor: default;">/</span>
                <a href="/index/member/findPwView" class="idx-pw">비밀번호 찾기</a>
             </div>
          </div>
@@ -64,7 +64,7 @@
 			<div class="login-frame">
 				<div class="login-top">
 					<div class="login-top-left">
-						<span id="userNickname"><c:out value='${sessionScope.userId.userNickname}'/></span>
+						<span id="userNickname" onmousedown="return false;" style="cursor: default;"><c:out value='${sessionScope.userId.userNickname}'/></span>
 					</div>
 					<div class="login-top-right">
 						<span class="login-top-right-imz">&#127752;</span>일촌 ON <span id="spanOnfriendCnt" class="login-top-right-bfCnt"></span>
