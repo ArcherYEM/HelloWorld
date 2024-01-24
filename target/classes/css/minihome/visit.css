@@ -112,6 +112,18 @@ body a {
 	white-space: pre-line;
 }
 
+.visit-view-inner-list {
+	display: table-cell;
+	font-weight:bold;
+	font-size: 12px;
+	padding: 10px;
+	padding-top: 0px;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	outline:none;
+	white-space: pre-line;
+}
+
 .visit-page {
 	margin: 0 10px;
 }

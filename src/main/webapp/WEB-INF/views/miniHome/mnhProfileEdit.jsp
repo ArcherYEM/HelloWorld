@@ -35,7 +35,6 @@
 		</div>	
 	</div>
 </form>
-
 <script>
   var fileInput = document.getElementById('fileInput');
   var previewContainer = document.getElementById('preview-container');

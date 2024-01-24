@@ -119,7 +119,9 @@
 											<tr>
 												<td>No. ${visit.number}</td>
 												<td>${visit.userName}
-													<a href="<c:url value="/mnHome/mainView/${visit.userNickname }" />"><img src="../../../../resources/images/minihome/homeIcon.png" class="visit-line-tbImg"></a>
+													<a href="<c:url value="/mnHome/mainView/${visit.userNickname }" />">
+														<img src="../../../../resources/images/minihome/homeIcon.png" class="visit-line-tbImg">
+													</a>
 												</td>
 												<td>${visit.update_date }</td>
 												<td>비밀로하기</td>
@@ -131,9 +133,11 @@
 										</table>
 									</div>
 									<div class="visit-frame-write view-margin">
-										<img class ="visit-minimi" src="../../../..${visit.contentPath }" />
+										<img class ="visit-minimi" src="../../../${visit.contentPath }" />
 										<div class="visit-view">
-					    					<input type="text" readonly class="visit-view-inner" value="${visit.content }" data-original-content="${visit.content}">
+											<div class="visit-view-inner-list">
+					    						<c:out value="${visit.content}" escapeXml="false"/>
+					    					</div>
 										</div>						
 									</div>
 								</div>
