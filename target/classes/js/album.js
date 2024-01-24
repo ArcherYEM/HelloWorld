@@ -64,58 +64,55 @@
 		        reader.readAsDataURL(file); // 파일 읽기 시작
 		      })(input[i]);
 		    }
-		  }
 		}
-		
-		
-		
-function writeAlbum(){
-		let userNickname = $("#hiddenUserNickname").val();
-		let link = '/mnHome/albumWrite/' + userNickname;
-		
-		let formData = new FormData();
-		let inputFile = $("input[name='albumFile']");
-		let files = inputFile[0].files;
-		
-		if(files.length <=0){
-			alert("사진을 첨부해주세요.");
-			return;
-		}
-		
-		for(let i = 0; i < files.length; i++){
-			formData.append("uploadFile", files[i]);
-		}
-		
-		if($.trim($("#albumTitle").val())==""){
-			alert("제목을 입력해주세요.");
-			return;
-		}		
-		
-		let albumData = {
-			title : $("#albumTitle").val()
-			, content : $("#albumContent").val()
-		}
-		
-		formData.append("contents", new Blob([JSON.stringify(albumData)],{type : "application/json"} ));
-		
-		$.ajax({
-			url : link
-			,processData : false
-			,contentType :false
-			,data : formData
-			,type : "POST"
-			, success :function(json){
-				if(json.resultCode === '1' ){
-		        	 alert("저장되었습니다.");
-		        	 document.getElementById("albumView").click();
-		        } else if(json.resultCode === "0"){
-		            alert("잠시 후 다시 시도해주세요.");
-		        }
-			}
-			
-		 });
-		
 	}
+
+function writeAlbum() {
+	  let userNickname = $("#hiddenUserNickname").val();
+	  let link = '/mnHome/albumWrite/' + userNickname;
+
+	  let formData = new FormData();
+	  let inputFile = $("input[name='albumFile']");
+	  let files = inputFile[0].files;
+
+	  if (files.length <= 0) {
+	    alert("사진을 첨부해주세요.");
+	    return;
+	  }
+
+	  for (let i = 0; i < files.length; i++) {
+	    formData.append("uploadFile", files[i]);
+	  }
+
+	  if ($.trim($("#albumTitle").val()) == "") {
+	    alert("제목을 입력해주세요.");
+	    return;
+	  }
+
+	  let albumData = {
+	    title: $("#albumTitle").val(),
+	    content: $("#albumContent").val(),
+	    visibility: $("#visibilitySelect").val()
+	  };
+
+	  formData.append("contents", new Blob([JSON.stringify(albumData)], { type: "application/json" }));
+
+	  $.ajax({
+	    url: link,
+	    processData: false,
+	    contentType: false,
+	    data: formData,
+	    type: "POST",
+	    success: function (json) {
+	      if (json.resultCode === '1') {
+	        alert("저장되었습니다.");
+	        document.getElementById("albumView").click();
+	      } else if (json.resultCode === "0") {
+	        alert("잠시 후 다시 시도해주세요.");
+	        }
+	    }
+	});
+}
 	
 	function deleteAlbum(seq){
 		if(confirm("정말 삭제하시겠습니까?")){
