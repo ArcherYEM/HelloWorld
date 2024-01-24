@@ -160,6 +160,56 @@ public class DiaryController {
 		return "miniHome/diaryWrite";
 	}
 	
+	@RequestMapping(value="/mnHome/diaryModifyView/{userNickname}/{seq}")
+	public String diaryModifyView(@PathVariable String userNickname
+								, @PathVariable String seq, Model model, Map map) {
+		Map userMap = mainService.getUserInfo(userNickname);
+		model.addAttribute("userName", userMap.get("userName"));
+		model.addAttribute("title", userMap.get("title"));
+		
+		String userGender = memberService.selectUserGender(userNickname);
+		model.addAttribute("userGender",userGender);
+		
+		Map profile = mainService.getProfile(userNickname);
+		String image = (String) profile.get("image");
+		String msg = (String) profile.get("msg");
+		msg = msg.replace("\n", "<br>");
+		model.addAttribute("image", image);
+		model.addAttribute("msg", msg);
+		
+		List<Map> friendMap = mainService.getMyFriends(userNickname);
+        model.addAttribute("friend", friendMap);
+		
+		// menu color 적용하기
+        Map callMenu = new HashMap();
+        callMenu.put("category", "menu");
+        callMenu.put("userNickname", userNickname);
+        
+        try {
+        	Map mainMenu = mainService.mainMenu(callMenu);
+        	
+        	model.addAttribute("menuProductName", mainMenu.get("productName"));
+	        model.addAttribute("menuCategory", mainMenu.get("category"));
+	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
+	        
+        } catch (NullPointerException n) {
+	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
+	        	model.addAttribute("menuCategory", "menu");
+	        	n.printStackTrace();
+        }
+		
+      //방문자 수 가져오기
+        try {
+			Map visitCntMap = new HashMap();
+			visitCntMap = mainDao.selectVisitCnt(userNickname);
+			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "miniHome/diaryModify";
+	}
+	
 	@RequestMapping(value="/mnHome/diaryAdd", method = RequestMethod.POST)
 	@ResponseBody
 	public Map diaryAdd(@RequestBody  Map map) throws Exception {
