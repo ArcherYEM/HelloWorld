@@ -2,6 +2,9 @@
 
 body{
 	margin: 0;
+	bottom: 0;
+	display: flex;
+    flex-direction: column;
 }
 
 a {
@@ -16,6 +19,7 @@ a {
 .index-frame {
 	width: 90%;
 	margin: 0 auto;
+	flex: 1;
 }
 
 .index-header-logo {
@@ -57,17 +61,18 @@ a {
 }
 
 #userDotori {
-  margin: 0; /* 기본 마진 제거 */
-  flex-shrink: 0; /* 도토리가 표시되면 크기를 줄이지 않도록 설정 */
+  margin: 0;
+  flex-shrink: 0;
 }
 
 #divHiUser {
-  min-height: 60px; /* 최소 높이를 설정하여 내용이 줄어들도록 함 */
-  background-color: #ff8c1a;
+  min-height: 60px;
+  background-color: orange;
   display: flex;
   justify-content: space-between;
   align-items: center;
   word-break: keep-all;
+  font-weight: bold;
 }
 
 .index-idpw-span {
@@ -396,11 +401,6 @@ position: absolute;
 	background-color: #717171;
 }
 
-.present {
-	color: white;
-}
-
-/* Fading animation */
 .fade {
 	animation-name: fade;
 	animation-duration: 1.5s;
@@ -414,7 +414,6 @@ to {
 	opacity: 1
 }
 
-/* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
 	.text {
 		font-size: 11px

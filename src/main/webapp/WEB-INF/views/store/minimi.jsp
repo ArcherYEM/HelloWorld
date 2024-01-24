@@ -26,18 +26,19 @@
 	            </a>
 	        </div>
 	        <div class="index-header-right">
-	        	<h5 class="right" id="userDotori"><img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />"><span id="userDotoriCnt">${dotori}</span>개</h5>
+	        	<h5 class="right" id="userDotori" onmousedown="return false;" style="cursor: default;">
+	        		<img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />">
+	        		<span id="userDotoriCnt" >${dotori} 개</span>
+	        	</h5>
 	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
 	            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
-	            <a id="storeLoginMyhome" href="#" 
-	            	class="index-a-mnh" onclick="openMiniHomepage()">내 미니홈피
-	            </a>
+	            <a href="<c:url value='/index/mapView'/>" class="index-a-map">찾아오는 길</a>
 	            <a id="storeLoginLogout" href="<c:url value="/index/member/logout" />" class="index-a-logout">로그아웃</a>
 	        </div>
 	    </div>
 	
 	    <div id="divHiUser">
-	        <a class="storeAtag present" href="/store/minimiView">미니미</a>
+	        <a class="storeAtag present" href="/store/minimiView" style="color: white;">미니미</a>
 	        <a class="storeAtag" href="/store/skinView">스킨</a>
 	        <a class="storeAtag" href="/store/menuView">메뉴</a>
 	        <a class="storeAtag" href="/store/dotoriView">도토리</a>
@@ -45,12 +46,12 @@
 	    </div>
 	
 	    <div class="products">
-	        <div class="product-title">
+	        <div class="product-title" onmousedown="return false;" style="cursor: default;">
 	        	미니미 상품 목록
 	        </div>
 	        <div class="content-container">
 		        <!-- minimi select -->
-		        <div class="productList">
+		        <div class="productList" onmousedown="return false;" style="cursor: default">
 				    <c:forEach var="minimi" items="${minimi}" varStatus="seq">
 				        <div class="product" data-product-cate="미니미" data-product-table-cate="minimi" data-product-contentPath="${minimi.contentPath}"
 						     data-product-name="${minimi.productName}" data-product-price="${minimi.productPrice}">
@@ -66,7 +67,7 @@
 						</div>
 				    </c:forEach>
 				</div>
-				<div class="cart-widget">
+				<div class="cart-widget" onmousedown="return false;" style="cursor: default;">
 				  <h2>장바구니</h2>
 				    <div class="cart-list-over">
 				        <table id="cart-list">
@@ -87,9 +88,9 @@
 				</div>
 			</div>
 	        <!-- paging -->
-	        <div class="minimi-paging">
-	            <c:forEach var="page" begin="1" end="${totalPage}">
-	                <span class="spanPage" data-page="${page}" onclick="loadPage(${page})">${page}</span>
+	        <div class="minimi-paging" onmousedown="return false;" style="cursor: default;">
+	            <c:forEach var="page" begin="1" end="${totalPage}" >
+	                <span class="spanPage" data-page="${page}" onclick="loadPage(${page})" >${page}</span>
 	            </c:forEach>
 	        </div>
 	        <form id="frm1" action="/store/minimiView" method="GET">
@@ -111,12 +112,11 @@
 	    var left = (window.innerWidth - width) / 2;
 	    var top = (window.innerHeight - height) / 2;
 
-	    // 새 창 열기
 	    var newWindow = window.open(url, 'MiniHomepage', 'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top);
 
 	    // 새 창이 열린 후, 현재 창을 그대로 유지하기 위해 기본 링크 동작 방지
 	    if (newWindow) {
-	        newWindow.focus(); // 새 창을 포커스합니다.
+	        newWindow.focus();
 	    }
 	    return false;
 	}
