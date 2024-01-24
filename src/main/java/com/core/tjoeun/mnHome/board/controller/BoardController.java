@@ -171,6 +171,63 @@ public class BoardController {
 		return "miniHome/boardWrite";
 	}
 	
+	@RequestMapping(value="/mnHome/boardModifyView/{userNickname}/{seq}")
+	public String boardModifyView(@PathVariable String userNickname, Model model) {
+		
+		//홈피 주인 성별 가져오기
+		String userGender = memberService.selectUserGender(userNickname);
+		model.addAttribute("userGender",userGender);
+		
+		Map profile = mainService.getProfile(userNickname);
+		String image = (String) profile.get("image");
+		String msg = (String) profile.get("msg");
+		msg = msg.replace("\n", "<br>");
+		model.addAttribute("image", image);
+		model.addAttribute("msg", msg);
+		
+		Map map = mainService.getUserInfo(userNickname);
+		model.addAttribute("userName", map.get("userName"));
+		model.addAttribute("title", map.get("title"));
+		
+        //접속중인 유저의 친구 전부 가져오기
+        List<Map> friendMap = mainService.getMyFriends(userNickname);
+        model.addAttribute("friend", friendMap);
+        
+     // menu color 적용하기
+        Map callMenu = new HashMap();
+        callMenu.put("category", "menu");
+        callMenu.put("userNickname", userNickname);
+        System.out.println("### callMenu : " + callMenu);
+        
+        try {
+        	Map mainMenu = mainService.mainMenu(callMenu);
+        	System.out.println("### mainMenu : " + mainMenu);
+        	
+        	model.addAttribute("menuProductName", mainMenu.get("productName"));
+	        model.addAttribute("menuCategory", mainMenu.get("category"));
+	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
+	        System.out.println("### menu model : " + model);
+	        
+        } catch (NullPointerException n) {
+	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
+	        	model.addAttribute("menuCategory", "menu");
+	        	n.printStackTrace();
+        }
+		
+      //방문자 수 가져오기
+        try {
+			Map visitCntMap = new HashMap();
+			visitCntMap = mainDao.selectVisitCnt(userNickname);
+			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+		return "miniHome/boardModify";
+	}
+	
 	@RequestMapping(value="/mnHome/boardWrite")
 	@ResponseBody
 	public Map boardWrite(@RequestBody Map map, Model model, HttpSession session) {
@@ -291,7 +348,7 @@ public class BoardController {
         
 		return "miniHome/boardDetail";
 	}
-	
+
 	@RequestMapping(value="/mnHome/boardDelete")
 	@ResponseBody
 	public Map boardDelete(@RequestBody ArrayList<String> seq, Model model,HttpSession session) {

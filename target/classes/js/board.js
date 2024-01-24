@@ -194,5 +194,25 @@ $('#btn-title-save').on('click', function(){
 	
 });
 
-
-
+//board.js
+/*$(document).ready(function() {
+    window.test = function() {
+    	var seq = document.getElementById("boardSeq").value;
+    	var userNickname = document.getElementById("hiddenUserNickname").value;
+        
+    	 let jsonData = {
+    			 	"seq" : seq,
+    		        "userNickname" : userNickname,
+    		    };
+    	
+    	$.ajax({
+    		method: 'POST',
+    		url: "/mnHome/boardWriteView",
+            contentType: 'application/json',
+            data: JSON.stringify(jsonData)
+    	}).done(function(json){
+    		
+    	})
+    };
+});
+*/
