@@ -18,6 +18,8 @@ public interface MemberService {
 	public Map findId(Map map);
 
 	public Map selectEmail(Map map);
+	
+	public Map selectNickname(Map map);
 
 	public Map selectPhone(Map map);
 	
