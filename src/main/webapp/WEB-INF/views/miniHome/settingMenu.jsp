@@ -190,46 +190,45 @@
 										</c:forEach>;">
 								</div>
 							</div>
-							
 							<div class="set-menu-having">
 								<div class="set-menu-p">
 									<p>보유중인 메뉴</p>
 								</div>
-									<div class="set-menu-list">
-											<c:forEach var="menuItem" items="${menuMap}">
-												<div class="menu-item-group" id="menu-item-group-select">
-													<div class="menu-item-color" id="menu-item-color-select" 
-													data-user-nickname="${menuItem.userNickname}"
-													data-category="${menuItem.category}"
-													data-product-name="${menuItem.productName}"
-													onclick="logClick()" 
-													style="
-												       width: 200px;
-												       height: 30px;
-												       margin-bottom: 10px;
-												       margin-left: 20px;
-												       border: 2px solid black;
-		    										   border-radius: 5px;	
-												       background-color: 
-														<c:choose>
-							                                <c:when test="${menuItem.productName == 'red'}">red</c:when>
-							                                <c:when test="${menuItem.productName == 'yellow'}">yellow</c:when>
-							                                <c:when test="${menuItem.productName == 'black'}">black</c:when>
-							                                <c:when test="${menuItem.productName == 'blue'}">blue</c:when>
-							                                <c:when test="${menuItem.productName == 'purple'}">purple</c:when>
-							                                <c:when test="${menuItem.productName == 'white'}">white</c:when>
-							                                <c:when test="${menuItem.productName == 'green'}">green</c:when>
-							                                <c:when test="${menuItem.productName == 'lime'}">lime</c:when>
-							                                <c:when test="${menuItem.productName == 'grey'}">gray</c:when>
-							                                <c:when test="${menuItem.productName == 'navy'}">navy</c:when>
-							                                <c:when test="${menuItem.productName == 'rgb(42, 140, 168)'}">rgb(42, 140, 168)</c:when>
-							                            </c:choose>;
-												       " >
-											   </div>
-											   <div class="menu-item-name">${menuItem.productName}</div>
+								<div class="set-menu-list">
+										<c:forEach var="menuItem" items="${menuMap}">
+											<div class="menu-item-group" id="menu-item-group-select">
+												<div class="menu-item-color" id="menu-item-color-select" 
+												data-user-nickname="${menuItem.userNickname}"
+												data-category="${menuItem.category}"
+												data-product-name="${menuItem.productName}"
+												onclick="logClick()" 
+												style="
+											       width: 200px;
+											       height: 30px;
+											       margin-bottom: 10px;
+											       margin-left: 20px;
+											       border: 2px solid black;
+	    										   border-radius: 5px;	
+											       background-color: 
+													<c:choose>
+						                                <c:when test="${menuItem.productName == 'red'}">red</c:when>
+						                                <c:when test="${menuItem.productName == 'yellow'}">yellow</c:when>
+						                                <c:when test="${menuItem.productName == 'black'}">black</c:when>
+						                                <c:when test="${menuItem.productName == 'blue'}">blue</c:when>
+						                                <c:when test="${menuItem.productName == 'purple'}">purple</c:when>
+						                                <c:when test="${menuItem.productName == 'white'}">white</c:when>
+						                                <c:when test="${menuItem.productName == 'green'}">green</c:when>
+						                                <c:when test="${menuItem.productName == 'lime'}">lime</c:when>
+						                                <c:when test="${menuItem.productName == 'grey'}">gray</c:when>
+						                                <c:when test="${menuItem.productName == 'navy'}">navy</c:when>
+						                                <c:when test="${menuItem.productName == 'rgb(42, 140, 168)'}">rgb(42, 140, 168)</c:when>
+						                            </c:choose>;
+											       " >
 										   </div>
-										</c:forEach>
-									</div>
+										   <div class="menu-item-name">${menuItem.productName}</div>
+									   </div>
+									</c:forEach>
+								</div>
 							</div>
 							
 							<form action="/mnHome/settingMenu/menuChoice" >

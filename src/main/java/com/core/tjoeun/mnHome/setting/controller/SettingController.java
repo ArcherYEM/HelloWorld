@@ -84,7 +84,6 @@ public class SettingController {
 			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
 			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -109,10 +108,8 @@ public class SettingController {
 			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
 			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        
 		return "miniHome/settingInfoEdit";
 	}
 
@@ -177,7 +174,6 @@ public class SettingController {
         model.addAttribute("playList",playList);
 		
 		return "miniHome/settingBgm";
-
 	}
 
 
@@ -195,6 +191,9 @@ public class SettingController {
 		Map putMap = new HashMap();
 		putMap.put("userNickname", userMap.get("userNickname"));
 		putMap.put("category", "menu");
+		
+		List<Map> friendMap = mainService.getMyFriends(userNickname);
+        model.addAttribute("friend", friendMap);
 		
 		try {
 			List<Map<String, Object>> onMenu = settingService.allocationOnSkinMenu(putMap);
