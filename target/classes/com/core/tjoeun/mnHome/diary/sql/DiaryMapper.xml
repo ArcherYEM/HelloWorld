@@ -21,12 +21,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="selectDiary" resultType="map" parameterType="map">
-		SELECT *, DATE_FORMAT(update_date, '%Y-%m-%d %H:%i') AS formatted_update_date
+		SELECT *, DATE_FORMAT(create_date, '%Y-%m-%d %H:%i') AS formatted_update_date
 		FROM 
 		    diary
 		WHERE
 		    1=1
-		    AND DATE(update_date) = CURDATE() -- 오늘 날짜에 해당하는 데이터만 선택
+		    AND DATE(create_date) = CURDATE() -- 오늘 날짜에 해당하는 데이터만 선택
 		<if test="del_yn != null">
 		    AND del_yn = #{del_yn}
 		</if>
@@ -52,7 +52,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="modifyDiary" parameterType="map">
 		update
-			notice
+			diary
 		set
 			title = #{title}
 			,content = #{content}
@@ -95,20 +95,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="diaryTest" parameterType="map" resultType="map">
-		SELECT *, DATE_FORMAT(update_date, '%Y-%m-%d %H:%i') AS formatted_update_date
+		SELECT *, DATE_FORMAT(create_date, '%Y-%m-%d %H:%i') AS formatted_update_date
 		FROM diary
 		WHERE userNickname = #{userNickname}
-		AND DATE(update_date) = #{date};
+		AND DATE(create_date) = #{date};
 
 	</select>
 	
 	<select id="diaryCmtTest" parameterType="string" resultType="map">
-		select * , DATE_FORMAT(update_date, '%Y-%m-%d %H:%i') AS cmtDate
+		select * , DATE_FORMAT(create_date, '%Y-%m-%d %H:%i') AS cmtDate
 		From diaryCMT
 		where diarySeq = #{seq}
 		order by seq desc
 	</select>
 	
+	<select id="selectOne" parameterType="Map" resultType="map">
+		select * from diary
+		where seq = #{seq}
+	</select>
 	
 
 </mapper>

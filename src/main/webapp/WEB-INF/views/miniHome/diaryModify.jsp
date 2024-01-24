@@ -102,19 +102,22 @@
                <div class="box content-box">
                   <div class="board-overflow">
                      <div class="board-title-container">
-                        <input type="text" placeholder="제목을 입력하세요" class="board-title" maxlength="30" id="diaryTitle">
+                        <input type="text" placeholder="제목을 입력하세요" class="board-title" maxlength="30" id="diaryTitle" value="<c:out value='${diary.title}'/>">
                      </div>
                      <div class="board-write-container">
                         <span class="board-writer">  ${userName }(작성자)</span>
+                        <input id="diarySeq" type="hidden" value="${diary.seq}">
                      </div>
                       <!--인라인 스타일 외 적용불가하여 불가피하게 인라인css 적용 -->
-                     <textarea placeholder="test" name="content" id="txtContent" rows="10" cols="100" form="frmDiary" style="width:500px; height:180px; min-width:500px; display:none;"></textarea>
+                     <textarea placeholder="test" name="content" id="txtContent" rows="10" cols="100" form="frmDiary" style="width:500px; height:180px; min-width:500px; display:none;">
+                     	<c:out value='${diary.content}'/>
+                     </textarea>
                      <div class="btn-container">
                         <div class="btn-left">
                            <input class="btn-diarylist" type="button" id="btnBoardView" data-diaryView="<c:url value='/mnHome/diaryView/${userNickname}'/>" value="목록">
                         </div>
                         <div class="btn-right">
-                           <input class="btn-write" type="button" id="btnBoardWrite" value="글쓰기" onclick="addDiary()">
+                           <input class="btn-write" type="button" id="btnBoardWrite" value="저장" onclick="saveDiary()">
                         </div>
                      </div>
                      <div id="preview-container"></div>

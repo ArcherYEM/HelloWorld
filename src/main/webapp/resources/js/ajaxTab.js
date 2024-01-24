@@ -230,6 +230,5 @@ $(document).on("click", "#diarymodify", function (event) {
 	tabName = $(this).data("diarymodify");
 	let seq = $("#cmtSeq").val();
 	url = tabName + '/' + seq;
-	console.log(url);
 	loadTabContent(url);
 });

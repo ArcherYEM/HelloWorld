@@ -34,13 +34,58 @@ function addDiary() {
         data: JSON.stringify(jsonData)
     }).done(function(json) {
         if(json.resultCode === '1' ){
-        	 alert("성공메세지");
+        	 alert("등록되었습니다.");
         	 document.getElementById("btnBoardView").click();
         } else if(json.resultCode === "0"){
             alert("다이어리 작성에 실패했습니다. 다시 시도해주세요.");
         }
     });
     
+}
+
+function saveDiary(){
+	let seq = $("#diarySeq").val();
+	let title = $("#diaryTitle").val();
+	
+	// SmartEditor의 내용을 갱신.
+    oEditors.getById["txtContent"].exec("UPDATE_CONTENTS_FIELD", []);  
+
+    // txtContent의 값을 가져와서 개행 문자를 제거
+    let content = document.getElementById("txtContent").value.replace("\r\n", "");
+    
+    if((title == null || title.trim() === '') || /^\s*$/.test(title)) {
+    	alert('제목을 입력하여 주세요.');
+    	$("#diaryTitle").val('');
+    	$("#diaryTitle").focus();
+    	return;
+    } 
+    
+    if(content== '<p>&nbsp;</p>') {
+    	alert('내용을 입력하여 주세요.');
+    	$("#diaryTitle").focus();
+    	return;
+    }
+    
+    let jsonData = {
+        "content" : content,
+        "seq" : seq,
+        "title" : title
+    };
+    
+    $.ajax({
+        method: 'POST',
+        url: "/mnHome/diaryModify",
+        contentType: 'application/json',
+        data: JSON.stringify(jsonData)
+    }).done(function(json) {
+        if(json.resultCode === '1' ){
+        	 alert("저장했습니다.");
+        	 document.getElementById("btnBoardView").click();
+        } else if(json.resultCode === "0"){
+            alert("저장에 실패했습니다. 다시 시도해주세요.");
+        }
+    });
+	
 }
 
 // 페이지 로드 시 SmartEditor 초기화

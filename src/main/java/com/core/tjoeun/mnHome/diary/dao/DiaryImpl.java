@@ -39,8 +39,9 @@ public class DiaryImpl implements DiaryDao {
 
 	@Override
 	public int modifyDiary(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		DiaryMapper mapper = sqlSession.getMapper(DiaryMapper.class);
+		
+		return mapper.modifyDiary(map);
 	}
 
 	@Override
@@ -69,6 +70,13 @@ public class DiaryImpl implements DiaryDao {
 		DiaryMapper mapper = sqlSession.getMapper(DiaryMapper.class);
 		
 		return mapper.diaryCmtTest(seq);
+	}
+
+	@Override
+	public Map selectOne(Map map) {
+		DiaryMapper mapper = sqlSession.getMapper(DiaryMapper.class);
+		
+		return mapper.selectOne(map);
 	}
 
 	

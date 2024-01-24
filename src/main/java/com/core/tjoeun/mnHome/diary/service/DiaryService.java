@@ -13,7 +13,7 @@ public interface DiaryService {
 	
 	public int deleteDiary(ArrayList<String> list);
 	
-	public int modifyDiary(Map map);
+	public void modifyDiary(Map map) throws Exception;
 	
 	public void insertDiaryCMT(Map map) throws Exception;
 	
@@ -22,5 +22,7 @@ public interface DiaryService {
 	public Map diaryTest (Map paramMap);
 	
 	public List<HashMap> diaryCmtTest(String seq);
+	
+	public Map selectOne(Map map);
 
 }

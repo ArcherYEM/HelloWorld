@@ -207,6 +207,11 @@ public class DiaryController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+        
+        Map oneMap = new HashMap();
+        oneMap.put("seq",seq);
+        model.addAttribute("diary", diaryService.selectOne(oneMap));
+        
 		return "miniHome/diaryModify";
 	}
 	
@@ -270,6 +275,23 @@ public class DiaryController {
 			List<HashMap> cmtList = diaryService.diaryCmtTest(String.valueOf(seq));
 			jsonMap.put("cmt", cmtList);
 		}
+		return jsonMap;
+	}
+	
+	@RequestMapping(value="/mnHome/diaryModify", method = RequestMethod.POST)
+	@ResponseBody
+	public Map diaryModify(@RequestBody Map paramMap){
+		Map jsonMap = new HashMap();
+		
+		try {
+			diaryService.modifyDiary(paramMap);
+			jsonMap.put("resultCode", "1");
+		} catch (Exception e) {
+			e.printStackTrace();
+			jsonMap.put("resultCode", "0");
+			
+		}
+		
 		return jsonMap;
 	}
 }
