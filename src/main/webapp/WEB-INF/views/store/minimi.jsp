@@ -10,6 +10,7 @@
 	    <title>헬로월드</title>
 	    <link href="/resources/css/index/main.css" rel="stylesheet">
 	    <link href="/resources/css/index/storeMMS.css" rel="stylesheet">
+	    <link href="/resources/css/minihome/fonts.css" rel="stylesheet">
 	    <link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
 	    <script src="../../../../resources/js/jquery-3.7.1.min.js"></script>
 	    <script src="<c:url value="/resources/js/storeCart.js" />"></script>
@@ -30,7 +31,7 @@
 	        		<img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />">
 	        		<span id="userDotoriCnt" >${dotori} 개</span>
 	        	</h5>
-	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
+	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store press-btn">상점</a>
 	            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
 	            <a href="<c:url value='/index/mapView'/>" class="index-a-map">찾아오는 길</a>
 	            <a id="storeLoginLogout" href="<c:url value="/index/member/logout" />" class="index-a-logout">로그아웃</a>
@@ -38,7 +39,7 @@
 	    </div>
 	
 	    <div id="divHiUser">
-	        <a class="storeAtag present" href="/store/minimiView" style="color: white;">미니미</a>
+	        <a class="storeAtag present" href="/store/minimiView">미니미</a>
 	        <a class="storeAtag" href="/store/skinView">스킨</a>
 	        <a class="storeAtag" href="/store/menuView">메뉴</a>
 	        <a class="storeAtag" href="/store/dotoriView">도토리</a>
@@ -58,7 +59,7 @@
 						    <div class="image-container">
 						        <img src="<c:url value="${minimi.contentPath}"/>" class="store-minimi-img"/>
 						    </div>
-						    <div class="product-name">
+						    <div class="product-name font-neo">
 						        <c:out value="${minimi.productName}"/>
 						    </div>
 						    <div class="product-price">
@@ -138,14 +139,15 @@
 
 	            if (pageNumber === currentPage) {
 	                pageLink.style.color = 'blue';
-	                pageLink.style.fontWeight = 'bold';
+	                pageLink.style.fontWeight = '700';
 	            }
 	        }
 	        
 	        if (currentPage === null) {
 	            var firstPageLink = document.querySelector('.spanPage[data-page="1"]');
 	            if (firstPageLink) {
-	                firstPageLink.style.color = 'blue';
+	                firstPageLink.style.color = 'orange';
+	                firstPageLink.style.fontWeight = '700';
 	            }
 	        }
 		
