@@ -9,6 +9,8 @@ public interface BoardService {
 	
 	public void writeBoard(Map map) throws Exception;
 	
+	public void modifyBoard(Map map) throws Exception;
+	
 	public int updateHit(Map map) throws Exception;
 	
 	public List<HashMap> getBoardList(Map map);
@@ -24,4 +26,6 @@ public interface BoardService {
 	public List<Map> getBoardComment(int boardSeq);
 	
 	public int deleteBoardComment(int seq);
+	
+	public Map getContent(int seq);
 }
