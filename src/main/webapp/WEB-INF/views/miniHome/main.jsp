@@ -296,6 +296,7 @@
 		        <div class="rolling-notice-container">
 		            <c:forEach var="notice" items="${noticeMap}" varStatus="loop">
 		                <div class="rolling-notice">${notice.title}</div>
+		                <input class="notice-seq" type="hidden" value="${notice.seq }">
 		            </c:forEach>
 		        </div>
 		    </div>
@@ -316,6 +317,15 @@
    <script src="../../../../resources/js/default.js"></script>
    <script src="<c:url value='/resources/js/ajaxTab.js'/>"></script>
    <script>
+   function changeParentUrl(seqValue) {
+	    if (window.opener && !window.opener.closed) {
+	        // 부모 창의 URL 변경
+	        window.opener.location.href = '/notice/noticeDetail?seq=' + seqValue;
+	    } else {
+	        console.log("부모 창이 이미 닫혔거나 접근할 수 없습니다.");
+	    }
+	}
+   
     var notices = document.querySelectorAll(".rolling-notice");
     var currentIndex = 0;
     var initialDelay = 1700; 
@@ -325,9 +335,19 @@
     function showNextNotice() {
         if (currentIndex > 0) {
             notices[currentIndex - 1].classList.remove("active");
+            notices[currentIndex - 1].removeAttribute('id');
         }
         if (currentIndex < notices.length) {
             notices[currentIndex].classList.add("active");
+            notices[currentIndex].id="rolling-notice-active";
+            notices[currentIndex].onclick = function() {     
+            	var noticeSeqInput = this.nextElementSibling;
+                if (noticeSeqInput && noticeSeqInput.classList.contains('notice-seq')) {
+                    var seqValue = noticeSeqInput.value;
+                    changeParentUrl(seqValue);
+
+                }
+            }
             currentIndex++;
         } else {
             currentIndex = 0; 
