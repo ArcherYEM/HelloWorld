@@ -301,7 +301,8 @@
 		        </div>
 		    </div>
 		</div>
-		<div class="main-udb-past">
+		<div class="main-udb-past" onclick="lastPage()">
+			<input type="hidden" id="lastpage" value="${sessionScope.lastPage }">
 			이전에 방문한 홈피
 		</div>
 		<div class="main-udb-logout">
