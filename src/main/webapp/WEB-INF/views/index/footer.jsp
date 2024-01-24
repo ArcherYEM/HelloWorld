@@ -6,7 +6,7 @@
 	<link  href="/resources/css/index/footer.css" rel="stylesheet">
 </head>
 <body>
-	<div class="footer">
+	<div class="footer"  style="cursor: default;">
 		<div class="footer-title">
 			<span>https://github.com/ArcherYEM/HelloWorld.git</span>
 			<span>Made By Core 2024.</span>
