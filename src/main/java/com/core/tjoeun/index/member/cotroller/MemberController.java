@@ -44,7 +44,6 @@ public class MemberController {
             loginInfo.put("userEmail", req.get("userEmail"));
             loginInfo.put("userPassword", req.get("userPassword"));
 
-
             Map result = memberService.login(loginInfo);
             String userNickname = "";
             
@@ -137,7 +136,6 @@ public class MemberController {
             emailMap.put("userEmail", req.get("userEmail"));
             resultMap = memberService.selectEmail(emailMap);
 
-            // resultMap 초기화
             if(resultMap == null) {
                 resultMap = new HashMap();
                 resultMap.put("resultCode", "1");
@@ -150,6 +148,29 @@ public class MemberController {
         }
 
         return resultMap;
+    }
+    
+    @RequestMapping(value="/nicknameCheck", method=RequestMethod.POST)
+    @ResponseBody
+    public Map nicknameCheck(@RequestBody Map req) {
+    	Map resultMap = new HashMap();
+    	try {
+    		Map nicknameMap = new HashMap();
+    		nicknameMap.put("userNickname", req.get("userNickname"));
+    		resultMap = memberService.selectNickname(nicknameMap);
+    		
+    		if(resultMap == null) {
+    			resultMap = new HashMap();
+    			resultMap.put("resultCode", "1");
+    		} else {
+    			resultMap.put("resultCode", "0");
+    		}
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    		resultMap.put("resultCode", "0");
+    	}
+    	
+    	return resultMap;
     }
 
     @RequestMapping(value="/phoneCheck", method=RequestMethod.POST)
