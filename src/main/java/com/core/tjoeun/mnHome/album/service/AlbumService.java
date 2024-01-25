@@ -13,5 +13,15 @@ public interface AlbumService {
 	public List<HashMap> getAlbum(Map map);
 	
 	public void updateAlbum(Map map) throws Exception;
+	
+	public class DatabaseInsertException extends RuntimeException {
+	    public DatabaseInsertException(String message) {
+	        super(message);
+	    }
+
+	    public DatabaseInsertException(String message, Throwable cause) {
+	        super(message, cause);
+	    }
+	}
 
 }

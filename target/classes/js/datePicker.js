@@ -72,3 +72,28 @@
     });
 });
 
+function deleteDiary(){
+	let seq = $("#cmtSeq").val();
+	
+	let jsonData = {
+		"seq" : seq
+	};
+	
+	if(confirm('정말 삭제하시겠습니까?')){
+		$.ajax({
+        method: 'POST',
+        url: "/mnHome/diaryDelete",
+        contentType: 'application/json',
+        data: JSON.stringify(jsonData)
+	    }).done(function(json) {
+	        if(json.resultCode === '1' ){
+	        	 alert("삭제되었습니다.");
+	        	 document.getElementById("tabDiary").click();
+	        } else if(json.resultCode === "0"){
+	            alert("잠시 후 다시 시도해주세요.");
+	        }
+   		});
+	}
+	
+}
+

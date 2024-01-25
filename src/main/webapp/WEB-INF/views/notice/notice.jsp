@@ -99,10 +99,10 @@
 			</div>
 			
 			<!-- paging -->
-	        <div class="notice-paging">
+	        <div class="notice-paging" onmousedown="return false;" style="cursor: default;">
 	            <c:forEach var="page" begin="1" end="${totalPage}">
 	                <span class="spanPage" data-page="${page}">
-	                    【${page}】
+	                    ${page}
 	                </span>
 	            </c:forEach>
 	            <form id="frm2" action="<c:url value='/notice/noticeView'/>" method="get">
@@ -116,7 +116,6 @@
 	        </div>
 			<div class="bottom-fix">
 			</div>
-		</div>
 		<jsp:include page="/WEB-INF/views/index/footer.jsp"></jsp:include>
 		<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
 		<script>
@@ -151,6 +150,40 @@
 	</script>
 		<script>
 			window.onload = function() {
+				var currentPage = getParameterByName('page');
+		        var pageLinks = document.querySelectorAll('.spanPage');
+		        
+		        for (var i = 0; i < pageLinks.length; i++) {
+		            var pageLink = pageLinks[i];
+		            var pageNumber = pageLink.getAttribute('data-page');
+
+		            if (pageNumber === currentPage) {
+		                pageLink.style.color = 'blue';
+		                pageLink.style.fontWeight = '700';
+		            }
+		        }
+		        
+		        if (currentPage === null) {
+		            var firstPageLink = document.querySelector('.spanPage[data-page="1"]');
+		            if (firstPageLink) {
+		                firstPageLink.style.color = 'orange';
+		                firstPageLink.style.fontWeight = '700';
+		            }
+		        }
+				
+		        function getParameterByName(name, url) {
+		            if (!url) {
+		                url = window.location.href;
+		            }
+		            name = name.replace(/[\[\]]/g, '\\$&');
+		            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+		                results = regex.exec(url);
+		            if (!results) return null;
+		            if (!results[2]) return '';
+		            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+		        }
+		        
+				
 		        let userDotoriElement = document.getElementById('userDotori');
 		        let storeLoginMyhome = document.getElementById('storeLoginMyhome');
 		        let storeLoginLogout = document.getElementById('storeLoginLogout');

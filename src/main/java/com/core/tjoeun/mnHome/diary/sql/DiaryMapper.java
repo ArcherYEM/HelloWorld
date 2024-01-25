@@ -11,7 +11,7 @@ public interface DiaryMapper {
 
 	public Map selectDiary(Map map);
 	
-	public int deleteDiary(ArrayList<String> list);
+	public int deleteDiary(Map map);
 	
 	public int modifyDiary(Map map);
 	
