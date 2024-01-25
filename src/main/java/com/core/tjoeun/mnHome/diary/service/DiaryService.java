@@ -11,7 +11,7 @@ public interface DiaryService {
 
 	public Map selectDiary(Map map);
 	
-	public int deleteDiary(ArrayList<String> list);
+	public void deleteDiary(Map map) throws Exception;
 	
 	public void modifyDiary(Map map) throws Exception;
 	

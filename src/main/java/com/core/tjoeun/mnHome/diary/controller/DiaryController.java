@@ -294,4 +294,21 @@ public class DiaryController {
 		
 		return jsonMap;
 	}
+	
+	@RequestMapping(value="/mnHome/diaryDelete", method = RequestMethod.POST)
+	@ResponseBody
+	public Map diaryDelete(@RequestBody Map paramMap){
+		Map jsonMap = new HashMap();
+		
+		try {
+			diaryService.deleteDiary(paramMap);
+			jsonMap.put("resultCode", "1");
+		} catch (Exception e) {
+			e.printStackTrace();
+			jsonMap.put("resultCode", "0");
+			
+		}
+		
+		return jsonMap;
+	}
 }

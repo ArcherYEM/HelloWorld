@@ -38,9 +38,13 @@ public class DiaryServiceImpl implements DiaryService {
 	}
 
 	@Override
-	public int deleteDiary(ArrayList<String> list) {
-		// TODO Auto-generated method stub
-		return 0;
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
+	public void deleteDiary(Map map) throws Exception{
+		int result = diaryDao.deleteDiary(map);
+		
+		if(result != 1) {
+			throw new Exception();
+		}
 	}
 
 	@Override
