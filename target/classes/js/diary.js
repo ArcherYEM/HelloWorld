@@ -21,10 +21,20 @@ function addDiary() {
     	return;
     }
     
+    let diary_date = $("#datepicker2").val();
+    let formattedDate = diary_date.slice(0, 4) + '-' + diary_date.slice(4, 6) + '-' + diary_date.slice(6, 8);
+	if(formattedDate.length<10){
+		alert('작성일을 선택해주세요.');
+    	$("#datepicker2").focus();
+    	return;
+	}
+	
+	
     let jsonData = {
         "content" : content,
         "userNickname" : userNickname,
-        "title" : title
+        "title" : title,
+        "diary_date" : formattedDate
     };
     
     $.ajax({
