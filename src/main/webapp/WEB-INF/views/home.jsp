@@ -15,8 +15,69 @@
 	<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta http-equiv="Expires" content="0">
+	
+	<style>
+    /* 모달 스타일 */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+        position: absolute;
+        top: 40%;
+        left: 20%;
+        transform: translate(-50%, -50%);
+        background-color: #fefefe;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 400px;
+    }
+
+    .close {
+        color: #aaa;
+	    float: right;
+	    font-size: 28px;
+	    font-weight: bold;
+	    cursor: pointer;
+	    margin-bottom: 10px;
+    }
+
+    .close:hover,
+    .close:focus,
+    .md-coppy:hover {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .md-title {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+</style>
+	
 </head>
 <body>
+<!-- 모달 -->
+    <div id="myModal" class="modal">
+	    <div class="modal-content">
+	        <span class="close" onclick="closeModal()">&times;</span>
+	        <!-- 모달 내용 -->
+	        <h3 class="md-title">인사담당자님을 위한 테스트 계정</h3>
+	        <br>
+	        <span>ID : hr@gmail.com</span>
+	        <input type="button" class="md-coppy" value="복사하기">
+	        <p>PW : 1234</p>
+	    </div>
+	</div>
 	<div class="index-frame">
       	<div class="divIndexMenu index-header">
 	      	<div class="index-header-left">
@@ -126,12 +187,10 @@
 		</div>
 	</div>
 	<div class="bottom-fix">
-		<!-- <hr>
-		<h1>team core</h1> -->
     </div>
       <jsp:include page="/WEB-INF/views/index/footer.jsp"></jsp:include>
-	<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
-	<script>
+<script src="<c:url value='/resources/js/jquery-3.7.1.min.js'/>"></script>
+<script>
 	function openMiniHomepage() {
 	    var url = "<c:url value='/mnHome/mainView/${sessionScope.userId.userNickname }' />";
 	    var width = 1200;
@@ -151,8 +210,8 @@
 		location.href = "<c:url value="/index/member/logout" />"
 	    location.reload();
 	}
-	</script>
-    <script>
+</script>
+<script>
     // Ajax 유저 로그인
      document.getElementById('frmLogin').addEventListener('keydown', function (e) {
          if (e.key === 'Enter') {
@@ -283,8 +342,8 @@
         showUserInfo();
         newContent();
      };
-	</script>
-	<script>
+</script>
+<script>
 		let popup;
 		let friendListContainer;
 	
@@ -388,6 +447,51 @@
 	    var friendListContainer = document.getElementById("friendListContainer");
 	    friendListContainer.classList.toggle("show");
 	}
-	</script>
-   </body>
+</script>
+<script>
+//페이지 로드 시 모달 열기
+window.onload = function() {
+    // 로그인 상태를 확인하고 모달을 열거나 닫기
+    showUserInfo();
+    openModalIfNeeded();
+};
+
+// 모달 열기
+function openModal() {
+    document.getElementById('myModal').style.display = 'block';
+}
+
+// 모달 닫기
+function closeModal() {
+    document.getElementById('myModal').style.display = 'none';
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    let copyButton = document.querySelector('.md-coppy');
+    copyButton.addEventListener('click', function () {
+        copyToClipboard('hr@gmail.com');
+        alert('ID 복사완료');
+    });
+});
+
+function copyToClipboard(text) {
+    // 텍스트를 복사하기 위해 임시로 textarea 엘리먼트를 생성하고 복사 후 삭제
+    var textarea = document.createElement('textarea');
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+}
+
+// 모달이 필요한 경우 열기
+function openModalIfNeeded() {
+    // 로그인 상태를 확인하고 모달 열기
+    let userEmail = '<c:out value="${sessionScope.userId.userEmail}" />';
+    if (userEmail === '') {
+        openModal();
+    }
+}
+</script>
+</body>
 </html>
