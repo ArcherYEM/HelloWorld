@@ -94,7 +94,6 @@ public class AlbumController {
 				images[i] = tempPath;
 			}
 		}
-		
 		model.addAttribute("list", albumService.getAlbum(userMap));
 		model.addAttribute("images", images);
         
@@ -107,7 +106,6 @@ public class AlbumController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return "miniHome/album";
 	}
 	
