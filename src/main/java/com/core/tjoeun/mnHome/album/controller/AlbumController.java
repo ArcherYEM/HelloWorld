@@ -94,7 +94,6 @@ public class AlbumController {
 				images[i] = tempPath;
 			}
 		}
-		
 		model.addAttribute("list", albumService.getAlbum(userMap));
 		model.addAttribute("images", images);
         
@@ -107,7 +106,6 @@ public class AlbumController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return "miniHome/album";
 	}
 	
@@ -173,9 +171,20 @@ public class AlbumController {
 		Map result = new HashMap<String, String>();
 		try {
 			map.put("userNickname", userNickname);
-			map.put("openScope", 1);
 			
-			albumService.insertAlbum(uploadFile, map);
+			String visibility = map.get("visibility").toString();
+	        System.out.println("### visibility : " + visibility);
+	        if ("1".equals(visibility)) {
+	            map.put("openScope", 1);
+	        } else if ("0".equals(visibility)) {
+	            map.put("openScope", 0);
+	        } else {
+	            map.put("openScope", -99);
+	        }
+
+	        albumService.insertAlbum(uploadFile, map);
+	        System.out.println("### Map : " + map);
+	        System.out.println("### uploadFile : " + uploadFile);
 			
 			//방문자 수 가져오기
 	        try {

@@ -107,19 +107,39 @@
 									<c:if test="${list eq null || list.size() <= 0}">
 										<div id="noneMsg">사진이 없습니다.</div>
 									</c:if>
+									
 									<c:if test="${list ne null}">
-										<c:forEach items="${list}" var="item" varStatus="i">
-											<div class="album-container" data-albumdetail="/mnHome/albumDetailView/${userNickname}/${item.seq}">
-												<div class="album-thumbnail">
-													<img src="<c:url value="/../../../../resources/images/download/${images[i.index]}" />" class="addImage">
+									
+										<c:if test="${sessionScope.userId.userNickname eq userNickname }">
+											<c:forEach items="${list}" var="item" varStatus="i">
+												<div class="album-container" data-albumdetail="/mnHome/albumDetailView/${userNickname}/${item.seq}">
+													<div class="album-thumbnail">
+														<img src="<c:url value="/../../../../resources/images/download/${images[i.index]}" />" class="addImage">
+													</div>
+													<div class="album-thumbtitle">${item.title}</div>
 												</div>
-												<div class="album-thumbtitle">${item.title}</div>
-											</div>
-										</c:forEach>
+											</c:forEach>
+										</c:if>
+										
+										<c:if test="${sessionScope.userId.userNickname ne userNickname }">
+											<c:forEach items="${list}" var="item" varStatus="i">
+												<c:if test="${item.openScope == 1 }">
+													<div class="album-container" data-albumdetail="/mnHome/albumDetailView/${userNickname}/${item.seq}">
+														<div class="album-thumbnail">
+															<img src="<c:url value="/../../../../resources/images/download/${images[i.index]}" />" class="addImage">
+														</div>
+														<div class="album-thumbtitle">${item.title}</div>
+													</div>
+												</c:if>
+											</c:forEach>
+										</c:if>
+										
 									</c:if>
+									
 								</div>
 						   </div>
 						</div>
+<!-- 						종점 -->
 					</div>
 					<jsp:include page="/WEB-INF/views/miniHome/menuTab.jsp"></jsp:include>
 				</div>

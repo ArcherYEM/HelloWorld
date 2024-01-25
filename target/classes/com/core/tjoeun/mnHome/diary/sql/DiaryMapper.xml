@@ -11,22 +11,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			,content
 			,del_yn
 			,openScope
+			,diary_date
 		 ) VALUES (
 			#{userNickname}
 		    ,#{title}
 		    ,#{content}
 		    ,'n'
 		    ,#{openScope}
+		    ,#{diary_date}
 	     )
 	</insert>
 	
 	<select id="selectDiary" resultType="map" parameterType="map">
-		SELECT *, DATE_FORMAT(create_date, '%Y-%m-%d %H:%i') AS formatted_update_date
+		SELECT *, DATE_FORMAT(diary_date, '%Y-%m-%d') AS formatted_update_date
 		FROM 
 		    diary
 		WHERE
 		    1=1
-		    AND DATE(create_date) = CURDATE() -- 오늘 날짜에 해당하는 데이터만 선택
+		    AND DATE(diary_date) = CURDATE() -- 오늘 날짜에 해당하는 데이터만 선택
 		<if test="del_yn != null">
 		    AND del_yn = #{del_yn}
 		</if>
@@ -92,10 +94,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="diaryTest" parameterType="map" resultType="map">
-		SELECT *, DATE_FORMAT(create_date, '%Y-%m-%d %H:%i') AS formatted_update_date
+		SELECT *, DATE_FORMAT(diary_date, '%Y-%m-%d') AS formatted_update_date
 		FROM diary
 		WHERE userNickname = #{userNickname}
-		AND DATE(create_date) = #{date};
+		AND DATE(diary_date) = #{date};
 
 	</select>
 	

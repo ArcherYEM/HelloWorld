@@ -1,19 +1,20 @@
 <!-- views/miniHome/main -->
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html lang="ko" style="resizeable:no">
-<head>
-	<meta charset="UTF-8">
-	<title>미니홈피</title>
-	<link rel="stylesheet" href="../../../../resources/css/minihome/fonts.css" />
-	<link rel="stylesheet" href="../../../../resources/css/minihome/frame.css" />
-	<link rel="stylesheet" href="../../../../resources/css/minihome/album.css" />
-	<link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
-	<link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
-</head>
-<body>
+	<head>
+		<meta charset="UTF-8">
+		<title>미니홈피</title>
+		<link rel="stylesheet" href="../../../../resources/css/minihome/fonts.css" />
+		<link rel="stylesheet" href="../../../../resources/css/minihome/frame.css" />
+		<link rel="stylesheet" href="../../../../resources/css/minihome/album.css" />
+		<link rel="stylesheet" href="../../../../resources/css/minihome/audio.css" />
+		<link rel="icon" href="../../../../resources/images/minihome/favicon.png" type="image/x-icon">
+	</head>
+	<body>
 	<div class="main-frame">
 		<div class="bookcover">
 			<div class="bookdot">
@@ -30,7 +31,7 @@
                      		</div>
                      	</div>
                      	<div class="profile-dot">-----------------------------------</div>
-						<div class="left-2">
+                    	 <div class="left-2">
 	                    	 <div class="profile-text font-kyobohand">
 	                        	<c:out value="${msg}" escapeXml="false"/>
 	                     	</div>
@@ -81,60 +82,60 @@
 	                   		</div>
                      	</div>
                   	</div>
-				</div>
-				<div class="content-container">
-					<div class="header content-title">
-						 <div id="divHomeTitle" class="content-title-name">${title }</div>
-						 <input id="newTitle" class="content-title-name"  type="hidden" value="${title }">
-						 <input id="hiddenUserNickname" type="hidden" value="${userNickname }">
-						 <c:if test="${sessionScope.userId.userNickname eq userNickname }">
-							<div>
-								<input type="button" id="btn-title-edit" class="btn-edit" value="수정">
-								<input type="hidden" id="btn-title-save"class="btn-edit" value="저장">
-							</div>
-						</c:if>
-						<div class="content-title-url">https://www.helloworld.com/minihome/${userNickname }</div>
 					</div>
-					<div class="box content-box">
-						<div class="album-overflow">
-							<div class="album-container3">
-								<div class="album-container2">
-									<div class="album-container1">
-										<div class="album-title albumWrite-title">
-											<input type="text" placeholder="제목을 입력하세요" id="albumTitle">
-										</div>
-										<div id="preview-container"></div>
-										<div class="album-content albumWrite-content">
-											<input type="file" name="albumFile" class="albumWirte-file fileupload" multiple="multiple" onchange="multiFiles(this.files)">
-											<div id="preview-container"></div>
-											<textarea placeholder="내용을 입력하세요" id="albumContent"></textarea>
-										</div>
-									</div>
-									<div class="album-public">
-										<div class="album-dropDown">
-									  		<span>공개설정 :</span>
-											<select id="visibilitySelect">
-												<option value="base" disabled selected hidden="">전체공개</option>
-												<option value="0">비공개</option>
-												<option value="1">전체공개</option>
-											</select>
-										</div>
-									</div>
+					<div class="content-container">
+						<div class="header content-title">
+							 <div id="divHomeTitle" class="content-title-name">${title }</div>
+							 <input id="newTitle" class="content-title-name"  type="hidden" value="${title }">
+							 <input id="hiddenUserNickname" type="hidden" value="${userNickname }">
+							 <c:if test="${sessionScope.userId.userNickname eq userNickname }">
+								<div>
+									<input type="button" id="btn-title-edit" class="btn-edit" value="수정">
+									<input type="hidden" id="btn-title-save"class="btn-edit" value="저장">
 								</div>
-								<div class="album-container-under">
-									<div class="album-under">
+							 </c:if>
+							<div class="content-title-url"> https://www.helloworld.com/minihome/${userNickname }</div>
+						</div>
+						<div class="box content-box">
+							<div class="album-overflow">
+								<div class="album-container3">
+									<div class="album-container2">
+										<div class="album-container1">
+											<div class="album-title albumWrite-title">
+												<input type="text" placeholder="제목을 입력하세요" id="albumTitle">
+											</div>
+										    <div id="preview-container"></div>
+										   <div class="album-content albumWrite-content">
+										  	 <input type="file" name="albumFile" class="albumWirte-file fileupload" multiple="multiple" onchange="multiFiles(this.files)">
+										  	 <div id="preview-container"></div>
+										  	 <textarea placeholder="내용을 입력하세요" id="albumContent"></textarea>
+										   </div>
+									  </div>
+									  <div class="album-public">
+									  	<div class="album-dropDown">
+									  		<span>공개설정 :</span>
+												<select id="visibilitySelect">
+													<option value="" disabled selected hidden="">전체공개</option>
+													<option value="0">비공개</option>
+													<option value="1">전체공개</option>
+												</select>
+											</div>
+									  </div>
+								  </div>
+								  <div class="album-container-under">
+								  	<div class="album-under">
 								  		<a  class="album-under-left" id="albumView" data-albumView="<c:url value='/mnHome/albumView/${userNickname}'/>">목록</a>
 								  		<a  class="album-under-right" onclick="writeAlbum()">등록</a>
 								  	</div>
-								</div>
-							</div>
+								  </div>
+							  </div>
+						  </div>
 						</div>
 					</div>
+					<jsp:include page="/WEB-INF/views/miniHome/menuTab.jsp"></jsp:include>
 				</div>
-				<jsp:include page="/WEB-INF/views/miniHome/menuTab.jsp"></jsp:include>
 			</div>
 		</div>
 	</div>
-</div>
-</body>
+	</body>
 </html>

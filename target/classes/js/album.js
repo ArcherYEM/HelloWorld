@@ -67,8 +67,6 @@
 		  }
 		}
 		
-		
-		
 function writeAlbum(){
 		let userNickname = $("#hiddenUserNickname").val();
 		let link = '/mnHome/albumWrite/' + userNickname;
@@ -91,20 +89,29 @@ function writeAlbum(){
 			return;
 		}		
 		
-		let albumData = {
-			title : $("#albumTitle").val()
-			, content : $("#albumContent").val()
-		}
+		let visibilityValue = $("#visibilitySelect").val();
+	    
+	    if (visibilityValue === "0") {
+	        visibilityValue = "0"; // 비공개
+	    } else if (visibilityValue === "1") {
+	        visibilityValue = "1"; // 전체공개
+	    } else if (visibilityValue === "base" || visibilityValue === null){
+	    	visibilityValue = "1"; // 전체공개(기본값)
+		}else {
+	    	visibilityValue = "-99"; //에러
+	    }
+
+	    let albumData = {
+	        title: $("#albumTitle").val(),
+	        content: $("#albumContent").val(),
+	        visibility: visibilityValue,
+	        files: files
+	    };
+	    console.log(inputFile);
 		
 		formData.append("contents", new Blob([JSON.stringify(albumData)],{type : "application/json"} ));
 		
-		console.log(albumData);
-		for (let pair of formData.entries()) {
-		    console.log(pair[0]+ ', ' + pair[1]);
-		}
-
-		
-	/*	$.ajax({
+		$.ajax({
 			url : link
 			,processData : false
 			,contentType :false
@@ -118,9 +125,7 @@ function writeAlbum(){
 		            alert("잠시 후 다시 시도해주세요.");
 		        }
 			}
-			
-		 });*/
-		
+		 });
 	}
 	
 	function deleteAlbum(seq){
@@ -147,6 +152,3 @@ function writeAlbum(){
 			});
 		}
 	}	
-
-
-

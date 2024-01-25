@@ -27,8 +27,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		, title
 		, content
 		, imagePath
-		, openScope
 		, create_date
+		, openScope
 	From album
 	where del_yn != 'Y'
 	and userNickname = #{userNickname}
@@ -39,10 +39,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </select>
 
 <update id="updateAlbum" parameterType="map">
+
 	update
 		album
 	set
 		del_yn = 'Y'
 	where seq = #{seq}
+
 </update>
 </mapper>
