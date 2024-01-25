@@ -67,8 +67,6 @@
 		  }
 		}
 		
-		
-		
 function writeAlbum(){
 		let userNickname = $("#hiddenUserNickname").val();
 		let link = '/mnHome/albumWrite/' + userNickname;
@@ -127,9 +125,7 @@ function writeAlbum(){
 		            alert("잠시 후 다시 시도해주세요.");
 		        }
 			}
-			
 		 });
-		
 	}
 	
 	function deleteAlbum(seq){
