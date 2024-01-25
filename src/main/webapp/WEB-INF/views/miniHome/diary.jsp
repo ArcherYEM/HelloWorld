@@ -130,7 +130,7 @@
 													<div class="album-under">
 														<!-- <a href="#" class="album-under-right">이동</a> -->
 														<a id="diarymodify" class="album-under-right" data-diarymodify="<c:url value='/mnHome/diaryModifyView/${userNickname}'/>">수정</a>
-														<a href="#" class="album-under-right">삭제</a>
+														<a href="#" class="album-under-right" onclick="deleteDiary()">삭제</a>
 													</div>
 												</div>
 											</c:if>

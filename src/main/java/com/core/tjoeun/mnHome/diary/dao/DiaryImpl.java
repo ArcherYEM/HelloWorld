@@ -32,9 +32,10 @@ public class DiaryImpl implements DiaryDao {
 	}
 
 	@Override
-	public int deleteDiary(ArrayList<String> list) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteDiary(Map map) {
+		DiaryMapper mapper = sqlSession.getMapper(DiaryMapper.class);
+		
+		return mapper.deleteDiary(map);
 	}
 
 	@Override

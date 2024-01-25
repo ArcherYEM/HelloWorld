@@ -39,15 +39,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</if>
 	</select>
 
-	<update id="deleteDiary" parameterType="java.util.List">
+	<update id="deleteDiary" parameterType="map">
 		update 
-			notice
+			diary
 		set
 			del_yn = 'Y'
-		where seq in
-		<foreach collection="list" item="seq" open="(" close=")" separator=",">
-			#{seq}
-		</foreach>
+		where seq = #{seq}
 	</update>
 	
 	<update id="modifyDiary" parameterType="map">
