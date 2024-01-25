@@ -114,9 +114,9 @@
 										<div class="album-dropDown">
 									  		<span>공개설정 :</span>
 											<select id="visibilitySelect">
-												<option value="" disabled selected hidden="">전체공개</option>
-												<option value="temp1">비공개</option>
-												<option value="temp2">전체공개</option>
+												<option value="base" disabled selected hidden="">전체공개</option>
+												<option value="0">비공개</option>
+												<option value="1">전체공개</option>
 											</select>
 										</div>
 									</div>
