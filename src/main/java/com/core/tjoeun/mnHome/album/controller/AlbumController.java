@@ -89,6 +89,7 @@ public class AlbumController {
 			
 			if(tempPath.indexOf(',') > 0) {
 				images[i] = tempPath.substring(0,tempPath.indexOf(','));
+				
 			}else {
 				images[i] = tempPath;
 			}
@@ -166,15 +167,14 @@ public class AlbumController {
 	
 	@RequestMapping(value="/mnHome/albumWrite/{userNickname}")
 	@ResponseBody
-	public Map albumWrite(@PathVariable String userNickname, Model model,
-	                      @RequestPart(value = "contents") Map map,
-	                      @RequestPart(value = "uploadFile") MultipartFile[] uploadFile) {
-	    Map result = new HashMap<String, String>();
-	    System.out.println("### map : " + map);
-	    try {
-	        map.put("userNickname", userNickname);
-
-	        String visibility = map.get("visibility").toString();
+	public Map albumWrite(@PathVariable String userNickname, Model model
+							, @RequestPart(value = "contents")Map map
+							, @RequestPart(value = "uploadFile") MultipartFile[] uploadFile) {
+		Map result = new HashMap<String, String>();
+		try {
+			map.put("userNickname", userNickname);
+			
+			String visibility = map.get("visibility").toString();
 	        System.out.println("### visibility : " + visibility);
 	        if ("1".equals(visibility)) {
 	            map.put("openScope", 1);
@@ -185,24 +185,27 @@ public class AlbumController {
 	        }
 
 	        albumService.insertAlbum(uploadFile, map);
-
-	        // 방문자 수 가져오기
+	        System.out.println("### Map : " + map);
+	        System.out.println("### uploadFile : " + uploadFile);
+			
+			//방문자 수 가져오기
 	        try {
-	            Map visitCntMap = new HashMap();
-	            visitCntMap = mainDao.selectVisitCnt(userNickname);
-	            model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
-	            model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-	        result.put("resultCode", "1");
-
-	    } catch (Exception e) {
-	        result.put("resultCode", "0");
-	        e.printStackTrace();
-	        return result;
-	    }
-	    return result;
+				Map visitCntMap = new HashMap();
+				visitCntMap = mainDao.selectVisitCnt(userNickname);
+				model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
+				model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			result.put("resultCode", "1");
+			
+		} catch (Exception e) {
+			result.put("resultCode", "0");
+			e.printStackTrace();
+			return result;
+		}
+		
+		return result ;
 	}
 	
 	@RequestMapping(value="/mnHome/albumDetailView/{userNickname}/{seq}")
