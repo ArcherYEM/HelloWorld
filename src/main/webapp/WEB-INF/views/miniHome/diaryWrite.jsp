@@ -89,6 +89,7 @@
                       <div id="divHomeTitle" class="content-title-name">${title }</div>
                       <input id="newTitle" class="content-title-name"  type="hidden" value="${title }">
                       <input id="hiddenUserNickname" type="hidden" value="${userNickname }">
+                       <input id="hiddenVisitorNickname" type="hidden" value="${sessionScope.userId.userNickname }">
                       <c:if test="${sessionScope.userId.userNickname eq userNickname }">
                         <div>
                            <input type="button" id="btn-title-edit" class="btn-edit" value="수정">
@@ -110,6 +111,14 @@
                      </div>
                       <!--인라인 스타일 외 적용불가하여 불가피하게 인라인css 적용 -->
                      <textarea placeholder="test" name="content" id="txtContent" rows="10" cols="100" form="frmDiary" style="width:500px; height:180px; min-width:500px; display:none;"></textarea>
+                     <div class="album-dropDown">
+						<span>공개설정 :</span>
+						<select id="visibilitySelect">
+							<option value="" disabled selected hidden="">전체공개</option>
+							<option value="0">비공개</option>
+							<option value="1">전체공개</option>
+						</select>
+					 </div>
                      <div class="btn-container">
                         <div class="btn-left">
                            <input class="btn-diarylist" type="button" id="btnBoardView" data-diaryView="<c:url value='/mnHome/diaryView/${userNickname}'/>" value="목록">

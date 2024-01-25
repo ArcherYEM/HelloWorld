@@ -88,6 +88,7 @@
 						 <div id="divHomeTitle" class="content-title-name">${title }</div>
 						 <input id="newTitle" class="content-title-name"  type="hidden" value="${title }">
 						 <input id="hiddenUserNickname" type="hidden" value="${userNickname }">
+						 <input id="hiddenVisitorNickname" type="hidden" value="${sessionScope.userId.userNickname }">
 						 <c:if test="${sessionScope.userId.userNickname eq userNickname }">
 							<div>
 								<input type="button" id="btn-title-edit" class="btn-edit" value="수정">
@@ -100,12 +101,13 @@
 						<div class="box content-box">
 							<div class=" album-submit">
 								<c:if test="${sessionScope.userId.userNickname eq userNickname }">
-									<c:if test="${nullCheck}">
+									<input type="button" id="btnUpload" class="btnDiaryWrite" data-diaryWrite="<c:url value='/mnHome/diaryWriteView/${userNickname}'/>" value="글쓰기">
+									<%-- <c:if test="${nullCheck}">
 										<input type="button" id="btnUpload" class="btnDiaryWrite" data-diaryWrite="<c:url value='/mnHome/diaryWriteView/${userNickname}'/>" value="글쓰기">
 									</c:if>
 									<c:if test="${!nullCheck}">
 										<input type="button" onclick="already()" value="글쓰기">
-									</c:if>
+									</c:if> --%>
 								</c:if>
 							</div>
 							<div class="album-overflow">
@@ -115,46 +117,63 @@
 											<div class="album-db-group">
 									            <div id="diaryTitle" class="diary-title">
 									            	<c:if test="${not empty diary}">
-									            		${diary.title}
+									            		<c:if test="${diary.openScope eq 1 || (diary.openScope eq 0 && sessionScope.userId.userNickname eq userNickname)}">
+									            			${diary.title}
+									            		</c:if>
 									            	</c:if>
-									            	<c:if test="${empty diary}">
+									            	<c:if test="${empty diary || (diary.openScope eq 0 && sessionScope.userId.userNickname ne userNickname)}">
 									            		다이어리를 작성해주세요.
 									            	</c:if>
 									            </div>
 									            <div id="diaryDate" class="diary-date-right">${formatted_update_date}</div>
 									            <div id="diaryContent" class="diary-content">
 									            	<c:if test="${not empty diary}">
-									            		${diary.title}
+									            		<c:if test="${diary.openScope eq 1 || (diary.openScope eq 0 && sessionScope.userId.userNickname eq userNickname)}">
+									            			${diary.content}
+									            		</c:if>
 									            	</c:if>
-									            	<c:if test="${empty diary}">
+									            	<c:if test="${empty diary  || (diary.openScope eq 0 && sessionScope.userId.userNickname ne userNickname)}">
 									            		매일매일 일촌들과 일상을 공유해보아요!
 									            	</c:if>
 									            </div>
 											</div>
-											<c:if test="${sessionScope.userId.userNickname eq userNickname }">
-												<div class="album-public">
+											<c:if test="${sessionScope.userId.userNickname eq userNickname}">
+												<div class="album-public" id="diary-public">
 													<div class="album-dropDown ">
 														<span>공개설정 :</span>
-														<select>
-															<option value="" disabled selected hidden="">전체공개</option>
-															<option value="temp1">비공개</option>
-															<option value="temp2">전체공개</option>
+														<select id="select-scope" disabled>
+															<c:choose>
+																<c:when test="${diary.openScope eq 0}">
+																	<option value="" disabled hidden="">전체공개</option>
+																	<option value="0" selected>비공개</option>
+																	<option value="1">전체공개</option>
+																</c:when>
+																
+																<c:otherwise>
+																	<option value="" disabled selected hidden="">전체공개</option>
+																	<option value="0">비공개</option>
+																	<option value="1">전체공개</option>
+																</c:otherwise>
+															</c:choose>
 														</select>
 													</div>
 													<div class="album-under">
 														<!-- <a href="#" class="album-under-right">이동</a> -->
 														<a id="diarymodify" class="album-under-right" data-diarymodify="<c:url value='/mnHome/diaryModifyView/${userNickname}'/>">수정</a>
-														<a href="#" class="album-under-right" onclick="deleteDiary()">삭제</a>
+														<a class="album-under-right" onclick="deleteDiary()">삭제</a>
 													</div>
 												</div>
 											</c:if>
+											
 											<div class="board-comment-write" id="cmtInputContainer">
 												<span>댓글</span>
 												<input type="text" class="comment-content-write" id="cmtContent${diary.seq}">
 												<input type="hidden" value="${sessionScope.userId.userNickname}" class="cmtWriter">
 												<input type="hidden" value="${diary.seq}" id="cmtSeq">
+												<input type="hidden" value="${diary.openScope}" id="openScope">
 												<input type="button" value="확인" onclick="addCmt()">
 											</div>
+											
 											<div class="board-comment-container" id="diaryCmtContainer">
 												<c:forEach var="commentEntry" items="${cmtList}">
 										            <c:set var="commentDiarySeq" value="${commentEntry.key}" />

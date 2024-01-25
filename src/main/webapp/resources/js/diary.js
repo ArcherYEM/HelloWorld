@@ -29,12 +29,24 @@ function addDiary() {
     	return;
 	}
 	
+	let visibilityValue = $("#visibilitySelect").val();
+	    
+	    if (visibilityValue === "0") {
+	        visibilityValue = "0"; // 비공개
+	    } else if (visibilityValue === "1") {
+	        visibilityValue = "1"; // 전체공개
+	    } else if (visibilityValue === "base" || visibilityValue === null){
+	    	visibilityValue = "1"; // 전체공개(기본값)
+		}else {
+	    	visibilityValue = "-99"; //에러
+	    }
 	
     let jsonData = {
         "content" : content,
         "userNickname" : userNickname,
         "title" : title,
-        "diary_date" : formattedDate
+        "diary_date" : formattedDate,
+        "visibility" : visibilityValue
     };
     
     $.ajax({
@@ -48,6 +60,8 @@ function addDiary() {
         	 document.getElementById("btnBoardView").click();
         } else if(json.resultCode === "0"){
             alert("다이어리 작성에 실패했습니다. 다시 시도해주세요.");
+        }else if(json.resultCode === "-1"){
+        	alert("작성된 일기가 존재합니다. 다른 날짜를 선택해주세요.");
         }
     });
     
@@ -76,10 +90,23 @@ function saveDiary(){
     	return;
     }
     
+    let visibilityValue = $("#visibilitySelect").val();
+	    
+	    if (visibilityValue === "0") {
+	        visibilityValue = "0"; // 비공개
+	    } else if (visibilityValue === "1") {
+	        visibilityValue = "1"; // 전체공개
+	    } else if (visibilityValue === "base" || visibilityValue === null){
+	    	visibilityValue = "1"; // 전체공개(기본값)
+		}else {
+	    	visibilityValue = "-99"; //에러
+	    }
+    
     let jsonData = {
         "content" : content,
         "seq" : seq,
-        "title" : title
+        "title" : title,
+        "visibility" : visibilityValue
     };
     
     $.ajax({
@@ -110,14 +137,3 @@ $(document).ready(function() {
     });
 });
 
-$(document).ready(function() {
-	let test1=document.getElementById('diaryTitle').textContent;
-	if(test1 == ""){
-		document.getElementById('diaryTitle').textContent="다이어리를 작성해주세요";
-	}
-	let test2=document.getElementById('diaryContent').innerHTML;
-	if(test2 == ""){
-		document.getElementById('diaryContent').innerHTML="매일매일 일촌들과 일상을 공유해보아요!";
-	}
-
-});
