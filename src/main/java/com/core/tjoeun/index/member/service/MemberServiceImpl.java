@@ -210,9 +210,15 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	@Transactional(readOnly = true)
 	public String getOnFriendCnt(String userNickname) {
-		List<Map> resultList = memberDao.selectOnFriendCnt(userNickname);
-		return (String.valueOf(resultList.get(0).get("count")));
+	    List<Map> resultList = memberDao.selectOnFriendCnt(userNickname);
+
+	    if (resultList != null && !resultList.isEmpty()) {
+	        return String.valueOf(resultList.get(0).get("count"));
+	    } else {
+	        return "0";
+	    }
 	}
+
 	
 	@Override
 	@Transactional(readOnly = true)
