@@ -19,7 +19,10 @@
         showMonthAfterYear: true,
         yearSuffix: '년'
     });
-
+    
+    
+    $("#datepicker2").datepicker();
+    
     $('#datepicker').datepicker({
         onSelect: function(dateText, inst) {
             let formattedDate = dateText.slice(0, 4) + '-' + dateText.slice(4, 6) + '-' + dateText.slice(6, 8);

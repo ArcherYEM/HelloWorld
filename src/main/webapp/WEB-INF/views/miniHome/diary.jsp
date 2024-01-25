@@ -113,9 +113,23 @@
 									<div class="album-container2">
 										<div class="diary-container1">
 											<div class="album-db-group">
-									            <div id="diaryTitle" class="diary-title">${diary.title}</div>
+									            <div id="diaryTitle" class="diary-title">
+									            	<c:if test="${not empty diary}">
+									            		${diary.title}
+									            	</c:if>
+									            	<c:if test="${empty diary}">
+									            		다이어리를 작성해주세요.
+									            	</c:if>
+									            </div>
 									            <div id="diaryDate" class="diary-date-right">${formatted_update_date}</div>
-									            <div id="diaryContent" class="diary-content">${diary.content}</div>
+									            <div id="diaryContent" class="diary-content">
+									            	<c:if test="${not empty diary}">
+									            		${diary.title}
+									            	</c:if>
+									            	<c:if test="${empty diary}">
+									            		매일매일 일촌들과 일상을 공유해보아요!
+									            	</c:if>
+									            </div>
 											</div>
 											<c:if test="${sessionScope.userId.userNickname eq userNickname }">
 												<div class="album-public">

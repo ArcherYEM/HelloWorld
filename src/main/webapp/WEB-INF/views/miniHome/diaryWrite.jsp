@@ -105,7 +105,8 @@
                         <input type="text" placeholder="제목을 입력하세요" class="board-title" maxlength="30" id="diaryTitle">
                      </div>
                      <div class="board-write-container">
-                        <span class="board-writer">  ${userName }(작성자)</span>
+                        <span class="board-writer">  ${userName }(작성자)</span> 
+                        <span>작성일 : <input type="text" id="datepicker2"></span> 
                      </div>
                       <!--인라인 스타일 외 적용불가하여 불가피하게 인라인css 적용 -->
                      <textarea placeholder="test" name="content" id="txtContent" rows="10" cols="100" form="frmDiary" style="width:500px; height:180px; min-width:500px; display:none;"></textarea>
