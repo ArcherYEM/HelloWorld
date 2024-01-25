@@ -6,6 +6,7 @@
 	$(document).ready(function() {
 	
 	let userNickname = document.getElementById("hiddenUserNickname").value;
+	let VisitorNickname = document.getElementById("hiddenVisitorNickname").value;
 
     $.datepicker.setDefaults({
         dateFormat: 'yymmdd',
@@ -38,31 +39,42 @@
                 contentType: 'application/json',
                 data: JSON.stringify(jsonData)
             }).done(function(json){
-                if (!json || json.title === undefined) {
+            
+                if (!json || json.title === undefined || (json.openScope == 0 && userNickname != VisitorNickname)) {
                     document.getElementById('diaryTitle').textContent = "다이어리를 작성해주세요";
                     document.getElementById('cmtInputContainer').style.display = "none";
-                    
-                } else {
+                    if(userNickname == VisitorNickname){
+                    	document.getElementById('diary-public').style.display = "none";
+                    }
+                } else if(json.openScope == 1 || (userNickname == VisitorNickname)) {
                     document.getElementById('diaryTitle').textContent = json.title;
                     document.getElementById('cmtInputContainer').style.display = "block";
+                    if(userNickname == VisitorNickname){
+                    	document.getElementById('diary-public').style.display = "flex";
+                    }
+                }
+                if(json.openScope == 1){
+                	changePublic("1");
+                }else{
+                	changePublic("0");
                 }
 
-                if (!json || json.formatted_update_date === undefined) {
+                if (!json || json.formatted_update_date === undefined || (json.openScope == 0 && userNickname != VisitorNickname)) {
                     document.getElementById('diaryDate').textContent = "";
-                } else {
+                } else if(json.openScope == 1 || (userNickname == VisitorNickname)){
                     document.getElementById('diaryDate').textContent = json.formatted_update_date;
                 }
 
-                if (!json || json.content === undefined) {
+                if (!json || json.content === undefined || (json.openScope == 0 && userNickname != VisitorNickname)) {
                     document.getElementById('diaryContent').innerHTML = "매일매일 일촌들과 일상을 공유해보아요!";
-                } else {
+                } else if(json.openScope == 1 || (userNickname == VisitorNickname)) {
                     document.getElementById('diaryContent').innerHTML = json.content;
                 }
                 
-                if (!json || json.seq === undefined) {
+                if (!json || json.seq === undefined || (json.openScope == 0 && userNickname != VisitorNickname)) {
                     document.getElementById('cmtSeq').value = "";
                     document.getElementById('diaryCmtContainer').innerHTML = "";
-                } else {
+                } else if(json.openScope == 1 || (userNickname == VisitorNickname)) {
                     document.getElementById('cmtSeq').value = json.seq;
                     let seq = Number(json.seq);
                     getCmt(seq);
@@ -73,6 +85,14 @@
 
         }
     });
+    
+    // 처음 다이어리 탭 눌렀을 때 처리 
+    let noContent = document.getElementById('cmtSeq').value;
+    let openScope = document.getElementById('openScope').value;
+    if(noContent=="" || (openScope == 0 && userNickname != VisitorNickname)){
+    	document.getElementById('cmtInputContainer').style.display = "none";
+    	document.getElementById('diary-public').style.display = "none";
+    }
 });
 
 function deleteDiary(){
@@ -100,3 +120,16 @@ function deleteDiary(){
 	
 }
 
+function changePublic(option){
+	 var selectElement = document.getElementById("select-scope");
+	 
+	 var options = selectElement.options;
+	 
+	 for (var i = 0; i < options.length; i++) {
+        if (options[i].value === option) {
+            options[i].selected = true; // 선택 상태로 변경
+        } else {
+            options[i].selected = false; // 선택 해제
+        }
+    }
+}

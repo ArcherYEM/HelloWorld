@@ -112,6 +112,14 @@
                      <textarea placeholder="test" name="content" id="txtContent" rows="10" cols="100" form="frmDiary" style="width:500px; height:180px; min-width:500px; display:none;">
                      	<c:out value='${diary.content}'/>
                      </textarea>
+                     <div class="album-dropDown">
+						<span>공개설정 :</span>
+						<select id="visibilitySelect">
+							<option value="" disabled selected hidden="">전체공개</option>
+							<option value="0">비공개</option>
+							<option value="1">전체공개</option>
+						</select>
+					 </div>
                      <div class="btn-container">
                         <div class="btn-left">
                            <input class="btn-diarylist" type="button" id="btnBoardView" data-diaryView="<c:url value='/mnHome/diaryView/${userNickname}'/>" value="목록">

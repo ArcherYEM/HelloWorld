@@ -54,13 +54,14 @@ public class DiaryController {
 		List<Map> friendMap = mainService.getMyFriends(userNickname);
         model.addAttribute("friend", friendMap);
 		
+        
 		Map diary = diaryService.selectDiary(userMap);
 	    model.addAttribute("diary", diary);
-	    if(diary == null) {
-	    	model.addAttribute("nullCheck",true);
-	    }else if(diary != null) {
-	    	model.addAttribute("nullCheck",false);
-	    }
+//	    if(diary == null) {
+//	    	model.addAttribute("nullCheck",true);
+//	    }else if(diary != null) {
+//	    	model.addAttribute("nullCheck",false);
+//	    }
 	    List<HashMap> cmtList = diaryService.selectDiaryCMT(userNickname);
 	    
 	 // 일기별로 댓글을 저장할 맵
@@ -219,15 +220,26 @@ public class DiaryController {
 	@ResponseBody
 	public Map diaryAdd(@RequestBody  Map map) throws Exception {
 			
-			map.put("openScope",1);
-			Map resultMap = diaryService.insertDiary(map);
-			if(resultMap != null) {
-				resultMap.put("resultCode", "1");
-				return resultMap;
-			} else {
-				resultMap.put("resultCode", "0");
-				return resultMap;
+			Map tempMap = new HashMap();
+			tempMap.put("userNickname", map.get("userNickname"));
+			tempMap.put("date", map.get("diary_date"));
+			
+			Map resultMap = new HashMap();
+					
+			Map checkMap = diaryService.diaryTest(tempMap);
+			if(checkMap == null) {
+				try {
+					diaryService.insertDiary(map);
+					resultMap.put("resultCode", "1");
+				} catch (Exception e) {
+					e.printStackTrace();
+					resultMap.put("resultCode", "0");
+				}
+			}else {
+				resultMap.put("resultCode", "-1");
 			}
+			
+			return resultMap;
 	}
 	
 	@RequestMapping(value="/mnHome/diaryAddCMT", method = RequestMethod.POST)
@@ -256,6 +268,7 @@ public class DiaryController {
 			jsonMap.put("title", resultMap.get("title"));
 			jsonMap.put("content", resultMap.get("content"));
 			jsonMap.put("seq", resultMap.get("seq"));
+			jsonMap.put("openScope", resultMap.get("openScope"));
 			
 			int seq = (int) resultMap.get("seq");
 			List<HashMap> cmtList = diaryService.diaryCmtTest(String.valueOf(seq));

@@ -33,7 +33,6 @@ public class DiaryServiceImpl implements DiaryService {
 
 	@Override
 	public Map selectDiary(Map map) {
-		
 		return diaryDao.selectDiary(map);
 	}
 
