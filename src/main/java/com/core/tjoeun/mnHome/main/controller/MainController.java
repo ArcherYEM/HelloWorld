@@ -50,8 +50,21 @@ public class MainController {
 	
 	@RequestMapping("/mnHome/mainView/{userNickname}")
 	public String mainView(@PathVariable String userNickname, Model model, HttpSession session) {
-		hostNickname = userNickname;
-		guestNickname =  (String) session.getAttribute("userNickname");
+		ArrayList<String> history = (ArrayList<String>) session.getAttribute("pageHistory");
+	    if (history == null) {
+	        history = new ArrayList<>();
+	        session.setAttribute("pageHistory", history);
+	    }
+
+	    if (history.isEmpty() || !history.get(history.size() - 1).equals(userNickname)) {
+	        history.add(userNickname);
+	    }
+
+	    // 마지막 방문한 페이지를 세션에 저장
+	    if (history.size() > 1) {
+	        // 마지막 이전 방문 페이지를 가져옴
+	        session.setAttribute("lastPage", history.get(history.size() - 2));
+	    }
 		
 		// 코드실행시간계산
 		long beforeTime = System.currentTimeMillis();
