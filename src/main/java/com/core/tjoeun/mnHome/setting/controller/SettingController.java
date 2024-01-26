@@ -221,6 +221,7 @@ public class SettingController {
         
         try {
         	Map mainMenu = mainService.mainMenu(callMenu);
+        	System.out.println("### mainMenu : " + mainMenu);
         	
         	model.addAttribute("menuContentPath", mainMenu.get("contentPath"));
 	        model.addAttribute("menuCategory", mainMenu.get("category"));
