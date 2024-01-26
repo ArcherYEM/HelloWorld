@@ -8,7 +8,7 @@
 <body>
 	<div class="footer no-cursor">
 		<div class="footer-title">
-			<span>https://github.com/ArcherYEM/HelloWorld.git</span>
+			<a href="https://github.com/ArcherYEM/HelloWorld.git" class="yem-git"><span>https://github.com/ArcherYEM/HelloWorld.git</span></a>
 			<span onmousedown="false return" class="no-cursor">Made By Core 2024.</span>
 		</div>
 		<div class="grid-container" onmousedown="return false;">
