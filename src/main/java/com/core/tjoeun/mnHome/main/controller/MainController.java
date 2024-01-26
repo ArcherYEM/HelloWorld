@@ -150,7 +150,7 @@ public class MainController {
         try {
 	        Map mainSkin = mainService.mainSkin(callSkin);
         
-	        model.addAttribute("bgProductName", mainSkin.get("productName"));
+	        model.addAttribute("bgContentPath", mainSkin.get("contentPath"));
 	        model.addAttribute("bgCategory", mainSkin.get("category"));
 	        model.addAttribute("bgUserNickname", mainSkin.get("userNickname"));
 	        
@@ -168,12 +168,12 @@ public class MainController {
         try {
         	Map mainMenu = mainService.mainMenu(callMenu);
         	
-        	model.addAttribute("menuProductName", mainMenu.get("productName"));
+        	model.addAttribute("menuContentPath", mainMenu.get("contentPath"));
 	        model.addAttribute("menuCategory", mainMenu.get("category"));
 	        model.addAttribute("menuUserNickname", mainMenu.get("userNickname"));
 	        
         } catch (NullPointerException n) {
-	        	model.addAttribute("menuProductName", "rgb(42, 140, 168)");
+	        	model.addAttribute("menuContentPath", "rgb(42, 140, 168)");
 	        	model.addAttribute("menuCategory", "menu");
 	        	n.printStackTrace();
         }

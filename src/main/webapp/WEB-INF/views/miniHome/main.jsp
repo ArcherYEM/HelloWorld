@@ -21,17 +21,17 @@
    <div class="main-frame-skin" id="skin-item-color-select" 
 		style="background-color: 
 			<c:choose>
-               <c:when test="${bgProductName == 'red'}">red</c:when>
-               <c:when test="${bgProductName == 'yellow'}">yellow</c:when>
-               <c:when test="${bgProductName == 'black'}">black</c:when>
-               <c:when test="${bgProductName == 'blue'}">blue</c:when>
-               <c:when test="${bgProductName == 'purple'}">purple</c:when>
-               <c:when test="${bgProductName == 'white'}">white</c:when>
-               <c:when test="${bgProductName == 'green'}">green</c:when>
-               <c:when test="${bgProductName == 'lime'}">lime</c:when>
-               <c:when test="${bgProductName == 'grey'}">gray</c:when>
-               <c:when test="${bgProductName == 'navy'}">navy</c:when>
-               <c:when test="${bgProductName == 'rgb(42, 140, 168)'}">rgb(42, 140, 168)</c:when>
+               <c:when test="${bgContentPath == 'red'}">red</c:when>
+               <c:when test="${bgContentPath == 'yellow'}">yellow</c:when>
+               <c:when test="${bgContentPath == 'black'}">black</c:when>
+               <c:when test="${bgContentPath == 'blue'}">blue</c:when>
+               <c:when test="${bgContentPath == 'purple'}">purple</c:when>
+               <c:when test="${bgContentPath == 'white'}">white</c:when>
+               <c:when test="${bgContentPath == 'green'}">green</c:when>
+               <c:when test="${bgContentPath == 'lime'}">lime</c:when>
+               <c:when test="${bgContentPath == 'grey'}">gray</c:when>
+               <c:when test="${bgContentPath == 'navy'}">navy</c:when>
+               <c:when test="${bgContentPath == 'rgb(42, 140, 168)'}">rgb(42, 140, 168)</c:when>
            </c:choose>
            ;
 	       " >
