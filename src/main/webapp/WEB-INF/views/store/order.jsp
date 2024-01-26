@@ -64,11 +64,9 @@
 	  		<div class="payMethodContainer">
 	  			<div class="payMethods">
 					<select id="mySelect" class="simple-select">
-	  					<option value="문화상품권">문화상품권</option>
-	  					<option value="휴대폰">휴대폰</option>
 	  					<option value="kakaopay">카카오페이</option>
 	  					<option value="html5_inicis">신용/체크카드</option>
-	  					<option value="무통장 입금">무통장 입금</option>
+	  					<option value="free">무료충전</option>
 	  				</select>
 	  			</div>
 	  		</div>
@@ -114,6 +112,10 @@
         	var selectedProduct = document.getElementById("selectedProduct").value;
             var productPrice = calculateProductPrice(selectedProduct);
             var paymentMethod = document.getElementById("mySelect").value;
+            
+            if(paymentMethod=='free'){
+            	btnPurchase();
+            }
             
             IMP.request_pay({
             	pg: paymentMethod,
