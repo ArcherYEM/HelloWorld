@@ -176,16 +176,16 @@
 									            background-color:
 								            <c:forEach var="onSkin" items="${onSkin}">
   												 <c:choose>
-										        <c:when test="${onSkin.productName == 'red'}">red</c:when>
-										        <c:when test="${onSkin.productName == 'yellow'}">yellow</c:when>
-										        <c:when test="${onSkin.productName == 'black'}">black</c:when>
-										        <c:when test="${onSkin.productName == 'blue'}">blue</c:when>
-										        <c:when test="${onSkin.productName == 'purple'}">purple</c:when>
-										        <c:when test="${onSkin.productName == 'white'}">white</c:when>
-										        <c:when test="${onSkin.productName == 'green'}">green</c:when>
-										        <c:when test="${onSkin.productName == 'lime'}">lime</c:when>
-										        <c:when test="${onSkin.productName == 'navy'}">navy</c:when>
-										        <c:when test="${onSkin.productName == 'rgb(42, 140, 168)'}">rgb(42, 140, 168)</c:when>
+										        <c:when test="${onSkin.contentPath == 'red'}">red</c:when>
+										        <c:when test="${onSkin.contentPath == 'yellow'}">yellow</c:when>
+										        <c:when test="${onSkin.contentPath == 'black'}">black</c:when>
+										        <c:when test="${onSkin.contentPath == 'blue'}">blue</c:when>
+										        <c:when test="${onSkin.contentPath == 'purple'}">purple</c:when>
+										        <c:when test="${onSkin.contentPath == 'white'}">white</c:when>
+										        <c:when test="${onSkin.contentPath == 'green'}">green</c:when>
+										        <c:when test="${onSkin.contentPath == 'lime'}">lime</c:when>
+										        <c:when test="${onSkin.contentPath == 'navy'}">navy</c:when>
+										        <c:when test="${onSkin.contentPath == 'rgb(42, 140, 168)'}">rgb(42, 140, 168)</c:when>
 										    </c:choose>
 										</c:forEach>;">
 									</div>
@@ -212,17 +212,17 @@
 	    										   border-radius: 5px;	
 											       background-color: 
 													<c:choose>
-						                                <c:when test="${skinItem.productName == 'red'}">red</c:when>
-						                                <c:when test="${skinItem.productName == 'yellow'}">yellow</c:when>
-						                                <c:when test="${skinItem.productName == 'black'}">black</c:when>
-						                                <c:when test="${skinItem.productName == 'blue'}">blue</c:when>
-						                                <c:when test="${skinItem.productName == 'purple'}">purple</c:when>
-						                                <c:when test="${skinItem.productName == 'white'}">white</c:when>
-						                                <c:when test="${skinItem.productName == 'green'}">green</c:when>
-						                                <c:when test="${skinItem.productName == 'lime'}">lime</c:when>
-						                                <c:when test="${skinItem.productName == 'grey'}">gray</c:when>
-						                                <c:when test="${skinItem.productName == 'navy'}">navy</c:when>
-						                                <c:when test="${skinItem.productName == 'rgb(42, 140, 168)'}">rgb(42, 140, 168)</c:when>
+						                                <c:when test="${skinItem.contentPath == 'red'}">red</c:when>
+						                                <c:when test="${skinItem.contentPath == 'yellow'}">yellow</c:when>
+						                                <c:when test="${skinItem.contentPath == 'black'}">black</c:when>
+						                                <c:when test="${skinItem.contentPath == 'blue'}">blue</c:when>
+						                                <c:when test="${skinItem.contentPath == 'purple'}">purple</c:when>
+						                                <c:when test="${skinItem.contentPath == 'white'}">white</c:when>
+						                                <c:when test="${skinItem.contentPath == 'green'}">green</c:when>
+						                                <c:when test="${skinItem.contentPath == 'lime'}">lime</c:when>
+						                                <c:when test="${skinItem.contentPath == 'grey'}">gray</c:when>
+						                                <c:when test="${skinItem.contentPath == 'navy'}">navy</c:when>
+						                                <c:when test="${skinItem.contentPath == 'rgb(42, 140, 168)'}">rgb(42, 140, 168)</c:when>
 						                            </c:choose>;
 											       " >
 										   </div>

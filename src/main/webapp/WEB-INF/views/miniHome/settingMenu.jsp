@@ -176,16 +176,16 @@
 								            background-color:
 										<c:forEach var="onMenu" items="${onMenu}">
   												 <c:choose>
-										        <c:when test="${onMenu.productName == 'red'}">red</c:when>
-										        <c:when test="${onMenu.productName == 'yellow'}">yellow</c:when>
-										        <c:when test="${onMenu.productName == 'black'}">black</c:when>
-										        <c:when test="${onMenu.productName == 'blue'}">blue</c:when>
-										        <c:when test="${onMenu.productName == 'purple'}">purple</c:when>
-										        <c:when test="${onMenu.productName == 'white'}">white</c:when>
-										        <c:when test="${onMenu.productName == 'green'}">green</c:when>
-										        <c:when test="${onMenu.productName == 'lime'}">lime</c:when>
-										        <c:when test="${onMenu.productName == 'navy'}">navy</c:when>
-										        <c:when test="${onMenu.productName == 'rgb(42, 140, 168)'}">rgb(42, 140, 168)</c:when>
+										        <c:when test="${onMenu.contentPath == 'red'}">red</c:when>
+										        <c:when test="${onMenu.contentPath == 'yellow'}">yellow</c:when>
+										        <c:when test="${onMenu.contentPath == 'black'}">black</c:when>
+										        <c:when test="${onMenu.contentPath == 'blue'}">blue</c:when>
+										        <c:when test="${onMenu.contentPath == 'purple'}">purple</c:when>
+										        <c:when test="${onMenu.contentPath == 'white'}">white</c:when>
+										        <c:when test="${onMenu.contentPath == 'green'}">green</c:when>
+										        <c:when test="${onMenu.contentPath == 'lime'}">lime</c:when>
+										        <c:when test="${onMenu.contentPath == 'navy'}">navy</c:when>
+										        <c:when test="${onMenu.contentPath == 'rgb(42, 140, 168)'}">rgb(42, 140, 168)</c:when>
 										    </c:choose>
 										</c:forEach>;">
 								</div>
@@ -211,17 +211,17 @@
 	    										   border-radius: 5px;	
 											       background-color: 
 													<c:choose>
-						                                <c:when test="${menuItem.productName == 'red'}">red</c:when>
-						                                <c:when test="${menuItem.productName == 'yellow'}">yellow</c:when>
-						                                <c:when test="${menuItem.productName == 'black'}">black</c:when>
-						                                <c:when test="${menuItem.productName == 'blue'}">blue</c:when>
-						                                <c:when test="${menuItem.productName == 'purple'}">purple</c:when>
-						                                <c:when test="${menuItem.productName == 'white'}">white</c:when>
-						                                <c:when test="${menuItem.productName == 'green'}">green</c:when>
-						                                <c:when test="${menuItem.productName == 'lime'}">lime</c:when>
-						                                <c:when test="${menuItem.productName == 'grey'}">gray</c:when>
-						                                <c:when test="${menuItem.productName == 'navy'}">navy</c:when>
-						                                <c:when test="${menuItem.productName == 'rgb(42, 140, 168)'}">rgb(42, 140, 168)</c:when>
+						                                <c:when test="${menuItem.contentPath == 'red'}">red</c:when>
+						                                <c:when test="${menuItem.contentPath == 'yellow'}">yellow</c:when>
+						                                <c:when test="${menuItem.contentPath == 'black'}">black</c:when>
+						                                <c:when test="${menuItem.contentPath == 'blue'}">blue</c:when>
+						                                <c:when test="${menuItem.contentPath == 'purple'}">purple</c:when>
+						                                <c:when test="${menuItem.contentPath == 'white'}">white</c:when>
+						                                <c:when test="${menuItem.contentPath == 'green'}">green</c:when>
+						                                <c:when test="${menuItem.contentPath == 'lime'}">lime</c:when>
+						                                <c:when test="${menuItem.contentPath == 'grey'}">gray</c:when>
+						                                <c:when test="${menuItem.contentPath == 'navy'}">navy</c:when>
+						                                <c:when test="${menuItem.contentPath == 'rgb(42, 140, 168)'}">rgb(42, 140, 168)</c:when>
 						                            </c:choose>;
 											       " >
 										   </div>
