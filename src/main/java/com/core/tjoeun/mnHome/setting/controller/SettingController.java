@@ -257,7 +257,7 @@ public class SettingController {
 		
 		Map menuMap = new HashMap();
 		menuMap.put("userNickname", userNickname);
-		menuMap.put("contentPath", selectedProductName);
+		menuMap.put("realName", selectedProductName);
 		menuMap.put("category", "menu");
 		
 		try {
@@ -376,7 +376,7 @@ public class SettingController {
 		
 			Map skinMap = new HashMap();
 			skinMap.put("userNickname", userNickname);
-			skinMap.put("contentPath", selectedProductName);
+			skinMap.put("realName", selectedProductName);
 			skinMap.put("category", "skin");
 			
 			//방문자 수 가져오기

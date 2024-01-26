@@ -107,7 +107,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	        category = 'menu'
 	    </if>
 		AND
-			productName = #{contentPath}
+			productName = #{realName}
 	</update>
 	
 	<select id="selectSearchUser" parameterType="map" resultType="map">
