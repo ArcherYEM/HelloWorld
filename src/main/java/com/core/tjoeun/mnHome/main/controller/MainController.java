@@ -149,6 +149,7 @@ public class MainController {
         
         try {
 	        Map mainSkin = mainService.mainSkin(callSkin);
+	        System.out.println("### mainSkin:" + mainSkin);
         
 	        model.addAttribute("bgContentPath", mainSkin.get("contentPath"));
 	        model.addAttribute("bgCategory", mainSkin.get("category"));
