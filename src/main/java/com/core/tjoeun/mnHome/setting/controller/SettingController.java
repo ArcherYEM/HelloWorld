@@ -707,11 +707,13 @@ public class SettingController {
 					Map userMap = new HashMap();
 					userMap = (Map) session.getAttribute("userId");
 					String userNickname = (String) userMap.get("userNickname");
+					System.out.println("### minimiName : " + minimiName);
 					
 					Map minimiMap = new HashMap();
 					minimiMap.put("userNickname",userNickname);
-					minimiMap.put("productName",minimiName);
+					minimiMap.put("realName",minimiName);
 					minimiMap.put("category","minimi");
+					System.out.println("### minimiMap : " + minimiMap);
 
 					settingService.updateAllocationOff(minimiMap);
 					settingService.updateAllocationOn(minimiMap);
