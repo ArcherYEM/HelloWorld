@@ -28,7 +28,9 @@
 	            <a href="<c:url value='/store/minimiView'/>" class="index-a-store press-btn">상점</a>
 	            <a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
 	            <a href="<c:url value='/index/mapView'/>" class="index-a-map">찾아오는 길</a>
-	            <a id="storeLoginLogout" href="<c:url value="/index/member/logout" />" class="index-a-logout">로그아웃</a>
+	            <c:if test="${sessionScope.userId ne null }">
+	            	<a id="storeLoginLogout" href="<c:url value="/index/member/logout" />" class="index-a-logout">로그아웃</a>
+	            </c:if>
 	        </div>
       </div>
 		
