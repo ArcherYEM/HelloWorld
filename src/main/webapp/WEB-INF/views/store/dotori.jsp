@@ -122,17 +122,17 @@
 	
 	window.onload = function() {
 		let userDotoriElement = document.getElementById('userDotori');
-        let storeLoginMyhome = document.getElementById('storeLoginMyhome');
+        //let storeLoginMyhome = document.getElementById('storeLoginMyhome');
         let storeLoginLogout = document.getElementById('storeLoginLogout');
         let userDotoriCnt = '<c:out value="${dotori}" />' || '';
 
         if (userDotoriCnt.trim() !== '') {
             userDotoriElement.style.display = 'block';
-            storeLoginMyhome.style.display = 'block';
+            //storeLoginMyhome.style.display = 'block';
             storeLoginLogout.style.display = 'block';
         } else {
             userDotoriElement.style.display = 'none';
-            storeLoginMyhome.style.display = 'none';
+            //storeLoginMyhome.style.display = 'none';
             storeLoginLogout.style.display = 'none';
         }
         const products = document.querySelectorAll('.product');
