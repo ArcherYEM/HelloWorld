@@ -221,6 +221,7 @@ public class SettingController {
         
         try {
         	Map mainMenu = mainService.mainMenu(callMenu);
+        	System.out.println("### mainMenu : " + mainMenu);
         	
         	model.addAttribute("menuContentPath", mainMenu.get("contentPath"));
 	        model.addAttribute("menuCategory", mainMenu.get("category"));
@@ -257,7 +258,7 @@ public class SettingController {
 		
 		Map menuMap = new HashMap();
 		menuMap.put("userNickname", userNickname);
-		menuMap.put("contentPath", selectedProductName);
+		menuMap.put("realName", selectedProductName);
 		menuMap.put("category", "menu");
 		
 		try {
@@ -376,7 +377,7 @@ public class SettingController {
 		
 			Map skinMap = new HashMap();
 			skinMap.put("userNickname", userNickname);
-			skinMap.put("contentPath", selectedProductName);
+			skinMap.put("realName", selectedProductName);
 			skinMap.put("category", "skin");
 			System.out.println("########"+skinMap);
 			
@@ -697,11 +698,13 @@ public class SettingController {
 					Map userMap = new HashMap();
 					userMap = (Map) session.getAttribute("userId");
 					String userNickname = (String) userMap.get("userNickname");
+					System.out.println("### minimiName : " + minimiName);
 					
 					Map minimiMap = new HashMap();
 					minimiMap.put("userNickname",userNickname);
-					minimiMap.put("productName",minimiName);
+					minimiMap.put("realName",minimiName);
 					minimiMap.put("category","minimi");
+					System.out.println("### minimiMap : " + minimiMap);
 
 					settingService.updateAllocationOff(minimiMap);
 					settingService.updateAllocationOn(minimiMap);
