@@ -32,7 +32,7 @@
 				</h5>
 				<a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
 				<a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
-				<a href="<c:url value='/index/mapView'/>" class="index-a-map">찾아오는 길</a>
+				<a href="<c:url value='/index/mapView'/>" class="index-a-map press-btn">찾아오는 길</a>
 				<a id="linkLogout" href="<c:url value='/index/member/logout' />" class="index-a-logout">로그아웃</a>
 			</div>
 		</div>
