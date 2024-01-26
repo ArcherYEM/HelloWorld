@@ -150,6 +150,7 @@ a {
 .index-a-notice,
 .index-a-map,
 .index-a-logout {
+	cursor: default;
 }
 
 .index-a-store {
@@ -441,6 +442,7 @@ to {
 
 .right {
 	margin-left: auto;
+	cursor: default;
 }
 
 /* 팀정보 기재공간 위치 고정 */

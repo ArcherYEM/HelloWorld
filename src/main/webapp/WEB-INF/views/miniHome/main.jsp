@@ -377,7 +377,7 @@ function cancel() {
 	</script>
    <script>
    	  document.getElementById('btnFriendCmt').addEventListener('click', function() {
-   		  if(${friendCheck}==0){
+   		  if(${friendCheck}==0){ 
    			  alert("일촌이 아니기 때문에 일촌평을 작성할 수 없습니다.");
    			  return;
    		  } else if(${friendCheck}==2){

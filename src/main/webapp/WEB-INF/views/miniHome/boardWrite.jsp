@@ -114,7 +114,7 @@
 
 						<div class="btn-container">
 							<div class="btn-left">
-								<input type="file" multiple="multiple" onchange="multiFiles(this.files)" class="fileUpload">
+<!-- 								<input type="file" multiple="multiple" onchange="multiFiles(this.files)" class="fileUpload"> -->
 							</div>
 							<div class="btn-right">
 								<input class="btn-boardlist" type="button" id="btnBoardView" data-boardView="<c:url value='/mnHome/boardView/${userNickname}'/>" value="목록">

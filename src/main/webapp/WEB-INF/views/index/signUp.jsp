@@ -40,10 +40,10 @@
                      <label for="userGenderF">여자</label>
                   </div>
                </div>
-               <div class="section no-cursor" onmousedown="return false;">
+               <div class="section no-cursor">
 	               <div class="email-group">
 		               <div class="email-left">
-		                   <label for="userEmail">이메일주소</label>
+		                   <label for="userEmail" onmousedown="return false;">이메일주소</label>
 		                   <input type="button" class="btn-hover" id="btnEmailDuplcheck" value="중복체크">
 		               </div>
 	                   <div class="email-right" id="emailFormMessage"></div>
@@ -66,13 +66,13 @@
                   </div>
                   <input type="password" id="userPassword2" name="userPassword2" placeholder="비밀번호" class="widthFull" oninput="checkPasswordMatch()">
                </div>
-               <div class="section no-cursor" onmousedown="return false;">
-                  <label for="userNickname">닉네임</label>
+               <div class="section no-cursor">
+                  <label for="userNickname" onmousedown="return false;">닉네임</label>
                   <input type="button" class="btn-hover" id="btnNicknameDuplcheck" value="중복체크">
                   <input type="text" id="userNickname" name="userNickname" placeholder="닉네임" class="widthFull">
                </div>
-               <div class="section no-cursor" onmousedown="return false;">
-				    <label for="userPhone">핸드폰번호</label>
+               <div class="section no-cursor">
+				    <label for="userPhone" onmousedown="return false;">핸드폰번호</label>
 				    <input type="button" class="btn-hover" id="btnPhoneDuplCheck" value="중복체크">
 				    <input type="text" id="userPhone" name="userPhone" placeholder="하이푼 ( - ) 을 제외하고 입력해주세요" class="widthFull" oninput="validateNumber()">
 				</div>
@@ -195,8 +195,11 @@
          if (hasWhiteSpace) {
          	alert("닉네임은 공백을 포함할 수 없습니다.");
          	return;
-         }else if(userEmail == ""){
+         }else if(userNickname == ""){
         	 alert("닉네임을 입력해주세요.");
+             return;
+         }else if (userNickname.length < 2) {
+             alert("닉네임은 2글자 이상이어야 합니다.");
              return;
          }
          
@@ -263,7 +266,6 @@
     	    return true;
     	}
 
-   
       // 비밀번호 일치 여부 확인
        function checkPasswordMatch() {
           var password = document.getElementById('userPassword').value;

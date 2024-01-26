@@ -27,13 +27,17 @@
 	        	</a>
 			</div>
 			<div class="index-header-right">
-				<h5 class="right" id="userDotori"><img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />">
-					<span id="userDotoriCnt">${dotori}</span>개
-				</h5>
+				<c:if test="${sessionScope.userId ne null }">
+					<h5 class="right" id="userDotori"><img id="indexDotoriImg" src="<c:url value="/resources/images/store/storeDotoriIcon.png" />">
+						<span id="userDotoriCnt">${dotori}</span>개
+					</h5>
+				</c:if>
 				<a href="<c:url value='/store/minimiView'/>" class="index-a-store">상점</a>
 				<a href="<c:url value='/notice/noticeView'/>" class="index-a-notice">공지사항</a>
-				<a href="<c:url value='/index/mapView'/>" class="index-a-map">찾아오는 길</a>
+				<a href="<c:url value='/index/mapView'/>" class="index-a-map press-btn">찾아오는 길</a>
+				<c:if test="${sessionScope.userId ne null }">
 				<a id="linkLogout" href="<c:url value='/index/member/logout' />" class="index-a-logout">로그아웃</a>
+				</c:if>
 			</div>
 		</div>
 		<div id="divHiUser">
