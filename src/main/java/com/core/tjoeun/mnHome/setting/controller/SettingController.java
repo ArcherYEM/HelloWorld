@@ -378,17 +378,8 @@ public class SettingController {
 			skinMap.put("userNickname", userNickname);
 			skinMap.put("contentPath", selectedProductName);
 			skinMap.put("category", "skin");
+			System.out.println("########"+skinMap);
 			
-			//방문자 수 가져오기
-	        try {
-				Map visitCntMap = new HashMap();
-				visitCntMap = mainDao.selectVisitCnt(userNickname);
-				model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
-				model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			
 			try {
 				settingService.updateAllocationOff(skinMap);

@@ -66,7 +66,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     		allocation = 1;
 	</select>
 	
-	<update id="updateAllocationOff" parameterType="String">
+	<update id="updateAllocationOff" parameterType="map">
 	    UPDATE userStorage
 	    SET
 	        allocation = 0

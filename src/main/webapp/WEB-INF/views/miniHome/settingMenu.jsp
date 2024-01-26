@@ -236,7 +236,7 @@
 									<input type="hidden" name="selectedProductName" id="selectedProductName" class="set-menu-select" />
 									<input type="hidden" name="selectedCategory" id="selectedCategory" class="set-menu-select"/>
 									<input type="hidden" name="nickname" id="nickname" class="set-menu-select"/>
-									<input type="submit" class="set-menu-select apply-button" value="적용" />
+									<input type="submit" class="set-menu-select apply-menu-button" value="적용" />
 								</div>
 							</form>
 							
