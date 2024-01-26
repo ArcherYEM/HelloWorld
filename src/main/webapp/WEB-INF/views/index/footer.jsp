@@ -30,7 +30,7 @@
 			</div>  
 			<div class="grid-item">
 				<span class="ft-name">채승원</span>
-				<span>seung6087@gmail.com</span>
+				<span>seung6087@nate.com</span>
 				<a href="https://github.com/" class="csw-git"><span>https://github.com/Seungwon-Chae</span></a>
 			</div>
 		</div>
