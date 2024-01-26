@@ -93,7 +93,7 @@ public class MemberController {
     public String logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 
         memberService.logout(session, request, response);
-        
+        System.out.println("aaaa");
         return "redirect:/";
     }
 
@@ -263,7 +263,6 @@ public class MemberController {
        resultMap.put("todayCnt", memberService.getTodayVisit(userNickname));
        resultMap.put("onFriendCnt", memberService.getOnFriendCnt(userNickname));
        resultMap.put("friendList", memberService.getOnFriendName(userNickname));
-       
        
        return resultMap;
     }
