@@ -338,10 +338,7 @@
         }
         
      }
-    window.onload = function () {
-        showUserInfo();
-        newContent();
-     };
+    
 </script>
 <script>
 		let popup;
@@ -453,6 +450,7 @@
 window.onload = function() {
     // 로그인 상태를 확인하고 모달을 열거나 닫기
     showUserInfo();
+    newContent();
     openModalIfNeeded();
 };
 
