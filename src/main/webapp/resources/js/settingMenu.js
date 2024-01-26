@@ -32,7 +32,7 @@ function logClick() {
 }
 
 // ajax 로 데이터 전송
-$(document).one("click", ".apply-button", function (event) {
+$(document).one("click", ".apply-menu-button", function (event) {
     event.preventDefault();
 
 

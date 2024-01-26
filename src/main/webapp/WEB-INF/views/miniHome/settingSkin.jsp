@@ -237,7 +237,7 @@
 									<input type="hidden" name="selectedProductName" id="selectedProductName" class="set-skin-select" />
 									<input type="hidden" name="selectedCategory" id="selectedCategory" class="set-skin-select"/>
 									<input type="hidden" name="nickname" id="nickname" class="set-skin-select"/>
-									<input type="submit" class="set-skin-select apply-button" value="적용" />
+									<input type="submit" class="set-skin-select apply-skin-button" value="적용" />
 								</div>
 							</form>
 								
