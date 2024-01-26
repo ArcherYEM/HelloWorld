@@ -10,7 +10,7 @@
 									<c:when test="${menuContentPath == 'red' }">red</c:when>
 									<c:when test="${menuContentPath == 'yellow' }">yellow</c:when>
 									<c:when test="${menuContentPath == 'black' }">black</c:when>
-									<c:when test="${menuContentPath == 'blue' }">blue</c:when>
+									<c:when test="${menuContentPath == '파랑' }">blue</c:when>
 									<c:when test="${menuContentPath == 'purple' }">purple</c:when>
 									<c:when test="${menuContentPath == 'white' }">white</c:when>
 									<c:when test="${menuContentPath == 'green' }">green</c:when>

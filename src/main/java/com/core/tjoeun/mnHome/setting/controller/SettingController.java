@@ -200,12 +200,12 @@ public class SettingController {
 			List<String> productNames = new ArrayList<>();
 			
 			for (Map<String, Object> menu : onMenu) {
-				String productName = (String)menu.get("productName");
+				String productName = (String)menu.get("contentPath");
 				productNames.add(productName);
 			}
 			
 			model.addAttribute("onMenu", onMenu);
-			model.addAttribute("productNames", productNames);
+			model.addAttribute("contentPath", productNames);
 			
 			List<Map<String, Object>> menuMap = settingService.selectSkinMenu(putMap);
 			model.addAttribute("menuMap", menuMap);
@@ -249,14 +249,15 @@ public class SettingController {
 	@ResponseBody
 	public Map<String, Object> menuChoice(@RequestBody Map<String, String> requestData, HttpSession session, Model model) {
 	    String selectedProductName = requestData.get("selectedProductName");
-		
+		System.out.println(selectedProductName);
+	    
 		Map userMap = new HashMap();
 		userMap = (Map)session.getAttribute("userId");
 		String userNickname = (String)userMap.get("userNickname");
 		
 		Map menuMap = new HashMap();
 		menuMap.put("userNickname", userNickname);
-		menuMap.put("productName", selectedProductName);
+		menuMap.put("contentPath", selectedProductName);
 		menuMap.put("category", "menu");
 		
 		try {
@@ -320,12 +321,12 @@ public class SettingController {
 		    List<String> productNames = new ArrayList<>(); 
 		    
 		    for (Map<String, Object> skin : onSkin) {
-		        String productName = (String) skin.get("productName"); 
+		        String productName = (String) skin.get("contentPath"); 
 		        productNames.add(productName); 
 		    }
 		    
 		    model.addAttribute("onSkin", onSkin);
-		    model.addAttribute("productNames", productNames); 
+		    model.addAttribute("contentPath", productNames); 
 
 		    List<Map<String, Object>> skinMap = settingService.selectSkinMenu(putMap);
 			model.addAttribute("skinMap", skinMap);
@@ -375,7 +376,7 @@ public class SettingController {
 		
 			Map skinMap = new HashMap();
 			skinMap.put("userNickname", userNickname);
-			skinMap.put("productName", selectedProductName);
+			skinMap.put("contentPath", selectedProductName);
 			skinMap.put("category", "skin");
 			
 			//방문자 수 가져오기
