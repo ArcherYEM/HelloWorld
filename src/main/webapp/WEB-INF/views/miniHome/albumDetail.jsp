@@ -121,56 +121,36 @@
 													<fmt:formatDate value="${list.create_date}" pattern="yyyy-MM-dd HH:mm" />
 												</span>
 											</div>
-											
 											<c:forEach items="${imageParts}" var="image">
 												<div class="album-images">
 											      <img src="<c:url value="/../../../../resources/images/download/${image}" />" alt="이미지 설명">
 											    </div>
 											</c:forEach>
-										    
-										    
 										  <div class="album-content">
 											${list.content}
 										  </div>
 									  </div>
 									  <div class="album-public">
 									  	<div class="album-dropDown">
-									  	<c:if test="${sessionScope.userId.userNickname eq userNickname }">
-									  		<span>공개설정 :</span>
-												<select>
-													<option value="" disabled selected hidden="">전체공개</option>
-													<option value="temp1">비공개</option>
-													<option value="temp2">전체공개</option>
-												</select>
-										</c:if>
 										</div>
 									  </div>
 								  </div>
 								  <div class="album-container-under">
 								  	<div class="album-under">
-								  		<!-- <a href="#" class="album-under-left">스크랩하기</a> -->
 								  		<a class="album-under-left" id="albumView" data-albumView="<c:url value='/mnHome/albumView/${userNickname}'/>">목록</a>
 								  		<c:if test="${sessionScope.userId.userNickname eq userNickname }">
-									  		<!-- <a href="#" class="album-under-right">이동</a> -->
-									  		<!-- <a href="#" class="album-under-right">수정</a> -->
 									  		<a class="album-under-right" onclick="deleteAlbum(${list.seq})">삭제</a>
 								  		</c:if>
 								  	</div>
 								  </div>
 							  </div>
-							  
-							  
-							  
 						  </div>
 						</div>
 					</div>
-					
 					<jsp:include page="/WEB-INF/views/miniHome/menuTab.jsp"></jsp:include>
-					
 				</div>
 			</div>
 		</div>
-			
 	</div>
 </body>
 </html>
