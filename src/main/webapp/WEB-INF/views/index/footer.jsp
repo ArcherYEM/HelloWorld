@@ -15,6 +15,7 @@
 			<div class="grid-item">
 				<span class="ft-name">양은모</span>
 				<span>em.yang94@gmail.com</span>
+				<a href="https://velog.io/@yangem/posts" class="yem-git"><span>https://velog.io/@yangem/posts</span></a>
 				<a href="https://github.com/ArcherYEM" class="yem-git"><span>https://github.com/ArcherYEM</span></a>
 			</div>
 			<div class="grid-item">
