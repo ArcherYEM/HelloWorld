@@ -94,7 +94,7 @@
 									<input type="hidden" id="btn-title-save"class="btn-edit" value="저장">
 								</div>
 							 </c:if>
-							<div class="content-title-url"> https://www.helloworld.com/minihome/${userNickname }</div>
+							<div class="content-title-url"> http://corehelloworld.shop/mnHome/mainView/${userNickname }</div>
 						</div>
 						<div class="box content-box">
 							<div class="album-overflow">

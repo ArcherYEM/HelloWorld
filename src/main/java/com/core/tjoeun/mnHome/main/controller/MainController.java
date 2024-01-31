@@ -50,6 +50,10 @@ public class MainController {
 	
 	@RequestMapping("/mnHome/mainView/{userNickname}")
 	public String mainView(@PathVariable String userNickname, Model model, HttpSession session) {
+		if(session.getAttribute("userId")==null) {
+			model.addAttribute("msg", "로그인이 필요합니다.");
+			return "home";
+		}
 		ArrayList<String> history = (ArrayList<String>) session.getAttribute("pageHistory");
 	    if (history == null) {
 	        history = new ArrayList<>();
@@ -181,6 +185,7 @@ public class MainController {
         
         //접속자가 홈피 주인이랑 친구인지 확인
         Map checkmap = new HashMap();
+        guestNickname = (String) session.getAttribute("userNickname");
         checkmap.put("userNickname", userNickname);
         checkmap.put("friendNickname", guestNickname);
         int friendCheck = mainService.friendCheck(checkmap);
@@ -188,7 +193,7 @@ public class MainController {
         	friendCheck=2;
         }
         model.addAttribute("friendCheck",friendCheck);
-        
+        System.out.println("#######friendcheck :" + friendCheck);
         //일촌평 가져오기
         List<Map> friendCmtList = new ArrayList<Map>();
         Map map = new HashMap();
