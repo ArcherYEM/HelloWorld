@@ -95,7 +95,7 @@
 								</div>
 							 </c:if>
 							<div class="content-title-url">
-								https://www.helloworld.com/minihome/${userNickname }</div>
+								http://corehelloworld.shop/mnHome/mainView/${userNickname }</div>
 						</div>
 						<div class="box content-box">
 						
@@ -120,7 +120,11 @@
 									<c:if test="${list ne null}">
 										<c:forEach items="${list}" var="list" varStatus="i">
 											<tr>
-												<td class="td-checkbox"><input type="checkbox" class="boardCheck" name="boardDel" value="${list.seq}"></input></td>
+												<td class="td-checkbox">
+													<c:if test="${sessionScope.userId.userNickname eq userNickname }">
+														<input type="checkbox" class="boardCheck" name="boardDel" value="${list.seq}"></input>
+													</c:if>
+												</td>
 												<td class="td-title" data-boarddetail="/mnHome/boardDetail/${list.userNickname}/${list.seq}">${list.title}
 												<c:if test="${list.newcontent==1 }">
 													<img src="../../../../resources/images/minihome/newIcon.png" class="newIcon">

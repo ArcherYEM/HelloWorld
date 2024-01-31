@@ -96,7 +96,7 @@
 							</div>
 						 </c:if>
 						<div class="content-title-url">
-							https://www.helloworld.com/minihome/${userNickname }</div>
+							http://corehelloworld.shop/mnHome/mainView/${userNickname }</div>
 						</div>
 						<div class="box content-box">
 							<div class=" album-submit">
@@ -141,7 +141,7 @@
 												<div class="album-public" id="diary-public">
 													<div class="album-dropDown ">
 														<span>공개설정 :</span>
-														<select id="select-scope" disabled>
+														<select id="select-scope" disabled style="appearance: none;">
 															<c:choose>
 																<c:when test="${diary.openScope eq 0}">
 																	<option value="" disabled hidden="">전체공개</option>

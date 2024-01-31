@@ -93,7 +93,7 @@
 										<input type="hidden" id="btn-title-save"class="btn-edit" value="저장">
 									</div>
 							 </c:if>
-							<div class="content-title-url"> https://www.helloworld.com/minihome/${userNickname }</div>
+							<div class="content-title-url"> http://corehelloworld.shop/mnHome/mainView/${userNickname }</div>
 						</div>
 <!-- 						앨범 센터라인 -->
 						<div class="box content-box">

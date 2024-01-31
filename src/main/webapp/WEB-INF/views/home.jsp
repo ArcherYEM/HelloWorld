@@ -451,6 +451,7 @@ window.onload = function() {
     showUserInfo();
     newContent();
     openModalIfNeeded();
+    showAlert();
 };
 
 // 모달 열기
@@ -488,6 +489,14 @@ function openModalIfNeeded() {
     if (userEmail === '') {
         openModal();
     }
+}
+
+function showAlert(){
+	let message = "${msg}";
+	if(message.length > 0){
+		alert(message);
+		location.href = "/";
+	}
 }
 </script>
 </body>
