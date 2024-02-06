@@ -50,9 +50,6 @@ public class BoardController {
 	@RequestMapping(value={"/mnHome/boardView/{userNickname}","/mnHome/boardView/{userNickname}/{page}"})
 	public String boardView(@PathVariable String userNickname, @PathVariable Optional<String> page, Model model) {
 		
-		//홈피 주인 성별 가져오기
-		String userGender = memberService.selectUserGender(userNickname);
-		model.addAttribute("userGender",userGender);
 		
 		Map profile = mainService.getProfile(userNickname);
 		String image = (String) profile.get("image");
@@ -61,9 +58,13 @@ public class BoardController {
 		model.addAttribute("image", image);
 		model.addAttribute("msg", msg);
 		
-		Map map = mainService.getUserInfo(userNickname);
-		model.addAttribute("userName", map.get("userName"));
-		model.addAttribute("title", map.get("title"));
+
+		//미니홈피 주인 정보 가져오기 (이름,성별,제목)
+		Map userInfo = mainService.selectUserInfo(userNickname);
+		model.addAttribute("userName", userInfo.get("userName"));		
+		model.addAttribute("userGender",userInfo.get("userGender"));
+		String title = (String) userInfo.get("title");
+		model.addAttribute("title", title);
 		
 		Map selectMap = new HashMap();
 		selectMap.put("userNickname", userNickname);
@@ -114,9 +115,6 @@ public class BoardController {
 	@RequestMapping(value="/mnHome/boardWriteView/{userNickname}")
 	public String boardWriteView(@PathVariable String userNickname, Model model) {
 		
-		//홈피 주인 성별 가져오기
-		String userGender = memberService.selectUserGender(userNickname);
-		model.addAttribute("userGender",userGender);
 		
 		Map profile = mainService.getProfile(userNickname);
 		String image = (String) profile.get("image");
@@ -125,9 +123,13 @@ public class BoardController {
 		model.addAttribute("image", image);
 		model.addAttribute("msg", msg);
 		
-		Map map = mainService.getUserInfo(userNickname);
-		model.addAttribute("userName", map.get("userName"));
-		model.addAttribute("title", map.get("title"));
+		
+		//미니홈피 주인 정보 가져오기 (이름,성별,제목)
+		Map userInfo = mainService.selectUserInfo(userNickname);
+		model.addAttribute("userName", userInfo.get("userName"));		
+		model.addAttribute("userGender",userInfo.get("userGender"));
+		String title = (String) userInfo.get("title");
+		model.addAttribute("title", title);
 		
         //접속중인 유저의 친구 전부 가져오기
         List<Map> friendMap = mainService.getMyFriends(userNickname);
@@ -172,9 +174,6 @@ public class BoardController {
 		model.addAttribute("content",contentMap);
 		model.addAttribute("seq", seq);
 		
-		//홈피 주인 성별 가져오기
-		String userGender = memberService.selectUserGender(userNickname);
-		model.addAttribute("userGender",userGender);
 		
 		Map profile = mainService.getProfile(userNickname);
 		String image = (String) profile.get("image");
@@ -182,10 +181,14 @@ public class BoardController {
 		msg = msg.replace("\n", "<br>");
 		model.addAttribute("image", image);
 		model.addAttribute("msg", msg);
+
 		
-		Map map = mainService.getUserInfo(userNickname);
-		model.addAttribute("userName", map.get("userName"));
-		model.addAttribute("title", map.get("title"));
+		//미니홈피 주인 정보 가져오기 (이름,성별,제목)
+		Map userInfo = mainService.selectUserInfo(userNickname);
+		model.addAttribute("userName", userInfo.get("userName"));		
+		model.addAttribute("userGender",userInfo.get("userGender"));
+		String title = (String) userInfo.get("title");
+		model.addAttribute("title", title);
 		
         //접속중인 유저의 친구 전부 가져오기
         List<Map> friendMap = mainService.getMyFriends(userNickname);
@@ -246,18 +249,7 @@ public class BoardController {
 	        result.put("resultCode", "0");
 	        e.printStackTrace();
 	    }
-		
-		//방문자 수 가져오기
-        try {
-			Map visitCntMap = new HashMap();
-			visitCntMap = mainDao.selectVisitCnt((String) session.getAttribute("userNickname"));
-			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
-			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+	
 		return result;
 	}
 	
@@ -272,18 +264,7 @@ public class BoardController {
 			result.put("resultCode", "0");
 			e.printStackTrace();
 		}
-		
-		//방문자 수 가져오기
-        try {
-			Map visitCntMap = new HashMap();
-			visitCntMap = mainDao.selectVisitCnt((String) session.getAttribute("userNickname"));
-			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
-			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+
 		return result;
 	}
 	
@@ -300,9 +281,6 @@ public class BoardController {
 			e1.printStackTrace();
 		}
 		
-		//홈피 주인 성별 가져오기
-		String userGender = memberService.selectUserGender(userNickname);
-		model.addAttribute("userGender",userGender);
 		
 		Map profile = mainService.getProfile(userNickname);
 		String image = (String) profile.get("image");
@@ -311,9 +289,13 @@ public class BoardController {
 		model.addAttribute("image", image);
 		model.addAttribute("msg", msg);
 		
-		Map map = mainService.getUserInfo(userNickname);
-		model.addAttribute("userName", map.get("userName"));
-		model.addAttribute("title", map.get("title"));
+		
+		//미니홈피 주인 정보 가져오기 (이름,성별,제목)
+		Map userInfo = mainService.selectUserInfo(userNickname);
+		model.addAttribute("userName", userInfo.get("userName"));		
+		model.addAttribute("userGender",userInfo.get("userGender"));
+		String title = (String) userInfo.get("title");
+		model.addAttribute("title", title);
 		
 		
 		Map selectMap = new HashMap();

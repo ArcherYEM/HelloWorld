@@ -103,11 +103,12 @@ public class MainController {
 		model.addAttribute("userName", userInfo.get("userName"));		
 		model.addAttribute("userGender",userInfo.get("userGender"));
 		String title = (String) userInfo.get("title");
-		if(title != null) {
-			model.addAttribute("title", title);
-		}else {
-			model.addAttribute("title", userNickname + "의 미니홈피입니다.");
-		}
+		model.addAttribute("title", title);
+//		if(title != null) {
+//			model.addAttribute("title", title);
+//		}else {
+//			model.addAttribute("title", userNickname + "의 미니홈피입니다.");
+//		}
 		
 		//접속중인 유저의 친구 전부 가져오기
 		List<Map> friendMap = mainService.getMyFriends(userNickname);
