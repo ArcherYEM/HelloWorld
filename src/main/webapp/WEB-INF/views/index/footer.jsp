@@ -22,7 +22,7 @@
 				<span class="ft-name">이정은</span>
 				<span>jjeongeun327@gmail.com</span>
 				<a href="https://github.com/jjeongeun327" class="lje-git"><span>https://github.com/jjeongeun327</span></a>
-				<a href="https://velog.io/@jjeongeun327/posts" class="lje-blog"><span>https://jjeongeun327.tistory.com</span></a>
+				<a href="https://jjeongeun327.tistory.com" class="lje-blog"><span>https://jjeongeun327.tistory.com</span></a>
 			</div>
 			<div class="grid-item">
 				<span class="ft-name">이진우</span>

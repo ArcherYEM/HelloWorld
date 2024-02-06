@@ -43,14 +43,14 @@ public class SettingController {
 	@RequestMapping(value = "/mnHome/settingView/{userNickname}")
 	public String settingView(@PathVariable String userNickname, Model model) {
 		
-		//홈피 주인 성별 가져오기
-		String userGender = memberService.selectUserGender(userNickname);
-		model.addAttribute("userGender",userGender);
-		
-		Map map = mainService.getUserInfo(userNickname);
-		model.addAttribute("userName", map.get("userName"));
 		model.addAttribute("userNickname", userNickname);
-		model.addAttribute("title", map.get("title"));
+		
+		//미니홈피 주인 정보 가져오기 (이름,성별,제목)
+		Map userInfo = mainService.selectUserInfo(userNickname);
+		model.addAttribute("userName", userInfo.get("userName"));		
+		model.addAttribute("userGender",userInfo.get("userGender"));
+		String title = (String) userInfo.get("title");
+		model.addAttribute("title", title);
 		
         //접속중인 유저의 친구 전부 가져오기
         List<Map> friendMap = mainService.getMyFriends(userNickname);
@@ -90,39 +90,17 @@ public class SettingController {
 		return "miniHome/setting";
 	}
 	
-	@RequestMapping(value = "/mnHome/settingInfoEditView/{userNickname}")
-	public String settingInfoEditView(@PathVariable String userNickname, Model model) {
-		
-		Map map = mainService.getUserInfo(userNickname);
-		model.addAttribute("userName", map.get("userName"));
-		model.addAttribute("title", map.get("title"));
-		
-        //접속중인 유저의 친구 전부 가져오기
-        List<Map> friendMap = mainService.getMyFriends(userNickname);
-        model.addAttribute("friend", friendMap);
-		
-      //방문자 수 가져오기
-        try {
-			Map visitCntMap = new HashMap();
-			visitCntMap = mainDao.selectVisitCnt(userNickname);
-			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
-			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "miniHome/settingInfoEdit";
-	}
 
 	@RequestMapping(value = "/mnHome/settingBgm/{userNickname}")
 	public String settingBgmView(@PathVariable String userNickname, Model model) {
+
 		
-		//홈피 주인 성별 가져오기
-		String userGender = memberService.selectUserGender(userNickname);
-		model.addAttribute("userGender",userGender);
-		
-		Map map = mainService.getUserInfo(userNickname);
-		model.addAttribute("userName", map.get("userName"));
-		model.addAttribute("title", map.get("title"));
+		//미니홈피 주인 정보 가져오기 (이름,성별,제목)
+		Map userInfo = mainService.selectUserInfo(userNickname);
+		model.addAttribute("userName", userInfo.get("userName"));		
+		model.addAttribute("userGender",userInfo.get("userGender"));
+		//String title = (String) userInfo.get("title");
+		model.addAttribute("title", (String) userInfo.get("title"));
 		
 		Map inputMap= new HashMap();
 		inputMap.put("userNickname", userNickname);
@@ -180,16 +158,15 @@ public class SettingController {
 	@RequestMapping(value = "/mnHome/settingMenu/{userNickname}")
 	public String settingMenuView(@PathVariable String userNickname, Model model) {
 		
-		//홈피 주인 성별 가져오기
-		String userGender = memberService.selectUserGender(userNickname);
-		model.addAttribute("userGender",userGender);
-		
-		Map userMap = mainService.getUserInfo(userNickname);
-		model.addAttribute("userName", userMap.get("userName"));
-		model.addAttribute("title", userMap.get("title"));
+		//미니홈피 주인 정보 가져오기 (이름,성별,제목)
+		Map userInfo = mainService.selectUserInfo(userNickname);
+		model.addAttribute("userName", userInfo.get("userName"));		
+		model.addAttribute("userGender",userInfo.get("userGender"));
+		String title = (String) userInfo.get("title");
+		model.addAttribute("title", title);
 		
 		Map putMap = new HashMap();
-		putMap.put("userNickname", userMap.get("userNickname"));
+		putMap.put("userNickname", userNickname);
 		putMap.put("category", "menu");
 		
 		List<Map> friendMap = mainService.getMyFriends(userNickname);
@@ -272,15 +249,6 @@ public class SettingController {
 		putMap.put("userNickname", userMap.get("userNickname"));
 		putMap.put("category", "menu");
 		
-		//방문자 수 가져오기
-        try {
-			Map visitCntMap = new HashMap();
-			visitCntMap = mainDao.selectVisitCnt(userNickname);
-			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
-			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		
 		List<Map<String, Object>> userMenu = settingService.allocationOnSkinMenu(putMap);
 		
@@ -304,17 +272,17 @@ public class SettingController {
 
 	@RequestMapping(value = "/mnHome/settingSkin/{userNickname}")
 	public String settingSkinView(@PathVariable String userNickname, Model model) {
+
 		
-		//홈피 주인 성별 가져오기
-		String userGender = memberService.selectUserGender(userNickname);
-		model.addAttribute("userGender",userGender);
-		
-		Map userMap = mainService.getUserInfo(userNickname);
-		model.addAttribute("userName", userMap.get("userName"));
-		model.addAttribute("title", userMap.get("title"));
+		//미니홈피 주인 정보 가져오기 (이름,성별,제목)
+		Map userInfo = mainService.selectUserInfo(userNickname);
+		model.addAttribute("userName", userInfo.get("userName"));		
+		model.addAttribute("userGender",userInfo.get("userGender"));
+		String title = (String) userInfo.get("title");
+		model.addAttribute("title", title);
 		
 		Map putMap = new HashMap();
-		putMap.put("userNickname", userMap.get("userNickname"));
+		putMap.put("userNickname", userNickname);
 		putMap.put("category", "skin");
 		
 		try {
@@ -414,9 +382,6 @@ public class SettingController {
 	public String settingDotoriUseView(@PathVariable String userNickname, Model model) {
 	    List<Map> dotoriMap = settingService.selectDotoriUse(userNickname);
 
-		//홈피 주인 성별 가져오기
-		String userGender = memberService.selectUserGender(userNickname);
-		model.addAttribute("userGender",userGender);
 	    
 	    for (Map map : dotoriMap) {
 	        String dotoriUseFor = (String) map.get("dotoriUseFor");
@@ -427,11 +392,15 @@ public class SettingController {
 	            map.put("detail", parts[1].trim()); // "스타픽시" 등의 상세 내용
 	        }
 	    }
-
-	    Map userInfoMap = mainService.getUserInfo(userNickname);
-	    model.addAttribute("userName", userInfoMap.get("userName"));
-	    model.addAttribute("title", userInfoMap.get("title"));
 	    model.addAttribute("dotoriUse", dotoriMap);
+
+	    
+	  //미니홈피 주인 정보 가져오기 (이름,성별,제목)
+	  	Map userInfo = mainService.selectUserInfo(userNickname);
+	  	model.addAttribute("userName", userInfo.get("userName"));		
+	  	model.addAttribute("userGender",userInfo.get("userGender"));
+	  	String title = (String) userInfo.get("title");
+	  	model.addAttribute("title", title);
 	    
         //접속중인 유저의 친구 전부 가져오기
         List<Map> friendMap = mainService.getMyFriends(userNickname);
@@ -472,15 +441,15 @@ public class SettingController {
 	@RequestMapping(value = "/mnHome/settingDotoriCharge/{userNickname}")
 	public String settingDotoriChargeView(@PathVariable String userNickname, Model model) {
 	    List<Map> dotoriMap = settingService.selectDotoriCharge(userNickname);
+	    model.addAttribute("dotoriCharge", dotoriMap);		
 
-		//홈피 주인 성별 가져오기
-		String userGender = memberService.selectUserGender(userNickname);
-		model.addAttribute("userGender",userGender);
 	    
-		Map map = mainService.getUserInfo(userNickname);
-		model.addAttribute("userName", map.get("userName"));
-		model.addAttribute("title", map.get("title"));
-		model.addAttribute("dotoriCharge", dotoriMap);		
+	  //미니홈피 주인 정보 가져오기 (이름,성별,제목)
+	  	Map userInfo = mainService.selectUserInfo(userNickname);
+	  	model.addAttribute("userName", userInfo.get("userName"));		
+	  	model.addAttribute("userGender",userInfo.get("userGender"));
+	  	String title = (String) userInfo.get("title");
+	  	model.addAttribute("title", title);
 		
         //접속중인 유저의 친구 전부 가져오기
         List<Map> friendMap = mainService.getMyFriends(userNickname);
@@ -522,13 +491,12 @@ public class SettingController {
 	public String settingFriends(@PathVariable String userNickname
 								,@PathVariable Optional<String> friendName, Model model) {
 		
-		//홈피 주인 성별 가져오기
-		String userGender = memberService.selectUserGender(userNickname);
-		model.addAttribute("userGender",userGender);
-		
-		Map map = mainService.getUserInfo(userNickname);
-		model.addAttribute("userName", map.get("userName"));
-		model.addAttribute("title", map.get("title"));
+		//미니홈피 주인 정보 가져오기 (이름,성별,제목)
+		Map userInfo = mainService.selectUserInfo(userNickname);
+		model.addAttribute("userName", userInfo.get("userName"));		
+		model.addAttribute("userGender",userInfo.get("userGender"));
+		String title = (String) userInfo.get("title");
+		model.addAttribute("title", title);
 		
 		Map nameMap = new HashMap();
 		nameMap.put("userNickname", userNickname);
@@ -643,15 +611,6 @@ public class SettingController {
 	    resultMap.put("userPhone", resultMap.get("phone"));
 	    resultMap.put("createDate", resultMap.get("date"));
 	   
-	  //방문자 수 가져오기
-        try {
-			Map visitCntMap = new HashMap();
-			visitCntMap = mainDao.selectVisitCnt((String) session.getAttribute("userNickname"));
-			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
-			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	    return resultMap;
 	}
 
@@ -667,16 +626,7 @@ public class SettingController {
 		
 		userMap = (Map) session.getAttribute("userId");
 	    String userNickname = (String) userMap.get("userNickname");
-	      
-	 //방문자 수 가져오기
-       try {
-			Map visitCntMap = new HashMap();
-			visitCntMap = mainDao.selectVisitCnt(userNickname);
-			model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
-			model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+     
 	    try {
 	        List<Map<String, Object>> userStorageData = settingService.selectSettingUserStorage(userNickname);
 
@@ -714,16 +664,7 @@ public class SettingController {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-		
-				//방문자 수 가져오기
-		        try {
-					Map visitCntMap = new HashMap();
-					visitCntMap = mainDao.selectVisitCnt((String) session.getAttribute("userNickname"));
-					model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
-					model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+
 		        
 				return "miniHome/mnhMinimiChangeSuccess";
 	}

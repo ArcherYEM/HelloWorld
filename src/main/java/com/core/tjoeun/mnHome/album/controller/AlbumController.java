@@ -39,9 +39,6 @@ public class AlbumController {
 	@RequestMapping(value="/mnHome/albumView/{userNickname}")
 	public String albumView(@PathVariable String userNickname, Model model) {
 		
-		//홈피 주인 성별 가져오기
-		String userGender = memberService.selectUserGender(userNickname);
-		model.addAttribute("userGender",userGender);
 		
 		Map profile = mainService.getProfile(userNickname);
 		String image = (String) profile.get("image");
@@ -50,9 +47,14 @@ public class AlbumController {
 		model.addAttribute("image", image);
 		model.addAttribute("msg", msg);
 		
-		Map map = mainService.getUserInfo(userNickname);
-		model.addAttribute("userName", map.get("userName"));
-		model.addAttribute("title", map.get("title"));
+		
+		//미니홈피 주인 정보 가져오기 (이름,성별,제목)
+		Map userInfo = mainService.selectUserInfo(userNickname);
+		model.addAttribute("userName", userInfo.get("userName"));		
+		model.addAttribute("userGender",userInfo.get("userGender"));
+		String title = (String) userInfo.get("title");
+		model.addAttribute("title", title);
+		
 		
         //접속중인 유저의 친구 전부 가져오기
         List<Map> friendMap = mainService.getMyFriends(userNickname);
@@ -111,14 +113,14 @@ public class AlbumController {
 	
 	@RequestMapping(value="/mnHome/albumWriteView/{userNickname}")
 	public String albumWriteView(@PathVariable String userNickname, Model model) {
+
 		
-		//홈피 주인 성별 가져오기
-		String userGender = memberService.selectUserGender(userNickname);
-		model.addAttribute("userGender",userGender);
-		
-		Map map = mainService.getUserInfo(userNickname);
-		model.addAttribute("userName", map.get("userName"));
-		model.addAttribute("title", map.get("title"));
+		//미니홈피 주인 정보 가져오기 (이름,성별,제목)
+		Map userInfo = mainService.selectUserInfo(userNickname);
+		model.addAttribute("userName", userInfo.get("userName"));		
+		model.addAttribute("userGender",userInfo.get("userGender"));
+		String title = (String) userInfo.get("title");
+		model.addAttribute("title", title);
 		
 		Map profile = mainService.getProfile(userNickname);
 		String image = (String) profile.get("image");
@@ -186,15 +188,7 @@ public class AlbumController {
 	        System.out.println("### Map : " + map);
 	        System.out.println("### uploadFile : " + uploadFile);
 			
-			//방문자 수 가져오기
-	        try {
-				Map visitCntMap = new HashMap();
-				visitCntMap = mainDao.selectVisitCnt(userNickname);
-				model.addAttribute("todayCnt", (int) visitCntMap.get("todayCnt"));
-				model.addAttribute("totalCnt", (int) visitCntMap.get("totalCnt"));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			
 			result.put("resultCode", "1");
 			
 		} catch (Exception e) {
@@ -209,9 +203,6 @@ public class AlbumController {
 	@RequestMapping(value="/mnHome/albumDetailView/{userNickname}/{seq}")
 	public String albumDetailView(@PathVariable String userNickname, @PathVariable int seq, Model model) {
 		
-		//홈피 주인 성별 가져오기
-		String userGender = memberService.selectUserGender(userNickname);
-		model.addAttribute("userGender",userGender);
 		
 		Map profile = mainService.getProfile(userNickname);
 		String image = (String) profile.get("image");
@@ -220,9 +211,13 @@ public class AlbumController {
 		model.addAttribute("image", image);
 		model.addAttribute("msg", msg);
 		
-		Map map = mainService.getUserInfo(userNickname);
-		model.addAttribute("userName", map.get("userName"));
-		model.addAttribute("title", map.get("title"));
+
+		//미니홈피 주인 정보 가져오기 (이름,성별,제목)
+		Map userInfo = mainService.selectUserInfo(userNickname);
+		model.addAttribute("userName", userInfo.get("userName"));		
+		model.addAttribute("userGender",userInfo.get("userGender"));
+		String title = (String) userInfo.get("title");
+		model.addAttribute("title", title);
 		
 		//접속중인 유저의 친구 전부 가져오기
         List<Map> friendMap = mainService.getMyFriends(userNickname);

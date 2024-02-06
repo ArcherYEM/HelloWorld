@@ -95,7 +95,6 @@ public class MainServiceImpl implements MainService{
 	@Transactional(readOnly = true)
 	@Cacheable(key="#userNickname", value="userInfo")
 	public Map selectUserInfo(String userNickname) {
-		
 		return mainDao.selectUserInfo(userNickname);
 	}
 	
