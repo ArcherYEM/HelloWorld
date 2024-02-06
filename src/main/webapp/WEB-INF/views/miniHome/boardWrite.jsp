@@ -97,7 +97,7 @@
 								</div>
 							 </c:if>
 							<div class="content-title-url">
-								https://www.helloworld.com/minihome/${userNickname }</div>
+								http://corehelloworld.shop/mnHome/mainView/${userNickname }</div>
 					</div>
 					<div class="box content-box">
 					

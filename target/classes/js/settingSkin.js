@@ -31,7 +31,7 @@ function logClick() {
 }
 
 // ajax 로 데이터 전송
-$(document).one("click", ".apply-button", function (event) {
+$(document).one("click", ".apply-skin-button", function (event) {
     event.preventDefault();
 
     // JSON 데이터 생성
@@ -54,4 +54,3 @@ $(document).one("click", ".apply-button", function (event) {
         }
    });
 });
-

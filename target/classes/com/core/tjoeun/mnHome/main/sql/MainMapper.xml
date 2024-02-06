@@ -142,11 +142,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectCurrentContent" parameterType="String" resultType="map">
 		SELECT seq, title, 'board' AS tableName, update_date
 		FROM board
-		WHERE userNickname = #{userNickname} AND del_yn = 'N'
+		WHERE userNickname = #{userNickname} AND del_yn = 'N' AND openScope = 1
 		UNION ALL
 		SELECT seq, title, 'album' AS tableName, update_date
 		FROM album
-		WHERE userNickname = #{userNickname} AND del_yn = 'N'
+		WHERE userNickname = #{userNickname} AND del_yn = 'N' AND openScope = 1
 		ORDER BY update_date DESC
 		LIMIT 4
 	</select>
