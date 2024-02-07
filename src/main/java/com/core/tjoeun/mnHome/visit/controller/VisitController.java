@@ -36,9 +36,6 @@ public class VisitController {
 	@RequestMapping(value = "/mnHome/visitView/{userNickname}")
 	public String visitView(@PathVariable String userNickname, Model model, @RequestParam(required = false) Integer page) {
 
-	    // 홈피 주인 성별 가져오기
-	    String userGender = memberService.selectUserGender(userNickname);
-	    model.addAttribute("userGender", userGender);
 
 	    // 프로필 정보 가져오기
 	    Map profile = mainService.getProfile(userNickname);
@@ -48,9 +45,13 @@ public class VisitController {
 	    model.addAttribute("image", image);
 	    model.addAttribute("msg", msg);
 
-	    Map map = mainService.getUserInfo(userNickname);
-	    model.addAttribute("userName", map.get("userName"));
-	    model.addAttribute("title", map.get("title"));
+	    
+	  //미니홈피 주인 정보 가져오기 (이름,성별,제목)
+	  	Map userInfo = mainService.selectUserInfo(userNickname);
+	  	model.addAttribute("userName", userInfo.get("userName"));		
+	  	model.addAttribute("userGender",userInfo.get("userGender"));
+	  	String title = (String) userInfo.get("title");
+	  	model.addAttribute("title", title);
 
 	    // 방명록 내용 가져오기
 	    if (page == null) {

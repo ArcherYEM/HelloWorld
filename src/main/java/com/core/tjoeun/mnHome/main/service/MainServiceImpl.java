@@ -95,7 +95,6 @@ public class MainServiceImpl implements MainService{
 	@Transactional(readOnly = true)
 	@Cacheable(key="#userNickname", value="userInfo")
 	public Map selectUserInfo(String userNickname) {
-		
 		return mainDao.selectUserInfo(userNickname);
 	}
 	
@@ -192,7 +191,7 @@ public class MainServiceImpl implements MainService{
 	}
 	
 	@Override
-	@CacheEvict(key="#userNickname", cacheNames={"minimi", "background"})
+	@CacheEvict(key="#userNickname", value={"minimi", "background"})
 	public void resetBackground(String userNickname) {
 		
 		mainDao.resetBackground(userNickname);		
@@ -223,7 +222,7 @@ public class MainServiceImpl implements MainService{
 
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW, rollbackFor = {Exception.class})
-	@CacheEvict(key="#map['userNickname']", cacheNames = {"homeTitle", "userInfo"})
+	@CacheEvict(key="#map['userNickname']", value = {"homeTitle", "userInfo"})
 	public void updateHomeTitle(Map map) throws Exception {
 		Map titleExist = mainDao.selectHomeTitle((String) map.get("userNickname"));
 		int result;

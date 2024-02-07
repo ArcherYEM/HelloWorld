@@ -36,13 +36,15 @@ public class DiaryController {
 	
 	@RequestMapping("/mnHome/diaryView/{userNickname}")
 	public String diaryView(@PathVariable String userNickname, Model model) {
-		Map userMap = mainService.getUserInfo(userNickname);
-		model.addAttribute("userName", userMap.get("userName"));
-		model.addAttribute("userNickname", userMap.get("userNickname"));
-		model.addAttribute("title", userMap.get("title"));
+
+		model.addAttribute("userNickname", userNickname);
 		
-		String userGender = memberService.selectUserGender(userNickname);
-		model.addAttribute("userGender",userGender);
+		//미니홈피 주인 정보 가져오기 (이름,성별,제목)
+		Map userInfo = mainService.selectUserInfo(userNickname);
+		model.addAttribute("userName", userInfo.get("userName"));		
+		model.addAttribute("userGender",userInfo.get("userGender"));
+		String title = (String) userInfo.get("title");
+		model.addAttribute("title", title);
 		
 		Map profile = mainService.getProfile(userNickname);
 		String image = (String) profile.get("image");
@@ -55,7 +57,7 @@ public class DiaryController {
         model.addAttribute("friend", friendMap);
 		
         
-		Map diary = diaryService.selectDiary(userMap);
+		Map diary = diaryService.selectDiary(userInfo);
 	    model.addAttribute("diary", diary);
 //	    if(diary == null) {
 //	    	model.addAttribute("nullCheck",true);
@@ -113,13 +115,14 @@ public class DiaryController {
 	
 	@RequestMapping(value="/mnHome/diaryWriteView/{userNickname}")
 	public String diaryWriteView(@PathVariable String userNickname, Model model, Map map) {
+
 		
-		Map userMap = mainService.getUserInfo(userNickname);
-		model.addAttribute("userName", userMap.get("userName"));
-		model.addAttribute("title", userMap.get("title"));
-		
-		String userGender = memberService.selectUserGender(userNickname);
-		model.addAttribute("userGender",userGender);
+		//미니홈피 주인 정보 가져오기 (이름,성별,제목)
+		Map userInfo = mainService.selectUserInfo(userNickname);
+		model.addAttribute("userName", userInfo.get("userName"));		
+		model.addAttribute("userGender",userInfo.get("userGender"));
+		String title = (String) userInfo.get("title");
+		model.addAttribute("title", title);
 		
 		Map profile = mainService.getProfile(userNickname);
 		String image = (String) profile.get("image");
@@ -164,12 +167,14 @@ public class DiaryController {
 	@RequestMapping(value="/mnHome/diaryModifyView/{userNickname}/{seq}")
 	public String diaryModifyView(@PathVariable String userNickname
 								, @PathVariable String seq, Model model, Map map) {
-		Map userMap = mainService.getUserInfo(userNickname);
-		model.addAttribute("userName", userMap.get("userName"));
-		model.addAttribute("title", userMap.get("title"));
+
 		
-		String userGender = memberService.selectUserGender(userNickname);
-		model.addAttribute("userGender",userGender);
+		//미니홈피 주인 정보 가져오기 (이름,성별,제목)
+		Map userInfo = mainService.selectUserInfo(userNickname);
+		model.addAttribute("userName", userInfo.get("userName"));		
+		model.addAttribute("userGender",userInfo.get("userGender"));
+		String title = (String) userInfo.get("title");
+		model.addAttribute("title", title);
 		
 		Map profile = mainService.getProfile(userNickname);
 		String image = (String) profile.get("image");
