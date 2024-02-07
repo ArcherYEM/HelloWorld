@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a8e8123c36ca48437f2f0ed36998e7392d68b1b8
 var userNickname;
 var category;
 var productName;
@@ -33,7 +36,7 @@ function logClick() {
 }
 
 // ajax 로 데이터 전송
-$(document).one("click", ".apply-button", function (event) {
+$(document).one("click", ".apply-menu-button", function (event) {
     event.preventDefault();
 
 
@@ -57,6 +60,7 @@ $(document).one("click", ".apply-button", function (event) {
         }
    });
 });
+<<<<<<< HEAD
 
 =======
 var userNickname;
@@ -119,3 +123,5 @@ $(document).one("click", ".apply-menu-button", function (event) {
 });
 
 >>>>>>> f8aac424026728671a5fbc4597f3416b49d94c7b
+=======
+>>>>>>> a8e8123c36ca48437f2f0ed36998e7392d68b1b8
