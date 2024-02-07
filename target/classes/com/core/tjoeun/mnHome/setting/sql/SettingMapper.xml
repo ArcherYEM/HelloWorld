@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -263,4 +264,272 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from user
 		where userNickname=#{userNickname}
 	</select>
+	
+=======
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core.tjoeun.mnHome.setting.sql.SettingMapper">
+
+	<select id="selectSettingUserStorage" parameterType="String" resultType="map">
+		SELECT
+			userNickname,
+			category,
+			productName,
+			contentPath,
+			buy_date,
+			allocation
+		FROM userStorage
+		WHERE 1=1
+		AND userNickname = #{value}
+		AND category = "minimi"
+	</select>
+	
+	<select id="selectSkinMenu" parameterType="map" resultType="map">
+		SELECT
+			userNickname,
+			category,
+			productName,
+			contentPath,
+			buy_date,
+			allocation
+		FROM userStorage
+		WHERE 1=1
+		<if test="userNickname != null">
+			AND userNickname = #{userNickname}
+		</if>
+	    <if test="category == 'skin'">
+	    	AND category = 'skin'
+	    </if>
+	    <if test="category == 'menu'">
+	    	AND category = 'menu'
+	    </if>
+	</select>
+	
+	<select id="allocationOnSkinMenu" parameterType="map" resultType="map">
+		SELECT
+			userNickname,
+			category,
+			productName,
+			contentPath,
+			buy_date,
+			allocation
+		FROM userStorage
+		WHERE 1=1
+		<if test="userNickname != null">
+			AND userNickname = #{userNickname}
+		</if>
+		<if test="productName != null">
+			AND
+				productName = #{productName}
+		</if>
+	    <if test="category == 'skin'">
+	    	AND category = 'skin'
+	    </if>
+	    <if test="category == 'menu'">
+	    	AND category = 'menu'
+	    </if>
+    	AND
+    		allocation = 1;
+	</select>
+	
+	<update id="updateAllocationOff" parameterType="map">
+	    UPDATE userStorage
+	    SET
+	        allocation = 0
+	    WHERE
+	        userNickname = #{userNickname}
+	    <if test="category == 'minimi'">
+	        AND
+	      	  category = 'minimi'
+	    </if>
+	    <if test="category == 'skin'">
+	        AND
+	   	     category = 'skin'
+	    </if>
+	    <if test="category == 'menu'">
+	        AND
+	    	    category = 'menu'
+	    </if>
+	    AND
+	  	  allocation = 1
+	</update>
+
+	<update id="updateAllocationOn" parameterType="map">
+		UPDATE userStorage
+		SET
+			allocation = 1
+		WHERE
+			userNickname = #{userNickname}
+		<if test="category == 'minimi'">
+	        AND
+	    	    category = 'minimi'
+	    </if>
+	    <if test="category == 'skin'">
+	        AND
+	        category = 'skin'
+	    </if>
+	    <if test="category == 'menu'">
+	        AND
+	        category = 'menu'
+	    </if>
+		AND
+			productName = #{realName}
+	</update>
+	
+	<select id="selectSearchUser" parameterType="map" resultType="map">
+		select
+			userEmail
+			,userName
+			,userNickname
+			,userPhone
+			,createDate
+		from user
+		where 1=1
+		<if test="userNickname != null">
+			and userNickname = #{userNickname}
+		</if>
+	</select>
+	
+	<!--0은 대기 1은 승인 -1은 거절   -->
+	<insert id="insertFriendRequest" parameterType="map">
+		insert into friends
+		( userNickname
+		, friendNickname
+		, del_yn
+		, fStatus
+		) values (
+			#{requestUser}
+			,#{responseUser}
+			,'N'
+			,0
+		)
+	</insert>
+	
+	<select id="selectFriends" parameterType="map" resultType="map">
+		select 
+			f.seq,
+	        f.userNickname,
+	        f.friendNickname,
+	        f.fStatus,
+	        substring(f.createDate, 1, 10) as createDate,
+	        u.userName
+		from friends f
+		JOIN
+        user u ON (f.userNickname = u.userNickname OR f.friendNickname = u.userNickname)
+		where (f.userNickname = #{userNickname} OR f.friendNickname = #{userNickname})
+        AND f.del_yn = 'N'
+        AND u.userNickname != #{userNickname} 
+        <if test="name != null">
+            AND (f.userNickname LIKE CONCAT('%', #{name}, '%') OR f.friendNickname LIKE CONCAT('%', #{name}, '%'))
+        </if>
+        <if test="checkFriend = 1">
+            AND f.fStatus != -1
+        </if>
+	</select>
+	
+	<update id="updateStatus" parameterType="map">
+		update
+			friends
+		set 
+			<if test="fStatus != null">
+			fStatus = #{fStatus}
+			</if>
+			<if test="del != null">
+			del_yn =  #{del}
+			</if>
+		where
+			seq = #{seq}
+	</update>
+	
+	<select id="selectDotoriUse" parameterType="String" resultType="map">
+		SELECT *,
+		       DATE_FORMAT(dotoriUseDate, '%Y.%m.%d %H:%i') as formattedDotoriUseDate
+		FROM dotoriU 
+		WHERE userNickname = #{userNickname}
+		ORDER BY dotoriUseDate DESC
+	</select>	
+	
+	<select id="selectDotoriCharge" parameterType="String" resultType="map">
+		SELECT *,
+		       DATE_FORMAT(dotoriChargeDate, '%Y.%m.%d %H:%i') as formattedDotoriChargeDate
+		FROM dotoriC 
+		WHERE userNickname = #{userNickname}
+		ORDER BY dotoriChargeDate DESC;
+	</select>
+	
+	<update id="changeName" parameterType="map">
+		update user set 
+		userName = #{changedName}
+		where userName = #{originalName}
+		and userNickname = #{userNickname}
+	</update>
+
+	<update id="changeNickname" parameterType="map">
+		update user set 
+		userNickname = #{changedNickname}
+		where userNickname = #{originalNickname}
+		and userEmail = #{userEmail}
+	</update>
+	
+	<update id="changeNumber" parameterType="map">
+		update user set 
+		userPhone = #{changedNumber}
+		where userPhone = #{originalNumber}
+		and userNickname = #{userNickname}
+	</update>	
+	
+	<select id="selectMyBgm" resultType="map" parameterType="map">
+		SELECT 
+			userNickname
+			, title
+			, artist
+			, runningTime
+			, contentPath
+			,allocation
+		FROM
+			userBgm
+		WHERE 1=1
+		<if test="userNickname != null">
+			AND userNickname = #{userNickname}
+		</if>
+		<if test="allocation == 1">
+			AND allocation = 1
+		</if>
+	</select>
+	
+	<update id="addPlayList" parameterType="map">
+		update userBgm
+	    set allocation = 1
+	    where userNickname = #{userNickname}
+	    and title IN
+	    <foreach item="titleItem" collection="title" open="(" separator="," close=")">
+	        #{titleItem}
+	    </foreach>
+	</update>
+	
+	<update id="removePlayList" parameterType="map">
+		update userBgm
+	    set allocation = 0
+	    where userNickname = #{userNickname}
+	    and title IN
+	    <foreach item="titleItem" collection="title" open="(" separator="," close=")">
+	        #{titleItem}
+	    </foreach>
+	</update>
+	
+	<select id="selectPlayList" parameterType="String" resultType="map">
+		select title, artist, runningTime 
+		from userBgm
+		where userNickname=#{userNickname}
+		and allocation = 1;
+	</select>
+	
+	<select id="selectPhone" parameterType="String" resultType="String">
+		select userPhone 
+		from user
+		where userNickname=#{userNickname}
+	</select>
+>>>>>>> a8e8123c36ca48437f2f0ed36998e7392d68b1b8
 </mapper>
