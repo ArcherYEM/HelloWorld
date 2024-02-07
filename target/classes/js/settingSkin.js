@@ -54,4 +54,3 @@ $(document).one("click", ".apply-skin-button", function (event) {
         }
    });
 });
-
